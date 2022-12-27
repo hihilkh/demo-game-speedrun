@@ -16,7 +16,6 @@ namespace Ending
 
 	Resource::~Resource()
 	{
-		this->img.reset();
 	}
 
 #pragma endregion

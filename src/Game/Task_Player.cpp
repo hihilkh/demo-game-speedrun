@@ -12,7 +12,6 @@ namespace Player
 
 	Resource::~Resource()
 	{
-		img.reset();
 	}
 
 #pragma endregion

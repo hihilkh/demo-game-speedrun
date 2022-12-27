@@ -20,7 +20,6 @@ namespace Map
 
 	Resource::~Resource()
 	{
-		chipImg.reset();
 	}
 
 	void Resource::Draw(int chipIndex, const ML::Box2D& draw)
