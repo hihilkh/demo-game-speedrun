@@ -11,20 +11,21 @@
 
 namespace Game
 {
+
 #pragma region Object
 
 	Object::Object() : ObjectBase<Object>(defGroupName, defName)
 	{
 		//★タスクの生成
 		GameCamera::Object::SP camera = GameCamera::Object::Create(true);
-		Reference::gameCamera = camera;
+		GameReference::gameCamera = camera;
 		Map::Object::SP map = Map::Object::Create(true);
-		Reference::map = map;
+		GameReference::map = map;
 		Player::Object::SP player = Player::Object::Create(true);
-		Reference::player = player;
+		GameReference::player = player;
 
 		// TODO : Use event system for the timing to get reference
-		map->Initialize(Reference::gameCamera.lock());
+		map->Initialize(camera);
 		map->Load("./data/Map/map2.txt");
 
 		player->Initizalize(camera, map, ML::Vec2(0, 0));

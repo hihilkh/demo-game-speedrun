@@ -3,7 +3,6 @@
 #include <GameEngine_Ver3_83.h>
 #include <cassert>
 #include "MyPG.h"
-#include "Utils/Log.h"
 
 template<typename T>
 class ObjectBase : public BTask

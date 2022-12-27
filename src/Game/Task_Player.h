@@ -40,7 +40,7 @@ namespace Player
 
 	private:
 		GameCamera::Object::SP camera;
-		XI::GamePad::SP  controller;
+		XI::GamePad::SP controller;
 
 		bool isInitialized;
 
