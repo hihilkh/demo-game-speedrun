@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include <string>
 
@@ -6,12 +6,12 @@ namespace TaskConstant {
 
 #pragma region TaskGroupName
 
-	const std::string TaskGroupName_Title = "ƒ^ƒCƒgƒ‹";
-	const std::string TaskGroupName_Ending = "ƒGƒ“ƒfƒBƒ“ƒO";
+	const std::string TaskGroupName_Title = "ã‚¿ã‚¤ãƒˆãƒ«";
+	const std::string TaskGroupName_Ending = "ã‚¨ãƒ³ãƒ‡ã‚£ãƒ³ã‚°";
 
-	const std::string TaskGroupName_Game = "–{•Ò";
-	const std::string TaskGroupName_Map = "ƒ}ƒbƒv";
-	const std::string TaskGroupName_Chara = "ƒLƒƒƒ‰ƒNƒ^[";
+	const std::string TaskGroupName_Game = "æœ¬ç·¨";
+	const std::string TaskGroupName_Map = "ãƒãƒƒãƒ—";
+	const std::string TaskGroupName_Chara = "ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼";
 
 #pragma endregion
 
@@ -19,10 +19,10 @@ namespace TaskConstant {
 
 	const std::string TaskName_Default = "NoName";
 
-	const std::string TaskName_Game = "“Š‡";
-	const std::string TaskName_GameCamera = "ƒJƒƒ‰";
-	const std::string TaskName_Map = "“Š‡";
-	const std::string TaskName_Player = "ƒvƒŒƒCƒ„[";
+	const std::string TaskName_Game = "çµ±æ‹¬";
+	const std::string TaskName_GameCamera = "ã‚«ãƒ¡ãƒ©";
+	const std::string TaskName_Map = "çµ±æ‹¬";
+	const std::string TaskName_Player = "ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼";
 
 #pragma endregion
 }

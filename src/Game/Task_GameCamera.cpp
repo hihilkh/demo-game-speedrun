@@ -1,4 +1,4 @@
-#include "Task_GameCamera.h"
+ï»¿#include "Task_GameCamera.h"
 
 namespace GameCamera
 {
@@ -21,7 +21,7 @@ namespace GameCamera
 	{
 		auto inp = ge->in1->GetState();
 		if (inp.ST.down) {
-			//Ž©g‚ÉÁ–Å—v¿
+			//è‡ªèº«ã«æ¶ˆæ»…è¦è«‹
 			this->Kill();
 		}
 	}

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include <GameEngine_Ver3_83.h>
 #include "ResourceConstant.h"
@@ -7,9 +7,9 @@ template<typename T>
 class ResourceBase : public BResource
 {
 private:
-	// Initialize() ‚Ì‘ã‚í‚è‚ÉAƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‰Šú‰»‚·‚é
+	// Initialize() ã®ä»£ã‚ã‚Šã«ã€ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§åˆæœŸåŒ–ã™ã‚‹
 	bool Initialize() override { return true; }
-	// Finalize() ‚Ì‘ã‚í‚è‚ÉAƒfƒXƒgƒ‰ƒNƒ^‚ÅƒŠƒ\[ƒX‚Ì‰ğ•ú‚ğ‚·‚é
+	// Finalize() ã®ä»£ã‚ã‚Šã«ã€ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ãƒªã‚½ãƒ¼ã‚¹ã®è§£æ”¾ã‚’ã™ã‚‹
 	bool Finalize() override { return true; }
 
 protected:

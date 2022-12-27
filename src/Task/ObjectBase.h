@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include <GameEngine_Ver3_83.h>
 #include <cassert>
@@ -20,19 +20,19 @@ public:
 	typedef shared_ptr<T> SP;
 	typedef weak_ptr<T> WP;
 
-	//¶¬‘‹Œû ˆø”‚Ítrue‚Åƒ^ƒXƒNƒVƒXƒeƒ€‚Ö©“®“o˜^
+	//ç”Ÿæˆçª“å£ å¼•æ•°ã¯trueã§ã‚¿ã‚¹ã‚¯ã‚·ã‚¹ãƒ†ãƒ ã¸è‡ªå‹•ç™»éŒ²
 	static SP Create(bool flagGameEnginePushBack)
 	{
 		SP ob = SP(new T());
 		if (ob) {
 			ob->me = ob;
 			if (flagGameEnginePushBack) {
-				ge->PushBack(ob);//ƒQ[ƒ€ƒGƒ“ƒWƒ“‚É“o˜^
+				ge->PushBack(ob);//ã‚²ãƒ¼ãƒ ã‚¨ãƒ³ã‚¸ãƒ³ã«ç™»éŒ²
 			}
 			return  ob;
 		}
 
-		assert(false && "Create ¸”s");
+		assert(false && "Create å¤±æ•—");
 		return nullptr;
 	}
 };

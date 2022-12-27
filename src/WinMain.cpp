@@ -1,4 +1,4 @@
-#pragma	comment(lib,"winmm")	//	ƒ}ƒ‹ƒ`ƒƒfƒBƒAŠg’£‹@”\‚ğg—p‚·‚é‚½‚ß‚É•K—v
+ï»¿#pragma	comment(lib,"winmm")	//	ãƒãƒ«ãƒãƒ¡ãƒ‡ã‚£ã‚¢æ‹¡å¼µæ©Ÿèƒ½ã‚’ä½¿ç”¨ã™ã‚‹ãŸã‚ã«å¿…è¦
 #include "MyPG.h"
 
 
@@ -6,8 +6,8 @@ LRESULT CALLBACK WndProc(HWND wnd_, UINT msg_, WPARAM wParam_, LPARAM lParam_);
 HWND MyPG_CreateWindow(HINSTANCE inst_, const TCHAR cName_[], const TCHAR tName_[], RECT *wSize_, int showCmd_);
 
 //-----------------------------------------------------------------------------
-//ƒEƒBƒ“ƒƒCƒ“
-//‹@”\ŠT—vFƒEƒBƒ“ƒhƒEƒYƒvƒƒOƒ‰ƒ€‚ÌƒƒCƒ“ŠÖ”
+//ã‚¦ã‚£ãƒ³ãƒ¡ã‚¤ãƒ³
+//æ©Ÿèƒ½æ¦‚è¦ï¼šã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚ºãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®ãƒ¡ã‚¤ãƒ³é–¢æ•°
 //-----------------------------------------------------------------------------
 int __stdcall WinMain(	HINSTANCE inst_,	//
 						HINSTANCE,			//
@@ -16,46 +16,46 @@ int __stdcall WinMain(	HINSTANCE inst_,	//
 {
 	ge = new MyPG::MyGameEngine( );
 
-	HWND	wnd;								//	ƒEƒCƒ“ƒhƒEƒnƒ“ƒhƒ‹
+	HWND	wnd;								//	ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ãƒãƒ³ãƒ‰ãƒ«
 	RECT	ws = { 0, 0, (LONG)(ge->screenWidth  * ge->viewScaleW), (LONG)(ge->screenHeight * ge->viewScaleH) };
 	wnd = MyPG_CreateWindow(inst_, ge->windowClassName, ge->windowTitle, &ws, showCmd);
 	if(wnd == nullptr){ return 0;}
 
-//	ƒQ[ƒ€ŠÂ‹«‚Ì‰Šú‰»
+//	ã‚²ãƒ¼ãƒ ç’°å¢ƒã®åˆæœŸåŒ–
 	ge->B_Initialize(wnd);
 
-//	ƒƒbƒZ[ƒWƒ‹[ƒv
+//	ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ«ãƒ¼ãƒ—
 	MSG		msg = {};
 	while (msg.message != WM_QUIT)
 	{
-		//ƒƒbƒZ[ƒW‚ª—ˆ‚Ä‚¢‚é‚©
+		//ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒæ¥ã¦ã„ã‚‹ã‹
 		if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
 		{
-			//ƒƒbƒZ[ƒW‚É‰‚¶‚½ˆ—‚ğs‚¤
+			//ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«å¿œã˜ãŸå‡¦ç†ã‚’è¡Œã†
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		}
 		else if (GetActiveWindow() == wnd)
 		{
-			ge->B_Step(wnd);		//	ƒQ[ƒ€ˆ—
+			ge->B_Step(wnd);		//	ã‚²ãƒ¼ãƒ å‡¦ç†
 		}
 	}
 
-	//	ƒQ[ƒ€ŠÂ‹«‚Ì”jŠü
+	//	ã‚²ãƒ¼ãƒ ç’°å¢ƒã®ç ´æ£„
 	delete ge;
 	return 0;
 }
 
 //-----------------------------------------------------------------------------
-//ƒEƒBƒ“ƒhƒE¶¬
-//‹@”\ŠT—vFƒEƒBƒ“ƒhƒE‚ğì‚é‚½‚ß‚ÌŠeíİ’è‚ğs‚¢AƒEƒBƒ“ƒhƒE‚ğ¶¬‚·‚é
+//ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ç”Ÿæˆ
+//æ©Ÿèƒ½æ¦‚è¦ï¼šã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’ä½œã‚‹ãŸã‚ã®å„ç¨®è¨­å®šã‚’è¡Œã„ã€ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’ç”Ÿæˆã™ã‚‹
 //-----------------------------------------------------------------------------
 HWND MyPG_CreateWindow(HINSTANCE inst_, const TCHAR cName_[], const TCHAR tName_[], RECT* wSize_, int showCmd_)
 {
-	WNDCLASSEX wcex;						//	ƒEƒCƒ“ƒhƒEì¬‚Ég—p
-	HWND wnd;								//	ƒEƒCƒ“ƒhƒEƒnƒ“ƒhƒ‹
+	WNDCLASSEX wcex;						//	ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ä½œæˆã«ä½¿ç”¨
+	HWND wnd;								//	ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ãƒãƒ³ãƒ‰ãƒ«
 
-//	ƒf[ƒ^‰Šú‰»
+//	ãƒ‡ãƒ¼ã‚¿åˆæœŸåŒ–
 	wcex.style			= (CS_HREDRAW | CS_VREDRAW);
 	wcex.hIcon			= LoadIcon(inst_, IDI_APPLICATION);
 	wcex.cbSize			= sizeof(WNDCLASSEX);
@@ -68,13 +68,13 @@ HWND MyPG_CreateWindow(HINSTANCE inst_, const TCHAR cName_[], const TCHAR tName_
 	wcex.lpszMenuName	= nullptr;
 	wcex.lpszClassName	= cName_;
 	wcex.hbrBackground	= (HBRUSH)GetStockObject(BLACK_BRUSH);
-//	Windows‚É“o˜^
+//	Windowsã«ç™»éŒ²
 	if(!RegisterClassEx(&wcex))
 	{
-		MessageBox(nullptr, "ƒEƒCƒ“ƒhƒE“o˜^‚É¸”s", nullptr, MB_OK);
+		MessageBox(nullptr, "ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ç™»éŒ²ã«å¤±æ•—", nullptr, MB_OK);
 		return	nullptr;
 	}
-//	ƒEƒCƒ“ƒhƒEì¬
+//	ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ä½œæˆ
 	DWORD dws = ge->screenMode ? WS_POPUP : (WS_CAPTION | WS_SYSMENU);
 	AdjustWindowRectEx(wSize_, dws, false, WS_EX_APPWINDOW);
 
@@ -87,28 +87,28 @@ HWND MyPG_CreateWindow(HINSTANCE inst_, const TCHAR cName_[], const TCHAR tName_
 							nullptr, nullptr, inst_, nullptr);
 	if(!wnd)
 	{
-		MessageBox(nullptr, "ƒEƒCƒ“ƒhƒE¶¬‚É¸”s", nullptr, MB_OK);
+		MessageBox(nullptr, "ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ç”Ÿæˆã«å¤±æ•—", nullptr, MB_OK);
 		return	nullptr;
 	}
 
-//	ƒEƒCƒ“ƒhƒE‚Ìó‘Ô‚ğXV‚·‚é
+//	ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ã®çŠ¶æ…‹ã‚’æ›´æ–°ã™ã‚‹
 	ShowWindow(wnd, showCmd_);
 	UpdateWindow(wnd);
 
-	return wnd;	//¬Œ÷
+	return wnd;	//æˆåŠŸ
 }
 
 //-----------------------------------------------------------------------------
-//ƒEƒBƒ“ƒhƒEƒvƒƒVƒWƒƒ
-//‹@”\ŠT—vFƒƒbƒZ[ƒW‚É‘Î‚·‚éˆ—‚ğs‚¤
+//ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒ—ãƒ­ã‚·ã‚¸ãƒ£
+//æ©Ÿèƒ½æ¦‚è¦ï¼šãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«å¯¾ã™ã‚‹å‡¦ç†ã‚’è¡Œã†
 //-----------------------------------------------------------------------------
-LRESULT CALLBACK WndProc(	HWND	wnd_,		//	ƒEƒBƒ“ƒhƒEƒnƒ“ƒhƒ‹
-							UINT	msg_,		//	ƒƒbƒZ[ƒW
-							WPARAM	wParam_,	//	ƒpƒ‰ƒ[ƒ^
-							LPARAM	lParam_)	//	ƒpƒ‰ƒ[ƒ^
+LRESULT CALLBACK WndProc(	HWND	wnd_,		//	ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒãƒ³ãƒ‰ãƒ«
+							UINT	msg_,		//	ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+							WPARAM	wParam_,	//	ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+							LPARAM	lParam_)	//	ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
 {
 	LRESULT ret = (LRESULT)0;
-//	Windows‚©‚ç‘—M‚³‚ê‚½ƒƒbƒZ[ƒW‚ğ’²‚×‚é
+//	Windowsã‹ã‚‰é€ä¿¡ã•ã‚ŒãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’èª¿ã¹ã‚‹
 	switch(msg_){
 
 	case WM_KEYDOWN:
@@ -118,25 +118,25 @@ LRESULT CALLBACK WndProc(	HWND	wnd_,		//	ƒEƒBƒ“ƒhƒEƒnƒ“ƒhƒ‹
 		}
 		break;
 
-	//	ƒEƒCƒ“ƒhƒE‚ª¶¬‚³‚ê‚½
+	//	ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ãŒç”Ÿæˆã•ã‚ŒãŸ
 		case WM_CREATE:
 			break;
 
-	//	‚±‚ÌƒEƒCƒ“ƒhƒE‚ªƒAƒNƒeƒBƒu‚É‚È‚Á‚½
+	//	ã“ã®ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ãŒã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã«ãªã£ãŸ
 		case WM_ACTIVATEAPP:
 			break;
 
-	//	~ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½
+	//	Ã—ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸ
 		case WM_CLOSE:
 			ge->quitRequest = true;
 			break;
 
-	//	ƒEƒCƒ“ƒhƒE‚ª”jŠü‚³‚ê‚½
+	//	ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ãŒç ´æ£„ã•ã‚ŒãŸ
 		case WM_DESTROY:
 			PostQuitMessage(0);
 			break;
 
-	//	‚»‚Ì‘¼‚ÌƒƒbƒZ[ƒW‚ÍWindows‚Éˆ—‚ğ”C‚¹‚é
+	//	ãã®ä»–ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¯Windowsã«å‡¦ç†ã‚’ä»»ã›ã‚‹
 		default:
 			ret = DefWindowProc(wnd_, msg_, wParam_, lParam_);
 	}

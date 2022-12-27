@@ -1,4 +1,4 @@
-#include "CharaBase.h"
+ï»¿#include "CharaBase.h"
 #include "Utils/Log.h"
 
 
@@ -20,7 +20,7 @@ CharaBase::CharaBase(const ML::Vec2& pos, const ML::Box2D& hitBase) :
 void CharaBase::AdjustMoveWithMap(const ML::Vec2& targetMove)
 {
 	if (!map) {
-		PrintWarning("ƒ}ƒbƒv‚ÌŽQÆ‚ª‚È‚¢BƒLƒƒƒ‰ƒNƒ^[‚ÍŽ©—R‚ÉˆÚ“®‚Å‚«‚é");
+		PrintWarning("ãƒžãƒƒãƒ—ã®å‚ç…§ãŒãªã„ã€‚ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã¯è‡ªç”±ã«ç§»å‹•ã§ãã‚‹");
 		pos = targetMove;
 		return;
 	}
@@ -50,7 +50,7 @@ void CharaBase::AdjustMoveWithMap(const ML::Vec2& targetMove)
 
 			ML::Box2D hit = hitBase.OffsetCopy(pos);
 			if (map->CheckHit(hit)) {
-				*pAxisValue = previousValue;		//ˆÚ“®‚ðƒLƒƒƒ“ƒZƒ‹
+				*pAxisValue = previousValue;		//ç§»å‹•ã‚’ã‚­ãƒ£ãƒ³ã‚»ãƒ«
 				break;
 			}
 		}

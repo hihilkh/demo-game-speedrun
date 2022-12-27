@@ -1,5 +1,5 @@
-//-------------------------------------------------------------------
-//ƒQ[ƒ€–{•Ò
+ï»¿//-------------------------------------------------------------------
+//ã‚²ãƒ¼ãƒ æœ¬ç·¨
 //-------------------------------------------------------------------
 #include "MyPG.h"
 #include "Task_Game.h"
@@ -15,7 +15,7 @@ namespace Game
 
 	Object::Object() : ObjectBase<Object>(defGroupName, defName)
 	{
-		//šƒ^ƒXƒN‚Ì¶¬
+		//â˜…ã‚¿ã‚¹ã‚¯ã®ç”Ÿæˆ
 		GameCamera::Object::SP camera = GameCamera::Object::Create(true);
 		Reference::gameCamera = camera;
 		Map::Object::SP map = Map::Object::Create(true);
@@ -33,28 +33,28 @@ namespace Game
 	Object::~Object()
 	{
 		// TODO
-		//šƒf[ƒ^•ƒ^ƒXƒN‰ğ•ú
+		//â˜…ãƒ‡ãƒ¼ã‚¿ï¼†ã‚¿ã‚¹ã‚¯è§£æ”¾
 		ge->KillAll_G(TaskConstant::TaskGroupName_Game);
 		ge->KillAll_G(TaskConstant::TaskGroupName_Map);
 		ge->KillAll_G(TaskConstant::TaskGroupName_Chara);
 
 		if (!ge->QuitFlag() && this->nextTaskCreate) {
-			//šˆø‚«Œp‚¬ƒ^ƒXƒN‚Ì¶¬
+			//â˜…å¼•ãç¶™ãã‚¿ã‚¹ã‚¯ã®ç”Ÿæˆ
 			Ending::Object::SP nextTask = Ending::Object::Create(true);
 		}
 	}
 	//-------------------------------------------------------------------
-	//uXVv‚PƒtƒŒ[ƒ€–ˆ‚És‚¤ˆ—
+	//ã€Œæ›´æ–°ã€ï¼‘ãƒ•ãƒ¬ãƒ¼ãƒ æ¯ã«è¡Œã†å‡¦ç†
 	void  Object::UpDate()
 	{
 		auto inp = ge->in1->GetState();
 		if (inp.ST.down) {
-			//©g‚ÉÁ–Å—v¿
+			//è‡ªèº«ã«æ¶ˆæ»…è¦è«‹
 			this->Kill();
 		}
 	}
 	//-------------------------------------------------------------------
-	//u‚Q‚c•`‰æv‚PƒtƒŒ[ƒ€–ˆ‚És‚¤ˆ—
+	//ã€Œï¼’ï¼¤æç”»ã€ï¼‘ãƒ•ãƒ¬ãƒ¼ãƒ æ¯ã«è¡Œã†å‡¦ç†
 	void  Object::Render2D_AF()
 	{
 	}

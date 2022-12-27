@@ -1,5 +1,5 @@
-//-------------------------------------------------------------------
-//ƒ^ƒCƒgƒ‹‰æ–Ê
+ï»¿//-------------------------------------------------------------------
+//ã‚¿ã‚¤ãƒˆãƒ«ç”»é¢
 //-------------------------------------------------------------------
 #include "Task_Title.h"
 #include "Game/Task_Game.h"
@@ -28,12 +28,12 @@ namespace Title
 	Object::~Object()
 	{
 		if (!ge->QuitFlag() && this->nextTaskCreate) {
-			//šˆø‚«Œp‚¬ƒ^ƒXƒN‚Ì¶¬
+			//â˜…å¼•ãç¶™ãŽã‚¿ã‚¹ã‚¯ã®ç”Ÿæˆ
 			Game::Object::SP nextTask = Game::Object::Create(true);
 		}
 	}
 	//-------------------------------------------------------------------
-	//uXVv‚PƒtƒŒ[ƒ€–ˆ‚És‚¤ˆ—
+	//ã€Œæ›´æ–°ã€ï¼‘ãƒ•ãƒ¬ãƒ¼ãƒ æ¯Žã«è¡Œã†å‡¦ç†
 	void Object::UpDate()
 	{
 		auto inp = ge->in1->GetState();
@@ -45,13 +45,13 @@ namespace Title
 
 		if (this->logoPosY == 0) {
 			if (inp.ST.down) {
-				//Ž©g‚ÉÁ–Å—v¿
+				//è‡ªèº«ã«æ¶ˆæ»…è¦è«‹
 				this->Kill();
 			}
 		}
 	}
 	//-------------------------------------------------------------------
-	//u‚Q‚c•`‰æv‚PƒtƒŒ[ƒ€–ˆ‚És‚¤ˆ—
+	//ã€Œï¼’ï¼¤æç”»ã€ï¼‘ãƒ•ãƒ¬ãƒ¼ãƒ æ¯Žã«è¡Œã†å‡¦ç†
 	void Object::Render2D_AF()
 	{
 		ML::Box2D  draw(0, 0, 480, 270);

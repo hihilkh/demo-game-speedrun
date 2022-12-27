@@ -1,7 +1,7 @@
-#pragma warning(disable:4996)
+ï»¿#pragma warning(disable:4996)
 #pragma once
 //-------------------------------------------------------------------
-//ƒ^ƒCƒgƒ‹‰æ–Ê
+//ã‚¿ã‚¤ãƒˆãƒ«ç”»é¢
 //-------------------------------------------------------------------
 #include "Task/ResourceBase.h"
 #include "Task/ObjectBase.h"
@@ -9,9 +9,9 @@
 
 namespace Title
 {
-	//ƒ^ƒXƒN‚ÉŠ„‚è“–‚Ä‚éƒOƒ‹[ƒv–¼‚ÆŒÅ—L–¼
-	const string defGroupName(TaskConstant::TaskGroupName_Title);		//ƒOƒ‹[ƒv–¼
-	const string defName(TaskConstant::TaskName_Default);				//ƒ^ƒXƒN–¼
+	//ã‚¿ã‚¹ã‚¯ã«å‰²ã‚Šå½“ã¦ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—åã¨å›ºæœ‰å
+	const string defGroupName(TaskConstant::TaskGroupName_Title);		//ã‚°ãƒ«ãƒ¼ãƒ—å
+	const string defName(TaskConstant::TaskName_Default);				//ã‚¿ã‚¹ã‚¯å
 
 	class Resource : public ResourceBase<Resource>
 	{
@@ -35,9 +35,9 @@ namespace Title
 	public:
 		virtual ~Object();
 
-		void UpDate() override;			//uÀsv‚PƒtƒŒ[ƒ€–ˆ‚És‚¤ˆ—
-		void Render2D_AF() override;	//u2D•`‰æv‚PƒtƒŒ[ƒ€–ˆ‚És‚¤ˆ—
+		void UpDate() override;			//ã€Œå®Ÿè¡Œã€ï¼‘ãƒ•ãƒ¬ãƒ¼ãƒ æ¯ã«è¡Œã†å‡¦ç†
+		void Render2D_AF() override;	//ã€Œ2Dæç”»ã€ï¼‘ãƒ•ãƒ¬ãƒ¼ãƒ æ¯ã«è¡Œã†å‡¦ç†
 
-		int logoPosY;		//ƒ^ƒCƒgƒ‹‰æ‘œƒXƒNƒ[ƒ‹—pƒJƒEƒ“ƒ^
+		int logoPosY;		//ã‚¿ã‚¤ãƒˆãƒ«ç”»åƒã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ç”¨ã‚«ã‚¦ãƒ³ã‚¿
 	};
 }

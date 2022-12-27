@@ -1,4 +1,4 @@
-#include "Task_Map.h"
+ï»¿#include "Task_Map.h"
 
 namespace Map
 {
@@ -85,7 +85,7 @@ namespace Map
 		for (int y = sy; y <= ey; ++y) {
 			for (int x = sx; x <= ex; ++x) {
 				ML::Box2D  draw(0, 0, 32, 32);
-				draw.Offset(x * 32, y * 32);	//•\¦ˆÊ’u‚ğ’²®
+				draw.Offset(x * 32, y * 32);	//è¡¨ç¤ºä½ç½®ã‚’èª¿æ•´
 				draw.Offset(-visibleRange.x, -visibleRange.y);
 				this->res->Draw(this->arr[y][x], draw);
 			}
@@ -127,7 +127,7 @@ namespace Map
 		return false;
 
 		ML::Rect  r = { hit.x, hit.y, hit.x + hit.w, hit.y + hit.h };
-		//‹éŒ`‚ªƒ}ƒbƒvŠO‚Éo‚Ä‚¢‚½‚çƒTƒCƒY‚ğ•ÏX‚·‚é
+		//çŸ©å½¢ãŒãƒãƒƒãƒ—å¤–ã«å‡ºã¦ã„ãŸã‚‰ã‚µã‚¤ã‚ºã‚’å¤‰æ›´ã™ã‚‹
 		ML::Rect  m = {
 			this->hitBase.x,
 			this->hitBase.y,
@@ -139,14 +139,14 @@ namespace Map
 		if (r.right > m.right) { r.right = m.right; }
 		if (r.bottom > m.bottom) { r.bottom = m.bottom; }
 
-		//ƒ‹[ƒv”ÍˆÍ’²®
+		//ãƒ«ãƒ¼ãƒ—ç¯„å›²èª¿æ•´
 		int sx, sy, ex, ey;
 		sx = r.left / 32;
 		sy = r.top / 32;
 		ex = (r.right - 1) / 32;
 		ey = (r.bottom - 1) / 32;
 
-		//”ÍˆÍ“à‚ÌáŠQ•¨‚ğ’T‚·
+		//ç¯„å›²å†…ã®éšœå®³ç‰©ã‚’æ¢ã™
 		for (int y = sy; y <= ey; ++y) {
 			for (int x = sx; x <= ex; ++x) {
 				if (8 <= this->arr[y][x]) {

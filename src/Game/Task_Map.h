@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "Task/ResourceBase.h"
 #include "Task/ObjectBase.h"
@@ -7,9 +7,9 @@
 
 namespace Map
 {
-	//ƒ^ƒXƒN‚ÉŠ„‚è“–‚Ä‚éƒOƒ‹[ƒv–¼‚ÆŒÅ—L–¼
-	const string defGroupName(TaskConstant::TaskGroupName_Map);		//ƒOƒ‹[ƒv–¼
-	const string defName(TaskConstant::TaskName_Map);				//ƒ^ƒXƒN–¼
+	//ã‚¿ã‚¹ã‚¯ã«å‰²ã‚Šå½“ã¦ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—åã¨å›ºæœ‰å
+	const string defGroupName(TaskConstant::TaskGroupName_Map);		//ã‚°ãƒ«ãƒ¼ãƒ—å
+	const string defName(TaskConstant::TaskName_Map);				//ã‚¿ã‚¹ã‚¯å
 	//-------------------------------------------------------------------
 	class Resource : public ResourceBase<Resource>
 	{
@@ -38,8 +38,8 @@ namespace Map
 	public:
 		virtual ~Object();
 
-		void UpDate() override;			//uÀsv‚PƒtƒŒ[ƒ€–ˆ‚És‚¤ˆ—
-		void Render2D_AF() override;	//u2D•`‰æv‚PƒtƒŒ[ƒ€–ˆ‚És‚¤ˆ—
+		void UpDate() override;			//ã€Œå®Ÿè¡Œã€ï¼‘ãƒ•ãƒ¬ãƒ¼ãƒ æ¯ã«è¡Œã†å‡¦ç†
+		void Render2D_AF() override;	//ã€Œ2Dæç”»ã€ï¼‘ãƒ•ãƒ¬ãƒ¼ãƒ æ¯ã«è¡Œã†å‡¦ç†
 
 	private:
 		int sizeX;
