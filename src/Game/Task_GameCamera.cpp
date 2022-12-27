@@ -2,21 +2,10 @@
 
 namespace GameCamera
 {
-#pragma region Resource
-
-	Resource::Resource()
-	{
-	}
-
-	Resource::~Resource()
-	{
-	}
-
-#pragma endregion
 
 #pragma region Object
 
-	Object::Object() : ObjectBase<Object, Resource>(defGroupName, defName), visibleRange(ML::Box2D(0, 0, 480, 270)), currentCameraOffset(ML::Point())
+	Object::Object() : ObjectBase<Object>(defGroupName, defName), visibleRange(ML::Box2D(0, 0, 480, 270)), currentCameraOffset(ML::Point())
 	{
 		targetOffsetX = -visibleRange.w / 2;
 		targetOffsetY = -visibleRange.h / 2;

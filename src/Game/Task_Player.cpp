@@ -18,17 +18,16 @@ namespace Player
 
 #pragma region Object
 
-	Object::Object() : ObjectBase<Object, Resource>(defGroupName, defName, true), CharaBase(ML::Box2D(-16, -16, 32, 32))
+	Object::Object() : ObjectBaseWithResource<Object, Resource>(defGroupName, defName, true), CharaBase(ML::Box2D(-16, -16, 32, 32))
 	{
 		// TODO : Better way to control priority?
 		render2D_Priority[1] = 0.5f;
-		// TODO : Plater Controller?
+		// TODO : Player Controller?
 		controller = ge->in1;
 	}
 
 	Object::~Object()
 	{
-		// TODO : is reset needed?
 	}
 
 	void Object::UpDate()

@@ -31,7 +31,7 @@ namespace Map
 
 #pragma region Object
 
-	Object::Object() : ObjectBase<Object, Resource>(defGroupName, defName), isInitialized(false)
+	Object::Object() : ObjectBaseWithResource<Object, Resource>(defGroupName, defName), isInitialized(false)
 	{
 		render2D_Priority[1] = 0.9f;
 	}

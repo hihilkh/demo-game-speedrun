@@ -8,21 +8,11 @@ namespace GameCamera
 {
 	//タスクに割り当てるグループ名と固有名
 	const string defGroupName(TaskConstant::TaskGroupName_Game);		//グループ名
-	const string defName(TaskConstant::TaskName_GameCamera);					//タスク名
+	const string defName(TaskConstant::TaskName_GameCamera);			//タスク名
 
-	class Resource : public ResourceBase<Resource>
+	class Object : public ObjectBase<Object>
 	{
-		friend ResourceBase<Resource>;
-
-	private:
-		Resource();
-	public:
-		~Resource();
-	};
-
-	class Object : public ObjectBase<Object, Resource>
-	{
-		friend ObjectBase<Object, Resource>;
+		friend ObjectBase<Object>;
 
 	private:
 		Object();

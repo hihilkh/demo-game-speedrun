@@ -25,9 +25,9 @@ namespace Title
 		DG::Image::SP img;
 	};
 
-	class Object : public ObjectBase<Object, Resource>
+	class Object : public ObjectBaseWithResource<Object, Resource>
 	{
-		friend ObjectBase<Object, Resource>;
+		friend ObjectBase<Object>;
 
 	private:
 		Object();

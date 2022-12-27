@@ -22,7 +22,7 @@ namespace Ending
 
 #pragma region Object
 
-	Object::Object() : ObjectBase<Object, Resource>(defGroupName, defName)
+	Object::Object() : ObjectBaseWithResource<Object, Resource>(defGroupName, defName)
 	{
 		this->logoPosY = 270;
 	}

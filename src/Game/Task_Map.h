@@ -28,9 +28,9 @@ namespace Map
 		void Draw(int chipIndex, const ML::Box2D& draw);
 	};
 	//-------------------------------------------------------------------
-	class  Object : public  ObjectBase<Object, Resource>
+	class  Object : public  ObjectBaseWithResource<Object, Resource>
 	{
-		friend ObjectBase<Object, Resource>;
+		friend ObjectBase<Object>;
 
 	private:
 		Object();
@@ -46,7 +46,7 @@ namespace Map
 		int sizeY;
 		ML::Box2D hitBase;
 
-		int  arr[100][100];
+		int arr[100][100];
 
 		GameCamera::Object::SP camera;
 

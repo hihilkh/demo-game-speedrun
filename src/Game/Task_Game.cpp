@@ -11,21 +11,9 @@
 
 namespace Game
 {
-#pragma region Resource
-
-	Resource::Resource()
-	{
-	}
-
-	Resource::~Resource()
-	{
-	}
-
-#pragma endregion
-
 #pragma region Object
 
-	Object::Object() : ObjectBase<Object, Resource>(defGroupName, defName)
+	Object::Object() : ObjectBase<Object>(defGroupName, defName)
 	{
 		//ÅöÉ^ÉXÉNÇÃê∂ê¨
 		GameCamera::Object::SP camera = GameCamera::Object::Create(true);

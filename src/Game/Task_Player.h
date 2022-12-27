@@ -25,9 +25,9 @@ namespace Player
 		DG::Image::SP img;
 	};
 
-	class Object : public ObjectBase<Object, Resource>, public CharaBase
+	class Object : public ObjectBaseWithResource<Object, Resource>, public CharaBase
 	{
-		friend ObjectBase<Object, Resource>;
+		friend ObjectBase<Object>;
 
 	private:
 		Object();
