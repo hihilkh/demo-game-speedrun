@@ -53,9 +53,12 @@ namespace Map
 		bool isInitialized;
 		// TODO : bool isMapLoaded?
 
-	public:
-		void Initialize(GameCamera::Object::SP camera);
+	private:
+		string GetMapFilePath(int mapIndex) const;
 		bool Load(const string& filePath);
+
+	public:
+		void Initialize();
 		void AdjustCameraPos() const;
 		bool CheckHit(const ML::Box2D& hit) const;
 	};

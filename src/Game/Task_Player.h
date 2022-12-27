@@ -45,7 +45,7 @@ namespace Player
 		bool isInitialized;
 
 	public:
-		void Initizalize(GameCamera::Object::SP camera, Map::Object::SP map, const ML::Vec2& pos);
+		void Initizalize();
 
 	};
 }

@@ -16,6 +16,9 @@ namespace Game
 
 	Object::Object() : ObjectBase<Object>(defGroupName, defName)
 	{
+		gameStatus = make_shared<GameStatus>(GameStatus());
+		GameReference::gameStatus = gameStatus;
+
 		//★タスクの生成
 		GameCamera::Object::SP camera = GameCamera::Object::Create(true);
 		GameReference::gameCamera = camera;
@@ -25,10 +28,8 @@ namespace Game
 		GameReference::player = player;
 
 		// TODO : Use event system for the timing to get reference
-		map->Initialize(camera);
-		map->Load("./data/Map/map2.txt");
-
-		player->Initizalize(camera, map, ML::Vec2(0, 0));
+		map->Initialize();
+		player->Initizalize();
 	}
 
 	Object::~Object()

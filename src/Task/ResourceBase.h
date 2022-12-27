@@ -37,7 +37,7 @@ public:
 		}
 	}
 
-	const string GetImagePath(const string& fileName) const
+	string GetImagePath(const string& fileName) const
 	{
 		return ResourceConstant::ImageFolder + fileName;
 	}

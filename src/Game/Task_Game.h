@@ -6,6 +6,7 @@
 #include "Task/ResourceBase.h"
 #include "Task/ObjectBase.h"
 #include "Task/TaskConstant.h"
+#include "GameStatus.h"
 
 namespace Game
 {
@@ -25,5 +26,8 @@ namespace Game
 
 		void UpDate() override;			//「実行」１フレーム毎に行う処理
 		void Render2D_AF() override;	//「2D描画」１フレーム毎に行う処理
+
+	private:
+		GameStatus::SP gameStatus;
 	};
 }

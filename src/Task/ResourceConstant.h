@@ -7,7 +7,8 @@ namespace ResourceConstant
 
 #pragma region Folders
 
-	const std::string ImageFolder = "./data/image/";
+	const std::string ImageFolder = "./data/Image/";
+	const std::string MapFolder = "./data/Map/";
 
 #pragma endregion
 
@@ -22,6 +23,13 @@ namespace ResourceConstant
 	const int MapChipSize = 32;
 
 	const std::string PlayerImage = "Chara01.png";
+
+#pragma endregion
+
+#pragma region Map Files
+
+	const std::string MapFileNamePrefix = "Map";
+	const std::string MapFileNameExtension = ".txt";
 
 #pragma endregion
 }

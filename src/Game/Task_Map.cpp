@@ -1,4 +1,6 @@
 ﻿#include "Task_Map.h"
+#include "GameReference.h"
+#include "Utils/Log.h"
 
 namespace Map
 {
@@ -92,12 +94,30 @@ namespace Map
 		}
 	}
 
-	void Object::Initialize(GameCamera::Object::SP camera)
+	void Object::Initialize()
 	{
 		isInitialized = true;
-		this->camera = camera;
+		this->camera = Game::GameReference::GetGameCamera();
+
+		Game::GameStatus::SP gameStatus = Game::GameReference::GetGameStatus();
+		int mapIndex;
+		if (gameStatus) {
+			mapIndex = gameStatus->GetInitialMapIndex();
+		}
+		else {
+			PrintWarning("GameStatusが取れない。mapIndexを1になる。");
+			mapIndex = 1;
+		}
+		Load(GetMapFilePath(mapIndex));
 	}
 
+	string Object::GetMapFilePath(int mapIndex) const
+	{
+		using namespace ResourceConstant;
+		return MapFolder + MapFileNamePrefix + to_string(mapIndex) + MapFileNameExtension;
+	}
+
+	// TODO : Move to resource class?
 	bool Object::Load(const string& filePath)
 	{
 		ifstream fin(filePath);

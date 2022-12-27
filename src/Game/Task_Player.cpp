@@ -1,5 +1,6 @@
 ﻿#include "Task_Player.h"
-
+#include "GameReference.h"
+#include "Utils/Log.h"
 
 namespace Player
 {
@@ -63,13 +64,20 @@ namespace Player
 	}
 
 
-	void Object::Initizalize(GameCamera::Object::SP camera, Map::Object::SP map, const ML::Vec2& pos)
+	void Object::Initizalize()
 	{
 		isInitialized = true;
-		this->camera = camera;
-		this->map = map;
-		this->pos = pos;
+		this->camera = Game::GameReference::GetGameCamera();
+		this->map = Game::GameReference::GetMap();
 
+		Game::GameStatus::SP gameStatus = Game::GameReference::GetGameStatus();
+		if (gameStatus) {
+			this->pos = gameStatus->GetInitialPos();
+		}
+		else {
+			PrintWarning("GameStatusが取れない。posをデフォルトになる。");
+			this->pos = ML::Vec2();
+		}
 	}
 
 #pragma endregion

@@ -23,16 +23,14 @@ public:
 	static SP Create(bool flagGameEnginePushBack)
 	{
 		SP ob = SP(new T());
-		if (ob) {
-			ob->me = ob;
-			if (flagGameEnginePushBack) {
-				ge->PushBack(ob);//ゲームエンジンに登録
-			}
-			return  ob;
-		}
 
-		assert(false && "Create 失敗");
-		return nullptr;
+		assert(ob && "Createタスクオブジェクト失敗");
+
+		ob->me = ob;
+		if (flagGameEnginePushBack) {
+			ge->PushBack(ob);//ゲームエンジンに登録
+		}
+		return  ob;
 	}
 };
 

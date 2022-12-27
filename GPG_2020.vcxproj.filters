@@ -105,6 +105,9 @@
     <ClCompile Include="src\Game\GameReference.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game\GameStatus.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GameEngine_Ver3_83.h">
@@ -192,6 +195,9 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Task_Player.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\GameStatus.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
