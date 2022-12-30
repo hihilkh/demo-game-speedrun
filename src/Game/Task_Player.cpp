@@ -50,8 +50,6 @@ namespace Player
 		if (inp.LStick.BD.on) { est.y += 3; }
 
 		AdjustMoveWithMap(est);
-		camera->UpdateTarget(pos);
-		map->AdjustCameraPos();
 	}
 
 	void Object::Render2D_AF()
@@ -60,7 +58,7 @@ namespace Player
 			return;
 		}
 
-		ML::Box2D draw = this->hitBase.OffsetCopy(this->pos);
+		ML::Box2D draw = hitBase.OffsetCopy(transform.pos);
 		ML::Box2D src(0, 0, 32, 32);
 
 		draw.Offset(camera->GetCameraOffset());
@@ -71,16 +69,16 @@ namespace Player
 	void Object::Initizalize()
 	{
 		isInitialized = true;
-		this->camera = Game::GameReference::GetGameCamera();
-		this->map = Game::GameReference::GetMap();
+		camera = Game::GameReference::GetGameCamera();
+		map = Game::GameReference::GetMap();
 
 		Game::GameStatus::SP gameStatus = Game::GameReference::GetGameStatus();
 		if (gameStatus) {
-			this->pos = gameStatus->GetInitialPos();
+			transform.pos = gameStatus->GetInitialPos();
 		}
 		else {
 			PrintWarning("GameStatusが取れない。posをデフォルトになる。");
-			this->pos = ML::Vec2();
+			transform.pos = ML::Vec2();
 		}
 	}
 

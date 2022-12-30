@@ -3,6 +3,7 @@
 #include "Task/ResourceBase.h"
 #include "Task/ObjectBase.h"
 #include "Task/TaskConstant.h"
+#include "Common/Transform.h"
 
 namespace GameCamera
 {
@@ -25,11 +26,13 @@ namespace GameCamera
 
 	private:
 		ML::Box2D visibleRange;
-		int targetOffsetX;
-		int targetOffsetY;
+		ML::Point targetOffset;
 		ML::Point currentCameraOffset;
 
+		const Transform* pTarget;
+
 	private:
+		void UpdateTarget(const ML::Vec2& pos);
 		void UpdateCameraOffset();
 
 	public:
@@ -37,6 +40,6 @@ namespace GameCamera
 		ML::Box2D GetVisibleRange();
 		const ML::Point& GetCameraOffset() const;
 
-		void UpdateTarget(const ML::Vec2& pos);
+		void SetTarget(const Transform& transform);
 	};
 }

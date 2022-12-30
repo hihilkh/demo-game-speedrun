@@ -20,17 +20,19 @@ namespace Game
 		gameStatus = make_shared<GameStatus>(GameStatus());
 		GameReference::gameStatus = gameStatus;
 
-		//★タスクの生成
-		GameCamera::Object::SP camera = GameCamera::Object::Create(true);
-		GameReference::gameCamera = camera;
-		Map::Object::SP map = Map::Object::Create(true);
-		GameReference::map = map;
+		// タスクの生成
 		Player::Object::SP player = Player::Object::Create(true);
+		Map::Object::SP map = Map::Object::Create(true);
+		GameCamera::Object::SP camera = GameCamera::Object::Create(true);
+		camera->SetTarget(player->transform);
+
 		GameReference::player = player;
+		GameReference::map = map;
+		GameReference::gameCamera = camera;
 
 		// TODO : Use event system for the timing to get reference
-		map->Initialize();
 		player->Initizalize();
+		map->Initialize();
 	}
 
 	Object::~Object()

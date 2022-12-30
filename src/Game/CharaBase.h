@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "myLib.h"
+#include "Common/Transform.h"
 
 #pragma region 前方宣言
 
@@ -14,7 +15,6 @@ public:
 	enum class Direction { Left, Right };
 
 protected:
-	ML::Vec2 pos;
 	ML::Box2D hitBase;
 	ML::Vec2 moveVec;
 	int moveCnt;
@@ -24,6 +24,9 @@ protected:
 
 	CharaBase(const ML::Box2D& hitBase);
 	CharaBase(const ML::Vec2& pos, const ML::Box2D& hitBase);
+
+public:
+	Transform transform;
 
 public:
 	virtual ~CharaBase() {}

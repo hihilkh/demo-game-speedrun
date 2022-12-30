@@ -148,6 +148,7 @@
     <ClCompile Include="lib\Dm2008_Ver1_4.cpp" />
     <ClCompile Include="lib\GameEngine_Ver3_83.cpp" />
     <ClCompile Include="lib\myLib.cpp" />
+    <ClCompile Include="src\Common\Transform.cpp" />
     <ClCompile Include="src\Game\GameStatus.cpp" />
     <ClCompile Include="src\Game\GameReference.cpp" />
     <ClCompile Include="src\MyPG.cpp" />
@@ -177,6 +178,7 @@
     <ClInclude Include="lib\Dm2008_Ver1_4.h" />
     <ClInclude Include="lib\GameEngine_Ver3_83.h" />
     <ClInclude Include="lib\myLib.h" />
+    <ClInclude Include="src\Common\Transform.h" />
     <ClInclude Include="src\Game\GameStatus.h" />
     <ClInclude Include="src\MyPG.h" />
     <ClInclude Include="src\Game\CharaBase.h" />

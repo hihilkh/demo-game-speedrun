@@ -7,8 +7,7 @@ namespace GameCamera
 
 	Object::Object() : ObjectBase<Object>(defGroupName, defName), visibleRange(ML::Box2D(0, 0, 480, 270)), currentCameraOffset(ML::Point())
 	{
-		targetOffsetX = -visibleRange.w / 2;
-		targetOffsetY = -visibleRange.h / 2;
+		targetOffset = ML::Point{ -visibleRange.w / 2, -visibleRange.h / 2 };
 
 		UpdateCameraOffset();
 	}
@@ -19,10 +18,8 @@ namespace GameCamera
 
 	void Object::UpDate()
 	{
-		auto inp = ge->in1->GetState();
-		if (inp.ST.down) {
-			//自身に消滅要請
-			this->Kill();
+		if (pTarget) {
+			UpdateTarget(pTarget->pos);
 		}
 	}
 
@@ -40,10 +37,16 @@ namespace GameCamera
 		return currentCameraOffset;
 	}
 
+	void Object::SetTarget(const Transform& transform)
+	{
+		pTarget = &transform;
+		UpdateTarget(pTarget->pos);
+	}
+
 	void Object::UpdateTarget(const ML::Vec2& pos)
 	{
-		int newX = int(pos.x) + targetOffsetX;
-		int newY = int(pos.y) + targetOffsetY;
+		int newX = int(pos.x) + targetOffset.x;
+		int newY = int(pos.y) + targetOffset.y;
 
 		visibleRange.x = newX;
 		visibleRange.y = newY;
