@@ -4,9 +4,12 @@
 #include "Task_GameCamera.h"
 #include "GameReference.h"
 #include "GameStatus.h"
+#include "Utils/Math.h"
 
 namespace Map
 {
+#define CHIP_SIZE ResourceConstant::MapChipSize
+
 #pragma region Resource
 
 	Resource::Resource()
@@ -15,11 +18,10 @@ namespace Map
 
 		for (int i = 0; i < ResourceConstant::NoOfMapChip; ++i) {
 			int noInRow = ResourceConstant::NoOfMapChipInRow;
-			int size = ResourceConstant::MapChipSize;
 			int x = (i % noInRow);
 			int y = (i / noInRow);
 			
-			chip[i] = ML::Box2D(x * size, y * size, size, size);
+			chip[i] = ML::Box2D(x * CHIP_SIZE, y * CHIP_SIZE, CHIP_SIZE, CHIP_SIZE);
 		}
 	}
 
@@ -36,14 +38,16 @@ namespace Map
 
 #pragma region Object
 
-	Object::Object() : ObjectBaseWithResource<Object, Resource>(defGroupName, defName), isInitialized(false)
+	Object::Object() :
+		ObjectBaseWithResource<Object, Resource>(defGroupName, defName),
+		isInitialized(false),
+		mapChipCenterOffset(ML::Point{ -CHIP_SIZE / 2, -CHIP_SIZE / 2})
 	{
 		render2D_Priority[1] = 0.9f;
 	}
 
 	Object::~Object()
 	{
-		// TODO
 	}
 
 	void Object::UpDate()
@@ -61,37 +65,25 @@ namespace Map
 			return;
 		}
 
-		// TODO : Review code
-		ML::Rect c = {
-			visibleRange.x,
-			visibleRange.y,
-			visibleRange.x + visibleRange.w,
-			visibleRange.y + visibleRange.h
-		};
-		ML::Rect m = {
-			this->hitBase.x,
-			this->hitBase.y,
-			this->hitBase.x + this->hitBase.w,
-			this->hitBase.y + this->hitBase.h
+		ML::Rect displayRect = {
+			max(visibleRange.x, hitBase.x),		// Left
+			max(visibleRange.y, hitBase.y),		// Top
+			min(visibleRange.x + visibleRange.w, hitBase.x + hitBase.w) - 1,	// Right
+			min(visibleRange.y + visibleRange.h, hitBase.y + hitBase.h) - 1,	// Bottom
 		};
 
-		ML::Rect isr;
-		isr.left = max(c.left, m.left);
-		isr.top = max(c.top, m.top);
-		isr.right = min(c.right, m.right);
-		isr.bottom = min(c.bottom, m.bottom);
+		int minIndexX, minIndexY, maxIndexX, maxIndexY;
+		minIndexX = Math::FloorDivide(displayRect.left - mapChipCenterOffset.x, CHIP_SIZE) - leftIndex;
+		minIndexY = Math::FloorDivide(displayRect.top - mapChipCenterOffset.y, CHIP_SIZE) - topIndex;
+		maxIndexX = Math::FloorDivide(displayRect.right - mapChipCenterOffset.x, CHIP_SIZE) - leftIndex;
+		maxIndexY = Math::FloorDivide(displayRect.bottom - mapChipCenterOffset.y, CHIP_SIZE) - topIndex;
 
-		int sx, sy, ex, ey;
-		sx = isr.left / 32;
-		sy = isr.top / 32;
-		ex = (isr.right - 1) / 32;
-		ey = (isr.bottom - 1) / 32;
-
-		for (int y = sy; y <= ey; ++y) {
-			for (int x = sx; x <= ex; ++x) {
-				ML::Box2D  draw(0, 0, 32, 32);
-				draw.Offset(x * 32, y * 32);	//表示位置を調整
-				draw.Offset(-visibleRange.x, -visibleRange.y);
+		for (int y = minIndexY; y <= maxIndexY; ++y) {
+			for (int x = minIndexX; x <= maxIndexX; ++x) {
+				ML::Box2D draw(0, 0, CHIP_SIZE, CHIP_SIZE);	
+				draw.Offset((x + leftIndex) * CHIP_SIZE, (y + topIndex) * CHIP_SIZE);	// chip のワールドポジション
+				draw.Offset(mapChipCenterOffset);										// ローカルオフセット
+				draw.Offset(-visibleRange.x, -visibleRange.y);							// カメラに合わせる
 				this->res->Draw(this->arr[y][x], draw);
 			}
 		}
@@ -120,28 +112,26 @@ namespace Map
 		return MapFolder + MapFileNamePrefix + to_string(mapIndex) + MapFileNameExtension;
 	}
 
-	// TODO : Move to resource class?
 	bool Object::Load(const string& filePath)
 	{
 		ifstream fin(filePath);
-		if (!fin) { return  false; }
+		if (!fin) { return false; }
 
-		fin >> this->sizeX >> this->sizeY;
-		this->hitBase = ML::Box2D(0, 0, this->sizeX * 32, this->sizeY * 32);
+		fin >> sizeX >> sizeY >> leftIndex >> topIndex;
+		hitBase = ML::Box2D(
+			mapChipCenterOffset.x + leftIndex * CHIP_SIZE, 
+			mapChipCenterOffset.y + topIndex * CHIP_SIZE,
+			sizeX * CHIP_SIZE,
+			sizeY * CHIP_SIZE);
 
-		for (int y = 0; y < this->sizeY; ++y) {
-			for (int x = 0; x < this->sizeX; ++x) {
+		for (int y = 0; y < sizeY; ++y) {
+			for (int x = 0; x < sizeX; ++x) {
 				fin >> this->arr[y][x];
 			}
 		}
 		fin.close();
 
 		return true;
-	}
-
-	void Object::AdjustCameraPos() const
-	{
-		// TODO
 	}
 
 	bool Object::CheckHit(const ML::Box2D& hit) const

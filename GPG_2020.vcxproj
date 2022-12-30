@@ -158,6 +158,7 @@
     <ClCompile Include="src\Game\Task_GameCamera.cpp" />
     <ClCompile Include="src\Game\Task_Map.cpp" />
     <ClCompile Include="src\Title\Task_Title.cpp" />
+    <ClCompile Include="src\Utils\Math.cpp" />
     <ClCompile Include="src\WinMain.cpp" />
     <ClCompile Include="lib\XI2018_Ver1_0.cpp" />
   </ItemGroup>
@@ -192,6 +193,7 @@
     <ClInclude Include="src\Game\Task_Map.h" />
     <ClInclude Include="src\Title\Task_Title.h" />
     <ClInclude Include="lib\XI2018_Ver1_0.h" />
+    <ClInclude Include="src\Utils\Math.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -50,8 +50,12 @@ namespace Map
 	private:
 		int sizeX;
 		int sizeY;
+		int leftIndex;
+		int topIndex;
 		ML::Box2D hitBase;
+		ML::Point mapChipCenterOffset;
 
+		// TODO : Use SubMap with std::array
 		int arr[100][100];
 
 		shared_ptr<GameCamera::Object> camera;
@@ -65,7 +69,6 @@ namespace Map
 
 	public:
 		void Initialize();
-		void AdjustCameraPos() const;
 		bool CheckHit(const ML::Box2D& hit) const;
 	};
 }
