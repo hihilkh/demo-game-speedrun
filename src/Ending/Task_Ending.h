@@ -7,13 +7,13 @@
 #include "Task/ObjectBase.h"
 #include "Task/TaskConstant.h"
 
-namespace  Ending
+namespace Ending
 {
 	//タスクに割り当てるグループ名と固有名
-	const  string  defGroupName(TaskConstant::TaskGroupName_Ending);	//グループ名
-	const  string  defName(TaskConstant::TaskName_Default);	//タスク名
+	const string defGroupName(TaskConstant::TaskGroupName_Ending);	//グループ名
+	const string defName(TaskConstant::TaskName_Default);	//タスク名
 
-	class  Resource : public ResourceBase<Resource>
+	class Resource : public ResourceBase<Resource>
 	{
 		friend ResourceBase<Resource>;
 
@@ -25,7 +25,7 @@ namespace  Ending
 		DG::Image::SP img;
 	};
 
-	class  Object : public  ObjectBaseWithResource<Object, Resource>
+	class Object : public ObjectBaseWithResource<Object, Resource>
 	{
 		friend ObjectBase<Object>;
 

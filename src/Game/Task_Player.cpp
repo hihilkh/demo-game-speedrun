@@ -1,6 +1,10 @@
 ﻿#include "Task_Player.h"
 #include "GameReference.h"
 #include "Utils/Log.h"
+#include "Task_GameCamera.h"
+#include "Task_Map.h"
+#include "GameReference.h"
+#include "GameStatus.h"
 
 namespace Player
 {

@@ -1,10 +1,19 @@
 ﻿#pragma once
 
-#include "Task_Game.h"
-#include "Task_Map.h"
-#include "Task_GameCamera.h"
-#include "Task_Player.h"
-#include "GameStatus.h"
+#include "myLib.h"
+
+#pragma region 前方宣言
+
+namespace Map { class Object; }
+namespace GameCamera { class Object; }
+namespace Player { class Object; }
+namespace Game 
+{ 
+	class Object;
+	class GameStatus;
+}
+
+#pragma endregion
 
 namespace Game
 {
@@ -13,15 +22,15 @@ namespace Game
 		friend Game::Object;
 
 	private:
-		static Map::Object::WP map;
-		static GameCamera::Object::WP gameCamera;
-		static Player::Object::WP player;
-		static GameStatus::WP gameStatus;
+		static weak_ptr<Map::Object> map;
+		static weak_ptr<GameCamera::Object> gameCamera;
+		static weak_ptr<Player::Object> player;
+		static weak_ptr<GameStatus> gameStatus;
 
 	public:
-		static Map::Object::SP GetMap() { return map.lock(); }
-		static GameCamera::Object::SP GetGameCamera() { return gameCamera.lock(); }
-		static Player::Object::SP GetPlayer() { return player.lock(); }
-		static GameStatus::SP GetGameStatus() { return gameStatus.lock(); }
+		static shared_ptr<Map::Object> GetMap() { return map.lock(); }
+		static shared_ptr<GameCamera::Object> GetGameCamera() { return gameCamera.lock(); }
+		static shared_ptr<Player::Object> GetPlayer() { return player.lock(); }
+		static shared_ptr<GameStatus> GetGameStatus() { return gameStatus.lock(); }
 	};
 }

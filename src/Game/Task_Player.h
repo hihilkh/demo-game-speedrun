@@ -4,7 +4,12 @@
 #include "Task/ObjectBase.h"
 #include "Task/TaskConstant.h"
 #include "CharaBase.h"
-#include "Task_GameCamera.h"
+
+#pragma region 前方宣言
+
+namespace GameCamera { class Object; }
+
+#pragma endregion
 
 namespace Player
 {
@@ -39,7 +44,7 @@ namespace Player
 		void Render2D_AF() override;	//「2D描画」１フレーム毎に行う処理
 
 	private:
-		GameCamera::Object::SP camera;
+		shared_ptr<GameCamera::Object> camera;
 		XI::GamePad::SP controller;
 
 		bool isInitialized;

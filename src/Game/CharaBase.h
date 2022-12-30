@@ -1,6 +1,12 @@
 ﻿#pragma once
 
-#include "Task_Map.h"
+#include "myLib.h"
+
+#pragma region 前方宣言
+
+namespace Map { class Object; }
+
+#pragma endregion
 
 class CharaBase
 {
@@ -14,7 +20,7 @@ protected:
 	int moveCnt;
 	Direction direction;
 
-	Map::Object::SP map;
+	shared_ptr<Map::Object> map;
 
 	CharaBase(const ML::Box2D& hitBase);
 	CharaBase(const ML::Vec2& pos, const ML::Box2D& hitBase);

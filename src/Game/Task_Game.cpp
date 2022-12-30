@@ -8,6 +8,7 @@
 #include "Task_GameCamera.h"
 #include "Task_Player.h"
 #include "GameReference.h"
+#include "GameStatus.h"
 
 namespace Game
 {

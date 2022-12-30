@@ -6,7 +6,12 @@
 #include "Task/ResourceBase.h"
 #include "Task/ObjectBase.h"
 #include "Task/TaskConstant.h"
-#include "GameStatus.h"
+
+#pragma region 前方宣言
+
+namespace Game { class GameStatus; }
+
+#pragma endregion
 
 namespace Game
 {
@@ -28,6 +33,6 @@ namespace Game
 		void Render2D_AF() override;	//「2D描画」１フレーム毎に行う処理
 
 	private:
-		GameStatus::SP gameStatus;
+		shared_ptr<GameStatus> gameStatus;
 	};
 }

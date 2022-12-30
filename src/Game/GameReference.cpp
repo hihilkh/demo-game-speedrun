@@ -2,8 +2,8 @@
 
 namespace Game
 {
-	Map::Object::WP GameReference::map;
-	GameCamera::Object::WP GameReference::gameCamera;
-	Player::Object::WP GameReference::player;
-	GameStatus::WP GameReference::gameStatus;
+	weak_ptr<Map::Object> GameReference::map;
+	weak_ptr<GameCamera::Object> GameReference::gameCamera;
+	weak_ptr<Player::Object> GameReference::player;
+	weak_ptr<GameStatus> GameReference::gameStatus;
 }

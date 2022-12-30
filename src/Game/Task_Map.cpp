@@ -1,6 +1,9 @@
 ﻿#include "Task_Map.h"
 #include "GameReference.h"
 #include "Utils/Log.h"
+#include "Task_GameCamera.h"
+#include "GameReference.h"
+#include "GameStatus.h"
 
 namespace Map
 {

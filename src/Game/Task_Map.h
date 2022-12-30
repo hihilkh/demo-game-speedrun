@@ -5,6 +5,12 @@
 #include "Task/TaskConstant.h"
 #include "Task_GameCamera.h"
 
+#pragma region 前方宣言
+
+namespace GameCamera { class Object; }
+
+#pragma endregion
+
 namespace Map
 {
 	//タスクに割り当てるグループ名と固有名
@@ -48,7 +54,7 @@ namespace Map
 
 		int arr[100][100];
 
-		GameCamera::Object::SP camera;
+		shared_ptr<GameCamera::Object> camera;
 
 		bool isInitialized;
 		// TODO : bool isMapLoaded?
