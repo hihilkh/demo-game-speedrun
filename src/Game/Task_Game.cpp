@@ -21,14 +21,15 @@ namespace Game
 		GameReference::gameStatus = gameStatus;
 
 		// タスクの生成
+		// 生成の順番も重要だ。UpDate()の順番につながるから。
 		Player::Object::SP player = Player::Object::Create(true);
-		Map::Object::SP map = Map::Object::Create(true);
 		GameCamera::Object::SP camera = GameCamera::Object::Create(true);
 		camera->SetTarget(player->transform);
+		Map::Object::SP map = Map::Object::Create(true);
 
 		GameReference::player = player;
-		GameReference::map = map;
 		GameReference::gameCamera = camera;
+		GameReference::map = map;
 
 		// TODO : Use event system for the timing to get reference
 		player->Initizalize();

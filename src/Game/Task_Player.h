@@ -48,6 +48,7 @@ namespace Player
 		XI::GamePad::SP controller;
 
 		bool isInitialized;
+		float speed;
 
 	public:
 		void Initizalize();

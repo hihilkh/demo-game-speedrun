@@ -61,27 +61,12 @@ namespace Map
 		}
 
 		const ML::Box2D& visibleRange = camera->GetVisibleRange();
-		if (!this->hitBase.Hit(visibleRange)) {
-			return;
-		}
+		ML::Rect indexes = GetOverlappedMapChipIndexes(visibleRange);
 
-		ML::Rect displayRect = {
-			max(visibleRange.x, hitBase.x),		// Left
-			max(visibleRange.y, hitBase.y),		// Top
-			min(visibleRange.x + visibleRange.w, hitBase.x + hitBase.w) - 1,	// Right
-			min(visibleRange.y + visibleRange.h, hitBase.y + hitBase.h) - 1,	// Bottom
-		};
-
-		int minIndexX, minIndexY, maxIndexX, maxIndexY;
-		minIndexX = Math::FloorDivide(displayRect.left - mapChipCenterOffset.x, CHIP_SIZE) - leftIndex;
-		minIndexY = Math::FloorDivide(displayRect.top - mapChipCenterOffset.y, CHIP_SIZE) - topIndex;
-		maxIndexX = Math::FloorDivide(displayRect.right - mapChipCenterOffset.x, CHIP_SIZE) - leftIndex;
-		maxIndexY = Math::FloorDivide(displayRect.bottom - mapChipCenterOffset.y, CHIP_SIZE) - topIndex;
-
-		for (int y = minIndexY; y <= maxIndexY; ++y) {
-			for (int x = minIndexX; x <= maxIndexX; ++x) {
+		for (int y = indexes.top; y < indexes.bottom; ++y) {
+			for (int x = indexes.left; x < indexes.right; ++x) {
 				ML::Box2D draw(0, 0, CHIP_SIZE, CHIP_SIZE);	
-				draw.Offset((x + leftIndex) * CHIP_SIZE, (y + topIndex) * CHIP_SIZE);	// chip のワールドポジション
+				draw.Offset((x + mapChipLeftmostIndex) * CHIP_SIZE, (y + mapChipTopmostIndex) * CHIP_SIZE);	// chip のワールドポジション
 				draw.Offset(mapChipCenterOffset);										// ローカルオフセット
 				draw.Offset(-visibleRange.x, -visibleRange.y);							// カメラに合わせる
 				this->res->Draw(this->arr[y][x], draw);
@@ -117,10 +102,10 @@ namespace Map
 		ifstream fin(filePath);
 		if (!fin) { return false; }
 
-		fin >> sizeX >> sizeY >> leftIndex >> topIndex;
+		fin >> sizeX >> sizeY >> mapChipLeftmostIndex >> mapChipTopmostIndex;
 		hitBase = ML::Box2D(
-			mapChipCenterOffset.x + leftIndex * CHIP_SIZE, 
-			mapChipCenterOffset.y + topIndex * CHIP_SIZE,
+			mapChipCenterOffset.x + mapChipLeftmostIndex * CHIP_SIZE, 
+			mapChipCenterOffset.y + mapChipTopmostIndex * CHIP_SIZE,
 			sizeX * CHIP_SIZE,
 			sizeY * CHIP_SIZE);
 
@@ -134,34 +119,35 @@ namespace Map
 		return true;
 	}
 
+	ML::Rect Object::GetOverlappedMapChipIndexes(const ML::Box2D& hit) const
+	{
+		if (!this->hitBase.Hit(hit)) {
+			return ML::Rect{ 0, 0, 0, 0 };
+		}
+
+		ML::Rect overlappedRect = {
+			max(hit.x, hitBase.x),		// Left
+			max(hit.y, hitBase.y),		// Top
+			min(hit.x + hit.w, hitBase.x + hitBase.w) - 1,	// Right
+			min(hit.y + hit.h, hitBase.y + hitBase.h) - 1,	// Bottom
+		};
+
+		ML::Rect result;
+		result.left = Math::FloorDivide(overlappedRect.left - mapChipCenterOffset.x, CHIP_SIZE) - mapChipLeftmostIndex;
+		result.top = Math::FloorDivide(overlappedRect.top - mapChipCenterOffset.y, CHIP_SIZE) - mapChipTopmostIndex;
+		result.right = 1 + Math::FloorDivide(overlappedRect.right - mapChipCenterOffset.x, CHIP_SIZE) - mapChipLeftmostIndex;
+		result.bottom = 1 + Math::FloorDivide(overlappedRect.bottom - mapChipCenterOffset.y, CHIP_SIZE) - mapChipTopmostIndex;
+
+		return result;
+	}
+
 	bool Object::CheckHit(const ML::Box2D& hit) const
 	{
-		// TODO
-		return false;
-
-		ML::Rect  r = { hit.x, hit.y, hit.x + hit.w, hit.y + hit.h };
-		//矩形がマップ外に出ていたらサイズを変更する
-		ML::Rect  m = {
-			this->hitBase.x,
-			this->hitBase.y,
-			this->hitBase.x + this->hitBase.w,
-			this->hitBase.y + this->hitBase.h
-		};
-		if (r.left < m.left) { r.left = m.left; }
-		if (r.top < m.top) { r.top = m.top; }
-		if (r.right > m.right) { r.right = m.right; }
-		if (r.bottom > m.bottom) { r.bottom = m.bottom; }
-
-		//ループ範囲調整
-		int sx, sy, ex, ey;
-		sx = r.left / 32;
-		sy = r.top / 32;
-		ex = (r.right - 1) / 32;
-		ey = (r.bottom - 1) / 32;
+		ML::Rect indexes = GetOverlappedMapChipIndexes(hit);
 
 		//範囲内の障害物を探す
-		for (int y = sy; y <= ey; ++y) {
-			for (int x = sx; x <= ex; ++x) {
+		for (int y = indexes.top; y < indexes.bottom; ++y) {
+			for (int x = indexes.left; x < indexes.right; ++x) {
 				if (8 <= this->arr[y][x]) {
 					return true;
 				}

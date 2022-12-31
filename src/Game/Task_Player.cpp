@@ -23,12 +23,14 @@ namespace Player
 
 #pragma region Object
 
-	Object::Object() : ObjectBaseWithResource<Object, Resource>(defGroupName, defName, true), CharaBase(ML::Box2D(-16, -16, 32, 32))
+	Object::Object() : 
+		ObjectBaseWithResource<Object, Resource>(defGroupName, defName),
+		CharaBase(ML::Box2D(-16, -16, 32, 32)),
+		speed(5),
+		controller(ge->in1)
 	{
 		// TODO : Better way to control priority?
 		render2D_Priority[1] = 0.5f;
-		// TODO : Player Controller?
-		controller = ge->in1;
 	}
 
 	Object::~Object()
@@ -41,15 +43,15 @@ namespace Player
 			return;
 		}
 
-		ML::Vec2 est(0, 0);
+		ML::Vec2 targetMove = ML::Vec2(0, 0);
 
 		auto inp = controller->GetState();
-		if (inp.LStick.BL.on) { est.x -= 3; direction = Direction::Left; }
-		if (inp.LStick.BR.on) { est.x += 3; direction = Direction::Right; }
-		if (inp.LStick.BU.on) { est.y -= 3; }
-		if (inp.LStick.BD.on) { est.y += 3; }
+		if (inp.LStick.BL.on) { targetMove.x -= speed; direction = Direction::Left; }
+		if (inp.LStick.BR.on) { targetMove.x += speed; direction = Direction::Right; }
+		if (inp.LStick.BU.on) { targetMove.y -= speed; }
+		if (inp.LStick.BD.on) { targetMove.y += speed; }
 
-		AdjustMoveWithMap(est);
+		AdjustMoveWithMap(targetMove);
 	}
 
 	void Object::Render2D_AF()

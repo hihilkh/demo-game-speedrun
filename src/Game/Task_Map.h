@@ -50,8 +50,8 @@ namespace Map
 	private:
 		int sizeX;
 		int sizeY;
-		int leftIndex;
-		int topIndex;
+		int mapChipLeftmostIndex;
+		int mapChipTopmostIndex;
 		ML::Box2D hitBase;
 		ML::Point mapChipCenterOffset;
 
@@ -66,6 +66,13 @@ namespace Map
 	private:
 		string GetMapFilePath(int mapIndex) const;
 		bool Load(const string& filePath);
+
+		// TOOD : Use iterator and Map Chip class
+		/// <returns>
+		/// x 添字：Rect.leftからRect.rightまで（含まない）<para />
+		/// y 添字：Rect.topからRect.bottomまで（含まない）
+		/// </returns>
+		ML::Rect GetOverlappedMapChipIndexes(const ML::Box2D& hit) const;
 
 	public:
 		void Initialize();
