@@ -159,7 +159,6 @@
     <ClCompile Include="src\Game\Task_GameCamera.cpp" />
     <ClCompile Include="src\Game\Task_Map.cpp" />
     <ClCompile Include="src\Title\Task_Title.cpp" />
-    <ClCompile Include="src\Utils\Math.cpp" />
     <ClCompile Include="src\WinMain.cpp" />
     <ClCompile Include="lib\XI2018_Ver1_0.cpp" />
   </ItemGroup>

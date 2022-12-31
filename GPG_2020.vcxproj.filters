@@ -108,9 +108,6 @@
     <ClCompile Include="src\Game\GameStatus.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Utils\Math.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Common\Transform.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
