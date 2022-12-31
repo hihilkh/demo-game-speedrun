@@ -8,4 +8,8 @@ public:
 	ML::Vec2 pos;
 
 	Transform(const ML::Vec2& pos);
+	~Transform() {}
+
+	typedef shared_ptr<Transform> SP;
+	typedef weak_ptr<Transform> WP;
 };

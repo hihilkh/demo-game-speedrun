@@ -58,7 +58,7 @@ namespace Player
 			return;
 		}
 
-		ML::Box2D draw = hitBase.OffsetCopy(transform.pos);
+		ML::Box2D draw = hitBase.OffsetCopy(transform->pos);
 		ML::Box2D src(0, 0, 32, 32);
 
 		draw.Offset(camera->GetCameraOffset());
@@ -74,11 +74,11 @@ namespace Player
 
 		Game::GameStatus::SP gameStatus = Game::GameReference::GetGameStatus();
 		if (gameStatus) {
-			transform.pos = gameStatus->GetInitialPos();
+			transform->pos = gameStatus->GetInitialPos();
 		}
 		else {
 			PrintWarning("GameStatusが取れない。posをデフォルトになる。");
-			transform.pos = ML::Vec2();
+			transform->pos = ML::Vec2();
 		}
 	}
 

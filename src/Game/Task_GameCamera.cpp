@@ -18,8 +18,8 @@ namespace GameCamera
 
 	void Object::UpDate()
 	{
-		if (pTarget) {
-			UpdateTarget(pTarget->pos);
+		if (Transform::SP sp = target.lock()) {
+			UpdateTarget(sp->pos);
 		}
 	}
 
@@ -37,10 +37,10 @@ namespace GameCamera
 		return currentCameraOffset;
 	}
 
-	void Object::SetTarget(const Transform& transform)
+	void Object::SetTarget(Transform::SP transform)
 	{
-		pTarget = &transform;
-		UpdateTarget(pTarget->pos);
+		target = transform;
+		UpdateTarget(transform->pos);
 	}
 
 	void Object::UpdateTarget(const ML::Vec2& pos)

@@ -26,7 +26,7 @@ protected:
 	CharaBase(const ML::Vec2& pos, const ML::Box2D& hitBase);
 
 public:
-	Transform transform;
+	Transform::SP transform;
 
 public:
 	virtual ~CharaBase() {}

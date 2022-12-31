@@ -29,7 +29,7 @@ namespace GameCamera
 		ML::Point targetOffset;
 		ML::Point currentCameraOffset;
 
-		const Transform* pTarget;
+		Transform::WP target;
 
 	private:
 		void UpdateTarget(const ML::Vec2& pos);
@@ -40,6 +40,6 @@ namespace GameCamera
 		ML::Box2D GetVisibleRange();
 		const ML::Point& GetCameraOffset() const;
 
-		void SetTarget(const Transform& transform);
+		void SetTarget(Transform::SP transform);
 	};
 }
