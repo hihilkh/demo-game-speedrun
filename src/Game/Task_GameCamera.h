@@ -36,8 +36,7 @@ namespace GameCamera
 		void UpdateCameraOffset();
 
 	public:
-		// TODO : Study about getter overload
-		ML::Box2D GetVisibleRange();
+		const ML::Box2D& GetVisibleRange() const;
 		const ML::Point& GetCameraOffset() const;
 
 		void SetTarget(Transform::SP transform);

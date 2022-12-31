@@ -27,7 +27,7 @@ namespace GameCamera
 	{
 	}
 
-	ML::Box2D Object::GetVisibleRange()
+	const ML::Box2D& Object::GetVisibleRange() const
 	{
 		return visibleRange;
 	}

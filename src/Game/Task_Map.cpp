@@ -60,7 +60,7 @@ namespace Map
 			return;
 		}
 
-		ML::Box2D visibleRange = camera->GetVisibleRange();
+		const ML::Box2D& visibleRange = camera->GetVisibleRange();
 		if (!this->hitBase.Hit(visibleRange)) {
 			return;
 		}

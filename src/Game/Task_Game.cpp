@@ -37,7 +37,6 @@ namespace Game
 
 	Object::~Object()
 	{
-		// TODO
 		//★データ＆タスク解放
 		ge->KillAll_G(TaskConstant::TaskGroupName_Game);
 		ge->KillAll_G(TaskConstant::TaskGroupName_Map);
