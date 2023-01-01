@@ -1,10 +1,10 @@
 ﻿#include "Task_Player.h"
-#include "GameReference.h"
 #include "Utils/Log.h"
-#include "Task_GameCamera.h"
-#include "Task_Map.h"
-#include "GameReference.h"
-#include "GameStatus.h"
+#include "Game/Task_GameCamera.h"
+#include "Game/Task_Map.h"
+#include "Game/GameReference.h"
+#include "Game/GameStatus.h"
+#include "BasicPlayerAction.h"
 
 namespace Player
 {
@@ -26,8 +26,8 @@ namespace Player
 	Object::Object() : 
 		ObjectBaseWithResource<Object, Resource>(defGroupName, defName),
 		CharaBase(ML::Box2D(-16, -16, 32, 32)),
-		speed(5),
-		controller(ge->in1)
+		isInitialized(false),
+		speed(5)
 	{
 		// TODO : Better way to control priority?
 		render2D_Priority[1] = 0.5f;
@@ -43,15 +43,20 @@ namespace Player
 			return;
 		}
 
-		ML::Vec2 targetMove = ML::Vec2(0, 0);
+#if _DEBUG
+		// バックドア：PlayerActionの切り替え
+		auto inp = ge->in1->GetState();
+		if (inp.SE.down) {
+			switch (playerAction->GetPlayerMode()) {
+				case PlayerMode::Basic:	// TODO 
+				case PlayerMode::Attack:	// TODO 
+				case PlayerMode::Run:	// TODO 
+				case PlayerMode::Jump:		UpdatePlayerAction(PlayerMode::Basic);		break;
+			}
+		}
+#endif
 
-		auto inp = controller->GetState();
-		if (inp.LStick.BL.on) { targetMove.x -= speed; direction = Direction::Left; }
-		if (inp.LStick.BR.on) { targetMove.x += speed; direction = Direction::Right; }
-		if (inp.LStick.BU.on) { targetMove.y -= speed; }
-		if (inp.LStick.BD.on) { targetMove.y += speed; }
-
-		AdjustMoveWithMap(targetMove);
+		playerAction->UpDate();
 	}
 
 	void Object::Render2D_AF()
@@ -67,10 +72,10 @@ namespace Player
 		this->res->img->Draw(draw, src);
 	}
 
-
 	void Object::Initizalize()
 	{
-		isInitialized = true;
+		UpdatePlayerAction(PlayerMode::Basic);
+
 		camera = Game::GameReference::GetGameCamera();
 		map = Game::GameReference::GetMap();
 
@@ -82,6 +87,23 @@ namespace Player
 			PrintWarning("GameStatusが取れない。posをデフォルトになる。");
 			transform->pos = ML::Vec2();
 		}
+
+		isInitialized = true;
+	}
+
+	void Object::UpdatePlayerAction(PlayerMode playerMode)
+	{
+		SP sharedPtr = dynamic_pointer_cast<Object>(this->me.lock());
+
+		switch (playerMode) {
+			// TODO : 他のcase
+			case PlayerMode::Basic:
+			default:
+				playerAction = make_unique<BasicPlayerAction>(sharedPtr, ge->in1);
+				break;
+		}
+
+		Print((string)"今のPlayerAction：" + typeid(*playerAction).name());
 	}
 
 #pragma endregion

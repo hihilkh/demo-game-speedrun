@@ -96,10 +96,10 @@
     <ClCompile Include="src\Game\Task_Map.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\CharaBase.cpp">
+    <ClCompile Include="src\Chara\CharaBase.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Task_Player.cpp">
+    <ClCompile Include="src\Chara\Player\Task_Player.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\GameReference.cpp">
@@ -109,6 +109,12 @@
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Common\Transform.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Chara\Player\PlayerActionBase.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Chara\Player\BasicPlayerAction.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -194,10 +200,10 @@
     <ClInclude Include="src\Game\Task_Map.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\CharaBase.h">
+    <ClInclude Include="src\Chara\CharaBase.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Task_Player.h">
+    <ClInclude Include="src\Chara\Player\Task_Player.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\GameStatus.h">
@@ -207,6 +213,15 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Common\Transform.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Chara\Player\PlayerActionBase.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Chara\Player\PlayerMode.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Chara\Player\BasicPlayerAction.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

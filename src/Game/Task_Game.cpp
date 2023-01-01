@@ -6,9 +6,10 @@
 #include "Ending/Task_Ending.h"
 #include "Task_Map.h"
 #include "Task_GameCamera.h"
-#include "Task_Player.h"
+#include "Chara/Player/Task_Player.h"
 #include "GameReference.h"
 #include "GameStatus.h"
+#include "Utils/Log.h"
 
 namespace Game
 {
@@ -17,7 +18,7 @@ namespace Game
 
 	Object::Object() : ObjectBase<Object>(defGroupName, defName)
 	{
-		gameStatus = make_shared<GameStatus>(GameStatus());
+		gameStatus = make_shared<GameStatus>();
 		GameReference::gameStatus = gameStatus;
 
 		// タスクの生成

@@ -3,7 +3,8 @@
 #include "Task/ResourceBase.h"
 #include "Task/ObjectBase.h"
 #include "Task/TaskConstant.h"
-#include "CharaBase.h"
+#include "Chara/CharaBase.h"
+#include "PlayerMode.h"
 
 #pragma region 前方宣言
 
@@ -34,6 +35,12 @@ namespace Player
 	{
 		friend ObjectBase<Object>;
 
+#pragma region PlayerAction の friend になる
+
+		friend class PlayerActionBase;
+
+#pragma endregion
+
 	private:
 		Object();
 
@@ -45,10 +52,13 @@ namespace Player
 
 	private:
 		shared_ptr<GameCamera::Object> camera;
-		XI::GamePad::SP controller;
 
 		bool isInitialized;
 		float speed;
+		unique_ptr<class PlayerActionBase> playerAction;
+
+	private:
+		void UpdatePlayerAction(PlayerMode playerMode);
 
 	public:
 		void Initizalize();
