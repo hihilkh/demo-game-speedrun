@@ -17,13 +17,17 @@
     <Filter Include="Lib\DG2014">
       <UniqueIdentifier>{69163297-886a-4dac-b189-d31c213e0fee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MyPG\Source Files">
+      <UniqueIdentifier>{e65e0bce-6036-4e81-bcdf-c3362ae298ee}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
     <Filter Include="MyPG\Header Files">
       <UniqueIdentifier>{23a56ba2-1c81-42c5-b512-0f03132b80c0}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="MyPG\Source Files">
-      <UniqueIdentifier>{e65e0bce-6036-4e81-bcdf-c3362ae298ee}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="MyPG\Template Files">
+      <UniqueIdentifier>{b4daa935-3343-4f4b-bb54-a4066cc6745d}</UniqueIdentifier>
+      <Extensions>tpp</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -167,12 +171,6 @@
     <ClInclude Include="src\MyPG.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Task\ObjectBase.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Task\ResourceBase.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Task\ResourceConstant.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
@@ -223,6 +221,12 @@
     </ClInclude>
     <ClInclude Include="src\Chara\Player\BasicPlayerAction.h">
       <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Task\ResourceBase.tpp">
+      <Filter>MyPG\Template Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Task\ObjectBase.tpp">
+      <Filter>MyPG\Template Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

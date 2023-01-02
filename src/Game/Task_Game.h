@@ -3,8 +3,8 @@
 //-------------------------------------------------------------------
 //ゲーム本編
 //-------------------------------------------------------------------
-#include "Task/ResourceBase.h"
-#include "Task/ObjectBase.h"
+#include "Task/ResourceBase.tpp"
+#include "Task/ObjectBase.tpp"
 #include "Task/TaskConstant.h"
 
 #pragma region 前方宣言

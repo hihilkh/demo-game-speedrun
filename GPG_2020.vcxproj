@@ -189,8 +189,8 @@
     <ClInclude Include="src\Game\GameReference.h" />
     <ClInclude Include="src\Task\ResourceConstant.h" />
     <ClInclude Include="src\Utils\Log.h" />
-    <ClInclude Include="src\Task\ObjectBase.h" />
-    <ClInclude Include="src\Task\ResourceBase.h" />
+    <ClInclude Include="src\Task\ObjectBase.tpp" />
+    <ClInclude Include="src\Task\ResourceBase.tpp" />
     <ClInclude Include="src\Task\TaskConstant.h" />
     <ClInclude Include="src\Chara\Player\Task_Player.h" />
     <ClInclude Include="src\Ending\Task_Ending.h" />

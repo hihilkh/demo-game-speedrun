@@ -3,8 +3,8 @@
 //-------------------------------------------------------------------
 //エンディング
 //-------------------------------------------------------------------
-#include "Task/ResourceBase.h"
-#include "Task/ObjectBase.h"
+#include "Task/ResourceBase.tpp"
+#include "Task/ObjectBase.tpp"
 #include "Task/TaskConstant.h"
 
 namespace Ending
