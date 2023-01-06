@@ -30,7 +30,7 @@ namespace Player
 		currentAnimFrame(0),
 		pCurrentAnimClip(nullptr)
 	{
-		UpDateCurrentAnimClip();
+		UpdateCurrentAnimClip();
 	}
 
 	PlayerAnimator::~PlayerAnimator()
@@ -61,10 +61,10 @@ namespace Player
 	{
 		currentPlayerState = to;
 		currentAnimFrame = 0;
-		UpDateCurrentAnimClip();
+		UpdateCurrentAnimClip();
 	}
 
-	void PlayerAnimator::UpDateCurrentAnimClip()
+	void PlayerAnimator::UpdateCurrentAnimClip()
 	{
 		try {
 			pCurrentAnimClip = &AnimClipMap.at(currentPlayerState);

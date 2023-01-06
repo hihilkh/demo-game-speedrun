@@ -31,7 +31,7 @@ namespace Player
 
 	private:
 		void ChangeState(PlayerState to);
-		void UpDateCurrentAnimClip();
+		void UpdateCurrentAnimClip();
 		void UpdateSrcDirection(ML::Box2D& outSrc, Direction direction) const;
 
 

@@ -3,6 +3,8 @@
 //-------------------------------------------------------------------
 #include "Task_Title.h"
 #include "Game/Task_Game.h"
+#include "Task/TaskConstant.h"
+
 namespace Title
 {
 #pragma region Resource
@@ -20,7 +22,7 @@ namespace Title
 
 #pragma region Object
 
-	Object::Object() : ObjectBaseWithResource<Object, Resource>(defGroupName, defName)
+	Object::Object() : ObjectBaseWithResource<Object, Resource>(TaskConstant::TaskGroupName_Title, TaskConstant::TaskName_Default)
 	{
 		this->logoPosY = -270;
 	}

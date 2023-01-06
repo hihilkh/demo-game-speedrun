@@ -2,15 +2,10 @@
 
 #include "Task/ResourceBase.tpp"
 #include "Task/ObjectBase.tpp"
-#include "Task/TaskConstant.h"
 #include "Common/Transform.h"
 
 namespace GameCamera
 {
-	//タスクに割り当てるグループ名と固有名
-	const string defGroupName(TaskConstant::TaskGroupName_Game);		//グループ名
-	const string defName(TaskConstant::TaskName_GameCamera);			//タスク名
-
 	class Object : public ObjectBase<Object>
 	{
 		friend ObjectBase<Object>;

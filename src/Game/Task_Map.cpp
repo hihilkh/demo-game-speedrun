@@ -5,6 +5,7 @@
 #include "GameReference.h"
 #include "GameStatus.h"
 #include "Utils/Math.h"
+#include "Task/TaskConstant.h"
 
 namespace Map
 {
@@ -39,7 +40,7 @@ namespace Map
 #pragma region Object
 
 	Object::Object() :
-		ObjectBaseWithResource<Object, Resource>(defGroupName, defName),
+		ObjectBaseWithResource<Object, Resource>(TaskConstant::TaskGroupName_Map, TaskConstant::TaskName_Map),
 		isInitialized(false),
 		mapChipCenterOffset(ML::Point{ -CHIP_SIZE / 2, -CHIP_SIZE / 2})
 	{

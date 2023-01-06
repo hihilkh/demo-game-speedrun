@@ -2,7 +2,6 @@
 
 #include "Task/ResourceBase.tpp"
 #include "Task/ObjectBase.tpp"
-#include "Task/TaskConstant.h"
 #include "Chara/CharaBase.h"
 #include "PlayerMode.h"
 #include "PlayerState.h"
@@ -15,10 +14,6 @@ namespace GameCamera { class Object; }
 
 namespace Player
 {
-	//タスクに割り当てるグループ名と固有名
-	const string defGroupName(TaskConstant::TaskGroupName_Chara);		//グループ名
-	const string defName(TaskConstant::TaskName_Player);				//タスク名
-
 	class Resource : public ResourceBase<Resource>
 	{
 		friend ResourceBase<Resource>;

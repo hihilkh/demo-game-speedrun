@@ -5,14 +5,9 @@
 //-------------------------------------------------------------------
 #include "Task/ResourceBase.tpp"
 #include "Task/ObjectBase.tpp"
-#include "Task/TaskConstant.h"
 
 namespace Ending
 {
-	//タスクに割り当てるグループ名と固有名
-	const string defGroupName(TaskConstant::TaskGroupName_Ending);	//グループ名
-	const string defName(TaskConstant::TaskName_Default);	//タスク名
-
 	class Resource : public ResourceBase<Resource>
 	{
 		friend ResourceBase<Resource>;

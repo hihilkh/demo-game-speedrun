@@ -7,6 +7,7 @@
 #include "BasicPlayerAction.h"
 #include "PlayerConstant.h"
 #include "PlayerAnimator.h"
+#include "Task/TaskConstant.h"
 
 namespace Player
 {
@@ -26,7 +27,7 @@ namespace Player
 #pragma region Object
 
 	Object::Object() : 
-		ObjectBaseWithResource<Object, Resource>(defGroupName, defName),
+		ObjectBaseWithResource<Object, Resource>(TaskConstant::TaskGroupName_Chara, TaskConstant::TaskName_Player),
 		CharaBase(ML::Box2D(-PlayerConstant::HitBaseWidth / 2, -PlayerConstant::HitBaseHeight / 2, PlayerConstant::HitBaseWidth, PlayerConstant::HitBaseHeight)),
 		isInitialized(false),
 		speed(5),

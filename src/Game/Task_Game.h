@@ -5,7 +5,6 @@
 //-------------------------------------------------------------------
 #include "Task/ResourceBase.tpp"
 #include "Task/ObjectBase.tpp"
-#include "Task/TaskConstant.h"
 
 #pragma region 前方宣言
 
@@ -15,10 +14,6 @@ namespace Game { class GameStatus; }
 
 namespace Game
 {
-	//タスクに割り当てるグループ名と固有名
-	const string defGroupName(TaskConstant::TaskGroupName_Game);		//グループ名
-	const string defName(TaskConstant::TaskName_Game);					//タスク名
-
 	class Object : public ObjectBase<Object>
 	{
 		friend ObjectBase<Object>;

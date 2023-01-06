@@ -1,11 +1,15 @@
 ﻿#include "Task_GameCamera.h"
+#include "Task/TaskConstant.h"
 
 namespace GameCamera
 {
 
 #pragma region Object
 
-	Object::Object() : ObjectBase<Object>(defGroupName, defName), visibleRange(ML::Box2D(0, 0, 480, 270)), currentCameraOffset(ML::Point())
+	Object::Object() : 
+		ObjectBase<Object>(TaskConstant::TaskGroupName_Game, TaskConstant::TaskName_GameCamera), 
+		visibleRange(ML::Box2D(0, 0, 480, 270)), 
+		currentCameraOffset(ML::Point())
 	{
 		targetOffset = ML::Point{ -visibleRange.w / 2, -visibleRange.h / 2 };
 

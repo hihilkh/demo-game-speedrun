@@ -4,6 +4,7 @@
 #include "MyPG.h"
 #include "Task_Ending.h"
 #include "Title/Task_Title.h"
+#include "Task/TaskConstant.h"
 
 namespace Ending
 {
@@ -22,7 +23,7 @@ namespace Ending
 
 #pragma region Object
 
-	Object::Object() : ObjectBaseWithResource<Object, Resource>(defGroupName, defName)
+	Object::Object() : ObjectBaseWithResource<Object, Resource>(TaskConstant::TaskGroupName_Ending, TaskConstant::TaskName_Default)
 	{
 		this->logoPosY = 270;
 	}

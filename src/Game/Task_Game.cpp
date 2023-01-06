@@ -10,13 +10,14 @@
 #include "GameReference.h"
 #include "GameStatus.h"
 #include "Utils/Log.h"
+#include "Task/TaskConstant.h"
 
 namespace Game
 {
 
 #pragma region Object
 
-	Object::Object() : ObjectBase<Object>(defGroupName, defName)
+	Object::Object() : ObjectBase<Object>(TaskConstant::TaskGroupName_Game, TaskConstant::TaskName_Game)
 	{
 		gameStatus = make_shared<GameStatus>();
 		GameReference::gameStatus = gameStatus;
