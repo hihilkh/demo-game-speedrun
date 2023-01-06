@@ -121,6 +121,15 @@
     <ClCompile Include="src\Chara\Player\BasicPlayerAction.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Chara\Player\AttackPlayerAction.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Chara\Player\PlayerAnimator.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Animation\AnimationClip.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GameEngine_Ver3_83.h">
@@ -222,11 +231,32 @@
     <ClInclude Include="src\Chara\Player\BasicPlayerAction.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Chara\Player\AttackPlayerAction.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Chara\Player\PlayerState.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="src\Task\ResourceBase.tpp">
       <Filter>MyPG\Template Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Task\ObjectBase.tpp">
       <Filter>MyPG\Template Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Chara\Player\PlayerConstant.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Chara\Player\PlayerAnimator.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Animation\AnimationKey.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Animation\AnimationClip.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Common\Direction.h">
+      <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -5,6 +5,8 @@
 #include "Game/GameReference.h"
 #include "Game/GameStatus.h"
 #include "BasicPlayerAction.h"
+#include "PlayerConstant.h"
+#include "PlayerAnimator.h"
 
 namespace Player
 {
@@ -25,12 +27,19 @@ namespace Player
 
 	Object::Object() : 
 		ObjectBaseWithResource<Object, Resource>(defGroupName, defName),
-		CharaBase(ML::Box2D(-16, -16, 32, 32)),
+		CharaBase(ML::Box2D(-PlayerConstant::HitBaseWidth / 2, -PlayerConstant::HitBaseHeight / 2, PlayerConstant::HitBaseWidth, PlayerConstant::HitBaseHeight)),
 		isInitialized(false),
-		speed(5)
+		speed(5),
+		state(PlayerState::Idle)
 	{
 		// TODO : Better way to control priority?
 		render2D_Priority[1] = 0.5f;
+	}
+
+	void Object::PostCreate()
+	{
+		SP sharedPtr = dynamic_pointer_cast<Object>(this->me.lock());
+		animator = make_unique<PlayerAnimator>(sharedPtr, this->res);
 	}
 
 	Object::~Object()
@@ -57,6 +66,7 @@ namespace Player
 #endif
 
 		playerAction->UpDate();
+		animator->UpDate();
 	}
 
 	void Object::Render2D_AF()
@@ -65,11 +75,7 @@ namespace Player
 			return;
 		}
 
-		ML::Box2D draw = hitBase.OffsetCopy(transform->pos);
-		ML::Box2D src(0, 0, 32, 32);
-
-		draw.Offset(camera->GetCameraOffset());
-		this->res->img->Draw(draw, src);
+		animator->Render(hitBase.OffsetCopy(transform->pos), camera->GetCameraOffset());
 	}
 
 	void Object::Initizalize()

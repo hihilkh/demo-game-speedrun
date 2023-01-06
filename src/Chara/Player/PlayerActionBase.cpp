@@ -1,4 +1,5 @@
 ﻿#include "PlayerActionBase.h"
+#include "Utils/Log.h"
 
 namespace Player
 {
@@ -14,18 +15,42 @@ namespace Player
 
 	void PlayerActionBase::Move(const XI::VGamePad& input)
 	{
-		ML::Vec2 targetMove = ML::Vec2(0, 0);
-
 		Player::Object::SP playerSP = player.lock();
 		if (!playerSP) {
+			PrintWarning("プレイヤーの参照が取れない");
 			return;
 		}
 
-		if (input.LStick.BL.on) { targetMove.x -= playerSP->speed; playerSP->direction = Player::Object::Direction::Left; }
-		if (input.LStick.BR.on) { targetMove.x += playerSP->speed; playerSP->direction = Player::Object::Direction::Right; }
-		if (input.LStick.BU.on) { targetMove.y -= playerSP->speed; }
-		if (input.LStick.BD.on) { targetMove.y += playerSP->speed; }
+		Direction previousDirection = playerSP->direction;
+		bool isDirectionFixed = false;
+		ML::Vec2 targetMove = ML::Vec2(0, 0);
+		if (input.LStick.BL.on) { targetMove.x -= playerSP->speed; SetDirection(playerSP, previousDirection, Direction::Left, isDirectionFixed); }
+		if (input.LStick.BR.on) { targetMove.x += playerSP->speed; SetDirection(playerSP, previousDirection, Direction::Right, isDirectionFixed); }
+		if (input.LStick.BU.on) { targetMove.y -= playerSP->speed; SetDirection(playerSP, previousDirection, Direction::Up, isDirectionFixed); }
+		if (input.LStick.BD.on) { targetMove.y += playerSP->speed; SetDirection(playerSP, previousDirection, Direction::Down, isDirectionFixed); }
 
-		playerSP->AdjustMoveWithMap(targetMove);
+		if (targetMove.x == 0 && targetMove.y == 0) {
+			playerSP->state = PlayerState::Idle;
+		}
+		else {
+			// AdjustMoveWithMap()の結果に関係なく、inputがあればWalkになる
+			playerSP->state = PlayerState::Walk;
+			playerSP->AdjustMoveWithMap(targetMove);
+		}
+	}
+
+	/// <summary>
+	/// できれば、元のDirectionを維持する
+	/// </summary>
+	void PlayerActionBase::SetDirection(Player::Object::SP playerSP, Direction previousDirection, Direction targetDirection, bool& isDirectionFixed)
+	{
+		if (isDirectionFixed) {
+			return;
+		}
+
+		playerSP->direction = targetDirection;
+		if (previousDirection == targetDirection) {
+			isDirectionFixed = true;
+		}
 	}
 }

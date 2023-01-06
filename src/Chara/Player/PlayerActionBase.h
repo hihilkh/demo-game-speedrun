@@ -7,6 +7,9 @@ namespace Player
 {
 	class PlayerActionBase
 	{
+	private:
+		PlayerActionBase(const PlayerActionBase&) = delete;
+
 	protected:
 		PlayerActionBase(Player::Object::WP player, XI::GamePad::SP controller);
 
@@ -16,6 +19,9 @@ namespace Player
 	protected:
 		Player::Object::WP player;
 		XI::GamePad::SP controller;
+	
+	private:
+		void SetDirection(Player::Object::SP playerSP, Direction previousDirection, Direction targetDirection, bool& isDirectionFixed);
 
 	protected:
 		void Move(const XI::VGamePad& input);

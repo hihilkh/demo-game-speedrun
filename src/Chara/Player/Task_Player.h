@@ -5,6 +5,7 @@
 #include "Task/TaskConstant.h"
 #include "Chara/CharaBase.h"
 #include "PlayerMode.h"
+#include "PlayerState.h"
 
 #pragma region 前方宣言
 
@@ -38,11 +39,16 @@ namespace Player
 #pragma region PlayerAction の friend になる
 
 		friend class PlayerActionBase;
+		friend class BasicPlayerAction;
+		friend class AttackPlayerAction;
 
 #pragma endregion
 
 	private:
 		Object();
+
+	protected:
+		void PostCreate() override;
 
 	public:
 		virtual ~Object();
@@ -55,13 +61,15 @@ namespace Player
 
 		bool isInitialized;
 		float speed;
+		PlayerState state;
 		unique_ptr<class PlayerActionBase> playerAction;
+		unique_ptr<class PlayerAnimator> animator;
 
 	private:
 		void UpdatePlayerAction(PlayerMode playerMode);
 
 	public:
 		void Initizalize();
-
+		PlayerState GetState() const { return state; }
 	};
 }

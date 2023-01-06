@@ -13,6 +13,8 @@ protected:
 		__super::Initialize(taskGroupName, taskName, isDetectible);
 	}
 
+	virtual void PostCreate() {}
+
 public:
 	virtual ~ObjectBase() {}
 
@@ -30,6 +32,8 @@ public:
 		if (flagGameEnginePushBack) {
 			ge->PushBack(ob);//ゲームエンジンに登録
 		}
+
+		ob->PostCreate();
 		return  ob;
 	}
 };
@@ -47,5 +51,6 @@ protected:
 public:
 	virtual ~ObjectBaseWithResource() {}
 
+protected:
 	shared_ptr<ResourceClass> res;
 };

@@ -133,6 +133,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Animation\AnimationClip.cpp" />
+    <ClCompile Include="src\Chara\Player\AttackPlayerAction.cpp" />
     <ClCompile Include="lib\DG2014\DG2014_DGObject.cpp" />
     <ClCompile Include="lib\DG2014\DG2014_Effect.cpp" />
     <ClCompile Include="lib\DG2014\DG2014_Font.cpp" />
@@ -149,6 +151,7 @@
     <ClCompile Include="lib\GameEngine_Ver3_83.cpp" />
     <ClCompile Include="lib\myLib.cpp" />
     <ClCompile Include="src\Chara\Player\BasicPlayerAction.cpp" />
+    <ClCompile Include="src\Chara\Player\PlayerAnimator.cpp" />
     <ClCompile Include="src\Common\Transform.cpp" />
     <ClCompile Include="src\Game\GameStatus.cpp" />
     <ClCompile Include="src\Game\GameReference.cpp" />
@@ -165,6 +168,9 @@
     <ClCompile Include="lib\XI2018_Ver1_0.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Animation\AnimationClip.h" />
+    <ClInclude Include="src\Animation\AnimationKey.h" />
+    <ClInclude Include="src\Chara\Player\AttackPlayerAction.h" />
     <ClInclude Include="lib\DG2014\DG2014_DGObject.h" />
     <ClInclude Include="lib\DG2014\DG2014_Effect.h" />
     <ClInclude Include="lib\DG2014\DG2014_Font.h" />
@@ -180,6 +186,10 @@
     <ClInclude Include="lib\GameEngine_Ver3_83.h" />
     <ClInclude Include="lib\myLib.h" />
     <ClInclude Include="src\Chara\Player\BasicPlayerAction.h" />
+    <ClInclude Include="src\Chara\Player\PlayerAnimator.h" />
+    <ClInclude Include="src\Chara\Player\PlayerConstant.h" />
+    <ClInclude Include="src\Chara\Player\PlayerState.h" />
+    <ClInclude Include="src\Common\Direction.h" />
     <ClInclude Include="src\Common\Transform.h" />
     <ClInclude Include="src\Game\GameStatus.h" />
     <ClInclude Include="src\Chara\Player\PlayerActionBase.h" />

@@ -1,11 +1,12 @@
 ﻿#pragma once
 
 #include "PlayerActionBase.h"
-#include "Utils/Log.h"
 
 namespace Player
 {
 	class BasicPlayerAction : public PlayerActionBase {
+	private:
+		BasicPlayerAction(const PlayerActionBase&) = delete;
 
 	public:
 		BasicPlayerAction(Player::Object::SP player, XI::GamePad::SP controller);

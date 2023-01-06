@@ -2,6 +2,7 @@
 
 #include "myLib.h"
 #include "Common/Transform.h"
+#include "Common/Direction.h"
 
 #pragma region 前方宣言
 
@@ -11,9 +12,6 @@ namespace Map { class Object; }
 
 class CharaBase
 {
-public:
-	enum class Direction { Left, Right };
-
 protected:
 	ML::Box2D hitBase;
 	ML::Vec2 moveVec;
@@ -32,4 +30,5 @@ public:
 	virtual ~CharaBase() {}
 
 	void AdjustMoveWithMap(const ML::Vec2& targetDest);
+	Direction GetDirection() const { return direction; }
 };

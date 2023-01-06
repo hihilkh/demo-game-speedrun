@@ -12,7 +12,7 @@ CharaBase::CharaBase(const ML::Vec2& pos, const ML::Box2D& hitBase) :
 	hitBase(hitBase),
 	moveVec(ML::Vec2()),
 	moveCnt(0),
-	direction(Direction::Right)
+	direction(Direction::Down)
 {
 
 }
