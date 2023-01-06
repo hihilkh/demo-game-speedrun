@@ -211,6 +211,9 @@
     <ClInclude Include="lib\XI2018_Ver1_0.h" />
     <ClInclude Include="src\Utils\Math.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Event\Event.tpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

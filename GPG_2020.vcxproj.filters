@@ -259,4 +259,9 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Event\Event.tpp">
+      <Filter>MyPG\Template Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>
