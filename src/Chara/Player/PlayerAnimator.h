@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "Task_Player.h"
+#include "Event/Event.tpp"
 
 #pragma region 前方宣言
 
@@ -28,6 +29,11 @@ namespace Player
 		Animation::AnimationClip* pCurrentAnimClip;
 
 		static unordered_map<PlayerState, Animation::AnimationClip> AnimClipMap;
+
+		bool isPlaying;
+
+	public:
+		Event<PlayerAnimator, PlayerState> animFinished;
 
 	private:
 		void ChangeState(PlayerState to);

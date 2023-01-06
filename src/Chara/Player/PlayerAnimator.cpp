@@ -10,12 +10,21 @@ namespace Player
 
 	// TODO : Study why AnimationClip would be copied here
 	// TODO : Study how to use move construction for it / reduce constructor call
+	// TODO : Do it need to make AnimClip instance instead of static?
 	unordered_map<PlayerState, AnimationClip> PlayerAnimator::AnimClipMap = {
-		{ PlayerState::Idle, AnimationClip({ 
+		{ PlayerState::Idle, AnimationClip(true, {
 			AnimationKey(0, 0, RenderWidth, RenderHeight, 1), }) 
 		},
 
-		{ PlayerState::Walk, AnimationClip({
+		{ PlayerState::Walk, AnimationClip(true, {
+			AnimationKey(0, 0				, RenderWidth, RenderHeight, 5),
+			AnimationKey(0, RenderHeight	, RenderWidth, RenderHeight, 10),
+			AnimationKey(0, RenderHeight * 2, RenderWidth, RenderHeight, 15),
+			AnimationKey(0, RenderHeight * 3, RenderWidth, RenderHeight, 20), })
+		},
+
+		// 一時的なコード
+		{ PlayerState::Attack, AnimationClip(false, {
 			AnimationKey(0, 0				, RenderWidth, RenderHeight, 5),
 			AnimationKey(0, RenderHeight	, RenderWidth, RenderHeight, 10),
 			AnimationKey(0, RenderHeight * 2, RenderWidth, RenderHeight, 15),
@@ -28,7 +37,8 @@ namespace Player
 		res(res),
 		currentPlayerState(PlayerState::Idle),
 		currentAnimFrame(0),
-		pCurrentAnimClip(nullptr)
+		pCurrentAnimClip(nullptr),
+		isPlaying(true)
 	{
 		UpdateCurrentAnimClip();
 	}
@@ -50,9 +60,20 @@ namespace Player
 			ChangeState(newPlayerState);
 		}
 		else {
+			if (!isPlaying) {
+				return;
+			}
+
 			++currentAnimFrame;
 			if (currentAnimFrame >= pCurrentAnimClip->GetAnimLength()) {
-				currentAnimFrame -= pCurrentAnimClip->GetAnimLength();
+				if (pCurrentAnimClip->GetIsLoop()) {
+					currentAnimFrame -= pCurrentAnimClip->GetAnimLength();
+				}
+				else {
+					currentAnimFrame = pCurrentAnimClip->GetAnimLength();
+					animFinished.Invoke(newPlayerState);
+					isPlaying = false;
+				}
 			}
 		}
 	}
@@ -61,6 +82,7 @@ namespace Player
 	{
 		currentPlayerState = to;
 		currentAnimFrame = 0;
+		isPlaying = true;
 		UpdateCurrentAnimClip();
 	}
 

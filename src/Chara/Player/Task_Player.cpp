@@ -5,6 +5,7 @@
 #include "Game/GameReference.h"
 #include "Game/GameStatus.h"
 #include "BasicPlayerAction.h"
+#include "AttackPlayerAction.h"
 #include "PlayerConstant.h"
 #include "PlayerAnimator.h"
 #include "Task/TaskConstant.h"
@@ -58,7 +59,7 @@ namespace Player
 		auto inp = ge->in1->GetState();
 		if (inp.SE.down) {
 			switch (playerAction->GetPlayerMode()) {
-				case PlayerMode::Basic:	// TODO 
+				case PlayerMode::Basic:		UpdatePlayerAction(PlayerMode::Attack);		break;
 				case PlayerMode::Attack:	// TODO 
 				case PlayerMode::Run:	// TODO 
 				case PlayerMode::Jump:		UpdatePlayerAction(PlayerMode::Basic);		break;
@@ -104,13 +105,21 @@ namespace Player
 
 		switch (playerMode) {
 			// TODO : 他のcase
-			case PlayerMode::Basic:
-			default:
-				playerAction = make_unique<BasicPlayerAction>(sharedPtr, ge->in1);
-				break;
+			case PlayerMode::Basic:		playerAction = make_unique<BasicPlayerAction>(sharedPtr, ge->in1);		break;
+			case PlayerMode::Attack:	playerAction = make_unique<AttackPlayerAction>(sharedPtr, ge->in1);		break;
 		}
 
 		Print((string)"今のPlayerAction：" + typeid(*playerAction).name());
+	}
+
+	void Object::AddAnimFinishedListener(std::function<void(PlayerState)>& listener) const
+	{
+		animator->animFinished.AddListener(listener);
+	}
+
+	void Object::RemoveAnimFinishedListener(std::function<void(PlayerState)>& listener) const
+	{
+		animator->animFinished.RemoveListener(listener);
 	}
 
 #pragma endregion

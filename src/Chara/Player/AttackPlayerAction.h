@@ -12,6 +12,10 @@ namespace Player
 		AttackPlayerAction(Player::Object::SP player, XI::GamePad::SP controller);
 		~AttackPlayerAction();
 
+	private:
+		std::function<void(PlayerState)> animFinishedListener;
+		void OnAnimFinished(PlayerState finishedState);
+
 	public:
 		PlayerMode GetPlayerMode() const override { return PlayerMode::Attack; }
 		void UpDate() override;

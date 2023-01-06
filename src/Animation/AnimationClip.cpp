@@ -3,7 +3,9 @@
 
 namespace Animation
 {
-	AnimationClip::AnimationClip(const initializer_list<AnimationKey>& animKeys) : animKeys(animKeys)
+	AnimationClip::AnimationClip(bool isLoop, const initializer_list<AnimationKey>& animKeys) : 
+		animKeys(animKeys),
+		isLoop(isLoop)
 	{
 		if (this->animKeys.empty()) {
 			animLength = 0;
