@@ -1,6 +1,7 @@
 #pragma once
+
 #include <vector>
-#include <functional>
+#include <memory>
 #include "MemberFunction.tpp"
 
 template<class OwnedClass, class... Args>
@@ -13,7 +14,7 @@ public:
 private:
 	typedef MemberFunctionBase<Args...> Listener;
 
-	std::vector<unique_ptr<Listener>> listeners;
+	std::vector<std::unique_ptr<Listener>> listeners;
 
 	void Invoke(Args... args)
 	{
@@ -26,7 +27,7 @@ public:
 	template<class T>
 	void AddListener(T* instance, void(T::* func)(Args...))
 	{
-		listeners.push_back(make_unique<MemberFunction<T, Args...>>(instance, func));
+		listeners.push_back(std::make_unique<MemberFunction<T, Args...>>(instance, func));
 	}
 
 	// îıçlÅF
