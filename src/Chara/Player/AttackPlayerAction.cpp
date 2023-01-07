@@ -1,5 +1,6 @@
 ﻿#include "AttackPlayerAction.h"
 #include "Utils/Log.h"
+#include "PlayerAnimator.h"
 
 namespace Player
 {
@@ -10,14 +11,14 @@ namespace Player
 			this->OnAnimFinished(finishedState);
 		};
 
-		player->AddAnimFinishedListener(animFinishedListener);
+		player->animator->animFinished.AddListener(this, &AttackPlayerAction::OnAnimFinished);
 	}
 
 	AttackPlayerAction::~AttackPlayerAction()
 	{
 		Player::Object::SP playerSP = player.lock();
 		if (playerSP) {
-			playerSP->RemoveAnimFinishedListener(animFinishedListener);
+			playerSP->animator->animFinished.RemoveListeners(this);
 		}
 	}
 

@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include <functional>
-#include "Utils/Log.h"
+#include "MemberFunction.tpp"
 
 template<class OwnedClass, class... Args>
 class Event {
@@ -11,34 +11,33 @@ public:
 	~Event() {}
 
 private:
-	//typedef void (*Listener)(Args...);
-	typedef std::function<void(Args...)> Listener;
+	typedef MemberFunctionBase<Args...> Listener;
 
-	std::vector<Listener*> listeners;
+	std::vector<unique_ptr<Listener>> listeners;
 
-	void Invoke(Args... args) const {
-		for (Listener* pListener : listeners) {
-			try {
-				(*pListener)(args...);
-			}
-			catch (const std::exception& ex) {
-				PrintWarning(ex.what());
-			}
-			catch (...) {
-				PrintWarning("不明なエラー");
-			}
+	void Invoke(Args... args)
+	{
+		for (auto& listener : listeners) {
+			(*listener.get())(args...);
 		}
 	}
 
 public:
-	void AddListener(Listener& listener) {
-		listeners.push_back(&listener);
+	template<class T>
+	void AddListener(T* instance, void(T::* func)(Args...))
+	{
+		listeners.push_back(make_unique<MemberFunction<T, Args...>>(instance, func));
 	}
 
-	void RemoveListener(Listener& listener) {
-		auto target = std::find(listeners.begin(), listeners.end(), &listener);
-		if (target != listeners.end()) {
-			listeners.erase(target);
-		}
+	// 備考：
+	// 特定な listener を指定することは難しい。現段階は全部削除の関数しかない。
+	/// <summary>
+	/// instance によって全ての listeners を削除
+	/// </summary>
+	template<class T>
+	void RemoveListeners(T* instance) {
+		auto removeIt = std::remove_if(listeners.begin(), listeners.end(),
+			[instance](auto& listener) { return listener->IsFuncOf(instance); });
+		listeners.erase(removeIt, listeners.end());
 	}
 };

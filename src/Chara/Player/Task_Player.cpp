@@ -9,6 +9,7 @@
 #include "PlayerConstant.h"
 #include "PlayerAnimator.h"
 #include "Task/TaskConstant.h"
+#include "Game/Task_Game.h"
 
 namespace Player
 {
@@ -27,7 +28,7 @@ namespace Player
 
 #pragma region Object
 
-	Object::Object() : 
+	Object::Object() :
 		ObjectBaseWithResource<Object, Resource>(TaskConstant::TaskGroupName_Chara, TaskConstant::TaskName_Player),
 		CharaBase(ML::Box2D(-PlayerConstant::HitBaseWidth / 2, -PlayerConstant::HitBaseHeight / 2, PlayerConstant::HitBaseWidth, PlayerConstant::HitBaseHeight)),
 		isInitialized(false),
@@ -36,6 +37,8 @@ namespace Player
 	{
 		// TODO : Better way to control priority?
 		render2D_Priority[1] = 0.5f;
+
+		Game::Object::gameReady.AddListener(this, &Object::GameReadyEventHandler);
 	}
 
 	void Object::PostCreate()
@@ -46,6 +49,7 @@ namespace Player
 
 	Object::~Object()
 	{
+		Game::Object::gameReady.RemoveListeners(this);
 	}
 
 	void Object::UpDate()
@@ -80,7 +84,7 @@ namespace Player
 		animator->Render(hitBase.OffsetCopy(transform->pos), camera->GetCameraOffset());
 	}
 
-	void Object::Initizalize()
+	void Object::GameReadyEventHandler()
 	{
 		UpdatePlayerAction(PlayerMode::Basic);
 
@@ -110,16 +114,6 @@ namespace Player
 		}
 
 		Print((string)"今のPlayerAction：" + typeid(*playerAction).name());
-	}
-
-	void Object::AddAnimFinishedListener(std::function<void(PlayerState)>& listener) const
-	{
-		animator->animFinished.AddListener(listener);
-	}
-
-	void Object::RemoveAnimFinishedListener(std::function<void(PlayerState)>& listener) const
-	{
-		animator->animFinished.RemoveListener(listener);
 	}
 
 #pragma endregion

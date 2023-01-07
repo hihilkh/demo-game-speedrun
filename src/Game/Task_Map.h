@@ -59,6 +59,8 @@ namespace Map
 		// TODO : bool isMapLoaded?
 
 	private:
+		void GameReadyEventHandler();
+
 		string GetMapFilePath(int mapIndex) const;
 		bool Load(const string& filePath);
 
@@ -70,7 +72,6 @@ namespace Map
 		ML::Rect GetOverlappedMapChipIndexes(const ML::Box2D& hit) const;
 
 	public:
-		void Initialize();
 		bool CheckHit(const ML::Box2D& hit) const;
 	};
 }

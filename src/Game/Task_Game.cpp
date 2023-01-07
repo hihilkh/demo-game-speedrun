@@ -14,6 +14,7 @@
 
 namespace Game
 {
+	Event<Object> Object::gameReady;
 
 #pragma region Object
 
@@ -33,9 +34,7 @@ namespace Game
 		GameReference::gameCamera = camera;
 		GameReference::map = map;
 
-		// TODO : Use event system for the timing to get reference
-		player->Initizalize();
-		map->Initialize();
+		gameReady.Invoke();
 	}
 
 	Object::~Object()

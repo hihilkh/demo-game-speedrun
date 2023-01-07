@@ -13,7 +13,7 @@ namespace Player
 		~AttackPlayerAction();
 
 	private:
-		std::function<void(PlayerState)> animFinishedListener;
+		function<void(PlayerState)> animFinishedListener;
 		void OnAnimFinished(PlayerState finishedState);
 
 	public:

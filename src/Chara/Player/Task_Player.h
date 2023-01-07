@@ -61,13 +61,11 @@ namespace Player
 		unique_ptr<class PlayerAnimator> animator;
 
 	private:
+		void GameReadyEventHandler();
+
 		void UpdatePlayerAction(PlayerMode playerMode);
 
-		void AddAnimFinishedListener(std::function<void(PlayerState)>& listener) const;
-		void RemoveAnimFinishedListener(std::function<void(PlayerState)>& listener) const;
-
 	public:
-		void Initizalize();
 		PlayerState GetState() const { return state; }
 	};
 }

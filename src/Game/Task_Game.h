@@ -5,6 +5,7 @@
 //-------------------------------------------------------------------
 #include "Task/ResourceBase.tpp"
 #include "Task/ObjectBase.tpp"
+#include "Event/Event.tpp"
 
 #pragma region 前方宣言
 
@@ -29,5 +30,8 @@ namespace Game
 
 	private:
 		shared_ptr<GameStatus> gameStatus;
+
+	public:
+		static Event<Object> gameReady;
 	};
 }

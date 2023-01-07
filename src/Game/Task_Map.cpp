@@ -6,6 +6,7 @@
 #include "GameStatus.h"
 #include "Utils/Math.h"
 #include "Task/TaskConstant.h"
+#include "Game/Task_Game.h"
 
 namespace Map
 {
@@ -45,10 +46,13 @@ namespace Map
 		mapChipCenterOffset(ML::Point{ -CHIP_SIZE / 2, -CHIP_SIZE / 2})
 	{
 		render2D_Priority[1] = 0.9f;
+
+		Game::Object::gameReady.AddListener(this, &Object::GameReadyEventHandler);
 	}
 
 	Object::~Object()
 	{
+		Game::Object::gameReady.RemoveListeners(this);
 	}
 
 	void Object::UpDate()
@@ -75,7 +79,7 @@ namespace Map
 		}
 	}
 
-	void Object::Initialize()
+	void Object::GameReadyEventHandler()
 	{
 		isInitialized = true;
 		this->camera = Game::GameReference::GetGameCamera();

@@ -213,6 +213,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Event\Event.tpp" />
+    <None Include="src\Event\MemberFunction.tpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -263,5 +263,8 @@
     <None Include="src\Event\Event.tpp">
       <Filter>MyPG\Template Files</Filter>
     </None>
+    <None Include="src\Event\MemberFunction.tpp">
+      <Filter>MyPG\Template Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
