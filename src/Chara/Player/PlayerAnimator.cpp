@@ -17,10 +17,10 @@ namespace Player
 		},
 
 		{ PlayerState::Walk, AnimationClip(true, {
-			AnimationKey(0, 0				, RenderWidth, RenderHeight, 5),
-			AnimationKey(0, RenderHeight	, RenderWidth, RenderHeight, 10),
-			AnimationKey(0, RenderHeight * 2, RenderWidth, RenderHeight, 15),
-			AnimationKey(0, RenderHeight * 3, RenderWidth, RenderHeight, 20), })
+			AnimationKey(0, 0				, RenderWidth, RenderHeight, 6),
+			AnimationKey(0, RenderHeight	, RenderWidth, RenderHeight, 12),
+			AnimationKey(0, RenderHeight * 2, RenderWidth, RenderHeight, 18),
+			AnimationKey(0, RenderHeight * 3, RenderWidth, RenderHeight, 24), })
 		},
 
 		// 一時的なコード
@@ -29,6 +29,19 @@ namespace Player
 			AnimationKey(0, RenderHeight	, RenderWidth, RenderHeight, 10),
 			AnimationKey(0, RenderHeight * 2, RenderWidth, RenderHeight, 15),
 			AnimationKey(0, RenderHeight * 3, RenderWidth, RenderHeight, 20), })
+		},
+
+		// 一時的なコード
+		{ PlayerState::Running, AnimationClip(true, {
+			AnimationKey(0, 0				, RenderWidth, RenderHeight, 3),
+			AnimationKey(0, RenderHeight	, RenderWidth, RenderHeight, 6),
+			AnimationKey(0, RenderHeight * 2, RenderWidth, RenderHeight, 9),
+			AnimationKey(0, RenderHeight * 3, RenderWidth, RenderHeight, 12), })
+		},
+
+		// 一時的なコード
+		{ PlayerState::Stopping, AnimationClip(true, {
+			AnimationKey(0, 0, RenderWidth, RenderHeight, 1), })
 		},
 	};
 

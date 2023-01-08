@@ -6,6 +6,7 @@
 #include "Game/GameStatus.h"
 #include "BasicPlayerAction.h"
 #include "AttackPlayerAction.h"
+#include "RunPlayerAction.h"
 #include "PlayerConstant.h"
 #include "PlayerAnimator.h"
 #include "Task/TaskConstant.h"
@@ -32,7 +33,7 @@ namespace Player
 		ObjectBaseWithResource<Object, Resource>(TaskConstant::TaskGroupName_Chara, TaskConstant::TaskName_Player),
 		CharaBase(ML::Box2D(-PlayerConstant::HitBaseWidth / 2, -PlayerConstant::HitBaseHeight / 2, PlayerConstant::HitBaseWidth, PlayerConstant::HitBaseHeight)),
 		isInitialized(false),
-		speed(5),
+		currentMovementSpeed(PlayerConstant::WalkSpeed),
 		state(PlayerState::Idle)
 	{
 		// TODO : Better way to control priority?
@@ -64,7 +65,7 @@ namespace Player
 		if (inp.SE.down) {
 			switch (playerAction->GetPlayerMode()) {
 				case PlayerMode::Basic:		UpdatePlayerAction(PlayerMode::Attack);		break;
-				case PlayerMode::Attack:	// TODO 
+				case PlayerMode::Attack:	UpdatePlayerAction(PlayerMode::Run);		break;
 				case PlayerMode::Run:	// TODO 
 				case PlayerMode::Jump:		UpdatePlayerAction(PlayerMode::Basic);		break;
 			}
@@ -86,7 +87,8 @@ namespace Player
 
 	void Object::GameReadyEventHandler()
 	{
-		UpdatePlayerAction(PlayerMode::Basic);
+		//UpdatePlayerAction(PlayerMode::Basic);
+		UpdatePlayerAction(PlayerMode::Run);
 
 		camera = Game::GameReference::GetGameCamera();
 		map = Game::GameReference::GetMap();
@@ -111,6 +113,7 @@ namespace Player
 			// TODO : 他のcase
 			case PlayerMode::Basic:		playerAction = make_unique<BasicPlayerAction>(sharedPtr, ge->in1);		break;
 			case PlayerMode::Attack:	playerAction = make_unique<AttackPlayerAction>(sharedPtr, ge->in1);		break;
+			case PlayerMode::Run:		playerAction = make_unique<RunPlayerAction>(sharedPtr, ge->in1);		break;
 		}
 
 		Print((string)"今のPlayerAction：" + typeid(*playerAction).name());

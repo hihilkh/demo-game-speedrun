@@ -7,5 +7,9 @@ namespace Player
 		Idle,
 		Walk,
 		Attack,
+
+		// 走る
+		Running,
+		Stopping,
 	};
 }

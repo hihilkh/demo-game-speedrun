@@ -152,6 +152,7 @@
     <ClCompile Include="lib\myLib.cpp" />
     <ClCompile Include="src\Chara\Player\BasicPlayerAction.cpp" />
     <ClCompile Include="src\Chara\Player\PlayerAnimator.cpp" />
+    <ClCompile Include="src\Chara\Player\RunPlayerAction.cpp" />
     <ClCompile Include="src\Common\Transform.cpp" />
     <ClCompile Include="src\Game\GameStatus.cpp" />
     <ClCompile Include="src\Game\GameReference.cpp" />
@@ -189,6 +190,7 @@
     <ClInclude Include="src\Chara\Player\PlayerAnimator.h" />
     <ClInclude Include="src\Chara\Player\PlayerConstant.h" />
     <ClInclude Include="src\Chara\Player\PlayerState.h" />
+    <ClInclude Include="src\Chara\Player\RunPlayerAction.h" />
     <ClInclude Include="src\Common\Direction.h" />
     <ClInclude Include="src\Common\Transform.h" />
     <ClInclude Include="src\Game\GameStatus.h" />

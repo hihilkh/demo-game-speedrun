@@ -36,6 +36,7 @@ namespace Player
 		friend class PlayerActionBase;
 		friend class BasicPlayerAction;
 		friend class AttackPlayerAction;
+		friend class RunPlayerAction;
 
 #pragma endregion
 
@@ -55,7 +56,7 @@ namespace Player
 		shared_ptr<GameCamera::Object> camera;
 
 		bool isInitialized;
-		float speed;
+		float currentMovementSpeed;		// Inputによっての速度。実際の速度ではない。
 		PlayerState state;
 		unique_ptr<class PlayerActionBase> playerAction;
 		unique_ptr<class PlayerAnimator> animator;
