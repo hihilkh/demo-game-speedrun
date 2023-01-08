@@ -7,10 +7,6 @@ namespace Player
 	AttackPlayerAction::AttackPlayerAction(Player::Object::SP player, XI::GamePad::SP controller) :
 		PlayerActionBase::PlayerActionBase(player, controller)
 	{
-		animFinishedListener = [this](PlayerState finishedState) {
-			this->OnAnimFinished(finishedState);
-		};
-
 		player->animator->animFinished.AddListener(this, &AttackPlayerAction::OnAnimFinished);
 	}
 
