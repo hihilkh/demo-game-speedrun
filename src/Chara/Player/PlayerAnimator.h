@@ -1,11 +1,17 @@
 ﻿#pragma once
 
-#include "Task_Player.h"
+#include <myLib.h>
 #include "Event/Event.tpp"
+#include "Common/Direction.h"
+#include "PlayerState.h"
 
 #pragma region 前方宣言
 
 namespace Animation { class AnimationClip; }
+namespace Player {
+	class Object;
+	class Resource;
+}
 
 #pragma endregion
 
@@ -17,12 +23,12 @@ namespace Player
 		PlayerAnimator(const PlayerAnimator&) = delete;
 
 	public:
-		PlayerAnimator(Player::Object::WP player, Player::Resource::WP res);
+		PlayerAnimator(weak_ptr<Player::Object> player, shared_ptr<Player::Resource> res);
 		~PlayerAnimator();
 
 	private:
-		Player::Object::WP player;
-		Player::Resource::WP res;
+		weak_ptr<Player::Object> player;
+		shared_ptr<Player::Resource> res;
 
 		PlayerState currentPlayerState;
 		int currentAnimFrame;
@@ -43,6 +49,6 @@ namespace Player
 
 	public:
 		void UpDate();
-		void Render(const ML::Box2D& drawBase, const ML::Point& cameraOffset);
+		void Render(const ML::Box2D& drawBase, const ML::Point& cameraOffset, int height);
 	};
 }

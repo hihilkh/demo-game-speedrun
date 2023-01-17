@@ -89,15 +89,13 @@ namespace Player
 
 	void RunPlayerAction::Run(Player::Object::SP playerSP)
 	{
-		ML::Vec2 targetMove = ML::Vec2(0, 0);
-
-		switch (playerSP->direction) {
-			case Direction::Left:	targetMove.x -= playerSP->currentMovementSpeed;		break;
-			case Direction::Right:	targetMove.x += playerSP->currentMovementSpeed;		break;
-			case Direction::Up:		targetMove.y -= playerSP->currentMovementSpeed;		break;
-			case Direction::Down:	targetMove.y += playerSP->currentMovementSpeed;		break;
+		ML::Vec2 targetMove = playerSP->GetDirectionalVector(playerSP->direction) * playerSP->currentMovementSpeed;
+		bool isHit = playerSP->AdjustMoveWithMap(targetMove);
+		if (isHit){
+			if (isRunning && playerSP->currentMovementSpeed > PlayerConstant::WalkSpeed) {
+				isRunning = false;
+				playerSP->Fallback();
+			}
 		}
-
-		playerSP->AdjustMoveWithMap(targetMove);
 	}
 }

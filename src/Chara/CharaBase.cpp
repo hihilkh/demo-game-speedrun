@@ -17,13 +17,15 @@ CharaBase::CharaBase(const ML::Vec2& pos, const ML::Box2D& hitBase) :
 
 }
 
-void CharaBase::AdjustMoveWithMap(const ML::Vec2& targetMove)
+bool CharaBase::AdjustMoveWithMap(const ML::Vec2& targetMove)
 {
 	if (!map) {
 		PrintWarning("マップの参照がない。キャラクターは自由に移動できる");
 		transform->pos = targetMove;
-		return;
+		return false;
 	}
+
+	bool isHit = false;
 
 	const int noOfAxis = 2;
 	float* pMoveAxisValues[noOfAxis] = { &transform->pos.x, &transform->pos.y };
@@ -51,8 +53,23 @@ void CharaBase::AdjustMoveWithMap(const ML::Vec2& targetMove)
 			ML::Box2D hit = hitBase.OffsetCopy(transform->pos);
 			if (map->CheckHit(hit)) {
 				*pAxisValue = previousValue;		//移動をキャンセル
+				isHit = true;
 				break;
 			}
 		}
 	}
+
+	return isHit;
+}
+
+ML::Vec2 CharaBase::GetDirectionalVector(Direction direction) const
+{
+	switch (direction) {
+		case Direction::Left:	return ML::Vec2(-1, 0);
+		case Direction::Right:	return ML::Vec2(1, 0);
+		case Direction::Up:		return ML::Vec2(0, -1);
+		case Direction::Down:	return ML::Vec2(0, 1);
+	}
+
+	assert(false && "おかしい方向");
 }

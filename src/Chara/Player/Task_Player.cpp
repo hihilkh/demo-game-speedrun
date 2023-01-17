@@ -11,6 +11,7 @@
 #include "PlayerAnimator.h"
 #include "Task/TaskConstant.h"
 #include "Game/Task_Game.h"
+#include "Utils/Math.h"
 
 namespace Player
 {
@@ -33,8 +34,10 @@ namespace Player
 		ObjectBaseWithResource<Object, Resource>(TaskConstant::TaskGroupName_Chara, TaskConstant::TaskName_Player),
 		CharaBase(ML::Box2D(-PlayerConstant::HitBaseWidth / 2, -PlayerConstant::HitBaseHeight / 2, PlayerConstant::HitBaseWidth, PlayerConstant::HitBaseHeight)),
 		isInitialized(false),
+		canControl(true),
 		currentMovementSpeed(PlayerConstant::WalkSpeed),
-		state(PlayerState::Idle)
+		state(PlayerState::Idle),
+		fallbackCounter(0)
 	{
 		// TODO : Better way to control priority?
 		render2D_Priority[1] = 0.5f;
@@ -59,6 +62,13 @@ namespace Player
 			return;
 		}
 
+		if (!canControl) {
+			if (state == PlayerState::Fallback) {
+				UpdateFallback();
+			}
+			return;
+		}
+
 #if _DEBUG
 		// バックドア：PlayerActionの切り替え
 		auto inp = ge->in1->GetState();
@@ -72,6 +82,12 @@ namespace Player
 		}
 #endif
 
+		// PreAction
+		// - target move, direction, speed
+		// (Move)Interactive with Map
+		// - change anim
+		// - change speed
+		// animator
 		playerAction->UpDate();
 		animator->UpDate();
 	}
@@ -82,7 +98,7 @@ namespace Player
 			return;
 		}
 
-		animator->Render(hitBase.OffsetCopy(transform->pos), camera->GetCameraOffset());
+		animator->Render(hitBase.OffsetCopy(transform->pos), camera->GetCameraOffset(), (int)currentHeight);
 	}
 
 	void Object::GameReadyEventHandler()
@@ -117,6 +133,32 @@ namespace Player
 		}
 
 		Print((string)"今のPlayerAction：" + typeid(*playerAction).name());
+	}
+
+	void Object::Fallback()
+	{
+		Print("撃退された");
+		currentMovementSpeed = 0;
+		canControl = false;
+		fallbackCounter = 0;
+		state = PlayerState::Fallback;
+	}
+
+	void Object::UpdateFallback()
+	{
+		if (fallbackCounter < PlayerConstant::FallbackPeriod) {
+			++fallbackCounter;
+
+			currentHeight = PlayerConstant::FallbackMaxHeight * sin((float)fallbackCounter / PlayerConstant::FallbackPeriod * Math::PI);
+
+			ML::Vec2 targetMove = GetDirectionalVector(direction) * (-PlayerConstant::FallbackBackSpeed);
+			AdjustMoveWithMap(targetMove);
+		}
+		else {
+			currentHeight = 0;
+			canControl = true;
+			state = PlayerState::Idle;
+		}
 	}
 
 #pragma endregion

@@ -25,10 +25,16 @@ namespace Player
 		Direction previousDirection = playerSP->direction;
 		bool isDirectionFixed = false;
 		ML::Vec2 targetMove = ML::Vec2(0, 0);
-		if (input.LStick.BL.on) { targetMove.x -= PlayerConstant::WalkSpeed; SetDirection(playerSP, previousDirection, Direction::Left, isDirectionFixed); }
-		if (input.LStick.BR.on) { targetMove.x += PlayerConstant::WalkSpeed; SetDirection(playerSP, previousDirection, Direction::Right, isDirectionFixed); }
-		if (input.LStick.BU.on) { targetMove.y -= PlayerConstant::WalkSpeed; SetDirection(playerSP, previousDirection, Direction::Up, isDirectionFixed); }
-		if (input.LStick.BD.on) { targetMove.y += PlayerConstant::WalkSpeed; SetDirection(playerSP, previousDirection, Direction::Down, isDirectionFixed); }
+
+		auto setPlayer = [&](Direction direction) {
+			targetMove += playerSP->GetDirectionalVector(direction) * PlayerConstant::WalkSpeed;
+			SetDirection(playerSP, previousDirection, direction, isDirectionFixed);
+		};
+
+		if (input.LStick.BL.on) { setPlayer(Direction::Left); }
+		if (input.LStick.BR.on) { setPlayer(Direction::Right); }
+		if (input.LStick.BU.on) { setPlayer(Direction::Up); }
+		if (input.LStick.BD.on) { setPlayer(Direction::Down); }
 
 		if (targetMove.x == 0 && targetMove.y == 0) {
 			playerSP->currentMovementSpeed = 0;

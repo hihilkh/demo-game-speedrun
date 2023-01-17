@@ -26,9 +26,13 @@ protected:
 public:
 	Transform::SP transform;
 
+protected:
+	ML::Vec2 GetDirectionalVector(Direction direction) const;
+
 public:
 	virtual ~CharaBase() {}
 
-	void AdjustMoveWithMap(const ML::Vec2& targetDest);
+	/// <returns>ぶつけるかないか</returns>
+	bool AdjustMoveWithMap(const ML::Vec2& targetMove);
 	Direction GetDirection() const { return direction; }
 };

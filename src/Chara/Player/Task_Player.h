@@ -56,15 +56,21 @@ namespace Player
 		shared_ptr<GameCamera::Object> camera;
 
 		bool isInitialized;
+		bool canControl;
 		float currentMovementSpeed;		// Inputによっての速度。実際の速度ではない。
+		float currentHeight;
 		PlayerState state;
-		unique_ptr<class PlayerActionBase> playerAction;
+		unique_ptr<class PlayerActionBase> playerAction;		// TODO : Or change to the concept of controller?
 		unique_ptr<class PlayerAnimator> animator;
+
+		int fallbackCounter;
 
 	private:
 		void GameReadyEventHandler();
 
 		void UpdatePlayerAction(PlayerMode playerMode);
+		void Fallback();
+		void UpdateFallback();
 
 	public:
 		PlayerState GetState() const { return state; }

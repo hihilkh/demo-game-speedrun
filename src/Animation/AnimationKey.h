@@ -1,7 +1,6 @@
 ﻿#pragma once
 
 #include <myLib.h>
-#include "Utils/Log.h"
 
 namespace Animation
 {

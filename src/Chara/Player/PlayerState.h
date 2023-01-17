@@ -11,5 +11,7 @@ namespace Player
 		// 走る
 		Running,
 		Stopping,
+
+		Fallback,
 	};
 }

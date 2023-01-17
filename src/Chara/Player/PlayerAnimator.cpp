@@ -2,6 +2,7 @@
 #include "Utils/Log.h"
 #include "Animation/AnimationClip.h"
 #include "PlayerConstant.h"
+#include "Task_Player.h"
 
 namespace Player
 {
@@ -43,9 +44,14 @@ namespace Player
 		{ PlayerState::Stopping, AnimationClip(true, {
 			AnimationKey(0, 0, RenderWidth, RenderHeight, 1), })
 		},
+
+		// 一時的なコード
+		{ PlayerState::Fallback, AnimationClip(true, {
+			AnimationKey(0, 0, RenderWidth, RenderHeight, 1), })
+		},
 	};
 
-	PlayerAnimator::PlayerAnimator(Player::Object::WP player, Player::Resource::WP res) :
+	PlayerAnimator::PlayerAnimator(Player::Object::WP player, Player::Resource::SP res) :
 		player(player),
 		res(res),
 		currentPlayerState(PlayerState::Idle),
@@ -110,7 +116,7 @@ namespace Player
 		}
 	}
 
-	void PlayerAnimator::Render(const ML::Box2D& drawBase, const ML::Point& cameraOffset)
+	void PlayerAnimator::Render(const ML::Box2D& drawBase, const ML::Point& cameraOffset, int height)
 	{
 		if (!pCurrentAnimClip) {
 			return;
@@ -121,16 +127,13 @@ namespace Player
 			return;
 		}
 
-		Player::Resource::SP resSP = res.lock();
-		if (!resSP) {
-			return;
-		}
-
+		// TODO : 影
 		ML::Box2D draw = drawBase.OffsetCopy(cameraOffset);
+		draw.y -= height;
 		ML::Box2D src = pCurrentAnimClip->GetImageSrc(currentAnimFrame);
 		UpdateSrcDirection(src, playerSP->GetDirection());
 
-		resSP->img->Draw(draw, src);
+		res->img->Draw(draw, src);
 	}
 
 	void PlayerAnimator::UpdateSrcDirection(ML::Box2D& outSrc, Direction direction) const
