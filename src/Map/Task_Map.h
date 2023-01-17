@@ -2,11 +2,13 @@
 
 #include "Task/ResourceBase.tpp"
 #include "Task/ObjectBase.tpp"
-#include "Task_GameCamera.h"
+#include "Game/Task_GameCamera.h"
+#include "Common/BoxIteratorContainer.tpp"
 
 #pragma region 前方宣言
 
 namespace GameCamera { class Object; }
+namespace Map { class MapChipBase; }
 
 #pragma endregion
 
@@ -42,9 +44,9 @@ namespace Map
 		void UpDate() override;			//「実行」１フレーム毎に行う処理
 		void Render2D_AF() override;	//「2D描画」１フレーム毎に行う処理
 
+		typedef BoxIteratorContainer<shared_ptr<MapChipBase>> MapChipItContainer;
+
 	private:
-		int sizeX;
-		int sizeY;
 		int mapChipLeftmostIndex;
 		int mapChipTopmostIndex;
 		ML::Box2D hitBase;
@@ -52,6 +54,8 @@ namespace Map
 
 		// TODO : Use SubMap with std::array
 		int arr[100][100];
+		ML::Point size;
+		vector<shared_ptr<MapChipBase>> mapChips;
 
 		shared_ptr<GameCamera::Object> camera;
 
@@ -64,14 +68,9 @@ namespace Map
 		string GetMapFilePath(int mapIndex) const;
 		bool Load(const string& filePath);
 
-		// TOOD : Use iterator and Map Chip class
-		/// <returns>
-		/// x 添字：Rect.leftからRect.rightまで（含まない）<para />
-		/// y 添字：Rect.topからRect.bottomまで（含まない）
-		/// </returns>
-		ML::Rect GetOverlappedMapChipIndexes(const ML::Box2D& hit) const;
+		MapChipItContainer GetOverlappedMapChipInterator(const ML::Box2D& hit);
 
 	public:
-		bool CheckHit(const ML::Box2D& hit) const;
+		bool CheckHit(const ML::Box2D& hit);
 	};
 }

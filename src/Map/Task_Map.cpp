@@ -1,15 +1,17 @@
 ﻿#include "Task_Map.h"
-#include "GameReference.h"
 #include "Utils/Log.h"
-#include "Task_GameCamera.h"
-#include "GameReference.h"
-#include "GameStatus.h"
 #include "Utils/Math.h"
 #include "Task/TaskConstant.h"
+#include "Game/GameReference.h"
 #include "Game/Task_Game.h"
+#include "Game/Task_GameCamera.h"
+#include "Game/GameStatus.h"
+#include "MapChipBase.h"
 
 namespace Map
 {
+	extern MapChipBase::SP GenerateMapChip(MapChipType type, shared_ptr<Resource> res, const ML::Box2D& hitBase);
+
 #define CHIP_SIZE ResourceConstant::MapChipSize
 
 #pragma region Resource
@@ -66,16 +68,10 @@ namespace Map
 		}
 
 		const ML::Box2D& visibleRange = camera->GetVisibleRange();
-		ML::Rect indexes = GetOverlappedMapChipIndexes(visibleRange);
 
-		for (int y = indexes.top; y < indexes.bottom; ++y) {
-			for (int x = indexes.left; x < indexes.right; ++x) {
-				ML::Box2D draw(0, 0, CHIP_SIZE, CHIP_SIZE);	
-				draw.Offset((x + mapChipLeftmostIndex) * CHIP_SIZE, (y + mapChipTopmostIndex) * CHIP_SIZE);	// chip のワールドポジション
-				draw.Offset(mapChipCenterOffset);										// ローカルオフセット
-				draw.Offset(-visibleRange.x, -visibleRange.y);							// カメラに合わせる
-				this->res->Draw(this->arr[y][x], draw);
-			}
+		MapChipItContainer itContainer = GetOverlappedMapChipInterator(visibleRange);
+		for (auto& mapChip : itContainer) {
+			mapChip->Render(-visibleRange.x, -visibleRange.y);
 		}
 	}
 
@@ -107,27 +103,35 @@ namespace Map
 		ifstream fin(filePath);
 		if (!fin) { return false; }
 
-		fin >> sizeX >> sizeY >> mapChipLeftmostIndex >> mapChipTopmostIndex;
+		fin >> size.x >> size.y >> mapChipLeftmostIndex >> mapChipTopmostIndex;
 		hitBase = ML::Box2D(
 			mapChipCenterOffset.x + mapChipLeftmostIndex * CHIP_SIZE, 
 			mapChipCenterOffset.y + mapChipTopmostIndex * CHIP_SIZE,
-			sizeX * CHIP_SIZE,
-			sizeY * CHIP_SIZE);
+			size.x * CHIP_SIZE,
+			size.y * CHIP_SIZE);
 
-		for (int y = 0; y < sizeY; ++y) {
-			for (int x = 0; x < sizeX; ++x) {
-				fin >> this->arr[y][x];
+		mapChips.reserve(size.x * size.y);
+		int typeInt;
+
+		// TODO : study of flyweight(?) pattern instead of instantiate all?
+		for (int y = 0; y < size.y; ++y) {
+			for (int x = 0; x < size.x; ++x) {
+				fin >> typeInt;
+				arr[y][x] = typeInt;
+				ML::Box2D mapChipHitBase = ML::Box2D(x * CHIP_SIZE, y * CHIP_SIZE, CHIP_SIZE, CHIP_SIZE);
+				mapChipHitBase.Offset(hitBase.x, hitBase.y);
+
+				mapChips.push_back(GenerateMapChip(static_cast<MapChipType>(typeInt), res, mapChipHitBase));
 			}
 		}
-		fin.close();
 
 		return true;
 	}
 
-	ML::Rect Object::GetOverlappedMapChipIndexes(const ML::Box2D& hit) const
+	Object::MapChipItContainer Object::GetOverlappedMapChipInterator(const ML::Box2D& hit)
 	{
 		if (!this->hitBase.Hit(hit)) {
-			return ML::Rect{ 0, 0, 0, 0 };
+			return MapChipItContainer(mapChips, size.x, ML::Box2D(0, 0, 0, 0));
 		}
 
 		ML::Rect overlappedRect = {
@@ -137,27 +141,26 @@ namespace Map
 			min(hit.y + hit.h, hitBase.y + hitBase.h) - 1,	// Bottom
 		};
 
-		ML::Rect result;
-		result.left = Math::FloorDivide(overlappedRect.left - mapChipCenterOffset.x, CHIP_SIZE) - mapChipLeftmostIndex;
-		result.top = Math::FloorDivide(overlappedRect.top - mapChipCenterOffset.y, CHIP_SIZE) - mapChipTopmostIndex;
-		result.right = 1 + Math::FloorDivide(overlappedRect.right - mapChipCenterOffset.x, CHIP_SIZE) - mapChipLeftmostIndex;
-		result.bottom = 1 + Math::FloorDivide(overlappedRect.bottom - mapChipCenterOffset.y, CHIP_SIZE) - mapChipTopmostIndex;
+		ML::Box2D iterateBox;
+		iterateBox.x = Math::FloorDivide(overlappedRect.left - mapChipCenterOffset.x, CHIP_SIZE) - mapChipLeftmostIndex;
+		iterateBox.y = Math::FloorDivide(overlappedRect.top - mapChipCenterOffset.y, CHIP_SIZE) - mapChipTopmostIndex;
+		iterateBox.w = (Math::FloorDivide(overlappedRect.right - mapChipCenterOffset.x, CHIP_SIZE) - mapChipLeftmostIndex) - iterateBox.x + 1;
+		iterateBox.h = (Math::FloorDivide(overlappedRect.bottom - mapChipCenterOffset.y, CHIP_SIZE) - mapChipTopmostIndex) - iterateBox.y + 1;
 
-		return result;
+		return MapChipItContainer(mapChips, size.x, iterateBox);
 	}
 
-	bool Object::CheckHit(const ML::Box2D& hit) const
+	bool Object::CheckHit(const ML::Box2D& hit)
 	{
-		ML::Rect indexes = GetOverlappedMapChipIndexes(hit);
+		MapChipItContainer itContainer = GetOverlappedMapChipInterator(hit);
 
 		//範囲内の障害物を探す
-		for (int y = indexes.top; y < indexes.bottom; ++y) {
-			for (int x = indexes.left; x < indexes.right; ++x) {
-				if (8 <= this->arr[y][x]) {
-					return true;
-				}
+		for (auto& mapChip : itContainer) {
+			if (mapChip->GetType() == MapChipType::UnbreakableWall) {
+				return true;
 			}
 		}
+
 		return false;
 	}
 #pragma endregion

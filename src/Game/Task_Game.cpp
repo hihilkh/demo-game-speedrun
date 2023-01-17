@@ -4,7 +4,7 @@
 #include "MyPG.h"
 #include "Task_Game.h"
 #include "Ending/Task_Ending.h"
-#include "Task_Map.h"
+#include "Map/Task_Map.h"
 #include "Task_GameCamera.h"
 #include "Chara/Player/Task_Player.h"
 #include "GameReference.h"
@@ -53,6 +53,11 @@ namespace Game
 	//「更新」１フレーム毎に行う処理
 	void  Object::UpDate()
 	{
+		//XI::VGamePad input = ge->in1->GetState();
+
+		//if (input.ST.down) {
+		//	this->Kill();
+		//}
 	}
 	//-------------------------------------------------------------------
 	//「２Ｄ描画」１フレーム毎に行う処理

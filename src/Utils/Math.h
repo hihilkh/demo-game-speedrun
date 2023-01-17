@@ -2,6 +2,7 @@
 
 #include <cmath>
 
+// TODO : もしC++17 / 20になると、こっちの関数がまだ必要があるかどうかを見直す
 namespace Math
 {
 	/// <summary>
@@ -22,4 +23,6 @@ namespace Math
 	{
 		return from + (to - from) * Clamp01(progress);
 	}
+
+	static const double PI = 3.141592653589793;
 }

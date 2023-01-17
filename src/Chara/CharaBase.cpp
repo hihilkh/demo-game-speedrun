@@ -1,6 +1,6 @@
 ﻿#include "CharaBase.h"
 #include "Utils/Log.h"
-#include "Game/Task_Map.h"
+#include "Map/Task_Map.h"
 
 CharaBase::CharaBase(const ML::Box2D& hitBase) : CharaBase::CharaBase(ML::Vec2(), hitBase)
 {

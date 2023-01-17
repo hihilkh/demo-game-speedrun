@@ -157,13 +157,17 @@
     <ClCompile Include="src\Game\GameStatus.cpp" />
     <ClCompile Include="src\Game\GameReference.cpp" />
     <ClCompile Include="src\Chara\Player\PlayerActionBase.cpp" />
+    <ClCompile Include="src\Map\FloorMapChip.cpp" />
+    <ClCompile Include="src\Map\MapChipBase.cpp" />
+    <ClCompile Include="src\Map\MapChipFactory.cpp" />
+    <ClCompile Include="src\Map\Task_Map.cpp" />
+    <ClCompile Include="src\Map\UnbreakableWallMapChip.cpp" />
     <ClCompile Include="src\MyPG.cpp" />
     <ClCompile Include="src\Chara\CharaBase.cpp" />
     <ClCompile Include="src\Chara\Player\Task_Player.cpp" />
     <ClCompile Include="src\Ending\Task_Ending.cpp" />
     <ClCompile Include="src\Game\Task_Game.cpp" />
     <ClCompile Include="src\Game\Task_GameCamera.cpp" />
-    <ClCompile Include="src\Game\Task_Map.cpp" />
     <ClCompile Include="src\Title\Task_Title.cpp" />
     <ClCompile Include="src\WinMain.cpp" />
     <ClCompile Include="lib\XI2018_Ver1_0.cpp" />
@@ -196,6 +200,12 @@
     <ClInclude Include="src\Game\GameStatus.h" />
     <ClInclude Include="src\Chara\Player\PlayerActionBase.h" />
     <ClInclude Include="src\Chara\Player\PlayerMode.h" />
+    <ClInclude Include="src\Map\FloorMapChip.h" />
+    <ClInclude Include="src\Map\MapChipBase.h" />
+    <ClInclude Include="src\Map\MapChipContainer.h" />
+    <ClInclude Include="src\Map\MapChipType.h" />
+    <ClInclude Include="src\Map\Task_Map.h" />
+    <ClInclude Include="src\Map\UnbreakableWallMapChip.h" />
     <ClInclude Include="src\MyPG.h" />
     <ClInclude Include="src\Chara\CharaBase.h" />
     <ClInclude Include="src\Game\GameReference.h" />
@@ -208,12 +218,12 @@
     <ClInclude Include="src\Ending\Task_Ending.h" />
     <ClInclude Include="src\Game\Task_Game.h" />
     <ClInclude Include="src\Game\Task_GameCamera.h" />
-    <ClInclude Include="src\Game\Task_Map.h" />
     <ClInclude Include="src\Title\Task_Title.h" />
     <ClInclude Include="lib\XI2018_Ver1_0.h" />
     <ClInclude Include="src\Utils\Math.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="src\Common\BoxIteratorContainer.tpp" />
     <None Include="src\Event\Event.tpp" />
     <None Include="src\Event\MemberFunction.tpp" />
   </ItemGroup>
