@@ -2,7 +2,6 @@
 
 #include <cmath>
 
-// TODO : もしC++17 / 20になると、こっちの関数がまだ必要があるかどうかを見直す
 namespace Math
 {
 	/// <summary>
@@ -14,15 +13,16 @@ namespace Math
 		return (int)floor(float(dividend) / divisor);
 	}
 
-	inline float Clamp01(float num)
+	constexpr inline float Clamp01(float num)
 	{
-		return max(0.0f, min(1.0f, num));
+		return std::clamp(num, 0.0f, 1.0f);
 	}
 
-	inline float Lerp(float from, float to, float progress)
+	/// <summary>
+	/// tを[0,1]になる
+	/// </summary>
+	constexpr inline float BoundedLerp(float a, float b, float t)
 	{
-		return from + (to - from) * Clamp01(progress);
+		return std::lerp(a, b, Clamp01(t));
 	}
-
-	static const double PI = 3.141592653589793;
 }

@@ -24,7 +24,7 @@
 #include <unordered_map>
 //////////////////////////////#include "atlstr.h"
 using namespace std;
-using namespace std::tr1;
+//using namespace std::tr1;
 
 namespace ML
 {

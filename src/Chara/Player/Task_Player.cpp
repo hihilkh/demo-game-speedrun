@@ -1,4 +1,5 @@
 ﻿#include "Task_Player.h"
+#include <numbers>
 #include "Utils/Log.h"
 #include "Game/Task_GameCamera.h"
 #include "Map/Task_Map.h"
@@ -11,7 +12,6 @@
 #include "PlayerAnimator.h"
 #include "Task/TaskConstant.h"
 #include "Game/Task_Game.h"
-#include "Utils/Math.h"
 
 namespace Player
 {
@@ -149,7 +149,7 @@ namespace Player
 		if (fallbackCounter < PlayerConstant::FallbackPeriod) {
 			++fallbackCounter;
 
-			currentHeight = PlayerConstant::FallbackMaxHeight * sin((float)fallbackCounter / PlayerConstant::FallbackPeriod * Math::PI);
+			currentHeight = PlayerConstant::FallbackMaxHeight * sin((float)fallbackCounter / PlayerConstant::FallbackPeriod * std::numbers::pi);
 
 			ML::Vec2 targetMove = GetDirectionalVector(direction) * (-PlayerConstant::FallbackBackSpeed);
 			AdjustMoveWithMap(targetMove);

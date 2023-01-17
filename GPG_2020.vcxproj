@@ -76,7 +76,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>Default</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <PreprocessorDefinitions>_DEBUG;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir)lib;$(SolutionDir)src;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include</AdditionalIncludeDirectories>
     </ClCompile>
@@ -91,7 +91,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)lib;$(SolutionDir)src;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include</AdditionalIncludeDirectories>
-      <LanguageStandard>Default</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <PreprocessorDefinitions>_DEBUG;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -106,7 +106,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>Default</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)lib;$(SolutionDir)src;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -123,7 +123,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>Default</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)lib;$(SolutionDir)src;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
