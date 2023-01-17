@@ -92,7 +92,7 @@ namespace Player
 		ML::Vec2 targetMove = playerSP->GetDirectionalVector(playerSP->direction) * playerSP->currentMovementSpeed;
 		bool isHit = playerSP->AdjustMoveWithMap(targetMove);
 		if (isHit){
-			if (isRunning && playerSP->currentMovementSpeed > PlayerConstant::WalkSpeed) {
+			if (isRunning && playerSP->currentMovementSpeed > PlayerConstant::CrashSpeed) {
 				isRunning = false;
 				playerSP->Fallback();
 			}
