@@ -5,3 +5,6 @@ charset = utf-8-bom
 
 [*.cpp]
 charset = utf-8-bom
+
+[*.tpp]
+charset = utf-8-bom
