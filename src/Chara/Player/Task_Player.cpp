@@ -82,11 +82,11 @@ namespace Player
 		}
 #endif
 
+		// TODO
 		// PreAction
-		// - target move, direction, speed
-		// (Move)Interactive with Map
-		// - change anim
-		// - change speed
+		// Check hit with map and move
+		// - hit action of map chip 
+		// Current stepping map chips action
 		// animator
 		playerAction->UpDate();
 		animator->UpDate();
@@ -152,13 +152,18 @@ namespace Player
 			currentHeight = PlayerConstant::FallbackMaxHeight * sin((float)fallbackCounter / PlayerConstant::FallbackPeriod * std::numbers::pi);
 
 			ML::Vec2 targetMove = GetDirectionalVector(direction) * (-PlayerConstant::FallbackBackSpeed);
-			AdjustMoveWithMap(targetMove);
+			CheckHitWithMapAndMove(targetMove);
 		}
 		else {
 			currentHeight = 0;
 			canControl = true;
 			state = PlayerState::Idle;
 		}
+	}
+
+	bool Object::GetIsInCrashSpeed() const
+	{
+		return currentMovementSpeed > PlayerConstant::CrashSpeed;
 	}
 
 #pragma endregion

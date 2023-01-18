@@ -44,7 +44,7 @@ namespace Player
 			// AdjustMoveWithMap()の結果に関係なく、inputがあればWalkになる
 			playerSP->currentMovementSpeed = PlayerConstant::WalkSpeed;
 			playerSP->state = PlayerState::Walk;
-			playerSP->AdjustMoveWithMap(targetMove);
+			playerSP->CheckHitWithMapAndMove(targetMove);
 		}
 	}
 

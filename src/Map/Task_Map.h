@@ -9,6 +9,7 @@
 
 namespace GameCamera { class Object; }
 namespace Map { class MapChipBase; }
+namespace Chara { class CharaBase; }
 
 #pragma endregion
 
@@ -47,13 +48,11 @@ namespace Map
 		typedef BoxIteratorContainer<shared_ptr<MapChipBase>> MapChipItContainer;
 
 	private:
-		int mapChipLeftmostIndex;
-		int mapChipTopmostIndex;
 		ML::Box2D hitBase;
 		ML::Point mapChipCenterOffset;
 
-		// TODO : Use SubMap with std::array
-		int arr[100][100];
+		int mapChipLeftmostIndex;
+		int mapChipTopmostIndex;
 		ML::Point size;
 		vector<shared_ptr<MapChipBase>> mapChips;
 
@@ -71,6 +70,6 @@ namespace Map
 		MapChipItContainer GetOverlappedMapChipInterator(const ML::Box2D& hit);
 
 	public:
-		bool CheckHit(const ML::Box2D& hit);
+		bool CheckHit(const Chara::CharaBase& chara);
 	};
 }

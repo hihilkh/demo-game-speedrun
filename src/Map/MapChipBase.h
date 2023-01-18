@@ -5,6 +5,7 @@
 #pragma region 前方宣言
 
 namespace Map {	class Resource;	}
+namespace Chara { class CharaBase; }
 
 #pragma endregion
 
@@ -28,6 +29,8 @@ namespace Map
 
 	public:
 		void Render(int offsetX, int offsetY);
-		MapChipType GetType() { return type; }
+		MapChipType GetType() const { return type; }
+		virtual bool GetIsWalkable() const = 0;
+		virtual void HitByChara(const Chara::CharaBase& chara) {}
 	};
 }

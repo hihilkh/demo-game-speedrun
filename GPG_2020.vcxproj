@@ -161,7 +161,9 @@
     <ClCompile Include="src\Map\MapChipBase.cpp" />
     <ClCompile Include="src\Map\MapChipFactory.cpp" />
     <ClCompile Include="src\Map\Task_Map.cpp" />
+    <ClCompile Include="src\Map\TransportBeltMapChip.cpp" />
     <ClCompile Include="src\Map\UnbreakableWallMapChip.cpp" />
+    <ClCompile Include="src\Map\WeakWallMapChip.cpp" />
     <ClCompile Include="src\MyPG.cpp" />
     <ClCompile Include="src\Chara\CharaBase.cpp" />
     <ClCompile Include="src\Chara\Player\Task_Player.cpp" />
@@ -205,7 +207,9 @@
     <ClInclude Include="src\Map\MapChipContainer.h" />
     <ClInclude Include="src\Map\MapChipType.h" />
     <ClInclude Include="src\Map\Task_Map.h" />
+    <ClInclude Include="src\Map\TransportBeltMapChip.h" />
     <ClInclude Include="src\Map\UnbreakableWallMapChip.h" />
+    <ClInclude Include="src\Map\WeakWallMapChip.h" />
     <ClInclude Include="src\MyPG.h" />
     <ClInclude Include="src\Chara\CharaBase.h" />
     <ClInclude Include="src\Game\GameReference.h" />

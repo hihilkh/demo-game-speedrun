@@ -90,9 +90,9 @@ namespace Player
 	void RunPlayerAction::Run(Player::Object::SP playerSP)
 	{
 		ML::Vec2 targetMove = playerSP->GetDirectionalVector(playerSP->direction) * playerSP->currentMovementSpeed;
-		bool isHit = playerSP->AdjustMoveWithMap(targetMove);
+		bool isHit = playerSP->CheckHitWithMapAndMove(targetMove);
 		if (isHit){
-			if (isRunning && playerSP->currentMovementSpeed > PlayerConstant::CrashSpeed) {
+			if (isRunning && playerSP->GetIsInCrashSpeed()) {
 				isRunning = false;
 				playerSP->Fallback();
 			}

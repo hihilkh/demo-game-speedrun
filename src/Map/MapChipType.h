@@ -11,11 +11,4 @@ namespace Map
 		TransportBelt = 4,
 		Button = 5,
 	};
-
-	inline bool GetIsWalkable(MapChipType type)
-	{
-		return	type == MapChipType::Floor ||
-				type == MapChipType::TransportBelt ||
-				type == MapChipType::Button;
-	}
 }

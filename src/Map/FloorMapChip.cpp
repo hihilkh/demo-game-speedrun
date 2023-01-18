@@ -18,4 +18,9 @@ namespace Map
 	{
 		return ML::Box2D(0, 0, 32, 32);
 	}
+
+	bool FloorMapChip::GetIsWalkable() const
+	{
+		return true;
+	}
 }

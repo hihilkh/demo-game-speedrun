@@ -145,6 +145,12 @@
     <ClCompile Include="src\Map\UnbreakableWallMapChip.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Map\TransportBeltMapChip.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Map\WeakWallMapChip.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GameEngine_Ver3_83.h">
@@ -289,6 +295,12 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Map\UnbreakableWallMapChip.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Map\TransportBeltMapChip.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Map\WeakWallMapChip.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

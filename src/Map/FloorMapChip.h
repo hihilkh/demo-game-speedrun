@@ -12,5 +12,8 @@ namespace Map
 
 	protected:
 		ML::Box2D GetRenderSrc() const override;
+
+	public:
+		bool GetIsWalkable() const override;
 	};
 }

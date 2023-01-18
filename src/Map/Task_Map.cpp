@@ -7,10 +7,11 @@
 #include "Game/Task_GameCamera.h"
 #include "Game/GameStatus.h"
 #include "MapChipBase.h"
+#include "Chara/CharaBase.h"
 
 namespace Map
 {
-	extern MapChipBase::SP GenerateMapChip(MapChipType type, shared_ptr<Resource> res, const ML::Box2D& hitBase);
+	extern MapChipBase::SP GenerateMapChip(int typeId, shared_ptr<Resource> res, const ML::Box2D& hitBase);
 
 #define CHIP_SIZE ResourceConstant::MapChipSize
 
@@ -44,8 +45,11 @@ namespace Map
 
 	Object::Object() :
 		ObjectBaseWithResource<Object, Resource>(TaskConstant::TaskGroupName_Map, TaskConstant::TaskName_Map),
-		isInitialized(false),
-		mapChipCenterOffset(ML::Point{ -CHIP_SIZE / 2, -CHIP_SIZE / 2})
+		mapChipCenterOffset(ML::Point{ -CHIP_SIZE / 2, -CHIP_SIZE / 2}),
+		mapChipLeftmostIndex(0),
+		mapChipTopmostIndex(0),
+		size(ML::Point(0, 0)),
+		isInitialized(false)
 	{
 		render2D_Priority[1] = 0.9f;
 
@@ -111,17 +115,16 @@ namespace Map
 			size.y * CHIP_SIZE);
 
 		mapChips.reserve(size.x * size.y);
-		int typeInt;
+		int typeId;
 
 		// TODO : study of flyweight(?) pattern instead of instantiate all?
 		for (int y = 0; y < size.y; ++y) {
 			for (int x = 0; x < size.x; ++x) {
-				fin >> typeInt;
-				arr[y][x] = typeInt;
+				fin >> typeId;
 				ML::Box2D mapChipHitBase = ML::Box2D(x * CHIP_SIZE, y * CHIP_SIZE, CHIP_SIZE, CHIP_SIZE);
 				mapChipHitBase.Offset(hitBase.x, hitBase.y);
 
-				mapChips.push_back(GenerateMapChip(static_cast<MapChipType>(typeInt), res, mapChipHitBase));
+				mapChips.push_back(GenerateMapChip(typeId, res, mapChipHitBase));
 			}
 		}
 
@@ -150,18 +153,21 @@ namespace Map
 		return MapChipItContainer(mapChips, size.x, iterateBox);
 	}
 
-	bool Object::CheckHit(const ML::Box2D& hit)
+	bool Object::CheckHit(const Chara::CharaBase& chara)
 	{
-		MapChipItContainer itContainer = GetOverlappedMapChipInterator(hit);
+		ML::Box2D hitBox = chara.GetCurrentHitBox();
+		MapChipItContainer itContainer = GetOverlappedMapChipInterator(hitBox);
 
-		//範囲内の障害物を探す
+		//範囲内の障害物を探す、やりとりをする
+		bool isHit = false;
 		for (auto& mapChip : itContainer) {
-			if (mapChip->GetType() == MapChipType::UnbreakableWall) {
-				return true;
+			if (!mapChip->GetIsWalkable()) {
+				mapChip->HitByChara(chara);
+				isHit = true;
 			}
 		}
 
-		return false;
+		return isHit;
 	}
 #pragma endregion
 }

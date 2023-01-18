@@ -27,7 +27,7 @@ namespace Player
 		DG::Image::SP img;
 	};
 
-	class Object : public ObjectBaseWithResource<Object, Resource>, public CharaBase
+	class Object : public ObjectBaseWithResource<Object, Resource>, public Chara::CharaBase
 	{
 		friend ObjectBase<Object>;
 
@@ -74,5 +74,6 @@ namespace Player
 
 	public:
 		PlayerState GetState() const { return state; }
+		bool GetIsInCrashSpeed() const;
 	};
 }
