@@ -31,11 +31,24 @@ namespace Chara
 	protected:
 		ML::Vec2 GetDirectionalVector(Direction direction) const;
 
+#pragma region 移動の流れ
+
+		void UpdateMovement();
+
+		/// <returns>targetMove</returns>
+		virtual ML::Vec2 PreMove();
+
+		/// <returns>ぶつかったかどうか</returns>
+		bool CheckMapCollisionAndMove(const ML::Vec2& targetMove);
+
+		virtual void CollideWithMap();
+		void CheckMapTrigger();
+		virtual void PostMove();
+
+#pragma endregion
+
 	public:
 		virtual ~CharaBase() {}
-
-		/// <returns>ぶつけるかないか</returns>
-		bool CheckHitWithMapAndMove(const ML::Vec2& targetMove);
 
 		Direction GetDirection() const { return direction; }
 

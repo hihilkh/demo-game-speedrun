@@ -17,15 +17,15 @@ namespace Player
 		int prepareRunCounter;
 
 	private:
-		void StartRunning(Player::Object::SP playerSP);
+		ML::Vec2 StartRunning(Player::Object::SP playerSP);
 		void StopRunning(Player::Object::SP playerSP);
-		void UpdateRunning(Player::Object::SP playerSP, bool hasInput);
+		ML::Vec2 UpdateRunning(Player::Object::SP playerSP, bool hasInput);
 		bool CheckIsPrepareToRun() const;
 		void Decelerate(Player::Object::SP playerSP);
-		void Run(Player::Object::SP playerSP);
 
 	public:
 		PlayerMode GetPlayerMode() const override { return PlayerMode::Run; }
-		void UpDate() override;
+		ML::Vec2 PreMove() override;
+		void CollideWithMap() override;
 	};
 }

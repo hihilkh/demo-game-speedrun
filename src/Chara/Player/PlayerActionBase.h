@@ -24,10 +24,11 @@ namespace Player
 		void SetDirection(Player::Object::SP playerSP, Direction previousDirection, Direction targetDirection, bool& isDirectionFixed);
 
 	protected:
-		void Move(const XI::VGamePad& input);
+		ML::Vec2 TryWalk(const XI::VGamePad& input);
 
 	public:
 		virtual PlayerMode GetPlayerMode() const = 0;
-		virtual void UpDate() = 0;
+		virtual ML::Vec2 PreMove() = 0;
+		virtual void CollideWithMap();
 	};
 }

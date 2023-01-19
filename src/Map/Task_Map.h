@@ -70,6 +70,7 @@ namespace Map
 		MapChipItContainer GetOverlappedMapChipInterator(const ML::Box2D& hit);
 
 	public:
-		bool CheckHit(const Chara::CharaBase& chara);
+		bool CheckCollision(const Chara::CharaBase& chara);
+		void CheckTrigger(Chara::CharaBase& chara);
 	};
 }

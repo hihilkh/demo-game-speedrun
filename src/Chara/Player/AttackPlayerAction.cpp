@@ -18,26 +18,26 @@ namespace Player
 		}
 	}
 
-	void AttackPlayerAction::UpDate()
+	ML::Vec2 AttackPlayerAction::PreMove()
 	{
 		Player::Object::SP playerSP = player.lock();
 		if (!playerSP) {
 			PrintWarning("プレイヤーの参照が取れない");
-			return;
+			return ML::Vec2();
 		}
 
 		XI::VGamePad input = controller->GetState();
 
 		if (playerSP->state == PlayerState::Attack) {
-			return;
+			return ML::Vec2();
 		}
 
 		if (input.ST.down) {
 			playerSP->state = PlayerState::Attack;
-			return;
+			return ML::Vec2();
 		}
 
-		Move(input);
+		return TryWalk(input);
 	}
 
 	void AttackPlayerAction::OnAnimFinished(PlayerState finishedState)

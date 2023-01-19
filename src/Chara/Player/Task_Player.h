@@ -72,8 +72,19 @@ namespace Player
 		void Fallback();
 		void UpdateFallback();
 
+	protected:
+
+#pragma region 移動の流れ
+
+		/// <returns>targetMove</returns>
+		ML::Vec2 PreMove() override;
+		void CollideWithMap() override;
+		void PostMove() override;
+
+#pragma endregion
+
 	public:
 		PlayerState GetState() const { return state; }
-		bool GetIsInCrashSpeed() const;
+		bool CheckIsInCrashSpeed() const;
 	};
 }

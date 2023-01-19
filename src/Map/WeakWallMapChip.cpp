@@ -32,7 +32,7 @@ namespace Map
 		return isBroken;
 	}
 
-	void WeakWallMapChip::HitByChara(const Chara::CharaBase& chara)
+	void WeakWallMapChip::CollideWithChara(const Chara::CharaBase& chara)
 	{
 		if (isBroken) {
 			return;
@@ -41,7 +41,7 @@ namespace Map
 		try {
 			const Player::Object& player = dynamic_cast<const Player::Object&>(chara);
 			if (player.GetState() == Player::PlayerState::Running &&
-				player.GetIsInCrashSpeed()) {
+				player.CheckIsInCrashSpeed()) {
 				Break();
 			}
 		}

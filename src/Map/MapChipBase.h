@@ -31,6 +31,6 @@ namespace Map
 		void Render(int offsetX, int offsetY);
 		MapChipType GetType() const { return type; }
 		virtual bool GetIsWalkable() const = 0;
-		virtual void HitByChara(const Chara::CharaBase& chara) {}
+		virtual void CollideWithChara(const Chara::CharaBase& chara) {}
 	};
 }

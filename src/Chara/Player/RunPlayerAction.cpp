@@ -15,34 +15,33 @@ namespace Player
 	{
 	}
 
-	void RunPlayerAction::UpDate()
+	ML::Vec2 RunPlayerAction::PreMove()
 	{
 		Player::Object::SP playerSP = player.lock();
 		if (!playerSP) {
 			PrintWarning("プレイヤーの参照が取れない");
-			return;
+			return ML::Vec2();
 		}
 
 		XI::VGamePad input = controller->GetState();
 
 		if (isRunning) {
-			UpdateRunning(playerSP, !input.ST.up);
-			return;
+			return UpdateRunning(playerSP, !input.ST.up);
 		}
 
 		if (input.ST.down) {
-			StartRunning(playerSP);
-			return;
+			return StartRunning(playerSP);
 		}
 
-		Move(input);
+		return TryWalk(input);
 	}
 
-	void RunPlayerAction::StartRunning(Player::Object::SP playerSP)
+	ML::Vec2 RunPlayerAction::StartRunning(Player::Object::SP playerSP)
 	{
 		isRunning = true;
 		playerSP->state = PlayerState::Running;
 		prepareRunCounter = 0;
+		return ML::Vec2();
 	}
 
 	void RunPlayerAction::StopRunning(Player::Object::SP playerSP)
@@ -51,7 +50,7 @@ namespace Player
 		playerSP->state = PlayerState::Idle;
 	}
 
-	void RunPlayerAction::UpdateRunning(Player::Object::SP playerSP, bool hasInput)
+	ML::Vec2 RunPlayerAction::UpdateRunning(Player::Object::SP playerSP, bool hasInput)
 	{
 		++prepareRunCounter;
 
@@ -69,7 +68,7 @@ namespace Player
 				break;
 		}
 
-		Run(playerSP);
+		return playerSP->GetDirectionalVector(playerSP->direction) * playerSP->currentMovementSpeed;
 	}
 
 	bool RunPlayerAction::CheckIsPrepareToRun() const
@@ -87,15 +86,10 @@ namespace Player
 		}
 	}
 
-	void RunPlayerAction::Run(Player::Object::SP playerSP)
+	void RunPlayerAction::CollideWithMap()
 	{
-		ML::Vec2 targetMove = playerSP->GetDirectionalVector(playerSP->direction) * playerSP->currentMovementSpeed;
-		bool isHit = playerSP->CheckHitWithMapAndMove(targetMove);
-		if (isHit){
-			if (isRunning && playerSP->GetIsInCrashSpeed()) {
-				isRunning = false;
-				playerSP->Fallback();
-			}
+		if (isRunning) {
+			isRunning = false;
 		}
 	}
 }

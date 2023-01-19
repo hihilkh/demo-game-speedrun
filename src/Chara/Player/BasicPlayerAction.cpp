@@ -13,9 +13,9 @@ namespace Player
 
 	}
 
-	void BasicPlayerAction::UpDate()
+	ML::Vec2 BasicPlayerAction::PreMove()
 	{
 		XI::VGamePad input = controller->GetState();
-		Move(input);
+		return TryWalk(input);
 	}
 }

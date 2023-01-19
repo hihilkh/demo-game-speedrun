@@ -14,12 +14,12 @@ namespace Player
 	{
 	}
 
-	void PlayerActionBase::Move(const XI::VGamePad& input)
+	ML::Vec2 PlayerActionBase::TryWalk(const XI::VGamePad& input)
 	{
 		Player::Object::SP playerSP = player.lock();
 		if (!playerSP) {
 			PrintWarning("プレイヤーの参照が取れない");
-			return;
+			return ML::Vec2();
 		}
 
 		Direction previousDirection = playerSP->direction;
@@ -44,8 +44,9 @@ namespace Player
 			// AdjustMoveWithMap()の結果に関係なく、inputがあればWalkになる
 			playerSP->currentMovementSpeed = PlayerConstant::WalkSpeed;
 			playerSP->state = PlayerState::Walk;
-			playerSP->CheckHitWithMapAndMove(targetMove);
 		}
+
+		return targetMove;
 	}
 
 	/// <summary>
@@ -61,5 +62,9 @@ namespace Player
 		if (previousDirection == targetDirection) {
 			isDirectionFixed = true;
 		}
+	}
+
+	void PlayerActionBase::CollideWithMap()
+	{
 	}
 }

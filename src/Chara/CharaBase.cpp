@@ -19,7 +19,46 @@ namespace Chara
 
 	}
 
-	bool CharaBase::CheckHitWithMapAndMove(const ML::Vec2& targetMove)
+	ML::Vec2 CharaBase::GetDirectionalVector(Direction direction) const
+	{
+		switch (direction) {
+			case Direction::Left:	return ML::Vec2(-1, 0);
+			case Direction::Right:	return ML::Vec2(1, 0);
+			case Direction::Up:		return ML::Vec2(0, -1);
+			case Direction::Down:	return ML::Vec2(0, 1);
+		}
+
+		assert(false && "おかしい方向");
+
+		// 警告を出さないように
+		return ML::Vec2(0, 0);
+	}
+
+	ML::Box2D CharaBase::GetCurrentHitBox() const
+	{
+		return hitBase.OffsetCopy(transform->pos);
+	}
+
+#pragma region 移動の流れ
+
+	void CharaBase::UpdateMovement()
+	{
+		ML::Vec2 targetMove = PreMove();
+		bool isHit = CheckMapCollisionAndMove(targetMove);
+		if (isHit) {
+			CollideWithMap();
+		}
+
+		CheckMapTrigger();
+		PostMove();
+	}
+
+	ML::Vec2 CharaBase::PreMove()
+	{
+		return ML::Vec2();
+	}
+
+	bool CharaBase::CheckMapCollisionAndMove(const ML::Vec2& targetMove)
 	{
 		if (!map) {
 			PrintWarning("マップの参照がない。キャラクターは自由に移動できる");
@@ -27,7 +66,7 @@ namespace Chara
 			return false;
 		}
 
-		bool isHit = false;
+		bool isCollide = false;
 
 		const int noOfAxis = 2;
 		float* pMoveAxisValues[noOfAxis] = { &transform->pos.x, &transform->pos.y };
@@ -52,34 +91,34 @@ namespace Chara
 					move = 0;
 				}
 
-				if (map->CheckHit(*this)) {
+				if (map->CheckCollision(*this)) {
 					*pAxisValue = previousValue;		//移動をキャンセル
-					isHit = true;
+					isCollide = true;
 					break;
 				}
 			}
 		}
 
-		return isHit;
+		return isCollide;
 	}
 
-	ML::Vec2 CharaBase::GetDirectionalVector(Direction direction) const
+	void CharaBase::CollideWithMap()
 	{
-		switch (direction) {
-			case Direction::Left:	return ML::Vec2(-1, 0);
-			case Direction::Right:	return ML::Vec2(1, 0);
-			case Direction::Up:		return ML::Vec2(0, -1);
-			case Direction::Down:	return ML::Vec2(0, 1);
+	}
+
+	void CharaBase::CheckMapTrigger()
+	{
+		if (!map) {
+			return;
 		}
 
-		assert(false && "おかしい方向");
-
-		// 警告を出さないように
-		return ML::Vec2(0, 0);
+		map->CheckTrigger(*this);
 	}
 
-	ML::Box2D CharaBase::GetCurrentHitBox() const
+	void CharaBase::PostMove()
 	{
-		return hitBase.OffsetCopy(transform->pos);
 	}
+
+#pragma endregion
+
 }

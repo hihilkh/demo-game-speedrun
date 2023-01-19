@@ -153,7 +153,7 @@ namespace Map
 		return MapChipItContainer(mapChips, size.x, iterateBox);
 	}
 
-	bool Object::CheckHit(const Chara::CharaBase& chara)
+	bool Object::CheckCollision(const Chara::CharaBase& chara)
 	{
 		ML::Box2D hitBox = chara.GetCurrentHitBox();
 		MapChipItContainer itContainer = GetOverlappedMapChipInterator(hitBox);
@@ -162,12 +162,17 @@ namespace Map
 		bool isHit = false;
 		for (auto& mapChip : itContainer) {
 			if (!mapChip->GetIsWalkable()) {
-				mapChip->HitByChara(chara);
+				mapChip->CollideWithChara(chara);
 				isHit = true;
 			}
 		}
 
 		return isHit;
+	}
+
+	void Object::CheckTrigger(Chara::CharaBase& chara)
+	{
+		// TODO
 	}
 #pragma endregion
 }

@@ -17,6 +17,6 @@ namespace Player
 
 	public:
 		PlayerMode GetPlayerMode() const override { return PlayerMode::Attack; }
-		void UpDate() override;
+		ML::Vec2 PreMove() override;
 	};
 }

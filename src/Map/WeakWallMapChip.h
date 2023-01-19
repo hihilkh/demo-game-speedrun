@@ -21,6 +21,6 @@ namespace Map
 
 	public:
 		bool GetIsWalkable() const override;
-		void HitByChara(const Chara::CharaBase& chara) override;
+		void CollideWithChara(const Chara::CharaBase& chara) override;
 	};
 }
