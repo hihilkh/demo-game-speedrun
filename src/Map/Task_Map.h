@@ -45,8 +45,6 @@ namespace Map
 		void UpDate() override;			//「実行」１フレーム毎に行う処理
 		void Render2D_AF() override;	//「2D描画」１フレーム毎に行う処理
 
-		typedef BoxIteratorContainer<shared_ptr<MapChipBase>> MapChipItContainer;
-
 	private:
 		ML::Box2D hitBase;
 		ML::Point mapChipCenterOffset;
@@ -67,7 +65,7 @@ namespace Map
 		string GetMapFilePath(int mapIndex) const;
 		bool Load(const string& filePath);
 
-		MapChipItContainer GetOverlappedMapChipInterator(const ML::Box2D& hit);
+		vector<shared_ptr<MapChipBase>> GetOverlappedMapChipInterator(const ML::Box2D& hit);
 
 	public:
 		bool CheckCollision(const Chara::CharaBase& chara);

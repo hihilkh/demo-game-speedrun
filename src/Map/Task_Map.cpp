@@ -73,8 +73,8 @@ namespace Map
 
 		const ML::Box2D& visibleRange = camera->GetVisibleRange();
 
-		MapChipItContainer itContainer = GetOverlappedMapChipInterator(visibleRange);
-		for (auto& mapChip : itContainer) {
+		vector<MapChipBase::SP> mapChips = GetOverlappedMapChipInterator(visibleRange);
+		for (auto& mapChip : mapChips) {
 			mapChip->Render(-visibleRange.x, -visibleRange.y);
 		}
 	}
@@ -131,10 +131,10 @@ namespace Map
 		return true;
 	}
 
-	Object::MapChipItContainer Object::GetOverlappedMapChipInterator(const ML::Box2D& hit)
+	vector<MapChipBase::SP> Object::GetOverlappedMapChipInterator(const ML::Box2D& hit)
 	{
 		if (!this->hitBase.Hit(hit)) {
-			return MapChipItContainer(mapChips, size.x, ML::Box2D(0, 0, 0, 0));
+			return vector<MapChipBase::SP>();
 		}
 
 		ML::Rect overlappedRect = {
@@ -144,23 +144,33 @@ namespace Map
 			min(hit.y + hit.h, hitBase.y + hitBase.h) - 1,	// Bottom
 		};
 
-		ML::Box2D iterateBox;
-		iterateBox.x = Math::FloorDivide(overlappedRect.left - mapChipCenterOffset.x, CHIP_SIZE) - mapChipLeftmostIndex;
-		iterateBox.y = Math::FloorDivide(overlappedRect.top - mapChipCenterOffset.y, CHIP_SIZE) - mapChipTopmostIndex;
-		iterateBox.w = (Math::FloorDivide(overlappedRect.right - mapChipCenterOffset.x, CHIP_SIZE) - mapChipLeftmostIndex) - iterateBox.x + 1;
-		iterateBox.h = (Math::FloorDivide(overlappedRect.bottom - mapChipCenterOffset.y, CHIP_SIZE) - mapChipTopmostIndex) - iterateBox.y + 1;
+		// LeftからRightまで(含む)
+		// TopからBottomまで(含む)
+		ML::Rect includedRect;
+		includedRect.left = Math::FloorDivide(overlappedRect.left - mapChipCenterOffset.x, CHIP_SIZE) - mapChipLeftmostIndex;
+		includedRect.top = Math::FloorDivide(overlappedRect.top - mapChipCenterOffset.y, CHIP_SIZE) - mapChipTopmostIndex;
+		includedRect.right = Math::FloorDivide(overlappedRect.right - mapChipCenterOffset.x, CHIP_SIZE) - mapChipLeftmostIndex;
+		includedRect.bottom = Math::FloorDivide(overlappedRect.bottom - mapChipCenterOffset.y, CHIP_SIZE) - mapChipTopmostIndex;
 
-		return MapChipItContainer(mapChips, size.x, iterateBox);
+		vector<MapChipBase::SP> result = vector<MapChipBase::SP>();
+		result.reserve((includedRect.right - includedRect.left + 1) * (includedRect.bottom - includedRect.top + 1));
+		for (int y = includedRect.top; y <= includedRect.bottom; ++y) {
+			for (int x = includedRect.left; x <= includedRect.right; ++x) {
+				result.push_back(mapChips[y * size.x + x]);
+			}
+		}
+
+		return result;
 	}
 
 	bool Object::CheckCollision(const Chara::CharaBase& chara)
 	{
 		ML::Box2D hitBox = chara.GetCurrentHitBox();
-		MapChipItContainer itContainer = GetOverlappedMapChipInterator(hitBox);
+		vector<MapChipBase::SP> mapChips = GetOverlappedMapChipInterator(hitBox);
 
 		//範囲内の障害物を探す、やりとりをする
 		bool isHit = false;
-		for (auto& mapChip : itContainer) {
+		for (auto& mapChip : mapChips) {
 			if (!mapChip->GetIsWalkable()) {
 				mapChip->CollideWithChara(chara);
 				isHit = true;

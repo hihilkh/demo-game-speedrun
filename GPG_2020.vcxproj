@@ -204,7 +204,6 @@
     <ClInclude Include="src\Chara\Player\PlayerMode.h" />
     <ClInclude Include="src\Map\FloorMapChip.h" />
     <ClInclude Include="src\Map\MapChipBase.h" />
-    <ClInclude Include="src\Map\MapChipContainer.h" />
     <ClInclude Include="src\Map\MapChipType.h" />
     <ClInclude Include="src\Map\Task_Map.h" />
     <ClInclude Include="src\Map\TransportBeltMapChip.h" />
@@ -227,7 +226,6 @@
     <ClInclude Include="src\Utils\Math.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\Common\BoxIteratorContainer.tpp" />
     <None Include="src\Event\Event.tpp" />
     <None Include="src\Event\MemberFunction.tpp" />
   </ItemGroup>
