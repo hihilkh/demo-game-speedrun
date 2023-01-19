@@ -32,10 +32,10 @@ namespace Player
 
 	Object::Object() :
 		ObjectBaseWithResource<Object, Resource>(TaskConstant::TaskGroupName_Chara, TaskConstant::TaskName_Player),
-		CharaBase(ML::Box2D(-PlayerConstant::HitBaseWidth / 2, -PlayerConstant::HitBaseHeight / 2, PlayerConstant::HitBaseWidth, PlayerConstant::HitBaseHeight)),
+		CharaBase(ML::Box2D(-Constant::HitBaseWidth / 2, -Constant::HitBaseHeight / 2, Constant::HitBaseWidth, Constant::HitBaseHeight)),
 		isInitialized(false),
 		canControl(true),
-		currentMovementSpeed(PlayerConstant::WalkSpeed),
+		currentMovementSpeed(Constant::WalkSpeed),
 		state(PlayerState::Idle),
 		fallbackCounter(0)
 	{
@@ -158,12 +158,12 @@ namespace Player
 
 	void Object::UpdateFallback()
 	{
-		if (fallbackCounter < PlayerConstant::FallbackPeriod) {
+		if (fallbackCounter < Constant::FallbackPeriod) {
 			++fallbackCounter;
 
-			currentHeight = PlayerConstant::FallbackMaxHeight * sin((float)fallbackCounter / PlayerConstant::FallbackPeriod * std::numbers::pi);
+			currentHeight = Constant::FallbackMaxHeight * sin((float)fallbackCounter / Constant::FallbackPeriod * std::numbers::pi);
 
-			ML::Vec2 targetMove = GetDirectionalVector(direction) * (-PlayerConstant::FallbackBackSpeed);
+			ML::Vec2 targetMove = GetDirectionalVector(direction) * (-Constant::FallbackBackSpeed);
 			CheckMapCollisionAndMove(targetMove);
 		}
 		else {
@@ -175,7 +175,7 @@ namespace Player
 
 	bool Object::CheckIsInCrashSpeed() const
 	{
-		return currentMovementSpeed > PlayerConstant::CrashSpeed;
+		return currentMovementSpeed > Constant::CrashSpeed;
 	}
 
 #pragma endregion

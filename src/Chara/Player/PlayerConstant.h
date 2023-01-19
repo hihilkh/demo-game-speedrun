@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 // TODO : Is it a good way to use PlayerConstant?
-namespace PlayerConstant
+namespace Player::Constant
 {
 	const int HitBaseWidth = 32;
 	const int HitBaseHeight = 32;

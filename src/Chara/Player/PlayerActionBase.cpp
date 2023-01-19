@@ -27,7 +27,7 @@ namespace Player
 		ML::Vec2 targetMove = ML::Vec2(0, 0);
 
 		auto setPlayer = [&](Direction direction) {
-			targetMove += playerSP->GetDirectionalVector(direction) * PlayerConstant::WalkSpeed;
+			targetMove += playerSP->GetDirectionalVector(direction) * Constant::WalkSpeed;
 			SetDirection(playerSP, previousDirection, direction, isDirectionFixed);
 		};
 
@@ -42,7 +42,7 @@ namespace Player
 		}
 		else {
 			// AdjustMoveWithMap()の結果に関係なく、inputがあればWalkになる
-			playerSP->currentMovementSpeed = PlayerConstant::WalkSpeed;
+			playerSP->currentMovementSpeed = Constant::WalkSpeed;
 			playerSP->state = PlayerState::Walk;
 		}
 

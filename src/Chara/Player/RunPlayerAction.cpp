@@ -57,7 +57,7 @@ namespace Player
 		switch (playerSP->state) {
 			case PlayerState::Running:
 				if (hasInput) {
-					playerSP->currentMovementSpeed = CheckIsPrepareToRun() ? 0 : PlayerConstant::RunSpeed;
+					playerSP->currentMovementSpeed = CheckIsPrepareToRun() ? 0 : Constant::RunSpeed;
 				}
 				else {
 					playerSP->state = PlayerState::Stopping;
@@ -73,12 +73,12 @@ namespace Player
 
 	bool RunPlayerAction::CheckIsPrepareToRun() const
 	{
-		return prepareRunCounter < PlayerConstant::PrepareRunningPeriod;
+		return prepareRunCounter < Constant::PrepareRunningPeriod;
 	}
 
 	void RunPlayerAction::Decelerate(Player::Object::SP playerSP)
 	{
-		playerSP->currentMovementSpeed -= PlayerConstant::Deceleration;
+		playerSP->currentMovementSpeed -= Constant::Deceleration;
 
 		if (playerSP->currentMovementSpeed <= 0) {
 			playerSP->currentMovementSpeed = 0;
