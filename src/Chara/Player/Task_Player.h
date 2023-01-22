@@ -85,6 +85,6 @@ namespace Player
 
 	public:
 		PlayerState GetState() const { return state; }
-		bool CheckIsInCrashSpeed() const;
+		bool CheckIsInCrashStateAndSpeed() const;
 	};
 }

@@ -42,7 +42,6 @@ namespace Chara
 		ML::Box2D renderBase;
 		ML::Vec2 moveVec;
 		int moveCnt;
-		Direction direction;
 		float currentMovementSpeed;		// Inputによっての速度（AdditionalSpeedによる影響もある）。実際の速度ではない。
 		AdditionalSpeedInfo additionalSpeedInfo;
 
@@ -71,7 +70,6 @@ namespace Chara
 		ML::Box2D GetCurrentRenderBox() const;
 
 	public:
-		Direction GetDirection() const { return direction; }
 		ML::Box2D GetCurrentHitBox() const;
 
 		void SetAdditionalSpeedInfo(Direction direction, float speed);

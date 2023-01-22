@@ -10,7 +10,7 @@ namespace Player::Constant
 
 	const float WalkSpeed = 5.0f;
 	const float RunSpeed = 10.0f;
-	const float CrashSpeed = 6.0f;
+	const float CrashSpeed = 7.0f;
 
 	const int PrepareRunningPeriod = 30;	// フレーム
 	const float Deceleration = 0.4f;

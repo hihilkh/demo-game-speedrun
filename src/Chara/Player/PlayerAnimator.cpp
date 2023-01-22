@@ -135,7 +135,7 @@ namespace Player
 		ML::Box2D playerDraw = drawBase.OffsetCopy(cameraOffset);
 		playerDraw.y -= height;
 		ML::Box2D playerSrc = pCurrentAnimClip->GetImageSrc(currentAnimFrame);
-		UpdateSrcDirection(playerSrc, playerSP->GetDirection());
+		UpdateSrcDirection(playerSrc, playerSP->transform->direction);
 		res->playerImg->Draw(playerDraw, playerSrc);
 	}
 

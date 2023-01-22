@@ -96,7 +96,7 @@ namespace Player
 	{
 		playerAction->CollideWithMap();
 
-		if (state == PlayerState::Running && CheckIsInCrashSpeed()) {
+		if (CheckIsInCrashStateAndSpeed()) {
 			Fallback();
 		}
 	}
@@ -146,7 +146,7 @@ namespace Player
 			case PlayerMode::Run:		playerAction = make_unique<RunPlayerAction>(sharedPtr, ge->in1);		break;
 		}
 
-		Print((string)"今のPlayerAction：" + typeid(*playerAction).name());
+		Print("今のPlayerAction：" << typeid(*playerAction).name());
 	}
 
 	void Object::Fallback()
@@ -165,7 +165,7 @@ namespace Player
 
 			currentHeight = Constant::FallbackMaxHeight * sin((float)fallbackCounter / Constant::FallbackPeriod * std::numbers::pi);
 
-			ML::Vec2 targetMove = GetDirectionalVector(direction) * (-Constant::FallbackBackSpeed);
+			ML::Vec2 targetMove = GetDirectionalVector(transform->direction) * (-Constant::FallbackBackSpeed);
 			CheckMapCollisionAndMove(targetMove);
 		}
 		else {
@@ -175,9 +175,14 @@ namespace Player
 		}
 	}
 
-	bool Object::CheckIsInCrashSpeed() const
+	bool Object::CheckIsInCrashStateAndSpeed() const
 	{
-		return currentMovementSpeed > Constant::CrashSpeed;
+		if (state == PlayerState::Running || state == PlayerState::Stopping) {
+			Print("ぶつかる速度：" << currentMovementSpeed);
+			return currentMovementSpeed > Constant::CrashSpeed;
+		}
+
+		return false;
 	}
 
 #pragma endregion

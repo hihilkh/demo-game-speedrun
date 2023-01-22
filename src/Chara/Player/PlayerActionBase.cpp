@@ -22,7 +22,7 @@ namespace Player
 			return ML::Vec2();
 		}
 
-		Direction previousDirection = playerSP->direction;
+		Direction previousDirection = playerSP->transform->direction;
 		bool isDirectionFixed = false;
 		ML::Vec2 targetMove = ML::Vec2(0, 0);
 
@@ -58,7 +58,7 @@ namespace Player
 			return;
 		}
 
-		playerSP->direction = targetDirection;
+		playerSP->transform->direction = targetDirection;
 		if (previousDirection == targetDirection) {
 			isDirectionFixed = true;
 		}

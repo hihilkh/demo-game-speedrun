@@ -40,8 +40,7 @@ namespace Map
 
 		try {
 			const Player::Object& player = dynamic_cast<const Player::Object&>(chara);
-			if (player.GetState() == Player::PlayerState::Running &&
-				player.CheckIsInCrashSpeed()) {
+			if (player.CheckIsInCrashStateAndSpeed()) {
 				Break();
 			}
 		}

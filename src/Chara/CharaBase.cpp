@@ -10,12 +10,11 @@ namespace Chara
 	}
 
 	CharaBase::CharaBase(const ML::Vec2& pos, const ML::Box2D& hitBase, const ML::Box2D& renderBase) :
-		transform(make_shared<Transform>(pos)),
+		transform(make_shared<Transform>(pos, Direction::Down)),
 		hitBase(hitBase),
 		renderBase(renderBase),
 		moveVec(ML::Vec2()),
 		moveCnt(0),
-		direction(Direction::Down),
 		currentMovementSpeed(0.0f),
 		additionalSpeedInfo(AdditionalSpeedInfo())
 	{
@@ -58,7 +57,7 @@ namespace Chara
 		}
 
 		outTargetMove += additionalSpeedInfo.GetCurrentSpeedVector();
-		currentMovementSpeed += additionalSpeedInfo.speed * CompareDirection(direction, additionalSpeedInfo.direction);
+		currentMovementSpeed += additionalSpeedInfo.speed * CompareDirection(transform->direction, additionalSpeedInfo.direction);
 
 		additionalSpeedInfo.isActive = false;
 	}
