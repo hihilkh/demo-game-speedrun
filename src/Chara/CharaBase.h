@@ -59,11 +59,11 @@ namespace Chara
 
 		/// <returns>targetMove</returns>
 		virtual ML::Vec2 PreMove();
+		void CheckMapTrigger();
 		void HandleAdditionalSpeed(ML::Vec2& outTargetMove);
 		/// <returns>ぶつかったかどうか</returns>
 		bool CheckMapCollisionAndMove(const ML::Vec2& targetMove);
 		virtual void CollideWithMap();
-		void CheckMapTrigger();
 		virtual void PostMove();
 
 #pragma endregion

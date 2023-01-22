@@ -37,13 +37,12 @@ namespace Chara
 	void CharaBase::UpdateMovement()
 	{
 		ML::Vec2 targetMove = PreMove();
+		CheckMapTrigger();
 		HandleAdditionalSpeed(targetMove);
 		bool isHit = CheckMapCollisionAndMove(targetMove);
 		if (isHit) {
 			CollideWithMap();
 		}
-
-		CheckMapTrigger();
 		PostMove();
 	}
 
