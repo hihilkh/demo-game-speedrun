@@ -1,53 +1,53 @@
 ﻿#include "PlayerAnimator.h"
 #include "Utils/Log.h"
 #include "Animation/AnimationClip.h"
-#include "PlayerConstant.h"
 #include "Task_Player.h"
+#include "Task/ResourceConstant.h"
 
 namespace Player
 {
 	using namespace Animation;
-	using namespace Player::Constant;
+	using namespace ResourceConstant;
 
 	// TODO : Study why AnimationClip would be copied here
 	// TODO : Study how to use move construction for it / reduce constructor call
 	// TODO : Do it need to make AnimClip instance instead of static?
 	unordered_map<PlayerState, AnimationClip> PlayerAnimator::AnimClipMap = {
 		{ PlayerState::Idle, AnimationClip(true, {
-			AnimationKey(0, 0, RenderWidth, RenderHeight, 1), }) 
+			AnimationKey(0, 0, PlayerImageWidth, PlayerImageHeight, 1), })
 		},
 
 		{ PlayerState::Walk, AnimationClip(true, {
-			AnimationKey(0, 0				, RenderWidth, RenderHeight, 6),
-			AnimationKey(0, RenderHeight	, RenderWidth, RenderHeight, 12),
-			AnimationKey(0, RenderHeight * 2, RenderWidth, RenderHeight, 18),
-			AnimationKey(0, RenderHeight * 3, RenderWidth, RenderHeight, 24), })
+			AnimationKey(0, 0					 , PlayerImageWidth, PlayerImageHeight, 6),
+			AnimationKey(0, PlayerImageHeight	 , PlayerImageWidth, PlayerImageHeight, 12),
+			AnimationKey(0, PlayerImageHeight * 2, PlayerImageWidth, PlayerImageHeight, 18),
+			AnimationKey(0, PlayerImageHeight * 3, PlayerImageWidth, PlayerImageHeight, 24), })
 		},
 
 		// 一時的なコード
 		{ PlayerState::Attack, AnimationClip(false, {
-			AnimationKey(0, 0				, RenderWidth, RenderHeight, 5),
-			AnimationKey(0, RenderHeight	, RenderWidth, RenderHeight, 10),
-			AnimationKey(0, RenderHeight * 2, RenderWidth, RenderHeight, 15),
-			AnimationKey(0, RenderHeight * 3, RenderWidth, RenderHeight, 20), })
+			AnimationKey(0, 0					 , PlayerImageWidth, PlayerImageHeight, 5),
+			AnimationKey(0, PlayerImageHeight	 , PlayerImageWidth, PlayerImageHeight, 10),
+			AnimationKey(0, PlayerImageHeight * 2, PlayerImageWidth, PlayerImageHeight, 15),
+			AnimationKey(0, PlayerImageHeight * 3, PlayerImageWidth, PlayerImageHeight, 20), })
 		},
 
 		// 一時的なコード
 		{ PlayerState::Running, AnimationClip(true, {
-			AnimationKey(0, 0				, RenderWidth, RenderHeight, 3),
-			AnimationKey(0, RenderHeight	, RenderWidth, RenderHeight, 6),
-			AnimationKey(0, RenderHeight * 2, RenderWidth, RenderHeight, 9),
-			AnimationKey(0, RenderHeight * 3, RenderWidth, RenderHeight, 12), })
+			AnimationKey(0, 0					 , PlayerImageWidth, PlayerImageHeight, 3),
+			AnimationKey(0, PlayerImageHeight	 , PlayerImageWidth, PlayerImageHeight, 6),
+			AnimationKey(0, PlayerImageHeight * 2, PlayerImageWidth, PlayerImageHeight, 9),
+			AnimationKey(0, PlayerImageHeight * 3, PlayerImageWidth, PlayerImageHeight, 12), })
 		},
 
 		// 一時的なコード
 		{ PlayerState::Stopping, AnimationClip(true, {
-			AnimationKey(0, 0, RenderWidth, RenderHeight, 1), })
+			AnimationKey(0, 0, PlayerImageWidth, PlayerImageHeight, 1), })
 		},
 
 		// 一時的なコード
 		{ PlayerState::Fallback, AnimationClip(true, {
-			AnimationKey(0, 0, RenderWidth, RenderHeight, 1), })
+			AnimationKey(0, 0, PlayerImageWidth, PlayerImageHeight, 1), })
 		},
 	};
 
@@ -127,17 +127,20 @@ namespace Player
 			return;
 		}
 
-		// TODO : 影
-		ML::Box2D draw = drawBase.OffsetCopy(cameraOffset);
-		draw.y -= height;
-		ML::Box2D src = pCurrentAnimClip->GetImageSrc(currentAnimFrame);
-		UpdateSrcDirection(src, playerSP->GetDirection());
+		// 影 = コライダーの位置
+		ML::Box2D shadowDraw = playerSP->GetCurrentHitBox().OffsetCopy(cameraOffset);
+		res->shadowImg->Draw(shadowDraw, PlayerShadowSrc);
 
-		res->img->Draw(draw, src);
+		// プレイヤー
+		ML::Box2D playerDraw = drawBase.OffsetCopy(cameraOffset);
+		playerDraw.y -= height;
+		ML::Box2D playerSrc = pCurrentAnimClip->GetImageSrc(currentAnimFrame);
+		UpdateSrcDirection(playerSrc, playerSP->GetDirection());
+		res->playerImg->Draw(playerDraw, playerSrc);
 	}
 
 	void PlayerAnimator::UpdateSrcDirection(ML::Box2D& outSrc, Direction direction) const
 	{
-		outSrc.x += static_cast<int>(direction) * RenderWidth;
+		outSrc.x += static_cast<int>(direction) * PlayerImageWidth;
 	}
 }

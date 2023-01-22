@@ -27,7 +27,7 @@ namespace Player
 		ML::Vec2 targetMove = ML::Vec2(0, 0);
 
 		auto setPlayer = [&](Direction direction) {
-			targetMove += playerSP->GetDirectionalVector(direction) * Constant::WalkSpeed;
+			targetMove += GetDirectionalVector(direction) * Constant::WalkSpeed;
 			SetDirection(playerSP, previousDirection, direction, isDirectionFixed);
 		};
 
@@ -62,9 +62,5 @@ namespace Player
 		if (previousDirection == targetDirection) {
 			isDirectionFixed = true;
 		}
-	}
-
-	void PlayerActionBase::CollideWithMap()
-	{
 	}
 }

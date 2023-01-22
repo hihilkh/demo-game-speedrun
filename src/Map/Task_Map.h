@@ -3,7 +3,6 @@
 #include "Task/ResourceBase.tpp"
 #include "Task/ObjectBase.tpp"
 #include "Game/Task_GameCamera.h"
-#include "Common/BoxIteratorContainer.tpp"
 
 #pragma region 前方宣言
 

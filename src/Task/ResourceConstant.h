@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include <string>
+#include <myLib.h>
 
 namespace ResourceConstant
 {
@@ -23,6 +24,10 @@ namespace ResourceConstant
 	const int MapChipSize = 32;
 
 	const std::string PlayerImage = "Chara01.png";
+	const std::string PlayerShadowImage = "Shadow.png";
+	const int PlayerImageWidth = 32;
+	const int PlayerImageHeight = 32;
+	const ML::Box2D PlayerShadowSrc = ML::Box2D(0, 0, 16, 8);
 
 #pragma endregion
 

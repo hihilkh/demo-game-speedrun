@@ -1,10 +1,16 @@
 ﻿#include "TransportBeltMapChip.h"
+#include "Chara/CharaBase.h"
 
 namespace Map
 {
+	namespace {
+		const float TransportBeltSpeed = 5.0f;
+	}
+
 	TransportBeltMapChip::TransportBeltMapChip(shared_ptr<Resource> res, const ML::Box2D& hitBase, Direction direction) :
 		MapChipBase::MapChipBase(MapChipType::TransportBelt, res, hitBase),
-		direction(direction)
+		direction(direction),
+		speed(TransportBeltSpeed)
 	{
 
 	}
@@ -31,5 +37,10 @@ namespace Map
 	bool TransportBeltMapChip::GetIsWalkable() const
 	{
 		return true;
+	}
+
+	void TransportBeltMapChip::TriggerByChara(Chara::CharaBase& chara)
+	{
+		chara.SetAdditionalSpeedInfo(direction, speed);
 	}
 }

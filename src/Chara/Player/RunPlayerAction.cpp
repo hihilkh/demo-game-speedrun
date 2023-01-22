@@ -68,7 +68,7 @@ namespace Player
 				break;
 		}
 
-		return playerSP->GetDirectionalVector(playerSP->direction) * playerSP->currentMovementSpeed;
+		return GetDirectionalVector(playerSP->direction) * playerSP->currentMovementSpeed;
 	}
 
 	bool RunPlayerAction::CheckIsPrepareToRun() const

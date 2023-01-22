@@ -24,7 +24,8 @@ namespace Player
 		~Resource();
 
 	public:
-		DG::Image::SP img;
+		DG::Image::SP playerImg;
+		DG::Image::SP shadowImg;
 	};
 
 	class Object : public ObjectBaseWithResource<Object, Resource>, public Chara::CharaBase
@@ -57,7 +58,6 @@ namespace Player
 
 		bool isInitialized;
 		bool canControl;
-		float currentMovementSpeed;		// Inputによっての速度。実際の速度ではない。
 		float currentHeight;
 		PlayerState state;
 		unique_ptr<class PlayerActionBase> playerAction;		// TODO : Or change to the concept of controller?

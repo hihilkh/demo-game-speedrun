@@ -4,34 +4,27 @@
 
 namespace Chara
 {
-	CharaBase::CharaBase(const ML::Box2D& hitBase) : CharaBase::CharaBase(ML::Vec2(), hitBase)
+	CharaBase::CharaBase(const ML::Box2D& hitBase, const ML::Box2D& renderBase) : CharaBase::CharaBase(ML::Vec2(), hitBase, renderBase)
 	{
 
 	}
 
-	CharaBase::CharaBase(const ML::Vec2& pos, const ML::Box2D& hitBase) :
+	CharaBase::CharaBase(const ML::Vec2& pos, const ML::Box2D& hitBase, const ML::Box2D& renderBase) :
 		transform(make_shared<Transform>(pos)),
 		hitBase(hitBase),
+		renderBase(renderBase),
 		moveVec(ML::Vec2()),
 		moveCnt(0),
-		direction(Direction::Down)
+		direction(Direction::Down),
+		currentMovementSpeed(0.0f),
+		additionalSpeedInfo(AdditionalSpeedInfo())
 	{
 
 	}
 
-	ML::Vec2 CharaBase::GetDirectionalVector(Direction direction) const
+	ML::Box2D CharaBase::GetCurrentRenderBox() const
 	{
-		switch (direction) {
-			case Direction::Left:	return ML::Vec2(-1, 0);
-			case Direction::Right:	return ML::Vec2(1, 0);
-			case Direction::Up:		return ML::Vec2(0, -1);
-			case Direction::Down:	return ML::Vec2(0, 1);
-		}
-
-		assert(false && "おかしい方向");
-
-		// 警告を出さないように
-		return ML::Vec2(0, 0);
+		return renderBase.OffsetCopy(transform->pos);
 	}
 
 	ML::Box2D CharaBase::GetCurrentHitBox() const
@@ -44,6 +37,7 @@ namespace Chara
 	void CharaBase::UpdateMovement()
 	{
 		ML::Vec2 targetMove = PreMove();
+		HandleAdditionalSpeed(targetMove);
 		bool isHit = CheckMapCollisionAndMove(targetMove);
 		if (isHit) {
 			CollideWithMap();
@@ -56,6 +50,18 @@ namespace Chara
 	ML::Vec2 CharaBase::PreMove()
 	{
 		return ML::Vec2();
+	}
+
+	void CharaBase::HandleAdditionalSpeed(ML::Vec2& outTargetMove)
+	{
+		if (!additionalSpeedInfo.isActive) {
+			return;
+		}
+
+		outTargetMove += additionalSpeedInfo.GetCurrentSpeedVector();
+		currentMovementSpeed += additionalSpeedInfo.speed * CompareDirection(direction, additionalSpeedInfo.direction);
+
+		additionalSpeedInfo.isActive = false;
 	}
 
 	bool CharaBase::CheckMapCollisionAndMove(const ML::Vec2& targetMove)
@@ -121,4 +127,10 @@ namespace Chara
 
 #pragma endregion
 
+	void CharaBase::SetAdditionalSpeedInfo(Direction direction, float speed)
+	{
+		additionalSpeedInfo.isActive = true;
+		additionalSpeedInfo.direction = direction;
+		additionalSpeedInfo.speed = speed;
+	}
 }

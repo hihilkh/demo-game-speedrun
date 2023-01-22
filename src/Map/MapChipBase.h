@@ -32,5 +32,6 @@ namespace Map
 		MapChipType GetType() const { return type; }
 		virtual bool GetIsWalkable() const = 0;
 		virtual void CollideWithChara(const Chara::CharaBase& chara) {}
+		virtual void TriggerByChara(Chara::CharaBase& chara) {}
 	};
 }

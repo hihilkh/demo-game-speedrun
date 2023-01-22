@@ -153,6 +153,7 @@
     <ClCompile Include="src\Chara\Player\BasicPlayerAction.cpp" />
     <ClCompile Include="src\Chara\Player\PlayerAnimator.cpp" />
     <ClCompile Include="src\Chara\Player\RunPlayerAction.cpp" />
+    <ClCompile Include="src\Common\Direction.cpp" />
     <ClCompile Include="src\Common\Transform.cpp" />
     <ClCompile Include="src\Game\GameStatus.cpp" />
     <ClCompile Include="src\Game\GameReference.cpp" />

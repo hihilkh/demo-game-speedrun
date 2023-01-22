@@ -19,7 +19,9 @@ namespace Player
 
 	Resource::Resource()
 	{
-		img = DG::Image::Create(GetImagePath(ResourceConstant::PlayerImage));
+		// TODO : 一つの画像になる
+		playerImg = DG::Image::Create(GetImagePath(ResourceConstant::PlayerImage));
+		shadowImg = DG::Image::Create(GetImagePath(ResourceConstant::PlayerShadowImage));
 	}
 
 	Resource::~Resource()
@@ -32,10 +34,10 @@ namespace Player
 
 	Object::Object() :
 		ObjectBaseWithResource<Object, Resource>(TaskConstant::TaskGroupName_Chara, TaskConstant::TaskName_Player),
-		CharaBase(ML::Box2D(-Constant::HitBaseWidth / 2, -Constant::HitBaseHeight / 2, Constant::HitBaseWidth, Constant::HitBaseHeight)),
+		CharaBase(ML::Box2D(Constant::HitBase), ML::Box2D(Constant::RenderBase)),
 		isInitialized(false),
 		canControl(true),
-		currentMovementSpeed(Constant::WalkSpeed),
+		currentHeight(0),
 		state(PlayerState::Idle),
 		fallbackCounter(0)
 	{
@@ -110,7 +112,7 @@ namespace Player
 			return;
 		}
 
-		animator->Render(hitBase.OffsetCopy(transform->pos), camera->GetCameraOffset(), (int)currentHeight);
+		animator->Render(GetCurrentRenderBox(), camera->GetCameraOffset(), (int)currentHeight);
 	}
 
 	void Object::GameReadyEventHandler()

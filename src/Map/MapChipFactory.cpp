@@ -9,7 +9,9 @@
 // TODO : Study a proper way to do factory
 namespace Map
 {
-	static const int DirectionDivisor = 100;
+	namespace {
+		const int DirectionDivisor = 100;
+	}
 
 	MapChipBase::SP GenerateMapChip(int typeId, shared_ptr<Resource> res, const ML::Box2D& hitBase)
 	{

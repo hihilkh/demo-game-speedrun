@@ -151,6 +151,9 @@
     <ClCompile Include="src\Map\WeakWallMapChip.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Common\Direction.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GameEngine_Ver3_83.h">

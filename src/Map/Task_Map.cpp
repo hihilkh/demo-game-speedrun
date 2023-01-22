@@ -74,7 +74,7 @@ namespace Map
 		const ML::Box2D& visibleRange = camera->GetVisibleRange();
 
 		vector<MapChipBase::SP> mapChips = GetOverlappedMapChipInterator(visibleRange);
-		for (auto& mapChip : mapChips) {
+		for (MapChipBase::SP& mapChip : mapChips) {
 			mapChip->Render(-visibleRange.x, -visibleRange.y);
 		}
 	}
@@ -182,7 +182,13 @@ namespace Map
 
 	void Object::CheckTrigger(Chara::CharaBase& chara)
 	{
-		// TODO
+		// TODO : 今GetOverlappedMapChipInteratorは無駄にした。CheckCollisionからmapChipsを渡すことができるか。
+		ML::Box2D hitBox = chara.GetCurrentHitBox();
+		vector<MapChipBase::SP> mapChips = GetOverlappedMapChipInterator(hitBox);
+
+		for (MapChipBase::SP& mapChip : mapChips) {
+			mapChip->TriggerByChara(chara);
+		}
 	}
 #pragma endregion
 }
