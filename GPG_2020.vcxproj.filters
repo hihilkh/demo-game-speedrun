@@ -103,10 +103,10 @@
     <ClCompile Include="src\Chara\Player\Task_Player.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Reference.cpp">
+    <ClCompile Include="src\Game\GameReference.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Status.cpp">
+    <ClCompile Include="src\Game\GameStatus.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Common\Transform.cpp">
@@ -222,7 +222,7 @@
     <ClInclude Include="src\Game\Task_Game.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Reference.h">
+    <ClInclude Include="src\Game\GameReference.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Task_GameCamera.h">
@@ -234,7 +234,7 @@
     <ClInclude Include="src\Chara\Player\Task_Player.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Status.h">
+    <ClInclude Include="src\Game\GameStatus.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Utils\Math.h">

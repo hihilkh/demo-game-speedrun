@@ -7,8 +7,8 @@
 #include "Map/Task_Map.h"
 #include "Task_GameCamera.h"
 #include "Chara/Player/Task_Player.h"
-#include "Reference.h"
-#include "Status.h"
+#include "GameReference.h"
+#include "GameStatus.h"
 #include "Utils/Log.h"
 #include "Task/TaskConstant.h"
 
@@ -20,8 +20,8 @@ namespace Game
 
 	Object::Object() : ObjectBase<Object>(TaskConstant::TaskGroupName_Game, TaskConstant::TaskName_Game)
 	{
-		gameStatus = make_shared<Status>();
-		Reference::gameStatus = gameStatus;
+		gameStatus = make_shared<GameStatus>();
+		GameReference::gameStatus = gameStatus;
 
 		// タスクの生成
 		// 生成の順番も重要だ。UpDate()の順番につながるから。
@@ -30,9 +30,9 @@ namespace Game
 		camera->SetTarget(player->transform);
 		Map::Object::SP map = Map::Object::Create(true);
 
-		Reference::player = player;
-		Reference::gameCamera = camera;
-		Reference::map = map;
+		GameReference::player = player;
+		GameReference::gameCamera = camera;
+		GameReference::map = map;
 
 		gameReady.Invoke();
 	}
