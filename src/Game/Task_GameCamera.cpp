@@ -1,7 +1,7 @@
 ﻿#include "Task_GameCamera.h"
 #include "Task/TaskConstant.h"
 
-namespace GameCamera
+namespace Game::Camera
 {
 
 #pragma region Object

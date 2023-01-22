@@ -3,8 +3,8 @@
 #include "Utils/Log.h"
 #include "Game/Task_GameCamera.h"
 #include "Map/Task_Map.h"
-#include "Game/GameReference.h"
-#include "Game/GameStatus.h"
+#include "Game/Reference.h"
+#include "Game/Status.h"
 #include "BasicPlayerAction.h"
 #include "AttackPlayerAction.h"
 #include "RunPlayerAction.h"
@@ -120,10 +120,10 @@ namespace Player
 		//UpdatePlayerAction(PlayerMode::Basic);
 		UpdatePlayerAction(PlayerMode::Run);
 
-		camera = Game::GameReference::GetGameCamera();
-		map = Game::GameReference::GetMap();
+		camera = Game::Reference::GetGameCamera();
+		map = Game::Reference::GetMap();
 
-		Game::GameStatus::SP gameStatus = Game::GameReference::GetGameStatus();
+		Game::Status::SP gameStatus = Game::Reference::GetGameStatus();
 		if (gameStatus) {
 			transform->pos = gameStatus->GetInitialPos();
 		}

@@ -4,7 +4,7 @@
 #include "Task/ObjectBase.tpp"
 #include "Common/Transform.h"
 
-namespace GameCamera
+namespace Game::Camera
 {
 	class Object : public ObjectBase<Object>
 	{

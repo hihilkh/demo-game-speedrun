@@ -2,10 +2,10 @@
 #include "Utils/Log.h"
 #include "Utils/Math.h"
 #include "Task/TaskConstant.h"
-#include "Game/GameReference.h"
+#include "Game/Reference.h"
 #include "Game/Task_Game.h"
 #include "Game/Task_GameCamera.h"
-#include "Game/GameStatus.h"
+#include "Game/Status.h"
 #include "MapChipBase.h"
 #include "Chara/CharaBase.h"
 
@@ -82,9 +82,9 @@ namespace Map
 	void Object::GameReadyEventHandler()
 	{
 		isInitialized = true;
-		this->camera = Game::GameReference::GetGameCamera();
+		this->camera = Game::Reference::GetGameCamera();
 
-		Game::GameStatus::SP gameStatus = Game::GameReference::GetGameStatus();
+		Game::Status::SP gameStatus = Game::Reference::GetGameStatus();
 		int mapIndex;
 		if (gameStatus) {
 			mapIndex = gameStatus->GetInitialMapIndex();

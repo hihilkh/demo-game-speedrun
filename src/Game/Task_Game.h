@@ -9,7 +9,7 @@
 
 #pragma region 前方宣言
 
-namespace Game { class GameStatus; }
+namespace Game { class Status; }
 
 #pragma endregion
 
@@ -29,7 +29,7 @@ namespace Game
 		void Render2D_AF() override;	//「2D描画」１フレーム毎に行う処理
 
 	private:
-		shared_ptr<GameStatus> gameStatus;
+		shared_ptr<Status> gameStatus;
 
 	public:
 		static Event<Object> gameReady;

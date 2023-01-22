@@ -4,18 +4,18 @@
 
 namespace Game
 {
-	class GameStatus
+	class Status
 	{
 	private:
 		ML::Vec2 initialPos;
 		int initalMapIndex;
 
 	public:
-		GameStatus();
-		~GameStatus();
+		Status();
+		~Status();
 
-		typedef shared_ptr<GameStatus> SP;
-		typedef weak_ptr<GameStatus> WP;
+		typedef shared_ptr<Status> SP;
+		typedef weak_ptr<Status> WP;
 
 		ML::Vec2 GetInitialPos() const { return initialPos; }
 		int GetInitialMapIndex() const { return initalMapIndex; }

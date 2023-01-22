@@ -6,7 +6,7 @@
 
 #pragma region 前方宣言
 
-namespace GameCamera { class Object; }
+namespace Game::Camera { class Object; }
 namespace Map { class MapChipBase; }
 namespace Chara { class CharaBase; }
 
@@ -53,7 +53,7 @@ namespace Map
 		ML::Point size;
 		vector<shared_ptr<MapChipBase>> mapChips;
 
-		shared_ptr<GameCamera::Object> camera;
+		shared_ptr<Game::Camera::Object> camera;
 
 		bool isInitialized;
 		// TODO : bool isMapLoaded?

@@ -8,7 +8,7 @@
 
 #pragma region 前方宣言
 
-namespace GameCamera { class Object; }
+namespace Game::Camera { class Object; }
 
 #pragma endregion
 
@@ -54,7 +54,7 @@ namespace Player
 		void Render2D_AF() override;	//「2D描画」１フレーム毎に行う処理
 
 	private:
-		shared_ptr<GameCamera::Object> camera;
+		shared_ptr<Game::Camera::Object> camera;
 
 		bool isInitialized;
 		bool canControl;

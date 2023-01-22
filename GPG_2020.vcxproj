@@ -155,8 +155,8 @@
     <ClCompile Include="src\Chara\Player\RunPlayerAction.cpp" />
     <ClCompile Include="src\Common\Direction.cpp" />
     <ClCompile Include="src\Common\Transform.cpp" />
-    <ClCompile Include="src\Game\GameStatus.cpp" />
-    <ClCompile Include="src\Game\GameReference.cpp" />
+    <ClCompile Include="src\Game\Status.cpp" />
+    <ClCompile Include="src\Game\Reference.cpp" />
     <ClCompile Include="src\Chara\Player\PlayerActionBase.cpp" />
     <ClCompile Include="src\Map\FloorMapChip.cpp" />
     <ClCompile Include="src\Map\MapChipBase.cpp" />
@@ -200,7 +200,7 @@
     <ClInclude Include="src\Chara\Player\RunPlayerAction.h" />
     <ClInclude Include="src\Common\Direction.h" />
     <ClInclude Include="src\Common\Transform.h" />
-    <ClInclude Include="src\Game\GameStatus.h" />
+    <ClInclude Include="src\Game\Status.h" />
     <ClInclude Include="src\Chara\Player\PlayerActionBase.h" />
     <ClInclude Include="src\Chara\Player\PlayerMode.h" />
     <ClInclude Include="src\Map\FloorMapChip.h" />
@@ -212,7 +212,7 @@
     <ClInclude Include="src\Map\WeakWallMapChip.h" />
     <ClInclude Include="src\MyPG.h" />
     <ClInclude Include="src\Chara\CharaBase.h" />
-    <ClInclude Include="src\Game\GameReference.h" />
+    <ClInclude Include="src\Game\Reference.h" />
     <ClInclude Include="src\Task\ResourceConstant.h" />
     <ClInclude Include="src\Utils\Log.h" />
     <ClInclude Include="src\Task\ObjectBase.tpp" />
