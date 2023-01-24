@@ -34,7 +34,7 @@ namespace Player
 
 	Object::Object() :
 		ObjectBaseWithResource<Object, Resource>(TaskConstant::TaskGroupName_Chara, TaskConstant::TaskName_Player),
-		CharaBase(ML::Box2D(Constant::HitBase), ML::Box2D(Constant::RenderBase)),
+		CharaBase(Constant::HitBase, Constant::RenderBase),
 		isInitialized(false),
 		canControl(true),
 		currentHeight(0),

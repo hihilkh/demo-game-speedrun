@@ -6,8 +6,8 @@
 #include "Game/GameEvent.h"
 #include "Game/Task_GameCamera.h"
 #include "Game/GameStatus.h"
-#include "MapChipBase.h"
 #include "Chara/CharaBase.h"
+#include "MapChip/MapChipBase.h"
 #include "MapChipFactory.h"
 
 namespace Map
@@ -59,6 +59,8 @@ namespace Map
 	Object::~Object()
 	{
 		Game::gameReady.RemoveListeners(this);
+
+		ge->KillAll_G(TaskConstant::TaskGroupName_MapObject);
 	}
 
 	void Object::UpDate()
@@ -73,7 +75,7 @@ namespace Map
 
 		const ML::Box2D& visibleRange = camera->GetVisibleRange();
 
-		vector<MapChipBase::SP> mapChips = GetOverlappedMapChipInterator(visibleRange);
+		vector<MapChipBase::SP> mapChips = GetOverlappedMapChipIterator(visibleRange);
 		for (MapChipBase::SP& mapChip : mapChips) {
 			mapChip->Render(-visibleRange.x, -visibleRange.y);
 		}
@@ -125,13 +127,14 @@ namespace Map
 				mapChipHitBase.Offset(hitBase.x, hitBase.y);
 
 				mapChips.push_back(GenerateMapChip(typeId, res, mapChipHitBase));
+				GenerateMapObject(typeId, mapChipHitBase);
 			}
 		}
 
 		return true;
 	}
 
-	vector<MapChipBase::SP> Object::GetOverlappedMapChipInterator(const ML::Box2D& hit)
+	vector<MapChipBase::SP> Object::GetOverlappedMapChipIterator(const ML::Box2D& hit)
 	{
 		if (!this->hitBase.Hit(hit)) {
 			return vector<MapChipBase::SP>();
@@ -166,7 +169,7 @@ namespace Map
 	bool Object::CheckCollision(const Chara::CharaBase& chara)
 	{
 		ML::Box2D hitBox = chara.GetCurrentHitBox();
-		vector<MapChipBase::SP> mapChips = GetOverlappedMapChipInterator(hitBox);
+		vector<MapChipBase::SP> mapChips = GetOverlappedMapChipIterator(hitBox);
 
 		//範囲内の障害物を探す、やりとりをする
 		bool isHit = false;
@@ -182,9 +185,9 @@ namespace Map
 
 	void Object::CheckTrigger(Chara::CharaBase& chara)
 	{
-		// TODO : 今GetOverlappedMapChipInteratorは無駄にした。CheckCollisionからmapChipsを渡すことができるか。
+		// TODO : 今GetOverlappedMapChipIteratorは無駄にした。CheckCollisionからmapChipsを渡すことができるか。
 		ML::Box2D hitBox = chara.GetCurrentHitBox();
-		vector<MapChipBase::SP> mapChips = GetOverlappedMapChipInterator(hitBox);
+		vector<MapChipBase::SP> mapChips = GetOverlappedMapChipIterator(hitBox);
 
 		for (MapChipBase::SP& mapChip : mapChips) {
 			mapChip->TriggerByChara(chara);

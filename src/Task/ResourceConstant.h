@@ -18,11 +18,17 @@ namespace ResourceConstant
 	const std::string TitleImage = "Title.bmp";
 	const std::string EndingImage = "Ending.bmp";
 
+	// マップ
 	const std::string MapImage = "MapChip01.bmp";
 	const int NoOfMapChip = 16;
 	const int NoOfMapChipInRow = 8;
 	const int MapChipSize = 32;
 
+	// マップオブジェクト
+	const int MapObjectSize = 32;
+	const std::string GoalImage = "Flag.png";
+
+	// プレイヤー
 	const std::string PlayerImage = "Chara01.png";
 	const std::string PlayerShadowImage = "Shadow.png";
 	const int PlayerImageWidth = 32;

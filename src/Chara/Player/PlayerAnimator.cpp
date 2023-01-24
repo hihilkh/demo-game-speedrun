@@ -9,6 +9,7 @@ namespace Player
 	using namespace Animation;
 	using namespace ResourceConstant;
 
+	// TODO : Animatorに合わせる
 	// TODO : Study why AnimationClip would be copied here
 	// TODO : Study how to use move construction for it / reduce constructor call
 	// TODO : Do it need to make AnimClip instance instead of static?

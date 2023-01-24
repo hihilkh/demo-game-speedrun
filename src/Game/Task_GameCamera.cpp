@@ -7,7 +7,7 @@ namespace Game::Camera
 #pragma region Object
 
 	Object::Object() : 
-		ObjectBase<Object>(TaskConstant::TaskGroupName_Game, TaskConstant::TaskName_GameCamera), 
+		ObjectBase<Object>(TaskConstant::TaskGroupName_Game, TaskConstant::TaskName_GameCamera, true), 
 		visibleRange(ML::Box2D(0, 0, 480, 270)), 
 		currentCameraOffset(ML::Point())
 	{

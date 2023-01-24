@@ -130,10 +130,10 @@
     <ClCompile Include="src\Chara\Player\RunPlayerAction.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Map\FloorMapChip.cpp">
+    <ClCompile Include="src\Map\MapChip\FloorMapChip.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Map\MapChipBase.cpp">
+    <ClCompile Include="src\Map\MapChip\MapChipBase.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Map\MapChipFactory.cpp">
@@ -142,19 +142,25 @@
     <ClCompile Include="src\Map\Task_Map.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Map\UnbreakableWallMapChip.cpp">
+    <ClCompile Include="src\Map\MapChip\UnbreakableWallMapChip.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Map\TransportBeltMapChip.cpp">
+    <ClCompile Include="src\Map\MapChip\TransportBeltMapChip.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Map\WeakWallMapChip.cpp">
+    <ClCompile Include="src\Map\MapChip\WeakWallMapChip.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Common\Direction.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\GameEvent.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Map\MapObject\Task_Goal.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Animation\Animator.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -285,31 +291,40 @@
     <ClInclude Include="src\Chara\Player\RunPlayerAction.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Map\FloorMapChip.h">
+    <ClInclude Include="src\Map\MapChip\FloorMapChip.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Map\MapChipBase.h">
+    <ClInclude Include="src\Map\MapChip\MapChipBase.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Map\MapChipType.h">
+    <ClInclude Include="src\Map\MapChip\MapChipType.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Map\Task_Map.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Map\UnbreakableWallMapChip.h">
+    <ClInclude Include="src\Map\MapChip\UnbreakableWallMapChip.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Map\TransportBeltMapChip.h">
+    <ClInclude Include="src\Map\MapChip\TransportBeltMapChip.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Map\WeakWallMapChip.h">
+    <ClInclude Include="src\Map\MapChip\WeakWallMapChip.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Map\MapChipFactory.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\GameEvent.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Map\MapObject\Task_Goal.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Animation\Animator.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Map\MapObject\MapObjectType.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

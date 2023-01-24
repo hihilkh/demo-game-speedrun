@@ -2,17 +2,16 @@
 
 #include "Task/ResourceBase.tpp"
 #include "Task/ObjectBase.tpp"
-#include "Game/Task_GameCamera.h"
 
 #pragma region 前方宣言
 
 namespace Game::Camera { class Object; }
-namespace Map { class MapChipBase; }
-namespace Chara { class CharaBase; }
+namespace Animation { class Animator; }
 
 #pragma endregion
 
-namespace Map
+// TOOD : 基底クラスを作成
+namespace Goal
 {
 	class Resource : public ResourceBase<Resource>
 	{
@@ -23,12 +22,8 @@ namespace Map
 	public:
 		~Resource();
 
-	private:
-		ML::Box2D chip[ResourceConstant::NoOfMapChip];
-
 	public:
-		DG::Image::SP chipImg;
-		void Draw(int chipIndex, const ML::Box2D& draw);
+		DG::Image::SP img;
 	};
 	//-------------------------------------------------------------------
 	class Object : public ObjectBaseWithResource<Object, Resource>
@@ -38,6 +33,9 @@ namespace Map
 	private:
 		Object();
 
+	protected:
+		void PostCreate() override;
+
 	public:
 		~Object();
 
@@ -45,29 +43,14 @@ namespace Map
 		void Render2D_AF() override;	//「2D描画」１フレーム毎に行う処理
 
 	private:
+		ML::Point pos;
 		ML::Box2D hitBase;
-		ML::Point mapChipCenterOffset;
-
-		int mapChipLeftmostIndex;
-		int mapChipTopmostIndex;
-		ML::Point size;
-		vector<shared_ptr<MapChipBase>> mapChips;
+		ML::Box2D renderBase;
 
 		shared_ptr<Game::Camera::Object> camera;
-
-		bool isInitialized;
-		// TODO : bool isMapLoaded?
-
-	private:
-		void GameReadyEventHandler();
-
-		string GetMapFilePath(int mapIndex) const;
-		bool Load(const string& filePath);
-
-		vector<shared_ptr<MapChipBase>> GetOverlappedMapChipIterator(const ML::Box2D& hit);
+		unique_ptr<Animation::Animator> animator;
 
 	public:
-		bool CheckCollision(const Chara::CharaBase& chara);
-		void CheckTrigger(Chara::CharaBase& chara);
+		void Init(int posX, int posY);
 	};
 }
