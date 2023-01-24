@@ -30,8 +30,5 @@ namespace Game
 
 	private:
 		shared_ptr<GameStatus> gameStatus;
-
-	public:
-		static Event<Object> gameReady;
 	};
 }

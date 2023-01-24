@@ -11,11 +11,10 @@
 #include "GameStatus.h"
 #include "Utils/Log.h"
 #include "Task/TaskConstant.h"
+#include "GameEvent.h"
 
 namespace Game
 {
-	Event<Object> Object::gameReady;
-
 #pragma region Object
 
 	Object::Object() : ObjectBase<Object>(TaskConstant::TaskGroupName_Game, TaskConstant::TaskName_Game)

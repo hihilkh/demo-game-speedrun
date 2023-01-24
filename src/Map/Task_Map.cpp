@@ -3,7 +3,7 @@
 #include "Utils/Math.h"
 #include "Task/TaskConstant.h"
 #include "Game/GameReference.h"
-#include "Game/Task_Game.h"
+#include "Game/GameEvent.h"
 #include "Game/Task_GameCamera.h"
 #include "Game/GameStatus.h"
 #include "MapChipBase.h"
@@ -53,12 +53,12 @@ namespace Map
 	{
 		render2D_Priority[1] = 0.9f;
 
-		Game::Object::gameReady.AddListener(this, &Object::GameReadyEventHandler);
+		Game::gameReady.AddListener(this, &Object::GameReadyEventHandler);
 	}
 
 	Object::~Object()
 	{
-		Game::Object::gameReady.RemoveListeners(this);
+		Game::gameReady.RemoveListeners(this);
 	}
 
 	void Object::UpDate()

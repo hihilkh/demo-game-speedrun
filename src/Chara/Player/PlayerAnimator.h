@@ -39,7 +39,7 @@ namespace Player
 		bool isPlaying;
 
 	public:
-		Event<PlayerAnimator, PlayerState> animFinished;
+		Event<PlayerState> animFinished;
 
 	private:
 		void ChangeState(PlayerState to);

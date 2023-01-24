@@ -11,7 +11,7 @@
 #include "PlayerConstant.h"
 #include "PlayerAnimator.h"
 #include "Task/TaskConstant.h"
-#include "Game/Task_Game.h"
+#include "Game/GameEvent.h"
 
 namespace Player
 {
@@ -44,7 +44,7 @@ namespace Player
 		// TODO : Better way to control priority?
 		render2D_Priority[1] = 0.5f;
 
-		Game::Object::gameReady.AddListener(this, &Object::GameReadyEventHandler);
+		Game::gameReady.AddListener(this, &Object::GameReadyEventHandler);
 	}
 
 	void Object::PostCreate()
@@ -55,7 +55,7 @@ namespace Player
 
 	Object::~Object()
 	{
-		Game::Object::gameReady.RemoveListeners(this);
+		Game::gameReady.RemoveListeners(this);
 	}
 
 	void Object::UpDate()
