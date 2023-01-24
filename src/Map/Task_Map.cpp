@@ -8,10 +8,10 @@
 #include "Game/GameStatus.h"
 #include "MapChipBase.h"
 #include "Chara/CharaBase.h"
+#include "MapChipFactory.h"
 
 namespace Map
 {
-	extern MapChipBase::SP GenerateMapChip(int typeId, shared_ptr<Resource> res, const ML::Box2D& hitBase);
 
 #define CHIP_SIZE ResourceConstant::MapChipSize
 

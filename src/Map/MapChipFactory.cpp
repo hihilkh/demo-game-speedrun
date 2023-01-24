@@ -1,19 +1,20 @@
-﻿#include "MapChipBase.h"
+﻿#include "MapChipFactory.h"
+
 #include <cassert>
+#include "MapChipBase.h"
 
 #include "FloorMapChip.h"
 #include "TransportBeltMapChip.h"
 #include "UnbreakableWallMapChip.h"
 #include "WeakWallMapChip.h"
 
-// TODO : Study a proper way to do factory
 namespace Map
 {
 	namespace {
 		const int DirectionDivisor = 100;
 	}
 
-	MapChipBase::SP GenerateMapChip(int typeId, shared_ptr<Resource> res, const ML::Box2D& hitBase)
+	shared_ptr<MapChipBase> GenerateMapChip(int typeId, shared_ptr<Resource> res, const ML::Box2D& hitBase)
 	{
 		int realTypeInt = typeId;
 		Direction direction = Direction::Down;

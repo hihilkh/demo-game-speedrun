@@ -303,6 +303,9 @@
     <ClInclude Include="src\Map\WeakWallMapChip.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Map\MapChipFactory.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Event\Event.tpp">
