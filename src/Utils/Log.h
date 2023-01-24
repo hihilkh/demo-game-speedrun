@@ -1,5 +1,10 @@
 ﻿#pragma once
 
+#if _DEBUG
+#include <sstream>
+#include <windows.h>
+#endif
+
 namespace Log {
 
 #if _DEBUG
