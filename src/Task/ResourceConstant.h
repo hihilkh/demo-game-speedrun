@@ -15,6 +15,8 @@ namespace ResourceConstant
 
 #pragma region Image Files
 
+	const std::string WhiteImage = "White.png";
+
 	const std::string TitleImage = "Title.bmp";
 	const std::string EndingImage = "Ending.bmp";
 
