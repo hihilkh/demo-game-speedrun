@@ -33,11 +33,15 @@ namespace Game
 		GameReference::gameCamera = camera;
 		GameReference::map = map;
 
+		Game::gameEnded.AddListener(this, &Object::GameEndedEventHandler);
+
 		gameReady.Invoke();
 	}
 
 	Object::~Object()
 	{
+		Game::gameEnded.RemoveListeners(this);
+
 		//★データ＆タスク解放
 		ge->KillAll_G(TaskConstant::TaskGroupName_Game);
 		ge->KillAll_G(TaskConstant::TaskGroupName_Map);
@@ -62,6 +66,11 @@ namespace Game
 	//「２Ｄ描画」１フレーム毎に行う処理
 	void  Object::Render2D_AF()
 	{
+	}
+
+	void Object::GameEndedEventHandler()
+	{
+		Print("ゲームクリア");
 	}
 
 #pragma endregion

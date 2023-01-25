@@ -3,9 +3,13 @@
 #include "Game/Task_GameCamera.h"
 #include "MyPG.h"
 #include "Animation/Animator.h"
+#include "Debug/ColliderVisual.h"
+#include "Chara/Player/Task_Player.h"
+#include "Game/GameEvent.h"
 
 namespace Goal
 {
+
 #pragma region Resource
 
 	Resource::Resource()
@@ -21,17 +25,19 @@ namespace Goal
 
 #pragma region Object
 
-#define SIZE ResourceConstant::MapObjectSize
+#define SIZE 32
 
 	Object::Object() :
 		ObjectBaseWithResource<Object, Resource>(TaskConstant::TaskGroupName_MapObject, TaskConstant::TaskName_Goal, true),
 		pos(ML::Point()),
-		hitBase(ML::Box2D()),	// TODO
-		renderBase(ML::Box2D(0, -SIZE / 3, SIZE, SIZE))
+		hitBase(ML::Box2D(10, 4, 12, 24)),
+		renderBase(ML::Box2D(0, -SIZE / 3, SIZE, SIZE)),
+		isTriggered(false)
 	{
 		render2D_Priority[1] = 0.8f;
 
 		camera = ge->GetTask<Game::Camera::Object>(TaskConstant::TaskGroupName_Game, TaskConstant::TaskName_GameCamera);
+		player = ge->GetTask<Player::Object>(TaskConstant::TaskGroupName_Chara, TaskConstant::TaskName_Player);
 	}
 
 	void Object::PostCreate()
@@ -56,6 +62,19 @@ namespace Goal
 	void Object::UpDate()
 	{
 		animator->UpDate();
+
+		if (isTriggered) {
+			return;
+		}
+
+		if (!player) {
+			return;
+		}
+		
+		if (GetCurrentHitBox().Hit(player->GetCurrentHitBox())) {
+			isTriggered = true;
+			Game::gameEnded.Invoke();
+		}
 	}
 
 	void Object::Render2D_AF()
@@ -64,16 +83,23 @@ namespace Goal
 			return;
 		}
 
-		// TODO : Check is inside camera
+		// TODO : カメラに映っていない時に描画しないように
 		const ML::Box2D& visibleRange = camera->GetVisibleRange();
 		ML::Box2D draw = renderBase.OffsetCopy(-visibleRange.x + pos.x, -visibleRange.y + pos.y);
 		animator->Render(draw);
+
+		RenderColliderVisual(GetCurrentHitBox().OffsetCopy(-visibleRange.x, -visibleRange.y));
 	}
 
 	void Object::Init(int posX, int posY)
 	{
 		this->pos.x = posX;
 		this->pos.y = posY;
+	}
+
+	ML::Box2D Object::GetCurrentHitBox() const
+	{
+		return hitBase.OffsetCopy(pos);
 	}
 
 #pragma endregion

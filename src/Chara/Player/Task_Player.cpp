@@ -33,7 +33,7 @@ namespace Player
 #pragma region Object
 
 	Object::Object() :
-		ObjectBaseWithResource<Object, Resource>(TaskConstant::TaskGroupName_Chara, TaskConstant::TaskName_Player),
+		ObjectBaseWithResource<Object, Resource>(TaskConstant::TaskGroupName_Chara, TaskConstant::TaskName_Player, true),
 		CharaBase(Constant::HitBase, Constant::RenderBase),
 		isInitialized(false),
 		canControl(true),

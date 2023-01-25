@@ -30,5 +30,8 @@ namespace Game
 
 	private:
 		shared_ptr<GameStatus> gameStatus;
+
+	private:
+		void GameEndedEventHandler();
 	};
 }

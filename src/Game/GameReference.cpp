@@ -1,5 +1,6 @@
 ﻿#include "GameReference.h"
 
+// TODO : GameReferenceが必要かどうかを検討
 namespace Game
 {
 	weak_ptr<Map::Object> GameReference::map;

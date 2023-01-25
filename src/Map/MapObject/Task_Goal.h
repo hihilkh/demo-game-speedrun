@@ -7,6 +7,7 @@
 
 namespace Game::Camera { class Object; }
 namespace Animation { class Animator; }
+namespace Player { class Object; }
 
 #pragma endregion
 
@@ -48,7 +49,13 @@ namespace Goal
 		ML::Box2D renderBase;
 
 		shared_ptr<Game::Camera::Object> camera;
+		shared_ptr<Player::Object> player;
 		unique_ptr<Animation::Animator> animator;
+
+		bool isTriggered;
+
+	private:
+		ML::Box2D GetCurrentHitBox() const;
 
 	public:
 		void Init(int posX, int posY);

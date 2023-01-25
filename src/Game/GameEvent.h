@@ -5,4 +5,5 @@
 namespace Game
 {
 	extern Event<> gameReady;
+	extern Event<> gameEnded;
 }

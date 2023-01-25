@@ -3,4 +3,5 @@
 namespace Game
 {
 	Event<> gameReady;
+	Event<> gameEnded;
 }

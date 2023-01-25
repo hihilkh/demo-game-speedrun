@@ -16,7 +16,8 @@
 
 namespace Map
 {
-	namespace {
+	namespace
+	{
 		const int DirectionDivisor = 100;
 		const int MapObjectDivisor = 1000;
 	}

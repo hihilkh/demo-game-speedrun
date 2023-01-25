@@ -27,7 +27,6 @@ namespace ResourceConstant
 	const int MapChipSize = 32;
 
 	// マップオブジェクト
-	const int MapObjectSize = 32;
 	const std::string GoalImage = "Flag.png";
 
 	// プレイヤー
