@@ -14,6 +14,7 @@ namespace TaskConstant {
 	const std::string TaskGroupName_MapObject = "マップオブジェクト";
 	const std::string TaskGroupName_Chara = "キャラクター";
 
+	const std::string TaskGroupName_ParticleSystem = "パーティクルシステム";
 #pragma endregion
 
 #pragma region TaskName

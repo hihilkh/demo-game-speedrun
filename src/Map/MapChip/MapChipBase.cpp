@@ -21,4 +21,9 @@ namespace Map
 		ML::Box2D draw = hitBase.OffsetCopy(offsetX, offsetY);
 		res->chipImg->Draw(draw, GetRenderSrc());
 	}
+
+	ML::Vec2 MapChipBase::GetCenterPos() const
+	{
+		return ML::Vec2(hitBase.x + hitBase.w / 2.0f, hitBase.y + hitBase.h / 2.0f);
+	}
 }

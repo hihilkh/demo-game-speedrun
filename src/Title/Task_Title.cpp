@@ -46,7 +46,7 @@ namespace Title
 		}
 
 		if (this->logoPosY == 0) {
-			if (inp.ST.down) {
+			if (inp.B1.down) {
 				//自身に消滅要請
 				this->Kill();
 			}

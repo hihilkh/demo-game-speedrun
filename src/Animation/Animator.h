@@ -14,8 +14,6 @@ namespace ML { class Box2D; }
 
 namespace Animation
 {
-
-
 	class Animator
 	{
 	private:

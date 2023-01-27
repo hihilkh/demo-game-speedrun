@@ -45,7 +45,7 @@ namespace Goal
 		using namespace Animation;
 
 		animator = make_unique<Animator>(
-			this->res->img, initializer_list<AnimationClip>{
+			res->img, initializer_list<AnimationClip>{
 			AnimationClip(true, {
 				AnimationKey(0,		0	, SIZE, SIZE, 10),
 				AnimationKey(SIZE,	0	, SIZE, SIZE, 20),
@@ -84,11 +84,12 @@ namespace Goal
 		}
 
 		// TODO : カメラに映っていない時に描画しないように
-		const ML::Box2D& visibleRange = camera->GetVisibleRange();
-		ML::Box2D draw = renderBase.OffsetCopy(-visibleRange.x + pos.x, -visibleRange.y + pos.y);
+		const ML::Point& cameraOffset = camera->GetCameraOffset();
+		ML::Box2D draw = renderBase.OffsetCopy(cameraOffset);
+		draw.Offset(pos);
 		animator->Render(draw);
 
-		RenderColliderVisual(GetCurrentHitBox().OffsetCopy(-visibleRange.x, -visibleRange.y));
+		RenderColliderVisual(GetCurrentHitBox().OffsetCopy(cameraOffset));
 	}
 
 	void Object::Init(int posX, int posY)

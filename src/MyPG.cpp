@@ -101,6 +101,7 @@ namespace MyPG
 		this->dgi->EffectState().param.bgColor = ML::Color(0.0f, 0.0f, 0.0f, 0.0f);
 
 		//初期実行タスク生成＆ゲームエンジンに登録
+		srand((unsigned)time(0));
 		Title::Object::SP ft = Title::Object::Create(true);
 
 		//------------------------------------------------------------------------------------

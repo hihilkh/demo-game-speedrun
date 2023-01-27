@@ -175,6 +175,9 @@
     <ClCompile Include="src\Ending\Task_Ending.cpp" />
     <ClCompile Include="src\Game\Task_Game.cpp" />
     <ClCompile Include="src\Game\Task_GameCamera.cpp" />
+    <ClCompile Include="src\ParticleSystem\Particle.cpp" />
+    <ClCompile Include="src\ParticleSystem\ParticleConfig.cpp" />
+    <ClCompile Include="src\ParticleSystem\Task_BreakWallEffect.cpp" />
     <ClCompile Include="src\Title\Task_Title.cpp" />
     <ClCompile Include="src\WinMain.cpp" />
     <ClCompile Include="lib\XI2018_Ver1_0.cpp" />
@@ -223,6 +226,10 @@
     <ClInclude Include="src\MyPG.h" />
     <ClInclude Include="src\Chara\CharaBase.h" />
     <ClInclude Include="src\Game\GameReference.h" />
+    <ClInclude Include="src\ParticleSystem\Particle.h" />
+    <ClInclude Include="src\ParticleSystem\ParticleConfig.h" />
+    <ClInclude Include="src\ParticleSystem\ParticleConstant.h" />
+    <ClInclude Include="src\ParticleSystem\Task_BreakWallEffect.h" />
     <ClInclude Include="src\Task\ResourceConstant.h" />
     <ClInclude Include="src\Utils\Log.h" />
     <ClInclude Include="src\Task\ObjectBase.tpp" />

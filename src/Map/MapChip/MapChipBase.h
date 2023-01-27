@@ -26,6 +26,7 @@ namespace Map
 
 	protected:
 		virtual ML::Box2D GetRenderSrc() const = 0;
+		ML::Vec2 GetCenterPos() const;
 
 	public:
 		void Render(int offsetX, int offsetY);

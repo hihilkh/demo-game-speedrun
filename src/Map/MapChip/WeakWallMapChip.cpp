@@ -1,5 +1,6 @@
 ﻿#include "WeakWallMapChip.h"
 #include "Chara/Player/Task_Player.h"
+#include "ParticleSystem/Task_BreakWallEffect.h"
 
 namespace Map
 {
@@ -52,7 +53,9 @@ namespace Map
 
 	void WeakWallMapChip::Break()
 	{
-		// TODO : エフェクト
 		isBroken = true;
+
+		auto effect = ParticleSystem::BreakWallEffect::Object::Create(true);
+		effect->Play(GetCenterPos(), 20, 60);
 	}
 }

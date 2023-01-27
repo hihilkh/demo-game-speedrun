@@ -36,6 +36,9 @@ namespace ResourceConstant
 	const int PlayerImageHeight = 32;
 	const ML::Box2D PlayerShadowSrc = ML::Box2D(0, 0, 16, 8);
 
+	// パーティクルシステム
+	const std::string WallFragmentImage = "WallFragment.png";
+
 #pragma endregion
 
 #pragma region Map Files
