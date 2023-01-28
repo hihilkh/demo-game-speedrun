@@ -179,6 +179,7 @@
     <ClCompile Include="src\ParticleSystem\Task_BreakWallEffect.cpp" />
     <ClCompile Include="src\Title\Task_Title.cpp" />
     <ClCompile Include="src\Utils\Time\Timer.cpp" />
+    <ClCompile Include="src\Utils\Time\DelayTrigger.cpp" />
     <ClCompile Include="src\WinMain.cpp" />
     <ClCompile Include="lib\XI2018_Ver1_0.cpp" />
   </ItemGroup>
@@ -242,6 +243,7 @@
     <ClInclude Include="lib\XI2018_Ver1_0.h" />
     <ClInclude Include="src\Utils\Math.h" />
     <ClInclude Include="src\Utils\Time\Timer.h" />
+    <ClInclude Include="src\Utils\Time\DelayTrigger.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Event\Event.tpp" />

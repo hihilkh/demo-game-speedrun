@@ -175,6 +175,9 @@
     <ClCompile Include="src\Utils\Time\Timer.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Utils\Time\DelayTrigger.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GameEngine_Ver3_83.h">
@@ -352,6 +355,9 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Utils\Time\Timer.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utils\Time\DelayTrigger.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
