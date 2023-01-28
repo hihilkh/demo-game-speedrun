@@ -3,5 +3,6 @@
 namespace Game
 {
 	Event<> gameReady;
+	Event<> gameStarted;
 	Event<> gameEnded;
 }

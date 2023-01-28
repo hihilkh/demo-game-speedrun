@@ -157,7 +157,7 @@ namespace Player
 		if (fallbackCounter < Constant::FallbackPeriod) {
 			++fallbackCounter;
 
-			currentHeight = Constant::FallbackMaxHeight * sin((float)fallbackCounter / Constant::FallbackPeriod * std::numbers::pi);
+			currentHeight = Constant::FallbackMaxHeight * sin((float)fallbackCounter / Constant::FallbackPeriod * (float)std::numbers::pi);
 
 			ML::Vec2 targetMove = GetDirectionalVector(transform->direction) * (-Constant::FallbackBackSpeed);
 			CheckMapCollisionAndMove(targetMove);

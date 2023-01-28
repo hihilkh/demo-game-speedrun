@@ -47,4 +47,10 @@ namespace ResourceConstant
 	const std::string MapFileNameExtension = ".txt";
 
 #pragma endregion
+
+#pragma region フォント
+
+	const std::string DefaultFontName = "MS ゴシック";
+
+#pragma endregion
 }
