@@ -74,11 +74,12 @@ namespace ParticleSystem::BreakWallEffect
 			return;
 		}
 
-		if (!camera) {
+		auto cameraSP = camera.lock();
+		if (!cameraSP) {
 			return;
 		}
 
-		const ML::Point& cameraOffset = camera->GetCameraOffset();
+		const ML::Point& cameraOffset = cameraSP->GetCameraOffset();
 		float alpha = remainingLife / (float)totalLife;
 		for (Particle& particle : particles) {
 			particle.Render(cameraOffset, alpha);

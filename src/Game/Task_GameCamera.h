@@ -27,13 +27,13 @@ namespace Game::Camera
 		Transform::WP target;
 
 	private:
-		void UpdateTarget(const ML::Vec2& pos);
+		void UpdateTarget();
 		void UpdateCameraOffset();
 
 	public:
 		const ML::Box2D& GetVisibleRange() const;
 		const ML::Point& GetCameraOffset() const;
 
-		void SetTarget(Transform::SP transform);
+		void SetTarget(Transform::WP transform);
 	};
 }

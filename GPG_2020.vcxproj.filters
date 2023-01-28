@@ -103,9 +103,6 @@
     <ClCompile Include="src\Chara\Player\Task_Player.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\GameReference.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Game\GameStatus.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
@@ -241,9 +238,6 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Task_Game.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\GameReference.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Task_GameCamera.h">

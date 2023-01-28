@@ -2,8 +2,8 @@
 
 namespace Player
 {
-	BasicPlayerAction::BasicPlayerAction(Player::Object::SP player, XI::GamePad::SP controller) :
-		PlayerActionBase::PlayerActionBase(player, controller)
+	BasicPlayerAction::BasicPlayerAction(Player::Object::WP player) :
+		PlayerActionBase::PlayerActionBase(player)
 	{
 
 	}
@@ -15,7 +15,7 @@ namespace Player
 
 	ML::Vec2 BasicPlayerAction::PreMove()
 	{
-		XI::VGamePad input = controller->GetState();
+		XI::VGamePad input = ge->in1->GetState();
 		return TryWalk(input);
 	}
 }

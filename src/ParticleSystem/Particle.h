@@ -4,7 +4,7 @@
 
 namespace ParticleSystem
 {
-	// TODO : Particle もタスクになるか？
+	// TODO : Particle もタスクになるか/BTask.childrenになるか？
 	class Particle
 	{
 	public:

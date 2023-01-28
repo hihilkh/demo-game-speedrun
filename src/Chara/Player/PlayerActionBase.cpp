@@ -4,9 +4,8 @@
 
 namespace Player
 {
-	PlayerActionBase::PlayerActionBase(Player::Object::WP player, XI::GamePad::SP controller) :
-		player(player),
-		controller(controller)
+	PlayerActionBase::PlayerActionBase(Player::Object::WP player) :
+		player(player)
 	{
 	}
 
@@ -16,7 +15,7 @@ namespace Player
 
 	ML::Vec2 PlayerActionBase::TryWalk(const XI::VGamePad& input)
 	{
-		Player::Object::SP playerSP = player.lock();
+		auto playerSP = player.lock();
 		if (!playerSP) {
 			PrintWarning("プレイヤーの参照が取れない");
 			return ML::Vec2();

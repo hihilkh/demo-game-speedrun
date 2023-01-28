@@ -44,7 +44,7 @@ namespace ParticleSystem::BreakWallEffect
 		void Render2D_AF() override;	//「2D描画」１フレーム毎に行う処理
 
 	private:
-		shared_ptr<Game::Camera::Object> camera;
+		weak_ptr<Game::Camera::Object> camera;
 		ParticleConfig::SP particleConfig;
 		vector<Particle> particles;
 		bool isPlaying;

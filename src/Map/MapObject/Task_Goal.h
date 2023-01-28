@@ -48,8 +48,8 @@ namespace Goal
 		ML::Box2D hitBase;
 		ML::Box2D renderBase;
 
-		shared_ptr<Game::Camera::Object> camera;
-		shared_ptr<Player::Object> player;
+		weak_ptr<Game::Camera::Object> camera;
+		weak_ptr<Player::Object> player;
 		unique_ptr<Animation::Animator> animator;
 
 		bool isTriggered;

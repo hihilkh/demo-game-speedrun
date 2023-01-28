@@ -64,7 +64,8 @@ namespace Chara
 
 	bool CharaBase::CheckMapCollisionAndMove(const ML::Vec2& targetMove)
 	{
-		if (!map) {
+		auto mapSP = map.lock();
+		if (!mapSP) {
 			PrintWarning("マップの参照がない。キャラクターは自由に移動できる");
 			transform->pos = targetMove;
 			return false;
@@ -95,7 +96,7 @@ namespace Chara
 					move = 0;
 				}
 
-				if (map->CheckCollision(*this)) {
+				if (mapSP->CheckCollision(*this)) {
 					*pAxisValue = previousValue;		//移動をキャンセル
 					isCollide = true;
 					break;
@@ -112,11 +113,9 @@ namespace Chara
 
 	void CharaBase::CheckMapTrigger()
 	{
-		if (!map) {
-			return;
+		if (auto mapSP = map.lock()) {
+			mapSP->CheckTrigger(*this);
 		}
-
-		map->CheckTrigger(*this);
 	}
 
 	void CharaBase::PostMove()

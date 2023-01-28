@@ -53,7 +53,7 @@ namespace Map
 		ML::Point size;
 		vector<shared_ptr<MapChipBase>> mapChips;
 
-		shared_ptr<Game::Camera::Object> camera;
+		weak_ptr<Game::Camera::Object> camera;
 
 		bool isInitialized;
 		// TODO : bool isMapLoaded?

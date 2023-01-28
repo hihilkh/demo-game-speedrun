@@ -2,7 +2,6 @@
 #include "Utils/Log.h"
 #include "Utils/Math.h"
 #include "Task/TaskConstant.h"
-#include "Game/GameReference.h"
 #include "Game/GameEvent.h"
 #include "Game/Task_GameCamera.h"
 #include "Game/GameStatus.h"
@@ -44,7 +43,7 @@ namespace Map
 #pragma region Object
 
 	Object::Object() :
-		ObjectBaseWithResource<Object, Resource>(TaskConstant::TaskGroupName_Map, TaskConstant::TaskName_Map),
+		ObjectBaseWithResource<Object, Resource>(TaskConstant::TaskGroupName_Map, TaskConstant::TaskName_Map, true),
 		mapChipCenterOffset(ML::Point{ -CHIP_SIZE / 2, -CHIP_SIZE / 2}),
 		mapChipLeftmostIndex(0),
 		mapChipTopmostIndex(0),
@@ -73,7 +72,12 @@ namespace Map
 			return;
 		}
 
-		const ML::Box2D& visibleRange = camera->GetVisibleRange();
+		auto cameraSP = camera.lock();
+		if (!cameraSP) {
+			return;
+		}
+
+		const ML::Box2D& visibleRange = cameraSP->GetVisibleRange();
 
 		vector<MapChipBase::SP> mapChips = GetOverlappedMapChipIterator(visibleRange);
 		for (MapChipBase::SP& mapChip : mapChips) {
@@ -84,17 +88,10 @@ namespace Map
 	void Object::GameReadyEventHandler()
 	{
 		isInitialized = true;
-		this->camera = Game::GameReference::GetGameCamera();
 
-		Game::GameStatus::SP gameStatus = Game::GameReference::GetGameStatus();
-		int mapIndex;
-		if (gameStatus) {
-			mapIndex = gameStatus->GetInitialMapIndex();
-		}
-		else {
-			PrintWarning("GameStatusが取れない。mapIndexを1になる。");
-			mapIndex = 1;
-		}
+		camera = ge->GetTask<Game::Camera::Object>(TaskConstant::TaskGroupName_Game, TaskConstant::TaskName_GameCamera);
+
+		int mapIndex = Game::GameStatus::GetMapIndex();
 		Load(GetMapFilePath(mapIndex));
 	}
 

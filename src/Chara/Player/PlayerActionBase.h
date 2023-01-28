@@ -11,14 +11,13 @@ namespace Player
 		PlayerActionBase(const PlayerActionBase&) = delete;
 
 	protected:
-		PlayerActionBase(Player::Object::WP player, XI::GamePad::SP controller);
+		explicit PlayerActionBase(Player::Object::WP player);
 
 	public:
 		virtual ~PlayerActionBase();
 
 	protected:
 		Player::Object::WP player;
-		XI::GamePad::SP controller;
 	
 	private:
 		void SetDirection(Player::Object::SP playerSP, Direction previousDirection, Direction targetDirection, bool& isDirectionFixed);

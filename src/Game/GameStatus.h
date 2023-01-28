@@ -7,17 +7,14 @@ namespace Game
 	class GameStatus
 	{
 	private:
-		ML::Vec2 initialPos;
-		int initalMapIndex;
+		static int MapIndex;
+		static ML::Vec2 InitialPos;	// TODO : プレイヤー位置をマップに入れる
 
 	public:
-		GameStatus();
-		~GameStatus();
+		static int GetMapIndex() { return MapIndex; }
+		static ML::Vec2 GetInitialPos() { return InitialPos; }
 
-		typedef shared_ptr<GameStatus> SP;
-		typedef weak_ptr<GameStatus> WP;
-
-		ML::Vec2 GetInitialPos() const { return initialPos; }
-		int GetInitialMapIndex() const { return initalMapIndex; }
+		static void SetMapIndex(int mapIndex) { MapIndex = mapIndex; }
+		static void SetInitialPos(ML::Vec2 initialPos) { InitialPos = initialPos; }
 	};
 }

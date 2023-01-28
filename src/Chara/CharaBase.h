@@ -45,7 +45,7 @@ namespace Chara
 		float currentMovementSpeed;		// Inputによっての速度（AdditionalSpeedによる影響もある）。実際の速度ではない。
 		AdditionalSpeedInfo additionalSpeedInfo;
 
-		shared_ptr<Map::Object> map;
+		weak_ptr<Map::Object> map;
 
 	public:
 		Transform::SP transform;

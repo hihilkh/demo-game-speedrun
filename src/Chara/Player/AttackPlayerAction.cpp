@@ -4,29 +4,30 @@
 
 namespace Player
 {
-	AttackPlayerAction::AttackPlayerAction(Player::Object::SP player, XI::GamePad::SP controller) :
-		PlayerActionBase::PlayerActionBase(player, controller)
+	AttackPlayerAction::AttackPlayerAction(Player::Object::WP player) :
+		PlayerActionBase::PlayerActionBase(player)
 	{
-		player->animator->animFinished.AddListener(this, &AttackPlayerAction::OnAnimFinished);
+		if (auto playerSP = player.lock()) {
+			playerSP->animator->animFinished.AddListener(this, &AttackPlayerAction::OnAnimFinished);
+		}
 	}
 
 	AttackPlayerAction::~AttackPlayerAction()
 	{
-		Player::Object::SP playerSP = player.lock();
-		if (playerSP) {
+		if (auto playerSP = player.lock()) {
 			playerSP->animator->animFinished.RemoveListeners(this);
 		}
 	}
 
 	ML::Vec2 AttackPlayerAction::PreMove()
 	{
-		Player::Object::SP playerSP = player.lock();
+		auto playerSP = player.lock();
 		if (!playerSP) {
 			PrintWarning("プレイヤーの参照が取れない");
 			return ML::Vec2();
 		}
 
-		XI::VGamePad input = controller->GetState();
+		XI::VGamePad input = ge->in1->GetState();
 
 		if (playerSP->state == PlayerState::Attack) {
 			return ML::Vec2();
@@ -43,7 +44,7 @@ namespace Player
 	void AttackPlayerAction::OnAnimFinished(PlayerState finishedState)
 	{
 		if (finishedState == PlayerState::Attack) {
-			Player::Object::SP playerSP = player.lock();
+			auto playerSP = player.lock();
 			if (!playerSP) {
 				PrintWarning("プレイヤーの参照が取れない");
 				return;

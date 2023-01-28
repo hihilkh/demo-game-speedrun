@@ -9,7 +9,7 @@ namespace Player
 		RunPlayerAction(const RunPlayerAction&) = delete;
 
 	public:
-		RunPlayerAction(Player::Object::SP player, XI::GamePad::SP controller);
+		explicit RunPlayerAction(Player::Object::WP player);
 		~RunPlayerAction();
 
 	private:

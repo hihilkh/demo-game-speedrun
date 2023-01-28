@@ -67,11 +67,12 @@ namespace Goal
 			return;
 		}
 
-		if (!player) {
+		auto playerSP = player.lock();
+		if (!playerSP) {
 			return;
 		}
 		
-		if (GetCurrentHitBox().Hit(player->GetCurrentHitBox())) {
+		if (GetCurrentHitBox().Hit(playerSP->GetCurrentHitBox())) {
 			isTriggered = true;
 			Game::gameEnded.Invoke();
 		}
@@ -79,12 +80,13 @@ namespace Goal
 
 	void Object::Render2D_AF()
 	{
-		if (!camera) {
+		auto cameraSP = camera.lock();
+		if (!cameraSP) {
 			return;
 		}
 
 		// TODO : カメラに映っていない時に描画しないように
-		const ML::Point& cameraOffset = camera->GetCameraOffset();
+		const ML::Point& cameraOffset = cameraSP->GetCameraOffset();
 		ML::Box2D draw = renderBase.OffsetCopy(cameraOffset);
 		draw.Offset(pos);
 		animator->Render(draw);

@@ -22,9 +22,7 @@ namespace Game::Camera
 
 	void Object::UpDate()
 	{
-		if (Transform::SP sp = target.lock()) {
-			UpdateTarget(sp->pos);
-		}
+		UpdateTarget();
 	}
 
 	void Object::Render2D_AF()
@@ -41,16 +39,21 @@ namespace Game::Camera
 		return currentCameraOffset;
 	}
 
-	void Object::SetTarget(Transform::SP transform)
+	void Object::SetTarget(Transform::WP transform)
 	{
 		target = transform;
-		UpdateTarget(transform->pos);
+		UpdateTarget();
 	}
 
-	void Object::UpdateTarget(const ML::Vec2& pos)
+	void Object::UpdateTarget()
 	{
-		int newX = int(pos.x) + targetOffset.x;
-		int newY = int(pos.y) + targetOffset.y;
+		Transform::SP sp = target.lock();
+		if (!sp) {
+			return;
+		}
+
+		int newX = int(sp->pos.x) + targetOffset.x;
+		int newY = int(sp->pos.y) + targetOffset.y;
 
 		visibleRange.x = newX;
 		visibleRange.y = newY;

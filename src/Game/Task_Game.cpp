@@ -7,8 +7,6 @@
 #include "Map/Task_Map.h"
 #include "Task_GameCamera.h"
 #include "Chara/Player/Task_Player.h"
-#include "GameReference.h"
-#include "GameStatus.h"
 #include "Utils/Log.h"
 #include "Task/TaskConstant.h"
 #include "GameEvent.h"
@@ -19,9 +17,6 @@ namespace Game
 
 	Object::Object() : ObjectBase<Object>(TaskConstant::TaskGroupName_Game, TaskConstant::TaskName_Game)
 	{
-		gameStatus = make_shared<GameStatus>();
-		GameReference::gameStatus = gameStatus;
-
 		// タスクの生成
 		// 生成の順番も重要だ。UpDate()の順番につながるから。
 		Player::Object::SP player = Player::Object::Create(true);
@@ -29,23 +24,19 @@ namespace Game
 		camera->SetTarget(player->transform);
 		Map::Object::SP map = Map::Object::Create(true);
 
-		GameReference::player = player;
-		GameReference::gameCamera = camera;
-		GameReference::map = map;
-
-		Game::gameEnded.AddListener(this, &Object::GameEndedEventHandler);
-
+		gameEnded.AddListener(this, &Object::GameEndedEventHandler);
 		gameReady.Invoke();
 	}
 
 	Object::~Object()
 	{
-		Game::gameEnded.RemoveListeners(this);
+		gameEnded.RemoveListeners(this);
 
 		//★データ＆タスク解放
 		ge->KillAll_G(TaskConstant::TaskGroupName_Game);
 		ge->KillAll_G(TaskConstant::TaskGroupName_Map);
 		ge->KillAll_G(TaskConstant::TaskGroupName_Chara);
+		ge->KillAll_G(TaskConstant::TaskGroupName_ParticleSystem);
 
 		if (!ge->QuitFlag() && this->nextTaskCreate) {
 			//★引き継ぎタスクの生成

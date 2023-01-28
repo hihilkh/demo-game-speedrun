@@ -4,8 +4,8 @@
 
 namespace Player
 {
-	RunPlayerAction::RunPlayerAction(Player::Object::SP player, XI::GamePad::SP controller) :
-		PlayerActionBase::PlayerActionBase(player, controller),
+	RunPlayerAction::RunPlayerAction(Player::Object::WP player) :
+		PlayerActionBase::PlayerActionBase(player),
 		isRunning(false),
 		prepareRunCounter(-1)
 	{
@@ -17,13 +17,13 @@ namespace Player
 
 	ML::Vec2 RunPlayerAction::PreMove()
 	{
-		Player::Object::SP playerSP = player.lock();
+		auto playerSP = player.lock();
 		if (!playerSP) {
 			PrintWarning("プレイヤーの参照が取れない");
 			return ML::Vec2();
 		}
 
-		XI::VGamePad input = controller->GetState();
+		XI::VGamePad input = ge->in1->GetState();
 
 		if (isRunning) {
 			return UpdateRunning(playerSP, !input.ST.up);

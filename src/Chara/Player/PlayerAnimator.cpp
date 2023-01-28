@@ -69,7 +69,7 @@ namespace Player
 
 	void PlayerAnimator::UpDate()
 	{
-		Player::Object::SP playerSP = player.lock();
+		auto playerSP = player.lock();
 		if (!playerSP) {
 			PrintWarning("プレイヤーの参照が取れない");
 			return;
@@ -123,7 +123,7 @@ namespace Player
 			return;
 		}
 
-		Player::Object::SP playerSP = player.lock();
+		auto playerSP = player.lock();
 		if (!playerSP) {
 			return;
 		}

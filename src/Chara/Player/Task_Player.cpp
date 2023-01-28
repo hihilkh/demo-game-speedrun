@@ -3,7 +3,6 @@
 #include "Utils/Log.h"
 #include "Game/Task_GameCamera.h"
 #include "Map/Task_Map.h"
-#include "Game/GameReference.h"
 #include "Game/GameStatus.h"
 #include "BasicPlayerAction.h"
 #include "AttackPlayerAction.h"
@@ -112,7 +111,9 @@ namespace Player
 			return;
 		}
 
-		animator->Render(GetCurrentRenderBox(), camera->GetCameraOffset(), (int)currentHeight);
+		if (auto cameraSP = camera.lock()) {
+			animator->Render(GetCurrentRenderBox(), cameraSP->GetCameraOffset(), (int)currentHeight);
+		}
 	}
 
 	void Object::GameReadyEventHandler()
@@ -120,30 +121,23 @@ namespace Player
 		//UpdatePlayerAction(PlayerMode::Basic);
 		UpdatePlayerAction(PlayerMode::Run);
 
-		camera = Game::GameReference::GetGameCamera();
-		map = Game::GameReference::GetMap();
+		camera = ge->GetTask<Game::Camera::Object>(TaskConstant::TaskGroupName_Game, TaskConstant::TaskName_GameCamera);
+		map = ge->GetTask<Map::Object>(TaskConstant::TaskGroupName_Map, TaskConstant::TaskName_Map);
 
-		Game::GameStatus::SP gameStatus = Game::GameReference::GetGameStatus();
-		if (gameStatus) {
-			transform->pos = gameStatus->GetInitialPos();
-		}
-		else {
-			PrintWarning("GameStatusが取れない。posをデフォルトになる。");
-			transform->pos = ML::Vec2();
-		}
+		transform->pos = Game::GameStatus::GetInitialPos();
 
 		isInitialized = true;
 	}
 
 	void Object::UpdatePlayerAction(PlayerMode playerMode)
 	{
-		SP sharedPtr = dynamic_pointer_cast<Object>(this->me.lock());
+		WP weakPtr = dynamic_pointer_cast<Object>(this->me.lock());
 
 		switch (playerMode) {
 			// TODO : 他のcase
-			case PlayerMode::Basic:		playerAction = make_unique<BasicPlayerAction>(sharedPtr, ge->in1);		break;
-			case PlayerMode::Attack:	playerAction = make_unique<AttackPlayerAction>(sharedPtr, ge->in1);		break;
-			case PlayerMode::Run:		playerAction = make_unique<RunPlayerAction>(sharedPtr, ge->in1);		break;
+			case PlayerMode::Basic:		playerAction = make_unique<BasicPlayerAction>(weakPtr);		break;
+			case PlayerMode::Attack:	playerAction = make_unique<AttackPlayerAction>(weakPtr);	break;
+			case PlayerMode::Run:		playerAction = make_unique<RunPlayerAction>(weakPtr);		break;
 		}
 
 		Print("今のPlayerAction：" << typeid(*playerAction).name());

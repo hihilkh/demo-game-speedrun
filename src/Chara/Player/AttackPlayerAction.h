@@ -9,7 +9,7 @@ namespace Player
 		AttackPlayerAction(const AttackPlayerAction&) = delete;
 
 	public:
-		AttackPlayerAction(Player::Object::SP player, XI::GamePad::SP controller);
+		explicit AttackPlayerAction(Player::Object::WP player);
 		~AttackPlayerAction();
 
 	private:

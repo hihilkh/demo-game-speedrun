@@ -159,7 +159,6 @@
     <ClCompile Include="src\Debug\ColliderVisual.cpp" />
     <ClCompile Include="src\Game\GameEvent.cpp" />
     <ClCompile Include="src\Game\GameStatus.cpp" />
-    <ClCompile Include="src\Game\GameReference.cpp" />
     <ClCompile Include="src\Chara\Player\PlayerActionBase.cpp" />
     <ClCompile Include="src\Map\MapChip\FloorMapChip.cpp" />
     <ClCompile Include="src\Map\MapChip\MapChipBase.cpp" />
@@ -225,7 +224,6 @@
     <ClInclude Include="src\Map\MapChip\WeakWallMapChip.h" />
     <ClInclude Include="src\MyPG.h" />
     <ClInclude Include="src\Chara\CharaBase.h" />
-    <ClInclude Include="src\Game\GameReference.h" />
     <ClInclude Include="src\ParticleSystem\Particle.h" />
     <ClInclude Include="src\ParticleSystem\ParticleConfig.h" />
     <ClInclude Include="src\ParticleSystem\ParticleConstant.h" />
