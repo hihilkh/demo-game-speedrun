@@ -23,7 +23,7 @@ namespace Map
 			return ML::Box2D(0, 0, 32, 32);
 		}
 		else {
-			return ML::Box2D(32, 32, 32, 32);
+			return ML::Box2D(64, 0, 32, 32);
 		}
 
 	}

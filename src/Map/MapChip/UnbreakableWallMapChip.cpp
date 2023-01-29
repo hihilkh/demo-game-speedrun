@@ -16,7 +16,7 @@ namespace Map
 	// TODO : Think of use design pattern and do it in res
 	ML::Box2D UnbreakableWallMapChip::GetRenderSrc() const
 	{
-		return ML::Box2D(0, 32, 32, 32);
+		return ML::Box2D(32, 0, 32, 32);
 	}
 
 	bool UnbreakableWallMapChip::GetIsWalkable() const

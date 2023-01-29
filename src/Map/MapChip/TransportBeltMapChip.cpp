@@ -1,10 +1,12 @@
 ﻿#include "TransportBeltMapChip.h"
 #include "Chara/CharaBase.h"
+#include "Game/GameStatus.h"
+#include <cassert>
 
 namespace Map
 {
 	namespace {
-		const float TransportBeltSpeed = 5.0f;
+		const float TransportBeltSpeed = 3.0f;
 	}
 
 	TransportBeltMapChip::TransportBeltMapChip(shared_ptr<Resource> res, const ML::Box2D& hitBase, Direction direction) :
@@ -20,18 +22,22 @@ namespace Map
 
 	}
 
-	// TODO : Think of use design pattern and do it in res
+	// TODO : AnimationClipと補間によって処理する？
 	ML::Box2D TransportBeltMapChip::GetRenderSrc() const
 	{
+		int offset = Game::GameStatus::FrameCount % 32;
 		// TODO
 		switch (direction) {
-			case Direction::Down:
-			case Direction::Left:
-			case Direction::Up:
-			case Direction::Right:
-			default:
-				return ML::Box2D(0, 64, 32, 32);
+			case Direction::Down:		return ML::Box2D( 0, 64 - offset, 32, 32);
+			case Direction::Left:		return ML::Box2D(32 + offset, 32, 32, 32);
+			case Direction::Up:			return ML::Box2D(64, 64 + offset, 32, 32);
+			case Direction::Right:		return ML::Box2D(32 - offset, 96, 32, 32);			
 		}
+
+		assert(false && "おかしい方向");
+
+		// 警告を出さないように
+		return ML::Box2D(0, 64, 32, 32);
 	}
 
 	bool TransportBeltMapChip::GetIsWalkable() const

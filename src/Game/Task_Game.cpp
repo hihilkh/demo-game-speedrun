@@ -39,6 +39,7 @@ namespace Game
 		remainingCountdown(3)
 	{
 		GameStatus::CurrentGameState = GameState::Initialize;
+		GameStatus::FrameCount = 0;
 
 		render2D_Priority[1] = 0.1f;
 
@@ -74,6 +75,8 @@ namespace Game
 	//「更新」１フレーム毎に行う処理
 	void  Object::UpDate()
 	{
+		++GameStatus::FrameCount;
+
 		XI::VGamePad input = ge->in1->GetState();
 
 		if (input.B1.down) {

@@ -3,6 +3,7 @@
 #include <string>
 #include <myLib.h>
 
+// TODO : このように資料を集めることはよくないかもしれない。変更があれば、たくさんのファイルをリコンパイルになる。
 namespace ResourceConstant
 {
 
@@ -21,7 +22,7 @@ namespace ResourceConstant
 	const std::string EndingImage = "Ending.bmp";
 
 	// マップ
-	const std::string MapImage = "MapChip01.bmp";
+	const std::string MapImage = "MapChip.png";
 	const int NoOfMapChip = 16;
 	const int NoOfMapChipInRow = 8;
 	const int MapChipSize = 32;
