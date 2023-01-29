@@ -124,7 +124,7 @@ namespace Player
 		camera = ge->GetTask<Game::Camera::Object>(TaskConstant::TaskGroupName_Game, TaskConstant::TaskName_GameCamera);
 		map = ge->GetTask<Map::Object>(TaskConstant::TaskGroupName_Map, TaskConstant::TaskName_Map);
 
-		transform->pos = Game::GameStatus::GetInitialPos();
+		transform->pos = Game::GameStatus::PlayerInitialPos;
 
 		isInitialized = true;
 	}

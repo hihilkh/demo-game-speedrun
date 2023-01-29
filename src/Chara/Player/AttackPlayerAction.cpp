@@ -27,7 +27,7 @@ namespace Player
 			return ML::Vec2();
 		}
 
-		XI::VGamePad input = ge->in1->GetState();
+		XI::VGamePad input = GetInput();
 
 		if (playerSP->state == PlayerState::Attack) {
 			return ML::Vec2();

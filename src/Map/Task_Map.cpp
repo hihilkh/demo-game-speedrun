@@ -91,8 +91,7 @@ namespace Map
 
 		camera = ge->GetTask<Game::Camera::Object>(TaskConstant::TaskGroupName_Game, TaskConstant::TaskName_GameCamera);
 
-		int mapIndex = Game::GameStatus::GetMapIndex();
-		Load(GetMapFilePath(mapIndex));
+		Load(GetMapFilePath(Game::GameStatus::MapIndex));
 	}
 
 	string Object::GetMapFilePath(int mapIndex) const

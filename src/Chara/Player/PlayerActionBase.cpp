@@ -1,6 +1,7 @@
 ﻿#include "PlayerActionBase.h"
 #include "Utils/Log.h"
 #include "PlayerConstant.h"
+#include "Game/GameStatus.h"
 
 namespace Player
 {
@@ -60,6 +61,21 @@ namespace Player
 		playerSP->transform->direction = targetDirection;
 		if (previousDirection == targetDirection) {
 			isDirectionFixed = true;
+		}
+	}
+
+	bool PlayerActionBase::CheckIsAllowInput() const
+	{
+		return Game::GameStatus::CurrentGameState == Game::GameState::Started;
+	}
+
+	XI::VGamePad PlayerActionBase::GetInput() const
+	{
+		if (CheckIsAllowInput()) {
+			return ge->in1->GetState();
+		}
+		else {
+			return XI::VGamePad();
 		}
 	}
 }

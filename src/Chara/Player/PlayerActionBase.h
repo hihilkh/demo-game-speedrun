@@ -3,6 +3,7 @@
 #include "Task_Player.h"
 #include "PlayerMode.h"
 
+// TODO : PlayerActionとPlayerControllerを分ける
 namespace Player
 {
 	class PlayerActionBase
@@ -24,6 +25,8 @@ namespace Player
 
 	protected:
 		ML::Vec2 TryWalk(const XI::VGamePad& input);
+		bool CheckIsAllowInput() const;
+		XI::VGamePad GetInput() const;
 
 	public:
 		virtual PlayerMode GetPlayerMode() const = 0;

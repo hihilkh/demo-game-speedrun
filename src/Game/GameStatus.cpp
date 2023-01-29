@@ -2,6 +2,7 @@
 
 namespace Game
 {
-	ML::Vec2 GameStatus::InitialPos = ML::Vec2(0.0f, 0.0f);
 	int GameStatus::MapIndex = 1;
+	ML::Vec2 GameStatus::PlayerInitialPos = ML::Vec2(0.0f, 0.0f);
+	GameState GameStatus::CurrentGameState = GameState::Initialize;
 }

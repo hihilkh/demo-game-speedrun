@@ -4,17 +4,18 @@
 
 namespace Game
 {
+	enum class GameState
+	{
+		Initialize,
+		Started,
+		Ended,
+	};
+
 	class GameStatus
 	{
-	private:
-		static int MapIndex;
-		static ML::Vec2 InitialPos;	// TODO : プレイヤー位置をマップに入れる
-
 	public:
-		static int GetMapIndex() { return MapIndex; }
-		static ML::Vec2 GetInitialPos() { return InitialPos; }
-
-		static void SetMapIndex(int mapIndex) { MapIndex = mapIndex; }
-		static void SetInitialPos(ML::Vec2 initialPos) { InitialPos = initialPos; }
+		static int MapIndex;
+		static ML::Vec2 PlayerInitialPos;	// TODO : プレイヤー位置をマップに入れる
+		static GameState CurrentGameState;
 	};
 }

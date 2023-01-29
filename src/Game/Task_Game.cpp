@@ -6,10 +6,11 @@
 #include "Ending/Task_Ending.h"
 #include "Map/Task_Map.h"
 #include "Task_GameCamera.h"
-#include "Chara/Player/Task_Player.h"
-#include "Utils/Log.h"
-#include "Task/TaskConstant.h"
 #include "GameEvent.h"
+#include "GameStatus.h"
+#include "Chara/Player/Task_Player.h"
+#include "Task/TaskConstant.h"
+#include "Utils/Log.h"
 #include "Utils/Time/DelayTrigger.h"
 
 namespace Game
@@ -37,6 +38,8 @@ namespace Game
 		timer(),
 		remainingCountdown(3)
 	{
+		GameStatus::CurrentGameState = GameState::Initialize;
+
 		render2D_Priority[1] = 0.1f;
 
 		// タスクの生成
@@ -119,12 +122,14 @@ namespace Game
 
 	void Object::StartGame()
 	{
+		GameStatus::CurrentGameState = GameState::Started;
 		timer.Start();
 		gameStarted.Invoke();
 	}
 
 	void Object::GameEndedEventHandler()
 	{
+		GameStatus::CurrentGameState = GameState::Ended;
 		Print("ゲームクリア");
 	}
 

@@ -15,7 +15,6 @@ namespace Player
 
 	ML::Vec2 BasicPlayerAction::PreMove()
 	{
-		XI::VGamePad input = ge->in1->GetState();
-		return TryWalk(input);
+		return TryWalk(GetInput());
 	}
 }

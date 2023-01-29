@@ -23,7 +23,7 @@ namespace Player
 			return ML::Vec2();
 		}
 
-		XI::VGamePad input = ge->in1->GetState();
+		XI::VGamePad input = GetInput();
 
 		if (isRunning) {
 			return UpdateRunning(playerSP, !input.ST.up);
