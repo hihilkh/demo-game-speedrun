@@ -4,6 +4,7 @@
 #include "Task_Title.h"
 #include "Game/Task_Game.h"
 #include "Task/TaskConstant.h"
+#include "Common/Font.h"
 
 namespace Title
 {
@@ -11,7 +12,8 @@ namespace Title
 
 	Resource::Resource()
 	{
-		this->img = DG::Image::Create(GetImagePath(ResourceConstant::TitleImage));
+		imgTitle = DG::Image::Create(GetImagePath(ResourceConstant::TitleImage));
+		imgArrow = DG::Image::Create(GetImagePath(ResourceConstant::ArrowImage));
 	}
 
 	Resource::~Resource()
@@ -22,9 +24,17 @@ namespace Title
 
 #pragma region Object
 
-	Object::Object() : ObjectBaseWithResource<Object, Resource>(TaskConstant::TaskGroupName_Title, TaskConstant::TaskName_Default)
+	enum Menu
 	{
-		this->logoPosY = -270;
+		Start = 0,
+		Quit = 1,
+		EnumEnd = 2,
+	};
+
+	Object::Object() : 
+		ObjectBaseWithResource<Object, Resource>(TaskConstant::TaskGroupName_Title, TaskConstant::TaskName_Default),
+		selectingMenu(Menu::Start)
+	{
 	}
 
 	Object::~Object()
@@ -40,15 +50,23 @@ namespace Title
 	{
 		auto inp = ge->in1->GetState();
 
-		this->logoPosY += 9;
-		if (this->logoPosY >= 0) {
-			this->logoPosY = 0;
+		if (inp.LStick.BU.down) {
+			selectingMenu = max(selectingMenu - 1, 0);
+		}
+		else if (inp.LStick.BD.down) {
+			selectingMenu = min(selectingMenu + 1, Menu::EnumEnd - 1);
 		}
 
-		if (this->logoPosY == 0) {
-			if (inp.B1.down) {
-				//自身に消滅要請
-				this->Kill();
+
+		if (inp.B2.down) {
+			switch (selectingMenu) {
+				case Menu::Start:
+					//自身に消滅要請
+					this->Kill();
+					break;
+				case Menu::Quit:
+					exit(0);
+					break;
 			}
 		}
 	}
@@ -56,11 +74,27 @@ namespace Title
 	//「２Ｄ描画」１フレーム毎に行う処理
 	void Object::Render2D_AF()
 	{
-		ML::Box2D  draw(0, 0, 480, 270);
-		ML::Box2D  src(0, 0, 240, 135);
+		// ロゴ
+		ML::Box2D logoSrc = ML::Box2D(0, 0, 300, 50);
+		ML::Box2D logoDraw = ML::Box2D((ge->screenWidth - logoSrc.w) / 2, (ge->screenHeight - logoSrc.h) / 4, logoSrc.w, logoSrc.h);
+		res->imgTitle->Draw(logoDraw, logoSrc);
 
-		draw.Offset(0, this->logoPosY);
-		this->res->img->Draw(draw, src);
+		// メニュー
+		ML::Color textColor = ML::Color(1.0f, 1.0f, 1.0f, 1.0f);
+		ML::Box2D firstMenuDrawBox = ML::Box2D(0, ge->screenHeight * 0.6f, ge->screenWidth, Font::smallDefaultFontSize);
+		int menuSpacing = 20;
+		string menuStrings[Menu::EnumEnd] = { "スタート", "終了" };
+		for (int i = 0; i < Menu::EnumEnd; ++i) {
+			ML::Box2D menuDraw = firstMenuDrawBox.OffsetCopy(0, i * (Font::smallDefaultFontSize + menuSpacing));
+			Font::smallDefaultFont->Draw(menuDraw, menuStrings[i], textColor, DT_CENTER);
+
+			if (selectingMenu == i) {
+				int arrowSize = 16;
+				ML::Box2D arrowDraw = ML::Box2D(ge->screenWidth / 3, menuDraw.y + (Font::smallDefaultFontSize - arrowSize) / 2, arrowSize, arrowSize);
+				ML::Box2D arrowSrc = ML::Box2D(0, 0, arrowSize, arrowSize);
+				res->imgArrow->Draw(arrowDraw, arrowSrc, ML::Color(1.0f, 0.0f, 1.0f, 0.0f));
+			}
+		}
 	}
 
 #pragma endregion
