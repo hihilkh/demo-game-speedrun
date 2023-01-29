@@ -26,10 +26,10 @@ namespace Player
 		XI::VGamePad input = GetInput();
 
 		if (isRunning) {
-			return UpdateRunning(playerSP, !input.ST.up);
+			return UpdateRunning(playerSP, !input.B2.up);
 		}
 
-		if (input.ST.down) {
+		if (input.B2.down) {
 			return StartRunning(playerSP);
 		}
 

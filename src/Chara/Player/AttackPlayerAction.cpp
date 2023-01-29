@@ -33,7 +33,7 @@ namespace Player
 			return ML::Vec2();
 		}
 
-		if (input.ST.down) {
+		if (input.B2.down) {
 			playerSP->state = PlayerState::Attack;
 			return ML::Vec2();
 		}
