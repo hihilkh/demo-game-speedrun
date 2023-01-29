@@ -16,24 +16,7 @@ namespace Time { class DelayTrigger; }
 
 namespace Game
 {
-	class Resource : public ResourceBase<Resource>
-	{
-		friend ResourceBase<Resource>;
-
-	private:
-		Resource();
-	public:
-		~Resource();
-
-	public:
-		int smallFontSize;
-		DG::Font::SP smallFont;
-
-		int largeFontSize;
-		DG::Font::SP largeFont;
-	};
-
-	class Object : public ObjectBaseWithResource<Object, Resource>
+	class Object : public ObjectBase<Object>
 	{
 		friend ObjectBase<Object>;
 

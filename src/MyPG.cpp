@@ -1,4 +1,5 @@
 ﻿#include "MyPG.h"
+#include "Common/Font.h"
 #include "Title/Task_Title.h"
 
 namespace MyPG
@@ -102,6 +103,7 @@ namespace MyPG
 
 		//初期実行タスク生成＆ゲームエンジンに登録
 		srand((unsigned)time(0));
+		Font::Init();
 		Title::Object::SP ft = Title::Object::Create(true);
 
 		//------------------------------------------------------------------------------------

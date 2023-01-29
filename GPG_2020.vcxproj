@@ -155,6 +155,7 @@
     <ClCompile Include="src\Chara\Player\PlayerAnimator.cpp" />
     <ClCompile Include="src\Chara\Player\RunPlayerAction.cpp" />
     <ClCompile Include="src\Common\Direction.cpp" />
+    <ClCompile Include="src\Common\Font.cpp" />
     <ClCompile Include="src\Common\Transform.cpp" />
     <ClCompile Include="src\Debug\ColliderVisual.cpp" />
     <ClCompile Include="src\Game\GameEvent.cpp" />
@@ -208,6 +209,7 @@
     <ClInclude Include="src\Chara\Player\PlayerState.h" />
     <ClInclude Include="src\Chara\Player\RunPlayerAction.h" />
     <ClInclude Include="src\Common\Direction.h" />
+    <ClInclude Include="src\Common\Font.h" />
     <ClInclude Include="src\Common\Transform.h" />
     <ClInclude Include="src\Debug\ColliderVisual.h" />
     <ClInclude Include="src\Game\GameEvent.h" />

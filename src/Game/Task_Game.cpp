@@ -12,29 +12,15 @@
 #include "Task/TaskConstant.h"
 #include "Utils/Log.h"
 #include "Utils/Time/DelayTrigger.h"
+#include "Common/Font.h"
 
 namespace Game
 {
-#pragma region Resource
-	Resource::Resource() : 
-		smallFontSize(24),
-		largeFontSize(40)
-	{
-		// TODO : 処理は重そうだ
-		smallFont = DG::Font::Create(ResourceConstant::DefaultFontName, smallFontSize / 2, smallFontSize);
-		largeFont = DG::Font::Create(ResourceConstant::DefaultFontName, largeFontSize / 2, largeFontSize);
-	}
-
-	Resource::~Resource()
-	{
-	}
-
-#pragma endregion
 
 #pragma region Object
 
 	Object::Object() : 
-		ObjectBaseWithResource<Object, Resource>(TaskConstant::TaskGroupName_Game, TaskConstant::TaskName_Game),
+		ObjectBase<Object>(TaskConstant::TaskGroupName_Game, TaskConstant::TaskName_Game),
 		timer(),
 		remainingCountdown(3)
 	{
@@ -91,9 +77,9 @@ namespace Game
 		ML::Color frameColor = ML::Color(1.0f, 1.0f, 1.0f, 1.0f);
 
 		// タイマー
-		ML::Box2D timerDrawBox = ML::Box2D(0, 0, ge->screenWidth, res->smallFontSize);
+		ML::Box2D timerDrawBox = ML::Box2D(0, 0, ge->screenWidth, Font::smallDefaultFontSize);
 		string timerText = format("{0:.3f}s", timer.GetCurrentCountMillisecond() / 1000.0f);
-		res->smallFont->DrawF(timerDrawBox, timerText, DG::Font::x4, textColor, frameColor, DT_RIGHT);
+		Font::smallDefaultFont->DrawF(timerDrawBox, timerText, DG::Font::x4, textColor, frameColor, DT_RIGHT);
 
 		// カウントダウン
 		if (remainingCountdown < 0) {
@@ -102,7 +88,7 @@ namespace Game
 
 		ML::Box2D countdownDrawBox = ML::Box2D(0, 0, ge->screenWidth, ge->screenHeight);
 		string countdownText = remainingCountdown == 0 ? "スタート" : to_string(remainingCountdown);		// TODO : ローカライズファイルを用意する
-		res->largeFont->DrawF(countdownDrawBox, countdownText, DG::Font::x4, textColor, frameColor, DT_CENTER | DT_VCENTER);
+		Font::largeDefaultFont->DrawF(countdownDrawBox, countdownText, DG::Font::x4, textColor, frameColor, DT_CENTER | DT_VCENTER);
 	}
 
 	void Object::StartCountdown()
