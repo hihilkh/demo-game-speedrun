@@ -5,8 +5,8 @@
 // TODO : Is it a good way to use PlayerConstant?
 namespace Player::Constant
 {
-	const ML::Box2D HitBase = ML::Box2D(-8, 12, 16, 8);
-	const ML::Box2D RenderBase = ML::Box2D(-16, -16, 32, 32);
+	const ML::Box2D HitBase = ML::Box2D(-8, -4, 16, 8);
+	const ML::Box2D RenderBase = ML::Box2D(-16, -32, 32, 32);
 
 	const float WalkSpeed = 5.0f;
 	const float RunSpeed = 10.0f;

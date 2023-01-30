@@ -6,7 +6,7 @@ namespace Map
 	MapChipBase::MapChipBase(MapChipType type, shared_ptr<Resource> res, const ML::Box2D& hitBase) :
 		type(type),
 		res(res),
-		hitBase(hitBase)
+		hitBase(hitBase.OffsetCopy(ResourceConstant::MapChipOffset))
 	{
 
 	}

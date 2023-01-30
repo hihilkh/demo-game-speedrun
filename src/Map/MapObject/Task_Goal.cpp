@@ -30,8 +30,8 @@ namespace Goal
 	Object::Object() :
 		ObjectBaseWithResource<Object, Resource>(TaskConstant::TaskGroupName_MapObject, TaskConstant::TaskName_Goal, true),
 		pos(ML::Point()),
-		hitBase(ML::Box2D(10, 4, 12, 24)),
-		renderBase(ML::Box2D(0, -SIZE / 3, SIZE, SIZE)),
+		hitBase(ML::Box2D(-6, -12, 12, 24)),
+		renderBase(ML::Box2D(-SIZE / 2, -SIZE * 5 / 6, SIZE, SIZE)),
 		isTriggered(false)
 	{
 		render2D_Priority[1] = 0.8f;

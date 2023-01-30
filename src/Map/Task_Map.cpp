@@ -13,29 +13,17 @@ namespace Map
 {
 
 #define CHIP_SIZE ResourceConstant::MapChipSize
+#define CHIP_OFFSET ResourceConstant::MapChipOffset
 
 #pragma region Resource
 
 	Resource::Resource()
 	{
 		chipImg = DG::Image::Create(GetImagePath(ResourceConstant::MapImage));
-
-		for (int i = 0; i < ResourceConstant::NoOfMapChip; ++i) {
-			int noInRow = ResourceConstant::NoOfMapChipInRow;
-			int x = (i % noInRow);
-			int y = (i / noInRow);
-			
-			chip[i] = ML::Box2D(x * CHIP_SIZE, y * CHIP_SIZE, CHIP_SIZE, CHIP_SIZE);
-		}
 	}
 
 	Resource::~Resource()
 	{
-	}
-
-	void Resource::Draw(int chipIndex, const ML::Box2D& draw)
-	{
-		chipImg->Draw(draw, chip[chipIndex]);
 	}
 
 #pragma endregion
@@ -44,7 +32,6 @@ namespace Map
 
 	Object::Object() :
 		ObjectBaseWithResource<Object, Resource>(TaskConstant::TaskGroupName_Map, TaskConstant::TaskName_Map, true),
-		mapChipCenterOffset(ML::Point{ -CHIP_SIZE / 2, -CHIP_SIZE / 2}),
 		mapChipLeftmostIndex(0),
 		mapChipTopmostIndex(0),
 		size(ML::Point(0, 0)),
@@ -52,12 +39,12 @@ namespace Map
 	{
 		render2D_Priority[1] = 0.9f;
 
-		Game::gameReady.AddListener(this, &Object::GameReadyEventHandler);
+		Game::mainTaskLoaded.AddListener(this, &Object::MainTaskLoadedEventHandler);
 	}
 
 	Object::~Object()
 	{
-		Game::gameReady.RemoveListeners(this);
+		Game::mainTaskLoaded.RemoveListeners(this);
 
 		ge->KillAll_G(TaskConstant::TaskGroupName_MapObject);
 	}
@@ -85,13 +72,20 @@ namespace Map
 		}
 	}
 
-	void Object::GameReadyEventHandler()
+	void Object::MainTaskLoadedEventHandler()
 	{
 		isInitialized = true;
 
 		camera = ge->GetTask<Game::Camera::Object>(TaskConstant::TaskGroupName_Game, TaskConstant::TaskName_GameCamera);
 
-		Load(GetMapFilePath(Game::GameStatus::MapIndex));
+		bool isSuccess = Load(GetMapFilePath(Game::GameStatus::MapIndex));
+
+		if (isSuccess) {
+			Game::mapLoaded.Invoke();
+		}
+		else {
+			PrintWarning("マップの読み込みに失敗した");
+		}
 	}
 
 	string Object::GetMapFilePath(int mapIndex) const
@@ -106,11 +100,8 @@ namespace Map
 		if (!fin) { return false; }
 
 		fin >> size.x >> size.y >> mapChipLeftmostIndex >> mapChipTopmostIndex;
-		hitBase = ML::Box2D(
-			mapChipCenterOffset.x + mapChipLeftmostIndex * CHIP_SIZE, 
-			mapChipCenterOffset.y + mapChipTopmostIndex * CHIP_SIZE,
-			size.x * CHIP_SIZE,
-			size.y * CHIP_SIZE);
+
+		ML::Point mapChipPosBase = ML::Point(mapChipLeftmostIndex * CHIP_SIZE, mapChipTopmostIndex * CHIP_SIZE);
 
 		mapChips.reserve(size.x * size.y);
 		int typeId;
@@ -120,12 +111,16 @@ namespace Map
 			for (int x = 0; x < size.x; ++x) {
 				fin >> typeId;
 				ML::Box2D mapChipHitBase = ML::Box2D(x * CHIP_SIZE, y * CHIP_SIZE, CHIP_SIZE, CHIP_SIZE);
-				mapChipHitBase.Offset(hitBase.x, hitBase.y);
-
-				mapChips.push_back(GenerateMapChip(typeId, res, mapChipHitBase));
-				GenerateMapObject(typeId, mapChipHitBase);
+				mapChipHitBase.Offset(mapChipPosBase);
+				mapChips.push_back(GenerateMap(typeId, res, mapChipHitBase));
 			}
 		}
+
+		hitBase = ML::Box2D(
+			mapChipPosBase.x + CHIP_OFFSET.x,
+			mapChipPosBase.y + CHIP_OFFSET.y,
+			size.x * CHIP_SIZE,
+			size.y * CHIP_SIZE);
 
 		return true;
 	}
@@ -146,10 +141,10 @@ namespace Map
 		// LeftからRightまで(含む)
 		// TopからBottomまで(含む)
 		ML::Rect includedRect;
-		includedRect.left = Math::FloorDivide(overlappedRect.left - mapChipCenterOffset.x, CHIP_SIZE) - mapChipLeftmostIndex;
-		includedRect.top = Math::FloorDivide(overlappedRect.top - mapChipCenterOffset.y, CHIP_SIZE) - mapChipTopmostIndex;
-		includedRect.right = Math::FloorDivide(overlappedRect.right - mapChipCenterOffset.x, CHIP_SIZE) - mapChipLeftmostIndex;
-		includedRect.bottom = Math::FloorDivide(overlappedRect.bottom - mapChipCenterOffset.y, CHIP_SIZE) - mapChipTopmostIndex;
+		includedRect.left = Math::FloorDivide(overlappedRect.left - CHIP_OFFSET.x, CHIP_SIZE) - mapChipLeftmostIndex;
+		includedRect.top = Math::FloorDivide(overlappedRect.top - CHIP_OFFSET.y, CHIP_SIZE) - mapChipTopmostIndex;
+		includedRect.right = Math::FloorDivide(overlappedRect.right - CHIP_OFFSET.x, CHIP_SIZE) - mapChipLeftmostIndex;
+		includedRect.bottom = Math::FloorDivide(overlappedRect.bottom - CHIP_OFFSET.y, CHIP_SIZE) - mapChipTopmostIndex;
 
 		vector<MapChipBase::SP> result = vector<MapChipBase::SP>();
 		result.reserve((includedRect.right - includedRect.left + 1) * (includedRect.bottom - includedRect.top + 1));

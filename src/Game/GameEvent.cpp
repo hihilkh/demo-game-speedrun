@@ -2,7 +2,8 @@
 
 namespace Game
 {
-	Event<> gameReady;
+	Event<> mainTaskLoaded;
+	Event<> mapLoaded;
 	Event<> gameStarted;
 	Event<> gameEnded;
 }

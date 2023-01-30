@@ -43,7 +43,7 @@ namespace Player
 		// TODO : Better way to control priority?
 		render2D_Priority[1] = 0.5f;
 
-		Game::gameReady.AddListener(this, &Object::GameReadyEventHandler);
+		Game::mapLoaded.AddListener(this, &Object::MapLoadedEventHandler);
 	}
 
 	void Object::PostCreate()
@@ -54,7 +54,7 @@ namespace Player
 
 	Object::~Object()
 	{
-		Game::gameReady.RemoveListeners(this);
+		Game::mapLoaded.RemoveListeners(this);
 	}
 
 	void Object::UpDate()
@@ -116,7 +116,7 @@ namespace Player
 		}
 	}
 
-	void Object::GameReadyEventHandler()
+	void Object::MapLoadedEventHandler()
 	{
 		//UpdatePlayerAction(PlayerMode::Basic);
 		UpdatePlayerAction(PlayerMode::Run);

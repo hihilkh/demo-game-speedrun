@@ -23,12 +23,8 @@ namespace Map
 	public:
 		~Resource();
 
-	private:
-		ML::Box2D chip[ResourceConstant::NoOfMapChip];
-
 	public:
 		DG::Image::SP chipImg;
-		void Draw(int chipIndex, const ML::Box2D& draw);
 	};
 	//-------------------------------------------------------------------
 	class Object : public ObjectBaseWithResource<Object, Resource>
@@ -46,7 +42,6 @@ namespace Map
 
 	private:
 		ML::Box2D hitBase;
-		ML::Point mapChipCenterOffset;
 
 		int mapChipLeftmostIndex;
 		int mapChipTopmostIndex;
@@ -59,7 +54,7 @@ namespace Map
 		// TODO : bool isMapLoaded?
 
 	private:
-		void GameReadyEventHandler();
+		void MainTaskLoadedEventHandler();
 
 		string GetMapFilePath(int mapIndex) const;
 		bool Load(const string& filePath);

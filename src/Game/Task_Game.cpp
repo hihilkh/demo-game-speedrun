@@ -37,7 +37,7 @@ namespace Game
 		Map::Object::SP map = Map::Object::Create(true);
 
 		gameEnded.AddListener(this, &Object::GameEndedEventHandler);
-		gameReady.Invoke();
+		mainTaskLoaded.Invoke();
 
 		StartCountdown();
 	}

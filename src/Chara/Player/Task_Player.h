@@ -66,7 +66,7 @@ namespace Player
 		int fallbackCounter;
 
 	private:
-		void GameReadyEventHandler();
+		void MapLoadedEventHandler();
 
 		void UpdatePlayerAction(PlayerMode playerMode);
 		void Fallback();

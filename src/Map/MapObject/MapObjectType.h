@@ -4,6 +4,7 @@ namespace Map
 {
 	enum class MapObjectType
 	{
-		Goal = 1,
+		Player = 1,
+		Goal = 2,
 	};
 }

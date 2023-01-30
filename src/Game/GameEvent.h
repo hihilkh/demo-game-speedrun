@@ -4,7 +4,8 @@
 
 namespace Game
 {
-	extern Event<> gameReady;
+	extern Event<> mainTaskLoaded;
+	extern Event<> mapLoaded;
 	extern Event<> gameStarted;
 	extern Event<> gameEnded;
 }

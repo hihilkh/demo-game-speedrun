@@ -24,9 +24,8 @@ namespace ResourceConstant
 
 	// マップ
 	const std::string MapImage = "MapChip.png";
-	const int NoOfMapChip = 16;
-	const int NoOfMapChipInRow = 8;
 	const int MapChipSize = 32;
+	const ML::Point MapChipOffset = ML::Point(-16, -16);
 
 	// マップオブジェクト
 	const std::string GoalImage = "Flag.png";
