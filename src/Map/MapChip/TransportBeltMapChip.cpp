@@ -6,7 +6,7 @@
 namespace Map
 {
 	namespace {
-		const float TransportBeltSpeed = 3.0f;
+		const float TransportBeltSpeed = 4.0f;
 	}
 
 	TransportBeltMapChip::TransportBeltMapChip(shared_ptr<Resource> res, const ML::Box2D& hitBase, Direction direction) :
