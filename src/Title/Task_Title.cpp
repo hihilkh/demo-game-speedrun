@@ -5,6 +5,7 @@
 #include "Game/Task_Game.h"
 #include "Task/TaskConstant.h"
 #include "Common/Font.h"
+#include "SceneTransition/Task_SceneTransition.h"
 
 namespace Title
 {
@@ -31,10 +32,13 @@ namespace Title
 		EnumEnd = 2,
 	};
 
-	Object::Object() : 
+	Object::Object() :
 		ObjectBaseWithResource<Object, Resource>(TaskConstant::TaskGroupName_Title, TaskConstant::TaskName_Default),
 		selectingMenu(Menu::Start)
 	{
+		render2D_Priority[1] = 0.5f;
+
+		SceneTransition::Fade(false);
 	}
 
 	Object::~Object()
@@ -61,8 +65,13 @@ namespace Title
 		if (inp.B2.down) {
 			switch (selectingMenu) {
 				case Menu::Start:
-					//自身に消滅要請
-					this->Kill();
+					SceneTransition::Fade(
+						true,
+						[this]() {
+							//自身に消滅要請
+							this->Kill();
+						}
+					);
 					break;
 				case Menu::Quit:
 					exit(0);

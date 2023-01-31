@@ -13,6 +13,7 @@
 #include "Utils/Log.h"
 #include "Utils/Time/DelayTrigger.h"
 #include "Common/Font.h"
+#include "SceneTransition/Task_SceneTransition.h"
 
 namespace Game
 {
@@ -39,7 +40,13 @@ namespace Game
 		gameEnded.AddListener(this, &Object::GameEndedEventHandler);
 		mainTaskLoaded.Invoke();
 
-		StartCountdown();
+		SceneTransition::Fade(
+			false,
+			[this]() {
+				//自身に消滅要請
+				this->StartCountdown();
+			}
+		);
 	}
 
 	Object::~Object()

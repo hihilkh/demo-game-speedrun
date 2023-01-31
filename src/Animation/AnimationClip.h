@@ -21,6 +21,6 @@ namespace Animation
 	public:
 		int GetAnimLength() const { return animLength; }
 		bool GetIsLoop() const { return isLoop; }
-		ML::Box2D GetImageSrc(int frame);
+		ML::Box2D GetImageSrc(int frame) const;
 	};
 }

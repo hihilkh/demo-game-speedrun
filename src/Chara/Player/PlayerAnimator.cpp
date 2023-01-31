@@ -13,7 +13,7 @@ namespace Player
 	// TODO : Study why AnimationClip would be copied here
 	// TODO : Study how to use move construction for it / reduce constructor call
 	// TODO : Do it need to make AnimClip instance instead of static?
-	unordered_map<PlayerState, AnimationClip> PlayerAnimator::AnimClipMap = {
+	const unordered_map<PlayerState, AnimationClip> PlayerAnimator::AnimClipMap = {
 		{ PlayerState::Idle, AnimationClip(true, {
 			AnimationKey(0, 0, PlayerImageWidth, PlayerImageHeight, 1), })
 		},

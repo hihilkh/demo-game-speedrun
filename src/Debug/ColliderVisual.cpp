@@ -19,7 +19,7 @@ namespace Debug::ColliderVisual
 		if (!WhiteImg) {
 			WhiteImg = DG::Image::Create(ResourceConstant::ImageFolder + ResourceConstant::WhiteImage);
 		}
-		WhiteImg->Draw(draw, ML::Box2D(0, 0, 32, 32), Color);
+		WhiteImg->Draw(draw, Src, Color);
 	}
 }
 

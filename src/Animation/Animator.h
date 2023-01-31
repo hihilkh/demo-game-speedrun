@@ -27,7 +27,7 @@ namespace Animation
 		std::shared_ptr<DG::Image> img;
 		std::vector<AnimationClip> animClips;
 
-		AnimationClip* pCurrentAnimClip;
+		const AnimationClip* pCurrentAnimClip;
 		int currentAnimFrame;
 
 		bool isPlaying;

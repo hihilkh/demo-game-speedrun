@@ -19,14 +19,14 @@ namespace Animation
 	{
 	}
 
-	ML::Box2D AnimationClip::GetImageSrc(int frame)
+	ML::Box2D AnimationClip::GetImageSrc(int frame) const
 	{
 		if (animLength == 0) {
 			return ML::Box2D();
 		}
 
 		// TODO : もっと効率的な方法？
-		for (AnimationKey& key : animKeys) {
+		for (const AnimationKey& key : animKeys) {
 			if (frame < key.lastFrame) {
 				return key.imageSrc;
 			}

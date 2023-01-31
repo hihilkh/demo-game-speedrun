@@ -32,9 +32,9 @@ namespace Player
 
 		PlayerState currentPlayerState;
 		int currentAnimFrame;
-		Animation::AnimationClip* pCurrentAnimClip;
+		const Animation::AnimationClip* pCurrentAnimClip;
 
-		static unordered_map<PlayerState, Animation::AnimationClip> AnimClipMap;
+		static const unordered_map<PlayerState, Animation::AnimationClip> AnimClipMap;
 
 		bool isPlaying;
 

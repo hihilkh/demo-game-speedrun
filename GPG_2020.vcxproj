@@ -178,6 +178,7 @@
     <ClCompile Include="src\ParticleSystem\Particle.cpp" />
     <ClCompile Include="src\ParticleSystem\ParticleConfig.cpp" />
     <ClCompile Include="src\ParticleSystem\Task_BreakWallEffect.cpp" />
+    <ClCompile Include="src\SceneTransition\Task_SceneTransition.cpp" />
     <ClCompile Include="src\Title\Task_Title.cpp" />
     <ClCompile Include="src\Utils\Time\Timer.cpp" />
     <ClCompile Include="src\Utils\Time\DelayTrigger.cpp" />
@@ -232,6 +233,7 @@
     <ClInclude Include="src\ParticleSystem\ParticleConfig.h" />
     <ClInclude Include="src\ParticleSystem\ParticleConstant.h" />
     <ClInclude Include="src\ParticleSystem\Task_BreakWallEffect.h" />
+    <ClInclude Include="src\SceneTransition\Task_SceneTransition.h" />
     <ClInclude Include="src\Task\ResourceConstant.h" />
     <ClInclude Include="src\Utils\Log.h" />
     <ClInclude Include="src\Task\ObjectBase.tpp" />

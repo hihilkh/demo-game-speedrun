@@ -1,7 +1,7 @@
 ﻿#include "DelayTrigger.h"
 
 // TODO : 今スレッドセーフか
-// TODO : MemberFunctionBaseを使わなくてもできるか
+// TODO : MemberFunctionBaseを使わなくてもできるか <- 多分std::functionなどでもできる
 namespace Time
 {
 	DelayTrigger::DelayTrigger(int waitTime, std::unique_ptr<MemberFunctionBase<>>&& func) :
