@@ -27,7 +27,7 @@ namespace ParticleSystem::BreakWallEffect
 		totalLife(0),
 		remainingLife(0)
 	{
-		render2D_Priority[1] = 0.3f;
+		render2D_Priority[1] = 0.6f;
 
 		camera = ge->GetTask<Game::Camera::Object>(TaskConstant::TaskGroupName_Game, TaskConstant::TaskName_GameCamera);
 	}
