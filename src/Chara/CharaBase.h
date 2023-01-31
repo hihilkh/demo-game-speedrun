@@ -60,9 +60,9 @@ namespace Chara
 		virtual ML::Vec2 PreMove();
 		void CheckMapTrigger();
 		void HandleAdditionalSpeed(ML::Vec2& outTargetMove);
-		/// <returns>ぶつかったかどうか</returns>
-		bool CheckMapCollisionAndMove(const ML::Vec2& targetMove);
-		virtual void CollideWithMap();
+		/// <returns>ぶつかった方向の配列。例えば、左の壁にぶつかったら、戻り値は右になる。</returns>
+		vector<Direction> CheckMapCollisionAndMove(const ML::Vec2& targetMove);
+		virtual void CollidedWithMap(const vector<Direction>& collidedDirections);
 		virtual void PostMove();
 
 #pragma endregion

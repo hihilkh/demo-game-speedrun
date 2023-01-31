@@ -1,13 +1,17 @@
 ﻿#pragma once
 
-#if _DEBUG
+#ifdef _DEBUG
+
 #include <sstream>
 #include <windows.h>
-#endif
+
+#else
+
+#endif // _DEBUG
 
 namespace Log {
 
-#if _DEBUG
+#ifdef _DEBUG
 
 	#define Print(message)\
 	{\
@@ -28,6 +32,6 @@ namespace Log {
 	#define Print(message)
 	#define PrintWarning(message)
 
-#endif
+#endif // _DEBUG
 
 }

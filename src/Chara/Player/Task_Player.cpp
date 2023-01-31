@@ -70,7 +70,8 @@ namespace Player
 			return;
 		}
 
-#if _DEBUG
+#ifdef _DEBUG
+
 		// バックドア：PlayerActionの切り替え
 		auto inp = ge->in1->GetState();
 		if (inp.SE.down) {
@@ -81,7 +82,8 @@ namespace Player
 				case PlayerMode::Jump:		UpdatePlayerAction(PlayerMode::Basic);		break;
 			}
 		}
-#endif
+
+#endif // _DEBUG
 
 		UpdateMovement();
 	}
@@ -91,12 +93,19 @@ namespace Player
 		return playerAction->PreMove();
 	}
 
-	void Object::CollideWithMap()
+	void Object::CollidedWithMap(const vector<Direction>& collidedDirections)
 	{
-		playerAction->CollideWithMap();
+		playerAction->CollidedWithMap(collidedDirections);
 
 		if (CheckIsInCrashStateAndSpeed()) {
-			Fallback();
+			for (Direction direction : collidedDirections) {
+				// 反対方向
+				if (CompareDirection(direction, transform->direction) == -1) {
+					Fallback();
+					return;
+				}
+			}
+
 		}
 	}
 
@@ -172,7 +181,7 @@ namespace Player
 	bool Object::CheckIsInCrashStateAndSpeed() const
 	{
 		if (state == PlayerState::Running || state == PlayerState::Stopping) {
-			Print("ぶつかる速度：" << currentMovementSpeed);
+			Print("Running/Stopping速度：" << currentMovementSpeed);
 			return currentMovementSpeed > Constant::CrashSpeed;
 		}
 

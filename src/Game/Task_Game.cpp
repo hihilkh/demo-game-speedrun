@@ -65,9 +65,14 @@ namespace Game
 
 		XI::VGamePad input = ge->in1->GetState();
 
+#ifdef _DEBUG
+
 		if (input.B1.down) {
 			this->Kill();
 		}
+
+#endif // _DEBUG
+
 	}
 	//-------------------------------------------------------------------
 	//「２Ｄ描画」１フレーム毎に行う処理

@@ -9,6 +9,7 @@ namespace Player
 		Attack,
 
 		// 走る
+		PrepareToRun,
 		Running,
 		Stopping,
 

@@ -31,6 +31,6 @@ namespace Player
 	public:
 		virtual PlayerMode GetPlayerMode() const = 0;
 		virtual ML::Vec2 PreMove() = 0;
-		virtual void CollideWithMap() {}
+		virtual void CollidedWithMap(const vector<Direction>& collidedDirections) {}
 	};
 }

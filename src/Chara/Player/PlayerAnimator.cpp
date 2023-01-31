@@ -34,6 +34,14 @@ namespace Player
 		},
 
 		// 一時的なコード
+		{ PlayerState::PrepareToRun, AnimationClip(true, {
+			AnimationKey(0, 0					 , PlayerImageWidth, PlayerImageHeight, 3),
+			AnimationKey(0, PlayerImageHeight	 , PlayerImageWidth, PlayerImageHeight, 6),
+			AnimationKey(0, PlayerImageHeight * 2, PlayerImageWidth, PlayerImageHeight, 9),
+			AnimationKey(0, PlayerImageHeight * 3, PlayerImageWidth, PlayerImageHeight, 12), })
+		},
+
+		// 一時的なコード
 		{ PlayerState::Running, AnimationClip(true, {
 			AnimationKey(0, 0					 , PlayerImageWidth, PlayerImageHeight, 3),
 			AnimationKey(0, PlayerImageHeight	 , PlayerImageWidth, PlayerImageHeight, 6),

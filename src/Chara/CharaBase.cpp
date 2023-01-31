@@ -38,9 +38,10 @@ namespace Chara
 		CheckMapTrigger();
 		ML::Vec2 targetMove = PreMove();
 		HandleAdditionalSpeed(targetMove);
-		bool isHit = CheckMapCollisionAndMove(targetMove);
-		if (isHit) {
-			CollideWithMap();
+
+		vector<Direction> collidedDirections = CheckMapCollisionAndMove(targetMove);
+		if (collidedDirections.size() > 0) {
+			CollidedWithMap(collidedDirections);
 		}
 		PostMove();
 	}
@@ -62,22 +63,22 @@ namespace Chara
 		additionalSpeedInfo.isActive = false;
 	}
 
-	bool CharaBase::CheckMapCollisionAndMove(const ML::Vec2& targetMove)
+	vector<Direction> CharaBase::CheckMapCollisionAndMove(const ML::Vec2& targetMove)
 	{
+		vector<Direction> collidedDirections;
+
 		auto mapSP = map.lock();
 		if (!mapSP) {
 			PrintWarning("マップの参照がない。キャラクターは自由に移動できる");
 			transform->pos = targetMove;
-			return false;
+			return collidedDirections;
 		}
 
-		bool isCollide = false;
+		enum Axis { X = 0, Y = 1, End = 2 };
+		float* pMoveAxisValues[Axis::End] = { &transform->pos.x, &transform->pos.y };
+		float targetAxisMoves[Axis::End] = { targetMove.x, targetMove.y };
 
-		const int noOfAxis = 2;
-		float* pMoveAxisValues[noOfAxis] = { &transform->pos.x, &transform->pos.y };
-		float targetAxisMoves[noOfAxis] = { targetMove.x, targetMove.y };
-
-		for (int i = 0; i < noOfAxis; ++i) {
+		for (int i = 0; i < Axis::End; ++i) {
 			float* pAxisValue = pMoveAxisValues[i];
 			float move = targetAxisMoves[i];
 
@@ -97,17 +98,25 @@ namespace Chara
 				}
 
 				if (mapSP->CheckCollision(*this)) {
+					float movedValue = *pAxisValue - previousValue;
+					switch (i) {
+						case Axis::X:
+							collidedDirections.push_back(movedValue > 0 ? Direction::Left : Direction::Right);
+							break;
+						case Axis::Y:
+							collidedDirections.push_back(movedValue > 0 ? Direction::Up : Direction::Down);
+							break;
+					}
 					*pAxisValue = previousValue;		//移動をキャンセル
-					isCollide = true;
 					break;
 				}
 			}
 		}
 
-		return isCollide;
+		return collidedDirections;
 	}
 
-	void CharaBase::CollideWithMap()
+	void CharaBase::CollidedWithMap(const vector<Direction>& collidedDirections)
 	{
 	}
 

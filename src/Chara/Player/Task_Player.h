@@ -78,7 +78,7 @@ namespace Player
 
 		/// <returns>targetMove</returns>
 		ML::Vec2 PreMove() override;
-		void CollideWithMap() override;
+		void CollidedWithMap(const vector<Direction>& collidedDirections) override;
 		void PostMove() override;
 
 #pragma endregion
