@@ -74,11 +74,11 @@ namespace Chara
 			return collidedDirections;
 		}
 
-		enum Axis { X = 0, Y = 1, End = 2 };
-		float* pMoveAxisValues[Axis::End] = { &transform->pos.x, &transform->pos.y };
-		float targetAxisMoves[Axis::End] = { targetMove.x, targetMove.y };
+		enum Axis { X = 0, Y = 1, EnumEnd = 2 };
+		float* pMoveAxisValues[Axis::EnumEnd] = { &transform->pos.x, &transform->pos.y };
+		float targetAxisMoves[Axis::EnumEnd] = { targetMove.x, targetMove.y };
 
-		for (int i = 0; i < Axis::End; ++i) {
+		for (int i = 0; i < Axis::EnumEnd; ++i) {
 			float* pAxisValue = pMoveAxisValues[i];
 			float move = targetAxisMoves[i];
 
