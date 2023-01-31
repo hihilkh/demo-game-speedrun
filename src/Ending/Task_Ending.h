@@ -16,7 +16,7 @@ namespace Ending
 	public:
 		~Resource();
 
-		DG::Image::SP img;
+		DG::Image::SP imgArrow;
 	};
 
 	class Object : public ObjectBaseWithResource<Object, Resource>
@@ -32,6 +32,8 @@ namespace Ending
 		void UpDate() override;			//「実行」１フレーム毎に行う処理
 		void Render2D_AF() override;	//「2D描画」１フレーム毎に行う処理
 
-		int logoPosY;		//"エンディング画像スクロール用カウンタ
+	private:
+		bool isInteractable;
+		int selectingMenu;
 	};
 }

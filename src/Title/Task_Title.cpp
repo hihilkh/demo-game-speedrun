@@ -34,24 +34,29 @@ namespace Title
 
 	Object::Object() :
 		ObjectBaseWithResource<Object, Resource>(TaskConstant::TaskGroupName_Title, TaskConstant::TaskName_Default),
-		selectingMenu(Menu::Start)
+		selectingMenu(Menu::Start),
+		isInteractable(false)
 	{
 		render2D_Priority[1] = 0.5f;
 
-		SceneTransition::Fade(false);
+		SceneTransition::Fade(false, [this]() { this->isInteractable = true; });
 	}
 
 	Object::~Object()
 	{
 		if (!ge->QuitFlag() && this->nextTaskCreate) {
 			//★引き継ぎタスクの生成
-			Game::Object::SP nextTask = Game::Object::Create(true);
+			Game::Object::Create(true);
 		}
 	}
 	//-------------------------------------------------------------------
 	//「更新」１フレーム毎に行う処理
 	void Object::UpDate()
 	{
+		if (!isInteractable) {
+			return;
+		}
+
 		auto inp = ge->in1->GetState();
 
 		if (inp.LStick.BU.down) {
@@ -65,18 +70,13 @@ namespace Title
 		if (inp.B2.down) {
 			switch (selectingMenu) {
 				case Menu::Start:
-					SceneTransition::Fade(
-						true,
-						[this]() {
-							//自身に消滅要請
-							this->Kill();
-						}
-					);
+					SceneTransition::Fade(true, [this]() { this->Kill(); });
 					break;
 				case Menu::Quit:
 					exit(0);
 					break;
 			}
+			isInteractable = false;
 		}
 	}
 	//-------------------------------------------------------------------
@@ -85,12 +85,14 @@ namespace Title
 	{
 		// ロゴ
 		ML::Box2D logoSrc = ML::Box2D(0, 0, 300, 50);
-		ML::Box2D logoDraw = ML::Box2D((ge->screenWidth - logoSrc.w) / 2, (ge->screenHeight - logoSrc.h) / 4, logoSrc.w, logoSrc.h);
+		ML::Box2D logoDraw = ML::Box2D((ge->screenWidth - logoSrc.w) / 2, ge->screenHeight / 5, logoSrc.w, logoSrc.h);
 		res->imgTitle->Draw(logoDraw, logoSrc);
 
+		// TODO : UIのモジュール化?
 		// メニュー
 		ML::Color textColor = ML::Color(1.0f, 1.0f, 1.0f, 1.0f);
-		ML::Box2D firstMenuDrawBox = ML::Box2D(0, ge->screenHeight * 0.6f, ge->screenWidth, Font::smallDefaultFontSize);
+		int menuWidth = ge->screenWidth / 3;
+		ML::Box2D firstMenuDrawBox = ML::Box2D((ge->screenWidth - menuWidth) / 2, ge->screenHeight * 0.6f, menuWidth, Font::smallDefaultFontSize);
 		int menuSpacing = 20;
 		string menuStrings[Menu::EnumEnd] = { "スタート", "終了" };
 		for (int i = 0; i < Menu::EnumEnd; ++i) {
@@ -99,7 +101,7 @@ namespace Title
 
 			if (selectingMenu == i) {
 				int arrowSize = 16;
-				ML::Box2D arrowDraw = ML::Box2D(ge->screenWidth / 3, menuDraw.y + (Font::smallDefaultFontSize - arrowSize) / 2, arrowSize, arrowSize);
+				ML::Box2D arrowDraw = ML::Box2D(menuDraw.x - arrowSize, menuDraw.y + (Font::smallDefaultFontSize - arrowSize) / 2, arrowSize, arrowSize);
 				ML::Box2D arrowSrc = ML::Box2D(0, 0, arrowSize, arrowSize);
 				res->imgArrow->Draw(arrowDraw, arrowSrc, ML::Color(1.0f, 0.0f, 1.0f, 0.0f));
 			}

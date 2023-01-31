@@ -38,5 +38,7 @@ namespace Game
 		void CountdownEventHandler();
 		void StartGame();
 		void GameEndedEventHandler();
+
+		void GoToEndingScene();
 	};
 }

@@ -34,6 +34,7 @@ namespace Title
 		void Render2D_AF() override;	//「2D描画」１フレーム毎に行う処理
 
 	private:
+		bool isInteractable;
 		int selectingMenu;
 	};
 }

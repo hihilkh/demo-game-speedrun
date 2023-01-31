@@ -40,13 +40,7 @@ namespace Game
 		gameEnded.AddListener(this, &Object::GameEndedEventHandler);
 		mainTaskLoaded.Invoke();
 
-		SceneTransition::Fade(
-			false,
-			[this]() {
-				//自身に消滅要請
-				this->StartCountdown();
-			}
-		);
+		SceneTransition::Fade(false, [this]() { this->StartCountdown(); });
 	}
 
 	Object::~Object()
@@ -60,8 +54,9 @@ namespace Game
 		ge->KillAll_G(TaskConstant::TaskGroupName_ParticleSystem);
 
 		if (!ge->QuitFlag() && this->nextTaskCreate) {
+			GameStatus::ClearGameTimeMillisecond = timer.GetCurrentCountMillisecond();
 			//★引き継ぎタスクの生成
-			Ending::Object::SP nextTask = Ending::Object::Create(true);
+			Ending::Object::Create(true);
 		}
 	}
 	//-------------------------------------------------------------------
@@ -75,7 +70,7 @@ namespace Game
 #ifdef _DEBUG
 
 		if (input.B1.down) {
-			this->Kill();
+			GoToEndingScene();
 		}
 
 #endif // _DEBUG
@@ -130,8 +125,15 @@ namespace Game
 
 	void Object::GameEndedEventHandler()
 	{
+		timer.Pause();
 		GameStatus::CurrentGameState = GameState::Ended;
-		Print("ゲームクリア");
+		GoToEndingScene();
+	}
+
+	void Object::GoToEndingScene()
+	{
+		GameStatus::ClearGameTimeMillisecond = timer.GetCurrentCountMillisecond();
+		SceneTransition::Fade(true, [this]() { this->Kill(); });
 	}
 
 #pragma endregion

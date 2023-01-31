@@ -9,7 +9,7 @@ namespace Font
 	}
 
 	int smallDefaultFontSize = 24;
-	int largeDefaultFontSize = 40;
+	int largeDefaultFontSize = 34;
 
 	DG::Font::SP smallDefaultFont;
 	DG::Font::SP largeDefaultFont;
