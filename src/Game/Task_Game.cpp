@@ -17,13 +17,13 @@
 
 namespace Game
 {
-
 #pragma region Object
+	bool Object::HasPerformedZoom = false;
 
 	Object::Object() : 
 		ObjectBase<Object>(TaskConstant::TaskGroupName_Game, TaskConstant::TaskName_Game),
 		timer(),
-		remainingCountdown(3)
+		remainingCountdown(-1)
 	{
 		GameStatus::CurrentGameState = GameState::Initialize;
 		GameStatus::FrameCount = 0;
@@ -40,7 +40,22 @@ namespace Game
 		gameEnded.AddListener(this, &Object::GameEndedEventHandler);
 		mainTaskLoaded.Invoke();
 
-		SceneTransition::Fade(false, [this]() { this->StartCountdown(); });
+		auto countdown = [this]() {
+			this->StartCountdown(3);
+		};
+
+		auto performZoom = [this, player, camera, map, countdown]() {
+			const ML::Vec2& playerPos = player->transform->pos;
+			camera->PerformZoom(ML::Point(playerPos.x, playerPos.y), map->GetGoalPos(), countdown);
+		};
+
+		if (HasPerformedZoom) {
+			SceneTransition::Fade(false, countdown);
+		}
+		else {
+			HasPerformedZoom = true;
+			SceneTransition::Fade(false, performZoom);
+		}
 	}
 
 	Object::~Object()
@@ -98,9 +113,9 @@ namespace Game
 		Font::largeDefaultFont->DrawF(countdownDrawBox, countdownText, DG::Font::x4, textColor, frameColor, DT_CENTER | DT_VCENTER);
 	}
 
-	void Object::StartCountdown()
+	void Object::StartCountdown(int second)
 	{
-		++remainingCountdown;	// CountdownEventHandlerの中でまず--remainingCountdownをするので
+		remainingCountdown = second + 1;	// CountdownEventHandlerの中でまず--remainingCountdownをするので
 		CountdownEventHandler();
 	}
 

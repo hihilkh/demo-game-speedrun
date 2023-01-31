@@ -2,6 +2,7 @@
 
 #include <cmath>
 #include <type_traits>
+#include <numbers>
 
 namespace Math
 {
@@ -20,7 +21,7 @@ namespace Math
 	}
 
 	/// <summary>
-	/// tを[0,1]になる
+	/// tを[0,1]にClampする
 	/// </summary>
 	inline constexpr float BoundedLerp(float a, float b, float t)
 	{
@@ -68,4 +69,26 @@ namespace Math
 	}
 
 #pragma endregion
+
+#pragma region Easing
+
+
+	/// <summary>
+	/// 必ずtを[0,1]になってください
+	/// </summary>
+	inline float EaseInOutSine(float t)
+	{
+		return -(cos(std::numbers::pi * t) - 1) / 2;
+	}
+
+	/// <summary>
+	/// tを[0,1]にClampする
+	/// </summary>
+	inline float BoundedEaseInOutSine(float t)
+	{
+		return EaseInOutSine(Clamp01(t));
+	}
+
+#pragma endregion
+
 }

@@ -64,5 +64,6 @@ namespace Map
 	public:
 		bool CheckCollision(const Chara::CharaBase& chara);
 		void CheckTrigger(Chara::CharaBase& chara);
+		ML::Point GetGoalPos() const;
 	};
 }

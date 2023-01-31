@@ -59,5 +59,6 @@ namespace Goal
 
 	public:
 		void Init(int posX, int posY);
+		ML::Point GetPos() const { return pos; }
 	};
 }

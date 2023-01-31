@@ -96,10 +96,7 @@ namespace SceneTransition
 
 #pragma endregion
 
-	namespace
-	{
-		static const int DefaultFadeTime = 30;
-	}
+#define DefaultFadeTime 30
 
 	void Fade(bool isFadeIn, std::function<void()> onFinished)
 	{

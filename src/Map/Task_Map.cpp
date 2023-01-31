@@ -8,6 +8,7 @@
 #include "Chara/CharaBase.h"
 #include "MapChip/MapChipBase.h"
 #include "MapChipFactory.h"
+#include "MapObject/Task_Goal.h"
 
 namespace Map
 {
@@ -183,6 +184,17 @@ namespace Map
 		for (MapChipBase::SP& mapChip : mapChips) {
 			mapChip->TriggerByChara(chara);
 		}
+	}
+
+	ML::Point Object::GetGoalPos() const
+	{
+		auto goal = ge->GetTask<Goal::Object>(TaskConstant::TaskGroupName_MapObject, TaskConstant::TaskName_Goal);
+		if (goal) {
+			return goal->GetPos();
+		}
+
+		PrintWarning("終点が探せない");
+		ML::Vec2(0.0f, 0.0f);
 	}
 #pragma endregion
 }

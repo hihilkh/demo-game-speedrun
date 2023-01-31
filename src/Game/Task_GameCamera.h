@@ -26,14 +26,25 @@ namespace Game::Camera
 
 		Transform::WP target;
 
+		bool isPerformingZoom;
+		ML::Point performZoomFrom;
+		ML::Point performZoomTo;
+		std::function<void()> onFinishedPerformZoom;
+		int currentPerformZoomCount;
+
+
 	private:
 		void UpdateTarget();
+		void UpdateCameraPos(int targatX, int targetY);
 		void UpdateCameraOffset();
+		void UpdateZoom();
 
 	public:
 		const ML::Box2D& GetVisibleRange() const;
 		const ML::Point& GetCameraOffset() const;
 
 		void SetTarget(Transform::WP transform);
+
+		void PerformZoom(const ML::Point& from, const ML::Point& to, std::function<void()> onFinished = nullptr);
 	};
 }

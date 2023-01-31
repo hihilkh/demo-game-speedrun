@@ -29,12 +29,14 @@ namespace Game
 		void Render2D_AF() override;	//「2D描画」１フレーム毎に行う処理
 
 	private:
+		static bool HasPerformedZoom;
+
 		Time::Timer timer;
 		int remainingCountdown;
 		unique_ptr<Time::DelayTrigger> countdownDelayTrigger;
 
 	private:
-		void StartCountdown();
+		void StartCountdown(int second);
 		void CountdownEventHandler();
 		void StartGame();
 		void GameEndedEventHandler();

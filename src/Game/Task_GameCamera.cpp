@@ -1,15 +1,25 @@
 ﻿#include "Task_GameCamera.h"
 #include "Task/TaskConstant.h"
+#include "Utils/Math.h"
 
 namespace Game::Camera
 {
 
 #pragma region Object
 
+#define PerformZoomPhase1 120
+#define PerformZoomPhase2 180 // 120 + 60
+#define PerformZoomPhase3 300 // 120 + 60 + 120
+
 	Object::Object() : 
 		ObjectBase<Object>(TaskConstant::TaskGroupName_Game, TaskConstant::TaskName_GameCamera, true), 
 		visibleRange(ML::Box2D(0, 0, 480, 270)), 
-		currentCameraOffset(ML::Point())
+		currentCameraOffset(ML::Point()),
+		isPerformingZoom(false),
+		performZoomFrom(ML::Point()),
+		performZoomTo(ML::Point()),
+		onFinishedPerformZoom(nullptr),
+		currentPerformZoomCount(0)
 	{
 		targetOffset = ML::Point{ -visibleRange.w / 2, -visibleRange.h / 2 };
 
@@ -22,6 +32,11 @@ namespace Game::Camera
 
 	void Object::UpDate()
 	{
+		if (isPerformingZoom) {
+			UpdateZoom();
+			return;
+		}
+
 		UpdateTarget();
 	}
 
@@ -52,11 +67,13 @@ namespace Game::Camera
 			return;
 		}
 
-		int newX = int(sp->pos.x) + targetOffset.x;
-		int newY = int(sp->pos.y) + targetOffset.y;
+		UpdateCameraPos(sp->pos.x, sp->pos.y);
+	}
 
-		visibleRange.x = newX;
-		visibleRange.y = newY;
+	void Object::UpdateCameraPos(int targatX, int targetY)
+	{
+		visibleRange.x = targatX + targetOffset.x;
+		visibleRange.y = targetY + targetOffset.y;
 
 		UpdateCameraOffset();
 	}
@@ -65,6 +82,46 @@ namespace Game::Camera
 	{
 		currentCameraOffset.x = -visibleRange.x;
 		currentCameraOffset.y = -visibleRange.y;
+	}
+
+	// TODO : UnityのStartCoroutineのようなメソッドを作る
+	void Object::PerformZoom(const ML::Point& from, const ML::Point& to, std::function<void()> onFinished)
+	{
+		isPerformingZoom = true;
+		performZoomFrom = from;
+		performZoomTo = to;
+		onFinishedPerformZoom = onFinished;
+		currentPerformZoomCount = 0;
+	}
+
+	void Object::UpdateZoom()
+	{
+		++currentPerformZoomCount;
+
+		float progress;
+		if (currentPerformZoomCount <= PerformZoomPhase1) {
+			progress = Math::EaseInOutSine(currentPerformZoomCount / (float)PerformZoomPhase1);
+		}
+		else if (currentPerformZoomCount <= PerformZoomPhase2) {
+			// 何もしない
+			return;
+		}
+		else if (currentPerformZoomCount <= PerformZoomPhase3) {
+			float t = (PerformZoomPhase3 - currentPerformZoomCount) / (float)(PerformZoomPhase3 - PerformZoomPhase2);
+			progress = Math::EaseInOutSine(t);
+
+			if (currentPerformZoomCount == PerformZoomPhase3) {
+				isPerformingZoom = false;
+				if (onFinishedPerformZoom) {
+					onFinishedPerformZoom();
+					onFinishedPerformZoom = nullptr;
+				}
+			}
+		}
+
+		UpdateCameraPos(
+			std::lerp(performZoomFrom.x, performZoomTo.x, progress),
+			std::lerp(performZoomFrom.y, performZoomTo.y, progress));
 	}
 
 #pragma endregion
