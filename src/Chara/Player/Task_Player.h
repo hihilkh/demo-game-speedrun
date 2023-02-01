@@ -60,7 +60,7 @@ namespace Player
 		bool canControl;
 		float currentHeight;
 		PlayerState state;
-		unique_ptr<class PlayerActionBase> playerAction;		// TODO : Or change to the concept of controller?
+		unique_ptr<class PlayerActionBase> playerAction;		// TODO : コントロールの概念に変える？
 		unique_ptr<class PlayerAnimator> animator;
 
 		int fallbackCounter;

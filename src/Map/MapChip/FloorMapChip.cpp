@@ -13,7 +13,7 @@ namespace Map
 
 	}
 
-	// TODO : Think of use design pattern and do it in res
+	// TODO : resの中でデザインパターンで処理できるか？
 	ML::Box2D FloorMapChip::GetRenderSrc() const
 	{
 		return ML::Box2D(0, 0, 32, 32);

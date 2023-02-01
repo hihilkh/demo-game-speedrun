@@ -40,7 +40,7 @@ namespace Player
 		state(PlayerState::Idle),
 		fallbackCounter(0)
 	{
-		// TODO : Better way to control priority?
+		// TODO : レンダリング順についてより良い方法
 		render2D_Priority[1] = 0.5f;
 
 		Game::mapLoaded.AddListener(this, &Object::MapLoadedEventHandler);

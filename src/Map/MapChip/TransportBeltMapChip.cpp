@@ -26,7 +26,6 @@ namespace Map
 	ML::Box2D TransportBeltMapChip::GetRenderSrc() const
 	{
 		int offset = Game::GameStatus::FrameCount % 32;
-		// TODO
 		switch (direction) {
 			case Direction::Down:		return ML::Box2D( 0, 64 - offset, 32, 32);
 			case Direction::Left:		return ML::Box2D(32 + offset, 32, 32, 32);

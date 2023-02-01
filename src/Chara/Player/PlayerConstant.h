@@ -2,7 +2,7 @@
 
 #include <myLib.h>
 
-// TODO : Is it a good way to use PlayerConstant?
+// TODO : このスクリプトはいいか？悪いか？
 namespace Player::Constant
 {
 	const ML::Box2D HitBase = ML::Box2D(-8, -4, 16, 8);

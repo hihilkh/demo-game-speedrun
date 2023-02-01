@@ -107,7 +107,7 @@ namespace Map
 		mapChips.reserve(size.x * size.y);
 		int typeId;
 
-		// TODO : study of flyweight(?) pattern instead of instantiate all?
+		// TODO : flyweightパターン？
 		for (int y = 0; y < size.y; ++y) {
 			for (int x = 0; x < size.x; ++x) {
 				fin >> typeId;

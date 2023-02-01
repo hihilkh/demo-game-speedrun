@@ -10,9 +10,9 @@ namespace Player
 	using namespace ResourceConstant;
 
 	// TODO : Animatorに合わせる
-	// TODO : Study why AnimationClip would be copied here
-	// TODO : Study how to use move construction for it / reduce constructor call
-	// TODO : Do it need to make AnimClip instance instead of static?
+	// TODO : 何故ここはAnimationClipをコーヒーするか？
+	// TODO : コンストラクタの呼び出しを減少
+	// TODO : static又はインスタンス？
 	const unordered_map<PlayerState, AnimationClip> PlayerAnimator::AnimClipMap = {
 		{ PlayerState::Idle, AnimationClip(true, {
 			AnimationKey(0, 0, PlayerImageWidth, PlayerImageHeight, 1), })

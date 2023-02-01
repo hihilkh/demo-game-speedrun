@@ -16,7 +16,6 @@ namespace Map
 
 	}
 
-	// TODO : Think of use design pattern and do it in res
 	ML::Box2D WeakWallMapChip::GetRenderSrc() const
 	{
 		if (isBroken) {
