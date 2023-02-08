@@ -372,6 +372,9 @@
     <ClInclude Include="src\SceneTransition\Task_SceneTransition.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Event\Event.tpp">
@@ -380,5 +383,10 @@
     <None Include="src\Event\MemberFunction.tpp">
       <Filter>MyPG\Template Files</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="version.rc">
+      <Filter>リソース ファイル</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
