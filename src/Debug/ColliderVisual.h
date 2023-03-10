@@ -2,7 +2,7 @@
 
 #define DEBUG_COLLIDER
 
-#ifdef DEBUG_COLLIDER
+#if defined(_DEBUG) && defined(DEBUG_COLLIDER)
 
 #pragma region 前方宣言
 
