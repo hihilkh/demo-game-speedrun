@@ -1,8 +1,8 @@
 ﻿#pragma once
 
-#define DEBUG_COLLIDER
+#include "DebugConfig.h"
 
-#if defined(_DEBUG) && defined(DEBUG_COLLIDER)
+#if DEBUG_IS_ENABLED(DEBUG_COLLIDER_VISUAL)
 
 #pragma region 前方宣言
 

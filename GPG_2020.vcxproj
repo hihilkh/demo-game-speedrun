@@ -225,6 +225,7 @@
     <ClInclude Include="src\Common\Font.h" />
     <ClInclude Include="src\Common\Transform.h" />
     <ClInclude Include="src\Debug\ColliderVisual.h" />
+    <ClInclude Include="src\Debug\DebugConfig.h" />
     <ClInclude Include="src\Game\GameEvent.h" />
     <ClInclude Include="src\Game\GameStatus.h" />
     <ClInclude Include="src\Chara\Player\PlayerActionBase.h" />

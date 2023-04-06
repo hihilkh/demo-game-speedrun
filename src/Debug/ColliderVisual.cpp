@@ -1,6 +1,6 @@
 ﻿#include "ColliderVisual.h"
 
-#if defined(_DEBUG) && defined(DEBUG_COLLIDER)
+#if DEBUG_IS_ENABLED(DEBUG_COLLIDER_VISUAL)
 
 #include <GameEngine_Ver3_83.h>
 #include "Task/ResourceConstant.h"
