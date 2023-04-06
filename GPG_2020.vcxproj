@@ -88,7 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <PreprocessorDefinitions>_DEBUG;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_DEBUG;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir)lib;$(SolutionDir)src;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -103,7 +103,7 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)lib;$(SolutionDir)src;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <PreprocessorDefinitions>_DEBUG;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_DEBUG;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x64</AdditionalLibraryDirectories>
@@ -119,6 +119,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)lib;$(SolutionDir)src;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -136,6 +137,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)lib;$(SolutionDir)src;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -169,6 +171,11 @@
     <ClCompile Include="src\Common\Font.cpp" />
     <ClCompile Include="src\Common\Transform.cpp" />
     <ClCompile Include="src\Debug\ColliderVisual.cpp" />
+    <ClCompile Include="src\Debug\Profiling\Profiler.cpp" />
+    <ClCompile Include="src\Debug\Profiling\ProfilerLoggerConsole.cpp" />
+    <ClCompile Include="src\Debug\Profiling\ProfilerLoggerCsv.cpp" />
+    <ClCompile Include="src\Debug\Profiling\ProfilerSection.cpp" />
+    <ClCompile Include="src\Debug\Profiling\ProfilerSectionFps.cpp" />
     <ClCompile Include="src\Game\GameEvent.cpp" />
     <ClCompile Include="src\Game\GameStatus.cpp" />
     <ClCompile Include="src\Chara\Player\PlayerActionBase.cpp" />
@@ -226,6 +233,12 @@
     <ClInclude Include="src\Common\Transform.h" />
     <ClInclude Include="src\Debug\ColliderVisual.h" />
     <ClInclude Include="src\Debug\DebugConfig.h" />
+    <ClInclude Include="src\Debug\Profiling\Profiler.h" />
+    <ClInclude Include="src\Debug\Profiling\ProfilerLogger.h" />
+    <ClInclude Include="src\Debug\Profiling\ProfilerLoggerConsole.h" />
+    <ClInclude Include="src\Debug\Profiling\ProfilerLoggerCsv.h" />
+    <ClInclude Include="src\Debug\Profiling\ProfilerSection.h" />
+    <ClInclude Include="src\Debug\Profiling\ProfilerSectionFps.h" />
     <ClInclude Include="src\Game\GameEvent.h" />
     <ClInclude Include="src\Game\GameStatus.h" />
     <ClInclude Include="src\Chara\Player\PlayerActionBase.h" />

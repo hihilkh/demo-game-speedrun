@@ -16,6 +16,9 @@ namespace TaskConstant {
 
 	const std::string TaskGroupName_ParticleSystem = "パーティクルシステム";
 	const std::string TaskGroupName_SceneTransition = "シーントランジション";
+
+	const std::string TaskGroupName_Debug = "デバッグ";
+
 #pragma endregion
 
 #pragma region TaskName
@@ -28,5 +31,6 @@ namespace TaskConstant {
 	const std::string TaskName_Goal = "終点";
 	const std::string TaskName_Player = "プレイヤー";
 
+	const std::string TaskName_Profiler = "プロファイラ";
 #pragma endregion
 }

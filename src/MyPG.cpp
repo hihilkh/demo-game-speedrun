@@ -1,6 +1,7 @@
 ﻿#include "MyPG.h"
 #include "Common/Font.h"
 #include "Title/Task_Title.h"
+#include "Debug/Profiling/Profiler.h"
 
 namespace MyPG
 {
@@ -105,6 +106,8 @@ namespace MyPG
 		srand((unsigned)time(0));
 		Font::Init();
 		Title::Object::SP ft = Title::Object::Create(true);
+
+		DEBUG_START_PROFILING();
 
 		//------------------------------------------------------------------------------------
 		//レイヤー毎の描画のON/OFF
