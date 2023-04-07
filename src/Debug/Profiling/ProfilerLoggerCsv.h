@@ -2,6 +2,7 @@
 
 #include "ProfilerLogger.h"
 #include <fstream>
+#include <iomanip>
 
 namespace Debug::Profiler
 {
@@ -26,9 +27,10 @@ namespace Debug::Profiler
 		{
 			std::ofstream fs;
 			fs.open(filePath, std::ios_base::app);
-			fs	<< avg << ','
-				<< max << ','
-				<< min << '\n';
+			fs << std::fixed << std::setprecision(2);
+			fs << avg << ','
+			   << max << ','
+			   << min << '\n';
 		}
 	};
 }

@@ -17,7 +17,7 @@ namespace Debug::Profiler
 	public:
 		virtual ~ProfilerSection();
 
-		virtual void Update() = 0;
+		virtual void Update(bool isLastSample) = 0;
 
 		std::string GetName() const { return name; }
 
@@ -25,7 +25,7 @@ namespace Debug::Profiler
 		virtual void ResetCaches();
 		const std::vector<float>& GetCaches() const { return caches; }
 		float GetLastCache() const;
-		virtual float GetCacheAvg() const;
+		float GetCacheAvg() const;
 		float GetCacheMax() const;
 		float GetCacheMin() const;
 	};

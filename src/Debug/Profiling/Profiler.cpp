@@ -6,6 +6,8 @@
 
 #include "ProfilerSection.h"
 #include "ProfilerSectionFps.h"
+#include "ProfilerSectionMemory.h"
+#include "ProfilerSectionCpu.h"
 
 #include "ProfilerLogger.h"
 #include "ProfilerLoggerConsole.h"
@@ -13,11 +15,18 @@
 
 namespace Debug::Profiler
 {
+	namespace
+	{
+		const unsigned int sampleSize = 60;
+	}
+
 	Object::Object() : 
 		ObjectBase<Object>(TaskConstant::TaskGroupName_Debug, TaskConstant::TaskName_Profiler)
 	{
 		sections.push_back(std::make_unique<ProfilerSectionFps>());
-
+		sections.push_back(std::make_unique<ProfilerSectionMemory>());
+		sections.push_back(std::make_unique<ProfilerSectionCpu>());
+		
 		logger = std::make_unique<ProfilerLoggerConsole>();
 		//logger = std::make_unique<ProfilerLoggerCsv>();
 
@@ -31,12 +40,18 @@ namespace Debug::Profiler
 
 	void Object::UpDate()
 	{
-		for (auto& section : sections) {
-			section->Update();
-		}
+		bool isLastSample = false;
 
 		++currentSampleSize;
-		if (currentSampleSize >= logger->GetSampleSize()) {
+		if (currentSampleSize >= sampleSize) {
+			isLastSample = true;
+		}
+
+		for (auto& section : sections) {
+			section->Update(isLastSample);
+		}
+
+		if (isLastSample) {
 			currentSampleSize = 0;
 
 			logger->Log(sections);

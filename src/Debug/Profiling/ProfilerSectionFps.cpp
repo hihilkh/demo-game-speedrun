@@ -12,7 +12,7 @@ namespace Debug::Profiler
 	{
 	}
 
-	void ProfilerSectionFps::Update()
+	void ProfilerSectionFps::Update(bool isLastSample)
 	{
 		auto now = std::chrono::high_resolution_clock::now();
 		auto microsecond = std::chrono::duration_cast<std::chrono::microseconds>(now - lastFrameTime);
@@ -21,9 +21,8 @@ namespace Debug::Profiler
 			microsecondInt = 1;
 		}
 
-		// 整数を戻る
-		long long fps = 1000000 / microsecondInt;
-		AddCache(static_cast<float>(fps));
+		float fps = 1000000.0f / microsecondInt;
+		AddCache(fps);
 
 		lastFrameTime = std::chrono::high_resolution_clock::now();
 	}
@@ -34,11 +33,5 @@ namespace Debug::Profiler
 
 		// ログでかかった時間を除く
 		lastFrameTime = std::chrono::high_resolution_clock::now();
-	}
-
-	float ProfilerSectionFps::GetCacheAvg() const
-	{
-		// 整数を戻る
-		return floor(ProfilerSection::GetCacheAvg());
 	}
 }

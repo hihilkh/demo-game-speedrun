@@ -9,7 +9,6 @@ namespace Debug::Profiler
 	public:
 		~ProfilerLoggerConsole() = default;
 
-		unsigned int GetSampleSize() const override;
 		void Log(const std::vector<std::unique_ptr<ProfilerSection>>& sections) override;
 	};
 }

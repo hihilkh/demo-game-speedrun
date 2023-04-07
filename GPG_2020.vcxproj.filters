@@ -202,6 +202,12 @@
     <ClCompile Include="src\Debug\Measurement\ScopeTiming.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Debug\Profiling\ProfilerSectionMemory.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Debug\Profiling\ProfilerSectionCpu.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GameEngine_Ver3_83.h">
@@ -415,6 +421,12 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Debug\Measurement\ScopeTiming.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Debug\Profiling\ProfilerSectionMemory.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Debug\Profiling\ProfilerSectionCpu.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
