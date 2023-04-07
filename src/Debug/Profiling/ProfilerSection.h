@@ -23,8 +23,9 @@ namespace Debug::Profiler
 
 		void AddCache(float cache);
 		virtual void ResetCaches();
+		const std::vector<float>& GetCaches() const { return caches; }
 		float GetLastCache() const;
-		float GetCacheAvg() const;
+		virtual float GetCacheAvg() const;
 		float GetCacheMax() const;
 		float GetCacheMin() const;
 	};

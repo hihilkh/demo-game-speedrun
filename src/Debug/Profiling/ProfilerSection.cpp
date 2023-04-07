@@ -22,7 +22,7 @@ namespace Debug::Profiler
 		caches.clear();
 	}
 
-	float Debug::Profiler::ProfilerSection::GetLastCache() const
+	float ProfilerSection::GetLastCache() const
 	{
 		if (caches.empty()) {
 			return -1.0f;
@@ -31,7 +31,7 @@ namespace Debug::Profiler
 		return caches.back();
 	}
 
-	float Debug::Profiler::ProfilerSection::GetCacheAvg() const
+	float ProfilerSection::GetCacheAvg() const
 	{
 		if (caches.empty()) {
 			return -1.0f;
@@ -40,7 +40,7 @@ namespace Debug::Profiler
 		return std::reduce(caches.begin(), caches.end()) / caches.size();
 	}
 
-	float Debug::Profiler::ProfilerSection::GetCacheMax() const
+	float ProfilerSection::GetCacheMax() const
 	{
 		if (caches.empty()) {
 			return -1.0f;
@@ -49,7 +49,7 @@ namespace Debug::Profiler
 		return *std::max_element(caches.begin(), caches.end());
 	}
 
-	float Debug::Profiler::ProfilerSection::GetCacheMin() const
+	float ProfilerSection::GetCacheMin() const
 	{
 		if (caches.empty()) {
 			return -1.0f;

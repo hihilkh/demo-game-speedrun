@@ -13,25 +13,20 @@
 
 namespace Debug::Profiler
 {
-	namespace
-	{
-		const int targetSampleSize = 30;
-	}
-
 	Object::Object() : 
 		ObjectBase<Object>(TaskConstant::TaskGroupName_Debug, TaskConstant::TaskName_Profiler)
 	{
 		sections.push_back(std::make_unique<ProfilerSectionFps>());
 
-		//logger = std::make_unique<ProfilerLoggerConsole>();
-		logger = std::make_unique<ProfilerLoggerCsv>();
+		logger = std::make_unique<ProfilerLoggerConsole>();
+		//logger = std::make_unique<ProfilerLoggerCsv>();
 
-		logger->PreLog(sections);
+		logger->BeginLog(sections);
 	}
 
 	Object::~Object()
 	{
-		logger->PostLog(sections);
+		logger->EndLog(sections);
 	}
 
 	void Object::UpDate()
@@ -41,7 +36,7 @@ namespace Debug::Profiler
 		}
 
 		++currentSampleSize;
-		if (currentSampleSize >= targetSampleSize) {
+		if (currentSampleSize >= logger->GetSampleSize()) {
 			currentSampleSize = 0;
 
 			logger->Log(sections);

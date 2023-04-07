@@ -12,7 +12,7 @@ namespace Debug::Profiler
 		~ProfilerLoggerCsv() = default;
 
 	public:
-		void PreLog(const std::vector<std::unique_ptr<ProfilerSection>>& sections) override;
+		void BeginLog(const std::vector<std::unique_ptr<ProfilerSection>>& sections) override;
 		void Log(const std::vector<std::unique_ptr<ProfilerSection>>& sections) override;
 
 	private:

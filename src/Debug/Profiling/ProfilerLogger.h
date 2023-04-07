@@ -11,8 +11,10 @@ namespace Debug::Profiler
 	public:
 		virtual ~ProfilerLogger() = default;
 
-		virtual void PreLog(const std::vector<std::unique_ptr<ProfilerSection>>& sections) {}
+		virtual unsigned int GetSampleSize() const { return 30; }
+
+		virtual void BeginLog(const std::vector<std::unique_ptr<ProfilerSection>>& sections) {}
 		virtual void Log(const std::vector<std::unique_ptr<ProfilerSection>>& sections) = 0;
-		virtual void PostLog(const std::vector<std::unique_ptr<ProfilerSection>>& sections) {}
+		virtual void EndLog(const std::vector<std::unique_ptr<ProfilerSection>>& sections) {}
 	};
 }

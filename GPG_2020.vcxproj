@@ -176,6 +176,7 @@
     <ClCompile Include="src\Debug\Profiling\ProfilerLoggerCsv.cpp" />
     <ClCompile Include="src\Debug\Profiling\ProfilerSection.cpp" />
     <ClCompile Include="src\Debug\Profiling\ProfilerSectionFps.cpp" />
+    <ClCompile Include="src\Debug\Measurement\ScopeTiming.cpp" />
     <ClCompile Include="src\Game\GameEvent.cpp" />
     <ClCompile Include="src\Game\GameStatus.cpp" />
     <ClCompile Include="src\Chara\Player\PlayerActionBase.cpp" />
@@ -239,6 +240,7 @@
     <ClInclude Include="src\Debug\Profiling\ProfilerLoggerCsv.h" />
     <ClInclude Include="src\Debug\Profiling\ProfilerSection.h" />
     <ClInclude Include="src\Debug\Profiling\ProfilerSectionFps.h" />
+    <ClInclude Include="src\Debug\Measurement\ScopeTiming.h" />
     <ClInclude Include="src\Game\GameEvent.h" />
     <ClInclude Include="src\Game\GameStatus.h" />
     <ClInclude Include="src\Chara\Player\PlayerActionBase.h" />

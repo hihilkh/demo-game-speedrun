@@ -13,6 +13,7 @@ namespace Debug::Profiler
 
 		void Update() override;
 		void ResetCaches() override;
+		float GetCacheAvg() const override;
 
 	private:
 		std::chrono::time_point<std::chrono::high_resolution_clock> lastFrameTime;

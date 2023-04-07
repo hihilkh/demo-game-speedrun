@@ -24,7 +24,7 @@ namespace Debug::Profiler
 		std::filesystem::create_directories(logFileFolderPath);
 	}
 
-	void ProfilerLoggerCsv::PreLog(const std::vector<std::unique_ptr<ProfilerSection>>& sections)
+	void ProfilerLoggerCsv::BeginLog(const std::vector<std::unique_ptr<ProfilerSection>>& sections)
 	{
 		// タイトル
 		for (auto& section : sections) {
