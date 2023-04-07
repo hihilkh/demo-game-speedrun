@@ -22,7 +22,7 @@ namespace Debug::Measurement
 }
 
 // 備考：変数名が指定されたので、スコープによって一つの DEBUG_MEASURE_SCOPE_TIME() をしか呼び出さない
-#define DEBUG_MEASURE_SCOPE_TIME(title) Debug::Measurement::ScopeTiming scopeTiming = Debug::Measurement::ScopeTiming(title)
+#define DEBUG_MEASURE_SCOPE_TIME(title) Debug::Measurement::ScopeTiming scopeTiming(title)
 
 #else
 
