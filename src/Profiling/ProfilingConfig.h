@@ -12,7 +12,7 @@ namespace Profiling
 	inline const bool enableSectionCpu		= true;
 
 	// Loggers
-	inline const bool enableLoggerConsole	= true;
+	inline const bool enableLoggerConsole	= false;
 	inline const bool enableLoggerCsv		= false;
 
 	// その他

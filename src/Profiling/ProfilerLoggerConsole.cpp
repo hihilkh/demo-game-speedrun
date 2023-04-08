@@ -7,11 +7,11 @@ namespace Profiling
 	void ProfilerLoggerConsole::Log(const std::vector<std::unique_ptr<ProfilerSection>>& sections)
 	{
 		for (auto& section : sections) {
-			Print(section->GetName() << " : " 
-				<< std::fixed << std::setprecision(2)
-				<< "Avg : " << section->GetCacheAvg() << " , "
-				<< "Max : " << section->GetCacheMax() << " , "
-				<< "Min : " << section->GetCacheMin());
+			PrintSameLine(
+				section->GetName() << " : " << 
+				std::fixed << std::setprecision(2) << section->GetCacheAvg() << " ; ");
 		}
+
+		PrintSameLine("\n");
 	}
 }

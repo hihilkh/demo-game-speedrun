@@ -17,20 +17,9 @@ namespace Profiling
 		void Log(const std::vector<std::unique_ptr<ProfilerSection>>& sections) override;
 
 	private:
-		std::string startTimeStr;
+		std::string subFolder;
 
 	private:
-		std::string GetLogFilePath(const ProfilerSection& section) const;
-
-		template<typename T>
-		void LogToFile(const std::string& filePath, const T& avg, const T& max, const T& min) const
-		{
-			std::ofstream fs;
-			fs.open(filePath, std::ios_base::app);
-			fs << std::fixed << std::setprecision(2);
-			fs << avg << ','
-			   << max << ','
-			   << min << '\n';
-		}
+		std::ofstream OpenLogFile() const;
 	};
 }

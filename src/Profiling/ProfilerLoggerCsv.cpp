@@ -6,9 +6,10 @@ namespace Profiling
 {
 	namespace
 	{
-		const std::string logFileFolderPath = "./profiling/";
-		const char* logFileTimeFormat = "_%Y%m%d_%H%M%S";
-		const std::string logFileExtension = ".csv";
+		const std::string rootFolder = "./profiling/";
+		const char* subFolderFormat = "%Y%m%d_%H%M%S/";
+		const std::string fileName = "Result";
+		const std::string fileExtension = ".csv";
 	}
 
 	ProfilerLoggerCsv::ProfilerLoggerCsv()
@@ -17,33 +18,40 @@ namespace Profiling
 		std::time_t t = std::time(nullptr);
 		std::tm* tm = std::localtime(&t);
 		std::ostringstream oss;
-		oss << std::put_time(tm, logFileTimeFormat);
-		startTimeStr = oss.str();
+		oss << std::put_time(tm, subFolderFormat);
+		subFolder = oss.str();
 
 		// フォルダを確保
-		std::filesystem::create_directories(logFileFolderPath);
+		std::filesystem::create_directories(rootFolder);
+		std::filesystem::create_directories(rootFolder + subFolder);
 	}
 
 	void ProfilerLoggerCsv::BeginLog(const std::vector<std::unique_ptr<ProfilerSection>>& sections)
 	{
 		// タイトル
+		std::ofstream fs = OpenLogFile();
+
 		for (auto& section : sections) {
-			LogToFile(GetLogFilePath(*section), "Avg", "Max", "Min");
+			fs << section->GetName() << ',';
 		}
+		fs << '\n';
 	}
 
 	void ProfilerLoggerCsv::Log(const std::vector<std::unique_ptr<ProfilerSection>>& sections)
 	{
+		std::ofstream fs = OpenLogFile();
+
+		fs << std::fixed << std::setprecision(2);
+
 		for (auto& section : sections) {
-			LogToFile(GetLogFilePath(*section),
-				section->GetCacheAvg() , 
-				section->GetCacheMax(),
-				section->GetCacheMin());
+			fs << section->GetCacheAvg() << ',';
 		}
+		fs << '\n';
 	}
 
-	std::string ProfilerLoggerCsv::GetLogFilePath(const ProfilerSection& section) const
+	std::ofstream ProfilerLoggerCsv::OpenLogFile() const
 	{
-		return logFileFolderPath + section.GetName() + startTimeStr + logFileExtension;
+		std::string filePath = rootFolder + subFolder + fileName + fileExtension;
+		return std::ofstream(filePath, std::ios_base::app);
 	}
 }

@@ -3,7 +3,7 @@
 namespace Profiling
 {
 	ProfilerSectionCpu::ProfilerSectionCpu() :
-		ProfilerSection("cpu_percent"),
+		ProfilerSection("CPU (%)"),
         currentProcess(GetCurrentProcess())
 	{
         SYSTEM_INFO sysInfo;

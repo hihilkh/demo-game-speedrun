@@ -7,7 +7,7 @@
 namespace Profiling
 {
 	ProfilerSectionMemory::ProfilerSectionMemory() :
-		ProfilerSection("virtual_memory_mb"),
+		ProfilerSection("Virtual Memory (mb)"),
 		currentProcess(GetCurrentProcess())
 	{
 	}

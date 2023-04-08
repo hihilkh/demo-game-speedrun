@@ -13,23 +13,23 @@ namespace Log {
 
 #ifdef _DEBUG
 
-	#define Print(message)\
-	{\
+	#define PrintSameLine(message)\
 		std::stringstream ss;\
-		ss << message << "\n";\
-		OutputDebugString(ss.str().c_str());\
-	}
+		ss << message;\
+		OutputDebugString(ss.str().c_str())
 
-	#define PrintWarning(message)\
-	{\
-		std::stringstream ss;\
-		ss << "!! : " << message << "\n";\
-		OutputDebugString(ss.str().c_str());\
-	}
+	#define Print(message)\
+		PrintSameLine(message);\
+		OutputDebugString("\n")
+
+	#define PrintWarningSameLine(message)	PrintSameLine("!! : " << message)
+	#define PrintWarning(message)			Print("!! : " << message)
 
 #else
 
+	#define PrintSameLine(message)
 	#define Print(message)
+	#define PrintWarningSameLine(message)
 	#define PrintWarning(message)
 
 #endif // _DEBUG
