@@ -2,7 +2,7 @@
 
 #include "ProfilerLogger.h"
 
-namespace Debug::Profiler
+namespace Profiling
 {
 	class ProfilerLoggerConsole : public ProfilerLogger
 	{

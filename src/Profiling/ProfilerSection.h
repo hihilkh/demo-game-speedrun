@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-namespace Debug::Profiler
+namespace Profiling
 {
 	class ProfilerSection
 	{

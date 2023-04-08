@@ -4,7 +4,7 @@
 #include <fstream>
 #include <iomanip>
 
-namespace Debug::Profiler
+namespace Profiling
 {
 	class ProfilerLoggerCsv : public ProfilerLogger
 	{

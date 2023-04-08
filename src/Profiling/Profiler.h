@@ -1,12 +1,12 @@
 ﻿#pragma once
 
-#include "Debug/DebugConfig.h"
+#include "ProfilingConfig.h"
 
-#if DEBUG_IS_ENABLED(DEBUG_PROFILER)
+#if PROFILER_ENABLED
 
 #include "Task/ObjectBase.tpp"
 
-namespace Debug::Profiler
+namespace Profiling
 {
 	class Object : public ObjectBase<Object>
 	{
@@ -23,13 +23,17 @@ namespace Debug::Profiler
 
 	private:
 		std::vector<std::unique_ptr<class ProfilerSection>> sections;
-		std::unique_ptr<class ProfilerLogger> logger;
+		std::vector<std::unique_ptr<class ProfilerLogger>> loggers;
 
 		unsigned int currentSampleSize;
+
+	private:
+		void InitSections();
+		void InitLoggers();
 	};
 }
 
-#define DEBUG_START_PROFILING() Debug::Profiler::Object::Create(true)
+#define DEBUG_START_PROFILING() Profiling::Object::Create(true)
 
 #else
 

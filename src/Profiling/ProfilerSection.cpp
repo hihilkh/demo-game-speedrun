@@ -2,7 +2,7 @@
 #include <numeric>
 #include <algorithm>
 
-namespace Debug::Profiler
+namespace Profiling
 {
 	ProfilerSection::ProfilerSection(const std::string& name) : name(name)
 	{
@@ -17,7 +17,7 @@ namespace Debug::Profiler
 		caches.push_back(cache);
 	}
 
-	void Debug::Profiler::ProfilerSection::ResetCaches()
+	void ProfilerSection::ResetCaches()
 	{
 		caches.clear();
 	}

@@ -2,7 +2,7 @@
 #include "Utils/Log.h"
 #include <iomanip>
 
-namespace Debug::Profiler
+namespace Profiling
 {
 	void ProfilerLoggerConsole::Log(const std::vector<std::unique_ptr<ProfilerSection>>& sections)
 	{

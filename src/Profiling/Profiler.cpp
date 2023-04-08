@@ -1,6 +1,6 @@
 ﻿#include "Profiler.h"
 
-#if DEBUG_IS_ENABLED(DEBUG_PROFILER)
+#if PROFILER_ENABLED
 
 #include "Task/TaskConstant.h"
 
@@ -13,29 +13,24 @@
 #include "ProfilerLoggerConsole.h"
 #include "ProfilerLoggerCsv.h"
 
-namespace Debug::Profiler
+namespace Profiling
 {
-	namespace
-	{
-		const unsigned int sampleSize = 60;
-	}
-
 	Object::Object() : 
 		ObjectBase<Object>(TaskConstant::TaskGroupName_Debug, TaskConstant::TaskName_Profiler)
 	{
-		sections.push_back(std::make_unique<ProfilerSectionFps>());
-		sections.push_back(std::make_unique<ProfilerSectionMemory>());
-		sections.push_back(std::make_unique<ProfilerSectionCpu>());
-		
-		logger = std::make_unique<ProfilerLoggerConsole>();
-		//logger = std::make_unique<ProfilerLoggerCsv>();
+		InitSections();
+		InitLoggers();
 
-		logger->BeginLog(sections);
+		for (auto& logger : loggers) {
+			logger->BeginLog(sections);
+		}
 	}
 
 	Object::~Object()
 	{
-		logger->EndLog(sections);
+		for (auto& logger : loggers) {
+			logger->EndLog(sections);
+		}
 	}
 
 	void Object::UpDate()
@@ -54,7 +49,10 @@ namespace Debug::Profiler
 		if (isLastSample) {
 			currentSampleSize = 0;
 
-			logger->Log(sections);
+			for (auto& logger : loggers) {
+				logger->Log(sections);
+			}
+
 			for (auto& section : sections) {
 				section->ResetCaches();
 			}
@@ -63,6 +61,21 @@ namespace Debug::Profiler
 
 	void Object::Render2D_AF()
 	{
+	}
+
+	void Object::InitSections()
+	{
+		sections.clear();
+		
+		if (enableSectionFps)		{ sections.push_back(std::make_unique<ProfilerSectionFps>()); }
+		if (enableSectionMemory)	{ sections.push_back(std::make_unique<ProfilerSectionMemory>()); }
+		if (enableSectionCpu)		{ sections.push_back(std::make_unique<ProfilerSectionCpu>()); }
+	}
+
+	void Object::InitLoggers()
+	{
+		if (enableLoggerConsole)	{ loggers.push_back(std::make_unique<ProfilerLoggerConsole>()); }
+		if (enableLoggerCsv)		{ loggers.push_back(std::make_unique<ProfilerLoggerCsv>()); }
 	}
 }
 

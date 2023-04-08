@@ -2,7 +2,7 @@
 #include <filesystem>
 #include <time.h>
 
-namespace Debug::Profiler
+namespace Profiling
 {
 	namespace
 	{

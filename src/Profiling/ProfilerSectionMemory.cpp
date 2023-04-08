@@ -4,7 +4,7 @@
 #include <psapi.h>
 #include "Utils/Log.h"
 
-namespace Debug::Profiler
+namespace Profiling
 {
 	ProfilerSectionMemory::ProfilerSectionMemory() :
 		ProfilerSection("virtual_memory_mb"),

@@ -1,6 +1,6 @@
 ﻿#include "ProfilerSectionCpu.h"
 
-namespace Debug::Profiler
+namespace Profiling
 {
 	ProfilerSectionCpu::ProfilerSectionCpu() :
 		ProfilerSection("cpu_percent"),

@@ -4,7 +4,7 @@
 #include <memory>
 #include "ProfilerSection.h"
 
-namespace Debug::Profiler
+namespace Profiling
 {
 	class ProfilerLogger
 	{

@@ -1,7 +1,7 @@
 ﻿#include "MyPG.h"
 #include "Common/Font.h"
 #include "Title/Task_Title.h"
-#include "Debug/Profiling/Profiler.h"
+#include "Profiling/Profiler.h"
 
 namespace MyPG
 {

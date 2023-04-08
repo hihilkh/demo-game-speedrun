@@ -1,6 +1,6 @@
 ﻿#include "ProfilerSectionFps.h"
 
-namespace Debug::Profiler
+namespace Profiling
 {
 	ProfilerSectionFps::ProfilerSectionFps() :
 		ProfilerSection("fps"),

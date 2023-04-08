@@ -3,7 +3,7 @@
 #include "ProfilerSection.h"
 #include <chrono>
 
-namespace Debug::Profiler
+namespace Profiling
 {
 	class ProfilerSectionFps : public ProfilerSection
 	{
