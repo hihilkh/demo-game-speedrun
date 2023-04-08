@@ -13,10 +13,11 @@ namespace Log {
 
 #ifdef _DEBUG
 
-	#define PrintSameLine(message)\
+	#define PrintSameLine(message) {\
 		std::stringstream ss;\
 		ss << message;\
-		OutputDebugString(ss.str().c_str())
+		OutputDebugString(ss.str().c_str());\
+	}
 
 	#define Print(message)\
 		PrintSameLine(message);\
