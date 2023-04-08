@@ -15,11 +15,12 @@ namespace Profiling
 	public:
 		void BeginLog(const std::vector<std::unique_ptr<ProfilerSection>>& sections) override;
 		void Log(const std::vector<std::unique_ptr<ProfilerSection>>& sections) override;
+		void InsertMessage(const std::string& message) override;
 
 	private:
-		std::string subFolder;
+		std::string filePath;
 
 	private:
-		std::ofstream OpenLogFile() const;
+		std::string GetCurrentTimeStr() const;
 	};
 }

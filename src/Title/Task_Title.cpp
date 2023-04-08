@@ -7,6 +7,8 @@
 #include "Common/Font.h"
 #include "SceneTransition/Task_SceneTransition.h"
 
+#include "Profiling/Profiler.h"
+
 namespace Title
 {
 #pragma region Resource
@@ -47,6 +49,7 @@ namespace Title
 		if (!ge->QuitFlag() && this->nextTaskCreate) {
 			//★引き継ぎタスクの生成
 			Game::Object::Create(true);
+			DEBUG_PROFILING_SET_SCENE("Game");
 		}
 	}
 	//-------------------------------------------------------------------

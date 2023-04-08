@@ -30,13 +30,23 @@ namespace Profiling
 	private:
 		void InitSections();
 		void InitLoggers();
+
+	public:
+		void InsertMessage(const string& message) const;
 	};
 }
 
 #define DEBUG_START_PROFILING() Profiling::Object::Create(true)
 
+// TODO : 一時的なこーどだけです。これの代わりに、シーンの遷移イベントでトリガーする
+#define DEBUG_PROFILING_SET_SCENE(sceneName) {\
+	Profiling::Object::SP profiler = ge->GetTask<Profiling::Object>("デバッグ", "プロファイラ");\
+	profiler->InsertMessage("Move to scene : "s + sceneName);\
+}
+
 #else
 
 #define DEBUG_START_PROFILING()
+#define DEBUG_PROFILING_SET_SCENE(sceneName)
 
 #endif

@@ -108,6 +108,7 @@ namespace MyPG
 		Title::Object::SP ft = Title::Object::Create(true);
 
 		DEBUG_START_PROFILING();
+		DEBUG_PROFILING_SET_SCENE("Title");
 
 		//------------------------------------------------------------------------------------
 		//レイヤー毎の描画のON/OFF

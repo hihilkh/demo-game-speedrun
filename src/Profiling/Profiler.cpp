@@ -15,8 +15,9 @@
 
 namespace Profiling
 {
-	Object::Object() : 
-		ObjectBase<Object>(TaskConstant::TaskGroupName_Debug, TaskConstant::TaskName_Profiler)
+	Object::Object() :
+		ObjectBase<Object>(TaskConstant::TaskGroupName_Debug, TaskConstant::TaskName_Profiler, true),
+		currentSampleSize(0)
 	{
 		InitSections();
 		InitLoggers();
@@ -76,6 +77,13 @@ namespace Profiling
 	{
 		if (enableLoggerConsole)	{ loggers.push_back(std::make_unique<ProfilerLoggerConsole>()); }
 		if (enableLoggerCsv)		{ loggers.push_back(std::make_unique<ProfilerLoggerCsv>()); }
+	}
+
+	void Object::InsertMessage(const string& message) const
+	{
+		for (auto& logger : loggers) {
+			logger->InsertMessage(message);
+		}
 	}
 }
 

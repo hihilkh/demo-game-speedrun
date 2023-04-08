@@ -7,51 +7,63 @@ namespace Profiling
 	namespace
 	{
 		const std::string rootFolder = "./profiling/";
-		const char* subFolderFormat = "%Y%m%d_%H%M%S/";
-		const std::string fileName = "Result";
-		const std::string fileExtension = ".csv";
+		const char* timeStrFormat = "%Y%m%d_%H%M%S";
+#if _DEBUG
+		const std::string subFolderSuffix = "_Debug/";
+#else
+		const std::string subFolderSuffix = "_Release/";
+#endif
+		const std::string fileName = "Statistic.csv";
+		const char separator = ',';
 	}
 
 	ProfilerLoggerCsv::ProfilerLoggerCsv()
 	{
-		// 現時点を取る
-		std::time_t t = std::time(nullptr);
-		std::tm* tm = std::localtime(&t);
-		std::ostringstream oss;
-		oss << std::put_time(tm, subFolderFormat);
-		subFolder = oss.str();
+		std::string subFolder = GetCurrentTimeStr() + subFolderSuffix;
 
 		// フォルダを確保
 		std::filesystem::create_directories(rootFolder);
 		std::filesystem::create_directories(rootFolder + subFolder);
+
+		filePath = rootFolder + subFolder + fileName;
 	}
 
 	void ProfilerLoggerCsv::BeginLog(const std::vector<std::unique_ptr<ProfilerSection>>& sections)
 	{
 		// タイトル
-		std::ofstream fs = OpenLogFile();
+		std::ofstream fs(filePath, std::ios_base::app);
 
 		for (auto& section : sections) {
-			fs << section->GetName() << ',';
+			fs << section->GetName() << separator;
 		}
 		fs << '\n';
 	}
 
 	void ProfilerLoggerCsv::Log(const std::vector<std::unique_ptr<ProfilerSection>>& sections)
 	{
-		std::ofstream fs = OpenLogFile();
+		std::ofstream fs(filePath, std::ios_base::app);
 
 		fs << std::fixed << std::setprecision(2);
 
 		for (auto& section : sections) {
-			fs << section->GetCacheAvg() << ',';
+			fs << section->GetCacheAvg() << separator;
 		}
 		fs << '\n';
 	}
 
-	std::ofstream ProfilerLoggerCsv::OpenLogFile() const
+	void ProfilerLoggerCsv::InsertMessage(const std::string& message)
 	{
-		std::string filePath = rootFolder + subFolder + fileName + fileExtension;
-		return std::ofstream(filePath, std::ios_base::app);
+		std::fstream fs(filePath);
+		fs.seekp(-2, std::ios_base::end);	// 最後の行のseparatorの後へ移動する
+		fs << message << separator << '\n';
+	}
+
+	std::string ProfilerLoggerCsv::GetCurrentTimeStr() const
+	{
+		std::time_t t = std::time(nullptr);
+		std::tm* tm = std::localtime(&t);
+		std::ostringstream oss;
+		oss << std::put_time(tm, timeStrFormat);
+		return oss.str();
 	}
 }

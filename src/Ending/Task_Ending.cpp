@@ -10,6 +10,8 @@
 #include "Common/Font.h"
 #include "Game/GameStatus.h"
 
+#include "Profiling/Profiler.h"
+
 namespace Ending
 {
 #pragma region Resource
@@ -48,8 +50,14 @@ namespace Ending
 		if (!ge->QuitFlag() && this->nextTaskCreate) {
 			//★引き継ぎタスクの生成
 			switch (selectingMenu) {
-				case Menu::Retry:	Game::Object::Create(true);	break;
-				case Menu::BackToMainMenu:	Title::Object::Create(true);	break;
+				case Menu::Retry:
+					Game::Object::Create(true);
+					DEBUG_PROFILING_SET_SCENE("Game");
+					break;
+				case Menu::BackToMainMenu:
+					Title::Object::Create(true);
+					DEBUG_PROFILING_SET_SCENE("Title");
+					break;
 			}
 		}
 	}

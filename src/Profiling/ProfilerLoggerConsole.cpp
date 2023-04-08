@@ -4,8 +4,14 @@
 
 namespace Profiling
 {
+	namespace
+	{
+		const std::string logPrefix = "Profiler : ";
+	}
+
 	void ProfilerLoggerConsole::Log(const std::vector<std::unique_ptr<ProfilerSection>>& sections)
 	{
+		PrintSameLine(logPrefix);
 		for (auto& section : sections) {
 			PrintSameLine(
 				section->GetName() << " : " << 
@@ -13,5 +19,10 @@ namespace Profiling
 		}
 
 		PrintSameLine("\n");
+	}
+
+	void ProfilerLoggerConsole::InsertMessage(const std::string& message)
+	{
+		Print(logPrefix << message);
 	}
 }

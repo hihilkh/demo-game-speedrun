@@ -54,7 +54,7 @@ namespace Profiling
 
         ULONGLONG deltaSystemTime = newSystemTimeQuad - systemTimeQuad;
         if (deltaSystemTime == 0) {
-            return -1.0f;
+            return 0.0f;
         }
 
         ULONGLONG deltaProcessTime = 
