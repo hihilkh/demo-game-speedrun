@@ -1,19 +1,19 @@
 ﻿#pragma once
 
-#define PROFILER_ENABLED			1
+#define PROFILER_ENABLED			0
 
 #if PROFILER_ENABLED
 
 namespace Profiling
 {
 	// Sections
-	inline const bool enableSectionFps		= true;
-	inline const bool enableSectionMemory	= true;
-	inline const bool enableSectionCpu		= true;
+	inline const bool isEnableSectionFps		= true;
+	inline const bool isEnableSectionMemory		= true;
+	inline const bool isEnableSectionCpu		= true;
 
 	// Loggers
-	inline const bool enableLoggerConsole	= false;
-	inline const bool enableLoggerCsv		= false;
+	inline const bool isEnableLoggerConsole		= true;
+	inline const bool isEnableLoggerCsv			= false;
 
 	// その他
 	inline const unsigned int sampleSize = 60;

@@ -68,15 +68,15 @@ namespace Profiling
 	{
 		sections.clear();
 		
-		if (enableSectionFps)		{ sections.push_back(std::make_unique<ProfilerSectionFps>()); }
-		if (enableSectionMemory)	{ sections.push_back(std::make_unique<ProfilerSectionMemory>()); }
-		if (enableSectionCpu)		{ sections.push_back(std::make_unique<ProfilerSectionCpu>()); }
+		if (isEnableSectionFps)		{ sections.push_back(std::make_unique<ProfilerSectionFps>()); }
+		if (isEnableSectionMemory)	{ sections.push_back(std::make_unique<ProfilerSectionMemory>()); }
+		if (isEnableSectionCpu)		{ sections.push_back(std::make_unique<ProfilerSectionCpu>()); }
 	}
 
 	void Object::InitLoggers()
 	{
-		if (enableLoggerConsole)	{ loggers.push_back(std::make_unique<ProfilerLoggerConsole>()); }
-		if (enableLoggerCsv)		{ loggers.push_back(std::make_unique<ProfilerLoggerCsv>()); }
+		if (isEnableLoggerConsole)	{ loggers.push_back(std::make_unique<ProfilerLoggerConsole>()); }
+		if (isEnableLoggerCsv)		{ loggers.push_back(std::make_unique<ProfilerLoggerCsv>()); }
 	}
 
 	void Object::InsertMessage(const string& message) const
