@@ -1,13 +1,13 @@
-#include "DG2014_Ver3_6.h"
+ï»¿#include "DG2014_Ver3_6.h"
 //#include "atlstr.h"
 
 
-//„¬„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„­
-//„«‰æ‘œ§ŒäŒn‹@”\ŒQ																		@„«
-//„¯„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„ª„®
+//â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”“
+//â”ƒç”»åƒåˆ¶å¾¡ç³»æ©Ÿèƒ½ç¾¤																		ã€€â”ƒ
+//â”—â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”›
 namespace DG
 {
-	DGObject::WP DGObject::winst;	//	‚P‚Â‚µ‚©‘¶İ‚Å‚«‚È‚¢ƒCƒ“ƒXƒ^ƒ“ƒX
+	DGObject::WP DGObject::winst;	//	ï¼‘ã¤ã—ã‹å­˜åœ¨ã§ããªã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
 
 	//------------------------------------------------------------
 	DGObject::DGObject( )
@@ -35,9 +35,9 @@ namespace DG
 		ML::SafeRelease(&this->d3dDevice);
 	}
 	//------------------------------------------------------------
-	ID3D10Device&				DGObject::Device( ){			return  *this->d3dDevice;		}	//	ƒfƒoƒCƒXƒIƒuƒWƒFƒNƒg
-	IDXGISwapChain&				DGObject::SChain( ){		return  *this->swapChain;		}	//ƒXƒƒbƒvƒ`ƒFƒCƒ“
-	ID3D10RenderTargetView&		DGObject::RTView( ){		return  *this->renderTargetView;	}	//ƒŒƒ“ƒ_[ƒ^[ƒQƒbƒgƒrƒ…[
+	ID3D10Device&				DGObject::Device( ){			return  *this->d3dDevice;		}	//	ãƒ‡ãƒã‚¤ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	IDXGISwapChain&				DGObject::SChain( ){		return  *this->swapChain;		}	//ã‚¹ãƒ¯ãƒƒãƒ—ãƒã‚§ã‚¤ãƒ³
+	ID3D10RenderTargetView&		DGObject::RTView( ){		return  *this->renderTargetView;	}	//ãƒ¬ãƒ³ãƒ€ãƒ¼ã‚¿ãƒ¼ã‚²ãƒƒãƒˆãƒ“ãƒ¥ãƒ¼
 	ID3D10EffectTechnique&		DGObject::ETechnique( ){	return  *this->effectTechnique;	}	
 	ID3D10Effect&				DGObject::Effect( ){		return  *this->effect;			}	
 
@@ -54,15 +54,15 @@ namespace DG
 		screenWidth  =  w_;
 		screenHeight  =  h_;
 
-		// ƒfƒoƒCƒX‚ÆƒXƒƒbƒvƒ`ƒF[ƒ“‚Ìì¬
+		// ãƒ‡ãƒã‚¤ã‚¹ã¨ã‚¹ãƒ¯ãƒƒãƒ—ãƒã‚§ãƒ¼ãƒ³ã®ä½œæˆ
 		DXGI_SWAP_CHAIN_DESC  sd;
 		ZeroMemory( &sd, sizeof(sd) );
 		sd.BufferCount = 1;
 		sd.BufferDesc.Width = screenWidth;
 		sd.BufferDesc.Height = screenHeight;
 		sd.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
-		sd.BufferDesc.RefreshRate.Numerator	  = 60;		//ƒŠƒtƒŒƒbƒVƒ…ƒŒ[ƒgi•ª•êj
-		sd.BufferDesc.RefreshRate.Denominator = 1;		//ƒŠƒtƒŒƒbƒVƒ…ƒŒ[ƒgi•ªqj
+		sd.BufferDesc.RefreshRate.Numerator	  = 60;		//ãƒªãƒ•ãƒ¬ãƒƒã‚·ãƒ¥ãƒ¬ãƒ¼ãƒˆï¼ˆåˆ†æ¯ï¼‰
+		sd.BufferDesc.RefreshRate.Denominator = 1;		//ãƒªãƒ•ãƒ¬ãƒƒã‚·ãƒ¥ãƒ¬ãƒ¼ãƒˆï¼ˆåˆ†å­ï¼‰
 		sd.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
 		sd.BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;
 		sd.BufferDesc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED;
@@ -73,7 +73,7 @@ namespace DG
 
 
 		HRESULT hr = D3D10CreateDeviceAndSwapChain(
-				NULL,	//ƒrƒfƒIƒJ[ƒh‘I‘ğ‚µ‚È‚¢
+				NULL,	//ãƒ“ãƒ‡ã‚ªã‚«ãƒ¼ãƒ‰é¸æŠã—ãªã„
 				D3D10_DRIVER_TYPE_HARDWARE,	//
 				NULL,
 				0,
@@ -83,20 +83,20 @@ namespace DG
 				&this->d3dDevice);
 		if(FAILED(hr)){ return false;}
 
-		//ƒoƒbƒNƒoƒbƒtƒ@‚ğƒŒƒ“ƒ_ƒŠƒ“ƒOƒ^[ƒQƒbƒg‚Æ‚·‚é‚½‚ß‚Ìˆ—
+		//ãƒãƒƒã‚¯ãƒãƒƒãƒ•ã‚¡ã‚’ãƒ¬ãƒ³ãƒ€ãƒªãƒ³ã‚°ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã¨ã™ã‚‹ãŸã‚ã®å‡¦ç†
 		ID3D10Texture2D* pBackBuffer;
 		hr = this->swapChain->GetBuffer(0,  __uuidof(ID3D10Texture2D),  (LPVOID*)&pBackBuffer);
 		if(FAILED(hr)){ return false;}
 
 		hr = this->d3dDevice->CreateRenderTargetView(
-				pBackBuffer,	//ƒrƒ…[‚ğ‰î‚µ‚ÄƒAƒNƒZƒX‚·‚éƒŠƒ\[ƒXiƒoƒbƒNƒoƒbƒtƒ@¨ƒeƒNƒXƒ`ƒƒj
-				NULL,			//ƒrƒ…[’è‹`
-				&this->renderTargetView);	//¶¬‚µ‚½ƒrƒ…[
-		ML::SafeRelease(&pBackBuffer);	//ƒoƒbƒNƒoƒbƒtƒ@‚Ö‚ÌƒAƒNƒZƒXŒ‚ğ‰ğœ
+				pBackBuffer,	//ãƒ“ãƒ¥ãƒ¼ã‚’ä»‹ã—ã¦ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãƒªã‚½ãƒ¼ã‚¹ï¼ˆãƒãƒƒã‚¯ãƒãƒƒãƒ•ã‚¡â†’ãƒ†ã‚¯ã‚¹ãƒãƒ£ï¼‰
+				NULL,			//ãƒ“ãƒ¥ãƒ¼å®šç¾©
+				&this->renderTargetView);	//ç”Ÿæˆã—ãŸãƒ“ãƒ¥ãƒ¼
+		ML::SafeRelease(&pBackBuffer);	//ãƒãƒƒã‚¯ãƒãƒƒãƒ•ã‚¡ã¸ã®ã‚¢ã‚¯ã‚»ã‚¹ä»¶ã‚’è§£é™¤
 		if(FAILED(hr)){ return false;}
 		this->d3dDevice->OMSetRenderTargets(1, &this->renderTargetView, NULL);
 
-		//[“xEƒXƒeƒ“ƒVƒ‹ƒeƒNƒXƒ`ƒƒ‚Ì¶¬
+		//æ·±åº¦ãƒ»ã‚¹ãƒ†ãƒ³ã‚·ãƒ«ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®ç”Ÿæˆ
 		D3D10_TEXTURE2D_DESC  depthD;
 		depthD.Width = screenWidth;		depthD.Height = screenHeight;
 		depthD.MipLevels = 1;	depthD.ArraySize = 1;
@@ -111,7 +111,7 @@ namespace DG
 		hr = this->d3dDevice->CreateTexture2D(&depthD, NULL, &this->depthBuffer);
 
 		if(FAILED(hr)){ return false;}
-		//[“xEƒXƒeƒ“ƒVƒ‹ƒrƒ…[‚Ì¶¬
+		//æ·±åº¦ãƒ»ã‚¹ãƒ†ãƒ³ã‚·ãƒ«ãƒ“ãƒ¥ãƒ¼ã®ç”Ÿæˆ
 		D3D10_DEPTH_STENCIL_VIEW_DESC  depthViewD;
 		depthViewD.Format = depthD.Format;
 		depthViewD.ViewDimension = D3D10_DSV_DIMENSION_TEXTURE2DMS;
@@ -122,17 +122,17 @@ namespace DG
 			&this->depthView);
 		if(FAILED(hr)){ return false;}
 
-		//ƒrƒ…[‚Ì“o˜^
+		//ãƒ“ãƒ¥ãƒ¼ã®ç™»éŒ²
 		this->d3dDevice->OMSetRenderTargets(1,  &this->renderTargetView,  this->depthView);
 
-		//ƒrƒ…[ƒ|[ƒgİ’è
+		//ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆè¨­å®š
 		D3D10_VIEWPORT	vp[1];
 		vp[0].TopLeftX = 0;	vp[0].TopLeftY = 0;
 		vp[0].Width = screenWidth;		vp[0].Height = screenHeight;
 		vp[0].MinDepth = 0.0f;	vp[0].MaxDepth = 1.0f;
 		this->d3dDevice->RSSetViewports(_countof(vp), vp);
 
-		//ƒGƒtƒFƒNƒg‚Ì¶¬
+		//ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã®ç”Ÿæˆ
 		ID3D10Blob*		blobErr    = NULL;
 		hr = D3DX10CreateEffectFromFile(
 				"data/shader/MyStdShader.fx", NULL, NULL, "fx_4_0", 
@@ -141,15 +141,15 @@ namespace DG
 		if(FAILED(hr)){
 			if(blobErr){
 				char*  err  =  (char*)(blobErr->GetBufferPointer( ));
-				MessageBox(NULL,  err,  "ƒVƒF[ƒ_ƒRƒ“ƒpƒCƒ‹ƒGƒ‰[", MB_OK);
+				MessageBox(NULL,  err,  "ã‚·ã‚§ãƒ¼ãƒ€ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã‚¨ãƒ©ãƒ¼", MB_OK);
 			}
 			return false;
 		}
-		//ƒeƒNƒjƒbƒN‚ğ“¾‚é
+		//ãƒ†ã‚¯ãƒ‹ãƒƒã‚¯ã‚’å¾—ã‚‹
 		this->effectTechnique = this->effect->GetTechniqueByName( "MyStdShaderTec" );
 
 
-		//ƒ‰ƒXƒ^ƒ‰ƒCƒYİ’è
+		//ãƒ©ã‚¹ã‚¿ãƒ©ã‚¤ã‚ºè¨­å®š
 		D3D10_RASTERIZER_DESC rdc;
 		ZeroMemory(&rdc,sizeof(rdc));
 		rdc.CullMode=D3D10_CULL_NONE;
@@ -160,7 +160,7 @@ namespace DG
 		this->d3dDevice->RSSetState(pIr);
 
 
-		//ƒXƒvƒ‰ƒCƒg¶¬
+		//ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆç”Ÿæˆ
 		hr =  D3DX10CreateSprite(this->d3dDevice, spriteBufferMax, &this->sprite);
 		if(FAILED(hr)){ return false;}
 
@@ -169,13 +169,13 @@ namespace DG
 
 
 	//------------------------------------------------------------
-	//	DGƒ‰ƒCƒuƒ‰ƒŠ‚ğ¶¬‚·‚é
+	//	DGãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ç”Ÿæˆã™ã‚‹
 	DGObject::SP DGObject::Create(
-							HWND        hw_,	//	ƒEƒBƒ“ƒhƒEƒnƒ“ƒhƒ‹
-							int         w_,		//	‰¡•
-							int         h_,		//	c•
-							DWORD       ms_,	//	ƒ}ƒ‹ƒ`ƒTƒ“ƒvƒ‹
-							bool        sm_,	//	ƒXƒNƒŠ[ƒ“ƒ‚[ƒh
+							HWND        hw_,	//	ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒãƒ³ãƒ‰ãƒ«
+							int         w_,		//	æ¨ªå¹…
+							int         h_,		//	ç¸¦å¹…
+							DWORD       ms_,	//	ãƒãƒ«ãƒã‚µãƒ³ãƒ—ãƒ«
+							bool        sm_,	//	ã‚¹ã‚¯ãƒªãƒ¼ãƒ³ãƒ¢ãƒ¼ãƒ‰
 							int         w2D_,
 							int         h2D_)
 	{
@@ -200,32 +200,32 @@ namespace DG
 		return 0;
 	}
 	//------------------------------------------------------------
-	//	‰æ–Ê•`‰æiŠJnj
+	//	ç”»é¢æç”»ï¼ˆé–‹å§‹ï¼‰
 	BOOL DGObject::Begin(const ML::Color&  c_)
 	{
-		//[“xƒoƒbƒtƒ@‚ğ—LŒø‰»
+		//æ·±åº¦ãƒãƒƒãƒ•ã‚¡ã‚’æœ‰åŠ¹åŒ–
 		this->d3dDevice->OMSetRenderTargets(1, &this->renderTargetView, this->depthView);
 		Device( ).ClearRenderTargetView(this->renderTargetView, c_.Ptr( ));
-	//	[“xƒoƒbƒtƒ@‚ÌƒNƒŠƒA
+	//	æ·±åº¦ãƒãƒƒãƒ•ã‚¡ã®ã‚¯ãƒªã‚¢
 		Device( ).ClearDepthStencilView(this->depthView, D3D10_CLEAR_DEPTH, 1.0f, 0);
 		return true;
 	}
 	//------------------------------------------------------------
-	//	3D•`‰æ‚Ì‹–‰Â‚ğ“¾‚é
+	//	3Dæç”»ã®è¨±å¯ã‚’å¾—ã‚‹
 	void DGObject::Begin3D( )
 	{
-		//[“xƒoƒbƒtƒ@‚ğ—LŒø‰»
+		//æ·±åº¦ãƒãƒƒãƒ•ã‚¡ã‚’æœ‰åŠ¹åŒ–
 		this->d3dDevice->OMSetRenderTargets(1, &this->renderTargetView, this->depthView);
 		this->effectState->RS_Def3D( );
 		this->effectState->DSS_Def3D( );
 	}
 	//------------------------------------------------------------
-	//	3D•`‰æ‚ğI—¹‚·‚é
+	//	3Dæç”»ã‚’çµ‚äº†ã™ã‚‹
 	void  DGObject::End3D( )
 	{
 	}
 	//------------------------------------------------------------
-	//	2D•`‰æ‚Ì‹–‰Â‚ğ“¾‚é
+	//	2Dæç”»ã®è¨±å¯ã‚’å¾—ã‚‹
 	void  DGObject::Begin2D( )
 	{
 		Font::dt = false;
@@ -233,7 +233,7 @@ namespace DG
 		this->effectState->DSS_Def2D( );
 		//spriteBuffer.clear( );
 		//spriteBuffer.reserve(spriteBufferMax);
-		//[“xƒoƒbƒtƒ@‚ğ–³Œø‰»
+		//æ·±åº¦ãƒãƒƒãƒ•ã‚¡ã‚’ç„¡åŠ¹åŒ–
 		this->d3dDevice->OMSetRenderTargets(1, &this->renderTargetView, NULL);
 //		this->sprite->Begin(D3DX10_SPRITE_SORT_DEPTH_BACK_TO_FRONT);
 //		this->sprite->Begin(D3DX10_SPRITE_SORT_DEPTH_FRONT_TO_BACK);
@@ -250,18 +250,18 @@ namespace DG
 		this->sprite->SetViewTransform(&v);
 	}
 	//------------------------------------------------------------
-	//	2D•`‰æ‚Ì‚ğI—¹‚·‚é
+	//	2Dæç”»ã®ã‚’çµ‚äº†ã™ã‚‹
 	void  DGObject::End2D( )
 	{
 		Flush2D( );
 		this->sprite->End( );
 	}
-	//	2D•`‰æA“o˜^Ï‚İ‚Ì‰æ‘œ‚ğ‘‚«‚Ş
+	//	2Dæç”»ã€ç™»éŒ²æ¸ˆã¿ã®ç”»åƒã‚’æ›¸ãè¾¼ã‚€
 	void DGObject::Flush2D( )
 	{
 		if(Image::dt == true){
 			Image::dt = false;
-			//ƒtƒHƒ“ƒg•`‰æƒ‚[ƒh‚Å‚ ‚Á‚½ê‡AƒXƒvƒ‰ƒCƒg•\¦ƒ‚[ƒh‚ÉÄİ’è
+			//ãƒ•ã‚©ãƒ³ãƒˆæç”»ãƒ¢ãƒ¼ãƒ‰ã§ã‚ã£ãŸå ´åˆã€ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆè¡¨ç¤ºãƒ¢ãƒ¼ãƒ‰ã«å†è¨­å®š
 			if( Font::dt == true){
 				Font::dt = false;
 				this->effectState->RS_Def2D( );
@@ -275,7 +275,7 @@ namespace DG
 				this->sprite->SetProjectionTransform(&p);
 				this->sprite->SetViewTransform(&v);
 			}
-			//Œ»İƒoƒbƒtƒ@‚É“o˜^‚³‚ê‚Ä‚¢‚éƒf[ƒ^‚ğ‘S‚Ä•`‰æ‚·‚é
+			//ç¾åœ¨ãƒãƒƒãƒ•ã‚¡ã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ãƒ‡ãƒ¼ã‚¿ã‚’å…¨ã¦æç”»ã™ã‚‹
 			this->sprite->Flush( );
 			//this->sprite->DrawSpritesImmediate(&spriteBuffer.front( ),  s,  0, 0);
 			//spriteBuffer.clear( );
@@ -283,13 +283,13 @@ namespace DG
 		}
 	}
 	//------------------------------------------------------------
-	//	‰æ–Ê•`‰æiI—¹j
+	//	ç”»é¢æç”»ï¼ˆçµ‚äº†ï¼‰
 	void  DGObject::End( )
 	{
-		this->swapChain->Present(1, 0);
+		this->swapChain->Present(0, 0);
 	}
 	//------------------------------------------------------------
-	//2D•`‰æƒf[ƒ^‚ğƒoƒbƒtƒ@‚Ö“o˜^
+	//2Dæç”»ãƒ‡ãƒ¼ã‚¿ã‚’ãƒãƒƒãƒ•ã‚¡ã¸ç™»éŒ²
 	void  DGObject::PushBack_D3DX10_SPRITE(D3DX10_SPRITE  &s_)
 	{
 //		spriteBuffer.push_back(s_);
@@ -299,10 +299,10 @@ namespace DG
 	DWORD	DGObject::ScreenHeight( ){		return screenHeight;}
 
 
-	//šššššššššššššššššššššššššššššššš
-	//ƒeƒ“ƒvƒŒ[ƒgÀ‘•
+	//â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…
+	//ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆå®Ÿè£…
 //	template bool DGObject::VSSet_ConstBuffer<CB_SheenInfo::CBuffer>(const CB_SheenInfo::CBuffer&);
-	//šššššššššššššššššššššššššššššššš
+	//â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…â˜…
 
 
 }
