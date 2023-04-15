@@ -170,6 +170,8 @@
     <ClCompile Include="src\Common\Direction.cpp" />
     <ClCompile Include="src\Common\Font.cpp" />
     <ClCompile Include="src\Common\Transform.cpp" />
+    <ClCompile Include="src\Core\Vector2.cpp" />
+    <ClCompile Include="src\Core\Vector3.cpp" />
     <ClCompile Include="src\Debug\ColliderVisual.cpp" />
     <ClCompile Include="src\Profiling\Profiler.cpp" />
     <ClCompile Include="src\Profiling\ProfilerLoggerConsole.cpp" />
@@ -234,6 +236,8 @@
     <ClInclude Include="src\Common\Direction.h" />
     <ClInclude Include="src\Common\Font.h" />
     <ClInclude Include="src\Common\Transform.h" />
+    <ClInclude Include="src\Core\Vector2.h" />
+    <ClInclude Include="src\Core\Vector3.h" />
     <ClInclude Include="src\Debug\ColliderVisual.h" />
     <ClInclude Include="src\Debug\DebugConfig.h" />
     <ClInclude Include="src\Profiling\Profiler.h" />

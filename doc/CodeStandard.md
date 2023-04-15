@@ -86,6 +86,7 @@ namespace MyNamespace
 			* `int name = 1;`
 			* `char name = 'a';`
 			* `std::string name = "a";`
+	* コピーコンストラクター：`T instance2 = instance1;`
 	* `T* name = new T(arg1, arg2);`
 * 一般的に`一様初期化`を使わない
 	* 場合によって、使うことを許す。例えば、`std::vector<int> v{1, 2, 3, 4, 5};`
@@ -103,6 +104,7 @@ namespace MyNamespace
 * 一般的に明示的なタイプを書く。下記の場合に`auto`を使える：
 	* タイプの名前は長すぎる時
 	* 範囲for文の変数宣言
+	* 明示的なタイプを書くのは危ない時(例：`src\Core\Vector2.cpp`の中)
 * ヌルポインタの場合は、`nullptr`を使う。`NULL`と`0`を使わないように
 * 列挙する時、できれば、最後のものも`,`を付ける(例：列挙型の値)
 * できれば、`マクロ`の使用を避ける。使いたい時、下記の点に気を付ける：
