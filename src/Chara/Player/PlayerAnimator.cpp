@@ -1,5 +1,5 @@
 ﻿#include "PlayerAnimator.h"
-#include "Utils/Log.h"
+#include "Debug/Log.h"
 #include "Animation/AnimationClip.h"
 #include "Task_Player.h"
 #include "Task/ResourceConstant.h"
@@ -79,7 +79,7 @@ namespace Player
 	{
 		auto playerSP = player.lock();
 		if (!playerSP) {
-			PrintWarning("プレイヤーの参照が取れない");
+			DEBUG_LOG_WARNING("プレイヤーの参照が取れない");
 			return;
 		}
 
@@ -120,7 +120,7 @@ namespace Player
 			pCurrentAnimClip = &AnimClipMap.at(currentPlayerState);
 		}
 		catch (...) {
-			PrintWarning("pCurrentAnimClipは探せない");
+			DEBUG_LOG_WARNING("pCurrentAnimClipは探せない");
 			pCurrentAnimClip = nullptr;
 		}
 	}

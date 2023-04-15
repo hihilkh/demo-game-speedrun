@@ -1,6 +1,6 @@
 ﻿#include "Task_Player.h"
 #include <numbers>
-#include "Utils/Log.h"
+#include "Debug/Log.h"
 #include "Game/Task_GameCamera.h"
 #include "Map/Task_Map.h"
 #include "Game/GameStatus.h"
@@ -149,12 +149,12 @@ namespace Player
 			case PlayerMode::Run:		playerAction = make_unique<RunPlayerAction>(weakPtr);		break;
 		}
 
-		Print("今のPlayerAction：" << typeid(*playerAction).name());
+		DEBUG_LOG("今のPlayerAction：" << typeid(*playerAction).name());
 	}
 
 	void Object::Fallback()
 	{
-		Print("撃退された");
+		DEBUG_LOG("撃退された");
 		currentMovementSpeed = 0;
 		canControl = false;
 		fallbackCounter = 0;
@@ -181,7 +181,7 @@ namespace Player
 	bool Object::CheckIsInCrashStateAndSpeed() const
 	{
 		if (state == PlayerState::Running || state == PlayerState::Stopping) {
-			Print("Running/Stopping速度：" << currentMovementSpeed);
+			DEBUG_LOG("Running/Stopping速度：" << currentMovementSpeed);
 			return currentMovementSpeed > Constant::CrashSpeed;
 		}
 

@@ -1,5 +1,5 @@
 ﻿#include "Task_Map.h"
-#include "Utils/Log.h"
+#include "Debug/Log.h"
 #include "Utils/Math.h"
 #include "Task/TaskConstant.h"
 #include "Game/GameEvent.h"
@@ -85,7 +85,7 @@ namespace Map
 			Game::mapLoaded.Invoke();
 		}
 		else {
-			PrintWarning("マップの読み込みに失敗した");
+			DEBUG_LOG_WARNING("マップの読み込みに失敗した");
 		}
 	}
 
@@ -193,7 +193,7 @@ namespace Map
 			return goal->GetPos();
 		}
 
-		PrintWarning("終点が探せない");
+		DEBUG_LOG_WARNING("終点が探せない");
 		ML::Vec2(0.0f, 0.0f);
 	}
 #pragma endregion

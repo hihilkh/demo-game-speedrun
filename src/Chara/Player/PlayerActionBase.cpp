@@ -1,5 +1,5 @@
 ﻿#include "PlayerActionBase.h"
-#include "Utils/Log.h"
+#include "Debug/Log.h"
 #include "PlayerConstant.h"
 #include "Game/GameStatus.h"
 
@@ -18,7 +18,7 @@ namespace Player
 	{
 		auto playerSP = player.lock();
 		if (!playerSP) {
-			PrintWarning("プレイヤーの参照が取れない");
+			DEBUG_LOG_WARNING("プレイヤーの参照が取れない");
 			return ML::Vec2();
 		}
 

@@ -1,7 +1,7 @@
 ﻿#include "Animator.h"
 #include "Animation/AnimationClip.h"
 #include <DG2014/DG2014_Image.h>
-#include "Utils/Log.h"
+#include "Debug/Log.h"
 
 namespace Animation
 {
@@ -46,12 +46,12 @@ namespace Animation
 	void Animator::SetAnimClip(int index)
 	{
 		if (index >= animClips.size()) {
-			PrintWarning("index は animClips.size() に超える");
+			DEBUG_LOG_WARNING("index は animClips.size() に超える");
 			return;
 		}
 
 		if (pCurrentAnimClip == &animClips[index]) {
-			Print("すでにターゲットAnimClipです");
+			DEBUG_LOG("すでにターゲットAnimClipです");
 			return;
 
 		}

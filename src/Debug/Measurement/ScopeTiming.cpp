@@ -2,7 +2,7 @@
 
 #if DEBUG_IS_ENABLED(DEBUG_MEASUREMENT)
 
-#include "Utils/Log.h"
+#include "Debug/Log.h"
 
 namespace Debug::Measurement
 {
@@ -17,7 +17,7 @@ namespace Debug::Measurement
 		auto now = std::chrono::high_resolution_clock::now();
 		auto microsecond = std::chrono::duration_cast<std::chrono::microseconds>(now - startTime);
 
-		Print(title << "：かかった時間：" << microsecond.count() << " microseconds");
+		DEBUG_LOG(title << "：かかった時間：" << microsecond.count() << " microseconds");
 	}
 }
 

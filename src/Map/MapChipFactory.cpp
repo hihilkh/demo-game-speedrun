@@ -1,6 +1,6 @@
 ﻿#include "MapChipFactory.h"
 
-#include "Utils/Log.h"
+#include "Debug/Log.h"
 
 #include "MapChip/MapChipBase.h"
 #include "MapChip/FloorMapChip.h"
@@ -39,7 +39,7 @@ namespace Map
 					break;
 				}
 				default:
-					PrintWarning("まだ MapObject の id:" << mapObjectId << " の実装はない");
+					DEBUG_LOG_WARNING("まだ MapObject の id:" << mapObjectId << " の実装はない");
 					break;
 			}
 		}
@@ -74,7 +74,7 @@ namespace Map
 			case MapChipType::WeakWall:
 				return make_shared<WeakWallMapChip>(res, hitBase);
 			default:
-				PrintWarning("まだ MapChip の id:" << realTypeInt << " の実装はない");
+				DEBUG_LOG_WARNING("まだ MapChip の id:" << realTypeInt << " の実装はない");
 				return make_shared<FloorMapChip>(res, hitBase);
 		}
 	}

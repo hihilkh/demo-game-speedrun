@@ -1,5 +1,5 @@
 ﻿#include "CharaBase.h"
-#include "Utils/Log.h"
+#include "Debug/Log.h"
 #include "Map/Task_Map.h"
 
 namespace Chara
@@ -69,7 +69,7 @@ namespace Chara
 
 		auto mapSP = map.lock();
 		if (!mapSP) {
-			PrintWarning("マップの参照がない。キャラクターは自由に移動できる");
+			DEBUG_LOG_WARNING("マップの参照がない。キャラクターは自由に移動できる");
 			transform->pos = targetMove;
 			return collidedDirections;
 		}

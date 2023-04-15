@@ -1,5 +1,5 @@
 ﻿#include "RunPlayerAction.h"
-#include "Utils/Log.h"
+#include "Debug/Log.h"
 #include "PlayerConstant.h"
 
 namespace Player
@@ -20,7 +20,7 @@ namespace Player
 	{
 		auto playerSP = player.lock();
 		if (!playerSP) {
-			PrintWarning("プレイヤーの参照が取れない");
+			DEBUG_LOG_WARNING("プレイヤーの参照が取れない");
 			return ML::Vec2();
 		}
 
@@ -48,7 +48,7 @@ namespace Player
 
 	void RunPlayerAction::StopRunning(Player::Object::SP playerSP)
 	{
-		Print("StopRunning");
+		DEBUG_LOG("StopRunning");
 		isRunning = false;
 		currentRunningSpeed = 0;
 		playerSP->state = PlayerState::Idle;
@@ -114,7 +114,7 @@ namespace Player
 
 		auto playerSP = player.lock();
 		if (!playerSP) {
-			PrintWarning("プレイヤーの参照が取れない");
+			DEBUG_LOG_WARNING("プレイヤーの参照が取れない");
 			return;
 		}
 

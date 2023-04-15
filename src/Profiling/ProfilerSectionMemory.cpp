@@ -2,7 +2,7 @@
 
 #include <windows.h>
 #include <psapi.h>
-#include "Utils/Log.h"
+#include "Debug/Log.h"
 
 namespace Profiling
 {
@@ -23,7 +23,7 @@ namespace Profiling
 		if (GetProcessMemoryInfo(currentProcess, &pmc, sizeof(pmc))) {
 			AddCache(pmc.PagefileUsage / 1048576.0f);	// 1048576 = 1024 * 1024
 		} else {
-			PrintWarning("GetProcessMemoryInfo 失敗。メモリーが取れない。");
+			DEBUG_LOG_WARNING("GetProcessMemoryInfo 失敗。メモリーが取れない。");
 		}
 	}
 }

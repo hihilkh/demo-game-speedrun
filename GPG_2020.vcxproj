@@ -268,7 +268,7 @@
     <ClInclude Include="src\Profiling\ProfilingConfig.h" />
     <ClInclude Include="src\SceneTransition\Task_SceneTransition.h" />
     <ClInclude Include="src\Task\ResourceConstant.h" />
-    <ClInclude Include="src\Utils\Log.h" />
+    <ClInclude Include="src\Debug\Log.h" />
     <ClInclude Include="src\Task\ObjectBase.tpp" />
     <ClInclude Include="src\Task\ResourceBase.tpp" />
     <ClInclude Include="src\Task\TaskConstant.h" />

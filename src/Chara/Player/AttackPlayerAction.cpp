@@ -1,5 +1,5 @@
 ﻿#include "AttackPlayerAction.h"
-#include "Utils/Log.h"
+#include "Debug/Log.h"
 #include "PlayerAnimator.h"
 
 namespace Player
@@ -23,7 +23,7 @@ namespace Player
 	{
 		auto playerSP = player.lock();
 		if (!playerSP) {
-			PrintWarning("プレイヤーの参照が取れない");
+			DEBUG_LOG_WARNING("プレイヤーの参照が取れない");
 			return ML::Vec2();
 		}
 
@@ -46,7 +46,7 @@ namespace Player
 		if (finishedState == PlayerState::Attack) {
 			auto playerSP = player.lock();
 			if (!playerSP) {
-				PrintWarning("プレイヤーの参照が取れない");
+				DEBUG_LOG_WARNING("プレイヤーの参照が取れない");
 				return;
 			}
 

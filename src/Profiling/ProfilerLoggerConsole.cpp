@@ -1,5 +1,5 @@
 ﻿#include "ProfilerLoggerConsole.h"
-#include "Utils/Log.h"
+#include "Debug/Log.h"
 #include <iomanip>
 
 namespace Profiling
@@ -11,18 +11,18 @@ namespace Profiling
 
 	void ProfilerLoggerConsole::Log(const std::vector<std::unique_ptr<ProfilerSection>>& sections)
 	{
-		PrintSameLine(logPrefix);
+		DEBUG_LOG_SAME_LINE(logPrefix);
 		for (auto& section : sections) {
-			PrintSameLine(
+			DEBUG_LOG_SAME_LINE(
 				section->GetName() << " : " << 
 				std::fixed << std::setprecision(2) << section->GetCacheAvg() << " ; ");
 		}
 
-		PrintSameLine("\n");
+		DEBUG_LOG_SAME_LINE("\n");
 	}
 
 	void ProfilerLoggerConsole::InsertMessage(const std::string& message)
 	{
-		Print(logPrefix << message);
+		DEBUG_LOG(logPrefix << message);
 	}
 }

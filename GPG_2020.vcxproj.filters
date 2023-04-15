@@ -264,7 +264,7 @@
     <ClInclude Include="src\Task\TaskConstant.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Utils\Log.h">
+    <ClInclude Include="src\Debug\Log.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Ending\Task_Ending.h">
