@@ -7,12 +7,12 @@ namespace GE
 
 #pragma region Vector2
 
-	const Vector2 Vector2::zero(0.0f, 0.0f);
-	const Vector2 Vector2::one(1.0f, 1.0f);
-	const Vector2 Vector2::up(0.0f, 1.0f);
-	const Vector2 Vector2::down(0.0f, -1.0f);
-	const Vector2 Vector2::left(-1.0f, 0.0f);
-	const Vector2 Vector2::right(1.0f, 0.0f);
+	const Vector2 Vector2::zero		( 0.0f,  0.0f);
+	const Vector2 Vector2::one		( 1.0f,  1.0f);
+	const Vector2 Vector2::up		( 0.0f,  1.0f);
+	const Vector2 Vector2::down		( 0.0f, -1.0f);
+	const Vector2 Vector2::left		(-1.0f,  0.0f);
+	const Vector2 Vector2::right	( 1.0f,  0.0f);
 
 	Vector2::Vector2() : Vector2(0.0f, 0.0f)
 	{
@@ -85,7 +85,7 @@ namespace GE
 	bool operator==(const Vector2& lhs, const Vector2& rhs)
 	{
 		return	lhs.x == rhs.x &&
-			lhs.y == rhs.y;
+				lhs.y == rhs.y;
 	}
 
 	bool operator!=(const Vector2& lhs, const Vector2& rhs)
@@ -129,7 +129,7 @@ namespace GE
 	float Vector2::Dot(const Vector2& lhs, const Vector2& rhs)
 	{
 		return	lhs.x * rhs.x +
-			lhs.y * rhs.y;
+				lhs.y * rhs.y;
 	}
 
 	float Vector2::Distance(const Vector2& lhs, const Vector2& rhs)
@@ -170,12 +170,12 @@ namespace GE
 
 #pragma region Vector2Int
 
-	const Vector2Int Vector2Int::zero(0, 0);
-	const Vector2Int Vector2Int::one(1, 1);
-	const Vector2Int Vector2Int::up(0, 1);
-	const Vector2Int Vector2Int::down(0, -1);
-	const Vector2Int Vector2Int::left(-1, 0);
-	const Vector2Int Vector2Int::right(1, 0);
+	const Vector2Int Vector2Int::zero	( 0,  0);
+	const Vector2Int Vector2Int::one	( 1,  1);
+	const Vector2Int Vector2Int::up		( 0,  1);
+	const Vector2Int Vector2Int::down	( 0, -1);
+	const Vector2Int Vector2Int::left	(-1,  0);
+	const Vector2Int Vector2Int::right	( 1,  0);
 
 	Vector2Int::Vector2Int() : Vector2Int(0, 0)
 	{
@@ -248,7 +248,7 @@ namespace GE
 	bool operator==(const Vector2Int& lhs, const Vector2Int& rhs)
 	{
 		return	lhs.x == rhs.x &&
-			lhs.y == rhs.y;
+				lhs.y == rhs.y;
 	}
 
 	bool operator!=(const Vector2Int& lhs, const Vector2Int& rhs)

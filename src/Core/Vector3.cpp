@@ -7,14 +7,14 @@ namespace GE
 
 #pragma region Vector3
 
-	const Vector3 Vector3::zero(0.0f, 0.0f, 0.0f);
-	const Vector3 Vector3::one(1.0f, 1.0f, 1.0f);
-	const Vector3 Vector3::up(0.0f, 1.0f, 0.0f);
-	const Vector3 Vector3::down(0.0f, -1.0f, 0.0f);
-	const Vector3 Vector3::left(1.0f, 0.0f, 0.0f);
-	const Vector3 Vector3::right(-1.0f, 0.0f, 0.0f);
-	const Vector3 Vector3::forward(0.0f, 0.0f, 1.0f);
-	const Vector3 Vector3::backward(0.0f, 0.0f, -1.0f);
+	const Vector3 Vector3::zero			( 0.0f,  0.0f,  0.0f);
+	const Vector3 Vector3::one			( 1.0f,  1.0f,  1.0f);
+	const Vector3 Vector3::up			( 0.0f,  1.0f,  0.0f);
+	const Vector3 Vector3::down			( 0.0f, -1.0f,  0.0f);
+	const Vector3 Vector3::left			( 1.0f,  0.0f,  0.0f);
+	const Vector3 Vector3::right		(-1.0f,  0.0f,  0.0f);
+	const Vector3 Vector3::forward		( 0.0f,  0.0f,  1.0f);
+	const Vector3 Vector3::backward		( 0.0f,  0.0f, -1.0f);
 
 	Vector3::Vector3() : Vector3(0.0f, 0.0f, 0.0f)
 	{
@@ -90,8 +90,8 @@ namespace GE
 	bool operator==(const Vector3& lhs, const Vector3& rhs)
 	{
 		return	lhs.x == rhs.x &&
-			lhs.y == rhs.y &&
-			lhs.z == rhs.z;
+				lhs.y == rhs.y &&
+				lhs.z == rhs.z;
 	}
 
 	bool operator!=(const Vector3& lhs, const Vector3& rhs)
@@ -136,13 +136,22 @@ namespace GE
 	float Vector3::Dot(const Vector3& lhs, const Vector3& rhs)
 	{
 		return	lhs.x * rhs.x +
-			lhs.y * rhs.y +
-			lhs.z * rhs.z;
+				lhs.y * rhs.y +
+				lhs.z * rhs.z;
 	}
 
 	float Vector3::Distance(const Vector3& lhs, const Vector3& rhs)
 	{
 		return (lhs - rhs).GetMagnitude();
+	}
+
+	Vector3 Cross(const Vector3& lhs, const Vector3& rhs)
+	{
+		return Vector3(
+			 lhs.y * rhs.z - lhs.z * rhs.y,
+			-lhs.x * rhs.z + lhs.z * rhs.x,
+			 lhs.x * rhs.y - lhs.y * rhs.x
+		);
 	}
 
 	Vector3& Vector3::Normalize()
@@ -179,14 +188,14 @@ namespace GE
 
 #pragma region Vector3Int
 
-	const Vector3Int Vector3Int::zero(0, 0, 0);
-	const Vector3Int Vector3Int::one(1, 1, 1);
-	const Vector3Int Vector3Int::up(0, 1, 0);
-	const Vector3Int Vector3Int::down(0, -1, 0);
-	const Vector3Int Vector3Int::left(1, 0, 0);
-	const Vector3Int Vector3Int::right(-1, 0, 0);
-	const Vector3Int Vector3Int::forward(0, 0, 1);
-	const Vector3Int Vector3Int::backward(0, 0, -1);
+	const Vector3Int Vector3Int::zero		( 0,  0,  0);
+	const Vector3Int Vector3Int::one		( 1,  1,  1);
+	const Vector3Int Vector3Int::up			( 0,  1,  0);
+	const Vector3Int Vector3Int::down		( 0, -1,  0);
+	const Vector3Int Vector3Int::left		( 1,  0,  0);
+	const Vector3Int Vector3Int::right		(-1,  0,  0);
+	const Vector3Int Vector3Int::forward	( 0,  0,  1);
+	const Vector3Int Vector3Int::backward	( 0,  0, -1);
 
 	Vector3Int::Vector3Int() : Vector3Int(0, 0, 0)
 	{
@@ -262,8 +271,8 @@ namespace GE
 	bool operator==(const Vector3Int& lhs, const Vector3Int& rhs)
 	{
 		return	lhs.x == rhs.x &&
-			lhs.y == rhs.y &&
-			lhs.z == rhs.z;
+				lhs.y == rhs.y &&
+				lhs.z == rhs.z;
 	}
 
 	bool operator!=(const Vector3Int& lhs, const Vector3Int& rhs)
