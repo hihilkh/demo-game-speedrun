@@ -35,8 +35,7 @@ Vector2& Vector2::operator-=(const Vector2& other)
 
 Vector2& Vector2::operator*=(float multiple)
 {
-	Scale(multiple, multiple);
-	return * this;
+	return Scale(multiple, multiple);
 }
 
 Vector2& Vector2::operator/=(float divisor)
@@ -96,22 +95,22 @@ std::ostream& operator<<(std::ostream& os, const Vector2& vector)
 	return os << "(" << vector.x << ", " << vector.y << ")";
 }
 
-void Vector2::Scale(float multipleX, float multipleY)
+Vector2& Vector2::Scale(float multipleX, float multipleY)
 {
 	x *= multipleX;
 	y *= multipleY;
+	return *this;
 }
 
-void Vector2::Scale(const Vector2& other)
+Vector2& Vector2::Scale(const Vector2& other)
 {
-	Scale(other.x, other.y);
+	return Scale(other.x, other.y);
 }
 
 Vector2 Vector2::Scale(const Vector2& lhs, const Vector2& rhs)
 {
 	auto result = lhs;
-	result.Scale(rhs);
-	return result;
+	return result.Scale(rhs);
 }
 
 float Vector2::GetMagnitude() const
@@ -135,9 +134,10 @@ float Vector2::Distance(const Vector2& lhs, const Vector2& rhs)
 	return (lhs - rhs).GetMagnitude();
 }
 
-void Vector2::Normalize()
+Vector2& Vector2::Normalize()
 { 
-	*this /= GetMagnitude(); 
+	*this /= GetMagnitude();
+	return *this;
 }
 
 Vector2 Vector2::Lerp(const Vector2& a, const Vector2& b, float t)
@@ -198,8 +198,7 @@ Vector2Int& Vector2Int::operator-=(const Vector2Int& other)
 
 Vector2Int& Vector2Int::operator*=(int multiple)
 {
-	Scale(multiple, multiple);
-	return *this;
+	return Scale(multiple, multiple);
 }
 
 Vector2Int& Vector2Int::operator/=(int divisor)
@@ -259,22 +258,22 @@ std::ostream& operator<<(std::ostream& os, const Vector2Int& vector)
 	return os << "(" << vector.x << ", " << vector.y << ")";
 }
 
-void Vector2Int::Scale(int multipleX, int multipleY)
+Vector2Int& Vector2Int::Scale(int multipleX, int multipleY)
 {
 	x *= multipleX;
 	y *= multipleY;
+	return *this;
 }
 
-void Vector2Int::Scale(const Vector2Int& other)
+Vector2Int& Vector2Int::Scale(const Vector2Int& other)
 {
-	Scale(other.x, other.y);
+	return Scale(other.x, other.y);
 }
 
 Vector2Int Vector2Int::Scale(const Vector2Int& lhs, const Vector2Int& rhs)
 {
 	auto result = lhs;
-	result.Scale(rhs);
-	return result;
+	return result.Scale(rhs);
 }
 
 float Vector2Int::GetMagnitude() const

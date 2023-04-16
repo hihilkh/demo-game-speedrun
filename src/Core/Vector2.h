@@ -38,8 +38,8 @@ struct Vector2
 
 	friend std::ostream& operator<<(std::ostream& os, const Vector2& vector);
 
-	void Scale(float multipleX, float multipleY);
-	void Scale(const Vector2& other);
+	Vector2& Scale(float multipleX, float multipleY);
+	Vector2& Scale(const Vector2& other);
 	static Vector2 Scale(const Vector2& lhs, const Vector2& rhs);
 
 	float GetMagnitude() const;
@@ -48,7 +48,7 @@ struct Vector2
 	static float Dot(const Vector2& lhs, const Vector2& rhs);
 	static float Distance(const Vector2& lhs, const Vector2& rhs);
 
-	void Normalize();
+	Vector2& Normalize();
 	static Vector2 Lerp(const Vector2& a, const Vector2& b, float t);
 
 	operator Vector2Int() const;
@@ -92,8 +92,8 @@ struct Vector2Int
 
 	friend std::ostream& operator<<(std::ostream& os, const Vector2Int& vector);
 
-	void Scale(int multipleX, int multipleY);
-	void Scale(const Vector2Int& other);
+	Vector2Int& Scale(int multipleX, int multipleY);
+	Vector2Int& Scale(const Vector2Int& other);
 	static Vector2Int Scale(const Vector2Int& lhs, const Vector2Int& rhs);
 
 	float GetMagnitude() const;

@@ -38,8 +38,8 @@ struct Vector3
 
 	friend std::ostream& operator<<(std::ostream& os, const Vector3& vector);
 
-	void Scale(float multipleX, float multipleY, float multipleZ);
-	void Scale(const Vector3& other);
+	Vector3& Scale(float multipleX, float multipleY, float multipleZ);
+	Vector3& Scale(const Vector3& other);
 	static Vector3 Scale(const Vector3& lhs, const Vector3& rhs);
 
 	float GetMagnitude() const;
@@ -49,7 +49,7 @@ struct Vector3
 	static float Distance(const Vector3& lhs, const Vector3& rhs);
 	static Vector3 Cross(const Vector3& lhs, const Vector3& rhs);
 
-	void Normalize();
+	Vector3& Normalize();
 	static Vector3 Lerp(const Vector3& a, const Vector3& b, float t);
 
 	operator Vector2() const;
@@ -95,8 +95,8 @@ struct Vector3Int
 
 	friend std::ostream& operator<<(std::ostream& os, const Vector3Int& vector);
 
-	void Scale(int multipleX, int multipleY, int multipleZ);
-	void Scale(const Vector3Int& other);
+	Vector3Int& Scale(int multipleX, int multipleY, int multipleZ);
+	Vector3Int& Scale(const Vector3Int& other);
 	static Vector3Int Scale(const Vector3Int& lhs, const Vector3Int& rhs);
 
 	float GetMagnitude() const;

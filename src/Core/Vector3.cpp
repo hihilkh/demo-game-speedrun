@@ -39,8 +39,7 @@ Vector3& Vector3::operator-=(const Vector3& other)
 
 Vector3& Vector3::operator*=(float multiple)
 {
-	Scale(multiple, multiple, multiple);
-	return *this;
+	return Scale(multiple, multiple, multiple);
 }
 
 Vector3& Vector3::operator/=(float divisor)
@@ -102,23 +101,23 @@ std::ostream& operator<<(std::ostream& os, const Vector3& vector)
 	return os << "(" << vector.x << ", " << vector.y << ", " << vector.z << ")";
 }
 
-void Vector3::Scale(float multipleX, float multipleY, float multipleZ)
+Vector3& Vector3::Scale(float multipleX, float multipleY, float multipleZ)
 {
 	x *= multipleX;
 	y *= multipleY;
 	z *= multipleZ;
+	return *this;
 }
 
-void Vector3::Scale(const Vector3& other)
+Vector3& Vector3::Scale(const Vector3& other)
 {
-	Scale(other.x, other.y, other.z);
+	return Scale(other.x, other.y, other.z);
 }
 
 Vector3 Vector3::Scale(const Vector3& lhs, const Vector3& rhs)
 {
 	auto result = lhs;
-	result.Scale(rhs);
-	return result;
+	return result.Scale(rhs);
 }
 
 float Vector3::GetMagnitude() const
@@ -143,9 +142,10 @@ float Vector3::Distance(const Vector3& lhs, const Vector3& rhs)
 	return (lhs - rhs).GetMagnitude();
 }
 
-void Vector3::Normalize()
+Vector3& Vector3::Normalize()
 {
 	*this /= GetMagnitude();
+	return *this;
 }
 
 Vector3 Vector3::Lerp(const Vector3& a, const Vector3& b, float t)
@@ -211,8 +211,7 @@ Vector3Int& Vector3Int::operator-=(const Vector3Int& other)
 
 Vector3Int& Vector3Int::operator*=(int multiple)
 {
-	Scale(multiple, multiple, multiple);
-	return *this;
+	return Scale(multiple, multiple, multiple);
 }
 
 Vector3Int& Vector3Int::operator/=(int divisor)
@@ -274,23 +273,23 @@ std::ostream& operator<<(std::ostream& os, const Vector3Int& vector)
 	return os << "(" << vector.x << ", " << vector.y << ", " << vector.z << ")";
 }
 
-void Vector3Int::Scale(int multipleX, int multipleY, int multipleZ)
+Vector3Int& Vector3Int::Scale(int multipleX, int multipleY, int multipleZ)
 {
 	x *= multipleX;
 	y *= multipleY;
 	z *= multipleZ;
+	return *this;
 }
 
-void Vector3Int::Scale(const Vector3Int& other)
+Vector3Int& Vector3Int::Scale(const Vector3Int& other)
 {
-	Scale(other.x, other.y, other.z);
+	return Scale(other.x, other.y, other.z);
 }
 
 Vector3Int Vector3Int::Scale(const Vector3Int& lhs, const Vector3Int& rhs)
 {
 	auto result = lhs;
-	result.Scale(rhs);
-	return result;
+	return result.Scale(rhs);
 }
 
 float Vector3Int::GetMagnitude() const
