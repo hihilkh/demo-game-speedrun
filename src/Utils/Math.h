@@ -3,6 +3,7 @@
 #include <cmath>
 #include <type_traits>
 #include <numbers>
+#include <algorithm>
 
 namespace Math
 {
