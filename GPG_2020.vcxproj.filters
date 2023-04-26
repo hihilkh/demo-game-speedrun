@@ -208,12 +208,6 @@
     <ClCompile Include="src\Profiling\ProfilerSectionCpu.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Core\Vector2.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Core\Vector3.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Core\Color.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>

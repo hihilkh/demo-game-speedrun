@@ -171,8 +171,6 @@
     <ClCompile Include="src\Common\Font.cpp" />
     <ClCompile Include="src\Common\Transform.cpp" />
     <ClCompile Include="src\Core\Color.cpp" />
-    <ClCompile Include="src\Core\Vector2.cpp" />
-    <ClCompile Include="src\Core\Vector3.cpp" />
     <ClCompile Include="src\Debug\ColliderVisual.cpp" />
     <ClCompile Include="src\Profiling\Profiler.cpp" />
     <ClCompile Include="src\Profiling\ProfilerLoggerConsole.cpp" />

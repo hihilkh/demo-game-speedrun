@@ -1,120 +1,316 @@
 ﻿#pragma once
 
 #include <iostream>
+#include <type_traits>
+#include <cmath>
+#include "Vector3.h"
 
 namespace GE
 {
-	// TODO : 
-	// Vector2はVector2Intよりいくつかのメンバー関数が持っている(e.g., Normalize())ので、クラステンプレートが使えない。
-	// 他のやり方を調べる
-
-	struct Vector2;
-	struct Vector2Int;
-	struct Vector3;
-	struct Vector3Int;
-
-#pragma region Vector2
-
-	struct Vector2
+	namespace PrivateTemplate
 	{
-		float x, y;
+#pragma region 宣言
 
-		Vector2();
-		Vector2(float x, float y);
+		// 暗黙的な変換のための前方宣言
+		template<typename T> struct TVector3;
 
-		Vector2& operator+=(const Vector2& other);
-		Vector2& operator-=(const Vector2& other);
-		Vector2& operator*=(float multiple);
-		Vector2& operator/=(float divisor);
+		template<typename T>
+		struct TVector2
+		{
+			static_assert(std::is_integral_v<T> || std::is_floating_point_v<T>, "The type must be int or float");
 
-		friend Vector2 operator+(const Vector2& lhs, const Vector2& rhs);
-		friend Vector2 operator-(const Vector2& lhs, const Vector2& rhs);
-		friend Vector2 operator*(const Vector2& vector, float multiple);
-		friend Vector2 operator*(float multiple, const Vector2& vector);
-		friend Vector2 operator/(const Vector2& vector, float divisor);
+			typedef std::conditional_t<std::is_floating_point_v<T>, T, float> FloatType;
+			typedef std::conditional_t<std::is_floating_point_v<T>, TVector2<T>, TVector2<float>> VectorFloatType;
 
-		Vector2 operator-() const;
+			T x, y;
 
-		friend bool operator==(const Vector2& lhs, const Vector2& rhs);
-		friend bool operator!=(const Vector2& lhs, const Vector2& rhs);
+			TVector2();
+			TVector2(T x, T y);
 
-		friend std::ostream& operator<<(std::ostream& os, const Vector2& vector);
+			TVector2& operator+=(const TVector2& other);
+			TVector2& operator-=(const TVector2& other);
+			TVector2& operator*=(T multiple);
+			TVector2& operator/=(T divisor);
 
-		Vector2& Scale(float multipleX, float multipleY);
-		Vector2& Scale(const Vector2& other);
-		static Vector2 Scale(const Vector2& lhs, const Vector2& rhs);
+			TVector2 operator-() const;
 
-		float GetMagnitude() const;
-		float GetSqrMagnitude() const;
+			TVector2& Scale(T multipleX, T multipleY);
+			TVector2& Scale(const TVector2& other);
+			static TVector2 Scale(const TVector2& lhs, const TVector2& rhs);
 
-		static float Dot(const Vector2& lhs, const Vector2& rhs);
-		static float Distance(const Vector2& lhs, const Vector2& rhs);
+			static T Dot(const TVector2& lhs, const TVector2& rhs);
 
-		Vector2& Normalize();
-		static Vector2 Lerp(const Vector2& a, const Vector2& b, float t);
+			FloatType Magnitude() const;
+			T SqrMagnitude() const;
+			static FloatType Distance(const TVector2& lhs, const TVector2& rhs);
 
-		operator Vector2Int() const;
-		operator Vector3() const;
-		operator Vector3Int() const;
+			static VectorFloatType Lerp(const TVector2& a, const TVector2& b, float t);
 
-		static const Vector2 zero;
-		static const Vector2 one;
-		static const Vector2 up;
-		static const Vector2 down;
-		static const Vector2 left;
-		static const Vector2 right;
-	};
+			TVector2& Normalize();
+			bool IsNormalized() const;
+
+			// 暗黙的な変換
+
+			operator TVector2<float>() const;
+			operator TVector2<int>() const;
+			operator TVector3<float>() const;
+			operator TVector3<int>() const;
+
+			// 定数
+
+			static const TVector2 zero;
+			static const TVector2 one;
+			static const TVector2 up;
+			static const TVector2 down;
+			static const TVector2 left;
+			static const TVector2 right;
+		};
+
+		template<typename T> TVector2<T> operator+(const TVector2<T>& lhs, const TVector2<T>& rhs);
+		template<typename T> TVector2<T> operator-(const TVector2<T>& lhs, const TVector2<T>& rhs);
+		template<typename T> TVector2<T> operator*(const TVector2<T>& vector, T multiple);
+		template<typename T> TVector2<T> operator*(T multiple, const TVector2<T>& vector);
+		template<typename T> TVector2<T> operator/(const TVector2<T>& vector, T divisor);
+		template<typename T> bool operator==(const TVector2<T>& lhs, const TVector2<T>& rhs);
+		template<typename T> bool operator!=(const TVector2<T>& lhs, const TVector2<T>& rhs);
+		template<typename T> std::ostream& operator<<(std::ostream& os, const TVector2<T>& vector);
 
 #pragma endregion
 
-#pragma region Vector2Int
+#pragma region 定数定義
 
-	struct Vector2Int
-	{
-		int x, y;
+#define VECTOR2 template<> inline const TVector2<float> TVector2<float>
 
-		Vector2Int();
-		Vector2Int(int x, int y);
+		VECTOR2::zero		(0.0f, 0.0f);
+		VECTOR2::one		(1.0f, 1.0f);
+		VECTOR2::up			(0.0f, 1.0f);
+		VECTOR2::down		(0.0f, -1.0f);
+		VECTOR2::left		(-1.0f, 0.0f);
+		VECTOR2::right		(1.0f, 0.0f);
 
-		Vector2Int& operator+=(const Vector2Int& other);
-		Vector2Int& operator-=(const Vector2Int& other);
-		Vector2Int& operator*=(int multiple);
-		Vector2Int& operator/=(int divisor);
+#undef VECTOR2
 
-		friend Vector2Int operator+(const Vector2Int& lhs, const Vector2Int& rhs);
-		friend Vector2Int operator-(const Vector2Int& lhs, const Vector2Int& rhs);
-		friend Vector2Int operator*(const Vector2Int& vector, int multiple);
-		friend Vector2Int operator*(int multiple, const Vector2Int& vector);
-		friend Vector2Int operator/(const Vector2Int& vector, int divisor);
+#define VECTOR2_INT template<> inline const TVector2<int> TVector2<int>
 
-		Vector2Int operator-() const;
+		VECTOR2_INT::zero	( 0,  0);
+		VECTOR2_INT::one	( 1,  1);
+		VECTOR2_INT::up		( 0,  1);
+		VECTOR2_INT::down	( 0, -1);
+		VECTOR2_INT::left	(-1,  0);
+		VECTOR2_INT::right	( 1,  0);
 
-		friend bool operator==(const Vector2Int& lhs, const Vector2Int& rhs);
-		friend bool operator!=(const Vector2Int& lhs, const Vector2Int& rhs);
-
-		friend std::ostream& operator<<(std::ostream& os, const Vector2Int& vector);
-
-		Vector2Int& Scale(int multipleX, int multipleY);
-		Vector2Int& Scale(const Vector2Int& other);
-		static Vector2Int Scale(const Vector2Int& lhs, const Vector2Int& rhs);
-
-		float GetMagnitude() const;
-		int GetSqrMagnitude() const;
-
-		static float Distance(const Vector2Int& lhs, const Vector2Int& rhs);
-
-		operator Vector2() const;
-		operator Vector3() const;
-		operator Vector3Int() const;
-
-		static const Vector2Int zero;
-		static const Vector2Int one;
-		static const Vector2Int up;
-		static const Vector2Int down;
-		static const Vector2Int left;
-		static const Vector2Int right;
-	};
+#undef VECTOR2_INT
 
 #pragma endregion
 
+#pragma region 関数定義
+
+		template<typename T>
+		inline TVector2<T>::TVector2() : TVector2<T>(T(), T())
+		{
+		}
+
+		template<typename T>
+		inline TVector2<T>::TVector2(T x, T y) : x(x), y(y)
+		{
+		}
+
+		template<typename T>
+		inline TVector2<T>& TVector2<T>::operator+=(const TVector2<T>& other)
+		{
+			x += other.x;
+			y += other.y;
+			return *this;
+		}
+
+		template<typename T>
+		inline TVector2<T>& TVector2<T>::operator-=(const TVector2<T>& other)
+		{
+			x -= other.x;
+			y -= other.y;
+			return *this;
+		}
+
+		template<typename T>
+		inline TVector2<T>& TVector2<T>::operator*=(T multiple)
+		{
+			return Scale(multiple, multiple);
+		}
+
+		template<typename T>
+		inline TVector2<T>& TVector2<T>::operator/=(T divisor)
+		{
+			if constexpr (std::is_integral_v<T>) {
+				x /= divisor;
+				y /= divisor;
+			} else {
+				T multiple = 1 / divisor;
+				*this *= multiple;
+			}
+
+			return *this;
+		}
+
+		template<typename T>
+		inline TVector2<T> TVector2<T>::operator-() const
+		{
+			return TVector2<T>(-x, -y);
+		}
+
+		template<typename T>
+		inline TVector2<T>& TVector2<T>::Scale(T multipleX, T multipleY)
+		{
+			x *= multipleX;
+			y *= multipleY;
+			return *this;
+		}
+
+		template<typename T>
+		inline TVector2<T>& TVector2<T>::Scale(const TVector2<T>& other)
+		{
+			return Scale(other.x, other.y);
+		}
+
+		template<typename T>
+		inline TVector2<T> TVector2<T>::Scale(const TVector2<T>& lhs, const TVector2<T>& rhs)
+		{
+			auto result = lhs;
+			return result.Scale(rhs);
+		}
+
+		template<typename T>
+		inline T TVector2<T>::Dot(const TVector2<T>& lhs, const TVector2<T>& rhs)
+		{
+			return	lhs.x * rhs.x +
+					lhs.y * rhs.y;
+		}
+
+		template<typename T>
+		inline TVector2<T>::FloatType TVector2<T>::Magnitude() const
+		{
+			return sqrt(SqrMagnitude());
+		}
+
+		template<typename T>
+		inline T TVector2<T>::SqrMagnitude() const
+		{
+			return Dot(*this, *this);
+		}
+
+		template<typename T>
+		inline TVector2<T>::FloatType TVector2<T>::Distance(const TVector2<T>& lhs, const TVector2<T>& rhs)
+		{
+			return (lhs - rhs).Magnitude();
+		}
+
+		template<typename T>
+		inline TVector2<T>::VectorFloatType TVector2<T>::Lerp(const TVector2<T>& a, const TVector2<T>& b, float t)
+		{
+			return TVector2<T>::VectorFloatType(
+				std::lerp(a.x, b.x, t),
+				std::lerp(a.y, b.y, t)
+			);
+		}
+
+		template<typename T>
+		inline TVector2<T>& TVector2<T>::Normalize()
+		{
+			// TODO : 
+			// 今TVector2<int>でもNormalize()関数を持っている(使う場合はコンパイルエラーが生じる)
+			// もっと良い方法を考えましょう
+			static_assert(std::is_floating_point_v<T>, "Only Vector with float values is allowed to use this function");
+
+			*this /= Magnitude();
+			return *this;
+		}
+
+		template<typename T>
+		inline bool TVector2<T>::IsNormalized() const
+		{
+			return SqrMagnitude() == 1;
+		}
+
+		template<typename T>
+		inline TVector2<T>::operator TVector2<float>() const
+		{
+			return TVector2<float>(x, y);
+		}
+
+		template<typename T>
+		inline TVector2<T>::operator TVector2<int>() const
+		{
+			return TVector2<int>(x, y);
+		}
+
+		template<typename T>
+		inline TVector2<T>::operator TVector3<float>() const
+		{
+			return TVector3<float>(x, y, 0.0f);
+		}
+
+		template<typename T>
+		inline TVector2<T>::operator TVector3<int>() const
+		{
+			return TVector3<int>(x, y, 0);
+		}
+
+		template<typename T>
+		inline TVector2<T> operator+(const TVector2<T>& lhs, const TVector2<T>& rhs)
+		{
+			auto result = lhs;
+			return result += rhs;
+		}
+
+		template<typename T>
+		inline TVector2<T> operator-(const TVector2<T>& lhs, const TVector2<T>& rhs)
+		{
+			auto result = lhs;
+			return result -= rhs;
+		}
+
+		template<typename T>
+		inline TVector2<T> operator*(const TVector2<T>& vector, T multiple)
+		{
+			auto result = vector;
+			return result *= multiple;
+		}
+
+		template<typename T>
+		inline TVector2<T> operator*(T multiple, const TVector2<T>& vector)
+		{
+			return vector * multiple;
+		}
+
+		template<typename T>
+		inline TVector2<T> operator/(const TVector2<T>& vector, T divisor)
+		{
+			TVector2<T> result = vector;
+			return result /= divisor;
+		}
+
+		template<typename T>
+		inline bool operator==(const TVector2<T>& lhs, const TVector2<T>& rhs)
+		{
+			return	lhs.x == rhs.x &&
+					lhs.y == rhs.y;
+		}
+
+		template<typename T>
+		inline bool operator!=(const TVector2<T>& lhs, const TVector2<T>& rhs)
+		{
+			return !(lhs == rhs);
+		}
+
+		template<typename T>
+		inline std::ostream& operator<<(std::ostream& os, const TVector2<T>& vector)
+		{
+			return os << "(" << vector.x << ", " << vector.y << ")";
+		}
+
+#pragma endregion
+
+	}
+
+	typedef PrivateTemplate::TVector2<float>	Vector2;
+	typedef PrivateTemplate::TVector2<int>		Vector2Int;
 }
