@@ -29,6 +29,27 @@ namespace Math
 		return std::lerp(a, b, Clamp01(t));
 	}
 
+	/// <returns>
+	/// <para>正数 -> 1</para>
+	/// <para>負数 -> -1</para>
+	/// <para>0 -> 0</para>
+	/// </returns>
+	template <typename T>
+	inline constexpr int Sign(T value)
+	{
+		return (value > T(0)) - (value < T(0));
+	}
+
+	/// <returns>
+	/// <para>正数または0 -> 1</para>
+	/// <para>負数 -> -1</para>
+	/// </returns>
+	template <typename T>
+	inline constexpr int SignNonZero(T value)
+	{
+		return (value >= T(0)) - (value < T(0));
+	}
+
 #pragma region GetRandom
 
 	/// <param name="min">含む</param>

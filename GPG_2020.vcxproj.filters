@@ -444,6 +444,9 @@
     <ClInclude Include="src\Core\Vector3.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Core\Rect.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Event\Event.tpp">

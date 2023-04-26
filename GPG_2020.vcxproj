@@ -236,6 +236,7 @@
     <ClInclude Include="src\Common\Font.h" />
     <ClInclude Include="src\Common\Transform.h" />
     <ClInclude Include="src\Core\Color.h" />
+    <ClInclude Include="src\Core\Rect.h" />
     <ClInclude Include="src\Core\Vector2.h" />
     <ClInclude Include="src\Core\Vector3.h" />
     <ClInclude Include="src\Debug\ColliderVisual.h" />
