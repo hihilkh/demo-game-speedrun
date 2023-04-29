@@ -89,7 +89,9 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_DEBUG;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)lib;$(SolutionDir)src;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)lib;$(SolutionDir)src;$(SolutionDir)src/GameEngine;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>CommonHeader.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x64</AdditionalLibraryDirectories>
@@ -101,9 +103,11 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)lib;$(SolutionDir)src;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)lib;$(SolutionDir)src;$(SolutionDir)src/GameEngine;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_DEBUG;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>CommonHeader.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x64</AdditionalLibraryDirectories>
@@ -118,8 +122,10 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)lib;$(SolutionDir)src;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)lib;$(SolutionDir)src;$(SolutionDir)src/GameEngine;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>CommonHeader.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -136,8 +142,10 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)lib;$(SolutionDir)src;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)lib;$(SolutionDir)src;$(SolutionDir)src/GameEngine;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>CommonHeader.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -170,7 +178,13 @@
     <ClCompile Include="src\Common\Direction.cpp" />
     <ClCompile Include="src\Common\Font.cpp" />
     <ClCompile Include="src\Common\Transform.cpp" />
-    <ClCompile Include="src\Core\Color.cpp" />
+    <ClCompile Include="src\GameEngine\Core\Color.cpp" />
+    <ClCompile Include="src\CommonHeader.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="src\Debug\ColliderVisual.cpp" />
     <ClCompile Include="src\Debug\Log.cpp" />
     <ClCompile Include="src\Profiling\Profiler.cpp" />
@@ -203,8 +217,8 @@
     <ClCompile Include="src\ParticleSystem\Task_BreakWallEffect.cpp" />
     <ClCompile Include="src\SceneTransition\Task_SceneTransition.cpp" />
     <ClCompile Include="src\Title\Task_Title.cpp" />
-    <ClCompile Include="src\Utils\Time\Timer.cpp" />
-    <ClCompile Include="src\Utils\Time\DelayTrigger.cpp" />
+    <ClCompile Include="src\GameEngine\Utils\Time\Timer.cpp" />
+    <ClCompile Include="src\GameEngine\Utils\Time\DelayTrigger.cpp" />
     <ClCompile Include="src\WinMain.cpp" />
     <ClCompile Include="lib\XI2018_Ver1_0.cpp" />
   </ItemGroup>
@@ -236,10 +250,11 @@
     <ClInclude Include="src\Common\Direction.h" />
     <ClInclude Include="src\Common\Font.h" />
     <ClInclude Include="src\Common\Transform.h" />
-    <ClInclude Include="src\Core\Color.h" />
-    <ClInclude Include="src\Core\Rect.h" />
-    <ClInclude Include="src\Core\Vector2.h" />
-    <ClInclude Include="src\Core\Vector3.h" />
+    <ClInclude Include="src\GameEngine\Core\Color.h" />
+    <ClInclude Include="src\CommonHeader.h" />
+    <ClInclude Include="src\GameEngine\Core\Rect.h" />
+    <ClInclude Include="src\GameEngine\Core\Vector2.h" />
+    <ClInclude Include="src\GameEngine\Core\Vector3.h" />
     <ClInclude Include="src\Debug\ColliderVisual.h" />
     <ClInclude Include="src\Debug\DebugConfig.h" />
     <ClInclude Include="src\Profiling\Profiler.h" />
@@ -284,9 +299,9 @@
     <ClInclude Include="src\Game\Task_GameCamera.h" />
     <ClInclude Include="src\Title\Task_Title.h" />
     <ClInclude Include="lib\XI2018_Ver1_0.h" />
-    <ClInclude Include="src\Utils\Math.h" />
-    <ClInclude Include="src\Utils\Time\Timer.h" />
-    <ClInclude Include="src\Utils\Time\DelayTrigger.h" />
+    <ClInclude Include="src\GameEngine\Utils\Math.h" />
+    <ClInclude Include="src\GameEngine\Utils\Time\Timer.h" />
+    <ClInclude Include="src\GameEngine\Utils\Time\DelayTrigger.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Event\Event.tpp" />

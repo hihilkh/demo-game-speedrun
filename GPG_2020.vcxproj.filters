@@ -172,10 +172,10 @@
     <ClCompile Include="src\ParticleSystem\ParticleConfig.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Utils\Time\Timer.cpp">
+    <ClCompile Include="src\GameEngine\Utils\Time\Timer.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Utils\Time\DelayTrigger.cpp">
+    <ClCompile Include="src\GameEngine\Utils\Time\DelayTrigger.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Common\Font.cpp">
@@ -208,10 +208,13 @@
     <ClCompile Include="src\Profiling\ProfilerSectionCpu.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Core\Color.cpp">
+    <ClCompile Include="src\GameEngine\Core\Color.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Debug\Log.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CommonHeader.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -294,7 +297,7 @@
     <ClInclude Include="src\Game\GameStatus.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Utils\Math.h">
+    <ClInclude Include="src\GameEngine\Utils\Math.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Common\Transform.h">
@@ -390,10 +393,10 @@
     <ClInclude Include="src\ParticleSystem\ParticleConfig.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Utils\Time\Timer.h">
+    <ClInclude Include="src\GameEngine\Utils\Time\Timer.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Utils\Time\DelayTrigger.h">
+    <ClInclude Include="src\GameEngine\Utils\Time\DelayTrigger.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Common\Font.h">
@@ -438,16 +441,19 @@
     <ClInclude Include="src\Profiling\ProfilingConfig.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Core\Vector2.h">
+    <ClInclude Include="src\GameEngine\Core\Vector2.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Core\Color.h">
+    <ClInclude Include="src\GameEngine\Core\Color.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Core\Vector3.h">
+    <ClInclude Include="src\GameEngine\Core\Vector3.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Core\Rect.h">
+    <ClInclude Include="src\GameEngine\Core\Rect.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CommonHeader.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

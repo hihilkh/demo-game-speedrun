@@ -81,15 +81,23 @@ namespace MyNamespace
 * コンストラクターの使い方：
 	* `T name;`
 	* `T name(arg1, arg2);`
-		* ブール値、数値、文字、文字列を除く：
+		* 文字列を除く：
+			* `std::string name = "a";`
+		* また、組み込み型変数の定義は下記になる：
 			* `bool name = true;`
 			* `int name = 1;`
+			* `float name = 1.0f;`
 			* `char name = 'a';`
-			* `std::string name = "a";`
 	* コピーコンストラクター：`T instance2 = instance1;`
 	* `T* name = new T(arg1, arg2);`
 * 一般的に`一様初期化`を使わない
 	* 場合によって、使うことを許す。例えば、`std::vector<int> v{1, 2, 3, 4, 5};`
+
+## プリコンパイル済みヘッダー
+
+* `src/CommonHeader.h`
+* 主にいくつかのよく使われるSTLのヘッダーファイルとGameEngineのヘッダーファイルを含んでいる
+* このプロジェクトは`GE`というゲームエンジンをもとに開発するので、`using namespace GE;`を`CommonHeader.h`に入れる
 
 ## その他
 
@@ -99,6 +107,7 @@ namespace MyNamespace
 * `using namespace`の使用を避ける：
 	* `.h`で使わないように
 	* 使いたい時、局部的な範囲で使う
+	* 例外：`using namespace GE;`を`CommonHeader.h`に入れる
 * 一般的に`enum class`を使う。下記の場合に`enum`を使える：
 	* 局部的な範囲でコードを見やすくなりたい時
 * 一般的に明示的なタイプを書く。でも、場合によって、`auto`を使うことも許す。それに、下記の場合に`auto`を使う：
