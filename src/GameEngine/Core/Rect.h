@@ -320,13 +320,4 @@ namespace GE
 #pragma endregion
 
 	}
-
-	// 備考：
-	// 本質的に TRect<float> と TRect<int> は大きな違いがある。
-	// TRect<float> の場合、点はサイズがない。
-	// TRect<int> の場合、点が 1 x 1 のサイズとみなす。
-	// (参考：TRect::FromMinMax())
-	// そういうわけで、TRect<int> を RectInt ではなく、RectPixel と命名する。
-	typedef PrivateTemplate::TRect<float>	Rect;
-	typedef PrivateTemplate::TRect<int>		RectPixel;
 }

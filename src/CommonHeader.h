@@ -21,7 +21,7 @@
 #include "Core/Vector3.h"
 #include "Core/Color.h"
 
+#include "Core/TypeDef.h"
+
 // その他
 #include "Debug/Log.h"
-
-using namespace GE;

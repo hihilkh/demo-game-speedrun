@@ -335,7 +335,4 @@ namespace GE
 #pragma endregion
 
 	}
-
-	typedef PrivateTemplate::TVector3<float>	Vector3;
-	typedef PrivateTemplate::TVector3<int>		Vector3Int;
 }

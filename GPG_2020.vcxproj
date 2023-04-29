@@ -253,6 +253,7 @@
     <ClInclude Include="src\GameEngine\Core\Color.h" />
     <ClInclude Include="src\CommonHeader.h" />
     <ClInclude Include="src\GameEngine\Core\Rect.h" />
+    <ClInclude Include="src\GameEngine\Core\TypeDef.h" />
     <ClInclude Include="src\GameEngine\Core\Vector2.h" />
     <ClInclude Include="src\GameEngine\Core\Vector3.h" />
     <ClInclude Include="src\Debug\ColliderVisual.h" />
