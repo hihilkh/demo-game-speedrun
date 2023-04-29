@@ -175,7 +175,8 @@ namespace GE
 		inline TVector2<T> TVector2<T>::Scale(const TVector2<T>& lhs, const TVector2<T>& rhs)
 		{
 			auto result = lhs;
-			return result.Scale(rhs);
+			result.Scale(rhs);	// Return Value Optimization (RVO)のために、直接的に "return result.Scale(rhs);" をしない
+			return result;
 		}
 
 		template<typename T>
@@ -258,21 +259,24 @@ namespace GE
 		inline TVector2<T> operator+(const TVector2<T>& lhs, const TVector2<T>& rhs)
 		{
 			auto result = lhs;
-			return result += rhs;
+			result += rhs;
+			return result;
 		}
 
 		template<typename T>
 		inline TVector2<T> operator-(const TVector2<T>& lhs, const TVector2<T>& rhs)
 		{
 			auto result = lhs;
-			return result -= rhs;
+			result -= rhs;
+			return result;
 		}
 
 		template<typename T>
 		inline TVector2<T> operator*(const TVector2<T>& vector, T multiple)
 		{
 			auto result = vector;
-			return result *= multiple;
+			result *= multiple;
+			return result;
 		}
 
 		template<typename T>
@@ -285,7 +289,8 @@ namespace GE
 		inline TVector2<T> operator/(const TVector2<T>& vector, T divisor)
 		{
 			TVector2<T> result = vector;
-			return result /= divisor;
+			result /= divisor;
+			return result;
 		}
 
 		template<typename T>

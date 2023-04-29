@@ -1,5 +1,6 @@
 ﻿#include "Color.h"
 #include "Utils/Math.h"
+#include "Debug/Log.h"
 
 namespace GE
 {
@@ -55,19 +56,22 @@ namespace GE
 	Color operator+(const Color& lhs, const Color& rhs)
 	{
 		auto result = lhs;
-		return result += rhs;
+		result += rhs;		// Return Value Optimization (RVO)のために、直接的に "return result += rhs;" をしない
+		return result;
 	}
 
 	Color operator-(const Color& lhs, const Color& rhs)
 	{
 		auto result = lhs;
-		return result -= rhs;
+		result -= rhs;
+		return result;
 	}
 
 	Color operator*(const Color& lhs, const Color& rhs)
 	{
 		auto result = lhs;
-		return result *= rhs;
+		result *= rhs;
+		return result;
 	}
 
 	bool operator==(const Color& lhs, const Color& rhs)

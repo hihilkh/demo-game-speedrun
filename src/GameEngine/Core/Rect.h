@@ -155,7 +155,7 @@ namespace GE
 		template<typename T>
 		inline TVector2<T> TRect<T>::Center() const
 		{
-			return pos + size / 2;
+			return pos + size / T(2);
 		}
 
 		template<typename T>
