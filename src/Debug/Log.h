@@ -5,12 +5,16 @@
 #if DEBUG_IS_ENABLED(DEBUG_CONSOLE_LOGGING)
 
 #include <sstream>
-#include <windows.h>
+
+namespace Debug::Logging
+{
+	void Print(const char* message);
+}
 
 #define DEBUG_LOG_SAME_LINE(message) {\
-	std::stringstream ss;\
+	std::ostringstream ss;\
 	ss << message;\
-	OutputDebugString(ss.str().c_str());\
+	Debug::Logging::Print(ss.str().c_str());\
 }
 
 #define DEBUG_LOG(message)						DEBUG_LOG_SAME_LINE(message << '\n');
