@@ -1,4 +1,5 @@
-﻿#include "ScopeTiming.h"
+﻿#include "GEHeader.h"
+#include "ScopeTiming.h"
 
 #if DEBUG_IS_ENABLED(DEBUG_MEASUREMENT)
 

@@ -1,6 +1,6 @@
-﻿#include "Color.h"
+﻿#include "GEHeader.h"
+#include "Color.h"
 #include "Utils/Math.h"
-#include "Debug/Log.h"
 
 namespace GE
 {

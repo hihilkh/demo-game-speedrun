@@ -17,11 +17,10 @@
 #include <unordered_map>
 
 // ゲームエンジン
-#include "Core/Vector2.h"
-#include "Core/Vector3.h"
-#include "Core/Color.h"
+#include "DataType/Vector2.h"
+#include "DataType/Vector3.h"
+#include "DataType/Color.h"
+
+#include "Debug/Log.h"
 
 #include "Core/TypeDef.h"
-
-// その他
-#include "Debug/Log.h"

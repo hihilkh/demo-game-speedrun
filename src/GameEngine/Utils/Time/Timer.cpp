@@ -1,4 +1,5 @@
-﻿#include "Timer.h"
+﻿#include "GEHeader.h"
+#include "Timer.h"
 
 namespace Time
 {

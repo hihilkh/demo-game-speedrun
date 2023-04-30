@@ -91,7 +91,7 @@
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_DEBUG;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir)lib;$(SolutionDir)src;$(SolutionDir)src/GameEngine;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include</AdditionalIncludeDirectories>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile>CommonHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>GEHeader.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x64</AdditionalLibraryDirectories>
@@ -107,7 +107,7 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_DEBUG;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile>CommonHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>GEHeader.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x64</AdditionalLibraryDirectories>
@@ -125,7 +125,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)lib;$(SolutionDir)src;$(SolutionDir)src/GameEngine;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile>CommonHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>GEHeader.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -145,7 +145,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)lib;$(SolutionDir)src;$(SolutionDir)src/GameEngine;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile>CommonHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>GEHeader.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -178,27 +178,102 @@
     <ClCompile Include="src\Common\Direction.cpp" />
     <ClCompile Include="src\Common\Font.cpp" />
     <ClCompile Include="src\Common\Transform.cpp" />
-    <ClCompile Include="src\GameEngine\Core\Color.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    <ClCompile Include="src\GameEngine\Core\GameEngine.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">GEHeader.h</PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="src\CommonHeader.cpp">
+    <ClCompile Include="src\GameEngine\Core\Scene.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">GEHeader.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GameEngine\DataType\Color.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">GEHeader.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GameEngine\GEHeader.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">GEHeader.h</PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="src\Debug\ColliderVisual.cpp" />
-    <ClCompile Include="src\Debug\Log.cpp" />
+    <ClCompile Include="src\GameEngine\Debug\ColliderVisual.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">GEHeader.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GameEngine\Debug\Log.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">GEHeader.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GameEngine\Core\GameObject.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">GEHeader.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GameEngine\Core\Transform2D.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">GEHeader.h</PrecompiledHeaderFile>
+    </ClCompile>
     <ClCompile Include="src\Profiling\Profiler.cpp" />
     <ClCompile Include="src\Profiling\ProfilerLoggerConsole.cpp" />
     <ClCompile Include="src\Profiling\ProfilerLoggerCsv.cpp" />
     <ClCompile Include="src\Profiling\ProfilerSection.cpp" />
     <ClCompile Include="src\Profiling\ProfilerSectionCpu.cpp" />
     <ClCompile Include="src\Profiling\ProfilerSectionFps.cpp" />
-    <ClCompile Include="src\Debug\Measurement\ScopeTiming.cpp" />
+    <ClCompile Include="src\GameEngine\Debug\Measurement\ScopeTiming.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">GEHeader.h</PrecompiledHeaderFile>
+    </ClCompile>
     <ClCompile Include="src\Profiling\ProfilerSectionMemory.cpp" />
     <ClCompile Include="src\Game\GameEvent.cpp" />
     <ClCompile Include="src\Game\GameStatus.cpp" />
@@ -222,8 +297,26 @@
     <ClCompile Include="src\ParticleSystem\Task_BreakWallEffect.cpp" />
     <ClCompile Include="src\SceneTransition\Task_SceneTransition.cpp" />
     <ClCompile Include="src\Title\Task_Title.cpp" />
-    <ClCompile Include="src\GameEngine\Utils\Time\Timer.cpp" />
-    <ClCompile Include="src\GameEngine\Utils\Time\DelayTrigger.cpp" />
+    <ClCompile Include="src\GameEngine\Utils\Time\Timer.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">GEHeader.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GameEngine\Utils\Time\DelayTrigger.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">GEHeader.h</PrecompiledHeaderFile>
+    </ClCompile>
     <ClCompile Include="src\WinMain.cpp" />
     <ClCompile Include="lib\XI2018_Ver1_0.cpp" />
   </ItemGroup>
@@ -255,14 +348,19 @@
     <ClInclude Include="src\Common\Direction.h" />
     <ClInclude Include="src\Common\Font.h" />
     <ClInclude Include="src\Common\Transform.h" />
-    <ClInclude Include="src\GameEngine\Core\Color.h" />
-    <ClInclude Include="src\CommonHeader.h" />
-    <ClInclude Include="src\GameEngine\Core\Rect.h" />
+    <ClInclude Include="src\GameEngine\Core\GameEngine.h" />
+    <ClInclude Include="src\GameEngine\Core\GameLoopObject.h" />
+    <ClInclude Include="src\GameEngine\Core\Scene.h" />
+    <ClInclude Include="src\GameEngine\DataType\Color.h" />
+    <ClInclude Include="src\GameEngine\GEHeader.h" />
+    <ClInclude Include="src\GameEngine\Core\GameObject.h" />
+    <ClInclude Include="src\GameEngine\DataType\Rect.h" />
+    <ClInclude Include="src\GameEngine\Core\Transform2D.h" />
     <ClInclude Include="src\GameEngine\Core\TypeDef.h" />
-    <ClInclude Include="src\GameEngine\Core\Vector2.h" />
-    <ClInclude Include="src\GameEngine\Core\Vector3.h" />
-    <ClInclude Include="src\Debug\ColliderVisual.h" />
-    <ClInclude Include="src\Debug\DebugConfig.h" />
+    <ClInclude Include="src\GameEngine\DataType\Vector2.h" />
+    <ClInclude Include="src\GameEngine\DataType\Vector3.h" />
+    <ClInclude Include="src\GameEngine\Debug\ColliderVisual.h" />
+    <ClInclude Include="src\GameEngine\Debug\DebugConfig.h" />
     <ClInclude Include="src\Profiling\Profiler.h" />
     <ClInclude Include="src\Profiling\ProfilerLogger.h" />
     <ClInclude Include="src\Profiling\ProfilerLoggerConsole.h" />
@@ -270,7 +368,7 @@
     <ClInclude Include="src\Profiling\ProfilerSection.h" />
     <ClInclude Include="src\Profiling\ProfilerSectionCpu.h" />
     <ClInclude Include="src\Profiling\ProfilerSectionFps.h" />
-    <ClInclude Include="src\Debug\Measurement\ScopeTiming.h" />
+    <ClInclude Include="src\GameEngine\Debug\Measurement\ScopeTiming.h" />
     <ClInclude Include="src\Profiling\ProfilerSectionMemory.h" />
     <ClInclude Include="src\Game\GameEvent.h" />
     <ClInclude Include="src\Game\GameStatus.h" />
@@ -295,7 +393,7 @@
     <ClInclude Include="src\Profiling\ProfilingConfig.h" />
     <ClInclude Include="src\SceneTransition\Task_SceneTransition.h" />
     <ClInclude Include="src\Task\ResourceConstant.h" />
-    <ClInclude Include="src\Debug\Log.h" />
+    <ClInclude Include="src\GameEngine\Debug\Log.h" />
     <ClInclude Include="src\Task\ObjectBase.tpp" />
     <ClInclude Include="src\Task\ResourceBase.tpp" />
     <ClInclude Include="src\Task\TaskConstant.h" />

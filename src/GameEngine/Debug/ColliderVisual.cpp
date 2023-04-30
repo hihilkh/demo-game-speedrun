@@ -1,4 +1,5 @@
-﻿#include "ColliderVisual.h"
+﻿#include "GEHeader.h"
+#include "ColliderVisual.h"
 
 #if DEBUG_IS_ENABLED(DEBUG_COLLIDER_VISUAL)
 

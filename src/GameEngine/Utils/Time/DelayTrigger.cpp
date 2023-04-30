@@ -1,4 +1,5 @@
-﻿#include "DelayTrigger.h"
+﻿#include "GEHeader.h"
+#include "DelayTrigger.h"
 
 // TODO : 今スレッドセーフか
 // TODO : MemberFunctionBaseを使わなくてもできるか <- 多分std::functionなどでもできる

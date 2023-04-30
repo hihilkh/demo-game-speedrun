@@ -1,4 +1,5 @@
-﻿#include "Log.h"
+﻿#include "GEHeader.h"
+#include "Log.h"
 
 #if DEBUG_IS_ENABLED(DEBUG_CONSOLE_LOGGING)
 
