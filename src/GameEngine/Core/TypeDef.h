@@ -10,8 +10,9 @@
 namespace GE
 {
 	struct Color;
+	class Time;
 
-	namespace PrivateTemplate
+	namespace Internal
 	{
 		template<typename T>
 		struct TVector2;
@@ -27,12 +28,12 @@ namespace GE
 
 #pragma region typedef
 
-typedef GE::PrivateTemplate::TVector2<float>	Vector2;
-typedef GE::PrivateTemplate::TVector2<int>		Vector2Int;
-typedef GE::PrivateTemplate::TVector3<float>	Vector3;
-typedef GE::PrivateTemplate::TVector3<int>		Vector3Int;
+typedef GE::Internal::TVector2<float>	Vector2;
+typedef GE::Internal::TVector2<int>		Vector2Int;
+typedef GE::Internal::TVector3<float>	Vector3;
+typedef GE::Internal::TVector3<int>		Vector3Int;
 
-typedef GE::Color								Color;
+typedef GE::Color						Color;
 
 
 // 備考：
@@ -42,7 +43,10 @@ typedef GE::Color								Color;
 // (参考：TRect::FromMinMax())
 // そういうわけで、TRect<int> を RectInt ではなく、RectPixel と命名する。
 
-typedef GE::PrivateTemplate::TRect<float>		Rect;
-typedef GE::PrivateTemplate::TRect<int>			RectPixel;
+typedef GE::Internal::TRect<float>		Rect;
+typedef GE::Internal::TRect<int>		RectPixel;
+
+// TODO : Utils/Timeの中の命名
+//typedef GE::Time						Time;
 
 #pragma endregion

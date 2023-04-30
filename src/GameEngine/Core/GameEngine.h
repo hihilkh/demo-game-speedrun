@@ -1,34 +1,48 @@
 ﻿#pragma once
 
 #include <vector>
-#include "Scene.h"
 #include <memory>
+#include "GEConfig.h"
+
+#include <windows.h>
 
 namespace GE
 {
+	class Scene;
+
 	class GameEngine
 	{
 	public:
+		static void SetConfig(const GEConfig& config) { GameEngine::config = config; }
+		static const GEConfig& GetConfig() { return config; }
+
+		static int Start(HINSTANCE hInstance, int nCmdShow, Scene&& scene);
+
 		// TODO : マルチシーンを支援する
 		static void LoadScene(Scene&& scene);
 
 	private:
-		std::vector<Scene> loadedScenes;
-		std::unique_ptr<Scene> sceneToLoad;
+		static GEConfig config;
+		static bool isStarted;
 
-		bool isRunning;
+		static std::vector<Scene> loadedScenes;
+		static std::unique_ptr<Scene> sceneToLoad;
 
 	private:
-		GameEngine();
-		GameEngine(const GameEngine&) = delete;
-		void operator=(const GameEngine&) = delete;
+		GameEngine() = delete;
 
-		static GameEngine& GetInstance();
+		static void Init(Scene&& scene);
 
-		void Run();
-		void RequestChangeScene(Scene&& scene);
-		void CheckAndChangeScene();
-		void ChangeScene(Scene&& scene);
+		static void RequestChangeScene(Scene&& scene);
+		static void CheckAndChangeScene();
+		static void ChangeScene(Scene&& scene);
+		static void RunGameLoop();
+
+#pragma region ゲームウィンドウ
+
+		static HWND CreateGameWindow(HINSTANCE hInstance);
+
+#pragma endregion
 
 	};
 }

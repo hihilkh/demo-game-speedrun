@@ -83,7 +83,7 @@ namespace MyNamespace
 	* `T name(arg1, arg2);`
 		* 文字列を除く：
 			* `std::string name = "a";`
-		* また、組み込み型変数の定義は下記になる：
+		* また、組み込み型変数の初期化は下記になる：
 			* `bool name = true;`
 			* `int name = 1;`
 			* `float name = 1.0f;`

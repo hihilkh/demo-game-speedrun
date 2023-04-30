@@ -7,7 +7,7 @@
 
 namespace GE
 {
-	namespace PrivateTemplate
+	namespace Internal
 	{
 
 #pragma region 宣言

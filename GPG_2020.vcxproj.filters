@@ -160,9 +160,6 @@
     <ClCompile Include="src\Animation\Animator.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Debug\ColliderVisual.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\ParticleSystem\Task_BreakWallEffect.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
@@ -199,22 +196,43 @@
     <ClCompile Include="src\Profiling\ProfilerLoggerCsv.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Debug\Measurement\ScopeTiming.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Profiling\ProfilerSectionMemory.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Profiling\ProfilerSectionCpu.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameEngine\Core\Color.cpp">
+    <ClCompile Include="src\GameEngine\Core\GameEngine.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Debug\Log.cpp">
+    <ClCompile Include="src\GameEngine\Core\Scene.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\CommonHeader.cpp">
+    <ClCompile Include="src\GameEngine\Core\Time.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameEngine\DataType\Color.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameEngine\GEHeader.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameEngine\Debug\ColliderVisual.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameEngine\Debug\Log.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameEngine\Core\GameObject.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameEngine\Core\Transform2D.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameEngine\Debug\Measurement\ScopeTiming.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameEngine\Core\HandyFunc.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -271,9 +289,6 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Task\TaskConstant.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Debug\Log.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Ending\Task_Ending.h">
@@ -378,9 +393,6 @@
     <ClInclude Include="src\Map\MapObject\MapObjectType.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Debug\ColliderVisual.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\ParticleSystem\Task_BreakWallEffect.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
@@ -408,9 +420,6 @@
     <ClInclude Include="resource.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Debug\DebugConfig.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Profiling\Profiler.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
@@ -429,9 +438,6 @@
     <ClInclude Include="src\Profiling\ProfilerLoggerCsv.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Debug\Measurement\ScopeTiming.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Profiling\ProfilerSectionMemory.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
@@ -441,22 +447,58 @@
     <ClInclude Include="src\Profiling\ProfilingConfig.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameEngine\Core\Vector2.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameEngine\Core\Color.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameEngine\Core\Vector3.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameEngine\Core\Rect.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\CommonHeader.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\GameEngine\Core\TypeDef.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\Core\GameEngine.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\Core\GameLoopObject.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\Core\Scene.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\Core\Time.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\DataType\Color.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\GEHeader.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\Core\GameObject.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\DataType\Rect.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\Core\Transform2D.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\DataType\Vector2.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\DataType\Vector3.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\Debug\ColliderVisual.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\Debug\DebugConfig.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\Debug\Measurement\ScopeTiming.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\Debug\Log.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\Core\GEConfig.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\Core\HandyFunc.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

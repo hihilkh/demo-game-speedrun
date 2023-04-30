@@ -23,4 +23,7 @@
 
 #include "Debug/Log.h"
 
+#include "Core/Time.h"
+
+#include "Core/HandyFunc.h"
 #include "Core/TypeDef.h"
