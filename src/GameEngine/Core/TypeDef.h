@@ -28,13 +28,11 @@ namespace GE
 
 #pragma region typedef
 
-typedef GE::Internal::TVector2<float>	Vector2;
-typedef GE::Internal::TVector2<int>		Vector2Int;
-typedef GE::Internal::TVector3<float>	Vector3;
-typedef GE::Internal::TVector3<int>		Vector3Int;
-
-typedef GE::Color						Color;
-
+using Vector2		= GE::Internal::TVector2<float>;
+using Vector2Int	= GE::Internal::TVector2<int>;
+using Vector3		= GE::Internal::TVector3<float>;
+using Vector3Int	= GE::Internal::TVector3<int>;
+using Color			= GE::Color;
 
 // 備考：
 // 本質的に TRect<float> と TRect<int> は大きな違いがある。
@@ -43,10 +41,10 @@ typedef GE::Color						Color;
 // (参考：TRect::FromMinMax())
 // そういうわけで、TRect<int> を RectInt ではなく、RectPixel と命名する。
 
-typedef GE::Internal::TRect<float>		Rect;
-typedef GE::Internal::TRect<int>		RectPixel;
+using Rect			= GE::Internal::TRect<float>;
+using RectPixel		= GE::Internal::TRect<int>;
 
 // TODO : Utils/Timeの中の命名
-//typedef GE::Time						Time;
+//using Time = GE::Time;
 
 #pragma endregion

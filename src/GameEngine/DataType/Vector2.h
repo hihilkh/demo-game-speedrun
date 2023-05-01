@@ -19,8 +19,8 @@ namespace GE
 		{
 			static_assert(std::is_integral_v<T> || std::is_floating_point_v<T>, "The type must be int or float");
 
-			typedef std::conditional_t<std::is_floating_point_v<T>, T, float> FloatType;
-			typedef std::conditional_t<std::is_floating_point_v<T>, TVector2<T>, TVector2<float>> VectorFloatType;
+			using FloatType = std::conditional_t<std::is_floating_point_v<T>, T, float>;
+			using VectorFloatType = TVector2<FloatType>;
 
 			T x, y;
 
