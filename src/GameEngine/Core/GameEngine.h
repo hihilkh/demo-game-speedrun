@@ -1,14 +1,18 @@
 ﻿#pragma once
 
-#include <vector>
 #include <memory>
+#include <string>
 #include "GEConfig.h"
 
 #include <windows.h>
 
 namespace GE
 {
-	class Scene;
+	namespace SceneManagement
+	{
+		struct SceneConfig;
+	}
+
 
 	class GameEngine
 	{
@@ -16,30 +20,28 @@ namespace GE
 		static void SetConfig(const GEConfig& config) { GameEngine::config = config; }
 		static const GEConfig& GetConfig() { return config; }
 
-		static int Start(HINSTANCE hInstance, int nCmdShow, Scene&& scene);
+		static void SetSceneConfig(SceneManagement::SceneConfig&& config);
 
-		// TODO : マルチシーンを支援する
-		static void LoadScene(Scene&& scene);
+		static int Start(HINSTANCE hInstance, int nCmdShow);
+
+		static void LoadScene(const std::string& sceneName);
 
 	private:
 		static GEConfig config;
 		static bool isStarted;
-
-		static std::vector<Scene> loadedScenes;
-		static std::unique_ptr<Scene> sceneToLoad;
+		static std::string sceneNameToLoad;
 
 	private:
 		GameEngine() = delete;
 
-		static void Init(Scene&& scene);
+		static void InitEngine();
 
-		static void RequestChangeScene(Scene&& scene);
 		static void CheckAndChangeScene();
-		static void ChangeScene(Scene&& scene);
 		static void RunGameLoop();
 
-#pragma region ゲームウィンドウ
+#pragma region Windows プラットフォーム
 
+		static int StartWithWindows(HINSTANCE hInstance, int nCmdShow);
 		static HWND CreateGameWindow(HINSTANCE hInstance);
 
 #pragma endregion

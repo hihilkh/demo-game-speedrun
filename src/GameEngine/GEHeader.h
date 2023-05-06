@@ -23,7 +23,9 @@
 
 #include "Debug/Log.h"
 
+#include "Core/GameObject.h"
+#include "Core/Component.h"
 #include "Core/Time.h"
 
-#include "Core/HandyFunc.h"
-#include "Core/TypeDef.h"
+#include "Utils/HandyFunc/FromGameEngine.h"
+#include "Utils/TypeDef.h"

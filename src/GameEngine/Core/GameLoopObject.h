@@ -1,18 +1,21 @@
 ﻿#pragma once
 
-namespace GE
+namespace GE::Internal
 {
 	class GameLoopObject
 	{
 	public:
 		virtual ~GameLoopObject() = default;
 
-	protected:
 		virtual void Awake() {}
 		virtual void Start() {}
 		virtual void Update() {}
 		virtual void LateUpdate() {}
-		virtual void OnEnable() {}
-		virtual void OnDisable() {}
+
+		bool GetEnable() const { return isEnable; }
+		void SetEnable(bool isEnable) { this->isEnable = isEnable; }
+
+	private:
+		bool isEnable = true;
 	};
 }

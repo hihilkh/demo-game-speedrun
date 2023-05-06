@@ -1,18 +1,21 @@
 ﻿#include "GameEngine.h"
 #include "Time.h"
-#include "Debug/Log.h"
-#include "Scene.h"
+#include "SceneManagement/SceneManager.h"
+#include "SceneManagement/Scene.h"
 
 namespace GE
 {
 	GEConfig GameEngine::config;
 	bool GameEngine::isStarted = false;
+	std::string GameEngine::sceneNameToLoad = "";
 
-	std::vector<Scene> GameEngine::loadedScenes;
-	std::unique_ptr<Scene> GameEngine::sceneToLoad;
+	void GameEngine::SetSceneConfig(SceneManagement::SceneConfig&& config)
+	{
+		SceneManagement::SceneManager::SetConfig(std::move(config));
+	}
 
 	// 参考：https://learn.microsoft.com/en-us/cpp/windows/walkthrough-creating-windows-desktop-applications-cpp?view=msvc-170
-	int GameEngine::Start(HINSTANCE hInstance, int nCmdShow, Scene&& scene)
+	int GameEngine::Start(HINSTANCE hInstance, int nCmdShow)
 	{
 		if (isStarted) {
 			return 0;
@@ -20,8 +23,67 @@ namespace GE
 
 		isStarted = true;
 
-		Init(std::move(scene));
+		InitEngine();
+		return StartWithWindows(hInstance, nCmdShow);
+		
+	}
 
+	void GameEngine::InitEngine()
+	{
+		Time::Init(config.targetFps);
+		SceneManagement::SceneManager::LoadFirstScene();
+	}
+
+	void GameEngine::LoadScene(const std::string& sceneName)
+	{
+		// 実際のシーン遷移はCheckAndChangeScene()で行う
+		sceneNameToLoad = sceneName;
+	}
+
+	void GameEngine::CheckAndChangeScene()
+	{
+		if (sceneNameToLoad.empty()) {
+			return;
+		}
+
+		SceneManagement::SceneManager::ChangeScene(sceneNameToLoad);
+	}
+
+	void GameEngine::RunGameLoop()
+	{
+		Time::Update();
+
+		SceneManagement::Scene* activeScene = SceneManagement::SceneManager::GetActiveScene();
+		if (activeScene) {
+			activeScene->Update();
+			activeScene->LateUpdate();
+			activeScene->Render();
+		}
+
+		CheckAndChangeScene();
+	}
+
+#pragma region Windows プラットフォーム
+
+	namespace
+	{
+		LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+		{
+			switch (message) {
+				case WM_DESTROY:
+					PostQuitMessage(0);
+					break;
+				default:
+					return DefWindowProc(hWnd, message, wParam, lParam);
+					break;
+			}
+
+			return (LRESULT)0;
+		}
+	}
+
+	int GameEngine::StartWithWindows(HINSTANCE hInstance, int nCmdShow)
+	{
 		HWND hWnd = CreateGameWindow(hInstance);
 		if (!hWnd) {
 			return 0;
@@ -53,94 +115,6 @@ namespace GE
 		}
 
 		return 0;
-	}
-
-	void GameEngine::Init(Scene&& scene)
-	{
-		Time::Init(config.targetFps);
-		RequestChangeScene(std::move(scene));
-	}
-
-	void GameEngine::LoadScene(Scene&& scene)
-	{
-		RequestChangeScene(std::move(scene));
-	}
-
-	void GameEngine::RequestChangeScene(Scene&& scene)
-	{
-		sceneToLoad.reset();
-
-		if (loadedScenes.empty()) {
-			ChangeScene(std::move(scene));
-		} else {
-			sceneToLoad = std::make_unique<Scene>(std::move(scene));
-			CheckAndChangeScene();
-		}
-	}
-
-	void GameEngine::CheckAndChangeScene()
-	{
-		if (!sceneToLoad.get()) {
-			return;
-		}
-
-		ChangeScene(std::move(*sceneToLoad.release()));
-	}
-
-	void GameEngine::ChangeScene(Scene&& scene)
-	{
-		DEBUG_LOG("シーン遷移：既存シーンのアンロード開始");
-
-		loadedScenes.clear();
-		// TODO : アセットの破棄処理
-
-		DEBUG_LOG("シーン遷移：既存シーンのアンロード完了");
-
-		DEBUG_LOG("シーン遷移：" << scene.GetName() << "：読み込み開始");
-
-		scene.Init();
-		loadedScenes.push_back(std::move(scene));
-
-		DEBUG_LOG("シーン遷移：" << loadedScenes.back().GetName() << "：読み込み完了");
-	}
-
-	void GameEngine::RunGameLoop()
-	{
-		// TODO
-		Time::Update();
-
-		for (Scene& scene : loadedScenes) {
-			scene.Update();
-		}
-
-		for (Scene& scene : loadedScenes) {
-			scene.LateUpdate();
-		}
-
-		for (Scene& scene : loadedScenes) {
-			scene.Render();
-		}
-
-		CheckAndChangeScene();
-	}
-
-#pragma region ゲームウィンドウ
-
-	namespace
-	{
-		LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
-		{
-			switch (message) {
-				case WM_DESTROY:
-					PostQuitMessage(0);
-					break;
-				default:
-					return DefWindowProc(hWnd, message, wParam, lParam);
-					break;
-			}
-
-			return (LRESULT)0;
-		}
 	}
 
 	HWND GameEngine::CreateGameWindow(HINSTANCE hInstance)

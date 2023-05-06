@@ -1,7 +1,8 @@
-﻿#include <windows.h>
+﻿#include "GEHeader.h"
+#include <windows.h>
 
 #include "Core/GameEngine.h"
-#include "Core/Scene.h"
+#include "Scenes/SceneMapping.h"
 
 int WINAPI WinMain(
 	_In_ HINSTANCE      hInstance,
@@ -10,7 +11,7 @@ int WINAPI WinMain(
 	_In_ int            nCmdShow
 )
 {
-	// TODO : GE::Scene()
-	int exitFlag = GE::GameEngine::Start(hInstance, nCmdShow, GE::Scene());
+	GE::GameEngine::SetSceneConfig(Scene::CreateSceneConfig());
+	int exitFlag = GE::GameEngine::Start(hInstance, nCmdShow);
 	return exitFlag;
 }

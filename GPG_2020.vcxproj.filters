@@ -205,7 +205,7 @@
     <ClCompile Include="src\GameEngine\Core\GameEngine.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameEngine\Core\Scene.cpp">
+    <ClCompile Include="src\GameEngine\SceneManagement\Scene.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GameEngine\Core\Time.cpp">
@@ -232,7 +232,19 @@
     <ClCompile Include="src\GameEngine\Debug\Measurement\ScopeTiming.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameEngine\Core\HandyFunc.cpp">
+    <ClCompile Include="src\GameEngine\Utils\HandyFunc\FromGameEngine.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scenes\TitleScene.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameEngine\SceneManagement\SceneManager.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scenes\SceneMapping.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameEngine\SceneManagement\SceneConfig.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -447,7 +459,7 @@
     <ClInclude Include="src\Profiling\ProfilingConfig.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameEngine\Core\TypeDef.h">
+    <ClInclude Include="src\GameEngine\Utils\TypeDef.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GameEngine\Core\GameEngine.h">
@@ -456,7 +468,7 @@
     <ClInclude Include="src\GameEngine\Core\GameLoopObject.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameEngine\Core\Scene.h">
+    <ClInclude Include="src\GameEngine\SceneManagement\Scene.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GameEngine\Core\Time.h">
@@ -498,7 +510,28 @@
     <ClInclude Include="src\GameEngine\Core\GEConfig.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameEngine\Core\HandyFunc.h">
+    <ClInclude Include="src\GameEngine\Utils\HandyFunc\FromGameEngine.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\Core\Renderer.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\Core\Component.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scenes\TitleScene.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\SceneManagement\SceneManager.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scenes\SceneMapping.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\SceneManagement\SceneConfig.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\Tools\ConstructorTest.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
