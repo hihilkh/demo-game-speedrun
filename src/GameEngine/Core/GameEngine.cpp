@@ -53,12 +53,10 @@ namespace GE
 	{
 		Time::Update();
 
-		SceneManagement::Scene* activeScene = SceneManagement::SceneManager::GetActiveScene();
-		if (activeScene) {
-			activeScene->OnUpdate();
-			activeScene->OnLateUpdate();
-			activeScene->OnRender();
-		}
+		SceneManagement::Scene& activeScene = SceneManagement::SceneManager::GetActiveScene();
+		activeScene.OnUpdate();
+		activeScene.OnLateUpdate();
+		activeScene.OnRender();
 
 		CheckAndChangeScene();
 	}

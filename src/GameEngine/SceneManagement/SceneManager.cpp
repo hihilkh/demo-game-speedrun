@@ -6,11 +6,14 @@
 namespace GE::SceneManagement
 {
 	SceneConfig SceneManager::config;
-	std::unique_ptr<Scene> SceneManager::activeScene = nullptr;
 
-	Scene* SceneManager::GetActiveScene()
+	// 常にactiveSceneを持っているように、ダミーシーンを作成する
+	// TODO : 今スレッドセーフではない。GetActiveScene()を呼び出す時、activeSceneはない可能がある
+	std::unique_ptr<Scene> SceneManager::activeScene = std::make_unique<Scene>("Dummy");
+
+	Scene& SceneManager::GetActiveScene()
 	{
-		return activeScene.get();
+		return *activeScene;
 	}
 
 	void SceneManager::SetConfig(SceneConfig&& config)

@@ -12,7 +12,7 @@ namespace GE::SceneManagement
 		friend class GameEngine;
 
 	public:
-		static Scene* GetActiveScene();
+		static Scene& GetActiveScene();
 
 	private:
 		static SceneConfig config;

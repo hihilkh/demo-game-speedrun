@@ -9,7 +9,7 @@ namespace GE::SceneManagement
 
 	GameObject& Scene::AddGameObject()
 	{
-		std::unique_ptr<GameObject>& gameObject = gameObjects.emplace_back();
+		auto& gameObject = gameObjects.emplace_back(std::make_unique<GameObject>());
 		return *gameObject;
 	}
 

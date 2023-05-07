@@ -253,6 +253,9 @@
     <ClCompile Include="src\GameEngine\Render\Renderer.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\GameEngine\Render\Image.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GameEngine_Ver3_83.h">
@@ -541,6 +544,9 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GameEngine\Render\RenderBase.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\Render\Image.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

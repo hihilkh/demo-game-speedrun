@@ -2,10 +2,20 @@
 #include "GameObject.h"
 #include "Component.h"
 #include "Render/Renderer.h"
+#include "SceneManagement/SceneManager.h"
+#include "SceneManagement/Scene.h"
 
 namespace GE
 {
+	GameObject::GameObject() = default;
 	GameObject::~GameObject() = default;
+
+	GameObject& GameObject::CreateEmpty()
+	{
+		return SceneManagement::SceneManager::GetActiveScene().AddGameObject();
+	}
+
+#pragma region ゲームループ
 
 	void GameObject::OnAwake()
 	{
@@ -79,4 +89,7 @@ namespace GE
 			func(*child);
 		}
 	}
+
+#pragma endregion
+
 }

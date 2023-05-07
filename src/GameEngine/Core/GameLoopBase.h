@@ -11,6 +11,8 @@ namespace GE::Internal
 		virtual void OnStart() {}
 		virtual void OnUpdate() {}
 		virtual void OnLateUpdate() {}
+		// TODO : Temp
+		// OnDestroy / Destroy
 
 		bool GetEnable() const { return isEnable; }
 		void SetEnable(bool isEnable) { this->isEnable = isEnable; }

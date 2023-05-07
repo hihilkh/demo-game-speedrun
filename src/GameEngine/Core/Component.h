@@ -8,6 +8,7 @@ namespace GE
 
 	class Component : public Internal::GameLoopBase
 	{
+		friend GameObject;
 		// TODO : Temp
 		// isActive (global base)
 

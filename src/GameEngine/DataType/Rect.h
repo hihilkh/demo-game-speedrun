@@ -130,7 +130,6 @@ namespace GE::DataType::Internal
 		T deltaY = oppositeY - y;
 
 		if constexpr (std::is_integral_v<T>) {
-
 			return TRect(x, y, deltaX + Math::SignNonZero(deltaX), deltaY + Math::SignNonZero(deltaY));
 		} else {
 			return TRect(x, y, deltaX, deltaY);
