@@ -2,15 +2,15 @@
 
 namespace GE::Internal
 {
-	class GameLoopObject
+	class GameLoopBase
 	{
 	public:
-		virtual ~GameLoopObject() = default;
+		virtual ~GameLoopBase() = default;
 
-		virtual void Awake() {}
-		virtual void Start() {}
-		virtual void Update() {}
-		virtual void LateUpdate() {}
+		virtual void OnAwake() {}
+		virtual void OnStart() {}
+		virtual void OnUpdate() {}
+		virtual void OnLateUpdate() {}
 
 		bool GetEnable() const { return isEnable; }
 		void SetEnable(bool isEnable) { this->isEnable = isEnable; }

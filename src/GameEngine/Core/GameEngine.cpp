@@ -55,9 +55,9 @@ namespace GE
 
 		SceneManagement::Scene* activeScene = SceneManagement::SceneManager::GetActiveScene();
 		if (activeScene) {
-			activeScene->Update();
-			activeScene->LateUpdate();
-			activeScene->Render();
+			activeScene->OnUpdate();
+			activeScene->OnLateUpdate();
+			activeScene->OnRender();
 		}
 
 		CheckAndChangeScene();

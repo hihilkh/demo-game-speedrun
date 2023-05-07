@@ -5,7 +5,7 @@
 #include <cmath>
 #include "Vector3.h"
 
-namespace GE::Internal
+namespace GE::DataType::Internal
 {
 #pragma region 宣言
 

@@ -247,6 +247,12 @@
     <ClCompile Include="src\GameEngine\SceneManagement\SceneConfig.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\GameEngine\Core\Component.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameEngine\Render\Renderer.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GameEngine_Ver3_83.h">
@@ -465,7 +471,7 @@
     <ClInclude Include="src\GameEngine\Core\GameEngine.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameEngine\Core\GameLoopObject.h">
+    <ClInclude Include="src\GameEngine\Core\GameLoopBase.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GameEngine\SceneManagement\Scene.h">
@@ -513,7 +519,7 @@
     <ClInclude Include="src\GameEngine\Utils\HandyFunc\FromGameEngine.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameEngine\Core\Renderer.h">
+    <ClInclude Include="src\GameEngine\Render\Renderer.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GameEngine\Core\Component.h">
@@ -532,6 +538,9 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GameEngine\Tools\ConstructorTest.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\Render\RenderBase.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

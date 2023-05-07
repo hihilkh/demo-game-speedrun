@@ -1,18 +1,24 @@
 ﻿#pragma once
 
-#include "GameLoopObject.h"
+#include "GameLoopBase.h"
+#include "Render/RenderBase.h"
 #include <vector>
 #include <memory>
 #include <functional>
 
 namespace GE
 {
+	class Component;
+	namespace Render
+	{
+		class Renderer;
+	}
 	namespace SceneManagement
 	{
 		class Scene;
 	}
 
-	class GameObject : public Internal::GameLoopObject
+	class GameObject : public Internal::GameLoopBase, public Render::Internal::RenderBase
 	{
 		friend SceneManagement::Scene;
 
@@ -30,32 +36,33 @@ namespace GE
 		// Transform
 
 	private:
-		std::vector<std::unique_ptr<class Component>> nonRenderComponents;
-		std::vector<std::unique_ptr<class Renderer>> renderers;
+		std::vector<std::unique_ptr<Component>> nonRenderComponents;
+		std::vector<std::unique_ptr<Render::Renderer>> renderers;
 		std::vector<std::unique_ptr<GameObject>> children;
 
 	private:
 		/// <summary>
-		/// 生成した後の最初の処理。GetEnable()にかかわらず呼び出される
+		/// 生成した後の最初の処理。有効無効にかかわらず呼び出される
 		/// </summary>
-		void Awake() override;
+		void OnAwake() override;
 		/// <summary>
-		/// Awake()段階の次の処理。GetEnable()にかかわらず呼び出される
+		/// Awake()段階の次の処理。有効無効にかかわらず呼び出される
 		/// </summary>
-		void Start() override;
+		void OnStart() override;
 		/// <summary>
-		/// 毎フレームの処理。GetEnable() == trueの時のみ
+		/// 毎フレームの処理。有効にする時のみ
 		/// </summary>
-		void Update() override;
+		void OnUpdate() override;
 		/// <summary>
-		/// Update段階の次の処理。GetEnable() == trueの時のみ
+		/// Update段階の次の処理。有効にする時のみ
 		/// </summary>
-		void LateUpdate() override;
+		void OnLateUpdate() override;
 		/// <summary>
-		/// 描画の処理。GetEnable() == trueの時のみ
+		/// 描画の処理。有効にする時のみ
 		/// </summary>
-		void Render();
+		void OnRender() override;
 
-		void ExecuteByOrder(void (*func)(Internal::GameLoopObject&));
+		void ExecuteByOrder(void (*func)(Internal::GameLoopBase&));
+		void ExecuteRenderByOrder(void (*func)(Render::Internal::RenderBase&));
 	};
 }

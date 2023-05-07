@@ -178,7 +178,27 @@
     <ClCompile Include="src\Common\Direction.cpp" />
     <ClCompile Include="src\Common\Font.cpp" />
     <ClCompile Include="src\Common\Transform.cpp" />
+    <ClCompile Include="src\GameEngine\Core\Component.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">GEHeader.h</PrecompiledHeaderFile>
+    </ClCompile>
     <ClCompile Include="src\GameEngine\Core\GameEngine.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">GEHeader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">GEHeader.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GameEngine\Render\Renderer.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">GEHeader.h</PrecompiledHeaderFile>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
@@ -393,8 +413,9 @@
     <ClInclude Include="src\GameEngine\Core\Component.h" />
     <ClInclude Include="src\GameEngine\Core\GameEngine.h" />
     <ClInclude Include="src\GameEngine\Core\GEConfig.h" />
-    <ClInclude Include="src\GameEngine\Core\GameLoopObject.h" />
-    <ClInclude Include="src\GameEngine\Core\Renderer.h" />
+    <ClInclude Include="src\GameEngine\Core\GameLoopBase.h" />
+    <ClInclude Include="src\GameEngine\Render\Renderer.h" />
+    <ClInclude Include="src\GameEngine\Render\RenderBase.h" />
     <ClInclude Include="src\GameEngine\SceneManagement\Scene.h" />
     <ClInclude Include="src\GameEngine\SceneManagement\SceneManager.h" />
     <ClInclude Include="src\GameEngine\Core\Time.h" />

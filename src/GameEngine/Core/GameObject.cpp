@@ -1,69 +1,76 @@
 ﻿#include "GEHeader.h"
 #include "GameObject.h"
 #include "Component.h"
-#include "Renderer.h"
+#include "Render/Renderer.h"
 
 namespace GE
 {
 	GameObject::~GameObject() = default;
 
-	void GameObject::Awake()
+	void GameObject::OnAwake()
 	{
 		ExecuteByOrder(
-			[](auto& object) { object.Awake(); }
+			[](auto& object) { object.OnAwake(); }
 		);
 	}
 
-	void GameObject::Start()
+	void GameObject::OnStart()
 	{
 		ExecuteByOrder(
-			[](auto& object) { object.Start(); }
+			[](auto& object) { object.OnStart(); }
 		);
 	}
 
-	void GameObject::Update()
+	void GameObject::OnUpdate()
 	{
 		if (!GetEnable()) {
 			return;
 		}
 
 		ExecuteByOrder(
-			[](auto& object) { object.Update(); }
+			[](auto& object) { object.OnUpdate(); }
 		);
 	}
 
-	void GameObject::LateUpdate()
+	void GameObject::OnLateUpdate()
 	{
 		if (!GetEnable()) {
 			return;
 		}
 
 		ExecuteByOrder(
-			[](auto& object) { object.LateUpdate(); }
+			[](auto& object) { object.OnLateUpdate(); }
 		);
 	}
 
-	void GameObject::Render()
+	void GameObject::OnRender()
 	{
 		if (!GetEnable()) {
 			return;
 		}
 
-		for (auto& renderer : renderers) {
-			renderer->Render();
-		}
-
-		for (auto& child : children) {
-			child->Render();
-		}
+		ExecuteRenderByOrder(
+			[](auto& object) { object.OnRender(); }
+		);
 	}
 
-	void GameObject::ExecuteByOrder(void (*func)(Internal::GameLoopObject&))
+	void GameObject::ExecuteByOrder(void (*func)(Internal::GameLoopBase&))
 	{
 		for (auto& component : nonRenderComponents) {
 			func(*component);
 		}
 
+		for (auto& renderer : renderers) {
+			func(*renderer);
+		}
+
+		for (auto& child : children) {
+			func(*child);
+		}
+	}
+
+	void GameObject::ExecuteRenderByOrder(void (*func)(Render::Internal::RenderBase&))
+	{
 		for (auto& renderer : renderers) {
 			func(*renderer);
 		}

@@ -5,7 +5,7 @@
 #include <type_traits>
 #include "Utils/Math.h"
 
-namespace GE::Internal
+namespace GE::DataType::Internal
 {
 #pragma region 宣言
 	template<typename T>

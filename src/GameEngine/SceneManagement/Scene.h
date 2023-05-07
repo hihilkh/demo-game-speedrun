@@ -24,8 +24,8 @@ namespace GE::SceneManagement
 		std::vector<std::unique_ptr<GameObject>> gameObjects;
 
 	private:
-		void Update();
-		void LateUpdate();
-		void Render();
+		void OnUpdate();
+		void OnLateUpdate();
+		void OnRender();
 	};
 }

@@ -1,18 +1,15 @@
 ﻿#pragma once
 
-//#include "Vector2.h"
-//#include "Vector3.h"
-//#include "Color.h"
-//#include "Rect.h"
-
 #pragma region 前方宣言
 
 namespace GE
 {
+	class GameObject;
+	class Component;
 	struct Color;
 	class Time;
 
-	namespace Internal
+	namespace DataType::Internal
 	{
 		template<typename T>
 		struct TVector2;
@@ -28,10 +25,12 @@ namespace GE
 
 #pragma region typedef
 
-using Vector2		= GE::Internal::TVector2<float>;
-using Vector2Int	= GE::Internal::TVector2<int>;
-using Vector3		= GE::Internal::TVector3<float>;
-using Vector3Int	= GE::Internal::TVector3<int>;
+using GameObject	= GE::GameObject;
+using Component		= GE::Component;
+using Vector2		= GE::DataType::Internal::TVector2<float>;
+using Vector2Int	= GE::DataType::Internal::TVector2<int>;
+using Vector3		= GE::DataType::Internal::TVector3<float>;
+using Vector3Int	= GE::DataType::Internal::TVector3<int>;
 using Color			= GE::Color;
 
 // 備考：
@@ -41,8 +40,8 @@ using Color			= GE::Color;
 // (参考：TRect::FromMinMax())
 // そういうわけで、TRect<int> を RectInt ではなく、RectPixel と命名する。
 
-using Rect			= GE::Internal::TRect<float>;
-using RectPixel		= GE::Internal::TRect<int>;
+using Rect			= GE::DataType::Internal::TRect<float>;
+using RectPixel		= GE::DataType::Internal::TRect<int>;
 
 // TODO : Utils/Timeの中の命名
 //using Time = GE::Time;

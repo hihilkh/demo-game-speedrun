@@ -13,24 +13,24 @@ namespace GE::SceneManagement
 		return *gameObject;
 	}
 
-	void Scene::Update()
+	void Scene::OnUpdate()
 	{
 		for (auto& gameObject : gameObjects) {
-			gameObject->Update();
+			gameObject->OnUpdate();
 		}
 	}
 
-	void Scene::LateUpdate()
+	void Scene::OnLateUpdate()
 	{
 		for (auto& gameObject : gameObjects) {
-			gameObject->LateUpdate();
+			gameObject->OnLateUpdate();
 		}
 	}
 
-	void Scene::Render()
+	void Scene::OnRender()
 	{
 		for (auto& gameObject : gameObjects) {
-			gameObject->Render();
+			gameObject->OnRender();
 		}
 	}
 }
