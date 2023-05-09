@@ -1,6 +1,6 @@
 ﻿#include "FromGameEngine.h"
 #include "Core/GameEngine.h"
-#include <string>
+#include "Core/GEConfig.h"
 
 namespace GE
 {

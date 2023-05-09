@@ -4,10 +4,11 @@
 #include <functional>
 #include <string>
 #include <memory>
-#include "Scene.h"
 
 namespace GE::SceneManagement
 {
+	class Scene;
+
 	using SceneBuilder = std::function<std::unique_ptr<Scene>()>;
 
 	struct SceneConfig

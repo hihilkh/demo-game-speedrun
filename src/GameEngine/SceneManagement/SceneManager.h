@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "SceneConfig.h"
+#include "Scene.h"
 #include <memory>
 
 namespace GE::SceneManagement

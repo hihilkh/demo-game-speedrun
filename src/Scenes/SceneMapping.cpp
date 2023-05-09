@@ -1,5 +1,7 @@
 ﻿#include "GEHeader.h"
 #include "SceneMapping.h"
+#include "SceneManagement/Scene.h"
+
 #include "TitleScene.h"
 
 namespace Scene

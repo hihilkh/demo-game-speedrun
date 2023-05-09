@@ -1,10 +1,11 @@
 ﻿#pragma once
 
 #include <string>
-#include "Core/GEConfig.h"
 
 namespace GE
 {
+	struct GEConfig;
+
 	const GEConfig& GetGEConfig();
 	void LoadScene(const std::string& sceneName);
 }
