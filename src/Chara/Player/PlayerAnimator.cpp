@@ -1,5 +1,5 @@
 ﻿#include "PlayerAnimator.h"
-#include "Debug/Log.h"
+#include "GE/Debug/Log.h"
 #include "Animation/AnimationClip.h"
 #include "Task_Player.h"
 #include "Task/ResourceConstant.h"

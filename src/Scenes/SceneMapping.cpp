@@ -1,6 +1,6 @@
-﻿#include "GEHeader.h"
+﻿#include "GE/GEHeader.h"
 #include "SceneMapping.h"
-#include "SceneManagement/Scene.h"
+#include "GE/SceneManagement/Scene.h"
 
 #include "TitleScene.h"
 

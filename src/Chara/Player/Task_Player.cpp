@@ -1,6 +1,6 @@
 ﻿#include "Task_Player.h"
 #include <numbers>
-#include "Debug/Log.h"
+#include "GE/Debug/Log.h"
 #include "Game/Task_GameCamera.h"
 #include "Map/Task_Map.h"
 #include "Game/GameStatus.h"

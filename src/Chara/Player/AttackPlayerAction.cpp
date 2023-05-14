@@ -1,5 +1,5 @@
 ﻿#include "AttackPlayerAction.h"
-#include "Debug/Log.h"
+#include "GE/Debug/Log.h"
 #include "PlayerAnimator.h"
 
 namespace Player

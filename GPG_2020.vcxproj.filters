@@ -169,12 +169,6 @@
     <ClCompile Include="src\ParticleSystem\ParticleConfig.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameEngine\Utils\Time\Timer.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameEngine\Utils\Time\DelayTrigger.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Common\Font.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
@@ -202,67 +196,73 @@
     <ClCompile Include="src\Profiling\ProfilerSectionCpu.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameEngine\Core\GameEngine.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameEngine\SceneManagement\Scene.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameEngine\Core\Time.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameEngine\DataType\Color.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameEngine\GEHeader.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameEngine\Debug\ColliderVisual.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameEngine\Debug\Log.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameEngine\Core\GameObject.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameEngine\Core\Transform2D.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameEngine\Debug\Measurement\ScopeTiming.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameEngine\Utils\HandyFunc\FromGameEngine.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Scenes\TitleScene.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameEngine\SceneManagement\SceneManager.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Scenes\SceneMapping.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameEngine\SceneManagement\SceneConfig.cpp">
+    <ClCompile Include="src\GE\Core\Component.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameEngine\Core\Component.cpp">
+    <ClCompile Include="src\GE\Core\GameEngine.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameEngine\Render\Renderer.cpp">
+    <ClCompile Include="src\GE\MainProgram\Impl\WindowsMainProgram.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameEngine\Render\Image.cpp">
+    <ClCompile Include="src\GE\Render\Impl\DG2014RenderSystem.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameEngine\Render\Impl\DG2014RenderSystem.cpp">
+    <ClCompile Include="src\GE\Render\Image.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameEngine\MainProgram\Impl\WindowsMainProgram.cpp">
+    <ClCompile Include="src\GE\Render\Impl\DG2014Texture.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameEngine\Render\Impl\DG2014Texture.cpp">
+    <ClCompile Include="src\GE\Render\Renderer.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\SceneManagement\SceneManager.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\SceneManagement\SceneConfig.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Utils\HandyFunc\FromGameEngine.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\SceneManagement\Scene.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Core\Time.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\DataType\Color.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\GEHeader.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Debug\ColliderVisual.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Debug\Log.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Core\GameObject.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Core\Transform2D.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Debug\Measurement\ScopeTiming.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Utils\Time\Timer.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Utils\Time\DelayTrigger.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -340,9 +340,6 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\GameStatus.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameEngine\Utils\Math.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Common\Transform.h">
@@ -435,12 +432,6 @@
     <ClInclude Include="src\ParticleSystem\ParticleConfig.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameEngine\Utils\Time\Timer.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameEngine\Utils\Time\DelayTrigger.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Common\Font.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
@@ -477,109 +468,118 @@
     <ClInclude Include="src\Profiling\ProfilingConfig.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameEngine\Utils\TypeDef.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameEngine\Core\GameEngine.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameEngine\Core\GameLoopBase.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameEngine\SceneManagement\Scene.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameEngine\Core\Time.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameEngine\DataType\Color.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameEngine\GEHeader.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameEngine\Core\GameObject.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameEngine\DataType\Rect.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameEngine\Core\Transform2D.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameEngine\DataType\Vector2.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameEngine\DataType\Vector3.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameEngine\Debug\ColliderVisual.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameEngine\Debug\DebugConfig.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameEngine\Debug\Measurement\ScopeTiming.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameEngine\Debug\Log.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameEngine\Core\GEConfig.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameEngine\Utils\HandyFunc\FromGameEngine.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameEngine\Render\Renderer.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameEngine\Core\Component.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Scenes\TitleScene.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameEngine\SceneManagement\SceneManager.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Scenes\SceneMapping.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameEngine\SceneManagement\SceneConfig.h">
+    <ClInclude Include="src\GE\Core\Component.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameEngine\Tools\ConstructorTest.h">
+    <ClInclude Include="src\GE\Core\GameEngine.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameEngine\Render\RenderBase.h">
+    <ClInclude Include="src\GE\Core\GEConfig.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameEngine\Render\Image.h">
+    <ClInclude Include="src\GE\Core\GameLoopBase.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameEngine\Render\RenderSystem.h">
+    <ClInclude Include="src\GE\MainProgram\Impl\WindowsMainProgramInitParams.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameEngine\MainProgram\MainProgram.h">
+    <ClInclude Include="src\GE\MainProgram\MainProgram.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameEngine\Utils\PreprocessorDef.h">
+    <ClInclude Include="src\GE\MainProgram\MainProgramInitParams.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameEngine\MainProgram\MainProgramInitParams.h">
+    <ClInclude Include="src\GE\Render\Image.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameEngine\MainProgram\Impl\WindowsMainProgramInitParams.h">
+    <ClInclude Include="src\GE\Render\Impl\DirectXRenderSystemInitParams.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameEngine\Render\RenderSystemInitParams.h">
+    <ClInclude Include="src\GE\Render\Renderer.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameEngine\Render\Impl\DirectXRenderSystemInitParams.h">
+    <ClInclude Include="src\GE\Render\RenderBase.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameEngine\Render\Texture.h">
+    <ClInclude Include="src\GE\Render\RenderSystem.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Render\RenderSystemInitParams.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Render\Texture.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\SceneManagement\Scene.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\SceneManagement\SceneManager.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Core\Time.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\DataType\Color.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\GEHeader.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Core\GameObject.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\DataType\Rect.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Core\Transform2D.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\SceneManagement\SceneConfig.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Tools\ConstructorTest.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Utils\PreprocessorDef.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Utils\TypeDef.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\DataType\Vector2.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\DataType\Vector3.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Debug\ColliderVisual.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Debug\DebugConfig.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Utils\HandyFunc\FromGameEngine.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Debug\Measurement\ScopeTiming.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Debug\Log.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Utils\Math.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Utils\Time\Timer.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Utils\Time\DelayTrigger.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

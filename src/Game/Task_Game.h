@@ -5,7 +5,7 @@
 #include "Task/ResourceBase.tpp"
 #include "Task/ObjectBase.tpp"
 #include "Event/Event.tpp"
-#include "Utils/Time/Timer.h"
+#include "GE/Utils/Time/Timer.h"
 
 #pragma region 前方宣言
 

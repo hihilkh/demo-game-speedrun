@@ -1,8 +1,8 @@
-﻿#include "GEHeader.h"
+﻿#include "GE/GEHeader.h"
 #include "TitleScene.h"
-#include "SceneManagement/Scene.h"
-#include "Render/Image.h"
-#include "Tools/ConstructorTest.h"
+#include "GE/SceneManagement/Scene.h"
+#include "GE/Render/Image.h"
+#include "GE/Tools/ConstructorTest.h"
 
 namespace Scene
 {

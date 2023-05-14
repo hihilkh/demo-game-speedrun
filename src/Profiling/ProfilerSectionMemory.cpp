@@ -2,7 +2,7 @@
 
 #include <windows.h>
 #include <psapi.h>
-#include "Debug/Log.h"
+#include "GE/Debug/Log.h"
 
 namespace Profiling
 {

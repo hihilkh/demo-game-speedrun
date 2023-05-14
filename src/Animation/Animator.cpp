@@ -1,7 +1,7 @@
 ﻿#include "Animator.h"
 #include "Animation/AnimationClip.h"
 #include <DG2014/DG2014_Image.h>
-#include "Debug/Log.h"
+#include "GE/Debug/Log.h"
 
 namespace Animation
 {

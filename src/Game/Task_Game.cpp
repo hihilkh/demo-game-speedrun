@@ -10,7 +10,7 @@
 #include "GameStatus.h"
 #include "Chara/Player/Task_Player.h"
 #include "Task/TaskConstant.h"
-#include "Utils/Time/DelayTrigger.h"
+#include "GE/Utils/Time/DelayTrigger.h"
 #include "Common/Font.h"
 #include "SceneTransition/Task_SceneTransition.h"
 #include "Profiling/Profiler.h"

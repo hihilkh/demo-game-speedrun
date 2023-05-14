@@ -1,5 +1,5 @@
 ﻿#include "CharaBase.h"
-#include "Debug/Log.h"
+#include "GE/Debug/Log.h"
 #include "Map/Task_Map.h"
 
 namespace Chara

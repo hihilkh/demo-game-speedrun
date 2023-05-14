@@ -1,5 +1,5 @@
 ﻿#include "ProfilerLoggerConsole.h"
-#include "Debug/Log.h"
+#include "GE/Debug/Log.h"
 #include <iomanip>
 
 namespace Profiling

@@ -1,8 +1,8 @@
-﻿#include "GEHeader.h"
+﻿#include "GE/GEHeader.h"
 #include <windows.h>
 
-#include "Core/GameEngine.h"
-#include "MainProgram/MainProgramInitParams.h"
+#include "GE/Core/GameEngine.h"
+#include "GE/MainProgram/MainProgramInitParams.h"
 #include "Scenes/SceneMapping.h"
 
 int WINAPI WinMain(

@@ -1,6 +1,6 @@
 ﻿#include "MapChipFactory.h"
 
-#include "Debug/Log.h"
+#include "GE/Debug/Log.h"
 
 #include "MapChip/MapChipBase.h"
 #include "MapChip/FloorMapChip.h"

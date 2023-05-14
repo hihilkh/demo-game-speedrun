@@ -3,7 +3,7 @@
 #include "Game/Task_GameCamera.h"
 #include "MyPG.h"
 #include "Animation/Animator.h"
-#include "Debug/ColliderVisual.h"
+#include "GE/Debug/ColliderVisual.h"
 #include "Chara/Player/Task_Player.h"
 #include "Game/GameEvent.h"
 
