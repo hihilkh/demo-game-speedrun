@@ -256,6 +256,15 @@
     <ClCompile Include="src\GameEngine\Render\Image.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\GameEngine\Render\Impl\DG2014RenderSystem.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameEngine\MainProgram\Impl\WindowsMainProgram.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameEngine\Render\Impl\DG2014Texture.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GameEngine_Ver3_83.h">
@@ -547,6 +556,30 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GameEngine\Render\Image.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\Render\RenderSystem.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\MainProgram\MainProgram.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\Utils\PreprocessorDef.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\MainProgram\MainProgramInitParams.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\MainProgram\Impl\WindowsMainProgramInitParams.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\Render\RenderSystemInitParams.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\Render\Impl\DirectXRenderSystemInitParams.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameEngine\Render\Texture.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

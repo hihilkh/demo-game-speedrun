@@ -2,6 +2,7 @@
 #include <windows.h>
 
 #include "Core/GameEngine.h"
+#include "MainProgram/MainProgramInitParams.h"
 #include "Scenes/SceneMapping.h"
 
 int WINAPI WinMain(
@@ -12,6 +13,6 @@ int WINAPI WinMain(
 )
 {
 	GE::GameEngine::SetSceneConfig(Scene::CreateSceneConfig());
-	int exitFlag = GE::GameEngine::Start(hInstance, nCmdShow);
+	int exitFlag = GE::GameEngine::Start({ hInstance, nCmdShow });
 	return exitFlag;
 }

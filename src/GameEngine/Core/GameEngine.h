@@ -4,10 +4,9 @@
 #include <string>
 #include "GEConfig.h"
 
-#include <windows.h>
-
 namespace GE
 {
+	struct MainProgramInitParams;
 	namespace SceneManagement
 	{
 		struct SceneConfig;
@@ -22,29 +21,22 @@ namespace GE
 
 		static void SetSceneConfig(SceneManagement::SceneConfig&& config);
 
-		static int Start(HINSTANCE hInstance, int nCmdShow);
+		static int Start(const MainProgramInitParams& params);
 
 		static void LoadScene(const std::string& sceneName);
 
 	private:
 		static GEConfig config;
+
 		static bool isStarted;
 		static std::string sceneNameToLoad;
 
 	private:
 		GameEngine() = delete;
 
-		static void InitEngine();
+		static void Init(const MainProgramInitParams& params);
 
 		static void CheckAndChangeScene();
 		static void RunGameLoop();
-
-#pragma region Windows プラットフォーム
-
-		static int StartWithWindows(HINSTANCE hInstance, int nCmdShow);
-		static HWND CreateGameWindow(HINSTANCE hInstance);
-
-#pragma endregion
-
 	};
 }
