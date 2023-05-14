@@ -24,7 +24,7 @@ namespace GE
 		friend SceneManagement::Scene;
 
 	public:
-		GameObject();	// ComponentとRendererが前方宣言できるために、デストラクタを宣言し、cppで定義する
+		GameObject();	// ComponentとRendererが前方宣言できるために、コンストラクタを宣言し、cppで定義する
 		~GameObject();	// ComponentとRendererが前方宣言できるために、デストラクタを宣言し、cppで定義する
 
 		// TODO : Temp
