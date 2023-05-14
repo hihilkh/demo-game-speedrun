@@ -20,7 +20,7 @@ namespace GE::SceneManagement
 		GameObject& AddGameObject();
 
 	private:
-		std::string name;
+		const std::string name;
 		std::vector<std::unique_ptr<GameObject>> gameObjects;
 
 	private:
