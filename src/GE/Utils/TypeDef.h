@@ -6,6 +6,7 @@ namespace GE
 {
 	class GameObject;
 	class Component;
+	class Transform2D;
 	struct Color;
 	class Time;
 
@@ -27,6 +28,7 @@ namespace GE
 
 using GameObject	= GE::GameObject;
 using Component		= GE::Component;
+using Transform2D	= GE::Transform2D;
 using Vector2		= GE::DataType::Internal::TVector2<float>;
 using Vector2Int	= GE::DataType::Internal::TVector2<int>;
 using Vector3		= GE::DataType::Internal::TVector3<float>;

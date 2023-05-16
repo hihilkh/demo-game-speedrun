@@ -7,12 +7,6 @@ namespace GE::SceneManagement
 	{
 	}
 
-	GameObject& Scene::AddGameObject()
-	{
-		auto& gameObject = gameObjects.emplace_back(std::make_unique<GameObject>());
-		return *gameObject;
-	}
-
 	void Scene::OnUpdate()
 	{
 		for (auto& gameObject : gameObjects) {
@@ -32,5 +26,15 @@ namespace GE::SceneManagement
 		for (auto& gameObject : gameObjects) {
 			gameObject->OnRender();
 		}
+	}
+
+	bool operator==(const Scene& lhs, const Scene& rhs)
+	{
+		return &lhs == &rhs;
+	}
+
+	bool operator!=(const Scene& lhs, const Scene& rhs)
+	{
+		return !(lhs == rhs);
 	}
 }

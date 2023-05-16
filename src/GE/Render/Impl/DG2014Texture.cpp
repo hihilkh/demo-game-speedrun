@@ -45,10 +45,9 @@ namespace GE::Render
 	// (今常に新しいTextureのshared_ptrを作って、TextureImplでアセットを管理する。)
 	std::shared_ptr<Texture> Texture::GetTexture(const std::string& filePath)
 	{
-		struct SharedPtrEnabler : public Texture {
-			SharedPtrEnabler(const std::string& filePath) : Texture(filePath)
-			{
-			}
+		struct SharedPtrEnabler : public Texture
+		{
+			SharedPtrEnabler(const std::string& filePath) : Texture(filePath) {}
 		};
 		return std::make_shared<SharedPtrEnabler>(filePath);
 	}

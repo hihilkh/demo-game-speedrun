@@ -253,9 +253,6 @@
     <ClCompile Include="src\GE\Core\GameObject.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GE\Core\Transform2D.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\GE\Debug\Measurement\ScopeTiming.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
@@ -263,6 +260,12 @@
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GE\Utils\Time\DelayTrigger.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\DataType\Transform2D.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Core\GameObjectOwner.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -537,7 +540,7 @@
     <ClInclude Include="src\GE\DataType\Rect.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GE\Core\Transform2D.h">
+    <ClInclude Include="src\GE\DataType\Transform2D.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GE\SceneManagement\SceneConfig.h">
@@ -580,6 +583,9 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GE\Utils\Time\DelayTrigger.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Core\GameObjectOwner.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

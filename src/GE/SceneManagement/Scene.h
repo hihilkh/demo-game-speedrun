@@ -4,10 +4,11 @@
 #include <vector>
 #include <memory>
 #include "GE/Core/GameObject.h"
+#include "GE/Core/GameObjectOwner.h"
 
 namespace GE::SceneManagement
 {
-	class Scene
+	class Scene : public Internal::GameObjectOwner
 	{
 		friend class GameEngine;
 
@@ -17,7 +18,6 @@ namespace GE::SceneManagement
 		void operator=(const Scene&) = delete;
 
 		const std::string& GetName() const { return name; }
-		GameObject& AddGameObject();
 
 	private:
 		const std::string name;
@@ -27,5 +27,14 @@ namespace GE::SceneManagement
 		void OnUpdate();
 		void OnLateUpdate();
 		void OnRender();
+
+#pragma region GameObjectOwner
+
+		std::vector<std::unique_ptr<GameObject>>& GetGameObjectContainer() override { return gameObjects; }
+
+#pragma endregion
 	};
+
+	bool operator==(const Scene& lhs, const Scene& rhs);
+	bool operator!=(const Scene& lhs, const Scene& rhs);
 }

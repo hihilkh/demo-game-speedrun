@@ -43,10 +43,12 @@ namespace Scene
 	std::unique_ptr<GE::SceneManagement::Scene> TitleScene::operator()() const
 	{
 		auto scene = std::make_unique<GE::SceneManagement::Scene>(titleSceneName);
-		GameObject& a = scene->AddGameObject();
+		GameObject& a = GameObject::Create("a", *scene);
+		GameObject& b = a.CreateChild("b");
 
-		a.AddComponent<Test>(GE::Tools::ConstructorTest("Hello"), GE::Tools::ConstructorTest("Bye"));
+		//a.AddComponent<Test>(GE::Tools::ConstructorTest("Hello"), GE::Tools::ConstructorTest("Bye"));
 		a.AddComponent<GE::Render::Image>("./data/Image/Title.png", RectPixel(0, 0, 300, 50));
+		b.AddComponent<GE::Render::Image>("./data/Image/Chara01.png", RectPixel(0, 0, 128, 128));
 
 		return scene;
 	}

@@ -20,6 +20,7 @@
 #include "DataType/Vector2.h"
 #include "DataType/Vector3.h"
 #include "DataType/Color.h"
+#include "DataType/Transform2D.h"
 
 #include "Debug/Log.h"
 
