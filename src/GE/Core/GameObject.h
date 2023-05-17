@@ -120,7 +120,6 @@ namespace GE
 	inline T& GameObject::AddComponent(auto&&... args)
 	{
 		static_assert(std::is_base_of_v<Component, T>, "The type must be a component");
-		static_assert(!std::is_same_v<Transform2D, T>, "Transform2D cannot be added manually. It is auto added when GameObject is instantiated.");
 
 		auto add = [&]() -> T& {
 			if constexpr (std::is_base_of_v<Render::Renderer, T>) {

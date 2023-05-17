@@ -90,8 +90,9 @@ namespace MyNamespace
 			* `char name = 'a';`
 	* コピーコンストラクター：`T instance2 = instance1;`
 	* `T* name = new T(arg1, arg2);`
-* 一般的に`一様初期化`を使わない
-	* 場合によって、使うことを許す。例えば、`std::vector<int> v{1, 2, 3, 4, 5};`
+* 一般的に`一様初期化`を使わない。でも、場合によって、`auto`を使うことも許す。例えば、
+	* `std::vector<int> v{1, 2, 3, 4, 5};`
+	* `構造体`：`Vector2 a; a = { 1.0f, 2.0f };`とか、`player.Move({1.0f, 2.0f});`とか
 
 ## プリコンパイル済みヘッダー
 

@@ -4,6 +4,7 @@
 #include <type_traits>
 #include <cmath>
 #include "Vector3.h"
+#include "GE/Utils/Math.h"
 
 namespace GE::DataType::Internal
 {
@@ -46,6 +47,8 @@ namespace GE::DataType::Internal
 
 		TVector2& Normalize();
 		bool IsNormalized() const;
+
+		TVector2& Rotate(FloatType degree);
 
 		// 暗黙的な変換
 
@@ -227,6 +230,22 @@ namespace GE::DataType::Internal
 	inline bool TVector2<T>::IsNormalized() const
 	{
 		return SqrMagnitude() == 1;
+	}
+
+	template<typename T>
+	inline TVector2<T>& TVector2<T>::Rotate(TVector2<T>::FloatType degree)
+	{
+		static_assert(std::is_floating_point_v<T>, "Only Vector with float values is allowed to use this function");
+
+		double radian = Math::ToRadian(degree);
+		double sinValue = std::sin(radian);
+		double cosValue = std::cos(radian);
+
+		T tempX = x;
+		x = x * cosValue - y * sinValue;
+		y = tempX * sinValue + y * cosValue;
+
+		return *this;
 	}
 
 	template<typename T>

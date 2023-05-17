@@ -26,6 +26,7 @@ namespace GE::DataType::Internal
 
 		TRect();
 		TRect(T x, T y, T width, T height);
+		TRect(const TVector2<T>& pos, const TVector2<T>& size);
 
 		static TRect FromCenter(T width, T height);
 		static TRect FromDiagonal(T x, T y, T oppositeX, T oppositeY);
@@ -114,6 +115,11 @@ namespace GE::DataType::Internal
 
 	template<typename T>
 	inline TRect<T>::TRect(T x, T y, T width, T height) : x(x), y(y), width(width), height(height)
+	{
+	}
+
+	template<typename T>
+	inline TRect<T>::TRect(const TVector2<T>& pos, const TVector2<T>& size) : pos(pos), size(size)
 	{
 	}
 

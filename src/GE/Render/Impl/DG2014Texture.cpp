@@ -5,6 +5,8 @@
 #include "../Texture.h"
 #include "DG2014/DG2014_Image.h"
 #include "GE/DataType/Rect.h"
+#include "GE/DataType/Vector2.h"
+#include "GE/Utils/Math.h"
 
 namespace GE::Render
 {
@@ -52,10 +54,21 @@ namespace GE::Render
 		return std::make_shared<SharedPtrEnabler>(filePath);
 	}
 
+	Vector2Int Texture::GetSize() const
+	{
+		auto size = pImpl->dgImage->Size();
+		return Vector2Int(size.x, size.y);
+	}
+
 	void Texture::Draw(const RectPixel& draw, const RectPixel& src, const Color& color) const
 	{
 		// TODO : 今たくさんの無駄なConvertRectとConvertColorを呼び出す
 		pImpl->dgImage->Draw(ConvertRect(draw), ConvertRect(src), ConvertColor(color));
+	}
+
+	void Texture::Rotate(float angle, const Vector2& center) const
+	{
+		pImpl->dgImage->Rotation(Math::ToRadian(angle), ML::Vec2(center.x, center.y));
 	}
 }
 

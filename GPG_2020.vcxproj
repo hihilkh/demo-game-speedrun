@@ -415,7 +415,7 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="src\GE\DataType\Transform2D.cpp">
+    <ClCompile Include="src\GE\Core\Transform2D.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeaderFile>
@@ -756,6 +756,7 @@
     <ClInclude Include="src\GE\Core\GameEngine.h" />
     <ClInclude Include="src\GE\Core\GameObjectOwner.h" />
     <ClInclude Include="src\GE\Core\GEConfig.h" />
+    <ClInclude Include="src\GE\DataType\Transform2DData.h" />
     <ClInclude Include="src\GE\MainProgram\Impl\WindowsMainProgramInitParams.h" />
     <ClInclude Include="src\GE\MainProgram\MainProgram.h" />
     <ClInclude Include="src\GE\MainProgram\MainProgramInitParams.h" />
@@ -772,7 +773,7 @@
     <ClInclude Include="src\GE\GEHeader.h" />
     <ClInclude Include="src\GE\Core\GameObject.h" />
     <ClInclude Include="src\GE\DataType\Rect.h" />
-    <ClInclude Include="src\GE\DataType\Transform2D.h" />
+    <ClInclude Include="src\GE\Core\Transform2D.h" />
     <ClInclude Include="src\GE\SceneManagement\SceneConfig.h" />
     <ClInclude Include="src\GE\Tools\ConstructorTest.h" />
     <ClInclude Include="src\GE\Utils\PreprocessorDef.h" />

@@ -13,14 +13,13 @@ namespace GE
 		GameObject& gameObject;
 
 	public:
-		Component() = delete;
 		Component(const Component&) = delete;
 		void operator=(const Component&) = delete;
 
 		/// <summary>
 		/// 全てのComponentの派生クラスは第一仮引数がGameObject&であるコンストラクタを持っている必要がある
 		/// </summary>
-		Component(GameObject& gameObject);
+		explicit Component(GameObject& gameObject);
 		virtual ~Component() = default;
 
 		bool GetEnable() const { return isEnable; }

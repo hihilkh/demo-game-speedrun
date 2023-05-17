@@ -20,13 +20,13 @@
 #include "DataType/Vector2.h"
 #include "DataType/Vector3.h"
 #include "DataType/Color.h"
-#include "DataType/Transform2D.h"
 
 #include "Debug/Log.h"
 
 #include "Core/GameObject.h"
 #include "Core/Component.h"
 #include "Core/Time.h"
+#include "Core/Transform2D.h"
 
 #include "Utils/HandyFunc/FromGameEngine.h"
 #include "Utils/TypeDef.h"

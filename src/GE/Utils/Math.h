@@ -113,4 +113,18 @@ namespace Math
 
 #pragma endregion
 
+#pragma region Radian
+
+	inline constexpr double ToRadian(double angle)
+	{
+		return angle * std::numbers::pi / 180.0;
+	}
+
+	inline constexpr double ToAngle(double radian)
+	{
+		return radian * 180.0 / std::numbers::pi;
+	}
+
+#pragma endregion
+
 }

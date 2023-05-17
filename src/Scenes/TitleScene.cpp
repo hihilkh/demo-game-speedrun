@@ -47,8 +47,14 @@ namespace Scene
 		GameObject& b = a.CreateChild("b");
 
 		//a.AddComponent<Test>(GE::Tools::ConstructorTest("Hello"), GE::Tools::ConstructorTest("Bye"));
-		a.AddComponent<GE::Render::Image>("./data/Image/Title.png", RectPixel(0, 0, 300, 50));
-		b.AddComponent<GE::Render::Image>("./data/Image/Chara01.png", RectPixel(0, 0, 128, 128));
+		a.Transform().pos = { 350.0f, 150.0f };
+		a.Transform().rot = -20;
+		auto& imageA = a.AddComponent<GE::Render::Image>("./data/Image/Title.png");
+		imageA.SetScale({ 0.5f, 1.0f });
+		b.Transform().SetWorldPos({128, 128});
+		b.Transform().SetWorldRot(90);
+		auto& imageB = b.AddComponent<GE::Render::Image>("./data/Image/Chara01.png");
+		imageB.SetScale({ 2.0f, 2.0f });
 
 		return scene;
 	}

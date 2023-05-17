@@ -3,7 +3,7 @@
 #include "GE/Render/Renderer.h"
 #include "GE/SceneManagement/SceneManager.h"
 #include "GE/SceneManagement/Scene.h"
-#include "GE/DataType/Transform2D.h"
+#include "Transform2D.h"
 #include "GE/Debug/Log.h"
 #include <cassert>
 

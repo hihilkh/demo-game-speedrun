@@ -48,6 +48,8 @@ namespace GE::DataType::Internal
 		TVector3& Normalize();
 		bool IsNormalized() const;
 
+		// TODO : Rotate関数
+		
 		// 暗黙的な変換
 
 		operator TVector2<float>() const;
