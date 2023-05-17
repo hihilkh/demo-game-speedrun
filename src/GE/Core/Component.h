@@ -1,19 +1,15 @@
 ﻿#pragma once
 
-#include "GameLoopBase.h"
-
 namespace GE
 {
 	class GameObject;
 
-	class Component : public Internal::GameLoopBase
+	class Component
 	{
-		friend GameObject;
-		// TODO : Temp
-		// isActive (global base)
+		friend class GameObject;
 
 	public:
-		// GameObjectが無効になる前に、必ず持っているComponentを破棄する
+		// GameObjectが無効になる前に、必ず持っているComponentを破棄するので、GameObjectの参照を持つ
 		GameObject& gameObject;
 
 	public:
@@ -26,6 +22,9 @@ namespace GE
 		/// </summary>
 		Component(GameObject& gameObject);
 		virtual ~Component() = default;
+
+		bool GetEnable() const { return isEnable; }
+		void SetEnable(bool isEnable) { this->isEnable = isEnable; }
 
 	protected:
 		/// <summary>
@@ -46,9 +45,18 @@ namespace GE
 		virtual void LateUpdate() {}
 
 	private:
-		void OnAwake() override;
-		void OnStart() override;
-		void OnUpdate() override;
-		void OnLateUpdate() override;
+		bool isEnable;
+
+	private:
+
+#pragma region GameObjectに呼び出される関数
+
+		void OnAwake();
+		void OnStart();
+		void OnUpdate();
+		void OnLateUpdate();
+
+#pragma endregion
+
 	};
 }

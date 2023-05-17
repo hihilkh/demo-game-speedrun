@@ -30,7 +30,5 @@ namespace GE::Internal
 		GameObject& CreateAndOwnGameObject(const std::string& name, SceneManagement::Scene& scene);
 		std::unique_ptr<GameObject> ReleaseGameObjectOwnership(GameObject& gameObject);
 		void TakeGameObjectOwnership(std::unique_ptr<GameObject>&& gameObject);
-
-
 	};
 }

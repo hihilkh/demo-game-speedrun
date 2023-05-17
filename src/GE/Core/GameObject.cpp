@@ -13,7 +13,8 @@ namespace GE
 		name(name),
 		belongingScene(scene),
 		parent(parent),
-		transform(std::make_unique<Transform2D>(*this))
+		transform(std::make_unique<Transform2D>(*this)),
+		isActive(true)
 	{
 	}
 
@@ -83,78 +84,67 @@ namespace GE
 
 #pragma region ゲームループ
 
+#define EXECUTE_BY_ORDER(func) {\
+	for (auto& component : nonRenderComponents) {\
+		component->func;\
+	}\
+	for (auto& renderer : renderers) {\
+		renderer->func;\
+	}\
+	for (auto& child : children) {\
+		child->func;\
+	}\
+}
+
 	void GameObject::OnAwake()
 	{
-		ExecuteByOrder(
-			[](auto& object) { object.OnAwake(); }
-		);
+		EXECUTE_BY_ORDER(OnAwake());
 	}
 
 	void GameObject::OnStart()
 	{
-		ExecuteByOrder(
-			[](auto& object) { object.OnStart(); }
-		);
+		EXECUTE_BY_ORDER(OnStart());
 	}
 
 	void GameObject::OnUpdate()
 	{
-		if (!GetEnable()) {
+		if (!isActive) {
 			return;
 		}
 
-		ExecuteByOrder(
-			[](auto& object) { object.OnUpdate(); }
-		);
+		EXECUTE_BY_ORDER(OnUpdate());
 	}
 
 	void GameObject::OnLateUpdate()
 	{
-		if (!GetEnable()) {
+		if (!isActive) {
 			return;
 		}
 
-		ExecuteByOrder(
-			[](auto& object) { object.OnLateUpdate(); }
-		);
+		EXECUTE_BY_ORDER(OnLateUpdate());
 	}
+
+#undef EXECUTE_BY_ORDER
+
+#define EXECUTE_RENDER_BY_ORDER(func) {\
+	for (auto& renderer : renderers) {\
+		renderer->func;\
+	}\
+	for (auto& child : children) {\
+		child->func;\
+	}\
+}
 
 	void GameObject::OnRender()
 	{
-		if (!GetEnable()) {
+		if (!isActive) {
 			return;
 		}
 
-		ExecuteRenderByOrder(
-			[](auto& object) { object.OnRender(); }
-		);
+		EXECUTE_RENDER_BY_ORDER(OnRender());
 	}
 
-	void GameObject::ExecuteByOrder(void (*func)(Internal::GameLoopBase&))
-	{
-		for (auto& component : nonRenderComponents) {
-			func(*component);
-		}
-
-		for (auto& renderer : renderers) {
-			func(*renderer);
-		}
-
-		for (auto& child : children) {
-			func(*child);
-		}
-	}
-
-	void GameObject::ExecuteRenderByOrder(void (*func)(Render::Internal::RenderBase&))
-	{
-		for (auto& renderer : renderers) {
-			func(*renderer);
-		}
-
-		for (auto& child : children) {
-			func(*child);
-		}
-	}
+#undef EXECUTE_RENDER_BY_ORDER
 
 #pragma endregion
 

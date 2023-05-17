@@ -17,7 +17,7 @@ namespace Debug::Logging
 	Debug::Logging::Print(ss.str().c_str());\
 }
 
-#define DEBUG_LOG(message)						DEBUG_LOG_SAME_LINE(message << '\n');
+#define DEBUG_LOG(message)						DEBUG_LOG_SAME_LINE(message << '\n')
 
 #define DEBUG_LOG_WARNING_SAME_LINE(message)	DEBUG_LOG_SAME_LINE("!! : " << message)
 #define DEBUG_LOG_WARNING(message)				DEBUG_LOG("!! : " << message)

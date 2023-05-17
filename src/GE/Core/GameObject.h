@@ -1,7 +1,5 @@
 ﻿#pragma once
 
-#include "GameLoopBase.h"
-#include "GE/Render/RenderBase.h"
 #include "GameObjectOwner.h"
 #include <vector>
 #include <memory>
@@ -23,7 +21,7 @@ namespace GE
 		class Scene;
 	}
 
-	class GameObject : public Internal::GameLoopBase, public Render::Internal::RenderBase, public Internal::GameObjectOwner
+	class GameObject : public Internal::GameObjectOwner
 	{
 		friend SceneManagement::Scene;
 		friend Internal::GameObjectOwner;
@@ -36,6 +34,9 @@ namespace GE
 
 		const std::string& GetName() const { return name; }
 		void SetName(const std::string& newName) { name = newName; }
+
+		bool GetActive() const { return isActive; }
+		void SetActive(bool isActive) { this->isActive = isActive; }
 
 		/// <summary>
 		/// ActiveSceneで新しいGameObjectを生成する
@@ -67,7 +68,7 @@ namespace GE
 		// GetChild
 		// GetComponent
 
-	public:
+	private:
 		std::string name;
 		SceneManagement::Scene& belongingScene;
 		GameObject* parent;		// parentが破棄される前に、このインスタンスのchildrenを全て破棄するので、parentはダングリングポインタになるはずがない
@@ -75,6 +76,7 @@ namespace GE
 		std::vector<std::unique_ptr<Component>> nonRenderComponents;
 		std::vector<std::unique_ptr<Render::Renderer>> renderers;
 		std::vector<std::unique_ptr<GameObject>> children;
+		bool isActive;
 
 	private:
 		GameObject(const std::string& name, SceneManagement::Scene& scene, GameObject* parent);
@@ -84,26 +86,23 @@ namespace GE
 		/// <summary>
 		/// 生成した後の最初の処理。有効無効にかかわらず呼び出される
 		/// </summary>
-		void OnAwake() override;
+		void OnAwake();
 		/// <summary>
 		/// Awake()段階の次の処理。有効無効にかかわらず呼び出される
 		/// </summary>
-		void OnStart() override;
+		void OnStart();
 		/// <summary>
 		/// 毎フレームの処理。有効にする時のみ
 		/// </summary>
-		void OnUpdate() override;
+		void OnUpdate();
 		/// <summary>
 		/// Update段階の次の処理。有効にする時のみ
 		/// </summary>
-		void OnLateUpdate() override;
+		void OnLateUpdate();
 		/// <summary>
 		/// 描画の処理。有効にする時のみ
 		/// </summary>
-		void OnRender() override;
-
-		void ExecuteByOrder(void (*func)(Internal::GameLoopBase&));
-		void ExecuteRenderByOrder(void (*func)(Render::Internal::RenderBase&));
+		void OnRender();
 
 #pragma endregion
 

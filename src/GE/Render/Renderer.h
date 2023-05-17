@@ -1,12 +1,13 @@
 ﻿#pragma once
 
 #include "GE/Core/Component.h"
-#include "RenderBase.h"
 
 namespace GE::Render
 {
-	class Renderer : public Component, public Internal::RenderBase
+	class Renderer : public Component
 	{
+		friend GameObject;
+
 	public:
 		Renderer(GameObject& gameObject);
 		virtual ~Renderer() = default;
@@ -15,6 +16,11 @@ namespace GE::Render
 		virtual void Render() {}
 
 	private:
-		void OnRender() override;
+
+#pragma region GameObjectに呼び出される関数
+
+		void OnRender();
+
+#pragma endregion
 	};
 }

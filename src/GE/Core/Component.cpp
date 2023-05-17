@@ -2,7 +2,9 @@
 
 namespace GE
 {
-	Component::Component(GameObject& gameObject) : gameObject(gameObject)
+	Component::Component(GameObject& gameObject) : 
+		gameObject(gameObject),
+		isEnable(true)
 	{
 	}
 
@@ -18,7 +20,7 @@ namespace GE
 
 	void Component::OnUpdate()
 	{
-		if (!GetEnable()) {
+		if (!isEnable) {
 			return;
 		}
 
@@ -27,7 +29,7 @@ namespace GE
 
 	void Component::OnLateUpdate()
 	{
-		if (!GetEnable()) {
+		if (!isEnable) {
 			return;
 		}
 

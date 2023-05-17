@@ -486,9 +486,6 @@
     <ClInclude Include="src\GE\Core\GEConfig.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GE\Core\GameLoopBase.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\GE\MainProgram\Impl\WindowsMainProgramInitParams.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
@@ -505,9 +502,6 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GE\Render\Renderer.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GE\Render\RenderBase.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GE\Render\RenderSystem.h">
