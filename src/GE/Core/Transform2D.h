@@ -6,7 +6,7 @@
 namespace GE
 {
 	// TODO : 効率のために、WorldTransformをキャッシュするかどうかを考える
-	class Transform2D : public Internal::Transform2DData
+	class Transform2D : public Transform2DData
 	{
 	public:
 		// GameObjectが無効になる前に、必ず持っているTransform2Dを破棄するので、GameObjectの参照を持つ
@@ -25,6 +25,10 @@ namespace GE
 
 		Vector2 GetWorldPos() const;
 		float GetWorldRot() const;
-		Internal::Transform2DData GetWorldTransformData() const;
+		Transform2DData GetWorldTransformData() const;
+
+	private:
+		Vector2 GetWorldPos(const Transform2DData& parentWorldTransformData) const;
+		float GetWorldRot(float parentWorldRot) const;
 	};
 }

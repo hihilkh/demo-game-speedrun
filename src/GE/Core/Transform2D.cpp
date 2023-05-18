@@ -33,26 +33,43 @@ namespace GE
 	Vector2 Transform2D::GetWorldPos() const
 	{
 		if (gameObject.Parent()) {
-			auto parentWorldTransform = gameObject.Parent()->Transform().GetWorldTransformData();
-			Vector2 worldPos = pos;
-			worldPos.Rotate(parentWorldTransform.rot);
-			worldPos += parentWorldTransform.pos;
-			return worldPos;
+			return GetWorldPos(gameObject.Parent()->Transform().GetWorldTransformData());
 		} else {
 			return pos;
 		}
 	}
+
+	Vector2 Transform2D::GetWorldPos(const Transform2DData& parentWorldTransformData) const
+	{
+		Vector2 worldPos = pos;
+		worldPos.Rotate(parentWorldTransformData.rot);
+		worldPos += parentWorldTransformData.pos;
+		return worldPos;
+	}
+
 	float Transform2D::GetWorldRot() const
 	{
 		if (gameObject.Parent()) {
-			return gameObject.Parent()->Transform().GetWorldRot() + rot;
+			return GetWorldRot(gameObject.Parent()->Transform().GetWorldRot());
 		} else {
 			return rot;
 		}
 	}
 
-	Internal::Transform2DData Transform2D::GetWorldTransformData() const
+	float Transform2D::GetWorldRot(float parentWorldRot) const
 	{
-		return Internal::Transform2DData(GetWorldPos(), GetWorldRot());
+		return rot + parentWorldRot;
+	}
+
+	Transform2DData Transform2D::GetWorldTransformData() const
+	{
+		if (gameObject.Parent()) {
+			auto parentWorldTransformData = gameObject.Parent()->Transform().GetWorldTransformData();
+			return Transform2DData(
+				GetWorldPos(parentWorldTransformData),
+				GetWorldRot(parentWorldTransformData.rot));
+		} else {
+			return Transform2DData(pos, rot);
+		}
 	}
 }

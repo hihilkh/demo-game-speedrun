@@ -3,7 +3,7 @@
 #include "GE/Utils/TypeDef.h"
 #include "Vector2.h"
 
-namespace GE::Internal
+namespace GE
 {
 	// 備考：
 	// もしscaleがあったら、せん断写像(shear mapping)のようなこともできなければならない。
