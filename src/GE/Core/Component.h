@@ -3,6 +3,7 @@
 namespace GE
 {
 	class GameObject;
+	class Transform2D;
 
 	class Component
 	{
@@ -24,6 +25,9 @@ namespace GE
 
 		bool GetEnable() const { return isEnable; }
 		void SetEnable(bool isEnable) { this->isEnable = isEnable; }
+
+		const Transform2D& Transform() const;
+		Transform2D& Transform();
 
 	protected:
 		/// <summary>

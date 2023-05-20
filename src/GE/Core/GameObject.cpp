@@ -126,26 +126,6 @@ namespace GE
 
 #undef EXECUTE_BY_ORDER
 
-#define EXECUTE_RENDER_BY_ORDER(func) {\
-	for (auto& renderer : renderers) {\
-		renderer->func;\
-	}\
-	for (auto& child : children) {\
-		child->func;\
-	}\
-}
-
-	void GameObject::OnRender()
-	{
-		if (!isActive) {
-			return;
-		}
-
-		EXECUTE_RENDER_BY_ORDER(OnRender());
-	}
-
-#undef EXECUTE_RENDER_BY_ORDER
-
 #pragma endregion
 
 	bool operator==(const GameObject& lhs, const GameObject& rhs)

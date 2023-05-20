@@ -11,10 +11,20 @@ namespace GE
 	// そういうわけで、scaleを支援しない
 	struct Transform2DData
 	{
+		/// <summary>
+		/// x : 正数：右
+		/// y : 正数：上
+		/// </summary>
 		Vector2 pos;
-		float rot;	// 度数法
+
+		/// <summary>
+		/// 度数法。正数：反時計回り
+		/// </summary>
+		float rot;
 
 		Transform2DData(const Vector2& pos, float rot) : pos(pos), rot(rot) {}
+		Transform2DData() : Transform2DData(Vector2::zero, 0.0f) {}
+
 		virtual ~Transform2DData() = default;
 	};
 }

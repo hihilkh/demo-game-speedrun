@@ -38,6 +38,8 @@ namespace GE
 		bool GetActive() const { return isActive; }
 		void SetActive(bool isActive) { this->isActive = isActive; }
 
+		SceneManagement::Scene& GetBelongingScene() const { return belongingScene; }
+
 		/// <summary>
 		/// ActiveSceneで新しいGameObjectを生成する
 		/// </summary>
@@ -99,10 +101,6 @@ namespace GE
 		/// Update段階の次の処理。有効にする時のみ
 		/// </summary>
 		void OnLateUpdate();
-		/// <summary>
-		/// 描画の処理。有効にする時のみ
-		/// </summary>
-		void OnRender();
 
 #pragma endregion
 

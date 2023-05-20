@@ -43,18 +43,22 @@ namespace Scene
 	std::unique_ptr<GE::SceneManagement::Scene> TitleScene::operator()() const
 	{
 		auto scene = std::make_unique<GE::SceneManagement::Scene>(titleSceneName);
+		GameObject& mainCameraObject = GameObject::Create("MainCamera", *scene);
+		auto& camera = mainCameraObject.AddComponent<Camera2D>();
+
 		GameObject& a = GameObject::Create("a", *scene);
 		GameObject& b = a.CreateChild("b");
 
 		//a.AddComponent<Test>(GE::Tools::ConstructorTest("Hello"), GE::Tools::ConstructorTest("Bye"));
-		a.Transform().pos = { 350.0f, 150.0f };
-		a.Transform().rot = -20;
+		a.Transform().pos = { 0.0f, 0.0f };
+		a.Transform().rot = 0;
 		auto& imageA = a.AddComponent<GE::Render::Image>("./data/Image/Title.png");
 		imageA.SetScale({ 0.5f, 1.0f });
-		b.Transform().SetWorldPos({128, 128});
-		b.Transform().SetWorldRot(90);
+		b.Transform().pos = { 0.0f, 0.0f };
+		b.Transform().rot = 20;
 		auto& imageB = b.AddComponent<GE::Render::Image>("./data/Image/Chara01.png");
 		imageB.SetScale({ 2.0f, 2.0f });
+		imageB.SetRenderPriority(-1);
 
 		return scene;
 	}

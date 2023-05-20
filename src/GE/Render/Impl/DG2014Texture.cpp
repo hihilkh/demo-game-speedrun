@@ -68,7 +68,7 @@ namespace GE::Render
 
 	void Texture::Rotate(float angle, const Vector2& center) const
 	{
-		pImpl->dgImage->Rotation(Math::ToRadian(angle), ML::Vec2(center.x, center.y));
+		pImpl->dgImage->Rotation(Math::ToRadian(-angle), ML::Vec2(center.x, center.y));
 	}
 }
 

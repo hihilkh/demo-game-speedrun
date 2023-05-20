@@ -42,7 +42,9 @@ namespace GE
 	Vector2 Transform2D::GetWorldPos(const Transform2DData& parentWorldTransformData) const
 	{
 		Vector2 worldPos = pos;
-		worldPos.Rotate(parentWorldTransformData.rot);
+		if (parentWorldTransformData.rot != 0.0f) {
+			worldPos.Rotate(parentWorldTransformData.rot);
+		}
 		worldPos += parentWorldTransformData.pos;
 		return worldPos;
 	}

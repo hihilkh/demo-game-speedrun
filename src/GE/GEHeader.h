@@ -27,6 +27,9 @@
 #include "Core/Component.h"
 #include "Core/Time.h"
 #include "Core/Transform2D.h"
+#include "Core/Camera2D.h"
+
+#include "Render/RenderLayer.h"
 
 #include "Utils/HandyFunc/FromGameEngine.h"
 #include "Utils/TypeDef.h"

@@ -1,4 +1,5 @@
 ﻿#include "Component.h"
+#include "gameObject.h"
 
 namespace GE
 {
@@ -34,5 +35,15 @@ namespace GE
 		}
 
 		LateUpdate();
+	}
+
+	const Transform2D& Component::Transform() const
+	{
+		return gameObject.Transform();
+	}
+
+	Transform2D& Component::Transform()
+	{
+		return gameObject.Transform();
 	}
 }

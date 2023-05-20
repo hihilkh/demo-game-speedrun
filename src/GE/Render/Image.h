@@ -32,7 +32,7 @@ namespace GE::Render
 		Vector2 GetImageSize() const;
 
 	protected:
-		void Render() override;
+		void Render(const Transform2DData& viewportData) const override;
 
 	private:
 		std::shared_ptr<Texture> texture;

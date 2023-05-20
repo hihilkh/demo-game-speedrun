@@ -268,6 +268,9 @@
     <ClCompile Include="src\GE\Core\GameObjectOwner.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\GE\Core\Camera2D.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GameEngine_Ver3_83.h">
@@ -583,6 +586,12 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GE\DataType\Transform2DData.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Core\Camera2D.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Render\RenderLayer.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -7,6 +7,7 @@ namespace GE
 	class GameObject;
 	class Component;
 	class Transform2D;
+	class Camera2D;
 	struct Color;
 	class Time;
 
@@ -20,21 +21,28 @@ namespace GE
 		template<typename T>
 		struct TRect;
 	}
+
+	namespace Render::RenderLayer
+	{
+	}
 }
 
 #pragma endregion
 
 #pragma region typedef
 
-using GameObject	= GE::GameObject;
-using Component		= GE::Component;
-using Transform2D	= GE::Transform2D;
-using Vector2		= GE::DataType::Internal::TVector2<float>;
-using Vector2Int	= GE::DataType::Internal::TVector2<int>;
-using Vector3		= GE::DataType::Internal::TVector3<float>;
-using Vector3Int	= GE::DataType::Internal::TVector3<int>;
-using Color			= GE::Color;
+using GameObject		= GE::GameObject;
+using Component			= GE::Component;
+using Transform2D		= GE::Transform2D;
+using Camera2D			= GE::Camera2D;
+using Color				= GE::Color;
 
+using Vector2			= GE::DataType::Internal::TVector2<float>;
+using Vector2Int		= GE::DataType::Internal::TVector2<int>;
+using Vector3			= GE::DataType::Internal::TVector3<float>;
+using Vector3Int		= GE::DataType::Internal::TVector3<int>;
+
+namespace RenderLayer	= GE::Render::RenderLayer;
 // 備考：
 // 本質的に TRect<float> と TRect<int> は大きな違いがある。
 // TRect<float> の場合、点はサイズがない。
