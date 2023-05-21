@@ -12,7 +12,7 @@ namespace GE
 	void Transform2D::SetWorldPos(const Vector2& worldPos)
 	{
 		if (gameObject.Parent()) {
-			auto parentWorldTransform = gameObject.Parent()->Transform().GetWorldTransformData();
+			auto parentWorldTransform = gameObject.Parent()->GetTransform().GetWorldTransformData();
 			pos = worldPos;
 			pos -= parentWorldTransform.pos;
 			pos.Rotate(-parentWorldTransform.rot);
@@ -24,7 +24,7 @@ namespace GE
 	void Transform2D::SetWorldRot(float worldRot)
 	{
 		if (gameObject.Parent()) {
-			rot = worldRot - gameObject.Parent()->Transform().GetWorldRot();
+			rot = worldRot - gameObject.Parent()->GetTransform().GetWorldRot();
 		} else {
 			rot = worldRot;
 		}
@@ -33,7 +33,7 @@ namespace GE
 	Vector2 Transform2D::GetWorldPos() const
 	{
 		if (gameObject.Parent()) {
-			return GetWorldPos(gameObject.Parent()->Transform().GetWorldTransformData());
+			return GetWorldPos(gameObject.Parent()->GetTransform().GetWorldTransformData());
 		} else {
 			return pos;
 		}
@@ -52,7 +52,7 @@ namespace GE
 	float Transform2D::GetWorldRot() const
 	{
 		if (gameObject.Parent()) {
-			return GetWorldRot(gameObject.Parent()->Transform().GetWorldRot());
+			return GetWorldRot(gameObject.Parent()->GetTransform().GetWorldRot());
 		} else {
 			return rot;
 		}
@@ -66,7 +66,7 @@ namespace GE
 	Transform2DData Transform2D::GetWorldTransformData() const
 	{
 		if (gameObject.Parent()) {
-			auto parentWorldTransformData = gameObject.Parent()->Transform().GetWorldTransformData();
+			auto parentWorldTransformData = gameObject.Parent()->GetTransform().GetWorldTransformData();
 			return Transform2DData(
 				GetWorldPos(parentWorldTransformData),
 				GetWorldRot(parentWorldTransformData.rot));

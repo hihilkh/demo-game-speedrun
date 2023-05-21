@@ -26,8 +26,8 @@ namespace GE
 		bool GetEnable() const { return isEnable; }
 		void SetEnable(bool isEnable) { this->isEnable = isEnable; }
 
-		const Transform2D& Transform() const;
-		Transform2D& Transform();
+		const Transform2D& GetTransform() const;
+		Transform2D& GetTransform();
 
 	protected:
 		/// <summary>

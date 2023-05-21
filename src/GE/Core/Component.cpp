@@ -37,13 +37,13 @@ namespace GE
 		LateUpdate();
 	}
 
-	const Transform2D& Component::Transform() const
+	const Transform2D& Component::GetTransform() const
 	{
-		return gameObject.Transform();
+		return gameObject.GetTransform();
 	}
 
-	Transform2D& Component::Transform()
+	Transform2D& Component::GetTransform()
 	{
-		return gameObject.Transform();
+		return gameObject.GetTransform();
 	}
 }

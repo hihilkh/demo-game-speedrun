@@ -56,11 +56,11 @@ namespace GE
 		GameObject& CreateChild(const std::string& childName);
 
 		GameObject* Parent() const { return parent; }	// 自分がconstになってもparentを変更されることができます
-		bool SetParent(GameObject* newParent);
+		bool SetParent(GameObject* newParent, bool keepWorldTransform = false);
 		bool IsChildOf(const GameObject& other, bool recursive) const;
 
-		const Transform2D& Transform() const { return *transform; }
-		Transform2D& Transform() { return *transform; }
+		const Transform2D& GetTransform() const { return *transform; }
+		Transform2D& GetTransform() { return *transform; }
 
 		template<typename T>
 		T& AddComponent(auto&&... args);

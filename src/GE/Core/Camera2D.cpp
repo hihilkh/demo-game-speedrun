@@ -55,7 +55,7 @@ namespace GE
 		}
 
 		PreRenderData preRenderData;
-		preRenderData.worldTransformData = Transform().GetWorldTransformData();
+		preRenderData.worldTransformData = GetTransform().GetWorldTransformData();
 		preRenderData.viewportOffsetX = GetGEConfig().screenWidth / 2.0f;
 		preRenderData.viewportOffsetY = GetGEConfig().screenHeight / 2.0f;
 
@@ -68,7 +68,7 @@ namespace GE
 				continue;
 			}
 
-			renderer->OnRender(ConvertToViewport(renderer->Transform(), preRenderData));
+			renderer->OnRender(ConvertToViewport(renderer->GetTransform(), preRenderData));
 		}
 	}
 }

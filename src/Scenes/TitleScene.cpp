@@ -50,12 +50,12 @@ namespace Scene
 		GameObject& b = a.CreateChild("b");
 
 		//a.AddComponent<Test>(GE::Tools::ConstructorTest("Hello"), GE::Tools::ConstructorTest("Bye"));
-		a.Transform().pos = { 0.0f, 0.0f };
-		a.Transform().rot = 0;
+		a.GetTransform().pos = { 0.0f, 0.0f };
+		a.GetTransform().rot = 0;
 		auto& imageA = a.AddComponent<GE::Render::Image>("./data/Image/Title.png");
 		imageA.SetScale({ 0.5f, 1.0f });
-		b.Transform().pos = { 0.0f, 0.0f };
-		b.Transform().rot = 20;
+		b.GetTransform().pos = { 0.0f, 0.0f };
+		b.GetTransform().rot = 20;
 		auto& imageB = b.AddComponent<GE::Render::Image>("./data/Image/Chara01.png");
 		imageB.SetScale({ 2.0f, 2.0f });
 		imageB.SetRenderPriority(-1);

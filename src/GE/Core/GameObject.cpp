@@ -36,7 +36,7 @@ namespace GE
 		return CreateAndOwnGameObject(childName, this->belongingScene);
 	}
 
-	bool GameObject::SetParent(GameObject* newParent)
+	bool GameObject::SetParent(GameObject* newParent, bool keepWorldTransform)
 	{
 		if (newParent == parent) {
 			return true;
@@ -60,7 +60,18 @@ namespace GE
 
 		GameObjectOwner* newOwner = newParent ? static_cast<GameObjectOwner*>(newParent) : static_cast<GameObjectOwner*>(&belongingScene);
 		newOwner->TakeGameObjectOwnership(std::move(tempSelf));
+
+		Transform2DData temp;
+		if (keepWorldTransform) {
+			temp = GetTransform().GetWorldTransformData();
+		}
+
 		parent = newParent ? newParent : nullptr;
+
+		if (keepWorldTransform) {
+			GetTransform().SetWorldPos(temp.pos);
+			GetTransform().SetWorldRot(temp.rot);
+		}
 
 		return true;
 	}
