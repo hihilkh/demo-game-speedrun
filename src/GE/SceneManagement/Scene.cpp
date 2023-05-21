@@ -34,6 +34,10 @@ namespace GE::SceneManagement
 	Scene::~Scene()
 	{
 		isDestructing = true;
+
+		for (auto& gameObject : gameObjects) {
+			gameObject->OnPreDestroy();
+		}
 	}
 
 	void Scene::OnUpdate()
@@ -47,6 +51,13 @@ namespace GE::SceneManagement
 	{
 		for (auto& gameObject : gameObjects) {
 			gameObject->OnLateUpdate();
+		}
+	}
+
+	void Scene::OnEndOfFrame()
+	{
+		for (auto& gameObject : gameObjects) {
+			gameObject->OnEndOfFrame();
 		}
 	}
 

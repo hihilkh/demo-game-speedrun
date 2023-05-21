@@ -13,4 +13,9 @@ namespace GE
 	{
 		return GameEngine::LoadScene(sceneName);
 	}
+
+	void Destroy(Internal::Destroyable& toDestroy)
+	{
+		return GameEngine::Destroy(toDestroy);
+	}
 }

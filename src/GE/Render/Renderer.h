@@ -17,7 +17,7 @@ namespace GE::Render
 
 	public:
 		Renderer(GameObject& gameObject, int renderPriority, RenderLayer::Bitmask renderLayer);
-		virtual ~Renderer();
+		virtual ~Renderer() = default;
 
 		int GetRenderPriority() const { return renderPriority; }
 		void SetRenderPriority(int renderPriority) { this->renderPriority = renderPriority; }
@@ -27,6 +27,9 @@ namespace GE::Render
 
 	protected:
 		virtual void Render(const Transform2DData& viewportData) const {}
+
+		void Awake() override;
+		void PreDestroy() override;
 
 	private:
 		/// <summary>

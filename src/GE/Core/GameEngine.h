@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <string>
+#include <set>
 #include "GEConfig.h"
 
 namespace GE
@@ -12,6 +13,10 @@ namespace GE
 		struct SceneConfig;
 	}
 
+	namespace Internal
+	{
+		class Destroyable;
+	}
 
 	class GameEngine
 	{
@@ -25,18 +30,24 @@ namespace GE
 
 		static void LoadScene(const std::string& sceneName);
 
+		static void Destroy(Internal::Destroyable& toDestroy);
+
 	private:
 		static GEConfig config;
 
 		static bool isStarted;
 		static std::string sceneNameToLoad;
+		static std::set<Internal::Destroyable*> toBeDestroySet;
 
 	private:
 		GameEngine() = delete;
 
 		static void Init(const MainProgramInitParams& params);
 
+		static bool CheckIsGoingToChangeScene();
 		static void CheckAndChangeScene();
 		static void RunGameLoop();
+		static void DestroyPhase();
+
 	};
 }

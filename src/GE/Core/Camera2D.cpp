@@ -15,16 +15,20 @@ namespace GE
 		float viewportOffsetY;
 	};
 
-	Camera2D::Camera2D(GameObject& gameObject) : 
+	Camera2D::Camera2D(GameObject& gameObject) :
 		Component(gameObject),
 		priority(0),
 		cullingMask(Render::RenderLayer::all)
+	{
+	}
+
+	void Camera2D::Awake()
 	{
 		SceneManagement::Scene& scene = gameObject.GetBelongingScene();
 		scene.RegisterCamera(*this);
 	}
 
-	Camera2D::~Camera2D()
+	void Camera2D::PreDestroy()
 	{
 		SceneManagement::Scene& scene = gameObject.GetBelongingScene();
 		scene.UnregisterCamera(*this);

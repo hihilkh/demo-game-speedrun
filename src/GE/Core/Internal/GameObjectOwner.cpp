@@ -1,5 +1,5 @@
 ﻿#include "GameObjectOwner.h"
-#include "GameObject.h"
+#include "GE/Core/GameObject.h"
 #include "GE/SceneManagement/Scene.h"
 
 namespace GE::Internal

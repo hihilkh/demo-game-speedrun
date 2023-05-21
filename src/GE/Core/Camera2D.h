@@ -28,13 +28,17 @@ namespace GE
 
 	public:
 		Camera2D(GameObject& gameObject);
-		~Camera2D();
+		~Camera2D() = default;
 
 		int GetPriority() const { return priority; }
 		void SetPriority(int priority) { this->priority = priority; }
 
 		Render::RenderLayer::Bitmask GetCullingMask() const { return cullingMask; }
 		void SetCullingMask(Render::RenderLayer::Bitmask cullingMask) { this->cullingMask = cullingMask; }
+
+	protected:
+		void Awake() override;
+		void PreDestroy() override;
 
 	private:
 		/// <summary>

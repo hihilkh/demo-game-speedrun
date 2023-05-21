@@ -4,7 +4,7 @@
 #include <vector>
 #include <memory>
 #include "GE/Core/GameObject.h"
-#include "GE/Core/GameObjectOwner.h"
+#include "GE/Core/Internal/GameObjectOwner.h"
 
 namespace GE
 {
@@ -42,6 +42,8 @@ namespace GE::SceneManagement
 	private:
 		void OnUpdate();
 		void OnLateUpdate();
+		void OnEndOfFrame();
+
 		void OnRender();
 
 #pragma region Camera2DとRendererに呼び出される関数

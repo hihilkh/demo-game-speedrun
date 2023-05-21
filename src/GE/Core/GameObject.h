@@ -1,11 +1,12 @@
 ﻿#pragma once
 
-#include "GameObjectOwner.h"
+#include "Internal/GameObjectOwner.h"
 #include <vector>
 #include <memory>
 #include <functional>
 #include <type_traits>
 #include <string>
+#include "Internal/Destroyable.h"
 
 namespace GE
 {
@@ -21,10 +22,11 @@ namespace GE
 		class Scene;
 	}
 
-	class GameObject : public Internal::GameObjectOwner
+	class GameObject : public Internal::GameObjectOwner, public Internal::Destroyable
 	{
 		friend SceneManagement::Scene;
 		friend Internal::GameObjectOwner;
+		friend Component;
 
 	public:
 		~GameObject();	// Componentとかが前方宣言できるために、デストラクタを宣言し、cppで定義する
@@ -84,22 +86,11 @@ namespace GE
 
 #pragma region ゲームループ
 
-		/// <summary>
-		/// 生成した後の最初の処理。有効無効にかかわらず呼び出される
-		/// </summary>
 		void OnAwake();
-		/// <summary>
-		/// Awake()段階の次の処理。有効無効にかかわらず呼び出される
-		/// </summary>
 		void OnStart();
-		/// <summary>
-		/// 毎フレームの処理。有効にする時のみ
-		/// </summary>
 		void OnUpdate();
-		/// <summary>
-		/// Update段階の次の処理。有効にする時のみ
-		/// </summary>
 		void OnLateUpdate();
+		void OnEndOfFrame();
 
 #pragma endregion
 
@@ -108,6 +99,16 @@ namespace GE
 		std::vector<std::unique_ptr<GameObject>>& GetGameObjectContainer() override { return children; }
 
 #pragma endregion
+
+#pragma region Destroyable
+
+		void OnPreDestroy() override;
+		void OnDestroy() override;
+		bool CheckIsInActiveScene() override;
+
+#pragma endregion
+
+		bool RemoveComponentImmediate(const Component& component);
 
 	};
 

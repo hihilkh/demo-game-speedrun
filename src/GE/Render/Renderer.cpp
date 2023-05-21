@@ -9,11 +9,15 @@ namespace GE::Render
 		renderPriority(renderPriority),
 		renderLayer(renderLayer)
 	{
+	}
+
+	void Renderer::Awake()
+	{
 		SceneManagement::Scene& scene = gameObject.GetBelongingScene();
 		scene.RegisterRenderer(*this);
 	}
 
-	Renderer::~Renderer()
+	void Renderer::PreDestroy()
 	{
 		SceneManagement::Scene& scene = gameObject.GetBelongingScene();
 		scene.UnregisterRenderer(*this);

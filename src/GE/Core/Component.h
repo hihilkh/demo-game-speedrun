@@ -1,11 +1,13 @@
 ﻿#pragma once
 
+#include "Internal/Destroyable.h"
+
 namespace GE
 {
 	class GameObject;
 	class Transform2D;
 
-	class Component
+	class Component : public Internal::Destroyable
 	{
 		friend class GameObject;
 
@@ -46,6 +48,10 @@ namespace GE
 		/// Update段階の次の処理。有効にする時のみ
 		/// </summary>
 		virtual void LateUpdate() {}
+		/// <summary>
+		/// ほぼフレームの最後の段階(Destroy段階の直前)。ダングリングポインタの防止ための処理とか。有効にする時のみ
+		/// </summary>
+		virtual void EndOfFrame() {}
 
 	private:
 		bool isEnable;
@@ -58,8 +64,19 @@ namespace GE
 		void OnStart();
 		void OnUpdate();
 		void OnLateUpdate();
+		void OnEndOfFrame();
+
+#pragma endregion
+
+#pragma region Destroyable
+
+		void OnDestroy() override;
+		bool CheckIsInActiveScene() override;
 
 #pragma endregion
 
 	};
+
+	bool operator==(const Component& lhs, const Component& rhs);
+	bool operator!=(const Component& lhs, const Component& rhs);
 }

@@ -93,7 +93,7 @@ namespace GE
 		return parent->IsChildOf(other, recursive);
 	}
 
-#pragma region ゲームループ
+#pragma region ゲームループ と Destroyable
 
 #define EXECUTE_BY_ORDER(func) {\
 	for (auto& component : components) {\
@@ -116,7 +116,7 @@ namespace GE
 
 	void GameObject::OnUpdate()
 	{
-		if (!isActive) {
+		if (!isActive || !IsValid()) {
 			return;
 		}
 
@@ -125,16 +125,58 @@ namespace GE
 
 	void GameObject::OnLateUpdate()
 	{
-		if (!isActive) {
+		if (!isActive || !IsValid()) {
 			return;
 		}
 
 		EXECUTE_BY_ORDER(OnLateUpdate());
 	}
 
+	void GameObject::OnEndOfFrame()
+	{
+		if (!isActive || !IsValid()) {
+			return;
+		}
+
+		EXECUTE_BY_ORDER(OnEndOfFrame());
+	}
+
+	void GameObject::OnPreDestroy()
+	{
+		Destroyable::OnPreDestroy();
+
+		EXECUTE_BY_ORDER(OnPreDestroy());
+	}
+
 #undef EXECUTE_BY_ORDER
 
+	void GameObject::OnDestroy()
+	{
+		GameObjectOwner* owner = parent ? static_cast<GameObjectOwner*>(parent) : static_cast<GameObjectOwner*>(&belongingScene);
+		owner->ReleaseGameObjectOwnership(*this);
+	}
+
+	bool GameObject::CheckIsInActiveScene()
+	{
+		return GetBelongingScene() == SceneManagement::SceneManager::GetActiveScene();
+	}
+
 #pragma endregion
+
+	bool GameObject::RemoveComponentImmediate(const Component& component)
+	{
+		auto target = std::find_if(
+			components.begin(),
+			components.end(),
+			[&component](const auto& fromContainer) { return *fromContainer == component; });
+
+		if (target == components.end()) {
+			return false;
+		} else {
+			components.erase(target);
+			return true;
+		}
+	}
 
 	bool operator==(const GameObject& lhs, const GameObject& rhs)
 	{
