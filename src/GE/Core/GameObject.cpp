@@ -93,6 +93,11 @@ namespace GE
 		return parent->IsChildOf(other, recursive);
 	}
 
+	GameObject* GameObject::GetChild(const std::string& name) const
+	{
+		return GetOwnedGameObject(name);
+	}
+
 #pragma region ゲームループ と Destroyable
 
 #define EXECUTE_BY_ORDER(func) {\

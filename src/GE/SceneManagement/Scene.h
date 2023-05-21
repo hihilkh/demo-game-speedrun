@@ -31,6 +31,7 @@ namespace GE::SceneManagement
 		void operator=(const Scene&) = delete;
 
 		const std::string& GetName() const { return name; }
+		GameObject* FindGameObject(const std::string& name) const;
 
 	private:
 		bool isDestructing;
@@ -59,6 +60,7 @@ namespace GE::SceneManagement
 #pragma region GameObjectOwner
 
 		std::vector<std::unique_ptr<GameObject>>& GetGameObjectContainer() override { return gameObjects; }
+		const std::vector<std::unique_ptr<GameObject>>& GetGameObjectContainer() const override { return gameObjects; }
 
 #pragma endregion
 	};

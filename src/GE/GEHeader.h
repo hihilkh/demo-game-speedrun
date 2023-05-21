@@ -32,4 +32,5 @@
 #include "Render/RenderLayer.h"
 
 #include "Utils/HandyFunc/FromGameEngine.h"
+#include "Utils/HandyFunc/FromSceneManagement.h"
 #include "Utils/TypeDef.h"

@@ -23,8 +23,12 @@ namespace GE::Internal
 	public:
 		virtual ~GameObjectOwner() = default;
 
+	protected:
+		GameObject* GetOwnedGameObject(const std::string& name) const;
+
 	private:
 		virtual std::vector<std::unique_ptr<GameObject>>& GetGameObjectContainer() = 0;
+		virtual const std::vector<std::unique_ptr<GameObject>>& GetGameObjectContainer() const = 0;
 
 	private:
 		GameObject& CreateAndOwnGameObject(const std::string& name, SceneManagement::Scene& scene);

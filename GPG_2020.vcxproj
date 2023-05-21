@@ -649,6 +649,20 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeaderFile>
     </ClCompile>
+    <ClCompile Include="src\GE\Utils\HandyFunc\FromSceneManagement.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeaderFile>
+    </ClCompile>
     <ClCompile Include="src\Profiling\Profiler.cpp" />
     <ClCompile Include="src\Profiling\ProfilerLoggerConsole.cpp" />
     <ClCompile Include="src\Profiling\ProfilerLoggerCsv.cpp" />
@@ -793,6 +807,7 @@
     <ClInclude Include="src\GE\Core\Transform2D.h" />
     <ClInclude Include="src\GE\SceneManagement\SceneConfig.h" />
     <ClInclude Include="src\GE\Tools\ConstructorTest.h" />
+    <ClInclude Include="src\GE\Utils\HandyFunc\FromSceneManagement.h" />
     <ClInclude Include="src\GE\Utils\PreprocessorDef.h" />
     <ClInclude Include="src\GE\Utils\TypeDef.h" />
     <ClInclude Include="src\GE\DataType\Vector2.h" />

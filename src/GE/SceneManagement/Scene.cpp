@@ -40,6 +40,11 @@ namespace GE::SceneManagement
 		}
 	}
 
+	GameObject* Scene::FindGameObject(const std::string& name) const
+	{
+		return GetOwnedGameObject(name);
+	}
+
 	void Scene::OnUpdate()
 	{
 		for (auto& gameObject : gameObjects) {

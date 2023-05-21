@@ -60,17 +60,23 @@ namespace GE
 		GameObject* Parent() const { return parent; }	// 自分がconstになってもparentを変更されることができます
 		bool SetParent(GameObject* newParent, bool keepWorldTransform = false);
 		bool IsChildOf(const GameObject& other, bool recursive) const;
+		GameObject* GetChild(const std::string& name) const;
 
 		const Transform2D& GetTransform() const { return *transform; }
 		Transform2D& GetTransform() { return *transform; }
 
-		template<typename T>
-		T& AddComponent(auto&&... args);
-		// TODO : Temp
-		// GetEnable (global base)
-		// Destroy
-		// GetChild
-		// GetComponent
+		template<typename T> T& AddComponent(auto&&... args);
+		template<typename T> T* GetComponent() const;
+		template<typename T> T* GetComponentInChildren() const;
+		template<typename T> T* GetComponentInParent() const;
+		template<typename T> std::vector<T*> GetComponents() const;
+		template<typename T> std::vector<T*> GetComponentsInChildren() const;
+		template<typename T> std::vector<T*> GetComponentsInParent() const;
+
+	private:
+		template<typename T> void GetComponents(std::vector<T*>& outContainer) const;
+		template<typename T> void GetComponentsInChildren(std::vector<T*>& outContainer) const;
+		template<typename T> void GetComponentsInParent(std::vector<T*>& outContainer) const;
 
 	private:
 		std::string name;
@@ -97,6 +103,7 @@ namespace GE
 #pragma region GameObjectOwner
 
 		std::vector<std::unique_ptr<GameObject>>& GetGameObjectContainer() override { return children; }
+		const std::vector<std::unique_ptr<GameObject>>& GetGameObjectContainer() const override { return children; }
 
 #pragma endregion
 
@@ -111,6 +118,9 @@ namespace GE
 		bool RemoveComponentImmediate(const Component& component);
 
 	};
+
+	bool operator==(const GameObject& lhs, const GameObject& rhs);
+	bool operator!=(const GameObject& lhs, const GameObject& rhs);
 
 #pragma region 関数テンプレート定義
 
@@ -127,8 +137,108 @@ namespace GE
 		return component;
 	}
 
-#pragma endregion
+	template<typename T>
+	inline T* GameObject::GetComponent() const
+	{
+		static_assert(std::is_base_of_v<Component, T>, "The type must be a component");
 
-	bool operator==(const GameObject& lhs, const GameObject& rhs);
-	bool operator!=(const GameObject& lhs, const GameObject& rhs);
+		for (auto& component : components) {
+			T* castValue = dynamic_cast<T*>(component.get());
+			if (castValue) {
+				return castValue;
+			}
+		}
+
+		return nullptr;
+	}
+
+	template<typename T>
+	inline T* GameObject::GetComponentInChildren() const
+	{
+		T* result = GetComponent<T>();
+		if (result) {
+			return result;
+		}
+
+		for (auto& child : children) {
+			result = child->GetComponentInChildren<T>();
+			if (result) {
+				return result;
+			}
+		}
+
+		return nullptr;
+	}
+
+	template<typename T>
+	inline T* GameObject::GetComponentInParent() const
+	{
+		T* result = GetComponent<T>();
+		if (result) {
+			return result;
+		}
+
+		if (parent) {
+			return parent->GetComponentInParent();
+		} else {
+			return nullptr;
+		}
+	}
+
+	template<typename T>
+	inline std::vector<T*> GameObject::GetComponents() const
+	{
+		std::vector<T*> result;
+		GetComponents(result);
+		return result;
+	}
+
+	template<typename T>
+	inline std::vector<T*> GameObject::GetComponentsInChildren() const
+	{
+		std::vector<T*> result;
+		GetComponentsInChildren(result);
+		return result;
+	}
+
+	template<typename T>
+	inline std::vector<T*> GameObject::GetComponentsInParent() const
+	{
+		std::vector<T*> result;
+		GetComponentsInParent(result);
+		return result;
+	}
+
+	template<typename T>
+	inline void GameObject::GetComponents(std::vector<T*>& outContainer) const
+	{
+		static_assert(std::is_base_of_v<Component, T>, "The type must be a component");
+
+		for (auto& component : components) {
+			T* castValue = dynamic_cast<T*>(component.get());
+			if (castValue) {
+				outContainer.push_back(castValue);
+			}
+		}
+	}
+
+	template<typename T>
+	inline void GameObject::GetComponentsInChildren(std::vector<T*>& outContainer) const
+	{
+		GetComponents(outContainer);
+		for (auto& child : children) {
+			child->GetComponentsInChildren<T>(outContainer);
+		}
+	}
+
+	template<typename T>
+	inline void GameObject::GetComponentsInParent(std::vector<T*>& outContainer) const
+	{
+		GetComponents(outContainer);
+		if (parent) {
+			parent->GetComponentsInParent(outContainer);
+		}
+	}
+
+#pragma endregion
 }

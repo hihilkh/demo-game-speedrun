@@ -60,6 +60,12 @@ namespace Scene
 		imageB.SetScale({ 2.0f, 2.0f });
 		imageB.SetRenderPriority(-1);
 
+		GE::Render::Image* image = a.GetComponent<GE::Render::Image>();
+		Test* test = a.GetComponent<Test>();
+
+		GameObject* bPtr = scene->FindGameObject("b");
+		GameObject* cPtr = scene->FindGameObject("c");
+
 		return scene;
 	}
 }
