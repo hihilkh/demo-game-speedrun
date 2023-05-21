@@ -96,11 +96,8 @@ namespace GE
 #pragma region ゲームループ
 
 #define EXECUTE_BY_ORDER(func) {\
-	for (auto& component : nonRenderComponents) {\
+	for (auto& component : components) {\
 		component->func;\
-	}\
-	for (auto& renderer : renderers) {\
-		renderer->func;\
 	}\
 	for (auto& child : children) {\
 		child->func;\

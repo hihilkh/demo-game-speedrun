@@ -75,8 +75,7 @@ namespace GE
 		SceneManagement::Scene& belongingScene;
 		GameObject* parent;		// parentが破棄される前に、このインスタンスのchildrenを全て破棄するので、parentはダングリングポインタになるはずがない
 		const std::unique_ptr<Transform2D> transform;
-		std::vector<std::unique_ptr<Component>> nonRenderComponents;
-		std::vector<std::unique_ptr<Render::Renderer>> renderers;
+		std::vector<std::unique_ptr<Component>> components;
 		std::vector<std::unique_ptr<GameObject>> children;
 		bool isActive;
 
@@ -119,17 +118,8 @@ namespace GE
 	{
 		static_assert(std::is_base_of_v<Component, T>, "The type must be a component");
 
-		auto add = [&]() -> T& {
-			if constexpr (std::is_base_of_v<Render::Renderer, T>) {
-				auto& component = renderers.emplace_back(std::make_unique<T>(*this, args...));
-				return static_cast<T&>(*component);
-			} else {
-				auto& component = nonRenderComponents.emplace_back(std::make_unique<T>(*this, args...));
-				return static_cast<T&>(*component);
-			}
-		};
-
-		T& component = add();
+		std::unique_ptr<Component>& componentUniqueRef = components.emplace_back(std::make_unique<T>(*this, args...));
+		T& component = static_cast<T&>(*componentUniqueRef);
 		component.OnAwake();
 		component.OnStart();
 
