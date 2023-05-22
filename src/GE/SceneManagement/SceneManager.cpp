@@ -6,8 +6,9 @@ namespace GE::SceneManagement
 {
 	SceneConfig SceneManager::config;
 
-	// 常にactiveSceneを持っているように、ダミーシーンを作成する
-	// TODO : 今スレッドセーフではない。GetActiveScene()を呼び出す時、activeSceneはない可能がある
+	// 常にactiveSceneを持っているように、ダミーシーンを作成する。
+	// でも、シーンを遷移しているとき、activeSceneを無効になる場合もある。
+	// TODO : シーンの遷移手順をロックする
 	std::unique_ptr<Scene> SceneManager::activeScene = std::make_unique<Scene>("Dummy");
 
 	Scene& SceneManager::GetActiveScene()
