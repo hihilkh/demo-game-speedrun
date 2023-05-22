@@ -1,5 +1,5 @@
 ﻿#include "ParticleConfig.h"
-#include "Utils/Math.h"
+#include "GE/Utils/Math.h"
 
 namespace ParticleSystem
 {

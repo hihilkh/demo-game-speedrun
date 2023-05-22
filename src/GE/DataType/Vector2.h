@@ -16,10 +16,7 @@ namespace GE::DataType::Internal
 	template<typename T>
 	struct TVector2
 	{
-		static_assert(std::is_integral_v<T> || std::is_floating_point_v<T>, "The type must be int or float");
-
-		using FloatType = std::conditional_t<std::is_floating_point_v<T>, T, float>;
-		using VectorFloatType = TVector2<FloatType>;
+		static_assert(std::is_same_v<int, T> || std::is_same_v<float, T>, "The type must be int or float");
 
 		T x, y;
 
@@ -39,16 +36,16 @@ namespace GE::DataType::Internal
 
 		static T Dot(const TVector2& lhs, const TVector2& rhs);
 
-		FloatType Magnitude() const;
+		float Magnitude() const;
 		T SqrMagnitude() const;
-		static FloatType Distance(const TVector2& lhs, const TVector2& rhs);
+		static float Distance(const TVector2& lhs, const TVector2& rhs);
 
-		static VectorFloatType Lerp(const TVector2& a, const TVector2& b, float t);
+		static TVector2<float> Lerp(const TVector2& a, const TVector2& b, float t);
 
 		TVector2& Normalize();
 		bool IsNormalized() const;
 
-		TVector2& Rotate(FloatType degree);
+		TVector2& Rotate(float degree);
 
 		// 暗黙的な変換
 
@@ -141,7 +138,7 @@ namespace GE::DataType::Internal
 	template<typename T>
 	inline TVector2<T>& TVector2<T>::operator/=(T divisor)
 	{
-		if constexpr (std::is_integral_v<T>) {
+		if constexpr (std::is_same_v<int, T>) {
 			x /= divisor;
 			y /= divisor;
 		} else {
@@ -188,7 +185,7 @@ namespace GE::DataType::Internal
 	}
 
 	template<typename T>
-	inline TVector2<T>::FloatType TVector2<T>::Magnitude() const
+	inline float TVector2<T>::Magnitude() const
 	{
 		return sqrt(SqrMagnitude());
 	}
@@ -200,15 +197,15 @@ namespace GE::DataType::Internal
 	}
 
 	template<typename T>
-	inline TVector2<T>::FloatType TVector2<T>::Distance(const TVector2<T>& lhs, const TVector2<T>& rhs)
+	inline float TVector2<T>::Distance(const TVector2<T>& lhs, const TVector2<T>& rhs)
 	{
 		return (lhs - rhs).Magnitude();
 	}
 
 	template<typename T>
-	inline TVector2<T>::VectorFloatType TVector2<T>::Lerp(const TVector2<T>& a, const TVector2<T>& b, float t)
+	inline TVector2<float> TVector2<T>::Lerp(const TVector2<T>& a, const TVector2<T>& b, float t)
 	{
-		return TVector2<T>::VectorFloatType(
+		return TVector2<float>(
 			std::lerp(a.x, b.x, t),
 			std::lerp(a.y, b.y, t)
 		);
@@ -220,7 +217,7 @@ namespace GE::DataType::Internal
 		// TODO : 
 		// 今TVector2<int>でもNormalize()関数を持っている(使う場合はコンパイルエラーが生じる)
 		// もっと良い方法を考えましょう
-		static_assert(std::is_floating_point_v<T>, "Only Vector with float values is allowed to use this function");
+		static_assert(std::is_same_v<float, T>, "Only Vector with float values is allowed to use this function");
 
 		*this /= Magnitude();
 		return *this;
@@ -233,13 +230,13 @@ namespace GE::DataType::Internal
 	}
 
 	template<typename T>
-	inline TVector2<T>& TVector2<T>::Rotate(TVector2<T>::FloatType degree)
+	inline TVector2<T>& TVector2<T>::Rotate(float degree)
 	{
-		static_assert(std::is_floating_point_v<T>, "Only Vector with float values is allowed to use this function");
+		static_assert(std::is_same_v<float, T>, "Only Vector with float values is allowed to use this function");
 
-		double radian = Math::ToRadian(degree);
-		double sinValue = std::sin(radian);
-		double cosValue = std::cos(radian);
+		float radian = Math::ToRadian(degree);
+		float sinValue = std::sin(radian);
+		float cosValue = std::cos(radian);
 
 		T tempX = x;
 		x = x * cosValue - y * sinValue;
@@ -251,25 +248,25 @@ namespace GE::DataType::Internal
 	template<typename T>
 	inline TVector2<T>::operator TVector2<float>() const
 	{
-		return TVector2<float>(x, y);
+		return TVector2<float>((float)x, (float)y);
 	}
 
 	template<typename T>
 	inline TVector2<T>::operator TVector2<int>() const
 	{
-		return TVector2<int>(x, y);
+		return TVector2<int>((int)x, (int)y);
 	}
 
 	template<typename T>
 	inline TVector2<T>::operator TVector3<float>() const
 	{
-		return TVector3<float>(x, y, 0.0f);
+		return TVector3<float>((float)x, (float)y, 0.0f);
 	}
 
 	template<typename T>
 	inline TVector2<T>::operator TVector3<int>() const
 	{
-		return TVector3<int>(x, y, 0);
+		return TVector3<int>((int)x, (int)y, 0);
 	}
 
 	template<typename T>

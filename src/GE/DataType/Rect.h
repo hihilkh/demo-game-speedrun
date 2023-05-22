@@ -11,7 +11,7 @@ namespace GE::DataType::Internal
 	template<typename T>
 	struct TRect
 	{
-		static_assert(std::is_integral_v<T> || std::is_floating_point_v<T>, "The type must be int or float");
+		static_assert(std::is_same_v<int, T> || std::is_same_v<float, T>, "The type must be int or float");
 
 		union
 		{
@@ -135,7 +135,7 @@ namespace GE::DataType::Internal
 		T deltaX = oppositeX - x;
 		T deltaY = oppositeY - y;
 
-		if constexpr (std::is_integral_v<T>) {
+		if constexpr (std::is_same_v<int, T>) {
 			return TRect(x, y, deltaX + Math::SignNonZero(deltaX), deltaY + Math::SignNonZero(deltaY));
 		} else {
 			return TRect(x, y, deltaX, deltaY);
@@ -163,7 +163,7 @@ namespace GE::DataType::Internal
 	template<typename T>
 	inline bool TRect<T>::IsEmpty() const
 	{
-		if constexpr (std::is_integral_v<T>) {
+		if constexpr (std::is_same_v<int, T>) {
 			return width == 0 || height == 0;
 		} else {
 			return false;
@@ -173,7 +173,7 @@ namespace GE::DataType::Internal
 	template<typename T>
 	inline T TRect<T>::OppositeX() const
 	{
-		if constexpr (std::is_integral_v<T>) {
+		if constexpr (std::is_same_v<int, T>) {
 			return x + width - Math::Sign(width);
 		} else {
 			return x + width;
@@ -183,7 +183,7 @@ namespace GE::DataType::Internal
 	template<typename T>
 	inline T TRect<T>::OppositeY() const
 	{
-		if constexpr (std::is_integral_v<T>) {
+		if constexpr (std::is_same_v<int, T>) {
 			return y + height - Math::Sign(height);
 		} else {
 			return y + height;

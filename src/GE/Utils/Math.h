@@ -100,7 +100,7 @@ namespace Math
 	/// </summary>
 	inline float EaseInOutSine(float t)
 	{
-		return -(cos(std::numbers::pi * t) - 1) / 2;
+		return -(cos((float)std::numbers::pi * t) - 1.0f) / 2.0f;
 	}
 
 	/// <summary>
@@ -115,14 +115,14 @@ namespace Math
 
 #pragma region Radian
 
-	inline constexpr double ToRadian(double angle)
+	inline constexpr float ToRadian(float angle)
 	{
-		return angle * std::numbers::pi / 180.0;
+		return angle * (float)std::numbers::pi / 180.0f;
 	}
 
-	inline constexpr double ToAngle(double radian)
+	inline constexpr float ToAngle(float radian)
 	{
-		return radian * 180.0 / std::numbers::pi;
+		return radian * 180.0f / (float)std::numbers::pi;
 	}
 
 #pragma endregion

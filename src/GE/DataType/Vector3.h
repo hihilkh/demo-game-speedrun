@@ -15,10 +15,7 @@ namespace GE::DataType::Internal
 	template<typename T>
 	struct TVector3
 	{
-		static_assert(std::is_integral_v<T> || std::is_floating_point_v<T>, "The type must be int or float");
-
-		using FloatType = std::conditional_t<std::is_floating_point_v<T>, T, float>;
-		using VectorFloatType = TVector3<FloatType>;
+		static_assert(std::is_same_v<int, T> || std::is_same_v<float, T>, "The type must be int or float");
 
 		T x, y, z;
 
@@ -39,11 +36,11 @@ namespace GE::DataType::Internal
 		static T Dot(const TVector3& lhs, const TVector3& rhs);
 		static TVector3 Cross(const TVector3& lhs, const TVector3& rhs);
 
-		FloatType Magnitude() const;
+		float Magnitude() const;
 		T SqrMagnitude() const;
-		static FloatType Distance(const TVector3& lhs, const TVector3& rhs);
+		static float Distance(const TVector3& lhs, const TVector3& rhs);
 
-		static VectorFloatType Lerp(const TVector3& a, const TVector3& b, float t);
+		static TVector3<float> Lerp(const TVector3& a, const TVector3& b, float t);
 
 		TVector3& Normalize();
 		bool IsNormalized() const;
@@ -149,7 +146,7 @@ namespace GE::DataType::Internal
 	template<typename T>
 	inline TVector3<T>& TVector3<T>::operator/=(T divisor)
 	{
-		if constexpr (std::is_integral_v<T>) {
+		if constexpr (std::is_same_v<int, T>) {
 			x /= divisor;
 			y /= divisor;
 			z /= divisor;
@@ -210,7 +207,7 @@ namespace GE::DataType::Internal
 	}
 
 	template<typename T>
-	inline TVector3<T>::FloatType TVector3<T>::Magnitude() const
+	inline float TVector3<T>::Magnitude() const
 	{
 		return sqrt(SqrMagnitude());
 	}
@@ -222,15 +219,15 @@ namespace GE::DataType::Internal
 	}
 
 	template<typename T>
-	inline TVector3<T>::FloatType TVector3<T>::Distance(const TVector3& lhs, const TVector3& rhs)
+	inline float TVector3<T>::Distance(const TVector3& lhs, const TVector3& rhs)
 	{
 		return (lhs - rhs).Magnitude();
 	}
 
 	template<typename T>
-	inline TVector3<T>::VectorFloatType TVector3<T>::Lerp(const TVector3<T>& a, const TVector3<T>& b, float t)
+	inline TVector3<float> TVector3<T>::Lerp(const TVector3<T>& a, const TVector3<T>& b, float t)
 	{
-		return TVector3<T>::VectorFloatType(
+		return TVector3<float>(
 			std::lerp(a.x, b.x, t),
 			std::lerp(a.y, b.y, t),
 			std::lerp(a.z, b.z, t)
@@ -243,7 +240,7 @@ namespace GE::DataType::Internal
 		// TODO : 
 		// 今TVector3<int>でもNormalize()関数を持っている(使う場合はコンパイルエラーが生じる)
 		// もっと良い方法を考えましょう
-		static_assert(std::is_floating_point_v<T>, "Only Vector with float values is allowed to use this function");
+		static_assert(std::is_same_v<float, T>, "Only Vector with float values is allowed to use this function");
 
 		*this /= Magnitude();
 		return *this;
@@ -258,25 +255,25 @@ namespace GE::DataType::Internal
 	template<typename T>
 	inline TVector3<T>::operator TVector2<float>() const
 	{
-		return TVector2<float>(x, y);
+		return TVector2<float>((float)x, (float)y);
 	}
 
 	template<typename T>
 	inline TVector3<T>::operator TVector2<int>() const
 	{
-		return TVector2<int>(x, y);
+		return TVector2<int>((int)x, (int)y);
 	}
 
 	template<typename T>
 	inline TVector3<T>::operator TVector3<float>() const
 	{
-		return TVector3<float>(x, y, z);
+		return TVector3<float>((float)x, (float)y, (float)z);
 	}
 
 	template<typename T>
 	inline TVector3<T>::operator TVector3<int>() const
 	{
-		return TVector3<int>(x, y, z);
+		return TVector3<int>((int)x, (int)y, (int)z);
 	}
 
 	template<typename T>

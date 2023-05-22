@@ -27,7 +27,6 @@ namespace GE
 
 	GameObject& GameObject::Create(const std::string& name, SceneManagement::Scene& scene)
 	{
-		SceneManagement::Scene& activeScene = SceneManagement::SceneManager::GetActiveScene();
 		return scene.CreateAndOwnGameObject(name, scene);
 	}
 
