@@ -1,6 +1,6 @@
 ﻿#include "GE/Utils/PreprocessorDef.h"
 
-#if _RENDERER == RENDERER_DIRECT_X
+#if _RENDERER == RENDERER_DG2014
 
 #include "../Texture.h"
 #include "DG2014/DG2014_Image.h"

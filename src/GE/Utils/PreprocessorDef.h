@@ -8,6 +8,12 @@
 
 #pragma region Renderer
 
-#define RENDERER_DIRECT_X			0
+#define RENDERER_DG2014				0
+
+#pragma endregion
+
+#pragma region Input
+
+#define INPUT_WINDOWS				0
 
 #pragma endregion

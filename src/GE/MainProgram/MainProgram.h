@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include <functional>
+#include "GE/Render/RenderSystemInitParams.h"
 
 namespace GE
 {
@@ -14,7 +15,13 @@ namespace GE
 	class MainProgram
 	{
 	public:
-		static Render::RenderSystemInitParams Prepare(const MainProgramInitParams& params, const GEConfig& config);
+		struct OtherInitParamsSet
+		{
+			Render::RenderSystemInitParams renderSystemInitParams;
+		};
+
+		static OtherInitParamsSet Prepare(const MainProgramInitParams& params, const GEConfig& config);
+
 		static int Start(std::function<void()> gameLoop);
 	};
 

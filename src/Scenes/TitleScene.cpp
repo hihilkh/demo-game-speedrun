@@ -3,6 +3,7 @@
 #include "GE/SceneManagement/Scene.h"
 #include "GE/Render/Image.h"
 #include "GE/Tools/ConstructorTest.h"
+#include "GE/Input/InputSystem.h"
 
 namespace Scene
 {
@@ -33,11 +34,22 @@ namespace Scene
 
 		void Update() override
 		{
-			DEBUG_LOG("Update");
+			//DEBUG_LOG("Update");
+			if (GE::Input::GetKeyDown(GE::Input::Key::a)) {
+				DEBUG_LOG("Key down");
+			}
+
+			if (GE::Input::GetKeyOn(GE::Input::Key::a)) {
+				DEBUG_LOG("Key on");
+			}
+
+			if (GE::Input::GetKeyUp(GE::Input::Key::a)) {
+				DEBUG_LOG("Key up");
+			}
 		}
 		void LateUpdate() override
 		{
-			DEBUG_LOG("LateUpdate");
+			//DEBUG_LOG("LateUpdate");
 		}
 	};
 	std::unique_ptr<GE::SceneManagement::Scene> TitleScene::operator()() const
@@ -59,6 +71,8 @@ namespace Scene
 		auto& imageB = b.AddComponent<GE::Render::Image>("./data/Image/Chara01.png");
 		imageB.SetScale({ 2.0f, 2.0f });
 		imageB.SetRenderPriority(-1);
+
+		a.AddComponent<Test>();
 
 		GE::Render::Image* image = a.GetComponent<GE::Render::Image>();
 		Test* test = a.GetComponent<Test>();

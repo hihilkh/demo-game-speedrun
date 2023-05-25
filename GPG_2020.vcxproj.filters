@@ -274,6 +274,12 @@
     <ClCompile Include="src\GE\Utils\HandyFunc\FromSceneManagement.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\GE\Input\Impl\WindowsInputSystem.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Input\Impl\WindowsKey.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GameEngine_Ver3_83.h">
@@ -504,7 +510,7 @@
     <ClInclude Include="src\GE\Render\Image.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GE\Render\Impl\DirectXRenderSystemInitParams.h">
+    <ClInclude Include="src\GE\Render\Impl\DG2014RenderSystemInitParams.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GE\Render\Renderer.h">
@@ -601,6 +607,15 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GE\Utils\HandyFunc\FromSceneManagement.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Input\InputSystem.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Input\Key.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Input\Impl\WindowsKeyCode.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

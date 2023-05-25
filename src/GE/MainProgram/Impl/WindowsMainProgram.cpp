@@ -4,8 +4,8 @@
 
 #include "../MainProgram.h"
 #include "../MainProgramInitParams.h"
-#include "GE/Render/RenderSystemInitParams.h"
 #include "GE/Core/GEConfig.h"
+#include "GE/Input/InputSystem.h"
 
 namespace GE
 {
@@ -17,6 +17,12 @@ namespace GE
 		LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		{
 			switch (message) {
+				case WM_KEYDOWN:
+					Input::Internal::OnKeyDown(wParam);
+					break;
+				case WM_KEYUP:
+					Input::Internal::OnKeyUp(wParam);
+					break;
 				case WM_DESTROY:
 					PostQuitMessage(0);
 					break;
@@ -73,11 +79,14 @@ namespace GE
 		}
 	}
 
-	Render::RenderSystemInitParams MainProgram::Prepare(const MainProgramInitParams& params, const GEConfig& config)
+	MainProgram::OtherInitParamsSet MainProgram::Prepare(const MainProgramInitParams& params, const GEConfig& config)
 	{
 		nCmdShow = params.nCmdShow;
 		hWnd = CreateGameWindow(params.hInstance, config);
-		return { hWnd };
+
+		return { 
+			{ hWnd },	// RenderSystemInitParams
+		};
 	}
 
 	int MainProgram::Start(std::function<void()> gameLoop)

@@ -45,9 +45,13 @@ namespace GE
 		static void Init(const MainProgramInitParams& params);
 
 		static bool CheckIsGoingToChangeScene();
-		static void CheckAndChangeScene();
-		static void RunGameLoop();
-		static void DestroyPhase();
 
+		static void RunGameLoop();
+
+		static void UpdatePhase();
+		static void RenderPhase();
+		static void EndOfFramePhase();
+		static void DestroyPhase();
+		static void ChangeScenePhase();
 	};
 }

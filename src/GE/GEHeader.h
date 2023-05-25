@@ -15,6 +15,8 @@
 #include <array>
 #include <map>
 #include <unordered_map>
+#include <set>
+#include <unordered_set>
 
 // ゲームエンジン
 #include "DataType/Vector2.h"

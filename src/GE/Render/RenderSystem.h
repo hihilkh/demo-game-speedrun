@@ -2,6 +2,7 @@
 
 namespace GE
 {
+	class GameEngine;
 	struct GEConfig;
 
 	namespace Render
@@ -14,7 +15,8 @@ namespace GE::Render
 {
 	class RenderSystem
 	{
-	public:
+		friend GameEngine;
+	private:
 		static void Init(const RenderSystemInitParams& params, const GEConfig& config);
 
 		static void StartRender();

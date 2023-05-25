@@ -1,3 +1,3 @@
 ﻿#pragma once
 
-#include "Impl/DirectXRenderSystemInitParams.h"
+#include "Impl/DG2014RenderSystemInitParams.h"

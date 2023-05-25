@@ -6,6 +6,7 @@
 #include "GE/SceneManagement/Scene.h"
 #include "GE/Render/RenderSystem.h"
 #include "GE/Render/RenderSystemInitParams.h"
+#include "GE/Input/InputSystem.h"
 #include "Internal/Destroyable.h"
 #include <cassert>
 
@@ -36,15 +37,15 @@ namespace GE
 
 	void GameEngine::Init(const MainProgramInitParams& params)
 	{
-		auto renderSystemInitParams = MainProgram::Prepare(params, config);
-		Render::RenderSystem::Init(renderSystemInitParams, config);
+		MainProgram::OtherInitParamsSet other = MainProgram::Prepare(params, config);
+		Render::RenderSystem::Init(other.renderSystemInitParams, config);
 		Time::Init(config.targetFps);
 		SceneManagement::SceneManager::LoadFirstScene();
 	}
 
 	void GameEngine::LoadScene(const std::string& sceneName)
 	{
-		// 実際のシーン遷移はCheckAndChangeScene()で行う
+		// 実際のシーン遷移はChangeScenePhase()で行う
 		sceneNameToLoad = sceneName;
 	}
 
@@ -97,7 +98,7 @@ namespace GE
 		return !sceneNameToLoad.empty();
 	}
 
-	void GameEngine::CheckAndChangeScene()
+	void GameEngine::ChangeScenePhase()
 	{
 		if (!CheckIsGoingToChangeScene()) {
 			return;
@@ -109,20 +110,38 @@ namespace GE
 
 	void GameEngine::RunGameLoop()
 	{
+		UpdatePhase();
+		RenderPhase();
+		EndOfFramePhase();
+		DestroyPhase();
+		ChangeScenePhase();
+	}
+
+	void GameEngine::UpdatePhase()
+	{
+		SceneManagement::Scene& activeScene = SceneManagement::SceneManager::GetActiveScene();
+
 		Time::Update();
 
-		SceneManagement::Scene& activeScene = SceneManagement::SceneManager::GetActiveScene();
+		Input::InputSystem::OnUpdate();
+
 		activeScene.OnUpdate();
 		activeScene.OnLateUpdate();
+	}
+
+	void GameEngine::RenderPhase()
+	{
+		SceneManagement::Scene& activeScene = SceneManagement::SceneManager::GetActiveScene();
 
 		Render::RenderSystem::StartRender();
 		activeScene.OnRender();
 		Render::RenderSystem::FinishRender();
+	}
 
+	void GameEngine::EndOfFramePhase()
+	{
+		SceneManagement::Scene& activeScene = SceneManagement::SceneManager::GetActiveScene();
 		activeScene.OnEndOfFrame();
-		DestroyPhase();
-
-		CheckAndChangeScene();
 	}
 }
 
