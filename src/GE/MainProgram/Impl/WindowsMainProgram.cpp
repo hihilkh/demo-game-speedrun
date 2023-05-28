@@ -60,7 +60,7 @@ namespace GE
 				WS_EX_OVERLAPPEDWINDOW,                 // an optional extended window style.
 				config.windowClassName.c_str(),			// the name of the application
 				config.windowTitle.c_str(),				// the text that appears in the title bar
-				WS_OVERLAPPEDWINDOW,					// the type of window to create
+				WS_CAPTION | WS_SYSMENU,				// the type of window to create
 				CW_USEDEFAULT, CW_USEDEFAULT,			// initial position (x, y)
 				config.screenWidth,						// initial screen width
 				config.screenHeight,					// initial screen height

@@ -38,7 +38,7 @@ namespace GE::Render
 		Vector2 GetImageSize() const;
 		void SetImageSize(const Vector2& size);
 
-#pragma endrgion
+#pragma endregion
 
 	protected:
 		void Render(const Transform2DData& viewportData) const override;
