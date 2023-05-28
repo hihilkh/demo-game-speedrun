@@ -4,6 +4,9 @@
 #include "GE/Render/Image.h"
 #include "GE/Tools/ConstructorTest.h"
 #include "GE/Input/InputSystem.h"
+#include "GE/UI/Text.h"
+#include "GE/Font/FontManager.h"
+#include "GE/Font/Font.h"
 
 namespace Scene
 {
@@ -57,28 +60,47 @@ namespace Scene
 		auto scene = std::make_unique<GE::SceneManagement::Scene>(titleSceneName);
 		GameObject& mainCameraObject = GameObject::Create("MainCamera", *scene);
 		auto& camera = mainCameraObject.AddComponent<Camera2D>();
+		camera.SetCullingMask(RenderLayer::nonUI);
+
+		GameObject& uiCameraObject = GameObject::Create("UICamera", *scene);
+		auto& uiCamera = uiCameraObject.AddComponent<Camera2D>();
+		uiCamera.SetCullingMask(RenderLayer::ui);
+		uiCamera.SetPriority(1);
 
 		GameObject& a = GameObject::Create("a", *scene);
 		GameObject& b = a.CreateChild("b");
 
-		//a.AddComponent<Test>(GE::Tools::ConstructorTest("Hello"), GE::Tools::ConstructorTest("Bye"));
-		a.GetTransform().pos = { 0.0f, 0.0f };
-		a.GetTransform().rot = 0;
-		auto& imageA = a.AddComponent<GE::Render::Image>("./data/Image/Title.png");
-		imageA.SetScale({ 0.5f, 1.0f });
-		b.GetTransform().pos = { 0.0f, 0.0f };
-		b.GetTransform().rot = 20;
-		auto& imageB = b.AddComponent<GE::Render::Image>("./data/Image/Chara01.png");
-		imageB.SetScale({ 2.0f, 2.0f });
-		imageB.SetRenderPriority(-1);
+		//a.GetTransform().pos = { 0.0f, 0.0f };
+		//a.GetTransform().rot = 0;
+		//auto& imageA = a.AddComponent<GE::Render::Image>("./data/Image/Title.png");
+		//imageA.SetScale({ 0.5f, 1.0f });
+		//b.GetTransform().pos = { 0.0f, 0.0f };
+		//b.GetTransform().rot = 20;
+		//auto& imageB = b.AddComponent<GE::Render::Image>("./data/Image/Chara01.png");
+		//imageB.SetScale({ 2.0f, 2.0f });
+		//imageB.SetRenderPriority(-1);
 
-		a.AddComponent<Test>();
+		GameObject& ui = GameObject::Create("ui", *scene);
+		ui.GetTransform().pos.x = -300;
+		auto font = GE::Font::FontManager::GetFont(GE::Font::FontInfo("MS ゴシック", 30));
+		auto& text = ui.AddComponent<GE::UI::Text>(font, Vector2Int(100, 100));
+		text.SetText("hi");
 
-		GE::Render::Image* image = a.GetComponent<GE::Render::Image>();
-		Test* test = a.GetComponent<Test>();
+		GameObject& ui2 = GameObject::Create("ui2", *scene);
+		ui2.GetTransform().pos.x = 300;
+		auto font2 = GE::Font::FontManager::GetFont(GE::Font::FontInfo("MS ゴシック", 30));
+		auto& text2 = ui2.AddComponent<GE::UI::Text>(font2, Vector2Int(100, 100));
+		text2.SetText("あいう");
 
-		GameObject* bPtr = scene->FindGameObject("b");
-		GameObject* cPtr = scene->FindGameObject("c");
+		GameObject& ui3 = GameObject::Create("ui3", *scene);
+		auto& bgImage = ui3.AddComponent<GE::Render::Image>("./data/Image/White.png");
+		bgImage.SetColor(Color::red);
+		bgImage.SetImageSize({ 400.0f, 400.0f });
+		auto font3 = GE::Font::FontManager::GetFont(GE::Font::FontInfo("MS ゴシック", 60));
+		auto& text3 = ui3.AddComponent<GE::UI::Text>(font3, Vector2Int(400, 400));
+		text3.SetText("私君\nあいう\nYou and me");
+		text3.SetVerticalAlignment(GE::UI::TextVerticalAlignment::Bottom);
+		text3.SetHorizontalAlignment(GE::UI::TextHorizontalAlignment::Right);
 
 		return scene;
 	}

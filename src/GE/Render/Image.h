@@ -26,10 +26,19 @@ namespace GE::Render
 			const RectPixel& srcRect, 
 			const Color& color = Color::white);
 
+#pragma region ゲッター/セッター
+
 		const Vector2& GetScale() const { return scale; }
 		void SetScale(const Vector2& scale) { this->scale = scale; }
 		void SetUniformScale(float scale) { this->scale.x = scale; this->scale.y = scale; }
+
+		const Color& GetColor() const { return color; }
+		void SetColor(const Color& color) { this->color = color; }
+
 		Vector2 GetImageSize() const;
+		void SetImageSize(const Vector2& size);
+
+#pragma endrgion
 
 	protected:
 		void Render(const Transform2DData& viewportData) const override;

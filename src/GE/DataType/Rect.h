@@ -29,6 +29,7 @@ namespace GE::DataType::Internal
 		TRect(const TVector2<T>& pos, const TVector2<T>& size);
 
 		static TRect FromCenter(T width, T height);
+		static TRect FromCenter(const TVector2<T>& size);
 		static TRect FromDiagonal(T x, T y, T oppositeX, T oppositeY);
 		static TRect FromDiagonal(const TVector2<T>& point, const TVector2<T>& oppositePoint);
 
@@ -98,6 +99,8 @@ namespace GE::DataType::Internal
 		static bool Overlap(const TRect& first, const TRect& second);
 		bool OverlapWithSafeCheck(const TRect& other) const;
 		static bool OverlapWithSafeCheck(const TRect& first, const TRect& second);
+
+		void Move(const TVector2<T>& offset);
 	};
 
 	template<typename T> bool operator==(const TRect<T>& lhs, const TRect<T>& rhs);
@@ -130,6 +133,12 @@ namespace GE::DataType::Internal
 	}
 
 	template<typename T>
+	inline TRect<T> TRect<T>::FromCenter(const TVector2<T>& size)
+	{
+		return FromCenter(size.x, size.y);
+	}
+
+	template<typename T>
 	inline TRect<T> TRect<T>::FromDiagonal(T x, T y, T oppositeX, T oppositeY)
 	{
 		T deltaX = oppositeX - x;
@@ -145,7 +154,7 @@ namespace GE::DataType::Internal
 	template<typename T>
 	inline TRect<T> TRect<T>::FromDiagonal(const TVector2<T>& point, const TVector2<T>& oppositePoint)
 	{
-		return FromMinMax(point.x, point.y, oppositePoint.x, oppositePoint.y);
+		return FromDiagonal(point.x, point.y, oppositePoint.x, oppositePoint.y);
 	}
 
 	template<typename T>
@@ -297,6 +306,13 @@ namespace GE::DataType::Internal
 		firstCopy.UnFlip();
 		secondCopy.UnFlip();
 		return Overlap(firstCopy, secondCopy);
+	}
+
+	template<typename T>
+	inline void TRect<T>::Move(const TVector2<T>& offset)
+	{
+		x += offset.x;
+		y += offset.y;
 	}
 
 	template<typename T>

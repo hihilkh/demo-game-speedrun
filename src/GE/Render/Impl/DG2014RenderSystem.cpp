@@ -15,6 +15,28 @@ namespace GE::Render
 		std::shared_ptr<DG::DGObject> dg;
 	}
 
+#pragma region 他のDirectXのモジュールのために用意する
+	ID3D10Device* GetDirectXDevice()
+	{
+		if (dg) {
+			return &(dg->Device());
+		} else {
+			return nullptr;
+		}
+	}
+
+	void TempEnd2DRender()
+	{
+		dg->End2D();
+	}
+
+	void Resume2DRender()
+	{
+		dg->Begin2D();
+	}
+
+#pragma endregion
+
 	void RenderSystem::Init(const RenderSystemInitParams& params, const GEConfig& config)
 	{
 		dg = DG::DGObject::Create(

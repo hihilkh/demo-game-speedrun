@@ -17,3 +17,9 @@
 #define INPUT_WINDOWS				0
 
 #pragma endregion
+
+#pragma region Font
+
+#define FONT_DIRECT_X_10			0
+
+#pragma endregion

@@ -30,12 +30,18 @@ namespace GE::Render
 		return Vector2::Scale(srcRect.size, scale);
 	}
 
+	void Image::SetImageSize(const Vector2& size)
+	{
+		SetScale({ size.x / srcRect.size.x, size.y / srcRect.size.y });
+	}
+
 	void Image::Render(const Transform2DData& viewportData) const
 	{
 		// TODO : 画面外かないかをチェックする
 
 		Vector2 imageSize = GetImageSize();
-		RectPixel drawRect(viewportData.pos - imageSize / 2.0f, imageSize);
+		RectPixel drawRect = RectPixel::FromCenter(imageSize);
+		drawRect.Move(viewportData.pos);
 		texture->Rotate(viewportData.rot, imageSize / 2.0f);
 		texture->Draw(drawRect, srcRect, color);
 	}

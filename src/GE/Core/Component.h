@@ -26,7 +26,7 @@ namespace GE
 		virtual ~Component() = default;
 
 		bool GetEnable() const { return isEnable; }
-		void SetEnable(bool isEnable) { this->isEnable = isEnable; }
+		virtual void SetEnable(bool isEnable) { this->isEnable = isEnable; }
 
 		const Transform2D& GetTransform() const;
 		Transform2D& GetTransform();
