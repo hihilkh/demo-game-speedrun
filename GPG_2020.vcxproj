@@ -569,7 +569,7 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="src\GE\SceneManagement\SceneManager.cpp">
+    <ClCompile Include="src\GE\Scene\SceneManager.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeaderFile>
@@ -583,7 +583,7 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="src\GE\SceneManagement\SceneConfig.cpp">
+    <ClCompile Include="src\GE\Scene\SceneConfig.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeaderFile>
@@ -625,7 +625,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\GE\SceneManagement\Scene.cpp">
+    <ClCompile Include="src\GE\Scene\Scene.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeaderFile>
@@ -719,7 +719,7 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="src\GE\Utils\HandyFunc\FromSceneManagement.cpp">
+    <ClCompile Include="src\GE\Utils\HandyFunc\FromScene.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeaderFile>
@@ -879,19 +879,19 @@
     <ClInclude Include="src\GE\Render\RenderSystem.h" />
     <ClInclude Include="src\GE\Render\RenderSystemInitParams.h" />
     <ClInclude Include="src\GE\Render\Texture.h" />
-    <ClInclude Include="src\GE\SceneManagement\Scene.h" />
-    <ClInclude Include="src\GE\SceneManagement\SceneManager.h" />
+    <ClInclude Include="src\GE\Scene\Scene.h" />
+    <ClInclude Include="src\GE\Scene\SceneManager.h" />
     <ClInclude Include="src\GE\Core\Time.h" />
     <ClInclude Include="src\GE\DataType\Color.h" />
     <ClInclude Include="src\GE\GEHeader.h" />
     <ClInclude Include="src\GE\Core\GameObject.h" />
     <ClInclude Include="src\GE\DataType\Rect.h" />
     <ClInclude Include="src\GE\Core\Transform2D.h" />
-    <ClInclude Include="src\GE\SceneManagement\SceneConfig.h" />
+    <ClInclude Include="src\GE\Scene\SceneConfig.h" />
     <ClInclude Include="src\GE\Tools\ConstructorTest.h" />
     <ClInclude Include="src\GE\UI\Text.h" />
     <ClInclude Include="src\GE\UI\TextAlignment.h" />
-    <ClInclude Include="src\GE\Utils\HandyFunc\FromSceneManagement.h" />
+    <ClInclude Include="src\GE\Utils\HandyFunc\FromScene.h" />
     <ClInclude Include="src\GE\Utils\PreprocessorDef.h" />
     <ClInclude Include="src\GE\Utils\TypeDef.h" />
     <ClInclude Include="src\GE\DataType\Vector2.h" />

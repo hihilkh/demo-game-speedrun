@@ -17,14 +17,14 @@ namespace GE
 		class Renderer;
 	}
 
-	namespace SceneManagement
+	namespace Scene
 	{
 		class Scene;
 	}
 
 	class Camera2D : public Component
 	{
-		friend class SceneManagement::Scene;
+		friend class Scene::Scene;
 
 	public:
 		Camera2D(GameObject& gameObject);

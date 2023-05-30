@@ -16,7 +16,7 @@ namespace GE
 	}
 }
 
-namespace GE::SceneManagement
+namespace GE::Scene
 {
 	class Scene : public Internal::GameObjectOwner
 	{

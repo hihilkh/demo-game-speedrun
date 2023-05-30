@@ -4,7 +4,7 @@
 #include "GE/Core/Camera2D.h"
 #include "GE/Render/Renderer.h"
 
-namespace GE::SceneManagement
+namespace GE::Scene
 {
 	namespace
 	{

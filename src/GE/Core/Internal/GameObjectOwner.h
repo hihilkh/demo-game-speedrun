@@ -8,7 +8,7 @@ namespace GE
 {
 	class GameObject;
 
-	namespace SceneManagement
+	namespace Scene
 	{
 		class Scene;
 	}
@@ -31,7 +31,7 @@ namespace GE::Internal
 		virtual const std::vector<std::unique_ptr<GameObject>>& GetGameObjectContainer() const = 0;
 
 	private:
-		GameObject& CreateAndOwnGameObject(const std::string& name, SceneManagement::Scene& scene);
+		GameObject& CreateAndOwnGameObject(const std::string& name, Scene::Scene& scene);
 		std::unique_ptr<GameObject> ReleaseGameObjectOwnership(GameObject& gameObject);
 		void TakeGameObjectOwnership(std::unique_ptr<GameObject>&& gameObject);
 	};

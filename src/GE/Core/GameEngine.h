@@ -8,7 +8,7 @@
 namespace GE
 {
 	struct MainProgramInitParams;
-	namespace SceneManagement
+	namespace Scene
 	{
 		struct SceneConfig;
 	}
@@ -24,7 +24,7 @@ namespace GE
 		static void SetConfig(const GEConfig& config) { GameEngine::config = config; }
 		static const GEConfig& GetConfig() { return config; }
 
-		static void SetSceneConfig(SceneManagement::SceneConfig&& config);
+		static void SetSceneConfig(Scene::SceneConfig&& config);
 
 		static int Start(const MainProgramInitParams& params);
 

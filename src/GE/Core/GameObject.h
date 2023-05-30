@@ -18,14 +18,14 @@ namespace GE
 	{
 		class Renderer;
 	}
-	namespace SceneManagement
+	namespace Scene
 	{
 		class Scene;
 	}
 
 	class GameObject : public Internal::GameObjectOwner, public Internal::Destroyable
 	{
-		friend SceneManagement::Scene;
+		friend Scene::Scene;
 		friend Internal::GameObjectOwner;
 		friend Component;
 
@@ -41,7 +41,7 @@ namespace GE
 		bool GetActive() const { return isActive; }
 		void SetActive(bool isActive) { this->isActive = isActive; }
 
-		SceneManagement::Scene& GetBelongingScene() const { return belongingScene; }
+		Scene::Scene& GetBelongingScene() const { return belongingScene; }
 
 		/// <summary>
 		/// ActiveSceneで新しいGameObjectを生成する
@@ -51,7 +51,7 @@ namespace GE
 		/// <summary>
 		/// 指定のsceneで新しいGameObjectを生成する
 		/// </summary>
-		static GameObject& Create(SceneManagement::Scene& scene, const std::string& name = "GameObject");
+		static GameObject& Create(Scene::Scene& scene, const std::string& name = "GameObject");
 
 		/// <summary>
 		/// 新しいGameObjectを生成し、childになる
@@ -81,7 +81,7 @@ namespace GE
 
 	private:
 		std::string name;
-		SceneManagement::Scene& belongingScene;
+		Scene::Scene& belongingScene;
 		GameObject* parent;		// parentが破棄される前に、このインスタンスのchildrenを全て破棄するので、parentはダングリングポインタになるはずがない
 		const std::unique_ptr<Transform2D> transform;
 		std::vector<std::unique_ptr<Component>> components;
@@ -89,7 +89,7 @@ namespace GE
 		bool isActive;
 
 	private:
-		GameObject(const std::string& name, SceneManagement::Scene& scene, GameObject* parent);
+		GameObject(const std::string& name, Scene::Scene& scene, GameObject* parent);
 
 #pragma region ゲームループ
 

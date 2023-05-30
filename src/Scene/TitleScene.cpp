@@ -1,6 +1,6 @@
 ﻿#include "GE/GEHeader.h"
 #include "TitleScene.h"
-#include "GE/SceneManagement/Scene.h"
+#include "GE/Scene/Scene.h"
 #include "GE/Render/Image.h"
 #include "GE/Tools/ConstructorTest.h"
 #include "GE/Input/InputSystem.h"
@@ -10,9 +10,9 @@
 
 namespace Scene
 {
-	std::unique_ptr<GE::SceneManagement::Scene> TitleScene::operator()() const
+	std::unique_ptr<GE::Scene::Scene> TitleScene::operator()() const
 	{
-		auto scene = std::make_unique<GE::SceneManagement::Scene>(titleSceneName);
+		auto scene = std::make_unique<GE::Scene::Scene>(titleSceneName);
 
 		GameObject& mainCameraObject = GameObject::Create(*scene, "MainCamera");
 		auto& camera = mainCameraObject.AddComponent<Camera2D>();

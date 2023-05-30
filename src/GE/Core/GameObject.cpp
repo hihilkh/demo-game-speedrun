@@ -1,15 +1,15 @@
 ﻿#include "GameObject.h"
 #include "Component.h"
 #include "GE/Render/Renderer.h"
-#include "GE/SceneManagement/SceneManager.h"
-#include "GE/SceneManagement/Scene.h"
+#include "GE/Scene/SceneManager.h"
+#include "GE/Scene/Scene.h"
 #include "Transform2D.h"
 #include "GE/Debug/Log.h"
 #include <cassert>
 
 namespace GE
 {
-	GameObject::GameObject(const std::string& name, SceneManagement::Scene& scene, GameObject* parent) :
+	GameObject::GameObject(const std::string& name, Scene::Scene& scene, GameObject* parent) :
 		name(name),
 		belongingScene(scene),
 		parent(parent),
@@ -22,10 +22,10 @@ namespace GE
 
 	GameObject& GameObject::Create(const std::string& name)
 	{
-		return Create(SceneManagement::SceneManager::GetActiveScene(), name);
+		return Create(Scene::SceneManager::GetActiveScene(), name);
 	}
 
-	GameObject& GameObject::Create(SceneManagement::Scene& scene, const std::string& name)
+	GameObject& GameObject::Create(Scene::Scene& scene, const std::string& name)
 	{
 		return scene.CreateAndOwnGameObject(name, scene);
 	}
@@ -162,7 +162,7 @@ namespace GE
 
 	bool GameObject::CheckIsInActiveScene()
 	{
-		return GetBelongingScene() == SceneManagement::SceneManager::GetActiveScene();
+		return GetBelongingScene() == Scene::SceneManager::GetActiveScene();
 	}
 
 #pragma endregion

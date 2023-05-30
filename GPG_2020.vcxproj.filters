@@ -223,16 +223,16 @@
     <ClCompile Include="src\GE\Render\Renderer.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GE\SceneManagement\SceneManager.cpp">
+    <ClCompile Include="src\GE\Scene\SceneManager.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GE\SceneManagement\SceneConfig.cpp">
+    <ClCompile Include="src\GE\Scene\SceneConfig.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GE\Utils\HandyFunc\FromGameEngine.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GE\SceneManagement\Scene.cpp">
+    <ClCompile Include="src\GE\Scene\Scene.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GE\Core\Time.cpp">
@@ -271,7 +271,7 @@
     <ClCompile Include="src\GE\Core\Camera2D.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GE\Utils\HandyFunc\FromSceneManagement.cpp">
+    <ClCompile Include="src\GE\Utils\HandyFunc\FromScene.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GE\Input\Impl\WindowsInputSystem.cpp">
@@ -540,10 +540,10 @@
     <ClInclude Include="src\GE\Render\Texture.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GE\SceneManagement\Scene.h">
+    <ClInclude Include="src\GE\Scene\Scene.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GE\SceneManagement\SceneManager.h">
+    <ClInclude Include="src\GE\Scene\SceneManager.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GE\Core\Time.h">
@@ -564,7 +564,7 @@
     <ClInclude Include="src\GE\Core\Transform2D.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GE\SceneManagement\SceneConfig.h">
+    <ClInclude Include="src\GE\Scene\SceneConfig.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GE\Tools\ConstructorTest.h">
@@ -621,7 +621,7 @@
     <ClInclude Include="src\GE\Core\Internal\Destroyable.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GE\Utils\HandyFunc\FromSceneManagement.h">
+    <ClInclude Include="src\GE\Utils\HandyFunc\FromScene.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GE\Input\InputSystem.h">

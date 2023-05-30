@@ -1,7 +1,7 @@
 ﻿#include "SceneConfig.h"
 #include "GE/Debug/Log.h"
 
-namespace GE::SceneManagement
+namespace GE::Scene
 {
 	SceneBuilder* SceneConfig::GetBuilder(const std::string& sceneName)
 	{

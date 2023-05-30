@@ -4,7 +4,7 @@
 #include "Scene.h"
 #include <memory>
 
-namespace GE::SceneManagement
+namespace GE::Scene
 {
 	class Scene;
 

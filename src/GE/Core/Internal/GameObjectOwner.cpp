@@ -1,6 +1,6 @@
 ﻿#include "GameObjectOwner.h"
 #include "GE/Core/GameObject.h"
-#include "GE/SceneManagement/Scene.h"
+#include "GE/Scene/Scene.h"
 
 namespace GE::Internal
 {
@@ -23,11 +23,11 @@ namespace GE::Internal
 		return nullptr;
 	}
 
-	GameObject& GameObjectOwner::CreateAndOwnGameObject(const std::string& name, SceneManagement::Scene& scene)
+	GameObject& GameObjectOwner::CreateAndOwnGameObject(const std::string& name, Scene::Scene& scene)
 	{
 		struct UniquePtrEnabler : public GameObject
 		{
-			UniquePtrEnabler(const std::string& name, SceneManagement::Scene& scene, GameObject* parent) :
+			UniquePtrEnabler(const std::string& name, Scene::Scene& scene, GameObject* parent) :
 				GameObject(name, scene, parent) {}
 		};
 

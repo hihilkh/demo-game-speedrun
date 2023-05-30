@@ -1,8 +1,8 @@
 ﻿#pragma once
 
-#include "GE/SceneManagement/SceneConfig.h"
+#include "GE/Scene/SceneConfig.h"
 
 namespace Scene
 {
-	GE::SceneManagement::SceneConfig CreateSceneConfig();
+	GE::Scene::SceneConfig CreateSceneConfig();
 }

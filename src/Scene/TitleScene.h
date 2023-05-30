@@ -3,7 +3,7 @@
 #include <memory>
 #include <string>
 
-namespace GE::SceneManagement
+namespace GE::Scene
 {
 	class Scene;
 }
@@ -15,6 +15,6 @@ namespace Scene
 	class TitleScene
 	{
 	public:
-		std::unique_ptr<GE::SceneManagement::Scene> operator()() const;
+		std::unique_ptr<GE::Scene::Scene> operator()() const;
 	};
 }

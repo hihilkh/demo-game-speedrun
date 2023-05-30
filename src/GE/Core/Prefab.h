@@ -16,7 +16,7 @@ namespace GE
 	PrefabReturnType<PrefabT> Instantiate(PrefabT prefab);
 
 	template<typename PrefabT>
-	PrefabReturnType<PrefabT> Instantiate(PrefabT prefab, SceneManagement::Scene& scene);
+	PrefabReturnType<PrefabT> Instantiate(PrefabT prefab, Scene::Scene& scene);
 
 #pragma region 関数テンプレート定義
 
@@ -28,7 +28,7 @@ namespace GE
 	}
 
 	template<typename PrefabT>
-	PrefabReturnType<PrefabT> Instantiate(PrefabT prefab, SceneManagement::Scene& scene)
+	PrefabReturnType<PrefabT> Instantiate(PrefabT prefab, Scene::Scene& scene)
 	{
 		GameObject& baseGameObject = GameObject::Create(scene);
 		return prefab(baseGameObject);

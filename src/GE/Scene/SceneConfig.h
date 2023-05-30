@@ -5,7 +5,7 @@
 #include <string>
 #include <memory>
 
-namespace GE::SceneManagement
+namespace GE::Scene
 {
 	class Scene;
 

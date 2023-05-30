@@ -2,8 +2,8 @@
 #include "GE/MainProgram/MainProgram.h"
 #include "GE/MainProgram/MainProgramInitParams.h"
 #include "Time.h"
-#include "GE/SceneManagement/SceneManager.h"
-#include "GE/SceneManagement/Scene.h"
+#include "GE/Scene/SceneManager.h"
+#include "GE/Scene/Scene.h"
 #include "GE/Render/RenderSystem.h"
 #include "GE/Render/RenderSystemInitParams.h"
 #include "GE/Input/InputSystem.h"
@@ -17,9 +17,9 @@ namespace GE
 	std::string GameEngine::sceneNameToLoad = "";
 	std::set<Internal::Destroyable*> GameEngine::toBeDestroySet;
 
-	void GameEngine::SetSceneConfig(SceneManagement::SceneConfig&& config)
+	void GameEngine::SetSceneConfig(Scene::SceneConfig&& config)
 	{
-		SceneManagement::SceneManager::SetConfig(std::move(config));
+		Scene::SceneManager::SetConfig(std::move(config));
 	}
 
 	// 参考：https://learn.microsoft.com/en-us/cpp/windows/walkthrough-creating-windows-desktop-applications-cpp?view=msvc-170
@@ -40,7 +40,7 @@ namespace GE
 		MainProgram::OtherInitParamsSet other = MainProgram::Prepare(params, config);
 		Render::RenderSystem::Init(other.renderSystemInitParams, config);
 		Time::Init(config.targetFps);
-		SceneManagement::SceneManager::LoadFirstScene();
+		Scene::SceneManager::LoadFirstScene();
 	}
 
 	void GameEngine::LoadScene(const std::string& sceneName)
@@ -104,7 +104,7 @@ namespace GE
 			return;
 		}
 
-		SceneManagement::SceneManager::ChangeScene(sceneNameToLoad);
+		Scene::SceneManager::ChangeScene(sceneNameToLoad);
 		sceneNameToLoad = "";
 	}
 
@@ -119,7 +119,7 @@ namespace GE
 
 	void GameEngine::UpdatePhase()
 	{
-		SceneManagement::Scene& activeScene = SceneManagement::SceneManager::GetActiveScene();
+		Scene::Scene& activeScene = Scene::SceneManager::GetActiveScene();
 
 		Time::Update();
 
@@ -131,7 +131,7 @@ namespace GE
 
 	void GameEngine::RenderPhase()
 	{
-		SceneManagement::Scene& activeScene = SceneManagement::SceneManager::GetActiveScene();
+		Scene::Scene& activeScene = Scene::SceneManager::GetActiveScene();
 
 		Render::RenderSystem::StartRender();
 		activeScene.OnRender();
@@ -140,7 +140,7 @@ namespace GE
 
 	void GameEngine::EndOfFramePhase()
 	{
-		SceneManagement::Scene& activeScene = SceneManagement::SceneManager::GetActiveScene();
+		Scene::Scene& activeScene = Scene::SceneManager::GetActiveScene();
 		activeScene.OnEndOfFrame();
 	}
 }

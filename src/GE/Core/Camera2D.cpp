@@ -2,7 +2,7 @@
 #include "Transform2D.h"
 #include "GE/Render/Renderer.h"
 #include "GameObject.h"
-#include "GE/SceneManagement/Scene.h"
+#include "GE/Scene/Scene.h"
 #include "GE/Utils/HandyFunc/FromGameEngine.h"
 #include "GEConfig.h"
 
@@ -24,13 +24,13 @@ namespace GE
 
 	void Camera2D::Awake()
 	{
-		SceneManagement::Scene& scene = gameObject.GetBelongingScene();
+		Scene::Scene& scene = gameObject.GetBelongingScene();
 		scene.RegisterCamera(*this);
 	}
 
 	void Camera2D::PreDestroy()
 	{
-		SceneManagement::Scene& scene = gameObject.GetBelongingScene();
+		Scene::Scene& scene = gameObject.GetBelongingScene();
 		scene.UnregisterCamera(*this);
 	}
 

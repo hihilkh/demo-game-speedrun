@@ -1,6 +1,6 @@
 ﻿#include "Renderer.h"
 #include "GE/Core/GameObject.h"
-#include "GE/SceneManagement/Scene.h"
+#include "GE/Scene/Scene.h"
 
 namespace GE::Render
 {
@@ -13,13 +13,13 @@ namespace GE::Render
 
 	void Renderer::Awake()
 	{
-		SceneManagement::Scene& scene = gameObject.GetBelongingScene();
+		Scene::Scene& scene = gameObject.GetBelongingScene();
 		scene.RegisterRenderer(*this);
 	}
 
 	void Renderer::PreDestroy()
 	{
-		SceneManagement::Scene& scene = gameObject.GetBelongingScene();
+		Scene::Scene& scene = gameObject.GetBelongingScene();
 		scene.UnregisterRenderer(*this);
 	}
 
