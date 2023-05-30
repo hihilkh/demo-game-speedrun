@@ -12,6 +12,9 @@ namespace GE::Font
 	class FontManager
 	{
 	public:
+		/// <summary>
+		/// 既存のFontを戻す。既存のFontがないなら、新規作成してから戻す。
+		/// </summary>
 		static std::shared_ptr<Font> GetFont(const FontInfo& fontInfo);
 
 	private:

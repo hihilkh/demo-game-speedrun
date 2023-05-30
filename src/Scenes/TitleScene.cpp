@@ -5,8 +5,7 @@
 #include "GE/Tools/ConstructorTest.h"
 #include "GE/Input/InputSystem.h"
 #include "GE/UI/Text.h"
-#include "GE/Font/FontManager.h"
-#include "GE/Font/Font.h"
+#include "Lang/LanguageManager.h"
 
 namespace Scene
 {
@@ -82,22 +81,19 @@ namespace Scene
 
 		GameObject& ui = GameObject::Create("ui", *scene);
 		ui.GetTransform().pos.x = -300;
-		auto font = GE::Font::FontManager::GetFont(GE::Font::FontInfo("MS ゴシック", 30));
-		auto& text = ui.AddComponent<GE::UI::Text>(font, Vector2Int(100, 100));
+		auto& text = ui.AddComponent<GE::UI::Text>(Lang::LanguageManager::GetFont(Lang::FontType::DefaultSmall), Vector2Int(100, 100));
 		text.SetText("hi");
 
 		GameObject& ui2 = GameObject::Create("ui2", *scene);
 		ui2.GetTransform().pos.x = 300;
-		auto font2 = GE::Font::FontManager::GetFont(GE::Font::FontInfo("MS ゴシック", 30));
-		auto& text2 = ui2.AddComponent<GE::UI::Text>(font2, Vector2Int(100, 100));
+		auto& text2 = ui2.AddComponent<GE::UI::Text>(Lang::LanguageManager::GetFont(Lang::FontType::DefaultSmall), Vector2Int(100, 100));
 		text2.SetText("あいう");
 
 		GameObject& ui3 = GameObject::Create("ui3", *scene);
 		auto& bgImage = ui3.AddComponent<GE::Render::Image>("./data/Image/White.png");
 		bgImage.SetColor(Color::red);
 		bgImage.SetImageSize({ 400.0f, 400.0f });
-		auto font3 = GE::Font::FontManager::GetFont(GE::Font::FontInfo("MS ゴシック", 60));
-		auto& text3 = ui3.AddComponent<GE::UI::Text>(font3, Vector2Int(400, 400));
+		auto& text3 = ui3.AddComponent<GE::UI::Text>(Lang::LanguageManager::GetFont(Lang::FontType::DefaultLarge), Vector2Int(400, 400));
 		text3.SetText("私君\nあいう\nYou and me");
 		text3.SetVerticalAlignment(GE::UI::TextVerticalAlignment::Bottom);
 		text3.SetHorizontalAlignment(GE::UI::TextHorizontalAlignment::Right);

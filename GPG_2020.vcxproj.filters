@@ -289,6 +289,9 @@
     <ClCompile Include="src\GE\UI\Text.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Lang\LanguageManager.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GameEngine_Ver3_83.h">
@@ -640,6 +643,12 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GE\UI\TextAlignment.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lang\LanguageManager.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lang\FontType.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="lib\magic_enum.hpp">
