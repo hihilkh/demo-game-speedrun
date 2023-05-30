@@ -156,6 +156,7 @@
   <ItemGroup>
     <ClCompile Include="src\Animation\AnimationClip.cpp" />
     <ClCompile Include="src\Animation\Animator.cpp" />
+    <ClCompile Include="src\Camera\CameraManagement.cpp" />
     <ClCompile Include="src\Chara\Player\AttackPlayerAction.cpp" />
     <ClCompile Include="lib\DG2014\DG2014_DGObject.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
@@ -734,6 +735,8 @@
       </PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="src\Lang\LanguageManager.cpp" />
+    <ClCompile Include="src\Prefab\Camera\MainCameraPrefab.cpp" />
+    <ClCompile Include="src\Prefab\Camera\UICameraPrefab.cpp" />
     <ClCompile Include="src\Prefab\UI\MenuItemPrefab.cpp" />
     <ClCompile Include="src\Profiling\Profiler.cpp" />
     <ClCompile Include="src\Profiling\ProfilerLoggerConsole.cpp" />
@@ -850,6 +853,7 @@
     <ClInclude Include="src\Chara\Player\PlayerConstant.h" />
     <ClInclude Include="src\Chara\Player\PlayerState.h" />
     <ClInclude Include="src\Chara\Player\RunPlayerAction.h" />
+    <ClInclude Include="src\Camera\CameraManagement.h" />
     <ClInclude Include="src\Common\Direction.h" />
     <ClInclude Include="src\Common\Font.h" />
     <ClInclude Include="src\GE\Core\Prefab.h" />
@@ -899,6 +903,8 @@
     <ClInclude Include="src\GE\Debug\ColliderVisual.h" />
     <ClInclude Include="src\GE\Debug\DebugConfig.h" />
     <ClInclude Include="src\GE\Utils\HandyFunc\FromGameEngine.h" />
+    <ClInclude Include="src\Prefab\Camera\MainCameraPrefab.h" />
+    <ClInclude Include="src\Prefab\Camera\UICameraPrefab.h" />
     <ClInclude Include="src\Prefab\UI\MenuItemPrefab.h" />
     <ClInclude Include="src\Profiling\Profiler.h" />
     <ClInclude Include="src\Profiling\ProfilerLogger.h" />

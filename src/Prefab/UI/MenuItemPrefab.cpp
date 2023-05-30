@@ -3,7 +3,7 @@
 #include "GE/UI/Text.h"
 #include "Lang/LanguageManager.h"
 
-namespace Prefab
+namespace Prefab::UI
 {
 	void MenuItemPrefab::operator()(GameObject& baseGameObject) const
 	{

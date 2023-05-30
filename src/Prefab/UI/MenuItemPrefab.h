@@ -5,7 +5,7 @@ namespace GE
 	class GameObject;
 }
 
-namespace Prefab
+namespace Prefab::UI
 {
 	class MenuItemPrefab
 	{

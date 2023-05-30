@@ -1,11 +1,9 @@
 ﻿#include "GE/GEHeader.h"
 #include "TitleScene.h"
 #include "GE/Scene/Scene.h"
-#include "GE/Render/Image.h"
-#include "GE/Tools/ConstructorTest.h"
-#include "GE/Input/InputSystem.h"
-#include "GE/UI/Text.h"
-#include "Lang/LanguageManager.h"
+
+#include "Prefab/Camera/MainCameraPrefab.h"
+#include "Prefab/Camera/UICameraPrefab.h"
 #include "Prefab/UI/MenuItemPrefab.h"
 
 namespace Scene
@@ -14,16 +12,9 @@ namespace Scene
 	{
 		auto scene = std::make_unique<GE::Scene::Scene>(titleSceneName);
 
-		GameObject& mainCameraObject = GameObject::Create(*scene, "MainCamera");
-		auto& camera = mainCameraObject.AddComponent<Camera2D>();
-		camera.SetCullingMask(RenderLayer::nonUI);
-
-		GameObject& uiCameraObject = GameObject::Create(*scene, "UICamera");
-		auto& uiCamera = uiCameraObject.AddComponent<Camera2D>();
-		uiCamera.SetCullingMask(RenderLayer::ui);
-		uiCamera.SetPriority(1);
-
-		GE::Instantiate(Prefab::MenuItemPrefab(), *scene);
+		GE::Instantiate(Prefab::Camera::MainCameraPrefab(), *scene);
+		GE::Instantiate(Prefab::Camera::UICameraPrefab(), *scene);
+		GE::Instantiate(Prefab::UI::MenuItemPrefab(), *scene);
 
 		return scene;
 	}

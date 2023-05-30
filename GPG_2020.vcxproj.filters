@@ -295,6 +295,15 @@
     <ClCompile Include="src\Prefab\UI\MenuItemPrefab.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Prefab\Camera\MainCameraPrefab.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Prefab\Camera\UICameraPrefab.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Camera\CameraManagement.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GameEngine_Ver3_83.h">
@@ -661,6 +670,15 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Prefab\UI\MenuItemPrefab.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Prefab\Camera\MainCameraPrefab.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Prefab\Camera\UICameraPrefab.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Camera\CameraManagement.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
