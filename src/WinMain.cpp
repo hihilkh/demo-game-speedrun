@@ -3,7 +3,7 @@
 
 #include "GE/Core/GameEngine.h"
 #include "GE/MainProgram/MainProgramInitParams.h"
-#include "Scenes/SceneMapping.h"
+#include "Scene/SceneMapping.h"
 
 int WINAPI WinMain(
 	_In_ HINSTANCE      hInstance,

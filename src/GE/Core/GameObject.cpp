@@ -22,10 +22,10 @@ namespace GE
 
 	GameObject& GameObject::Create(const std::string& name)
 	{
-		return Create(name, SceneManagement::SceneManager::GetActiveScene());
+		return Create(SceneManagement::SceneManager::GetActiveScene(), name);
 	}
 
-	GameObject& GameObject::Create(const std::string& name, SceneManagement::Scene& scene)
+	GameObject& GameObject::Create(SceneManagement::Scene& scene, const std::string& name)
 	{
 		return scene.CreateAndOwnGameObject(name, scene);
 	}

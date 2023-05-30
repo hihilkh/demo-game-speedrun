@@ -7,6 +7,7 @@
 #include <type_traits>
 #include <string>
 #include "Internal/Destroyable.h"
+#include "Prefab.h"
 
 namespace GE
 {
@@ -45,12 +46,12 @@ namespace GE
 		/// <summary>
 		/// ActiveSceneで新しいGameObjectを生成する
 		/// </summary>
-		static GameObject& Create(const std::string& name);
+		static GameObject& Create(const std::string& name = "GameObject");
 
 		/// <summary>
 		/// 指定のsceneで新しいGameObjectを生成する
 		/// </summary>
-		static GameObject& Create(const std::string& name, SceneManagement::Scene& scene);
+		static GameObject& Create(SceneManagement::Scene& scene, const std::string& name = "GameObject");
 
 		/// <summary>
 		/// 新しいGameObjectを生成し、childになる

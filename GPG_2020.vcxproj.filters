@@ -196,10 +196,10 @@
     <ClCompile Include="src\Profiling\ProfilerSectionCpu.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Scenes\TitleScene.cpp">
+    <ClCompile Include="src\Scene\TitleScene.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Scenes\SceneMapping.cpp">
+    <ClCompile Include="src\Scene\SceneMapping.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GE\Core\Component.cpp">
@@ -290,6 +290,9 @@
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Lang\LanguageManager.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Prefab\UI\MenuItemPrefab.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -495,10 +498,10 @@
     <ClInclude Include="src\Profiling\ProfilingConfig.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Scenes\TitleScene.h">
+    <ClInclude Include="src\Scene\TitleScene.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Scenes\SceneMapping.h">
+    <ClInclude Include="src\Scene\SceneMapping.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GE\Core\Component.h">
@@ -653,6 +656,12 @@
     </ClInclude>
     <ClInclude Include="lib\magic_enum.hpp">
       <Filter>Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Core\Prefab.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Prefab\UI\MenuItemPrefab.h">
+      <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

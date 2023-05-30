@@ -734,6 +734,7 @@
       </PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="src\Lang\LanguageManager.cpp" />
+    <ClCompile Include="src\Prefab\UI\MenuItemPrefab.cpp" />
     <ClCompile Include="src\Profiling\Profiler.cpp" />
     <ClCompile Include="src\Profiling\ProfilerLoggerConsole.cpp" />
     <ClCompile Include="src\Profiling\ProfilerLoggerCsv.cpp" />
@@ -775,8 +776,8 @@
     <ClCompile Include="src\ParticleSystem\Particle.cpp" />
     <ClCompile Include="src\ParticleSystem\ParticleConfig.cpp" />
     <ClCompile Include="src\ParticleSystem\Task_BreakWallEffect.cpp" />
-    <ClCompile Include="src\Scenes\SceneMapping.cpp" />
-    <ClCompile Include="src\Scenes\TitleScene.cpp" />
+    <ClCompile Include="src\Scene\SceneMapping.cpp" />
+    <ClCompile Include="src\Scene\TitleScene.cpp" />
     <ClCompile Include="src\SceneTransition\Task_SceneTransition.cpp" />
     <ClCompile Include="src\Title\Task_Title.cpp" />
     <ClCompile Include="src\GE\Utils\Time\Timer.cpp">
@@ -851,6 +852,7 @@
     <ClInclude Include="src\Chara\Player\RunPlayerAction.h" />
     <ClInclude Include="src\Common\Direction.h" />
     <ClInclude Include="src\Common\Font.h" />
+    <ClInclude Include="src\GE\Core\Prefab.h" />
     <ClInclude Include="src\Lang\FontType.h" />
     <ClInclude Include="src\Lang\LanguageManager.h" />
     <ClInclude Include="src\Common\Transform.h" />
@@ -897,6 +899,7 @@
     <ClInclude Include="src\GE\Debug\ColliderVisual.h" />
     <ClInclude Include="src\GE\Debug\DebugConfig.h" />
     <ClInclude Include="src\GE\Utils\HandyFunc\FromGameEngine.h" />
+    <ClInclude Include="src\Prefab\UI\MenuItemPrefab.h" />
     <ClInclude Include="src\Profiling\Profiler.h" />
     <ClInclude Include="src\Profiling\ProfilerLogger.h" />
     <ClInclude Include="src\Profiling\ProfilerLoggerConsole.h" />
@@ -927,8 +930,8 @@
     <ClInclude Include="src\ParticleSystem\ParticleConstant.h" />
     <ClInclude Include="src\ParticleSystem\Task_BreakWallEffect.h" />
     <ClInclude Include="src\Profiling\ProfilingConfig.h" />
-    <ClInclude Include="src\Scenes\SceneMapping.h" />
-    <ClInclude Include="src\Scenes\TitleScene.h" />
+    <ClInclude Include="src\Scene\SceneMapping.h" />
+    <ClInclude Include="src\Scene\TitleScene.h" />
     <ClInclude Include="src\SceneTransition\Task_SceneTransition.h" />
     <ClInclude Include="src\Task\ResourceConstant.h" />
     <ClInclude Include="src\GE\Debug\Log.h" />
