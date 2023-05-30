@@ -823,6 +823,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="lib\magic_enum.hpp" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="src\Animation\AnimationClip.h" />
     <ClInclude Include="src\Animation\AnimationKey.h" />
