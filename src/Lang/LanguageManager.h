@@ -3,7 +3,6 @@
 #include <memory>
 #include <unordered_map>
 #include "FontType.h"
-#include "magic_enum.hpp"
 
 namespace GE::Font
 {

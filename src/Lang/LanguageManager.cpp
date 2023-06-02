@@ -2,6 +2,7 @@
 #include "LanguageManager.h"
 #include "GE/Font/FontManager.h"
 #include "GE/Font/Font.h"
+#include <magic_enum.hpp>
 
 namespace Lang
 {

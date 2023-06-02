@@ -119,3 +119,7 @@ namespace MyNamespace
 	* 名前を重複しやすくないように命名する(例：名前空間の名前をプレフィックスとして付ける)
 	* できれば、`マクロ`の使用完了後、`#undef`で`マクロ`の定義を取り消す
 * `typedef`より、`using`を使う
+* `#include`の使う時、`std`または`lib`フォルダの中のヘッダーファイルに`<>`を使う。他のヘッダーファイルに`""`を使う。例えば、
+	* `#include <string>`
+	* `#include <magic_enum.hpp>`
+	* `#include "GE/GEHeader.h"`

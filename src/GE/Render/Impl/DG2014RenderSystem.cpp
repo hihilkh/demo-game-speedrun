@@ -5,7 +5,7 @@
 #include "../RenderSystem.h"
 #include "../RenderSystemInitParams.h"
 #include <memory>
-#include "DG2014/DG2014_DGObject.h"
+#include <DG2014/DG2014_DGObject.h>
 #include "GE/Core/GEConfig.h"
 
 namespace GE::Render
