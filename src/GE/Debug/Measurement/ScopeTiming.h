@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+// TODO : GE namespace に合わせる
 #include "GE/Debug/DebugConfig.h"
 
 #if DEBUG_IS_ENABLED(DEBUG_MEASUREMENT)

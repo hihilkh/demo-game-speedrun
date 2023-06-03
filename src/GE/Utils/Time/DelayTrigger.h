@@ -4,6 +4,7 @@
 #include "Event/MemberFunction.tpp"
 #include <thread>
 
+// TODO : GE namespace に合わせる
 namespace Time
 {
 	class DelayTrigger

@@ -123,3 +123,4 @@ namespace MyNamespace
 	* `#include <string>`
 	* `#include <magic_enum.hpp>`
 	* `#include "GE/GEHeader.h"`
+* Visual Studioのフィルダー機能を使わない

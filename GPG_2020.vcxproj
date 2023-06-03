@@ -857,6 +857,8 @@
     <ClInclude Include="src\Common\Direction.h" />
     <ClInclude Include="src\Common\Font.h" />
     <ClInclude Include="src\GE\Core\Prefab.h" />
+    <ClInclude Include="src\GE\Core\Event.h" />
+    <ClInclude Include="src\GE\Core\MemberFunc.h" />
     <ClInclude Include="src\Lang\FontType.h" />
     <ClInclude Include="src\Lang\LanguageManager.h" />
     <ClInclude Include="src\Common\Transform.h" />

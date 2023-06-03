@@ -5,6 +5,7 @@
 #include <numbers>
 #include <algorithm>
 
+// TODO : GE namespace に合わせる
 namespace Math
 {
 	/// <summary>

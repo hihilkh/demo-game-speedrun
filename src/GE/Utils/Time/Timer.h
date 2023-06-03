@@ -2,6 +2,7 @@
 
 #include <chrono>
 
+// TODO : GE namespace に合わせる
 namespace Time
 {
 	class Timer

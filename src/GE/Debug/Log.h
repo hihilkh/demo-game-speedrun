@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+// TODO : GE namespace に合わせる
 #include "DebugConfig.h"
 
 #if DEBUG_IS_ENABLED(DEBUG_CONSOLE_LOGGING)

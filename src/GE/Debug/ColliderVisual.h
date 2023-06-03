@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-// TODO : コードスタンダードに合わせるように
+// TODO : GE namespace に合わせる
 #include "DebugConfig.h"
 
 #if DEBUG_IS_ENABLED(DEBUG_COLLIDER_VISUAL)

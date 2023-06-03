@@ -31,6 +31,7 @@
 #include "Core/Transform2D.h"
 #include "Core/Camera2D.h"
 #include "Core/Prefab.h"
+#include "Core/Event.h"
 
 #include "Render/RenderLayer.h"
 
