@@ -5,11 +5,11 @@
 #include "Task/ResourceBase.tpp"
 #include "Task/ObjectBase.tpp"
 #include "Event/Event.tpp"
-#include "GE/Utils/Time/Timer.h"
+#include "Utils/Timer.h"
 
 #pragma region 前方宣言
 
-namespace Time { class DelayTrigger; }
+namespace Utils { class DelayTrigger; }
 
 #pragma endregion
 
@@ -31,9 +31,9 @@ namespace Game
 	private:
 		static bool HasPerformedZoom;
 
-		Time::Timer timer;
+		Utils::Timer timer;
 		int remainingCountdown;
-		unique_ptr<Time::DelayTrigger> countdownDelayTrigger;
+		unique_ptr<Utils::DelayTrigger> countdownDelayTrigger;
 
 	private:
 		void StartCountdown(int second);

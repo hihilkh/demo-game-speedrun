@@ -142,10 +142,10 @@ namespace Map
 		// LeftからRightまで(含む)
 		// TopからBottomまで(含む)
 		ML::Rect includedRect;
-		includedRect.left = Math::FloorDivide(overlappedRect.left - CHIP_OFFSET.x, CHIP_SIZE) - mapChipLeftmostIndex;
-		includedRect.top = Math::FloorDivide(overlappedRect.top - CHIP_OFFSET.y, CHIP_SIZE) - mapChipTopmostIndex;
-		includedRect.right = Math::FloorDivide(overlappedRect.right - CHIP_OFFSET.x, CHIP_SIZE) - mapChipLeftmostIndex;
-		includedRect.bottom = Math::FloorDivide(overlappedRect.bottom - CHIP_OFFSET.y, CHIP_SIZE) - mapChipTopmostIndex;
+		includedRect.left = GE::Math::FloorDivide(overlappedRect.left - CHIP_OFFSET.x, CHIP_SIZE) - mapChipLeftmostIndex;
+		includedRect.top = GE::Math::FloorDivide(overlappedRect.top - CHIP_OFFSET.y, CHIP_SIZE) - mapChipTopmostIndex;
+		includedRect.right = GE::Math::FloorDivide(overlappedRect.right - CHIP_OFFSET.x, CHIP_SIZE) - mapChipLeftmostIndex;
+		includedRect.bottom = GE::Math::FloorDivide(overlappedRect.bottom - CHIP_OFFSET.y, CHIP_SIZE) - mapChipTopmostIndex;
 
 		vector<MapChipBase::SP> result = vector<MapChipBase::SP>();
 		result.reserve((includedRect.right - includedRect.left + 1) * (includedRect.bottom - includedRect.top + 1));

@@ -256,10 +256,10 @@
     <ClCompile Include="src\GE\Debug\Measurement\ScopeTiming.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GE\Utils\Time\Timer.cpp">
+    <ClCompile Include="src\Utils\Timer.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GE\Utils\Time\DelayTrigger.cpp">
+    <ClCompile Include="src\Utils\DelayTrigger.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GE\Core\Transform2D.cpp">
@@ -302,6 +302,15 @@
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Camera\CameraManagement.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Core\Coroutine.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Yield\WaitSecond.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Utils\Easing.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -609,10 +618,10 @@
     <ClInclude Include="src\GE\Utils\Math.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GE\Utils\Time\Timer.h">
+    <ClInclude Include="src\Utils\Timer.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GE\Utils\Time\DelayTrigger.h">
+    <ClInclude Include="src\Utils\DelayTrigger.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GE\Core\Internal\GameObjectOwner.h">
@@ -685,6 +694,18 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GE\Core\Event.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Core\Coroutine.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Yield\headers.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Yield\WaitSecond.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Utils\Easing.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

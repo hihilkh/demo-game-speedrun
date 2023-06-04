@@ -4,6 +4,7 @@
 #include <memory>
 #include "MemberFunction.tpp"
 
+// TODO : GE::Eventと取り替える
 template<class... Args>
 class Event {
 public:

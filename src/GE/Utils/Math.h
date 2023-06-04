@@ -5,8 +5,7 @@
 #include <numbers>
 #include <algorithm>
 
-// TODO : GE namespace に合わせる
-namespace Math
+namespace GE::Math
 {
 	/// <summary>
 	/// c++の負数の割り算は0への丸め(rounding toward zero)で、 -1 / 2 = 0　になる<para />
@@ -14,7 +13,7 @@ namespace Math
 	/// </summary>
 	inline int FloorDivide(int dividend, int divisor)
 	{
-		return (int)floor(float(dividend) / divisor);
+		return (int)std::floor(float(dividend) / divisor);
 	}
 
 	inline constexpr float Clamp01(float num)
@@ -51,6 +50,7 @@ namespace Math
 		return (value >= T(0)) - (value < T(0));
 	}
 
+	// TODO : rand()より良い方法を使う
 #pragma region GetRandom
 
 	/// <param name="min">含む</param>
@@ -59,8 +59,9 @@ namespace Math
 	/// <para>min > max の場合, 戻り値は GetRandom(max, min) になる</para>
 	/// min == max の場合, 戻り値は min になる
 	/// </returns>
-	template<typename T, std::enable_if_t<std::is_integral_v<T>, bool> = true>
-	inline T GetRandom(T min, T max)
+	template<typename T>
+		requires std::is_integral_v<T>
+	T GetRandom(T min, T max)
 	{
 		if (min > max) {
 			return GetRandom(max, min);
@@ -69,7 +70,7 @@ namespace Math
 			return min;
 		}
 
-		return rand() % (max - min) + min;
+		return std::rand() % (max - min) + min;
 	}
 
 	/// <param name="min">含む</param>
@@ -78,8 +79,9 @@ namespace Math
 	/// <para>min > max の場合, 戻り値は GetRandom(max, min) になる</para>
 	/// min == max の場合, 戻り値は min になる
 	/// </returns>
-	template<typename T, std::enable_if_t<std::is_floating_point_v<T>, bool> = true>
-	inline T GetRandom(T min, T max)
+	template<typename T>
+		requires std::is_floating_point_v<T>
+	T GetRandom(T min, T max)
 	{
 		if (min > max) {
 			return GetRandom(max, min);
@@ -88,28 +90,7 @@ namespace Math
 			return min;
 		}
 
-		return (T)rand() / RAND_MAX * (max - min) + min;
-	}
-
-#pragma endregion
-
-#pragma region Easing
-
-
-	/// <summary>
-	/// 必ずtを[0,1]になってください
-	/// </summary>
-	inline float EaseInOutSine(float t)
-	{
-		return -(cos((float)std::numbers::pi * t) - 1.0f) / 2.0f;
-	}
-
-	/// <summary>
-	/// tを[0,1]にClampする
-	/// </summary>
-	inline float BoundedEaseInOutSine(float t)
-	{
-		return EaseInOutSine(Clamp01(t));
+		return (T)std::rand() / RAND_MAX * (max - min) + min;
 	}
 
 #pragma endregion

@@ -1,6 +1,6 @@
 ﻿#include "Task_GameCamera.h"
 #include "Task/TaskConstant.h"
-#include "GE/Utils/Math.h"
+#include "GE/Utils/Easing.h"
 
 namespace Game::Camera
 {
@@ -100,7 +100,7 @@ namespace Game::Camera
 
 		float progress;
 		if (currentPerformZoomCount <= PerformZoomPhase1) {
-			progress = Math::EaseInOutSine(currentPerformZoomCount / (float)PerformZoomPhase1);
+			progress = GE::Easing::Ease(currentPerformZoomCount / (float)PerformZoomPhase1, GE::Easing::Type::InOutSine);
 		}
 		else if (currentPerformZoomCount <= PerformZoomPhase2) {
 			// 何もしない
@@ -108,7 +108,7 @@ namespace Game::Camera
 		}
 		else if (currentPerformZoomCount <= PerformZoomPhase3) {
 			float t = (PerformZoomPhase3 - currentPerformZoomCount) / (float)(PerformZoomPhase3 - PerformZoomPhase2);
-			progress = Math::EaseInOutSine(t);
+			progress = GE::Easing::Ease(t, GE::Easing::Type::InOutSine);
 
 			if (currentPerformZoomCount == PerformZoomPhase3) {
 				isPerformingZoom = false;

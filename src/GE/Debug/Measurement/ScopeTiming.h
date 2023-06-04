@@ -1,13 +1,12 @@
 ﻿#pragma once
 
-// TODO : GE namespace に合わせる
 #include "GE/Debug/DebugConfig.h"
 
 #if DEBUG_IS_ENABLED(DEBUG_MEASUREMENT)
 
 #include <chrono>
 
-namespace Debug::Measurement
+namespace GE::Debug::Measurement
 {
 	// 参考：https://www.youtube.com/watch?v=oEx5vGNFrLk&list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb&index=63
 	class ScopeTiming
@@ -23,7 +22,7 @@ namespace Debug::Measurement
 }
 
 // 備考：変数名が指定されたので、スコープによって一つの DEBUG_MEASURE_SCOPE_TIME() をしか呼び出さない
-#define DEBUG_MEASURE_SCOPE_TIME(title) Debug::Measurement::ScopeTiming scopeTiming(title)
+#define DEBUG_MEASURE_SCOPE_TIME(title) GE::Debug::Measurement::ScopeTiming scopeTiming(title)
 
 #else
 

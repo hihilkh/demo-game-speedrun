@@ -19,14 +19,14 @@ namespace ParticleSystem
 	ML::Vec2 ParticleConfig::GetRandomPos() const
 	{
 		return ML::Vec2(
-			Math::GetRandom(posBase.x - randomPosHalfRange, posBase.x + randomPosHalfRange),
-			Math::GetRandom(posBase.y - randomPosHalfRange, posBase.y + randomPosHalfRange));
+			GE::Math::GetRandom(posBase.x - randomPosHalfRange, posBase.x + randomPosHalfRange),
+			GE::Math::GetRandom(posBase.y - randomPosHalfRange, posBase.y + randomPosHalfRange));
 	}
 
 	/// <returns>ラジアン</returns>
 	float ParticleConfig::GetRandomImgRotation() const
 	{
-		return ML::ToRadian(Math::GetRandom(imgRotationRange.x, imgRotationRange.y));
+		return ML::ToRadian(GE::Math::GetRandom(imgRotationRange.x, imgRotationRange.y));
 	}
 	ML::Vec2 ParticleConfig::GetImgRotationCenter() const
 	{
@@ -35,7 +35,7 @@ namespace ParticleSystem
 
 	ML::Vec2 ParticleConfig::GetRandomMoveVec() const
 	{
-		float emitAngle = ML::ToRadian(Math::GetRandom(emitAngleRange.x, emitAngleRange.y));
+		float emitAngle = ML::ToRadian(GE::Math::GetRandom(emitAngleRange.x, emitAngleRange.y));
 		return ML::Vec2(cos(emitAngle) * emitSpeed, sin(emitAngle) * emitSpeed);
 	}
 }

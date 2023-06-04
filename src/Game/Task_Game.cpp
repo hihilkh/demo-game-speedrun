@@ -10,7 +10,7 @@
 #include "GameStatus.h"
 #include "Chara/Player/Task_Player.h"
 #include "Task/TaskConstant.h"
-#include "GE/Utils/Time/DelayTrigger.h"
+#include "Utils/DelayTrigger.h"
 #include "Common/Font.h"
 #include "SceneTransition/Task_SceneTransition.h"
 #include "Profiling/Profiler.h"
@@ -125,7 +125,7 @@ namespace Game
 		countdownDelayTrigger.reset();
 		--remainingCountdown;
 		if (remainingCountdown >= 0) {
-			countdownDelayTrigger = make_unique<Time::DelayTrigger>(1000, make_unique<MemberFunction<Object>>(this, &Object::CountdownEventHandler));
+			countdownDelayTrigger = make_unique<Utils::DelayTrigger>(1000, make_unique<MemberFunction<Object>>(this, &Object::CountdownEventHandler));
 		}
 		else {
 			StartGame();

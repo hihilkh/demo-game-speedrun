@@ -16,6 +16,9 @@ namespace GE
         virtual R operator()(Args... args) = 0;
     };
 
+    /// <summary>
+    /// インスタンスとメンバー関数によって等しいかどうかが判断できるクラス
+    /// </summary>
     template<typename T, typename R, typename... Args>
     class MemberFunc final : public MemberFuncBase<R(Args...)>
     {
@@ -27,12 +30,19 @@ namespace GE
         R operator()(Args... args) override;
 
         template<typename T2, typename R2, typename... Args2>
-        friend bool operator==(const MemberFunc<T2, R2, Args2...>& a, const MemberFunc<T2, R2, Args2...>& b);
+        friend bool operator==(const MemberFunc<T2, R2, Args2...>& lhs, const MemberFunc<T2, R2, Args2...>& rhs);
 
     private:
         Func func;
         T& instance;
     };
+
+    template<typename T, typename R, typename... Args, typename T2, typename R2, typename... Args2>
+        requires (!std::is_same_v<MemberFunc<T, R, Args...>, MemberFunc<T2, R2, Args2...>>)
+    bool operator==(const MemberFunc<T, R, Args...>& lhs, const MemberFunc<T2, R2, Args2...>& rhs)
+    {
+        return false;
+    }
 
 #pragma region テンプレート定義
 

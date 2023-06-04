@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+// TODO : GE::MemberFuncと取り替える
 template<class... FuncArgs>
 class MemberFunctionBase {
 protected:

@@ -4,8 +4,7 @@
 
 #include <windows.h>
 
-// Log.hを小さくなるために、Log.cppを使う
-namespace Debug::Logging
+namespace GE::Debug::Logging
 {
 	void Print(const char* message)
 	{

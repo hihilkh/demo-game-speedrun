@@ -2,8 +2,8 @@
 
 #include <chrono>
 
-// TODO : GE namespace に合わせる
-namespace Time
+// TODO : GE::Componentに変える
+namespace Utils
 {
 	class Timer
 	{

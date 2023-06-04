@@ -4,8 +4,8 @@
 #include "Event/MemberFunction.tpp"
 #include <thread>
 
-// TODO : GE namespace に合わせる
-namespace Time
+// TODO : GE::Coroutineと取り替える
+namespace Utils
 {
 	class DelayTrigger
 	{

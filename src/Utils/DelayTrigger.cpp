@@ -2,7 +2,7 @@
 
 // TODO : 今スレッドセーフか
 // TODO : MemberFunctionBaseを使わなくてもできるか <- 多分std::functionなどでもできる
-namespace Time
+namespace Utils
 {
 	DelayTrigger::DelayTrigger(int waitTime, std::unique_ptr<MemberFunctionBase<>>&& func) :
 		waitTime(waitTime),

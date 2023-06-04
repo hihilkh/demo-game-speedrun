@@ -33,8 +33,12 @@
 #include "Core/Prefab.h"
 #include "Core/Event.h"
 
+#include "Core/Coroutine.h"
+#include "Yield/headers.h"
+
 #include "Render/RenderLayer.h"
 
 #include "Utils/HandyFunc/FromGameEngine.h"
 #include "Utils/HandyFunc/FromScene.h"
 #include "Utils/TypeDef.h"
+

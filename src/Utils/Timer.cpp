@@ -1,6 +1,6 @@
 ﻿#include "Timer.h"
 
-namespace Time
+namespace Utils
 {
 	Timer::Timer() :
 		isStarted(false),

@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-// TODO : GE namespace に合わせる
+// TODO : GEのcolliderモジュールがあったら、これに合わせて変更する
 #include "DebugConfig.h"
 
 #if DEBUG_IS_ENABLED(DEBUG_COLLIDER_VISUAL)

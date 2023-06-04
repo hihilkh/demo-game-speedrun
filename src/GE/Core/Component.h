@@ -1,11 +1,15 @@
 ﻿#pragma once
 
 #include "Internal/Destroyable.h"
+#include <memory>
+#include <vector>
+#include <functional>
 
 namespace GE
 {
 	class GameObject;
 	class Transform2D;
+	class Coroutine;
 
 	class Component : public Internal::Destroyable
 	{
@@ -32,6 +36,13 @@ namespace GE
 		Transform2D& GetTransform();
 
 	protected:
+
+		std::weak_ptr<Coroutine> StartCoroutine(const std::function<bool()>& predicate, const std::function<void()>& func);
+		void StopCoroutine(std::weak_ptr<Coroutine> coroutine);
+		void StopAllCoroutines();
+
+#pragma region ゲームループ
+
 		/// <summary>
 		/// 生成した後の最初の処理。有効無効にかかわらず呼び出される
 		/// </summary>
@@ -53,8 +64,11 @@ namespace GE
 		/// </summary>
 		virtual void EndOfFrame() {}
 
+#pragma endregion
+
 	private:
 		bool isEnable;
+		std::vector<std::shared_ptr<Coroutine>> coroutines;
 
 	private:
 
@@ -67,6 +81,8 @@ namespace GE
 		void OnEndOfFrame();
 
 #pragma endregion
+
+		void UpdateCoroutines();
 
 #pragma region Destroyable
 

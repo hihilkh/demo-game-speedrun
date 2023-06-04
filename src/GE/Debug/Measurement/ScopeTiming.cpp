@@ -4,7 +4,7 @@
 
 #include "GE/Debug/Log.h"
 
-namespace Debug::Measurement
+namespace GE::Debug::Measurement
 {
 	ScopeTiming::ScopeTiming(const std::string& title) :
 		title(title),

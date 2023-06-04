@@ -10,6 +10,7 @@ namespace GE
 	class Camera2D;
 	struct Color;
 	class Time;
+	class Coroutine;
 
 	namespace DataType::Internal
 	{
@@ -36,6 +37,8 @@ using Component			= GE::Component;
 using Transform2D		= GE::Transform2D;
 using Camera2D			= GE::Camera2D;
 using Color				= GE::Color;
+using Time				= GE::Time;
+using Coroutine			= GE::Coroutine;
 
 using Vector2			= GE::DataType::Internal::TVector2<float>;
 using Vector2Int		= GE::DataType::Internal::TVector2<int>;
@@ -52,8 +55,5 @@ namespace RenderLayer	= GE::Render::RenderLayer;
 
 using Rect			= GE::DataType::Internal::TRect<float>;
 using RectPixel		= GE::DataType::Internal::TRect<int>;
-
-// TODO : Utils/Timeの中の命名
-//using Time = GE::Time;
 
 #pragma endregion

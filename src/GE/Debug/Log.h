@@ -1,13 +1,12 @@
 ﻿#pragma once
 
-// TODO : GE namespace に合わせる
 #include "DebugConfig.h"
 
 #if DEBUG_IS_ENABLED(DEBUG_CONSOLE_LOGGING)
 
 #include <sstream>
 
-namespace Debug::Logging
+namespace GE::Debug::Logging
 {
 	void Print(const char* message);
 }
@@ -15,7 +14,7 @@ namespace Debug::Logging
 #define DEBUG_LOG_SAME_LINE(message) {\
 	std::ostringstream ss;\
 	ss << message;\
-	Debug::Logging::Print(ss.str().c_str());\
+	GE::Debug::Logging::Print(ss.str().c_str());\
 }
 
 #define DEBUG_LOG(message)						DEBUG_LOG_SAME_LINE(message << '\n')

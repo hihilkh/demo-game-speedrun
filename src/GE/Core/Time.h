@@ -2,6 +2,9 @@
 
 namespace GE
 {
+	/// <summary>
+	/// タイムの単位：秒
+	/// </summary>
 	class Time
 	{
 		friend class GameEngine;
