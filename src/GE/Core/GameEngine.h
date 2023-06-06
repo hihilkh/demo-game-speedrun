@@ -8,6 +8,7 @@
 namespace GE
 {
 	struct MainProgramInitParams;
+	struct Color;
 	namespace Scene
 	{
 		struct SceneConfig;
@@ -23,6 +24,7 @@ namespace GE
 	public:
 		static void SetConfig(const GEConfig& config) { GameEngine::config = config; }
 		static const GEConfig& GetConfig() { return config; }
+		static void SetBGColor(const Color& color) { GameEngine::config.bgColor = color; }
 
 		static void SetSceneConfig(Scene::SceneConfig&& config);
 

@@ -313,6 +313,12 @@
     <ClCompile Include="src\GE\Utils\Easing.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\UI\MenuItem.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TitleScene\TitleSceneDirector.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GameEngine_Ver3_83.h">
@@ -708,7 +714,13 @@
     <ClInclude Include="src\GE\Utils\Easing.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\UI\MenuItem.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="src\GE\Core\PrefabDeclaration.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TitleScene\TitleSceneDirector.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

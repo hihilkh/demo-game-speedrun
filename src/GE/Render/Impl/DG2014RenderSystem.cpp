@@ -7,6 +7,7 @@
 #include <memory>
 #include <DG2014/DG2014_DGObject.h>
 #include "GE/Core/GEConfig.h"
+#include "GE/Utils/HandyFunc/FromGameEngine.h"
 
 namespace GE::Render
 {
@@ -51,8 +52,8 @@ namespace GE::Render
 
 	void RenderSystem::StartRender()
 	{
-		// TODO : カメラによっての背景色
-		dg->Begin(dg->EffectState().param.bgColor);
+		Color bgColor = GE::GetGEConfig().bgColor;
+		dg->Begin(ML::Color(bgColor.a, bgColor.r, bgColor.g, bgColor.b));
 
 		dg->EffectState().RS_Def2D();
 		dg->EffectState().BS_Alpha();

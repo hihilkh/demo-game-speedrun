@@ -5,11 +5,16 @@ namespace GE
 	class GameObject;
 }
 
+namespace UI
+{
+	class MenuItem;
+}
+
 namespace Prefab::UI
 {
 	class MenuItemPrefab
 	{
 	public:
-		void operator()(GE::GameObject& baseGameObject) const;
+		::UI::MenuItem& operator()(GE::GameObject& baseGameObject) const;
 	};
 }

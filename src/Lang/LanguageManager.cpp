@@ -20,8 +20,8 @@ namespace Lang
 	{
 		static const std::string msGothic = "MS ゴシック";
 
-		static const int fontSizeSmall = 24;
-		static const int fontSizeLarge = 34;
+		static const int fontSizeSmall = 48;
+		static const int fontSizeLarge = 68;
 
 		switch (fontType) {
 			case FontType::DefaultSmall:	return FontInfo(msGothic, fontSizeSmall);

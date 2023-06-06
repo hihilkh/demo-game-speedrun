@@ -9,6 +9,11 @@ namespace GE
 		return GameEngine::GetConfig();
 	}
 
+	void SetBGColor(const Color& color)
+	{
+		GameEngine::SetBGColor(color);
+	}
+
 	void LoadScene(const std::string& sceneName)
 	{
 		return GameEngine::LoadScene(sceneName);

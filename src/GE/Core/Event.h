@@ -8,6 +8,8 @@
 
 namespace GE
 {
+	// TODO : GE::Event<>をGE::Eventで表すことができるか
+
 	template<typename... Args>
 	class Event
 	{

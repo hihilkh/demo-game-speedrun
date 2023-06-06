@@ -5,6 +5,7 @@
 namespace GE
 {
 	struct GEConfig;
+	struct Color;
 
 	namespace Internal
 	{
@@ -12,6 +13,7 @@ namespace GE
 	}
 
 	const GEConfig& GetGEConfig();
+	void SetBGColor(const Color& color);
 	void LoadScene(const std::string& sceneName);
 	void Destroy(Internal::Destroyable& toDestroy);
 }

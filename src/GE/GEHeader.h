@@ -9,6 +9,8 @@
 #include <iostream>
 #include <type_traits>
 #include <cmath>
+#include <tuple>
+#include <cassert>
 
 // コンテナー
 #include <vector>

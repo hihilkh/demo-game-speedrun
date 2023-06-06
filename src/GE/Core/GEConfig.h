@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include <string>
+#include "GE/DataType/Color.h"
 
 namespace GE
 {
@@ -13,5 +14,7 @@ namespace GE
 		int screenHeight = 540;
 
 		int targetFps = 60;
+
+		Color bgColor = Color::black;
 	};
 }
