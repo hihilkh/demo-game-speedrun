@@ -42,13 +42,23 @@ namespace GE
 		void StopAllCoroutines();
 
 #pragma region ゲームループ
+		// TODO : 
+		// 現在SceneまたはPrefabの生成段階の中、このゲームループの概念を違反することもできる。
+		// 例えば、あるComponentはInit()関数がある。
+		// そして、Prefabを生成している時(までPrefab全体が生成しなかった)、このComponentのInit()を呼び出す。
+		// この場合、Init()はAwake()とStart()の前に呼び出されるようになる。
 
 		/// <summary>
-		/// 生成した後の最初の処理。有効無効にかかわらず呼び出される
+		/// <para>生成した後の最初の処理。有効無効にかかわらず、下記の場合に呼び出される</para>
+		/// <para>- (Prefabではない、読み込んだ(Loaded) Sceneの中で)生成した直後</para>
+		/// <para>- (Prefabである、読み込んだSceneの中で)Prefab全体が生成した直後</para> 
+		/// <para>- (まだ読み込まないSceneの中で)Sceneを読み込む時</para> 
+		/// <para>こういうわけで、Awake()が呼び出される時、すべてのGameObjectとComponentはすでに生成したことが保証する</para> 
 		/// </summary>
 		virtual void Awake() {}
 		/// <summary>
-		/// Awake()段階の次の処理。有効無効にかかわらず呼び出される
+		/// <para>Awake()段階の次の処理。有効無効にかかわらず呼び出される</para>
+		/// <para>Start()が呼び出される時、すべてのGameObjectとComponentはすでにAwake()済みが保証する</para>
 		/// </summary>
 		virtual void Start() {}
 		/// <summary>

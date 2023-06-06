@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include <cstdint>
 #include "GE/Core/GameObject.h"
 #include "GE/Core/Internal/GameObjectOwner.h"
 
@@ -21,8 +22,17 @@ namespace GE::Scene
 	class Scene : public Internal::GameObjectOwner
 	{
 		friend class GameEngine;
+		friend class SceneManager;
 		friend class Camera2D;
 		friend class Render::Renderer;
+
+	private:
+		enum class State : uint8_t
+		{
+			Initialized,
+			Loaded,
+			Destroying,
+		};
 
 	public:
 		explicit Scene(const std::string& name);
@@ -33,19 +43,28 @@ namespace GE::Scene
 		const std::string& GetName() const { return name; }
 		GameObject* FindGameObject(const std::string& name) const;
 
+		bool GetIsLoaded() const { return state == State::Loaded; }
+
 	private:
-		bool isDestructing;
+		State state;
 		const std::string name;
 		std::vector<std::unique_ptr<GameObject>> gameObjects;
 		std::vector<const Camera2D*> cameras;
 		std::vector<const Render::Renderer*> renderers;
 
 	private:
+
 		void OnUpdate();
 		void OnLateUpdate();
 		void OnEndOfFrame();
 
 		void OnRender();
+
+#pragma region SceneManagerに呼び出される関数
+
+		void Load();
+
+#pragma endregion
 
 #pragma region Camera2DとRendererに呼び出される関数
 

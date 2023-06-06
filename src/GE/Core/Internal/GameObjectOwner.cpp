@@ -23,7 +23,7 @@ namespace GE::Internal
 		return nullptr;
 	}
 
-	GameObject& GameObjectOwner::CreateAndOwnGameObject(const std::string& name, Scene::Scene& scene)
+	GameObject& GameObjectOwner::CreateAndOwnGameObject(const std::string& name, Scene::Scene& scene, bool isDelayInit)
 	{
 		struct UniquePtrEnabler : public GameObject
 		{
@@ -33,6 +33,11 @@ namespace GE::Internal
 
 		GameObject* parent = dynamic_cast<GameObject*>(this);
 		auto& gameObject = GetGameObjectContainer().emplace_back(std::make_unique<UniquePtrEnabler>(name, scene, parent));
+		gameObject->InitIfSceneLoaded();
+		if (!isDelayInit) {
+			gameObject->InitIfSceneLoaded();
+		}
+
 		return *gameObject;
 	}
 

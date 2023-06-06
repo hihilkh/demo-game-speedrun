@@ -7,7 +7,7 @@
 #include <type_traits>
 #include <string>
 #include "Internal/Destroyable.h"
-#include "Prefab.h"
+#include "PrefabDeclaration.h"
 
 namespace GE
 {
@@ -56,7 +56,7 @@ namespace GE
 		/// <summary>
 		/// 新しいGameObjectを生成し、childになる
 		/// </summary>
-		GameObject& CreateChild(const std::string& childName);
+		GameObject& AddChild(const std::string& childName);
 
 		GameObject* Parent() const { return parent; }	// 自分がconstになってもparentを変更されることができます
 		bool SetParent(GameObject* newParent, bool keepWorldTransform = false);
@@ -86,6 +86,8 @@ namespace GE
 		const std::unique_ptr<Transform2D> transform;
 		std::vector<std::unique_ptr<Component>> components;
 		std::vector<std::unique_ptr<GameObject>> children;
+
+		bool isInitialized;
 		bool isActive;
 
 	private:
@@ -93,6 +95,7 @@ namespace GE
 
 #pragma region ゲームループ
 
+		void InitIfSceneLoaded();
 		void OnAwake();
 		void OnStart();
 		void OnUpdate();
@@ -116,6 +119,19 @@ namespace GE
 
 #pragma endregion
 
+#pragma region Prefabに呼び出される関数
+
+		template<typename PrefabT>
+		friend PrefabReturnType<PrefabT> Instantiate(PrefabT prefab);
+
+		template<typename PrefabT>
+		friend PrefabReturnType<PrefabT> Instantiate(PrefabT prefab, Scene::Scene& scene);
+
+		static GameObject& CreateWithDelayInit(const std::string& name = "GameObject");
+		static GameObject& CreateWithDelayInit(Scene::Scene& scene, const std::string& name = "GameObject");
+
+#pragma endregion
+
 		bool RemoveComponentImmediate(const Component& component);
 
 	};
@@ -132,8 +148,11 @@ namespace GE
 
 		std::unique_ptr<Component>& componentUniqueRef = components.emplace_back(std::make_unique<T>(*this, args...));
 		T& component = static_cast<T&>(*componentUniqueRef);
-		component.OnAwake();
-		component.OnStart();
+
+		if (isInitialized) {
+			component.OnAwake();
+			component.OnStart();
+		}
 
 		return component;
 	}

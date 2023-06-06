@@ -40,7 +40,6 @@ namespace GE::Scene
 			DEBUG_LOG("シーン遷移：" << sceneNameToDestroy << "：アンロード開始");
 
 			activeScene.reset();
-			// TODO : アセットの破棄処理
 
 			DEBUG_LOG("シーン遷移：" << sceneNameToDestroy << "：アンロード完了");
 		}
@@ -48,6 +47,7 @@ namespace GE::Scene
 		DEBUG_LOG("シーン遷移：" << sceneName << "：読み込み開始");
 
 		activeScene = (*builder)();
+		activeScene->Load();
 
 		DEBUG_LOG("シーン遷移：" << sceneName << "：読み込み完了。");
 	}

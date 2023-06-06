@@ -26,14 +26,14 @@ namespace GE::Scene
 	}
 
 	Scene::Scene(const std::string& name) : 
-		isDestructing(false),
+		state(State::Initialized),
 		name(name)
 	{
 	}
 
 	Scene::~Scene()
 	{
-		isDestructing = true;
+		state = State::Destroying;
 
 		for (auto& gameObject : gameObjects) {
 			gameObject->OnPreDestroy();
@@ -43,6 +43,17 @@ namespace GE::Scene
 	GameObject* Scene::FindGameObject(const std::string& name) const
 	{
 		return GetOwnedGameObject(name);
+	}
+
+	void Scene::Load()
+	{
+		for (auto& gameObject : gameObjects) {
+			gameObject->OnAwake();
+		}
+
+		for (auto& gameObject : gameObjects) {
+			gameObject->OnStart();
+		}
 	}
 
 	void Scene::OnUpdate()
@@ -84,7 +95,7 @@ namespace GE::Scene
 
 	void Scene::UnregisterCamera(const Camera2D& camera)
 	{
-		if (isDestructing) {
+		if (state == State::Destroying) {
 			return;
 		}
 
@@ -98,7 +109,7 @@ namespace GE::Scene
 
 	void Scene::UnregisterRenderer(const Render::Renderer& renderer)
 	{
-		if (isDestructing) {
+		if (state == State::Destroying) {
 			return;
 		}
 

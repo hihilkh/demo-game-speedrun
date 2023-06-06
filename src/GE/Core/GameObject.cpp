@@ -14,6 +14,7 @@ namespace GE
 		belongingScene(scene),
 		parent(parent),
 		transform(std::make_unique<Transform2D>(*this)),
+		isInitialized(false),
 		isActive(true)
 	{
 	}
@@ -27,12 +28,22 @@ namespace GE
 
 	GameObject& GameObject::Create(Scene::Scene& scene, const std::string& name)
 	{
-		return scene.CreateAndOwnGameObject(name, scene);
+		return scene.CreateAndOwnGameObject(name, scene, false);
 	}
 
-	GameObject& GameObject::CreateChild(const std::string& childName)
+	GameObject& GameObject::CreateWithDelayInit(const std::string& name)
 	{
-		return CreateAndOwnGameObject(childName, this->belongingScene);
+		return CreateWithDelayInit(Scene::SceneManager::GetActiveScene(), name);
+	}
+
+	GameObject& GameObject::CreateWithDelayInit(Scene::Scene& scene, const std::string& name)
+	{
+		return scene.CreateAndOwnGameObject(name, scene, true);
+	}
+
+	GameObject& GameObject::AddChild(const std::string& childName)
+	{
+		return CreateAndOwnGameObject(childName, this->belongingScene, !isInitialized);
 	}
 
 	bool GameObject::SetParent(GameObject* newParent, bool keepWorldTransform)
@@ -108,8 +119,17 @@ namespace GE
 	}\
 }
 
+	void GameObject::InitIfSceneLoaded()
+	{
+		if (belongingScene.GetIsLoaded()) {
+			OnAwake();
+			OnStart();
+		}
+	}
+
 	void GameObject::OnAwake()
 	{
+		isInitialized = true;
 		EXECUTE_BY_ORDER(OnAwake());
 	}
 
