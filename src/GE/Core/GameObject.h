@@ -66,7 +66,7 @@ namespace GE
 		const Transform2D& GetTransform() const { return *transform; }
 		Transform2D& GetTransform() { return *transform; }
 
-		template<typename T> T& AddComponent(auto&&... args);
+		template<typename T, typename... Args> T& AddComponent(Args&&... args);
 		template<typename T> T* GetComponent() const;
 		template<typename T> T* GetComponentInChildren() const;
 		template<typename T> T* GetComponentInParent() const;
@@ -141,12 +141,12 @@ namespace GE
 
 #pragma region 関数テンプレート定義
 
-	template<typename T>
-	inline T& GameObject::AddComponent(auto&&... args)
+	template<typename T, typename... Args>
+	T& GameObject::AddComponent(Args&&... args)
 	{
 		static_assert(std::is_base_of_v<Component, T>, "The type must be a component");
 
-		std::unique_ptr<Component>& componentUniqueRef = components.emplace_back(std::make_unique<T>(*this, args...));
+		std::unique_ptr<Component>& componentUniqueRef = components.emplace_back(std::make_unique<T>(*this, std::forward<Args>(args)...));
 		T& component = static_cast<T&>(*componentUniqueRef);
 
 		if (isInitialized) {
@@ -158,7 +158,7 @@ namespace GE
 	}
 
 	template<typename T>
-	inline T* GameObject::GetComponent() const
+	T* GameObject::GetComponent() const
 	{
 		static_assert(std::is_base_of_v<Component, T>, "The type must be a component");
 
@@ -173,7 +173,7 @@ namespace GE
 	}
 
 	template<typename T>
-	inline T* GameObject::GetComponentInChildren() const
+	T* GameObject::GetComponentInChildren() const
 	{
 		T* result = GetComponent<T>();
 		if (result) {
@@ -191,7 +191,7 @@ namespace GE
 	}
 
 	template<typename T>
-	inline T* GameObject::GetComponentInParent() const
+	T* GameObject::GetComponentInParent() const
 	{
 		T* result = GetComponent<T>();
 		if (result) {
@@ -206,7 +206,7 @@ namespace GE
 	}
 
 	template<typename T>
-	inline std::vector<T*> GameObject::GetComponents() const
+	std::vector<T*> GameObject::GetComponents() const
 	{
 		std::vector<T*> result;
 		GetComponents(result);
@@ -214,7 +214,7 @@ namespace GE
 	}
 
 	template<typename T>
-	inline std::vector<T*> GameObject::GetComponentsInChildren() const
+	std::vector<T*> GameObject::GetComponentsInChildren() const
 	{
 		std::vector<T*> result;
 		GetComponentsInChildren(result);
@@ -222,7 +222,7 @@ namespace GE
 	}
 
 	template<typename T>
-	inline std::vector<T*> GameObject::GetComponentsInParent() const
+	std::vector<T*> GameObject::GetComponentsInParent() const
 	{
 		std::vector<T*> result;
 		GetComponentsInParent(result);
@@ -230,7 +230,7 @@ namespace GE
 	}
 
 	template<typename T>
-	inline void GameObject::GetComponents(std::vector<T*>& outContainer) const
+	void GameObject::GetComponents(std::vector<T*>& outContainer) const
 	{
 		static_assert(std::is_base_of_v<Component, T>, "The type must be a component");
 
@@ -243,7 +243,7 @@ namespace GE
 	}
 
 	template<typename T>
-	inline void GameObject::GetComponentsInChildren(std::vector<T*>& outContainer) const
+	void GameObject::GetComponentsInChildren(std::vector<T*>& outContainer) const
 	{
 		GetComponents(outContainer);
 		for (auto& child : children) {
@@ -252,7 +252,7 @@ namespace GE
 	}
 
 	template<typename T>
-	inline void GameObject::GetComponentsInParent(std::vector<T*>& outContainer) const
+	void GameObject::GetComponentsInParent(std::vector<T*>& outContainer) const
 	{
 		GetComponents(outContainer);
 		if (parent) {
