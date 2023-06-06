@@ -1,10 +1,10 @@
 ﻿#pragma once
 
-#include <stdint.h>
+#include <cstdint>
 
 namespace GE::Render::RenderLayer
 {
-	using Bitmask = uint32_t;
+	using Bitmask = std::uint32_t;
 
 	inline const Bitmask general = 1 << 0;
 	inline const Bitmask ui = 1 << 1;

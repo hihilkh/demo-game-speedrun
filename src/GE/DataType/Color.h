@@ -11,7 +11,7 @@ namespace GE
 		Color();
 		Color(float r, float g, float b, float a = 1.0f);
 
-		static Color From8Bit(uint8_t r = 0, uint8_t g = 0, uint8_t b = 0, uint8_t a = 255);
+		static Color From8Bit(std::uint8_t r = 0, std::uint8_t g = 0, std::uint8_t b = 0, std::uint8_t a = 255);
 
 		Color& operator+=(const Color& other);
 		Color& operator-=(const Color& other);

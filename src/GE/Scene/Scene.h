@@ -27,7 +27,7 @@ namespace GE::Scene
 		friend class Render::Renderer;
 
 	private:
-		enum class State : uint8_t
+		enum class State : std::uint8_t
 		{
 			Initialized,
 			Loaded,
