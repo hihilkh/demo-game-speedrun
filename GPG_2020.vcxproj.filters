@@ -723,6 +723,9 @@
     <ClInclude Include="src\TitleScene\TitleSceneDirector.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\GE\Utils\EnumUtils.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Event\Event.tpp">

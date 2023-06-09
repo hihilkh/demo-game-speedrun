@@ -902,6 +902,7 @@
     <ClInclude Include="src\Common\Font.h" />
     <ClInclude Include="src\GE\Core\Coroutine.h" />
     <ClInclude Include="src\GE\Core\PrefabDeclaration.h" />
+    <ClInclude Include="src\GE\Utils\EnumUtils.h" />
     <ClInclude Include="src\GE\Yield\headers.h" />
     <ClInclude Include="src\GE\Core\Prefab.h" />
     <ClInclude Include="src\GE\Core\Event.h" />

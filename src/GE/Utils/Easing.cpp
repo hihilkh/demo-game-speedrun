@@ -1,7 +1,6 @@
 ﻿#include "Easing.h"
 #include "Math.h"
 #include <cassert>
-#include <magic_enum.hpp>
 #include <string>
 
 namespace GE::Easing
@@ -20,7 +19,7 @@ namespace GE::Easing
 			case Type::InOutSine:	return EaseInOutSine(t);
 		}
 
-		assert(false && (std::string("Ease Type : ") + magic_enum::enum_name(type).data() + "のEase関数はまだ実装していない").c_str());
+		assert(false && "該当するEasing::TypeはまだEase関数の中で実装していない");
 
 		// 警告を出さないように
 		return 0.0f;

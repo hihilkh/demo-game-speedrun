@@ -10,7 +10,6 @@ namespace GE
 	class Camera2D;
 	struct Color;
 	class Time;
-	class Coroutine;
 
 	namespace DataType::Internal
 	{
@@ -38,7 +37,6 @@ using Transform2D		= GE::Transform2D;
 using Camera2D			= GE::Camera2D;
 using Color				= GE::Color;
 using Time				= GE::Time;
-using Coroutine			= GE::Coroutine;
 
 using Vector2			= GE::DataType::Internal::TVector2<float>;
 using Vector2Int		= GE::DataType::Internal::TVector2<int>;
@@ -46,6 +44,7 @@ using Vector3			= GE::DataType::Internal::TVector3<float>;
 using Vector3Int		= GE::DataType::Internal::TVector3<int>;
 
 namespace RenderLayer	= GE::Render::RenderLayer;
+
 // 備考：
 // 本質的に TRect<float> と TRect<int> は大きな違いがある。
 // TRect<float> の場合、点はサイズがない。
