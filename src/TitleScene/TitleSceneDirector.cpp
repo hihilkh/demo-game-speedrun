@@ -1,6 +1,7 @@
 ﻿#include "GE/GEHeader.h"
 #include "TitleSceneDirector.h"
 #include "UI/MenuItem.h"
+#include "GE/Input/InputSystem.h"
 
 namespace TitleScene
 {
@@ -47,7 +48,15 @@ namespace TitleScene
 	void Director::Update()
 	{
 		// TODO : Directorの代わりに、Input SystemとButtonでUIをコントロールする
-		// TODO : Input
+		if (GE::Input::GetKeyDown(GE::Input::Key::up)) {
+			SelectNextMenuItem(false);
+		} else if (GE::Input::GetKeyDown(GE::Input::Key::down)) {
+			SelectNextMenuItem(true);
+		}
+
+		if (GE::Input::GetKeyDown(GE::Input::Key::x)) {
+			menuItems[focusingMenuItemIndex]->Click();
+		}
 	}
 
 	void Director::SelectNextMenuItem(bool isForward)
