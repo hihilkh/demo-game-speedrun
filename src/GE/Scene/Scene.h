@@ -49,16 +49,21 @@ namespace GE::Scene
 		State state;
 		const std::string name;
 		std::vector<std::unique_ptr<GameObject>> gameObjects;
+
 		std::vector<const Camera2D*> cameras;
 		std::vector<const Render::Renderer*> renderers;
 
 	private:
 
+#pragma region GameEngineに呼び出される関数
+
 		void OnUpdate();
 		void OnLateUpdate();
 		void OnEndOfFrame();
 
-		void OnRender();
+		static void OnRender(const std::vector<Scene*>& scenes);
+
+#pragma endregion
 
 #pragma region SceneManagerに呼び出される関数
 

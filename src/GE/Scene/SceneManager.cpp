@@ -10,15 +10,14 @@ namespace GE::Scene
 	// でも、シーンを遷移しているとき、activeSceneを無効になる場合もある。
 	// TODO : シーンの遷移手順をロックする
 	std::unique_ptr<Scene> SceneManager::activeScene = std::make_unique<Scene>("Dummy");
+	std::unique_ptr<Scene> SceneManager::persistentScene = std::make_unique<Scene>("Persistent");
 
-	Scene& SceneManager::GetActiveScene()
+	std::vector<Scene*> SceneManager::GetLoadedScenes()
 	{
-		return *activeScene;
-	}
-
-	void SceneManager::SetConfig(SceneConfig&& config)
-	{
-		SceneManager::config = std::move(config);
+		return { 
+			activeScene.get(),
+			persistentScene.get() 
+		};
 	}
 
 	void SceneManager::LoadFirstScene()

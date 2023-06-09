@@ -77,14 +77,26 @@ namespace GE::Scene
 		}
 	}
 
-	void Scene::OnRender()
+	void Scene::OnRender(const std::vector<Scene*>& scenes)
 	{
 		// TODO : もっと効率的な方法を考える
-		std::sort(cameras.begin(), cameras.end(), CameraSort());
-		std::sort(renderers.begin(), renderers.end(), RendererSort());
+		if (scenes.size() == 0) {
+			return;
+		}
 
-		for (auto camera : cameras) {
-			camera->OnRender(renderers);
+		std::vector<const GE::Camera2D*> allCameras;
+		std::vector<const GE::Render::Renderer*> allRenderers;
+
+		for (auto scene : scenes) {
+			allCameras.insert(allCameras.end(), scene->cameras.begin(), scene->cameras.end());
+			allRenderers.insert(allRenderers.end(), scene->renderers.begin(), scene->renderers.end());
+		}
+
+		std::sort(allCameras.begin(), allCameras.end(), CameraSort());
+		std::sort(allRenderers.begin(), allRenderers.end(), RendererSort());
+
+		for (auto camera : allCameras) {
+			camera->OnRender(allRenderers);
 		}
 	}
 

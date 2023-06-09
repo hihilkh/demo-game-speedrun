@@ -73,6 +73,10 @@ namespace GE
 		/// ほぼフレームの最後の段階(Destroy段階の直前)。ダングリングポインタの防止ための処理とか。有効にする時のみ
 		/// </summary>
 		virtual void EndOfFrame() {}
+		/// <summary>
+		/// 破棄直前の処理
+		/// </summary>
+		virtual void PreDestroy() override {}
 
 #pragma endregion
 
@@ -97,7 +101,6 @@ namespace GE
 #pragma region Destroyable
 
 		void OnDestroy() override;
-		bool CheckIsInActiveScene() override;
 
 #pragma endregion
 

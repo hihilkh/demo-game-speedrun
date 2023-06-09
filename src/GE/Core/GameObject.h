@@ -74,6 +74,8 @@ namespace GE
 		template<typename T> std::vector<T*> GetComponentsInChildren() const;
 		template<typename T> std::vector<T*> GetComponentsInParent() const;
 
+		// TODO : RemoveComponent()
+
 	private:
 		template<typename T> void GetComponents(std::vector<T*>& outContainer) const;
 		template<typename T> void GetComponentsInChildren(std::vector<T*>& outContainer) const;
@@ -115,7 +117,6 @@ namespace GE
 
 		void OnPreDestroy() override;
 		void OnDestroy() override;
-		bool CheckIsInActiveScene() override;
 
 #pragma endregion
 

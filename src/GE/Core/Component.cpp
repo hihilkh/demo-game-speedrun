@@ -54,11 +54,6 @@ namespace GE
 		gameObject.RemoveComponentImmediate(*this);
 	}
 
-	bool Component::CheckIsInActiveScene()
-	{
-		return gameObject.CheckIsInActiveScene();
-	}
-
 	const Transform2D& Component::GetTransform() const
 	{
 		return gameObject.GetTransform();

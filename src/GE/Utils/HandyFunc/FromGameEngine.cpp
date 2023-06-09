@@ -19,8 +19,8 @@ namespace GE
 		return GameEngine::LoadScene(sceneName);
 	}
 
-	void Destroy(Internal::Destroyable& toDestroy)
+	void Destroy(GameObject& gameObject)
 	{
-		return GameEngine::Destroy(toDestroy);
+		return GameEngine::Destroy(gameObject);
 	}
 }

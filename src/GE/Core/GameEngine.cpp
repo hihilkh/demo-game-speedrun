@@ -9,13 +9,15 @@
 #include "GE/Input/InputSystem.h"
 #include "Internal/Destroyable.h"
 #include <cassert>
+#include <algorithm>
 
 namespace GE
 {
 	GEConfig GameEngine::config;
 	bool GameEngine::isStarted = false;
 	std::string GameEngine::sceneNameToLoad = "";
-	std::set<Internal::Destroyable*> GameEngine::toBeDestroySet;
+	std::set<Internal::Destroyable*> GameEngine::toBeDestroySet_ActiveScene;
+	std::set<Internal::Destroyable*> GameEngine::toBeDestroySet_PersistentScene;
 
 	void GameEngine::SetSceneConfig(Scene::SceneConfig&& config)
 	{
@@ -49,16 +51,25 @@ namespace GE
 		sceneNameToLoad = sceneName;
 	}
 
-	void GameEngine::Destroy(Internal::Destroyable& toDestroy)
+	void GameEngine::Destroy(GameObject& gameObject)
 	{
+		const Scene::Scene& belongingScene = gameObject.GetBelongingScene();
+		const std::vector<Scene::Scene*> loadedScenes = Scene::SceneManager::GetLoadedScenes();
+
+		Internal::Destroyable& toDestroy = static_cast<Internal::Destroyable&>(gameObject);
 		// ActiveSceneにいるではない場合、直接に破棄する
-		if (!toDestroy.CheckIsInActiveScene()) {
+		if (std::any_of(
+				loadedScenes.begin(), loadedScenes.end(), 
+				[&belongingScene](Scene::Scene* scene) { return scene == &belongingScene; }))
+		{
 			toDestroy.OnPreDestroy();
 			toDestroy.OnDestroy();
 			return;
 		}
 
-		auto result = toBeDestroySet.insert(&toDestroy);
+		auto result = belongingScene == Scene::SceneManager::GetActiveScene() ? 
+			toBeDestroySet_ActiveScene.insert(&toDestroy) :
+			toBeDestroySet_PersistentScene.insert(&toDestroy);
 		if (result.second) {	// insert成功 (重複しない場合)
 			toDestroy.SetToBeDestroy();
 		}
@@ -68,21 +79,26 @@ namespace GE
 	{
 		if (CheckIsGoingToChangeScene()) {
 			// シーンの遷移とき、ActiveSceneの全てのDestroyableも破棄される
-			// そういうわけで、下の処理をしなくてもいい
-			toBeDestroySet.clear();
-			return;
+			// そういうわけで、toBeDestroySet_ActiveSceneの処理をしなくてもいい
+			toBeDestroySet_ActiveScene.clear();
 		} 
 
 		std::vector<Internal::Destroyable*> finalDestroyObjects;
+		
+		std::set<Internal::Destroyable*>* toBeDestroySets[] = {
+			&toBeDestroySet_ActiveScene,
+			&toBeDestroySet_PersistentScene };
 
-		for (auto destroyable : toBeDestroySet) {
-			assert(destroyable && "なぜかdestroyableはnullptrになる");
+		for (auto toBeDestroySet : toBeDestroySets) {
+			for (auto destroyable : *toBeDestroySet) {
+				assert(destroyable && "なぜかdestroyableはnullptrになる");
 
-			// GameObjectを破棄するとき、関連するcomponentsとchildrenも破棄する
-			// 下記はすでに破棄したものを再び破棄しないような処理である
-			if (destroyable->destroyState != Internal::Destroyable::State::Destroying) {
-				finalDestroyObjects.push_back(destroyable);
-				destroyable->OnPreDestroy();
+				// GameObjectを破棄するとき、関連するcomponentsとchildrenも破棄する
+				// 下記はすでに破棄したものを再び破棄しないような処理である
+				if (destroyable->destroyState != Internal::Destroyable::State::Destroying) {
+					finalDestroyObjects.push_back(destroyable);
+					destroyable->OnPreDestroy();
+				}
 			}
 		}
 
@@ -90,7 +106,9 @@ namespace GE
 			destroyable->OnDestroy();
 		}
 
-		toBeDestroySet.clear();
+		for (auto toBeDestroySet : toBeDestroySets) {
+			toBeDestroySet->clear();
+		}
 	}
 
 	bool GameEngine::CheckIsGoingToChangeScene()
@@ -110,38 +128,41 @@ namespace GE
 
 	void GameEngine::RunGameLoop()
 	{
-		UpdatePhase();
-		RenderPhase();
-		EndOfFramePhase();
+		std::vector<Scene::Scene*> loadedScenes = Scene::SceneManager::GetLoadedScenes();
+
+		UpdatePhase(loadedScenes);
+		RenderPhase(loadedScenes);
+		EndOfFramePhase(loadedScenes);
 		DestroyPhase();
 		ChangeScenePhase();
 	}
 
-	void GameEngine::UpdatePhase()
+	void GameEngine::UpdatePhase(const std::vector<Scene::Scene*>& scenes)
 	{
-		Scene::Scene& activeScene = Scene::SceneManager::GetActiveScene();
-
 		Time::Update();
-
 		Input::InputSystem::OnUpdate();
 
-		activeScene.OnUpdate();
-		activeScene.OnLateUpdate();
+		for (auto scene : scenes) {
+			scene->OnUpdate();
+		}
+
+		for (auto scene : scenes) {
+			scene->OnLateUpdate();
+		}
 	}
 
-	void GameEngine::RenderPhase()
+	void GameEngine::RenderPhase(const std::vector<Scene::Scene*>& scenes)
 	{
-		Scene::Scene& activeScene = Scene::SceneManager::GetActiveScene();
-
 		Render::RenderSystem::StartRender();
-		activeScene.OnRender();
+		Scene::Scene::OnRender(scenes);
 		Render::RenderSystem::FinishRender();
 	}
 
-	void GameEngine::EndOfFramePhase()
+	void GameEngine::EndOfFramePhase(const std::vector<Scene::Scene*>& scenes)
 	{
-		Scene::Scene& activeScene = Scene::SceneManager::GetActiveScene();
-		activeScene.OnEndOfFrame();
+		for (auto scene : scenes) {
+			scene->OnEndOfFrame();
+		}
 	}
 }
 

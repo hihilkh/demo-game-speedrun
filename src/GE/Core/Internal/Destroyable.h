@@ -37,10 +37,10 @@ namespace GE::Internal
 
 	private:
 		// TODO : 
-		// 自分でOnDestroyを呼び出すということはちょっと変だと思う。
-		// 結局、派生クラスのOnDestroy実装はfriend classに依存し、コードは混乱になると思う。
+		// 今、自分を破棄することは自分のOnDestroyで処理する。これはちょっと変だと思う。
+		// なぜかというと、自分を持っているクラスに破棄することを指示するということです。
+		// そういうわけで、OnDestroyの実装はfriend classに依存し、コードは混乱になると思う。
 		virtual void OnDestroy() = 0;
-		virtual bool CheckIsInActiveScene() = 0;
 
 	private:
 		void SetToBeDestroy() { destroyState = State::ToBeDestroy; }

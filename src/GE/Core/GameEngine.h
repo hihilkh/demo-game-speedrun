@@ -3,15 +3,19 @@
 #include <memory>
 #include <string>
 #include <set>
+#include <vector>
 #include "GEConfig.h"
 
 namespace GE
 {
 	struct MainProgramInitParams;
 	struct Color;
+	class GameObject;
+
 	namespace Scene
 	{
 		struct SceneConfig;
+		class Scene;
 	}
 
 	namespace Internal
@@ -32,14 +36,15 @@ namespace GE
 
 		static void LoadScene(const std::string& sceneName);
 
-		static void Destroy(Internal::Destroyable& toDestroy);
+		static void Destroy(GameObject& gameObject);
 
 	private:
 		static GEConfig config;
 
 		static bool isStarted;
 		static std::string sceneNameToLoad;
-		static std::set<Internal::Destroyable*> toBeDestroySet;
+		static std::set<Internal::Destroyable*> toBeDestroySet_ActiveScene;
+		static std::set<Internal::Destroyable*> toBeDestroySet_PersistentScene;
 
 	private:
 		GameEngine() = delete;
@@ -50,9 +55,9 @@ namespace GE
 
 		static void RunGameLoop();
 
-		static void UpdatePhase();
-		static void RenderPhase();
-		static void EndOfFramePhase();
+		static void UpdatePhase(const std::vector<Scene::Scene*>& scenes);
+		static void RenderPhase(const std::vector<Scene::Scene*>& scenes);
+		static void EndOfFramePhase(const std::vector<Scene::Scene*>& scenes);
 		static void DestroyPhase();
 		static void ChangeScenePhase();
 	};

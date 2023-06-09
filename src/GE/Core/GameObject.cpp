@@ -180,11 +180,6 @@ namespace GE
 		owner->ReleaseGameObjectOwnership(*this);
 	}
 
-	bool GameObject::CheckIsInActiveScene()
-	{
-		return GetBelongingScene() == Scene::SceneManager::GetActiveScene();
-	}
-
 #pragma endregion
 
 	bool GameObject::RemoveComponentImmediate(const Component& component)
