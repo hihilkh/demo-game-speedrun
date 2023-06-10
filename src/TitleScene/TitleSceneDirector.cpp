@@ -58,12 +58,15 @@ namespace TitleScene
 	void Director::SelectNextMenuItem(bool isForward)
 	{
 		if (isForward) {
-			++focusingMenuItemIndex;
+			if (focusingMenuItemIndex < menuItems.size() - 1) {
+				++focusingMenuItemIndex;
+			}
 		} else {
-			--focusingMenuItemIndex;
+			if (focusingMenuItemIndex > 0) {
+				--focusingMenuItemIndex;
+			}
 		}
-		focusingMenuItemIndex = std::clamp(focusingMenuItemIndex, std::size_t(0), menuItems.size());
-		
+
 		SelectMenuItem(focusingMenuItemIndex);
 	}
 
