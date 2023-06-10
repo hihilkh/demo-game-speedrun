@@ -33,7 +33,6 @@ namespace GE::Internal
 
 		GameObject* parent = dynamic_cast<GameObject*>(this);
 		auto& gameObject = GetGameObjectContainer().emplace_back(std::make_unique<UniquePtrEnabler>(name, scene, parent));
-		gameObject->InitIfSceneLoaded();
 		if (!isDelayInit) {
 			gameObject->InitIfSceneLoaded();
 		}
