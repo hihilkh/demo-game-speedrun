@@ -325,6 +325,12 @@
     <ClCompile Include="src\PrepareScene\PrepareSceneDirector.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Utils\ImageFade.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scene\SceneTransition.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GameEngine_Ver3_83.h">
@@ -736,6 +742,12 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\PrepareScene\PrepareSceneDirector.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utils\ImageFade.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scene\SceneTransition.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

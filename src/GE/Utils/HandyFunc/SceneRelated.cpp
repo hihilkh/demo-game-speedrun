@@ -1,6 +1,7 @@
 ﻿#include "SceneRelated.h"
 #include "GE/Scene/SceneManager.h"
 #include "GE/Scene/Scene.h"
+#include "GE/Core/GameEngine.h"
 
 namespace GE
 {
@@ -18,5 +19,10 @@ namespace GE
 		}
 
 		return result;
+	}
+
+	void LoadScene(const std::string& sceneName)
+	{
+		return GameEngine::LoadScene(sceneName);
 	}
 }

@@ -14,11 +14,6 @@ namespace GE
 		GameEngine::SetBGColor(color);
 	}
 
-	void LoadScene(const std::string& sceneName)
-	{
-		return GameEngine::LoadScene(sceneName);
-	}
-
 	void Destroy(GameObject& gameObject)
 	{
 		return GameEngine::Destroy(gameObject);

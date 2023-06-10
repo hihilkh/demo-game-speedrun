@@ -3,6 +3,7 @@
 #include "Task/ResourceBase.tpp"
 #include "Task/ObjectBase.tpp"
 
+// TODO : Scene/SceneTransition.hと取り替える
 namespace SceneTransition
 {
 	class Resource : public ResourceBase<Resource>

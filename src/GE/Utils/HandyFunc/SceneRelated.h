@@ -14,4 +14,6 @@ namespace GE
 	/// 全てのLoaded SceneでGameObjectを探す
 	/// </summary>
 	GameObject* FindGameObject(const std::string& name);
+
+	void LoadScene(const std::string& sceneName);
 }

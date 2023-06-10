@@ -8,7 +8,7 @@ namespace PrepareScene
 	class Director : public Component
 	{
 	public:
-		Director(GameObject& gameObject);
+		explicit Director(GameObject& gameObject);
 
 	protected:
 		void Start() override;

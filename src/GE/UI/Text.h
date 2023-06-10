@@ -48,6 +48,7 @@ namespace GE::UI
 #pragma endregion
 
 	protected:
+		void Awake() override;
 		void Render(const Transform2DData& viewportData) const override;
 
 	private:

@@ -2,6 +2,7 @@
 #include "TitleSceneDirector.h"
 #include "UI/MenuItem.h"
 #include "GE/Input/InputSystem.h"
+#include "Scene/SceneTransition.h"
 
 namespace TitleScene
 {
@@ -43,6 +44,8 @@ namespace TitleScene
 				menuItems[i]->Init("",false, nullptr);
 			}
 		}
+
+		Scene::FadeIn();
 	}
 
 	void Director::Update()

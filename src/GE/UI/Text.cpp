@@ -16,8 +16,12 @@ namespace GE::UI
 		verticalAlignment(TextVerticalAlignment::Middle),
 		horizontalAlignment(TextHorizontalAlignment::Center)
 	{
-		// コンストラクタの中で仮想関数を呼び出すことを避ける
-		Renderer::SetEnable(CheckCanEnable());
+	}
+
+	void Text::Awake()
+	{
+		Renderer::Awake();
+		SetEnable(true);
 	}
 
 	void Text::SetFont(std::shared_ptr<GE::Font::Font> font)

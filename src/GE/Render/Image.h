@@ -35,6 +35,9 @@ namespace GE::Render
 		const Color& GetColor() const { return color; }
 		void SetColor(const Color& color) { this->color = color; }
 
+		float GetAlpha() const { return color.a; }
+		void SetAlpha(float alpha) { this->color.a = alpha; }
+
 		Vector2 GetImageSize() const;
 		void SetImageSize(const Vector2& size);
 
