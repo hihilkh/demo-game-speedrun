@@ -4,7 +4,7 @@
 #include "Prefab/Camera/UICameraPrefab.h"
 
 #include "Scene/SceneTransition.h"
-#include "Scene/TitleScene.h"
+#include "Scene/Builder/TitleScene.h"
 
 namespace PrepareScene
 {

@@ -1,16 +1,26 @@
 ﻿#include "GE/GEHeader.h"
-#include "TitleSceneDirector.h"
+#include "EndingSceneDirector.h"
 #include "UI/MenuItem.h"
 #include "GE/Input/InputSystem.h"
 #include "Scene/SceneTransition.h"
-#include "Scene/Builder/EndingScene.h"
+#include "Scene/Builder/TitleScene.h"
+#include "GE/UI/Text.h"
+#include <format>
+#include "Game/GameStatus.h"
 
-namespace TitleScene
+namespace EndingScene
 {
-	Director::Director(GameObject& gameObject, std::vector<UI::MenuItem*>&& menuItems) :
+	Director::Director(
+		GameObject& gameObject,
+		std::vector<UI::MenuItem*>&& menuItems,
+		GE::UI::Text& congratsText,
+		GE::UI::Text& resultText) :
+
 		Component(gameObject),
 		menuItems(std::move(menuItems)),
 		focusingMenuItemIndex(0),
+		congratsText(congratsText),
+		resultText(resultText),
 		isInteractable(false)
 	{
 	}
@@ -19,8 +29,8 @@ namespace TitleScene
 	{
 		const std::vector<std::tuple<std::string, std::function<void()>>> menuItemInfos =
 		{
-			{ "スタート",		std::bind(&Director::OnStartBtnClicked, this) },
-			{ "終了",		std::bind(&Director::OnExitBtnClicked, this) },
+			{ "リトライ",		std::bind(&Director::OnRetryBtnClicked, this) },
+			{ "タイトル",		std::bind(&Director::OnBackToMainMenuBtnClicked, this) },
 		};
 
 		assert(menuItems.size() == menuItemInfos.size() && "menuItemsとmenuItemInfosの数が合わせない");
@@ -30,9 +40,13 @@ namespace TitleScene
 				auto& info = menuItemInfos[i];
 				menuItems[i]->Init(std::get<0>(info), i == focusingMenuItemIndex, std::get<1>(info));
 			} else {
-				menuItems[i]->Init("",false, nullptr);
+				menuItems[i]->Init("", false, nullptr);
 			}
 		}
+
+		congratsText.SetText("おめでとうございます！");
+		std::string resultStr = std::format("クリア時間：{0:.3f}s", Game::GameStatus::ClearGameTimeMillisecond / 1000.0f);
+		resultText.SetText(resultStr);
 
 		Scene::FadeIn([this] { this->isInteractable = true; });
 	}
@@ -82,16 +96,15 @@ namespace TitleScene
 		}
 	}
 
-	void Director::OnStartBtnClicked()
+	void Director::OnRetryBtnClicked()
 	{
 		isInteractable = false;
-		// TODO : GameScene
-		Scene::FadeOutAndChangeScene(Scene::endingSceneName);
+		// TODO
 	}
 
-	void Director::OnExitBtnClicked()
+	void Director::OnBackToMainMenuBtnClicked()
 	{
 		isInteractable = false;
-		exit(0);
+		Scene::FadeOutAndChangeScene(Scene::titleSceneName);
 	}
 }

@@ -373,6 +373,8 @@
     <ClCompile Include="src\Chara\Player\RunPlayerAction.cpp" />
     <ClCompile Include="src\Common\Direction.cpp" />
     <ClCompile Include="src\Common\Font.cpp" />
+    <ClCompile Include="src\EndingScene\EndingSceneDirector.cpp" />
+    <ClCompile Include="src\Scene\Builder\EndingScene.cpp" />
     <ClCompile Include="src\Scene\SceneTransition.cpp" />
     <ClCompile Include="src\Utils\ImageFade.cpp" />
     <ClCompile Include="src\Common\Transform.cpp" />
@@ -824,9 +826,9 @@
     <ClCompile Include="src\ParticleSystem\Particle.cpp" />
     <ClCompile Include="src\ParticleSystem\ParticleConfig.cpp" />
     <ClCompile Include="src\ParticleSystem\Task_BreakWallEffect.cpp" />
-    <ClCompile Include="src\Scene\PrepareScene.cpp" />
+    <ClCompile Include="src\Scene\Builder\PrepareScene.cpp" />
     <ClCompile Include="src\Scene\SceneMapping.cpp" />
-    <ClCompile Include="src\Scene\TitleScene.cpp" />
+    <ClCompile Include="src\Scene\Builder\TitleScene.cpp" />
     <ClCompile Include="src\SceneTransition\Task_SceneTransition.cpp" />
     <ClCompile Include="src\TitleScene\TitleSceneDirector.cpp" />
     <ClCompile Include="src\Title\Task_Title.cpp" />
@@ -904,6 +906,8 @@
     <ClInclude Include="src\Camera\CameraManagement.h" />
     <ClInclude Include="src\Common\Direction.h" />
     <ClInclude Include="src\Common\Font.h" />
+    <ClInclude Include="src\EndingScene\EndingSceneDirector.h" />
+    <ClInclude Include="src\Scene\Builder\EndingScene.h" />
     <ClInclude Include="src\Scene\SceneTransition.h" />
     <ClInclude Include="src\Utils\ImageFade.h" />
     <ClInclude Include="src\GE\Core\Coroutine.h" />
@@ -995,9 +999,9 @@
     <ClInclude Include="src\ParticleSystem\ParticleConstant.h" />
     <ClInclude Include="src\ParticleSystem\Task_BreakWallEffect.h" />
     <ClInclude Include="src\Profiling\ProfilingConfig.h" />
-    <ClInclude Include="src\Scene\PrepareScene.h" />
+    <ClInclude Include="src\Scene\Builder\PrepareScene.h" />
     <ClInclude Include="src\Scene\SceneMapping.h" />
-    <ClInclude Include="src\Scene\TitleScene.h" />
+    <ClInclude Include="src\Scene\Builder\TitleScene.h" />
     <ClInclude Include="src\SceneTransition\Task_SceneTransition.h" />
     <ClInclude Include="src\Task\ResourceConstant.h" />
     <ClInclude Include="src\GE\Debug\Log.h" />

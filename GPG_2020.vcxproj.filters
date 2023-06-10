@@ -196,7 +196,7 @@
     <ClCompile Include="src\Profiling\ProfilerSectionCpu.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Scene\TitleScene.cpp">
+    <ClCompile Include="src\Scene\Builder\TitleScene.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Scene\SceneMapping.cpp">
@@ -319,7 +319,7 @@
     <ClCompile Include="src\TitleScene\TitleSceneDirector.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Scene\PrepareScene.cpp">
+    <ClCompile Include="src\Scene\Builder\PrepareScene.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\PrepareScene\PrepareSceneDirector.cpp">
@@ -329,6 +329,12 @@
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Scene\SceneTransition.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scene\Builder\EndingScene.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EndingScene\EndingSceneDirector.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -534,7 +540,7 @@
     <ClInclude Include="src\Profiling\ProfilingConfig.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Scene\TitleScene.h">
+    <ClInclude Include="src\Scene\Builder\TitleScene.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Scene\SceneMapping.h">
@@ -738,7 +744,7 @@
     <ClInclude Include="src\GE\Utils\EnumUtils.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Scene\PrepareScene.h">
+    <ClInclude Include="src\Scene\Builder\PrepareScene.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\PrepareScene\PrepareSceneDirector.h">
@@ -748,6 +754,12 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Scene\SceneTransition.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scene\Builder\EndingScene.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EndingScene\EndingSceneDirector.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
