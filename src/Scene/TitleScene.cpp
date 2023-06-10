@@ -3,8 +3,6 @@
 #include "GE/Scene/Scene.h"
 #include "GE/Render/Image.h"
 
-#include "Prefab/Camera/MainCameraPrefab.h"
-#include "Prefab/Camera/UICameraPrefab.h"
 #include "Prefab/UI/MenuItemPrefab.h"
 #include "UI/MenuItem.h"
 #include "TitleScene/TitleSceneDirector.h"
@@ -14,7 +12,6 @@ namespace Scene
 	std::unique_ptr<GE::Scene::Scene> TitleScene::operator()() const
 	{
 		auto scene = std::make_unique<GE::Scene::Scene>(titleSceneName);
-		GE::Instantiate(Prefab::Camera::UICameraPrefab(), *scene);
 
 		// タイトルロゴ
 		GameObject& logoObj = GameObject::Create(*scene, "Logo");

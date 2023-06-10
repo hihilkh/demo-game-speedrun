@@ -47,6 +47,8 @@ namespace GE::Scene
 
 	void Scene::Load()
 	{
+		state = State::Loaded;
+
 		for (auto& gameObject : gameObjects) {
 			gameObject->OnAwake();
 		}

@@ -1,4 +1,4 @@
-﻿#include "FromScene.h"
+﻿#include "SceneRelated.h"
 #include "GE/Scene/SceneManager.h"
 #include "GE/Scene/Scene.h"
 

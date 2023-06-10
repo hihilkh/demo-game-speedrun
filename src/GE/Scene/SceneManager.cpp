@@ -22,6 +22,7 @@ namespace GE::Scene
 
 	void SceneManager::LoadFirstScene()
 	{
+		persistentScene->Load();
 		ChangeScene(config.firstSceneName);
 	}
 

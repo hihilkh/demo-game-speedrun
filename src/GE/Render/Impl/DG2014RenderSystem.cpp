@@ -7,7 +7,7 @@
 #include <memory>
 #include <DG2014/DG2014_DGObject.h>
 #include "GE/Core/GEConfig.h"
-#include "GE/Utils/HandyFunc/FromGameEngine.h"
+#include "GE/Utils/HandyFunc/GameEngineRelated.h"
 
 namespace GE::Render
 {

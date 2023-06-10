@@ -54,6 +54,11 @@ namespace GE
 		static GameObject& Create(Scene::Scene& scene, const std::string& name = "GameObject");
 
 		/// <summary>
+		/// PersistentSceneで新しいGameObjectを生成する。つまり、sceneを遷移する際にも破棄されない。
+		/// </summary>
+		static GameObject& CreatePersistent(const std::string& name = "GameObject");
+
+		/// <summary>
 		/// 新しいGameObjectを生成し、childになる
 		/// </summary>
 		GameObject& AddChild(const std::string& childName);
@@ -128,8 +133,12 @@ namespace GE
 		template<typename PrefabT>
 		friend PrefabReturnType<PrefabT> Instantiate(PrefabT prefab, Scene::Scene& scene);
 
+		template<typename PrefabT>
+		friend PrefabReturnType<PrefabT> InstantiatePersistent(PrefabT prefab);
+
 		static GameObject& CreateWithDelayInit(const std::string& name = "GameObject");
 		static GameObject& CreateWithDelayInit(Scene::Scene& scene, const std::string& name = "GameObject");
+		static GameObject& CreatePersistentWithDelayInit(const std::string& name = "GameObject");
 
 #pragma endregion
 

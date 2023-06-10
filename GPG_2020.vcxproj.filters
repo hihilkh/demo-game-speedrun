@@ -229,7 +229,7 @@
     <ClCompile Include="src\GE\Scene\SceneConfig.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GE\Utils\HandyFunc\FromGameEngine.cpp">
+    <ClCompile Include="src\GE\Utils\HandyFunc\GameEngineRelated.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GE\Scene\Scene.cpp">
@@ -271,7 +271,7 @@
     <ClCompile Include="src\GE\Core\Camera2D.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GE\Utils\HandyFunc\FromScene.cpp">
+    <ClCompile Include="src\GE\Utils\HandyFunc\SceneRelated.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GE\Input\Impl\WindowsInputSystem.cpp">
@@ -317,6 +317,12 @@
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\TitleScene\TitleSceneDirector.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scene\PrepareScene.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PrepareScene\PrepareSceneDirector.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -612,7 +618,7 @@
     <ClInclude Include="src\GE\Debug\DebugConfig.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GE\Utils\HandyFunc\FromGameEngine.h">
+    <ClInclude Include="src\GE\Utils\HandyFunc\GameEngineRelated.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GE\Debug\Measurement\ScopeTiming.h">
@@ -645,7 +651,7 @@
     <ClInclude Include="src\GE\Core\Internal\Destroyable.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GE\Utils\HandyFunc\FromScene.h">
+    <ClInclude Include="src\GE\Utils\HandyFunc\SceneRelated.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GE\Input\InputSystem.h">
@@ -724,6 +730,12 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GE\Utils\EnumUtils.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scene\PrepareScene.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PrepareScene\PrepareSceneDirector.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

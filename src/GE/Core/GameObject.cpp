@@ -31,6 +31,11 @@ namespace GE
 		return scene.CreateAndOwnGameObject(name, scene, false);
 	}
 
+	GameObject& GameObject::CreatePersistent(const std::string& name)
+	{
+		return Create(Scene::SceneManager::GetPersistentScene(), name);
+	}
+
 	GameObject& GameObject::CreateWithDelayInit(const std::string& name)
 	{
 		return CreateWithDelayInit(Scene::SceneManager::GetActiveScene(), name);
@@ -39,6 +44,11 @@ namespace GE
 	GameObject& GameObject::CreateWithDelayInit(Scene::Scene& scene, const std::string& name)
 	{
 		return scene.CreateAndOwnGameObject(name, scene, true);
+	}
+
+	GameObject& GameObject::CreatePersistentWithDelayInit(const std::string& name)
+	{
+		return CreateWithDelayInit(Scene::SceneManager::GetPersistentScene(), name);
 	}
 
 	GameObject& GameObject::AddChild(const std::string& childName)

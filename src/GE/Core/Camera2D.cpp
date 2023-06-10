@@ -3,7 +3,7 @@
 #include "GE/Render/Renderer.h"
 #include "GameObject.h"
 #include "GE/Scene/Scene.h"
-#include "GE/Utils/HandyFunc/FromGameEngine.h"
+#include "GE/Utils/HandyFunc/GameEngineRelated.h"
 #include "GEConfig.h"
 
 namespace GE

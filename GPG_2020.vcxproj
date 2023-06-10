@@ -654,7 +654,7 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="src\GE\Utils\HandyFunc\FromGameEngine.cpp">
+    <ClCompile Include="src\GE\Utils\HandyFunc\GameEngineRelated.cpp">
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -762,7 +762,7 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="src\GE\Utils\HandyFunc\FromScene.cpp">
+    <ClCompile Include="src\GE\Utils\HandyFunc\SceneRelated.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeaderFile>
@@ -780,6 +780,7 @@
     <ClCompile Include="src\Prefab\Camera\MainCameraPrefab.cpp" />
     <ClCompile Include="src\Prefab\Camera\UICameraPrefab.cpp" />
     <ClCompile Include="src\Prefab\UI\MenuItemPrefab.cpp" />
+    <ClCompile Include="src\PrepareScene\PrepareSceneDirector.cpp" />
     <ClCompile Include="src\Profiling\Profiler.cpp" />
     <ClCompile Include="src\Profiling\ProfilerLoggerConsole.cpp" />
     <ClCompile Include="src\Profiling\ProfilerLoggerCsv.cpp" />
@@ -821,6 +822,7 @@
     <ClCompile Include="src\ParticleSystem\Particle.cpp" />
     <ClCompile Include="src\ParticleSystem\ParticleConfig.cpp" />
     <ClCompile Include="src\ParticleSystem\Task_BreakWallEffect.cpp" />
+    <ClCompile Include="src\Scene\PrepareScene.cpp" />
     <ClCompile Include="src\Scene\SceneMapping.cpp" />
     <ClCompile Include="src\Scene\TitleScene.cpp" />
     <ClCompile Include="src\SceneTransition\Task_SceneTransition.cpp" />
@@ -947,17 +949,18 @@
     <ClInclude Include="src\GE\Tools\ConstructorTest.h" />
     <ClInclude Include="src\GE\UI\Text.h" />
     <ClInclude Include="src\GE\UI\TextAlignment.h" />
-    <ClInclude Include="src\GE\Utils\HandyFunc\FromScene.h" />
+    <ClInclude Include="src\GE\Utils\HandyFunc\SceneRelated.h" />
     <ClInclude Include="src\GE\Utils\PreprocessorDef.h" />
     <ClInclude Include="src\GE\Utils\TypeDef.h" />
     <ClInclude Include="src\GE\DataType\Vector2.h" />
     <ClInclude Include="src\GE\DataType\Vector3.h" />
     <ClInclude Include="src\GE\Debug\ColliderVisual.h" />
     <ClInclude Include="src\GE\Debug\DebugConfig.h" />
-    <ClInclude Include="src\GE\Utils\HandyFunc\FromGameEngine.h" />
+    <ClInclude Include="src\GE\Utils\HandyFunc\GameEngineRelated.h" />
     <ClInclude Include="src\Prefab\Camera\MainCameraPrefab.h" />
     <ClInclude Include="src\Prefab\Camera\UICameraPrefab.h" />
     <ClInclude Include="src\Prefab\UI\MenuItemPrefab.h" />
+    <ClInclude Include="src\PrepareScene\PrepareSceneDirector.h" />
     <ClInclude Include="src\Profiling\Profiler.h" />
     <ClInclude Include="src\Profiling\ProfilerLogger.h" />
     <ClInclude Include="src\Profiling\ProfilerLoggerConsole.h" />
@@ -988,6 +991,7 @@
     <ClInclude Include="src\ParticleSystem\ParticleConstant.h" />
     <ClInclude Include="src\ParticleSystem\Task_BreakWallEffect.h" />
     <ClInclude Include="src\Profiling\ProfilingConfig.h" />
+    <ClInclude Include="src\Scene\PrepareScene.h" />
     <ClInclude Include="src\Scene\SceneMapping.h" />
     <ClInclude Include="src\Scene\TitleScene.h" />
     <ClInclude Include="src\SceneTransition\Task_SceneTransition.h" />

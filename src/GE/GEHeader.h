@@ -40,7 +40,7 @@
 
 #include "Render/RenderLayer.h"
 
-#include "Utils/HandyFunc/FromGameEngine.h"
-#include "Utils/HandyFunc/FromScene.h"
+#include "Utils/HandyFunc/GameEngineRelated.h"
+#include "Utils/HandyFunc/SceneRelated.h"
 #include "Utils/TypeDef.h"
 

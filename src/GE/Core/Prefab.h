@@ -27,6 +27,19 @@ namespace GE
 		return returnValue;
 	}
 
+	/// <summary>
+	/// PrefabをPersistent Sceneの中で生成する。つまり、sceneを遷移する際にも破棄されない。
+	/// </summary>
+	template<typename PrefabT>
+	PrefabReturnType<PrefabT> InstantiatePersistent(PrefabT prefab)
+	{
+		GameObject& baseGameObject = GameObject::CreatePersistentWithDelayInit();
+		PrefabReturnType<PrefabT> returnValue = prefab(baseGameObject);
+		baseGameObject.InitIfSceneLoaded();
+
+		return returnValue;
+	}
+
 #pragma endregion
 
 }
