@@ -8,7 +8,7 @@ namespace GE::Scene
 		if (auto pair = builderMap.find(sceneName); pair != builderMap.end()) {
 			return &pair->second;
 		} else {
-			DEBUG_LOG_WARNING("シーン： " << sceneName << " のビルダーが探せない。");
+			DEBUG_LOG_ERROR("シーン： " << sceneName << " のビルダーが探せない。");
 			return nullptr;
 		}
 	}

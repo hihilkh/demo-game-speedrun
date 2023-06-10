@@ -31,7 +31,7 @@ namespace GE::Scene
 		SceneBuilder* builder = config.GetBuilder(sceneName);
 
 		if (!builder) {
-			DEBUG_LOG_WARNING("シーン遷移：" << sceneName << "：読み込み失敗：ビルダーがない");
+			DEBUG_LOG_ERROR("シーン遷移：" << sceneName << "：読み込み失敗：ビルダーがない");
 			return;
 		}
 

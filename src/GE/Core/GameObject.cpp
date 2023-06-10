@@ -64,12 +64,12 @@ namespace GE
 
 		if (newParent) {
 			if (newParent->belongingScene != belongingScene) {
-				DEBUG_LOG_WARNING("GameObject：" << name << "は" << newParent->name << "と違うシーンにいる。SetParentできない。");
+				DEBUG_LOG_ERROR("GameObject：" << name << "は" << newParent->name << "と違うシーンにいる。SetParentできない。");
 				return false;
 			}
 
 			if (newParent->IsChildOf(*this, true)) {
-				DEBUG_LOG_WARNING("GameObject：" << name << "はもともと" << newParent->name << "のparent(再帰的な意味)である。SetParentできない。");
+				DEBUG_LOG_ERROR("GameObject：" << name << "はもともと" << newParent->name << "のparent(再帰的な意味)である。SetParentできない。");
 				return false;
 			}
 		}

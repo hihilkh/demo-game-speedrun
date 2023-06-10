@@ -22,11 +22,15 @@ namespace GE::Debug::Logging
 #define DEBUG_LOG_WARNING_SAME_LINE(message)	DEBUG_LOG_SAME_LINE("!! : " << message)
 #define DEBUG_LOG_WARNING(message)				DEBUG_LOG("!! : " << message)
 
+#define DEBUG_LOG_ERROR_SAME_LINE(message)		DEBUG_LOG_SAME_LINE("XXXX : " << message)
+#define DEBUG_LOG_ERROR(message)				DEBUG_LOG("XXXX : " << message)
 #else
 
 #define DEBUG_LOG_SAME_LINE(message)
 #define DEBUG_LOG(message)
 #define DEBUG_LOG_WARNING_SAME_LINE(message)
 #define DEBUG_LOG_WARNING(message)
+#define DEBUG_LOG_ERROR_SAME_LINE(message)
+#define DEBUG_LOG_ERROR(message)
 
 #endif

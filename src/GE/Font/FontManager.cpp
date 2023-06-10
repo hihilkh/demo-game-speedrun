@@ -29,7 +29,7 @@ namespace GE::Font
 		try {
 			font = std::make_shared<SharedPtrEnabler>(fontInfo);
 		} catch (std::exception& ex) {
-			DEBUG_LOG_WARNING(ex.what());
+			DEBUG_LOG_ERROR(ex.what());
 		}
 
 		if (font) {
