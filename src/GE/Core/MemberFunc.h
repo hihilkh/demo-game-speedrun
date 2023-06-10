@@ -13,7 +13,7 @@ namespace GE
     public:
         virtual ~MemberFuncBase() = default;
 
-        virtual R operator()(Args... args) = 0;
+        virtual R operator()(Args... args) const = 0;
     };
 
     /// <summary>
@@ -27,7 +27,7 @@ namespace GE
     public:
         MemberFunc(Func func, T& instance);
 
-        R operator()(Args... args) override;
+        R operator()(Args... args) const override;
 
         template<typename T2, typename R2, typename... Args2>
         friend bool operator==(const MemberFunc<T2, R2, Args2...>& lhs, const MemberFunc<T2, R2, Args2...>& rhs);
@@ -52,7 +52,7 @@ namespace GE
     }
 
     template<typename T, typename R, typename... Args>
-    R MemberFunc<T, R, Args...>::operator()(Args... args)
+    R MemberFunc<T, R, Args...>::operator()(Args... args) const
     {
         return (instance.*func)(std::forward<Args>(args)...);
     }

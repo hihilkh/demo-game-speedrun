@@ -15,7 +15,7 @@ namespace GE
 	{
 	public:
 
-		void Invoke(Args... args);
+		void Invoke(const Args&... args) const;
 
 		/// <summary>
 		/// 一般的な関数をAddListenerした後、指定的に除くこと(RemoveListener)ができない。
@@ -49,14 +49,14 @@ namespace GE
 #pragma region テンプレート定義
 
 	template<typename... Args>
-	void Event<Args...>::Invoke(Args... args)
+	void Event<Args...>::Invoke(const Args&... args) const
 	{
 		for (auto& listener : nonMemberFuncListeners) {
-			listener(std::forward<Args>(args)...);
+			listener(args...);
 		}
 
 		for (auto& listener : memberFuncListeners) {
-			(*listener.get())(std::forward<Args>(args)...);
+			(*listener.get())(args...);
 		}
 	}
 

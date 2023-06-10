@@ -18,7 +18,12 @@ namespace GE
 
 #pragma region Componentに呼び出される関数
 
-		Coroutine(const std::function<bool()>& predicate, const std::function<void()>& func);
+		template<typename Predicate, typename Action>
+		Coroutine(Predicate&& predicate, Action&& action) :
+			predicate(std::forward<Predicate>(predicate)),
+			action(std::forward<Action>(action))
+		{
+		}
 
 		/// <summary>
 		/// 注意：Componentが無効になる時、Coroutine::Update()も呼び出さない。
@@ -30,7 +35,7 @@ namespace GE
 
 	private:
 		std::function<bool()> predicate;
-		std::function<void()> func;
+		std::function<void()> action;
 
 	};
 }
