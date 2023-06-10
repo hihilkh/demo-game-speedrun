@@ -20,6 +20,8 @@ namespace TitleScene
 		std::vector<UI::MenuItem*> menuItems;
 		std::size_t focusingMenuItemIndex;
 
+		bool isInteractable;
+
 	protected:
 		void Start() override;
 		void Update() override;
@@ -27,5 +29,8 @@ namespace TitleScene
 	private:
 		void SelectNextMenuItem(bool isForward);
 		void SelectMenuItem(std::size_t index);
+
+		void OnStartBtnClicked();
+		void OnExitBtnClicked();
 	};
 }

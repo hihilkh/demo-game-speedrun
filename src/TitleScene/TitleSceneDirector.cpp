@@ -6,34 +6,22 @@
 
 namespace TitleScene
 {
-	namespace
-	{
-		void OnStartBtnClicked()
-		{
-			// TODO
-		}
-
-		void OnExitBtnClicked()
-		{
-			exit(0);
-		}
-
-		const std::vector<std::tuple<std::string, std::function<void()>>> menuItemInfos = 
-		{
-			{ "スタート", OnStartBtnClicked },
-			{ "終了", OnExitBtnClicked }
-		};
-	}
-
 	Director::Director(GameObject& gameObject, std::vector<UI::MenuItem*>&& menuItems) :
 		Component(gameObject),
 		menuItems(std::move(menuItems)),
-		focusingMenuItemIndex(0)
+		focusingMenuItemIndex(0),
+		isInteractable(false)
 	{
 	}
 
 	void Director::Start()
 	{
+		const std::vector<std::tuple<std::string, std::function<void()>>> menuItemInfos =
+		{
+			{ "スタート",		std::bind(&Director::OnStartBtnClicked, this) },
+			{ "終了",		std::bind(&Director::OnExitBtnClicked, this) },
+		};
+
 		assert(menuItems.size() == menuItemInfos.size() && "menuItemsとmenuItemInfosの数が合わせない");
 
 		for (std::size_t i = 0; i < menuItems.size(); ++i) {
@@ -45,12 +33,17 @@ namespace TitleScene
 			}
 		}
 
-		Scene::FadeIn();
+		Scene::FadeIn([this] { this->isInteractable = true; });
 	}
 
 	void Director::Update()
 	{
 		// TODO : Directorの代わりに、Input SystemとButtonでUIをコントロールする
+
+		if (!isInteractable) {
+			return;
+		}
+
 		if (GE::Input::GetKeyDown(GE::Input::Key::up)) {
 			SelectNextMenuItem(false);
 		} else if (GE::Input::GetKeyDown(GE::Input::Key::down)) {
@@ -83,5 +76,17 @@ namespace TitleScene
 				menuItems[i]->Unselect();
 			}
 		}
+	}
+
+	void Director::OnStartBtnClicked()
+	{
+		isInteractable = false;
+		// TODO
+	}
+
+	void Director::OnExitBtnClicked()
+	{
+		isInteractable = false;
+		exit(0);
 	}
 }
