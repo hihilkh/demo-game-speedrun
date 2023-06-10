@@ -1,6 +1,6 @@
 ﻿#include "MyPG.h"
 #include "Common/Font.h"
-#include "Title/Task_Title.h"
+//#include "Title/Task_Title.h"
 #include "Profiling/Profiler.h"
 
 namespace MyPG
@@ -105,7 +105,7 @@ namespace MyPG
 		//初期実行タスク生成＆ゲームエンジンに登録
 		srand((unsigned)time(0));
 		Font::Init();
-		Title::Object::SP ft = Title::Object::Create(true);
+		//Title::Object::SP ft = Title::Object::Create(true);
 
 		DEBUG_START_PROFILING();
 		DEBUG_PROFILING_SET_SCENE("Title");

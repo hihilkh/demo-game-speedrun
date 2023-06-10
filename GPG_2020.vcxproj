@@ -820,7 +820,6 @@
     <ClCompile Include="src\MyPG.cpp" />
     <ClCompile Include="src\Chara\CharaBase.cpp" />
     <ClCompile Include="src\Chara\Player\Task_Player.cpp" />
-    <ClCompile Include="src\Ending\Task_Ending.cpp" />
     <ClCompile Include="src\Game\Task_Game.cpp" />
     <ClCompile Include="src\Game\Task_GameCamera.cpp" />
     <ClCompile Include="src\ParticleSystem\Particle.cpp" />
@@ -831,7 +830,6 @@
     <ClCompile Include="src\Scene\Builder\TitleScene.cpp" />
     <ClCompile Include="src\SceneTransition\Task_SceneTransition.cpp" />
     <ClCompile Include="src\TitleScene\TitleSceneDirector.cpp" />
-    <ClCompile Include="src\Title\Task_Title.cpp" />
     <ClCompile Include="src\UI\MenuItem.cpp" />
     <ClCompile Include="src\Utils\Timer.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
@@ -1009,11 +1007,9 @@
     <ClInclude Include="src\Task\ResourceBase.tpp" />
     <ClInclude Include="src\Task\TaskConstant.h" />
     <ClInclude Include="src\Chara\Player\Task_Player.h" />
-    <ClInclude Include="src\Ending\Task_Ending.h" />
     <ClInclude Include="src\Game\Task_Game.h" />
     <ClInclude Include="src\Game\Task_GameCamera.h" />
     <ClInclude Include="src\TitleScene\TitleSceneDirector.h" />
-    <ClInclude Include="src\Title\Task_Title.h" />
     <ClInclude Include="lib\XI2018_Ver1_0.h" />
     <ClInclude Include="src\GE\Utils\Math.h" />
     <ClInclude Include="src\UI\MenuItem.h" />

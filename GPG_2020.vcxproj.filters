@@ -85,12 +85,6 @@
     <ClCompile Include="src\WinMain.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Ending\Task_Ending.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Title\Task_Title.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Game\Task_Game.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
@@ -391,12 +385,6 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Task\TaskConstant.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Ending\Task_Ending.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Title\Task_Title.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Task_Game.h">

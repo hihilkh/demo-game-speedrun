@@ -3,7 +3,7 @@
 //-------------------------------------------------------------------
 #include "MyPG.h"
 #include "Task_Game.h"
-#include "Ending/Task_Ending.h"
+//#include "Ending/Task_Ending.h"
 #include "Map/Task_Map.h"
 #include "Task_GameCamera.h"
 #include "GameEvent.h"
@@ -71,7 +71,7 @@ namespace Game
 		if (!ge->QuitFlag() && this->nextTaskCreate) {
 			GameStatus::ClearGameTimeMillisecond = timer.GetCurrentCountMillisecond();
 			//★引き継ぎタスクの生成
-			Ending::Object::Create(true);
+			//Ending::Object::Create(true);
 			DEBUG_PROFILING_SET_SCENE("Ending");
 		}
 	}
