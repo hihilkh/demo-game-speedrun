@@ -374,7 +374,9 @@
     <ClCompile Include="src\Common\Direction.cpp" />
     <ClCompile Include="src\Common\Font.cpp" />
     <ClCompile Include="src\EndingScene\EndingSceneDirector.cpp" />
+    <ClCompile Include="src\GameScene\GameSceneDirector.cpp" />
     <ClCompile Include="src\Scene\Builder\EndingScene.cpp" />
+    <ClCompile Include="src\Scene\Builder\GameScene.cpp" />
     <ClCompile Include="src\Scene\SceneTransition.cpp" />
     <ClCompile Include="src\Utils\ImageFade.cpp" />
     <ClCompile Include="src\Common\Transform.cpp" />
@@ -905,7 +907,9 @@
     <ClInclude Include="src\Common\Direction.h" />
     <ClInclude Include="src\Common\Font.h" />
     <ClInclude Include="src\EndingScene\EndingSceneDirector.h" />
+    <ClInclude Include="src\GameScene\GameSceneDirector.h" />
     <ClInclude Include="src\Scene\Builder\EndingScene.h" />
+    <ClInclude Include="src\Scene\Builder\GameScene.h" />
     <ClInclude Include="src\Scene\SceneTransition.h" />
     <ClInclude Include="src\Utils\ImageFade.h" />
     <ClInclude Include="src\GE\Core\Coroutine.h" />

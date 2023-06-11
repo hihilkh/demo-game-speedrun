@@ -3,7 +3,7 @@
 #include "UI/MenuItem.h"
 #include "GE/Input/InputSystem.h"
 #include "Scene/SceneTransition.h"
-#include "Scene/Builder/EndingScene.h"
+#include "Scene/Builder/GameScene.h"
 
 namespace TitleScene
 {
@@ -85,8 +85,7 @@ namespace TitleScene
 	void Director::OnStartBtnClicked()
 	{
 		isInteractable = false;
-		// TODO : GameScene
-		Scene::FadeOutAndChangeScene(Scene::endingSceneName);
+		Scene::FadeOutAndChangeScene(Scene::gameSceneName);
 	}
 
 	void Director::OnExitBtnClicked()

@@ -331,6 +331,12 @@
     <ClCompile Include="src\EndingScene\EndingSceneDirector.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Scene\Builder\GameScene.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameScene\GameSceneDirector.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GameEngine_Ver3_83.h">
@@ -748,6 +754,12 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\EndingScene\EndingSceneDirector.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scene\Builder\GameScene.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameScene\GameSceneDirector.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

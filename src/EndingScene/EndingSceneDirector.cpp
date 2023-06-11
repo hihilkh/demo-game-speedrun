@@ -4,6 +4,7 @@
 #include "GE/Input/InputSystem.h"
 #include "Scene/SceneTransition.h"
 #include "Scene/Builder/TitleScene.h"
+#include "Scene/Builder/GameScene.h"
 #include "GE/UI/Text.h"
 #include <format>
 #include "Game/GameStatus.h"
@@ -99,7 +100,7 @@ namespace EndingScene
 	void Director::OnRetryBtnClicked()
 	{
 		isInteractable = false;
-		// TODO
+		Scene::FadeOutAndChangeScene(Scene::gameSceneName);
 	}
 
 	void Director::OnBackToMainMenuBtnClicked()

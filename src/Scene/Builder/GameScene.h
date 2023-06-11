@@ -10,9 +10,9 @@ namespace GE
 
 namespace Scene
 {
-	inline const std::string prepareSceneName = "Prepare";
+	inline const std::string gameSceneName = "Game";
 
-	class PrepareScene
+	class GameScene
 	{
 	public:
 		std::unique_ptr<GE::Scene> operator()() const;
