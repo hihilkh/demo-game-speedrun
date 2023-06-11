@@ -4,7 +4,7 @@
 
 #if PROFILER_ENABLED
 
-namespace Profiling
+namespace GE::Profiling
 {
 	// Sections
 	inline const bool isEnableSectionFps		= true;

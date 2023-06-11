@@ -6,6 +6,7 @@
 #include <cstdint>
 #include "GE/Core/GameObject.h"
 #include "GE/Core/Internal/GameObjectOwner.h"
+#include "GE/Core/Event.h"
 
 namespace GE
 {
@@ -33,6 +34,9 @@ namespace GE
 			Loaded,
 			Destroying,
 		};
+
+	public:
+		static Event<const Scene&> onLoaded;
 
 	public:
 		explicit Scene(const std::string& name);

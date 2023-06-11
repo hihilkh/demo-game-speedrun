@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-namespace Profiling
+namespace GE::Profiling
 {
 	class ProfilerSection
 	{
@@ -12,10 +12,10 @@ namespace Profiling
 		std::vector<float> caches;
 
 	protected:
-		ProfilerSection(const std::string& name);
+		explicit ProfilerSection(const std::string& name);
 
 	public:
-		virtual ~ProfilerSection();
+		virtual ~ProfilerSection() = default;
 
 		virtual void Update(bool isLastSample) = 0;
 

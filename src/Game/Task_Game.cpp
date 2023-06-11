@@ -13,7 +13,6 @@
 #include "Utils/DelayTrigger.h"
 #include "Common/Font.h"
 #include "SceneTransition/Task_SceneTransition.h"
-#include "Profiling/Profiler.h"
 
 namespace Game
 {
@@ -72,7 +71,6 @@ namespace Game
 			GameStatus::ClearGameTimeMillisecond = timer.GetCurrentCountMillisecond();
 			//★引き継ぎタスクの生成
 			//Ending::Object::Create(true);
-			DEBUG_PROFILING_SET_SCENE("Ending");
 		}
 	}
 	//-------------------------------------------------------------------

@@ -1,14 +1,10 @@
 ﻿#include "ProfilerSectionFps.h"
 
-namespace Profiling
+namespace GE::Profiling
 {
 	ProfilerSectionFps::ProfilerSectionFps() :
 		ProfilerSection("fps"),
 		lastFrameTime(std::chrono::high_resolution_clock::now())
-	{
-	}
-
-	ProfilerSectionFps::~ProfilerSectionFps()
 	{
 	}
 

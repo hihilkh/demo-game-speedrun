@@ -1,8 +1,11 @@
 ﻿#include "ProfilerLoggerCsv.h"
 #include <filesystem>
 #include <time.h>
+#include <fstream>
+#include <iomanip>
+#include "ProfilerSection.h"
 
-namespace Profiling
+namespace GE::Profiling
 {
 	namespace
 	{

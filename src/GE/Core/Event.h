@@ -104,6 +104,10 @@ namespace GE
 	{
 		using DerivedType = MemberFunc<T, void, Args...>;
 
+		if (memberFuncListeners.size() == 0) {
+			return;
+		}
+
 		auto removeAlgorithm = [&memberFunc](auto& listener) -> bool {
 			DerivedType* casted = dynamic_cast<DerivedType*>(listener.get());
 			if (casted) {

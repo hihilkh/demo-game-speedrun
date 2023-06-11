@@ -169,25 +169,25 @@
     <ClCompile Include="src\SceneTransition\Task_SceneTransition.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Profiling\Profiler.cpp">
+    <ClCompile Include="src\GE\Profiling\Profiler.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Profiling\ProfilerSectionFps.cpp">
+    <ClCompile Include="src\GE\Profiling\ProfilerSectionFps.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Profiling\ProfilerSection.cpp">
+    <ClCompile Include="src\GE\Profiling\ProfilerSection.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Profiling\ProfilerLoggerConsole.cpp">
+    <ClCompile Include="src\GE\Profiling\ProfilerLoggerConsole.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Profiling\ProfilerLoggerCsv.cpp">
+    <ClCompile Include="src\GE\Profiling\ProfilerLoggerCsv.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Profiling\ProfilerSectionMemory.cpp">
+    <ClCompile Include="src\GE\Profiling\ProfilerSectionMemory.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Profiling\ProfilerSectionCpu.cpp">
+    <ClCompile Include="src\GE\Profiling\ProfilerSectionCpu.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Scene\Builder\TitleScene.cpp">
@@ -501,31 +501,31 @@
     <ClInclude Include="resource.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Profiling\Profiler.h">
+    <ClInclude Include="src\GE\Profiling\Profiler.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Profiling\ProfilerSection.h">
+    <ClInclude Include="src\GE\Profiling\ProfilerSection.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Profiling\ProfilerSectionFps.h">
+    <ClInclude Include="src\GE\Profiling\ProfilerSectionFps.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Profiling\ProfilerLogger.h">
+    <ClInclude Include="src\GE\Profiling\ProfilerLogger.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Profiling\ProfilerLoggerConsole.h">
+    <ClInclude Include="src\GE\Profiling\ProfilerLoggerConsole.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Profiling\ProfilerLoggerCsv.h">
+    <ClInclude Include="src\GE\Profiling\ProfilerLoggerCsv.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Profiling\ProfilerSectionMemory.h">
+    <ClInclude Include="src\GE\Profiling\ProfilerSectionMemory.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Profiling\ProfilerSectionCpu.h">
+    <ClInclude Include="src\GE\Profiling\ProfilerSectionCpu.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Profiling\ProfilingConfig.h">
+    <ClInclude Include="src\GE\Profiling\ProfilingConfig.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Scene\Builder\TitleScene.h">

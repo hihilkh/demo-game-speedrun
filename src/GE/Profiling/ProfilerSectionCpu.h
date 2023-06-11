@@ -3,14 +3,13 @@
 #include "ProfilerSection.h"
 #include <windows.h>
 
-namespace Profiling
+namespace GE::Profiling
 {
 	// 参考：https://stackoverflow.com/questions/63166/how-to-determine-cpu-and-memory-consumption-from-inside-a-process
 	class ProfilerSectionCpu : public ProfilerSection
 	{
 	public:
 		ProfilerSectionCpu();
-		~ProfilerSectionCpu();
 
 		void Update(bool isLastSample) override;
 

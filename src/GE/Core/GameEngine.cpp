@@ -10,6 +10,7 @@
 #include "Internal/Destroyable.h"
 #include <cassert>
 #include <algorithm>
+#include "GE/Profiling/Profiler.h"
 
 namespace GE
 {
@@ -42,6 +43,7 @@ namespace GE
 		MainProgram::OtherInitParamsSet other = MainProgram::Prepare(params, config);
 		Render::RenderSystem::Init(other.renderSystemInitParams, config);
 		Time::Init(config.targetFps);
+		DEBUG_START_PROFILING();
 		SceneManagement::SceneManager::LoadFirstScene();
 	}
 

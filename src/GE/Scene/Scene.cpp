@@ -25,6 +25,8 @@ namespace GE
 		};
 	}
 
+	Event<const Scene&> Scene::onLoaded;
+
 	Scene::Scene(const std::string& name) : 
 		state(State::Initialized),
 		name(name)
@@ -67,6 +69,8 @@ namespace GE
 		for (auto& gameObject : gameObjects) {
 			gameObject->OnStart();
 		}
+
+		onLoaded.Invoke(*this);
 	}
 
 	void Scene::OnUpdate()

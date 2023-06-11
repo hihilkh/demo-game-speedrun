@@ -2,13 +2,9 @@
 #include <numeric>
 #include <algorithm>
 
-namespace Profiling
+namespace GE::Profiling
 {
 	ProfilerSection::ProfilerSection(const std::string& name) : name(name)
-	{
-	}
-
-	ProfilerSection::~ProfilerSection()
 	{
 	}
 

@@ -2,10 +2,12 @@
 
 #include <vector>
 #include <memory>
-#include "ProfilerSection.h"
+#include <string>
 
-namespace Profiling
+namespace GE::Profiling
 {
+	class ProfilerSection;
+
 	class ProfilerLogger
 	{
 	public:

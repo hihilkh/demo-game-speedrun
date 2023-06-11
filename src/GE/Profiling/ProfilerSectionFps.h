@@ -3,13 +3,12 @@
 #include "ProfilerSection.h"
 #include <chrono>
 
-namespace Profiling
+namespace GE::Profiling
 {
 	class ProfilerSectionFps : public ProfilerSection
 	{
 	public:
 		ProfilerSectionFps();
-		~ProfilerSectionFps();
 
 		void Update(bool isLastSample) override;
 		void ResetCaches() override;

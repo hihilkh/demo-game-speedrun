@@ -1,6 +1,6 @@
 ﻿#include "ProfilerSectionCpu.h"
 
-namespace Profiling
+namespace GE::Profiling
 {
 	ProfilerSectionCpu::ProfilerSectionCpu() :
 		ProfilerSection("CPU (%)"),
@@ -11,10 +11,6 @@ namespace Profiling
         noOfProcessors = sysInfo.dwNumberOfProcessors;
 
         GetCurrentTimes(systemTimeQuad, processKernelTimeQuad, processUserTimeQuad);
-	}
-
-	ProfilerSectionCpu::~ProfilerSectionCpu()
-	{
 	}
 
 	void ProfilerSectionCpu::Update(bool isLastSample)

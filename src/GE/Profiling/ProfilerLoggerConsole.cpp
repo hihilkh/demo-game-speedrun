@@ -1,8 +1,9 @@
 ﻿#include "ProfilerLoggerConsole.h"
 #include "GE/Debug/Log.h"
 #include <iomanip>
+#include "ProfilerSection.h"
 
-namespace Profiling
+namespace GE::Profiling
 {
 	namespace
 	{

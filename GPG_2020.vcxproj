@@ -785,12 +785,12 @@
     <ClCompile Include="src\Prefab\Camera\UICameraPrefab.cpp" />
     <ClCompile Include="src\Prefab\UI\MenuItemPrefab.cpp" />
     <ClCompile Include="src\PrepareScene\PrepareSceneDirector.cpp" />
-    <ClCompile Include="src\Profiling\Profiler.cpp" />
-    <ClCompile Include="src\Profiling\ProfilerLoggerConsole.cpp" />
-    <ClCompile Include="src\Profiling\ProfilerLoggerCsv.cpp" />
-    <ClCompile Include="src\Profiling\ProfilerSection.cpp" />
-    <ClCompile Include="src\Profiling\ProfilerSectionCpu.cpp" />
-    <ClCompile Include="src\Profiling\ProfilerSectionFps.cpp" />
+    <ClCompile Include="src\GE\Profiling\Profiler.cpp" />
+    <ClCompile Include="src\GE\Profiling\ProfilerLoggerConsole.cpp" />
+    <ClCompile Include="src\GE\Profiling\ProfilerLoggerCsv.cpp" />
+    <ClCompile Include="src\GE\Profiling\ProfilerSection.cpp" />
+    <ClCompile Include="src\GE\Profiling\ProfilerSectionCpu.cpp" />
+    <ClCompile Include="src\GE\Profiling\ProfilerSectionFps.cpp" />
     <ClCompile Include="src\GE\Debug\Measurement\ScopeTiming.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -805,7 +805,7 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="src\Profiling\ProfilerSectionMemory.cpp" />
+    <ClCompile Include="src\GE\Profiling\ProfilerSectionMemory.cpp" />
     <ClCompile Include="src\Game\GameEvent.cpp" />
     <ClCompile Include="src\Game\GameStatus.cpp" />
     <ClCompile Include="src\Chara\Player\PlayerActionBase.cpp" />
@@ -967,15 +967,15 @@
     <ClInclude Include="src\Prefab\Camera\UICameraPrefab.h" />
     <ClInclude Include="src\Prefab\UI\MenuItemPrefab.h" />
     <ClInclude Include="src\PrepareScene\PrepareSceneDirector.h" />
-    <ClInclude Include="src\Profiling\Profiler.h" />
-    <ClInclude Include="src\Profiling\ProfilerLogger.h" />
-    <ClInclude Include="src\Profiling\ProfilerLoggerConsole.h" />
-    <ClInclude Include="src\Profiling\ProfilerLoggerCsv.h" />
-    <ClInclude Include="src\Profiling\ProfilerSection.h" />
-    <ClInclude Include="src\Profiling\ProfilerSectionCpu.h" />
-    <ClInclude Include="src\Profiling\ProfilerSectionFps.h" />
+    <ClInclude Include="src\GE\Profiling\Profiler.h" />
+    <ClInclude Include="src\GE\Profiling\ProfilerLogger.h" />
+    <ClInclude Include="src\GE\Profiling\ProfilerLoggerConsole.h" />
+    <ClInclude Include="src\GE\Profiling\ProfilerLoggerCsv.h" />
+    <ClInclude Include="src\GE\Profiling\ProfilerSection.h" />
+    <ClInclude Include="src\GE\Profiling\ProfilerSectionCpu.h" />
+    <ClInclude Include="src\GE\Profiling\ProfilerSectionFps.h" />
     <ClInclude Include="src\GE\Debug\Measurement\ScopeTiming.h" />
-    <ClInclude Include="src\Profiling\ProfilerSectionMemory.h" />
+    <ClInclude Include="src\GE\Profiling\ProfilerSectionMemory.h" />
     <ClInclude Include="src\Game\GameEvent.h" />
     <ClInclude Include="src\Game\GameStatus.h" />
     <ClInclude Include="src\Chara\Player\PlayerActionBase.h" />
@@ -996,7 +996,7 @@
     <ClInclude Include="src\ParticleSystem\ParticleConfig.h" />
     <ClInclude Include="src\ParticleSystem\ParticleConstant.h" />
     <ClInclude Include="src\ParticleSystem\Task_BreakWallEffect.h" />
-    <ClInclude Include="src\Profiling\ProfilingConfig.h" />
+    <ClInclude Include="src\GE\Profiling\ProfilingConfig.h" />
     <ClInclude Include="src\Scene\Builder\PrepareScene.h" />
     <ClInclude Include="src\Scene\SceneMapping.h" />
     <ClInclude Include="src\Scene\Builder\TitleScene.h" />

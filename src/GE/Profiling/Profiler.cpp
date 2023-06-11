@@ -2,7 +2,8 @@
 
 #if PROFILER_ENABLED
 
-#include "Task/TaskConstant.h"
+#include "GE/Core/GameObject.h"
+#include "GE/Scene/Scene.h"
 
 #include "ProfilerSection.h"
 #include "ProfilerSectionFps.h"
@@ -13,11 +14,15 @@
 #include "ProfilerLoggerConsole.h"
 #include "ProfilerLoggerCsv.h"
 
-namespace Profiling
+namespace GE::Profiling
 {
-	Object::Object() :
-		ObjectBase<Object>(TaskConstant::TaskGroupName_Debug, TaskConstant::TaskName_Profiler, true),
+	Profiler::Profiler(GameObject& gameObject) :
+		Component(gameObject),
 		currentSampleSize(0)
+	{
+	}
+
+	void Profiler::Awake()
 	{
 		InitSections();
 		InitLoggers();
@@ -25,16 +30,26 @@ namespace Profiling
 		for (auto& logger : loggers) {
 			logger->BeginLog(sections);
 		}
+
+		Scene::onLoaded.AddListener(&Profiler::SceneLoadedHandler, *this);
 	}
 
-	Object::~Object()
+	void Profiler::PreDestroy()
 	{
+		Scene::onLoaded.RemoveListener(&Profiler::SceneLoadedHandler, *this);
+
 		for (auto& logger : loggers) {
 			logger->EndLog(sections);
 		}
 	}
 
-	void Object::UpDate()
+	void Profiler::StartProfiling()
+	{
+		GameObject& obj = GameObject::CreatePersistent("Profiler");
+		obj.AddComponent<Profiler>();
+	}
+
+	void Profiler::Update()
 	{
 		bool isLastSample = false;
 
@@ -60,11 +75,7 @@ namespace Profiling
 		}
 	}
 
-	void Object::Render2D_AF()
-	{
-	}
-
-	void Object::InitSections()
+	void Profiler::InitSections()
 	{
 		sections.clear();
 		
@@ -73,17 +84,22 @@ namespace Profiling
 		if (isEnableSectionCpu)		{ sections.push_back(std::make_unique<ProfilerSectionCpu>()); }
 	}
 
-	void Object::InitLoggers()
+	void Profiler::InitLoggers()
 	{
 		if (isEnableLoggerConsole)	{ loggers.push_back(std::make_unique<ProfilerLoggerConsole>()); }
 		if (isEnableLoggerCsv)		{ loggers.push_back(std::make_unique<ProfilerLoggerCsv>()); }
 	}
 
-	void Object::InsertMessage(const string& message) const
+	void Profiler::InsertMessage(const std::string& message) const
 	{
 		for (auto& logger : loggers) {
 			logger->InsertMessage(message);
 		}
+	}
+
+	void Profiler::SceneLoadedHandler(const Scene& scene) const
+	{
+		InsertMessage("Move to scene : " + scene.GetName());
 	}
 }
 
