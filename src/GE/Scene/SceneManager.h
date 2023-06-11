@@ -5,10 +5,13 @@
 #include <memory>
 #include <vector>
 
-namespace GE::Scene
+namespace GE
 {
 	class Scene;
+}
 
+namespace GE::SceneManagement
+{
 	class SceneManager
 	{
 		friend class GameEngine;

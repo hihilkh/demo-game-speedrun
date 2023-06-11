@@ -12,20 +12,16 @@ namespace GE
 {
 	class Transform2D;
 	struct Transform2DData;
+	class Scene;
 
 	namespace Render
 	{
 		class Renderer;
 	}
 
-	namespace Scene
-	{
-		class Scene;
-	}
-
 	class Camera2D : public Component
 	{
-		friend class Scene::Scene;
+		friend class Scene;
 
 	public:
 		static Event<const Camera2D&> onCreated;

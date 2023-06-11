@@ -13,19 +13,16 @@ namespace GE
 {
 	class Component;
 	class Transform2D;
+	class Scene;
 
 	namespace Render
 	{
 		class Renderer;
 	}
-	namespace Scene
-	{
-		class Scene;
-	}
 
 	class GameObject : public Internal::GameObjectOwner, public Internal::Destroyable
 	{
-		friend Scene::Scene;
+		friend Scene;
 		friend Internal::GameObjectOwner;
 		friend Component;
 
@@ -41,7 +38,7 @@ namespace GE
 		bool GetActive() const { return isActive; }
 		void SetActive(bool isActive) { this->isActive = isActive; }
 
-		Scene::Scene& GetBelongingScene() const { return belongingScene; }
+		Scene& GetBelongingScene() const { return belongingScene; }
 
 		/// <summary>
 		/// ActiveSceneで新しいGameObjectを生成する
@@ -51,7 +48,7 @@ namespace GE
 		/// <summary>
 		/// 指定のsceneで新しいGameObjectを生成する
 		/// </summary>
-		static GameObject& Create(Scene::Scene& scene, const std::string& name = "GameObject");
+		static GameObject& Create(Scene& scene, const std::string& name = "GameObject");
 
 		/// <summary>
 		/// PersistentSceneで新しいGameObjectを生成する。つまり、sceneを遷移する際にも破棄されない。
@@ -88,7 +85,7 @@ namespace GE
 
 	private:
 		std::string name;
-		Scene::Scene& belongingScene;
+		Scene& belongingScene;
 		GameObject* parent;		// parentが破棄される前に、このインスタンスのchildrenを全て破棄するので、parentはダングリングポインタになるはずがない
 		const std::unique_ptr<Transform2D> transform;
 		std::vector<std::unique_ptr<Component>> components;
@@ -98,7 +95,7 @@ namespace GE
 		bool isActive;
 
 	private:
-		GameObject(const std::string& name, Scene::Scene& scene, GameObject* parent);
+		GameObject(const std::string& name, Scene& scene, GameObject* parent);
 
 #pragma region ゲームループ
 
@@ -131,13 +128,13 @@ namespace GE
 		friend PrefabReturnType<PrefabT> Instantiate(PrefabT prefab);
 
 		template<typename PrefabT>
-		friend PrefabReturnType<PrefabT> Instantiate(PrefabT prefab, Scene::Scene& scene);
+		friend PrefabReturnType<PrefabT> Instantiate(PrefabT prefab, Scene& scene);
 
 		template<typename PrefabT>
 		friend PrefabReturnType<PrefabT> InstantiatePersistent(PrefabT prefab);
 
 		static GameObject& CreateWithDelayInit(const std::string& name = "GameObject");
-		static GameObject& CreateWithDelayInit(Scene::Scene& scene, const std::string& name = "GameObject");
+		static GameObject& CreateWithDelayInit(Scene& scene, const std::string& name = "GameObject");
 		static GameObject& CreatePersistentWithDelayInit(const std::string& name = "GameObject");
 
 #pragma endregion

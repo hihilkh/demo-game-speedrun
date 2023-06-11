@@ -8,9 +8,9 @@
 
 namespace Scene
 {
-	GE::Scene::SceneConfig CreateSceneConfig()
+	GE::SceneManagement::SceneConfig CreateSceneConfig()
 	{
-		GE::Scene::SceneConfig sceneConfig;
+		GE::SceneManagement::SceneConfig sceneConfig;
 		sceneConfig.builderMap.emplace(prepareSceneName, PrepareScene());
 		sceneConfig.builderMap.emplace(titleSceneName, TitleScene());
 		sceneConfig.builderMap.emplace(endingSceneName, EndingScene());

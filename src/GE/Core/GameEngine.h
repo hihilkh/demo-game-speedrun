@@ -11,11 +11,11 @@ namespace GE
 	struct MainProgramInitParams;
 	struct Color;
 	class GameObject;
+	class Scene;
 
-	namespace Scene
+	namespace SceneManagement
 	{
 		struct SceneConfig;
-		class Scene;
 	}
 
 	namespace Internal
@@ -30,7 +30,7 @@ namespace GE
 		static const GEConfig& GetConfig() { return config; }
 		static void SetBGColor(const Color& color) { GameEngine::config.bgColor = color; }
 
-		static void SetSceneConfig(Scene::SceneConfig&& config);
+		static void SetSceneConfig(SceneManagement::SceneConfig&& config);
 
 		static int Start(const MainProgramInitParams& params);
 
@@ -55,9 +55,9 @@ namespace GE
 
 		static void RunGameLoop();
 
-		static void UpdatePhase(const std::vector<Scene::Scene*>& scenes);
-		static void RenderPhase(const std::vector<Scene::Scene*>& scenes);
-		static void EndOfFramePhase(const std::vector<Scene::Scene*>& scenes);
+		static void UpdatePhase(const std::vector<Scene*>& scenes);
+		static void RenderPhase(const std::vector<Scene*>& scenes);
+		static void EndOfFramePhase(const std::vector<Scene*>& scenes);
 		static void DestroyPhase();
 		static void ChangeScenePhase();
 	};

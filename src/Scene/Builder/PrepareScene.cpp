@@ -5,9 +5,9 @@
 
 namespace Scene
 {
-	std::unique_ptr<GE::Scene::Scene> PrepareScene::operator()() const
+	std::unique_ptr<GE::Scene> PrepareScene::operator()() const
 	{
-		auto scene = std::make_unique<GE::Scene::Scene>(prepareSceneName);
+		auto scene = std::make_unique<GE::Scene>(prepareSceneName);
 
 		// Director
 		GameObject& directorObj = GameObject::Create(*scene, "Director");

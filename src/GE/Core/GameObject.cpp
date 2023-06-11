@@ -9,7 +9,7 @@
 
 namespace GE
 {
-	GameObject::GameObject(const std::string& name, Scene::Scene& scene, GameObject* parent) :
+	GameObject::GameObject(const std::string& name, Scene& scene, GameObject* parent) :
 		name(name),
 		belongingScene(scene),
 		parent(parent),
@@ -23,32 +23,32 @@ namespace GE
 
 	GameObject& GameObject::Create(const std::string& name)
 	{
-		return Create(Scene::SceneManager::GetActiveScene(), name);
+		return Create(SceneManagement::SceneManager::GetActiveScene(), name);
 	}
 
-	GameObject& GameObject::Create(Scene::Scene& scene, const std::string& name)
+	GameObject& GameObject::Create(Scene& scene, const std::string& name)
 	{
 		return scene.CreateAndOwnGameObject(name, scene, false);
 	}
 
 	GameObject& GameObject::CreatePersistent(const std::string& name)
 	{
-		return Create(Scene::SceneManager::GetPersistentScene(), name);
+		return Create(SceneManagement::SceneManager::GetPersistentScene(), name);
 	}
 
 	GameObject& GameObject::CreateWithDelayInit(const std::string& name)
 	{
-		return CreateWithDelayInit(Scene::SceneManager::GetActiveScene(), name);
+		return CreateWithDelayInit(SceneManagement::SceneManager::GetActiveScene(), name);
 	}
 
-	GameObject& GameObject::CreateWithDelayInit(Scene::Scene& scene, const std::string& name)
+	GameObject& GameObject::CreateWithDelayInit(Scene& scene, const std::string& name)
 	{
 		return scene.CreateAndOwnGameObject(name, scene, true);
 	}
 
 	GameObject& GameObject::CreatePersistentWithDelayInit(const std::string& name)
 	{
-		return CreateWithDelayInit(Scene::SceneManager::GetPersistentScene(), name);
+		return CreateWithDelayInit(SceneManagement::SceneManager::GetPersistentScene(), name);
 	}
 
 	GameObject& GameObject::AddChild(const std::string& childName)

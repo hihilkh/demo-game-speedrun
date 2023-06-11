@@ -19,9 +19,9 @@ namespace GE
 	std::set<Internal::Destroyable*> GameEngine::toBeDestroySet_ActiveScene;
 	std::set<Internal::Destroyable*> GameEngine::toBeDestroySet_PersistentScene;
 
-	void GameEngine::SetSceneConfig(Scene::SceneConfig&& config)
+	void GameEngine::SetSceneConfig(SceneManagement::SceneConfig&& config)
 	{
-		Scene::SceneManager::SetConfig(std::move(config));
+		SceneManagement::SceneManager::SetConfig(std::move(config));
 	}
 
 	// 参考：https://learn.microsoft.com/en-us/cpp/windows/walkthrough-creating-windows-desktop-applications-cpp?view=msvc-170
@@ -42,7 +42,7 @@ namespace GE
 		MainProgram::OtherInitParamsSet other = MainProgram::Prepare(params, config);
 		Render::RenderSystem::Init(other.renderSystemInitParams, config);
 		Time::Init(config.targetFps);
-		Scene::SceneManager::LoadFirstScene();
+		SceneManagement::SceneManager::LoadFirstScene();
 	}
 
 	void GameEngine::LoadScene(const std::string& sceneName)
@@ -53,21 +53,21 @@ namespace GE
 
 	void GameEngine::Destroy(GameObject& gameObject)
 	{
-		const Scene::Scene& belongingScene = gameObject.GetBelongingScene();
-		const std::vector<Scene::Scene*> loadedScenes = Scene::SceneManager::GetLoadedScenes();
+		const Scene& belongingScene = gameObject.GetBelongingScene();
+		const std::vector<Scene*> loadedScenes = SceneManagement::SceneManager::GetLoadedScenes();
 
 		Internal::Destroyable& toDestroy = static_cast<Internal::Destroyable&>(gameObject);
 		// ActiveSceneにいるではない場合、直接に破棄する
 		if (std::any_of(
 				loadedScenes.begin(), loadedScenes.end(), 
-				[&belongingScene](Scene::Scene* scene) { return scene == &belongingScene; }))
+				[&belongingScene](Scene* scene) { return scene == &belongingScene; }))
 		{
 			toDestroy.OnPreDestroy();
 			toDestroy.OnDestroy();
 			return;
 		}
 
-		auto result = belongingScene == Scene::SceneManager::GetActiveScene() ? 
+		auto result = belongingScene == SceneManagement::SceneManager::GetActiveScene() ?
 			toBeDestroySet_ActiveScene.insert(&toDestroy) :
 			toBeDestroySet_PersistentScene.insert(&toDestroy);
 		if (result.second) {	// insert成功 (重複しない場合)
@@ -122,13 +122,13 @@ namespace GE
 			return;
 		}
 
-		Scene::SceneManager::ChangeScene(sceneNameToLoad);
+		SceneManagement::SceneManager::ChangeScene(sceneNameToLoad);
 		sceneNameToLoad = "";
 	}
 
 	void GameEngine::RunGameLoop()
 	{
-		std::vector<Scene::Scene*> loadedScenes = Scene::SceneManager::GetLoadedScenes();
+		std::vector<Scene*> loadedScenes = SceneManagement::SceneManager::GetLoadedScenes();
 
 		UpdatePhase(loadedScenes);
 		RenderPhase(loadedScenes);
@@ -137,7 +137,7 @@ namespace GE
 		ChangeScenePhase();
 	}
 
-	void GameEngine::UpdatePhase(const std::vector<Scene::Scene*>& scenes)
+	void GameEngine::UpdatePhase(const std::vector<Scene*>& scenes)
 	{
 		Time::Update();
 		Input::InputSystem::OnUpdate();
@@ -151,14 +151,14 @@ namespace GE
 		}
 	}
 
-	void GameEngine::RenderPhase(const std::vector<Scene::Scene*>& scenes)
+	void GameEngine::RenderPhase(const std::vector<Scene*>& scenes)
 	{
 		Render::RenderSystem::StartRender();
-		Scene::Scene::OnRender(scenes);
+		Scene::OnRender(scenes);
 		Render::RenderSystem::FinishRender();
 	}
 
-	void GameEngine::EndOfFramePhase(const std::vector<Scene::Scene*>& scenes)
+	void GameEngine::EndOfFramePhase(const std::vector<Scene*>& scenes)
 	{
 		for (auto scene : scenes) {
 			scene->OnEndOfFrame();

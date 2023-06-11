@@ -7,7 +7,7 @@ namespace GE
 {
 	GameObject* FindGameObject(const std::string& name)
 	{
-		std::vector<Scene::Scene*> loadedScenes = Scene::SceneManager::GetLoadedScenes();
+		std::vector<Scene*> loadedScenes = SceneManagement::SceneManager::GetLoadedScenes();
 		GameObject* result = nullptr;
 
 		for (const auto scene : loadedScenes) {

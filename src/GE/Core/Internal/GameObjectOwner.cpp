@@ -23,11 +23,11 @@ namespace GE::Internal
 		return nullptr;
 	}
 
-	GameObject& GameObjectOwner::CreateAndOwnGameObject(const std::string& name, Scene::Scene& scene, bool isDelayInit)
+	GameObject& GameObjectOwner::CreateAndOwnGameObject(const std::string& name, Scene& scene, bool isDelayInit)
 	{
 		struct UniquePtrEnabler : public GameObject
 		{
-			UniquePtrEnabler(const std::string& name, Scene::Scene& scene, GameObject* parent) :
+			UniquePtrEnabler(const std::string& name, Scene& scene, GameObject* parent) :
 				GameObject(name, scene, parent) {}
 		};
 

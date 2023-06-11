@@ -5,10 +5,13 @@
 #include <string>
 #include <memory>
 
-namespace GE::Scene
+namespace GE
 {
 	class Scene;
+}
 
+namespace GE::SceneManagement
+{
 	using SceneBuilder = std::function<std::unique_ptr<Scene>()>;
 
 	struct SceneConfig

@@ -10,9 +10,9 @@
 
 namespace Scene
 {
-	std::unique_ptr<GE::Scene::Scene> EndingScene::operator()() const
+	std::unique_ptr<GE::Scene> EndingScene::operator()() const
 	{
-		auto scene = std::make_unique<GE::Scene::Scene>(endingSceneName);
+		auto scene = std::make_unique<GE::Scene>(endingSceneName);
 
 		auto largeFont = Lang::LanguageManager::GetFont(Lang::FontType::DefaultLarge);
 		const GE::GEConfig& config = GE::GetGEConfig();

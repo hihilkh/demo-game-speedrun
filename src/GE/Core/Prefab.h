@@ -18,7 +18,7 @@ namespace GE
 	}
 
 	template<typename PrefabT>
-	PrefabReturnType<PrefabT> Instantiate(PrefabT prefab, Scene::Scene& scene)
+	PrefabReturnType<PrefabT> Instantiate(PrefabT prefab, Scene& scene)
 	{
 		GameObject& baseGameObject = GameObject::CreateWithDelayInit(scene);
 		PrefabReturnType<PrefabT> returnValue = prefab(baseGameObject);

@@ -15,14 +15,16 @@ namespace GE
 	{
 		class Renderer;
 	}
-}
 
-namespace GE::Scene
-{
+	namespace SceneManagement
+	{
+		class SceneManager;
+	}
+
 	class Scene : public Internal::GameObjectOwner
 	{
 		friend class GameEngine;
-		friend class SceneManager;
+		friend SceneManagement::SceneManager;
 
 	private:
 		enum class State : std::uint8_t

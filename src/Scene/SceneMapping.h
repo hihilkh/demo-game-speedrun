@@ -4,5 +4,5 @@
 
 namespace Scene
 {
-	GE::Scene::SceneConfig CreateSceneConfig();
+	GE::SceneManagement::SceneConfig CreateSceneConfig();
 }

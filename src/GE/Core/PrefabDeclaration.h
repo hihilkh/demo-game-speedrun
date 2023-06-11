@@ -6,10 +6,7 @@
 namespace GE
 {
 	class GameObject;
-	namespace Scene
-	{
-		class Scene;
-	}
+	class Scene;
 
 	template<typename T>
 	using Prefab = std::function<T(GameObject& baseGameObject)>;
@@ -21,5 +18,5 @@ namespace GE
 	PrefabReturnType<PrefabT> Instantiate(PrefabT prefab);
 
 	template<typename PrefabT>
-	PrefabReturnType<PrefabT> Instantiate(PrefabT prefab, Scene::Scene& scene);
+	PrefabReturnType<PrefabT> Instantiate(PrefabT prefab, Scene& scene);
 }

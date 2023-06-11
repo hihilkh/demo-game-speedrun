@@ -9,9 +9,9 @@
 
 namespace Scene
 {
-	std::unique_ptr<GE::Scene::Scene> TitleScene::operator()() const
+	std::unique_ptr<GE::Scene> TitleScene::operator()() const
 	{
-		auto scene = std::make_unique<GE::Scene::Scene>(titleSceneName);
+		auto scene = std::make_unique<GE::Scene>(titleSceneName);
 
 		// タイトルロゴ
 		GameObject& logoObj = GameObject::Create(*scene, "Logo");

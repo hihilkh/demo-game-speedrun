@@ -5,10 +5,6 @@
 namespace GE
 {
 	class GameObject;
-	namespace Scene
-	{
-		class Scene;
-	}
 
 	/// <summary>
 	/// 全てのLoaded SceneでGameObjectを探す

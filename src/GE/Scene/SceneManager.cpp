@@ -2,7 +2,7 @@
 #include "GE/Debug/Log.h"
 
 // 備考：現段階シングルシーンしか支援しない
-namespace GE::Scene
+namespace GE::SceneManagement
 {
 	SceneConfig SceneManager::config;
 
