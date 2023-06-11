@@ -29,11 +29,22 @@ namespace GE::Scene
 		state(State::Initialized),
 		name(name)
 	{
+		Camera2D::onCreated.AddListener(&Scene::RegisterCamera, *this);
+		Camera2D::onDestroying.AddListener(&Scene::UnregisterCamera, *this);
+
+		Render::Renderer::onCreated.AddListener(&Scene::RegisterRenderer, *this);
+		Render::Renderer::onDestroying.AddListener(&Scene::UnregisterRenderer, *this);
 	}
 
 	Scene::~Scene()
 	{
 		state = State::Destroying;
+
+		Camera2D::onCreated.RemoveListener(&Scene::RegisterCamera, *this);
+		Camera2D::onDestroying.RemoveListener(&Scene::UnregisterCamera, *this);
+
+		Render::Renderer::onCreated.RemoveListener(&Scene::RegisterRenderer, *this);
+		Render::Renderer::onDestroying.RemoveListener(&Scene::UnregisterRenderer, *this);
 
 		for (auto& gameObject : gameObjects) {
 			gameObject->OnPreDestroy();
@@ -104,30 +115,30 @@ namespace GE::Scene
 
 	void Scene::RegisterCamera(const Camera2D& camera)
 	{
-		cameras.push_back(&camera);
+		if (this == &camera.gameObject.GetBelongingScene()) {
+			cameras.push_back(&camera);
+		}
 	}
 
 	void Scene::UnregisterCamera(const Camera2D& camera)
 	{
-		if (state == State::Destroying) {
-			return;
+		if (this == &camera.gameObject.GetBelongingScene()) {
+			cameras.erase(std::remove(cameras.begin(), cameras.end(), &camera), cameras.end());
 		}
-
-		cameras.erase(std::remove(cameras.begin(), cameras.end(), &camera), cameras.end());
 	}
 
 	void Scene::RegisterRenderer(const Render::Renderer& renderer)
 	{
-		renderers.push_back(&renderer);
+		if (this == &renderer.gameObject.GetBelongingScene()) {
+			renderers.push_back(&renderer);
+		}
 	}
 
 	void Scene::UnregisterRenderer(const Render::Renderer& renderer)
 	{
-		if (state == State::Destroying) {
-			return;
+		if (this == &renderer.gameObject.GetBelongingScene()) {
+			renderers.erase(std::remove(renderers.begin(), renderers.end(), &renderer), renderers.end());
 		}
-
-		renderers.erase(std::remove(renderers.begin(), renderers.end(), &renderer), renderers.end());
 	}
 
 	bool operator==(const Scene& lhs, const Scene& rhs)

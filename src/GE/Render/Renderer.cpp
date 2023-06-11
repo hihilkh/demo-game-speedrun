@@ -1,9 +1,11 @@
 ﻿#include "Renderer.h"
 #include "GE/Core/GameObject.h"
-#include "GE/Scene/Scene.h"
 
 namespace GE::Render
 {
+	Event<const Renderer&> Renderer::onCreated;
+	Event<const Renderer&> Renderer::onDestroying;
+
 	Renderer::Renderer(GameObject& gameObject, int renderPriority, RenderLayer::Bitmask renderLayer) :
 		Component(gameObject),
 		renderPriority(renderPriority),
@@ -13,14 +15,12 @@ namespace GE::Render
 
 	void Renderer::Awake()
 	{
-		Scene::Scene& scene = gameObject.GetBelongingScene();
-		scene.RegisterRenderer(*this);
+		onCreated.Invoke(*this);
 	}
 
 	void Renderer::PreDestroy()
 	{
-		Scene::Scene& scene = gameObject.GetBelongingScene();
-		scene.UnregisterRenderer(*this);
+		onDestroying.Invoke(*this);
 	}
 
 	void Renderer::OnRender(const Transform2DData& viewportData) const

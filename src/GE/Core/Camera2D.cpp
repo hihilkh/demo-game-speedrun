@@ -2,7 +2,6 @@
 #include "Transform2D.h"
 #include "GE/Render/Renderer.h"
 #include "GameObject.h"
-#include "GE/Scene/Scene.h"
 #include "GE/Utils/HandyFunc/GameEngineRelated.h"
 #include "GEConfig.h"
 
@@ -15,6 +14,9 @@ namespace GE
 		float viewportOffsetY;
 	};
 
+	Event<const Camera2D&> Camera2D::onCreated;
+	Event<const Camera2D&> Camera2D::onDestroying;
+
 	Camera2D::Camera2D(GameObject& gameObject) :
 		Component(gameObject),
 		priority(0),
@@ -24,14 +26,12 @@ namespace GE
 
 	void Camera2D::Awake()
 	{
-		Scene::Scene& scene = gameObject.GetBelongingScene();
-		scene.RegisterCamera(*this);
+		onCreated.Invoke(*this);
 	}
 
 	void Camera2D::PreDestroy()
 	{
-		Scene::Scene& scene = gameObject.GetBelongingScene();
-		scene.UnregisterCamera(*this);
+		onDestroying.Invoke(*this);
 	}
 
 	Transform2DData Camera2D::ConvertToViewport(const Transform2D& target, const PreRenderData& preRenderData) const

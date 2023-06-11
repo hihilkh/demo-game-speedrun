@@ -2,6 +2,7 @@
 
 #include "GE/Core/Component.h"
 #include "RenderLayer.h"
+#include "GE/Core/Event.h"
 
 namespace GE
 {
@@ -14,6 +15,10 @@ namespace GE::Render
 	class Renderer : public Component
 	{
 		friend Camera2D;
+
+	public:
+		static Event<const Renderer&> onCreated;
+		static Event<const Renderer&> onDestroying;
 
 	public:
 		Renderer(GameObject& gameObject, int renderPriority, RenderLayer::Bitmask renderLayer);

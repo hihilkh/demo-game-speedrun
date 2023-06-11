@@ -3,6 +3,7 @@
 #include "Component.h"
 #include "GE/Render/RenderLayer.h"
 #include <vector>
+#include "Event.h"
 
 // 備考：
 // Camera2Dは普通のCameraの簡易版である。
@@ -25,6 +26,10 @@ namespace GE
 	class Camera2D : public Component
 	{
 		friend class Scene::Scene;
+
+	public:
+		static Event<const Camera2D&> onCreated;
+		static Event<const Camera2D&> onDestroying;
 
 	public:
 		Camera2D(GameObject& gameObject);

@@ -23,8 +23,6 @@ namespace GE::Scene
 	{
 		friend class GameEngine;
 		friend class SceneManager;
-		friend class Camera2D;
-		friend class Render::Renderer;
 
 	private:
 		enum class State : std::uint8_t
@@ -71,7 +69,7 @@ namespace GE::Scene
 
 #pragma endregion
 
-#pragma region Camera2DとRendererに呼び出される関数
+#pragma region Event Listener
 
 		void RegisterCamera(const Camera2D& camera);
 		void UnregisterCamera(const Camera2D& camera);

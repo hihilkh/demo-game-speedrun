@@ -14,6 +14,9 @@ namespace GE
 	class Event
 	{
 	public:
+		Event() = default;
+		Event(const Event&) = delete;
+		void operator=(const Event&) = delete;
 
 		void Invoke(const Args&... args) const;
 
