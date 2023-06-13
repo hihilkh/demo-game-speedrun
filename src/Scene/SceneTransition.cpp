@@ -3,6 +3,7 @@
 #include "Utils/ImageFade.h"
 #include "GE/Render/Image.h"
 #include "GE/Core/GEConfig.h"
+#include "Common/RenderPriority.h"
 
 namespace Scene
 {
@@ -25,7 +26,7 @@ namespace Scene
 			const GE::GEConfig& config = GE::GetGEConfig();
 			image.SetImageSize(Vector2((float)config.screenWidth, (float)config.screenHeight));
 			image.SetRenderLayer(RenderLayer::ui);
-			image.SetRenderPriority(1000);
+			image.SetRenderPriority(RenderPriority::overlay);
 			image.SetColor(Color::black);
 
 			// SceneTransition

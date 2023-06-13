@@ -906,6 +906,7 @@
     <ClInclude Include="src\Camera\CameraManagement.h" />
     <ClInclude Include="src\Common\Direction.h" />
     <ClInclude Include="src\Common\Font.h" />
+    <ClInclude Include="src\Common\RenderPriority.h" />
     <ClInclude Include="src\EndingScene\EndingSceneDirector.h" />
     <ClInclude Include="src\GameScene\GameSceneDirector.h" />
     <ClInclude Include="src\Scene\Builder\EndingScene.h" />
