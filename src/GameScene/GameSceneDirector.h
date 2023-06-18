@@ -11,7 +11,11 @@ namespace GameScene
 		explicit Director(GameObject& gameObject);
 
 	protected:
-		void Start() override;
+		void Awake() override;
+		void PreDestroy() override;
 		void Update() override;
+
+	private:
+		void SceneReadyHandler();
 	};
 }

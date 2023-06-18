@@ -1,9 +1,8 @@
 ﻿#pragma once
 
-// TODO : delete
-namespace Map 
+namespace Map
 {
-	enum class MapChipType
+	enum class TileType
 	{
 		Floor = 0,
 		UnbreakableWall = 1,

@@ -12,8 +12,8 @@ namespace GE
 	struct Transform2DData
 	{
 		/// <summary>
-		/// x : 正数：右
-		/// y : 正数：上
+		/// <para>x : 正数：右</para>
+		/// <para>y : 正数：上</para>
 		/// </summary>
 		Vector2 pos;
 

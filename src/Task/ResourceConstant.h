@@ -10,7 +10,7 @@ namespace ResourceConstant
 #pragma region Folders
 
 	const std::string ImageFolder = "./data/Image/";
-	const std::string MapFolder = "./data/Map/";
+	//const std::string MapFolder = "./data/Map/";
 
 #pragma endregion
 
@@ -44,8 +44,8 @@ namespace ResourceConstant
 
 #pragma region Map Files
 
-	const std::string MapFileNamePrefix = "Map";
-	const std::string MapFileNameExtension = ".txt";
+	//const std::string MapFileNamePrefix = "Map";
+	//const std::string MapFileNameExtension = ".txt";
 
 #pragma endregion
 }

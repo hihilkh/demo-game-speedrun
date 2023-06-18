@@ -79,7 +79,8 @@ namespace Map
 
 		camera = ge->GetTask<Game::Camera::Object>(TaskConstant::TaskGroupName_Game, TaskConstant::TaskName_GameCamera);
 
-		bool isSuccess = Load(GetMapFilePath(Game::GameStatus::MapIndex));
+		//bool isSuccess = Load(GetMapFilePath(Game::GameStatus::MapIndex));
+		bool isSuccess = true;
 
 		if (isSuccess) {
 			Game::mapLoaded.Invoke();
@@ -89,11 +90,11 @@ namespace Map
 		}
 	}
 
-	string Object::GetMapFilePath(int mapIndex) const
-	{
-		using namespace ResourceConstant;
-		return MapFolder + MapFileNamePrefix + to_string(mapIndex) + MapFileNameExtension;
-	}
+	//string Object::GetMapFilePath(int mapIndex) const
+	//{
+	//	using namespace ResourceConstant;
+	//	return MapFolder + MapFileNamePrefix + to_string(mapIndex) + MapFileNameExtension;
+	//}
 
 	bool Object::Load(const string& filePath)
 	{

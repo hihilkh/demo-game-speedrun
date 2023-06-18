@@ -1,5 +1,6 @@
 ﻿#include "UnbreakableWallMapChip.h"
 
+// TODO : delete
 namespace Map
 {
 	UnbreakableWallMapChip::UnbreakableWallMapChip(shared_ptr<Resource> res, const ML::Box2D& hitBase) :

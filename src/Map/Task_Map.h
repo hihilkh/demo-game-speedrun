@@ -56,7 +56,7 @@ namespace Map
 	private:
 		void MainTaskLoadedEventHandler();
 
-		string GetMapFilePath(int mapIndex) const;
+		//string GetMapFilePath(int mapIndex) const;
 		bool Load(const string& filePath);
 
 		vector<shared_ptr<MapChipBase>> GetOverlappedMapChipIterator(const ML::Box2D& hit);

@@ -1,6 +1,7 @@
 ﻿#include "MapChipBase.h"
 #include "Map/Task_Map.h"
 
+// TODO : delete
 namespace Map
 {
 	MapChipBase::MapChipBase(MapChipType type, shared_ptr<Resource> res, const ML::Box2D& hitBase) :

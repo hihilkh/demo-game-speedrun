@@ -1,16 +1,12 @@
 ﻿#pragma once
 
-namespace GE
-{
-	class GameObject;
-	class Camera2D;
-}
+#include "GE/Utils/TypeDef.h"
 
 namespace Prefab::Camera
 {
 	class MainCameraPrefab
 	{
 	public:
-		GE::Camera2D& operator()(GE::GameObject& baseGameObject) const;
+		Camera2D& operator()(GameObject& baseGameObject) const;
 	};
 }

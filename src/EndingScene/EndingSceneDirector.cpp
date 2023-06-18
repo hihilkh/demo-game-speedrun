@@ -38,8 +38,8 @@ namespace EndingScene
 
 		for (std::size_t i = 0; i < menuItems.size(); ++i) {
 			if (i < menuItemInfos.size()) {
-				auto& info = menuItemInfos[i];
-				menuItems[i]->Init(std::get<0>(info), i == focusingMenuItemIndex, std::get<1>(info));
+				auto&& [text, onClicked] = menuItemInfos[i];
+				menuItems[i]->Init(text, i == focusingMenuItemIndex, onClicked);
 			} else {
 				menuItems[i]->Init("", false, nullptr);
 			}

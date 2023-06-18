@@ -8,6 +8,7 @@ namespace Utils
 
 	ImageFade::ImageFade(GameObject& gameObject, float fadeTime, bool isInitialFadedIn) :
 		Component(gameObject),
+		image(nullptr),
 		state(isInitialFadedIn ? State::FadedIn : State::FadedOut),
 		totalFadeTime(fadeTime),
 		startFadingTime(-1),
@@ -50,7 +51,6 @@ namespace Utils
 	void ImageFade::FadeIn(std::function<void()> onFinished)
 	{
 		return Fade(true, onFinished);
-
 	}
 
 	void ImageFade::FadeOut(std::function<void()> onFinished)

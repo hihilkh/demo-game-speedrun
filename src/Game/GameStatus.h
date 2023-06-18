@@ -14,7 +14,7 @@ namespace Game
 	class GameStatus
 	{
 	public:
-		static int MapIndex;
+		//static int MapIndex;
 		static ML::Vec2 PlayerInitialPos;	// TODO : プレイヤー位置をマップに入れる
 		static GameState CurrentGameState;
 		static int ClearGameTimeMillisecond;

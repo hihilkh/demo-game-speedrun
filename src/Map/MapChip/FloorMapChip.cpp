@@ -1,5 +1,6 @@
 ﻿#include "FloorMapChip.h"
 
+// TODO : delete
 namespace Map
 {
 	FloorMapChip::FloorMapChip(shared_ptr<Resource> res, const ML::Box2D& hitBase) :

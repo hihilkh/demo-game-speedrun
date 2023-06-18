@@ -1,14 +1,22 @@
 ﻿#include "GE/GEHeader.h"
 #include "GameScene.h"
 #include "GE/Scene/Scene.h"
-
+#include "Prefab/Camera/MainCameraPrefab.h"
 #include "GameScene/GameSceneDirector.h"
+#include "Map/MapManager.h"
 
 namespace Scene
 {
 	std::unique_ptr<GE::Scene> GameScene::operator()() const
 	{
 		auto scene = std::make_unique<GE::Scene>(gameSceneName);
+
+		// ゲームカメラ
+		GE::Instantiate(Prefab::Camera::MainCameraPrefab(), *scene);
+
+		// MapManager
+		GameObject& mapManagerObj = GameObject::Create(*scene, "MapManager");
+		mapManagerObj.AddComponent<Map::MapManager>();
 
 		// Director
 		GameObject& directorObj = GameObject::Create(*scene, "Director");

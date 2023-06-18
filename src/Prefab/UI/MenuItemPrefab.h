@@ -1,9 +1,6 @@
 ﻿#pragma once
 
-namespace GE
-{
-	class GameObject;
-}
+#include "GE/Utils/TypeDef.h"
 
 namespace UI
 {
@@ -15,6 +12,6 @@ namespace Prefab::UI
 	class MenuItemPrefab
 	{
 	public:
-		::UI::MenuItem& operator()(GE::GameObject& baseGameObject) const;
+		::UI::MenuItem& operator()(GameObject& baseGameObject) const;
 	};
 }
