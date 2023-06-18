@@ -7,9 +7,9 @@
 #include "Game/GameStatus.h"
 #include "Chara/CharaBase.h"
 #include "MapChip/MapChipBase.h"
-#include "MapChipFactory.h"
 #include "MapObject/Task_Goal.h"
 
+// TODO : delete
 namespace Map
 {
 
@@ -38,93 +38,19 @@ namespace Map
 		size(ML::Point(0, 0)),
 		isInitialized(false)
 	{
-		render2D_Priority[1] = 0.9f;
-
-		Game::mainTaskLoaded.AddListener(this, &Object::MainTaskLoadedEventHandler);
 	}
 
 	Object::~Object()
 	{
-		Game::mainTaskLoaded.RemoveListeners(this);
-
-		ge->KillAll_G(TaskConstant::TaskGroupName_MapObject);
 	}
 
 	void Object::UpDate()
 	{
+
 	}
 
 	void Object::Render2D_AF()
 	{
-		if (!isInitialized) {
-			return;
-		}
-
-		auto cameraSP = camera.lock();
-		if (!cameraSP) {
-			return;
-		}
-
-		const ML::Box2D& visibleRange = cameraSP->GetVisibleRange();
-
-		vector<MapChipBase::SP> mapChips = GetOverlappedMapChipIterator(visibleRange);
-		for (MapChipBase::SP& mapChip : mapChips) {
-			mapChip->Render(-visibleRange.x, -visibleRange.y);
-		}
-	}
-
-	void Object::MainTaskLoadedEventHandler()
-	{
-		isInitialized = true;
-
-		camera = ge->GetTask<Game::Camera::Object>(TaskConstant::TaskGroupName_Game, TaskConstant::TaskName_GameCamera);
-
-		//bool isSuccess = Load(GetMapFilePath(Game::GameStatus::MapIndex));
-		bool isSuccess = true;
-
-		if (isSuccess) {
-			Game::mapLoaded.Invoke();
-		}
-		else {
-			DEBUG_LOG_WARNING("マップの読み込みに失敗した");
-		}
-	}
-
-	//string Object::GetMapFilePath(int mapIndex) const
-	//{
-	//	using namespace ResourceConstant;
-	//	return MapFolder + MapFileNamePrefix + to_string(mapIndex) + MapFileNameExtension;
-	//}
-
-	bool Object::Load(const string& filePath)
-	{
-		ifstream fin(filePath);
-		if (!fin) { return false; }
-
-		fin >> size.x >> size.y >> mapChipLeftmostIndex >> mapChipTopmostIndex;
-
-		ML::Point mapChipPosBase = ML::Point(mapChipLeftmostIndex * CHIP_SIZE, mapChipTopmostIndex * CHIP_SIZE);
-
-		mapChips.reserve(size.x * size.y);
-		int typeId;
-
-		// TODO : flyweightパターン？
-		for (int y = 0; y < size.y; ++y) {
-			for (int x = 0; x < size.x; ++x) {
-				fin >> typeId;
-				ML::Box2D mapChipHitBase = ML::Box2D(x * CHIP_SIZE, y * CHIP_SIZE, CHIP_SIZE, CHIP_SIZE);
-				mapChipHitBase.Offset(mapChipPosBase);
-				mapChips.push_back(GenerateMap(typeId, res, mapChipHitBase));
-			}
-		}
-
-		hitBase = ML::Box2D(
-			mapChipPosBase.x + CHIP_OFFSET.x,
-			mapChipPosBase.y + CHIP_OFFSET.y,
-			size.x * CHIP_SIZE,
-			size.y * CHIP_SIZE);
-
-		return true;
 	}
 
 	vector<MapChipBase::SP> Object::GetOverlappedMapChipIterator(const ML::Box2D& hit)

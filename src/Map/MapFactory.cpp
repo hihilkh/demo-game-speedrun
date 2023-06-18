@@ -79,4 +79,27 @@ namespace Map
 		// TODO
 		return nullptr;
 	}
+
+	// TODO
+	/*
+		void GenerateMapObject(int mapObjectId, const ML::Box2D& hitBase)
+		{
+			MapObjectType type = static_cast<MapObjectType>(mapObjectId);
+
+			switch (type) {
+				case MapObjectType::Player:
+					Game::GameStatus::PlayerInitialPos = ML::Vec2((float)hitBase.x, (float)hitBase.y);
+					break;
+				case MapObjectType::Goal: {
+					// TODO : Initを使わない方法を考える
+					Goal::Object::SP goal = Goal::Object::Create(true);
+					goal->Init(hitBase.x, hitBase.y);
+					break;
+				}
+				default:
+					DEBUG_LOG_WARNING("まだ MapObject の id:" << mapObjectId << " の実装はない");
+					break;
+			}
+		}
+	*/
 }

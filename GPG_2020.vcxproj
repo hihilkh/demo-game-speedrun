@@ -375,7 +375,6 @@
     <ClCompile Include="src\Common\Font.cpp" />
     <ClCompile Include="src\EndingScene\EndingSceneDirector.cpp" />
     <ClCompile Include="src\GameScene\GameSceneDirector.cpp" />
-    <ClCompile Include="src\Map\MapChipFactory.cpp" />
     <ClCompile Include="src\Map\MapFactory.cpp" />
     <ClCompile Include="src\Map\MapGenerator.cpp" />
     <ClCompile Include="src\Map\MapId.cpp" />
@@ -826,13 +825,9 @@
     <ClCompile Include="src\Game\GameEvent.cpp" />
     <ClCompile Include="src\Game\GameStatus.cpp" />
     <ClCompile Include="src\Chara\Player\PlayerActionBase.cpp" />
-    <ClCompile Include="src\Map\MapChip\FloorMapChip.cpp" />
     <ClCompile Include="src\Map\MapChip\MapChipBase.cpp" />
     <ClCompile Include="src\Map\MapObject\Task_Goal.cpp" />
     <ClCompile Include="src\Map\Task_Map.cpp" />
-    <ClCompile Include="src\Map\MapChip\TransportBeltMapChip.cpp" />
-    <ClCompile Include="src\Map\MapChip\UnbreakableWallMapChip.cpp" />
-    <ClCompile Include="src\Map\MapChip\WeakWallMapChip.cpp" />
     <ClCompile Include="src\MyPG.cpp" />
     <ClCompile Include="src\Chara\CharaBase.cpp" />
     <ClCompile Include="src\Chara\Player\Task_Player.cpp" />
@@ -924,7 +919,6 @@
     <ClInclude Include="src\EndingScene\EndingSceneDirector.h" />
     <ClInclude Include="src\GameScene\GameSceneDirector.h" />
     <ClInclude Include="src\GE\Core\Internal\GameLoopObjectContainer.h" />
-    <ClInclude Include="src\Map\MapChipFactory.h" />
     <ClInclude Include="src\Map\MapFactory.h" />
     <ClInclude Include="src\Map\MapGenerator.h" />
     <ClInclude Include="src\Map\MapId.h" />
@@ -1017,15 +1011,11 @@
     <ClInclude Include="src\Game\GameStatus.h" />
     <ClInclude Include="src\Chara\Player\PlayerActionBase.h" />
     <ClInclude Include="src\Chara\Player\PlayerMode.h" />
-    <ClInclude Include="src\Map\MapChip\FloorMapChip.h" />
     <ClInclude Include="src\Map\MapChip\MapChipBase.h" />
     <ClInclude Include="src\Map\MapChip\MapChipType.h" />
     <ClInclude Include="src\Map\MapObject\MapObjectType.h" />
     <ClInclude Include="src\Map\MapObject\Task_Goal.h" />
     <ClInclude Include="src\Map\Task_Map.h" />
-    <ClInclude Include="src\Map\MapChip\TransportBeltMapChip.h" />
-    <ClInclude Include="src\Map\MapChip\UnbreakableWallMapChip.h" />
-    <ClInclude Include="src\Map\MapChip\WeakWallMapChip.h" />
     <ClInclude Include="src\MyPG.h" />
     <ClInclude Include="src\Chara\CharaBase.h" />
     <ClInclude Include="src\ParticleSystem\Particle.h" />

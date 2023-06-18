@@ -121,22 +121,10 @@
     <ClCompile Include="src\Chara\Player\RunPlayerAction.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Map\MapChip\FloorMapChip.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Map\MapChip\MapChipBase.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Map\Task_Map.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Map\MapChip\UnbreakableWallMapChip.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Map\MapChip\TransportBeltMapChip.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Map\MapChip\WeakWallMapChip.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Common\Direction.cpp">
@@ -376,9 +364,6 @@
     <ClCompile Include="src\Prefab\Map\Tile\WeakWallTilePrefab.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Map\MapChipFactory.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GameEngine_Ver3_83.h">
@@ -492,9 +477,6 @@
     <ClInclude Include="src\Chara\Player\RunPlayerAction.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Map\MapChip\FloorMapChip.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Map\MapChip\MapChipBase.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
@@ -502,15 +484,6 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Map\Task_Map.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Map\MapChip\UnbreakableWallMapChip.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Map\MapChip\TransportBeltMapChip.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Map\MapChip\WeakWallMapChip.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\GameEvent.h">
@@ -853,9 +826,6 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Prefab\Map\Tile\WeakWallTilePrefab.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Map\MapChipFactory.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

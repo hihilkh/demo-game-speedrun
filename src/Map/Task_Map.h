@@ -51,13 +51,9 @@ namespace Map
 		weak_ptr<Game::Camera::Object> camera;
 
 		bool isInitialized;
-		// TODO : bool isMapLoaded?
+
 
 	private:
-		void MainTaskLoadedEventHandler();
-
-		//string GetMapFilePath(int mapIndex) const;
-		bool Load(const string& filePath);
 
 		vector<shared_ptr<MapChipBase>> GetOverlappedMapChipIterator(const ML::Box2D& hit);
 
