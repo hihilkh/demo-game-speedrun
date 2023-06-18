@@ -14,8 +14,8 @@ namespace GE
 		belongingScene(scene),
 		parent(parent),
 		transform(std::make_unique<Transform2D>(*this)),
-		isAwoken(false),
-		isActive(true)
+		isActive(true),
+		isAwoken(false)
 	{
 	}
 

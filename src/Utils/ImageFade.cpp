@@ -11,8 +11,7 @@ namespace Utils
 		image(nullptr),
 		state(isInitialFadedIn ? State::FadedIn : State::FadedOut),
 		totalFadeTime(fadeTime),
-		startFadingTime(-1),
-		onFinished(nullptr)
+		startFadingTime(-1)
 	{
 	}
 

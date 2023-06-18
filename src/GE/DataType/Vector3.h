@@ -110,17 +110,17 @@ namespace GE::DataType::Internal
 #pragma region 関数定義
 
 	template<typename T>
-	inline TVector3<T>::TVector3() : TVector3(T(), T(), T())
+	TVector3<T>::TVector3() : TVector3(T(), T(), T())
 	{
 	}
 
 	template<typename T>
-	inline TVector3<T>::TVector3(T x, T y, T z) : x(x), y(y), z(z)
+	TVector3<T>::TVector3(T x, T y, T z) : x(x), y(y), z(z)
 	{
 	}
 
 	template<typename T>
-	inline TVector3<T>& TVector3<T>::operator+=(const TVector3<T>& other)
+	TVector3<T>& TVector3<T>::operator+=(const TVector3<T>& other)
 	{
 		x += other.x;
 		y += other.y;
@@ -129,7 +129,7 @@ namespace GE::DataType::Internal
 	}
 
 	template<typename T>
-	inline TVector3<T>& TVector3<T>::operator-=(const TVector3<T>& other)
+	TVector3<T>& TVector3<T>::operator-=(const TVector3<T>& other)
 	{
 		x -= other.x;
 		y -= other.y;
@@ -138,13 +138,13 @@ namespace GE::DataType::Internal
 	}
 
 	template<typename T>
-	inline TVector3<T>& TVector3<T>::operator*=(T multiple)
+	TVector3<T>& TVector3<T>::operator*=(T multiple)
 	{
 		return Scale(multiple, multiple, multiple);
 	}
 
 	template<typename T>
-	inline TVector3<T>& TVector3<T>::operator/=(T divisor)
+	TVector3<T>& TVector3<T>::operator/=(T divisor)
 	{
 		if constexpr (std::is_same_v<int, T>) {
 			x /= divisor;
@@ -159,13 +159,13 @@ namespace GE::DataType::Internal
 	}
 
 	template<typename T>
-	inline TVector3<T> TVector3<T>::operator-() const
+	TVector3<T> TVector3<T>::operator-() const
 	{
 		return TVector3<T>(-x, -y, -z);
 	}
 
 	template<typename T>
-	inline TVector3<T>& TVector3<T>::Scale(T multipleX, T multipleY, T multipleZ)
+	TVector3<T>& TVector3<T>::Scale(T multipleX, T multipleY, T multipleZ)
 	{
 		x *= multipleX;
 		y *= multipleY;
@@ -174,13 +174,13 @@ namespace GE::DataType::Internal
 	}
 
 	template<typename T>
-	inline TVector3<T>& TVector3<T>::Scale(const TVector3<T>& other)
+	TVector3<T>& TVector3<T>::Scale(const TVector3<T>& other)
 	{
 		return Scale(other.x, other.y, other.z);
 	}
 
 	template<typename T>
-	inline TVector3<T> TVector3<T>::Scale(const TVector3<T>& lhs, const TVector3<T>& rhs)
+	TVector3<T> TVector3<T>::Scale(const TVector3<T>& lhs, const TVector3<T>& rhs)
 	{
 		auto result = lhs;
 		result.Scale(rhs);	// Return Value Optimization (RVO)のために、直接的に "return result.Scale(rhs);" をしない
@@ -189,7 +189,7 @@ namespace GE::DataType::Internal
 
 
 	template<typename T>
-	inline T TVector3<T>::Dot(const TVector3<T>& lhs, const TVector3<T>& rhs)
+	T TVector3<T>::Dot(const TVector3<T>& lhs, const TVector3<T>& rhs)
 	{
 		return	lhs.x * rhs.x +
 				lhs.y * rhs.y +
@@ -197,7 +197,7 @@ namespace GE::DataType::Internal
 	}
 
 	template<typename T>
-	inline TVector3<T> TVector3<T>::Cross(const TVector3<T>& lhs, const TVector3<T>& rhs)
+	TVector3<T> TVector3<T>::Cross(const TVector3<T>& lhs, const TVector3<T>& rhs)
 	{
 		return TVector3<T>(
 			 lhs.y * rhs.z - lhs.z * rhs.y,
@@ -207,25 +207,25 @@ namespace GE::DataType::Internal
 	}
 
 	template<typename T>
-	inline float TVector3<T>::Magnitude() const
+	float TVector3<T>::Magnitude() const
 	{
 		return sqrt(SqrMagnitude());
 	}
 
 	template<typename T>
-	inline T TVector3<T>::SqrMagnitude() const
+	T TVector3<T>::SqrMagnitude() const
 	{
 		return Dot(*this, *this);
 	}
 
 	template<typename T>
-	inline float TVector3<T>::Distance(const TVector3& lhs, const TVector3& rhs)
+	float TVector3<T>::Distance(const TVector3& lhs, const TVector3& rhs)
 	{
 		return (lhs - rhs).Magnitude();
 	}
 
 	template<typename T>
-	inline TVector3<float> TVector3<T>::Lerp(const TVector3<T>& a, const TVector3<T>& b, float t)
+	TVector3<float> TVector3<T>::Lerp(const TVector3<T>& a, const TVector3<T>& b, float t)
 	{
 		return TVector3<float>(
 			std::lerp(a.x, b.x, t),
@@ -235,7 +235,7 @@ namespace GE::DataType::Internal
 	}
 
 	template<typename T>
-	inline TVector3<T>& TVector3<T>::Normalize()
+	TVector3<T>& TVector3<T>::Normalize()
 	{
 		// TODO : 
 		// 今TVector3<int>でもNormalize()関数を持っている(使う場合はコンパイルエラーが生じる)
@@ -247,37 +247,37 @@ namespace GE::DataType::Internal
 	}
 
 	template<typename T>
-	inline bool TVector3<T>::IsNormalized() const
+	bool TVector3<T>::IsNormalized() const
 	{
 		return SqrMagnitude() == 1;
 	}
 
 	template<typename T>
-	inline TVector3<T>::operator TVector2<float>() const
+	TVector3<T>::operator TVector2<float>() const
 	{
 		return TVector2<float>((float)x, (float)y);
 	}
 
 	template<typename T>
-	inline TVector3<T>::operator TVector2<int>() const
+	TVector3<T>::operator TVector2<int>() const
 	{
 		return TVector2<int>((int)x, (int)y);
 	}
 
 	template<typename T>
-	inline TVector3<T>::operator TVector3<float>() const
+	TVector3<T>::operator TVector3<float>() const
 	{
 		return TVector3<float>((float)x, (float)y, (float)z);
 	}
 
 	template<typename T>
-	inline TVector3<T>::operator TVector3<int>() const
+	TVector3<T>::operator TVector3<int>() const
 	{
 		return TVector3<int>((int)x, (int)y, (int)z);
 	}
 
 	template<typename T>
-	inline TVector3<T> operator+(const TVector3<T>& lhs, const TVector3<T>& rhs)
+	TVector3<T> operator+(const TVector3<T>& lhs, const TVector3<T>& rhs)
 	{
 		auto result = lhs;
 		result += rhs;
@@ -285,7 +285,7 @@ namespace GE::DataType::Internal
 	}
 
 	template<typename T>
-	inline TVector3<T> operator-(const TVector3<T>& lhs, const TVector3<T>& rhs)
+	TVector3<T> operator-(const TVector3<T>& lhs, const TVector3<T>& rhs)
 	{
 		auto result = lhs;
 		result -= rhs;
@@ -293,7 +293,7 @@ namespace GE::DataType::Internal
 	}
 
 	template<typename T>
-	inline TVector3<T> operator*(const TVector3<T>& vector, T multiple)
+	TVector3<T> operator*(const TVector3<T>& vector, T multiple)
 	{
 		auto result = vector;
 		result *= multiple;
@@ -301,13 +301,13 @@ namespace GE::DataType::Internal
 	}
 
 	template<typename T>
-	inline TVector3<T> operator*(T multiple, const TVector3<T>& vector)
+	TVector3<T> operator*(T multiple, const TVector3<T>& vector)
 	{
 		return vector * multiple;
 	}
 
 	template<typename T>
-	inline TVector3<T> operator/(const TVector3<T>& vector, T divisor)
+	TVector3<T> operator/(const TVector3<T>& vector, T divisor)
 	{
 		auto result = vector;
 		result /= divisor;
@@ -315,7 +315,7 @@ namespace GE::DataType::Internal
 	}
 
 	template<typename T>
-	inline bool operator==(const TVector3<T>& lhs, const TVector3<T>& rhs)
+	bool operator==(const TVector3<T>& lhs, const TVector3<T>& rhs)
 	{
 		return	lhs.x == rhs.x &&
 				lhs.y == rhs.y &&
@@ -323,13 +323,13 @@ namespace GE::DataType::Internal
 	}
 
 	template<typename T>
-	inline bool operator!=(const TVector3<T>& lhs, const TVector3<T>& rhs)
+	bool operator!=(const TVector3<T>& lhs, const TVector3<T>& rhs)
 	{
 		return !(lhs == rhs);
 	}
 
 	template<typename T>
-	inline std::ostream& operator<<(std::ostream& os, const TVector3<T>& vector)
+	std::ostream& operator<<(std::ostream& os, const TVector3<T>& vector)
 	{
 		return os << "(" << vector.x << ", " << vector.y << ", " << vector.z << ")";
 	}

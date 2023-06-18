@@ -90,8 +90,8 @@ namespace GE
 		const std::unique_ptr<Transform2D> transform;
 		Internal::GameLoopObjectContainer<Component> components;
 
-		bool isAwoken;
 		bool isActive;
+		bool isAwoken;
 
 	private:
 

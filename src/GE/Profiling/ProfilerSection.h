@@ -7,10 +7,6 @@ namespace GE::Profiling
 {
 	class ProfilerSection
 	{
-	private:
-		std::string name;
-		std::vector<float> caches;
-
 	protected:
 		explicit ProfilerSection(const std::string& name);
 
@@ -28,5 +24,9 @@ namespace GE::Profiling
 		float GetCacheAvg() const;
 		float GetCacheMax() const;
 		float GetCacheMin() const;
+
+	private:
+		std::string name;
+		std::vector<float> caches;
 	};
 }

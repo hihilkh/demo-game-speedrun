@@ -9,14 +9,6 @@ namespace GE
 	class Transform2D : private Transform2DData
 	{
 	public:
-
-		// Transform2DDataのメンバーをpublicになる
-		using Transform2DData::pos;
-		using Transform2DData::rot;
-
-		// GameObjectが無効になる前に、必ず持っているTransform2Dを破棄するので、GameObjectの参照を持つ
-		GameObject& gameObject;
-
 		explicit Transform2D(
 			GameObject& gameObject,
 			const Vector2& pos = Vector2::zero,
@@ -31,6 +23,14 @@ namespace GE
 		Vector2 GetWorldPos() const;
 		float GetWorldRot() const;
 		Transform2DData GetWorldTransformData() const;
+
+	public:
+		// Transform2DDataのメンバーをpublicになる
+		using Transform2DData::pos;
+		using Transform2DData::rot;
+
+		// GameObjectが無効になる前に、必ず持っているTransform2Dを破棄するので、GameObjectの参照を持つ
+		GameObject& gameObject;
 
 	private:
 		Vector2 GetWorldPos(const Transform2DData& parentWorldTransformData) const;

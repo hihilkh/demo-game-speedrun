@@ -38,7 +38,7 @@ namespace UI
 
 	void MenuItem::Click() const
 	{
-		if (onClicked != nullptr) {
+		if (onClicked) {
 			onClicked();
 		}
 	}
