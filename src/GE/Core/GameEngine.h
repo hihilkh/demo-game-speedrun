@@ -55,6 +55,7 @@ namespace GE
 
 		static void RunGameLoop();
 
+		static void StartPhase(const std::vector<Scene*>& scenes);
 		static void UpdatePhase(const std::vector<Scene*>& scenes);
 		static void RenderPhase(const std::vector<Scene*>& scenes);
 		static void EndOfFramePhase(const std::vector<Scene*>& scenes);

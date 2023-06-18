@@ -14,7 +14,7 @@ namespace GE
 		float viewportOffsetY;
 	};
 
-	Event<const Camera2D&> Camera2D::onCreated;
+	Event<const Camera2D&> Camera2D::onStarted;
 	Event<const Camera2D&> Camera2D::onDestroying;
 
 	Camera2D::Camera2D(GameObject& gameObject) :
@@ -24,9 +24,9 @@ namespace GE
 	{
 	}
 
-	void Camera2D::Awake()
+	void Camera2D::Start()
 	{
-		onCreated.Invoke(*this);
+		onStarted.Invoke(*this);
 	}
 
 	void Camera2D::PreDestroy()

@@ -3,7 +3,7 @@
 
 namespace GE::Render
 {
-	Event<const Renderer&> Renderer::onCreated;
+	Event<const Renderer&> Renderer::onStarted;
 	Event<const Renderer&> Renderer::onDestroying;
 
 	Renderer::Renderer(GameObject& gameObject, int16_t renderPriority, RenderLayer::Bitmask renderLayer) :
@@ -13,9 +13,9 @@ namespace GE::Render
 	{
 	}
 
-	void Renderer::Awake()
+	void Renderer::Start()
 	{
-		onCreated.Invoke(*this);
+		onStarted.Invoke(*this);
 	}
 
 	void Renderer::PreDestroy()

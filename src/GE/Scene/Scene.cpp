@@ -31,10 +31,10 @@ namespace GE
 		state(State::Initialized),
 		name(name)
 	{
-		Camera2D::onCreated.AddListener(&Scene::RegisterCamera, *this);
+		Camera2D::onStarted.AddListener(&Scene::RegisterCamera, *this);
 		Camera2D::onDestroying.AddListener(&Scene::UnregisterCamera, *this);
 
-		Render::Renderer::onCreated.AddListener(&Scene::RegisterRenderer, *this);
+		Render::Renderer::onStarted.AddListener(&Scene::RegisterRenderer, *this);
 		Render::Renderer::onDestroying.AddListener(&Scene::UnregisterRenderer, *this);
 	}
 
@@ -42,15 +42,13 @@ namespace GE
 	{
 		state = State::Destroying;
 
-		Camera2D::onCreated.RemoveListener(&Scene::RegisterCamera, *this);
+		Camera2D::onStarted.RemoveListener(&Scene::RegisterCamera, *this);
 		Camera2D::onDestroying.RemoveListener(&Scene::UnregisterCamera, *this);
 
-		Render::Renderer::onCreated.RemoveListener(&Scene::RegisterRenderer, *this);
+		Render::Renderer::onStarted.RemoveListener(&Scene::RegisterRenderer, *this);
 		Render::Renderer::onDestroying.RemoveListener(&Scene::UnregisterRenderer, *this);
 
-		for (auto& gameObject : gameObjects) {
-			gameObject->OnPreDestroy();
-		}
+		ownedGameObjects.OnPreDestroy();
 	}
 
 	GameObject* Scene::FindGameObject(const std::string& name) const
@@ -62,36 +60,29 @@ namespace GE
 	{
 		state = State::Loaded;
 
-		for (auto& gameObject : gameObjects) {
-			gameObject->OnAwake();
-		}
-
-		for (auto& gameObject : gameObjects) {
-			gameObject->OnStart();
-		}
-
+		ownedGameObjects.OnAwake();
 		onLoaded.Invoke(*this);
+	}
+
+	void Scene::OnStartUnstarted()
+	{
+		// ownedGameObjects.OnStartUnstarted()の時、新しいGameObjectを生成することもある
+		while (ownedGameObjects.OnStartUnstarted());
 	}
 
 	void Scene::OnUpdate()
 	{
-		for (auto& gameObject : gameObjects) {
-			gameObject->OnUpdate();
-		}
+		ownedGameObjects.OnUpdate();
 	}
 
 	void Scene::OnLateUpdate()
 	{
-		for (auto& gameObject : gameObjects) {
-			gameObject->OnLateUpdate();
-		}
+		ownedGameObjects.OnLateUpdate();
 	}
 
 	void Scene::OnEndOfFrame()
 	{
-		for (auto& gameObject : gameObjects) {
-			gameObject->OnEndOfFrame();
-		}
+		ownedGameObjects.OnEndOfFrame();
 	}
 
 	void Scene::OnRender(const std::vector<Scene*>& scenes)

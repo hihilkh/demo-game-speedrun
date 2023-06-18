@@ -1,20 +1,19 @@
 ﻿#include "GameObjectOwner.h"
 #include "GE/Core/GameObject.h"
-#include "GE/Scene/Scene.h"
 
 namespace GE::Internal
 {
 	GameObject* GameObjectOwner::GetOwnedGameObject(const std::string& name) const
 	{
 		// まず最下位のGameObjectから探す
-		for (auto& gameObject : GetGameObjectContainer()) {
-			if (gameObject->name == name) {
-				return gameObject.get();
+		for (auto it = ownedGameObjects.SimpleBegin(), itEnd = ownedGameObjects.SimpleEnd(); it != itEnd; ++it) {
+			if ((*it)->GetName() == name) {
+				return (*it).get();
 			}
 		}
 
-		for (auto& gameObject : GetGameObjectContainer()) {
-			GameObject* result = gameObject->GetOwnedGameObject(name);
+		for (auto it = ownedGameObjects.SimpleBegin(), itEnd = ownedGameObjects.SimpleEnd(); it != itEnd; ++it) {
+			GameObject* result = (*it)->GetOwnedGameObject(name);
 			if (result) {
 				return result;
 			}
@@ -23,42 +22,19 @@ namespace GE::Internal
 		return nullptr;
 	}
 
-	GameObject& GameObjectOwner::CreateAndOwnGameObject(const std::string& name, Scene& scene, bool isDelayInit)
+	GameObject& GameObjectOwner::CreateAndOwnGameObject(const std::string& name, Scene& scene, bool isAwakeImmediate)
 	{
-		struct UniquePtrEnabler : public GameObject
-		{
-			UniquePtrEnabler(const std::string& name, Scene& scene, GameObject* parent) :
-				GameObject(name, scene, parent) {}
-		};
-
 		GameObject* parent = dynamic_cast<GameObject*>(this);
-		auto& gameObject = GetGameObjectContainer().emplace_back(std::make_unique<UniquePtrEnabler>(name, scene, parent));
-		if (!isDelayInit) {
-			gameObject->InitIfSceneLoaded();
-		}
-
-		return *gameObject;
+		return ownedGameObjects.Add(isAwakeImmediate, name, scene, parent);
 	}
 
-	std::unique_ptr<GameObject> GameObjectOwner::ReleaseGameObjectOwnership(GameObject& gameObject)
+	void GameObjectOwner::TransferOwnership(const GameObject& gameObject, GameObjectOwner& from, GameObjectOwner& to)
 	{
-		auto& container = GetGameObjectContainer();
-		auto target = std::find_if(
-			container.begin(),
-			container.end(),
-			[&gameObject](const auto& fromContainer) { return *fromContainer == gameObject; });
-
-		if (target == container.end()) {
-			return std::unique_ptr<GameObject>();
-		} else {
-			std::unique_ptr<GameObject> returnValue = std::move(*target);
-			container.erase(target);
-			return returnValue;
-		}
+		GameLoopObjectContainer<GameObject>::Transfer(gameObject, from.ownedGameObjects, to.ownedGameObjects);
 	}
 
-	void GameObjectOwner::TakeGameObjectOwnership(std::unique_ptr<GameObject>&& gameObject)
+	void GameObjectOwner::RemoveOwnedGameObject(GameObject& gameObject)
 	{
-		GetGameObjectContainer().emplace_back(std::move(gameObject));
+		ownedGameObjects.Remove(gameObject);
 	}
 }

@@ -132,11 +132,19 @@ namespace GE
 	{
 		std::vector<Scene*> loadedScenes = SceneManagement::SceneManager::GetLoadedScenes();
 
+		StartPhase(loadedScenes);
 		UpdatePhase(loadedScenes);
 		RenderPhase(loadedScenes);
 		EndOfFramePhase(loadedScenes);
 		DestroyPhase();
 		ChangeScenePhase();
+	}
+
+	void GameEngine::StartPhase(const std::vector<Scene*>& scenes)
+	{
+		for (auto scene : scenes) {
+			scene->OnStartUnstarted();
+		}
 	}
 
 	void GameEngine::UpdatePhase(const std::vector<Scene*>& scenes)

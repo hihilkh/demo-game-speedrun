@@ -909,6 +909,7 @@
     <ClInclude Include="src\Common\RenderPriority.h" />
     <ClInclude Include="src\EndingScene\EndingSceneDirector.h" />
     <ClInclude Include="src\GameScene\GameSceneDirector.h" />
+    <ClInclude Include="src\GE\Core\Internal\GameLoopObjectContainer.h" />
     <ClInclude Include="src\Scene\Builder\EndingScene.h" />
     <ClInclude Include="src\Scene\Builder\GameScene.h" />
     <ClInclude Include="src\Scene\SceneTransition.h" />

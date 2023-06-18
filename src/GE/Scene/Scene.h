@@ -52,8 +52,6 @@ namespace GE
 	private:
 		State state;
 		const std::string name;
-		std::vector<std::unique_ptr<GameObject>> gameObjects;
-
 		std::vector<const Camera2D*> cameras;
 		std::vector<const Render::Renderer*> renderers;
 
@@ -61,6 +59,7 @@ namespace GE
 
 #pragma region GameEngineに呼び出される関数
 
+		void OnStartUnstarted();
 		void OnUpdate();
 		void OnLateUpdate();
 		void OnEndOfFrame();
@@ -82,13 +81,6 @@ namespace GE
 
 		void RegisterRenderer(const Render::Renderer& renderer);
 		void UnregisterRenderer(const Render::Renderer& renderer);
-
-#pragma endregion
-
-#pragma region GameObjectOwner
-
-		std::vector<std::unique_ptr<GameObject>>& GetGameObjectContainer() override { return gameObjects; }
-		const std::vector<std::unique_ptr<GameObject>>& GetGameObjectContainer() const override { return gameObjects; }
 
 #pragma endregion
 	};

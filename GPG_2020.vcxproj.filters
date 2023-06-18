@@ -765,6 +765,9 @@
     <ClInclude Include="src\Common\RenderPriority.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\GE\Core\Internal\GameLoopObjectContainer.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Event\Event.tpp">

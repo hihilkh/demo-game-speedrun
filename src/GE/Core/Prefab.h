@@ -10,9 +10,9 @@ namespace GE
 	template<typename PrefabT>
 	PrefabReturnType<PrefabT> Instantiate(PrefabT prefab)
 	{
-		GameObject& baseGameObject = GameObject::CreateWithDelayInit();
+		GameObject& baseGameObject = GameObject::CreateWithDelayAwake();
 		PrefabReturnType<PrefabT> returnValue = prefab(baseGameObject);
-		baseGameObject.InitIfSceneLoaded();
+		baseGameObject.AwakeIfSceneLoaded();
 
 		return returnValue;
 	}
@@ -20,9 +20,9 @@ namespace GE
 	template<typename PrefabT>
 	PrefabReturnType<PrefabT> Instantiate(PrefabT prefab, Scene& scene)
 	{
-		GameObject& baseGameObject = GameObject::CreateWithDelayInit(scene);
+		GameObject& baseGameObject = GameObject::CreateWithDelayAwake(scene);
 		PrefabReturnType<PrefabT> returnValue = prefab(baseGameObject);
-		baseGameObject.InitIfSceneLoaded();
+		baseGameObject.AwakeIfSceneLoaded();
 
 		return returnValue;
 	}
@@ -33,9 +33,9 @@ namespace GE
 	template<typename PrefabT>
 	PrefabReturnType<PrefabT> InstantiatePersistent(PrefabT prefab)
 	{
-		GameObject& baseGameObject = GameObject::CreatePersistentWithDelayInit();
+		GameObject& baseGameObject = GameObject::CreatePersistentWithDelayAwake();
 		PrefabReturnType<PrefabT> returnValue = prefab(baseGameObject);
-		baseGameObject.InitIfSceneLoaded();
+		baseGameObject.AwakeIfSceneLoaded();
 
 		return returnValue;
 	}

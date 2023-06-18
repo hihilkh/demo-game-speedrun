@@ -3,6 +3,7 @@
 #include <vector>
 #include <memory>
 #include <string>
+#include "GameLoopObjectContainer.h"
 
 namespace GE
 {
@@ -20,15 +21,19 @@ namespace GE::Internal
 		virtual ~GameObjectOwner() = default;
 
 	protected:
+		GameLoopObjectContainer<GameObject> ownedGameObjects;
+
+	protected:
 		GameObject* GetOwnedGameObject(const std::string& name) const;
+		static void TransferOwnership(const GameObject& gameObject, GameObjectOwner& from, GameObjectOwner& to);
 
 	private:
-		virtual std::vector<std::unique_ptr<GameObject>>& GetGameObjectContainer() = 0;
-		virtual const std::vector<std::unique_ptr<GameObject>>& GetGameObjectContainer() const = 0;
 
-	private:
-		GameObject& CreateAndOwnGameObject(const std::string& name, Scene& scene, bool isDelayInit);
-		std::unique_ptr<GameObject> ReleaseGameObjectOwnership(GameObject& gameObject);
-		void TakeGameObjectOwnership(std::unique_ptr<GameObject>&& gameObject);
+#pragma region GameObjectに呼び出される関数
+
+		GameObject& CreateAndOwnGameObject(const std::string& name, Scene& scene, bool isAwakeImmediate);
+		void RemoveOwnedGameObject(GameObject& gameObject);
+
+#pragma endregion
 	};
 }

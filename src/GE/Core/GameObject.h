@@ -22,11 +22,11 @@ namespace GE
 
 	class GameObject : public Internal::GameObjectOwner, public Internal::Destroyable
 	{
-		friend Scene;
-		friend Internal::GameObjectOwner;
+		friend Internal::GameLoopObjectContainer<GameObject>;
 		friend Component;
 
 	public:
+		GameObject(const std::string& name, Scene& scene, GameObject* parent);
 		~GameObject();	// Componentとかが前方宣言できるために、デストラクタを宣言し、cppで定義する
 
 		GameObject(const GameObject&) = delete;
@@ -88,30 +88,23 @@ namespace GE
 		Scene& belongingScene;
 		GameObject* parent;		// parentが破棄される前に、このインスタンスのchildrenを全て破棄するので、parentはダングリングポインタになるはずがない
 		const std::unique_ptr<Transform2D> transform;
-		std::vector<std::unique_ptr<Component>> components;
-		std::vector<std::unique_ptr<GameObject>> children;
+		Internal::GameLoopObjectContainer<Component> components;
 
-		bool isInitialized;
+		bool isAwoken;
 		bool isActive;
 
 	private:
-		GameObject(const std::string& name, Scene& scene, GameObject* parent);
 
 #pragma region ゲームループ
 
-		void InitIfSceneLoaded();
+		void AwakeIfSceneLoaded();
+
 		void OnAwake();
 		void OnStart();
+		bool OnStartUnstarted();
 		void OnUpdate();
 		void OnLateUpdate();
 		void OnEndOfFrame();
-
-#pragma endregion
-
-#pragma region GameObjectOwner
-
-		std::vector<std::unique_ptr<GameObject>>& GetGameObjectContainer() override { return children; }
-		const std::vector<std::unique_ptr<GameObject>>& GetGameObjectContainer() const override { return children; }
 
 #pragma endregion
 
@@ -133,13 +126,13 @@ namespace GE
 		template<typename PrefabT>
 		friend PrefabReturnType<PrefabT> InstantiatePersistent(PrefabT prefab);
 
-		static GameObject& CreateWithDelayInit(const std::string& name = "GameObject");
-		static GameObject& CreateWithDelayInit(Scene& scene, const std::string& name = "GameObject");
-		static GameObject& CreatePersistentWithDelayInit(const std::string& name = "GameObject");
+		static GameObject& CreateWithDelayAwake(const std::string& name = "GameObject");
+		static GameObject& CreateWithDelayAwake(Scene& scene, const std::string& name = "GameObject");
+		static GameObject& CreatePersistentWithDelayAwake(const std::string& name = "GameObject");
 
 #pragma endregion
 
-		bool RemoveComponentImmediate(const Component& component);
+		void RemoveComponentImmediate(const Component& component);
 
 	};
 
@@ -153,15 +146,10 @@ namespace GE
 	{
 		static_assert(std::is_base_of_v<Component, T>, "The type must be a component");
 
-		std::unique_ptr<Component>& componentUniqueRef = components.emplace_back(std::make_unique<T>(*this, std::forward<Args>(args)...));
-		T& component = static_cast<T&>(*componentUniqueRef);
+		Component& component = components.Add<T>(isAwoken, *this, std::forward<Args>(args)...);
+		T& componentInT = static_cast<T&>(component);
 
-		if (isInitialized) {
-			component.OnAwake();
-			component.OnStart();
-		}
-
-		return component;
+		return componentInT;
 	}
 
 	template<typename T>
@@ -169,8 +157,8 @@ namespace GE
 	{
 		static_assert(std::is_base_of_v<Component, T>, "The type must be a component");
 
-		for (auto& component : components) {
-			T* castValue = dynamic_cast<T*>(component.get());
+		for (auto it = components.SimpleBegin(), itEnd = components.SimpleEnd(); it != itEnd; ++it) {
+			T* castValue = dynamic_cast<T*>((*it).get());
 			if (castValue) {
 				return castValue;
 			}
@@ -187,8 +175,8 @@ namespace GE
 			return result;
 		}
 
-		for (auto& child : children) {
-			result = child->GetComponentInChildren<T>();
+		for (auto it = ownedGameObjects.SimpleBegin(), itEnd = ownedGameObjects.SimpleEnd(); it != itEnd; ++it) {
+			result = (*it)->GetComponentInChildren<T>();
 			if (result) {
 				return result;
 			}
@@ -241,8 +229,8 @@ namespace GE
 	{
 		static_assert(std::is_base_of_v<Component, T>, "The type must be a component");
 
-		for (auto& component : components) {
-			T* castValue = dynamic_cast<T*>(component.get());
+		for (auto it = components.SimpleBegin(), itEnd = components.SimpleEnd(); it != itEnd; ++it) {
+			T* castValue = dynamic_cast<T*>((*it).get());
 			if (castValue) {
 				outContainer.push_back(castValue);
 			}
@@ -253,8 +241,9 @@ namespace GE
 	void GameObject::GetComponentsInChildren(std::vector<T*>& outContainer) const
 	{
 		GetComponents(outContainer);
-		for (auto& child : children) {
-			child->GetComponentsInChildren<T>(outContainer);
+
+		for (auto it = ownedGameObjects.SimpleBegin(), itEnd = ownedGameObjects.SimpleEnd(); it != itEnd; ++it) {
+			(*it)->GetComponentsInChildren<T>(outContainer);
 		}
 	}
 

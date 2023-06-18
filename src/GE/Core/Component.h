@@ -10,10 +10,15 @@ namespace GE
 	class GameObject;
 	class Transform2D;
 	class Coroutine;
+	namespace Internal
+	{
+		template<typename T>
+		class GameLoopObjectContainer;
+	}
 
 	class Component : public Internal::Destroyable
 	{
-		friend class GameObject;
+		friend Internal::GameLoopObjectContainer<Component>;
 
 	public:
 		// GameObjectが無効になる前に、必ず持っているComponentを破棄するので、GameObjectの参照を持つ
@@ -44,12 +49,18 @@ namespace GE
 #pragma region ゲームループ
 		// TODO : 
 		// 現在SceneまたはPrefabの生成段階の中、このゲームループの概念を違反することもできる。
-		// 例えば、あるComponentはInit()関数がある。
-		// そして、Prefabを生成している時(までPrefab全体が生成しなかった)、このComponentのInit()を呼び出す。
-		// この場合、Init()はAwake()とStart()の前に呼び出されるようになる。
+		// 例１：
+		// - あるComponentはInit()関数がある。
+		// - そして、Prefabを生成している時(までPrefab全体が生成しなかった)、このComponentのInit()を呼び出す。
+		// - この場合、Init()はAwake()の前に呼び出されるようになる。
+		// 例２：
+		// - あるPrefabの生成段階の中、あるGameObjectを生成する。
+		// - この時、GameObjectはAwake()が呼び出されない(Prefabはまだ全体が生成していない)。
+		// - そして、GameObject::SetParent()によってこのGameObjectを他のすでにAwake()したGameObjectのchildになる。
+		// - この場合、このGameObjectと従っているComponentsはAwake()が呼び出されない。
 
 		/// <summary>
-		/// <para>生成した後の最初の処理。有効無効にかかわらず、下記の場合に呼び出される</para>
+		/// <para>生成した後の最初の処理。有効無効にかかわらず、下記の場合に一回だけ呼び出される</para>
 		/// <para>- (Prefabではない、読み込んだ(Loaded) Sceneの中で)生成した直後</para>
 		/// <para>- (Prefabである、読み込んだSceneの中で)Prefab全体が生成した直後</para> 
 		/// <para>- (まだ読み込まないSceneの中で)Sceneを読み込む時</para> 
@@ -57,8 +68,9 @@ namespace GE
 		/// </summary>
 		virtual void Awake() {}
 		/// <summary>
-		/// <para>Awake()段階の次の処理。有効無効にかかわらず呼び出される</para>
-		/// <para>Start()が呼び出される時、すべてのGameObjectとComponentはすでにAwake()済みが保証する</para>
+		/// <para>Awake()段階の次の処理。有効無効にかかわらず、読み込んだ(Loaded) SceneのStartPhaseに一回だけ呼び出される</para>
+		/// <para>- もしあるComponentのStart()の中で新しいComponentを生成すれば、この新しいComponentも同じフレームでStart()が呼び出される</para>
+		/// <para>- もしあるComponentのUpdate()の中で新しいComponentを生成すれば、この新しいComponentは次のフレームでStart()が呼び出される。つまり、現在のフレームのゲームループを行わないと言える</para> 
 		/// </summary>
 		virtual void Start() {}
 		/// <summary>

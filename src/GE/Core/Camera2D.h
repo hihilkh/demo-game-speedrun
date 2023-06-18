@@ -25,7 +25,7 @@ namespace GE
 		friend class Scene;
 
 	public:
-		static Event<const Camera2D&> onCreated;
+		static Event<const Camera2D&> onStarted;
 		static Event<const Camera2D&> onDestroying;
 
 	public:
@@ -39,7 +39,7 @@ namespace GE
 		void SetCullingMask(Render::RenderLayer::Bitmask cullingMask) { this->cullingMask = cullingMask; }
 
 	protected:
-		void Awake() override;
+		void Start() override;
 		void PreDestroy() override;
 
 	private:

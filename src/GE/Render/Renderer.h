@@ -18,7 +18,7 @@ namespace GE::Render
 		friend Camera2D;
 
 	public:
-		static Event<const Renderer&> onCreated;
+		static Event<const Renderer&> onStarted;
 		static Event<const Renderer&> onDestroying;
 
 	public:
@@ -34,7 +34,7 @@ namespace GE::Render
 	protected:
 		virtual void Render(const Transform2DData& viewportData) const {}
 
-		void Awake() override;
+		void Start() override;
 		void PreDestroy() override;
 
 	private:

@@ -14,7 +14,7 @@ namespace GE
 		belongingScene(scene),
 		parent(parent),
 		transform(std::make_unique<Transform2D>(*this)),
-		isInitialized(false),
+		isAwoken(false),
 		isActive(true)
 	{
 	}
@@ -28,7 +28,7 @@ namespace GE
 
 	GameObject& GameObject::Create(Scene& scene, const std::string& name)
 	{
-		return scene.CreateAndOwnGameObject(name, scene, false);
+		return scene.CreateAndOwnGameObject(name, scene, scene.GetIsLoaded());
 	}
 
 	GameObject& GameObject::CreatePersistent(const std::string& name)
@@ -36,24 +36,24 @@ namespace GE
 		return Create(SceneManagement::SceneManager::GetPersistentScene(), name);
 	}
 
-	GameObject& GameObject::CreateWithDelayInit(const std::string& name)
+	GameObject& GameObject::CreateWithDelayAwake(const std::string& name)
 	{
-		return CreateWithDelayInit(SceneManagement::SceneManager::GetActiveScene(), name);
+		return CreateWithDelayAwake(SceneManagement::SceneManager::GetActiveScene(), name);
 	}
 
-	GameObject& GameObject::CreateWithDelayInit(Scene& scene, const std::string& name)
+	GameObject& GameObject::CreateWithDelayAwake(Scene& scene, const std::string& name)
 	{
-		return scene.CreateAndOwnGameObject(name, scene, true);
+		return scene.CreateAndOwnGameObject(name, scene, false);
 	}
 
-	GameObject& GameObject::CreatePersistentWithDelayInit(const std::string& name)
+	GameObject& GameObject::CreatePersistentWithDelayAwake(const std::string& name)
 	{
-		return CreateWithDelayInit(SceneManagement::SceneManager::GetPersistentScene(), name);
+		return CreateWithDelayAwake(SceneManagement::SceneManager::GetPersistentScene(), name);
 	}
 
 	GameObject& GameObject::AddChild(const std::string& childName)
 	{
-		return CreateAndOwnGameObject(childName, this->belongingScene, !isInitialized);
+		return CreateAndOwnGameObject(childName, belongingScene, isAwoken);
 	}
 
 	bool GameObject::SetParent(GameObject* newParent, bool keepWorldTransform)
@@ -75,11 +75,8 @@ namespace GE
 		}
 
 		GameObjectOwner* originalOwner = parent ? static_cast<GameObjectOwner*>(parent) : static_cast<GameObjectOwner*>(&belongingScene);
-		std::unique_ptr<GameObject> tempSelf = originalOwner->ReleaseGameObjectOwnership(*this);
-		assert(tempSelf && "なぜか自分のunique_ptrが取れない");
-
 		GameObjectOwner* newOwner = newParent ? static_cast<GameObjectOwner*>(newParent) : static_cast<GameObjectOwner*>(&belongingScene);
-		newOwner->TakeGameObjectOwnership(std::move(tempSelf));
+		GameObjectOwner::TransferOwnership(*this, *originalOwner, *newOwner);
 
 		Transform2DData temp;
 		if (keepWorldTransform) {
@@ -120,32 +117,32 @@ namespace GE
 
 #pragma region ゲームループ と Destroyable
 
-#define EXECUTE_BY_ORDER(func) {\
-	for (auto& component : components) {\
-		component->func;\
-	}\
-	for (auto& child : children) {\
-		child->func;\
-	}\
-}
-
-	void GameObject::InitIfSceneLoaded()
+	void GameObject::AwakeIfSceneLoaded()
 	{
 		if (belongingScene.GetIsLoaded()) {
 			OnAwake();
-			OnStart();
 		}
 	}
 
 	void GameObject::OnAwake()
 	{
-		isInitialized = true;
-		EXECUTE_BY_ORDER(OnAwake());
+		isAwoken = true;
+
+		components.OnAwake();
+		ownedGameObjects.OnAwake();
 	}
 
 	void GameObject::OnStart()
 	{
-		EXECUTE_BY_ORDER(OnStart());
+		OnStartUnstarted();
+	}
+
+	bool GameObject::OnStartUnstarted()
+	{
+		bool hasUnstarted = components.OnStartUnstarted();
+		hasUnstarted |= ownedGameObjects.OnStartUnstarted();
+
+		return hasUnstarted;
 	}
 
 	void GameObject::OnUpdate()
@@ -154,7 +151,8 @@ namespace GE
 			return;
 		}
 
-		EXECUTE_BY_ORDER(OnUpdate());
+		components.OnUpdate();
+		ownedGameObjects.OnUpdate();
 	}
 
 	void GameObject::OnLateUpdate()
@@ -163,7 +161,8 @@ namespace GE
 			return;
 		}
 
-		EXECUTE_BY_ORDER(OnLateUpdate());
+		components.OnLateUpdate();
+		ownedGameObjects.OnLateUpdate();
 	}
 
 	void GameObject::OnEndOfFrame()
@@ -172,39 +171,29 @@ namespace GE
 			return;
 		}
 
-		EXECUTE_BY_ORDER(OnEndOfFrame());
+		components.OnEndOfFrame();
+		ownedGameObjects.OnEndOfFrame();
 	}
 
 	void GameObject::OnPreDestroy()
 	{
 		Destroyable::OnPreDestroy();
 
-		EXECUTE_BY_ORDER(OnPreDestroy());
+		components.OnPreDestroy();
+		ownedGameObjects.OnPreDestroy();
 	}
-
-#undef EXECUTE_BY_ORDER
 
 	void GameObject::OnDestroy()
 	{
 		GameObjectOwner* owner = parent ? static_cast<GameObjectOwner*>(parent) : static_cast<GameObjectOwner*>(&belongingScene);
-		owner->ReleaseGameObjectOwnership(*this);
+		owner->RemoveOwnedGameObject(*this);
 	}
 
 #pragma endregion
 
-	bool GameObject::RemoveComponentImmediate(const Component& component)
+	void GameObject::RemoveComponentImmediate(const Component& component)
 	{
-		auto target = std::find_if(
-			components.begin(),
-			components.end(),
-			[&component](const auto& fromContainer) { return *fromContainer == component; });
-
-		if (target == components.end()) {
-			return false;
-		} else {
-			components.erase(target);
-			return true;
-		}
+		components.Remove(component);
 	}
 
 	bool operator==(const GameObject& lhs, const GameObject& rhs)
