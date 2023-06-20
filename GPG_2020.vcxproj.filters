@@ -343,7 +343,7 @@
     <ClCompile Include="src\Map\Tile\FloorTile.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Map\Tile\TileBase.cpp">
+    <ClCompile Include="src\Map\Tile\Tile.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Map\Tile\WeakWallTile.cpp">
@@ -789,7 +789,7 @@
     <ClInclude Include="src\Map\MapFactory.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Map\Tile\TileBase.h">
+    <ClInclude Include="src\Map\Tile\Tile.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Map\Tile\TileType.h">

@@ -4,7 +4,7 @@
 namespace Map
 {
 	TransportBeltTile::TransportBeltTile(GameObject& gameObject) :
-		TileBase(gameObject, Map::TileType::TransportBelt)
+		Tile(gameObject, Map::TileType::TransportBelt)
 	{
 	}
 

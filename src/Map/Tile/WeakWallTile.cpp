@@ -4,7 +4,7 @@
 namespace Map
 {
 	WeakWallTile::WeakWallTile(GameObject& gameObject) :
-		TileBase(gameObject, Map::TileType::WeakWall),
+		Tile(gameObject, Map::TileType::WeakWall),
 		isBroken(false)
 	{
 	}

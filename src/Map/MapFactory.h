@@ -6,7 +6,7 @@
 
 namespace Map
 {
-	class TileBase;
+	class Tile;
 	class MapObjectBase;
 
 	class MapFactory
@@ -20,7 +20,7 @@ namespace Map
 		GameObject& mapBase;
 
 	private:
-		static TileBase* InstantiateTile(TileType type, Direction direction);
+		static Tile* InstantiateTile(TileType type, Direction direction);
 		MapObjectBase* GenerateMapObject(const Vector2Int& pos, int mapObjectId) const;
 	};
 }

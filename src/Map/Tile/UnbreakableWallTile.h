@@ -1,10 +1,10 @@
 ﻿#pragma once
 
-#include "TileBase.h"
+#include "Tile.h"
 
 namespace Map
 {
-	class UnbreakableWallTile : public TileBase
+	class UnbreakableWallTile : public Tile
 	{
 	public:
 		explicit UnbreakableWallTile(GameObject& gameObject);

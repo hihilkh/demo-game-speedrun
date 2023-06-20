@@ -6,11 +6,11 @@
 
 namespace Map
 {
-	class TileBase : public Component
+	class Tile : public Component
 	{
 	public:
-		TileBase(GameObject& gameObject, TileType type);
-		virtual ~TileBase() = default;
+		Tile(GameObject& gameObject, TileType type);
+		virtual ~Tile() = default;
 
 		TileType GetType() const { return type; }
 		void SetPos(const Vector2Int& pos);

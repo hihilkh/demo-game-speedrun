@@ -1,10 +1,10 @@
 ﻿#pragma once
 
-#include "TileBase.h"
+#include "Tile.h"
 
 namespace Map
 {
-	class TransportBeltTile : public TileBase
+	class TransportBeltTile : public Tile
 	{
 	public:
 		explicit TransportBeltTile(GameObject& gameObject);

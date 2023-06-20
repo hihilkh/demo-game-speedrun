@@ -4,7 +4,7 @@
 namespace Map
 {
 	UnbreakableWallTile::UnbreakableWallTile(GameObject& gameObject) :
-		TileBase(gameObject, Map::TileType::UnbreakableWall)
+		Tile(gameObject, Map::TileType::UnbreakableWall)
 	{
 	}
 }

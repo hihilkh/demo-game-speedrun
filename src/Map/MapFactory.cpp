@@ -2,7 +2,7 @@
 #include "MapFactory.h"
 #include "GE/Utils/EnumUtils.h"
 
-#include "Tile/TileBase.h"
+#include "Tile/Tile.h"
 
 #include "Tile/FloorTile.h" 
 #include "Prefab/Map/Tile/FloorTilePrefab.h"
@@ -51,13 +51,13 @@ namespace Map
 		}
 
 		TileType type = static_cast<TileType>(typeId);
-		TileBase* tile = InstantiateTile(type, direction);
+		Tile* tile = InstantiateTile(type, direction);
 		if (tile) {
 			tile->SetPos(pos);
 		}
 	}
 
-	TileBase* MapFactory::InstantiateTile(TileType type, Direction direction)
+	Tile* MapFactory::InstantiateTile(TileType type, Direction direction)
 	{
 		switch (type) {
 			case Map::TileType::Floor:

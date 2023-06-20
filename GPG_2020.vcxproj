@@ -380,7 +380,7 @@
     <ClCompile Include="src\Map\MapId.cpp" />
     <ClCompile Include="src\Map\MapManager.cpp" />
     <ClCompile Include="src\Map\Tile\FloorTile.cpp" />
-    <ClCompile Include="src\Map\Tile\TileBase.cpp" />
+    <ClCompile Include="src\Map\Tile\Tile.cpp" />
     <ClCompile Include="src\Map\Tile\TransportBeltTile.cpp" />
     <ClCompile Include="src\Map\Tile\UnbreakableWallTile.cpp" />
     <ClCompile Include="src\Map\Tile\WeakWallTile.cpp" />
@@ -924,7 +924,7 @@
     <ClInclude Include="src\Map\MapId.h" />
     <ClInclude Include="src\Map\MapManager.h" />
     <ClInclude Include="src\Map\Tile\FloorTile.h" />
-    <ClInclude Include="src\Map\Tile\TileBase.h" />
+    <ClInclude Include="src\Map\Tile\Tile.h" />
     <ClInclude Include="src\Map\Tile\TileSize.h" />
     <ClInclude Include="src\Map\Tile\TileType.h" />
     <ClInclude Include="src\Map\Tile\TransportBeltTile.h" />

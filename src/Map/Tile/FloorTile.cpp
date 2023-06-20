@@ -4,7 +4,7 @@
 namespace Map
 {
 	FloorTile::FloorTile(GameObject& gameObject) :
-		TileBase(gameObject, Map::TileType::Floor)
+		Tile(gameObject, Map::TileType::Floor)
 	{
 	}
 }

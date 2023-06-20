@@ -1,10 +1,10 @@
 ﻿#pragma once
 
-#include "TileBase.h"
+#include "Tile.h"
 
 namespace Map
 {
-	class WeakWallTile : public TileBase
+	class WeakWallTile : public Tile
 	{
 	public:
 		explicit WeakWallTile(GameObject& gameObject);
