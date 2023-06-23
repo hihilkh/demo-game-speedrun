@@ -3,7 +3,7 @@
 #include "TilePrefabUtils.h"
 #include "Map/Tile/FloorTile.h"
 #include "GE/DataType/Rect.h"
-#include "Map/Tile/TileSize.h"
+#include "Map/Tile/TileRenderInfo.h"
 
 namespace Prefab::Map
 {

@@ -157,6 +157,8 @@
     <ClCompile Include="src\Animation\AnimationClip.cpp" />
     <ClCompile Include="src\Animation\Animator.cpp" />
     <ClCompile Include="src\Camera\CameraManagement.cpp" />
+    <ClCompile Include="src\Character\Player\PlayerController.cpp" />
+    <ClCompile Include="src\Character\Player\PlayerModel.cpp" />
     <ClCompile Include="src\Chara\Player\AttackPlayerAction.cpp" />
     <ClCompile Include="lib\DG2014\DG2014_DGObject.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
@@ -384,6 +386,7 @@
     <ClCompile Include="src\Map\Tile\TransportBeltTile.cpp" />
     <ClCompile Include="src\Map\Tile\UnbreakableWallTile.cpp" />
     <ClCompile Include="src\Map\Tile\WeakWallTile.cpp" />
+    <ClCompile Include="src\Prefab\Character\Player\PlayerPrefab.cpp" />
     <ClCompile Include="src\Prefab\Map\Tile\FloorTilePrefab.cpp" />
     <ClCompile Include="src\Prefab\Map\Tile\TilePrefabUtils.cpp" />
     <ClCompile Include="src\Prefab\Map\Tile\TransportBeltTilePrefab.cpp" />
@@ -392,6 +395,7 @@
     <ClCompile Include="src\Scene\Builder\EndingScene.cpp" />
     <ClCompile Include="src\Scene\Builder\GameScene.cpp" />
     <ClCompile Include="src\Scene\SceneTransition.cpp" />
+    <ClCompile Include="src\Utils\FollowPos.cpp" />
     <ClCompile Include="src\Utils\ImageFade.cpp" />
     <ClCompile Include="src\Common\Transform.cpp" />
     <ClCompile Include="src\GE\Core\Camera2D.cpp">
@@ -892,6 +896,10 @@
     <ClInclude Include="src\Animation\AnimationClip.h" />
     <ClInclude Include="src\Animation\AnimationKey.h" />
     <ClInclude Include="src\Animation\Animator.h" />
+    <ClInclude Include="src\Character\Player\PlayerConfig.h" />
+    <ClInclude Include="src\Character\Player\PlayerController.h" />
+    <ClInclude Include="src\Character\Player\PlayerModel.h" />
+    <ClInclude Include="src\Character\Player\PlayerRenderInfo.h" />
     <ClInclude Include="src\Chara\Player\AttackPlayerAction.h" />
     <ClInclude Include="lib\DG2014\DG2014_DGObject.h" />
     <ClInclude Include="lib\DG2014\DG2014_Effect.h" />
@@ -925,11 +933,12 @@
     <ClInclude Include="src\Map\MapManager.h" />
     <ClInclude Include="src\Map\Tile\FloorTile.h" />
     <ClInclude Include="src\Map\Tile\Tile.h" />
-    <ClInclude Include="src\Map\Tile\TileSize.h" />
+    <ClInclude Include="src\Map\Tile\TileRenderInfo.h" />
     <ClInclude Include="src\Map\Tile\TileType.h" />
     <ClInclude Include="src\Map\Tile\TransportBeltTile.h" />
     <ClInclude Include="src\Map\Tile\UnbreakableWallTile.h" />
     <ClInclude Include="src\Map\Tile\WeakWallTile.h" />
+    <ClInclude Include="src\Prefab\Character\Player\PlayerPrefab.h" />
     <ClInclude Include="src\Prefab\Map\Tile\FloorTilePrefab.h" />
     <ClInclude Include="src\Prefab\Map\Tile\TilePrefabUtils.h" />
     <ClInclude Include="src\Prefab\Map\Tile\TransportBeltTilePrefab.h" />
@@ -938,6 +947,7 @@
     <ClInclude Include="src\Scene\Builder\EndingScene.h" />
     <ClInclude Include="src\Scene\Builder\GameScene.h" />
     <ClInclude Include="src\Scene\SceneTransition.h" />
+    <ClInclude Include="src\Utils\FollowPos.h" />
     <ClInclude Include="src\Utils\ImageFade.h" />
     <ClInclude Include="src\GE\Core\Coroutine.h" />
     <ClInclude Include="src\GE\Core\PrefabDeclaration.h" />

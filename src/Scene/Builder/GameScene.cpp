@@ -4,6 +4,7 @@
 #include "Prefab/Camera/MainCameraPrefab.h"
 #include "GameScene/GameSceneDirector.h"
 #include "Map/MapManager.h"
+#include "Prefab/Character/Player/PlayerPrefab.h"
 
 namespace Scene
 {
@@ -18,6 +19,9 @@ namespace Scene
 		GameObject& mapManagerObj = GameObject::Create(*scene, "MapManager");
 		mapManagerObj.AddComponent<Map::MapManager>();
 
+		// Player
+		GE::Instantiate(Prefab::Player::PlayerPrefab(), *scene);
+		
 		// Director
 		GameObject& directorObj = GameObject::Create(*scene, "Director");
 		directorObj.AddComponent<::GameScene::Director>();

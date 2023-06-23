@@ -364,6 +364,18 @@
     <ClCompile Include="src\Prefab\Map\Tile\WeakWallTilePrefab.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Character\Player\PlayerModel.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Character\Player\PlayerController.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Prefab\Character\Player\PlayerPrefab.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utils\FollowPos.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GameEngine_Ver3_83.h">
@@ -807,7 +819,7 @@
     <ClInclude Include="src\GE\Core\Internal\GameLoopObjectContainer.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Map\Tile\TileSize.h">
+    <ClInclude Include="src\Map\Tile\TileRenderInfo.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Map\Tile\UnbreakableWallTile.h">
@@ -826,6 +838,24 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Prefab\Map\Tile\WeakWallTilePrefab.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Character\Player\PlayerModel.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Character\Player\PlayerController.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Prefab\Character\Player\PlayerPrefab.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Character\Player\PlayerRenderInfo.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Character\Player\PlayerConfig.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utils\FollowPos.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

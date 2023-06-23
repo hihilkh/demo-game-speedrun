@@ -1,6 +1,6 @@
 ﻿#include "GE/GEHeader.h"
 #include "Tile.h"
-#include "TileSize.h"
+#include "TileRenderInfo.h"
 
 namespace Map
 {
