@@ -927,6 +927,7 @@
     <ClInclude Include="src\EndingScene\EndingSceneDirector.h" />
     <ClInclude Include="src\GameScene\GameSceneDirector.h" />
     <ClInclude Include="src\GE\Core\Internal\GameLoopObjectContainer.h" />
+    <ClInclude Include="src\GE\Utils\GEConcept.h" />
     <ClInclude Include="src\Map\MapFactory.h" />
     <ClInclude Include="src\Map\MapGenerator.h" />
     <ClInclude Include="src\Map\MapId.h" />

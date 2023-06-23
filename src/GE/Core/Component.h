@@ -4,6 +4,7 @@
 #include <memory>
 #include <vector>
 #include <functional>
+#include "GE/Utils/GEConcept.h"
 
 namespace GE
 {
@@ -12,7 +13,7 @@ namespace GE
 	class Coroutine;
 	namespace Internal
 	{
-		template<typename T>
+		template<GameLoopObject T>
 		class GameLoopObjectContainer;
 	}
 

@@ -4,15 +4,14 @@
 #include "Vector2.h"
 #include <type_traits>
 #include "GE/Utils/Math.h"
+#include "GE/Utils/GEConcept.h"
 
 namespace GE::DataType::Internal
 {
 #pragma region 宣言
-	template<typename T>
+	template<RectBaseType T>
 	struct TRect
 	{
-		static_assert(std::is_same_v<int, T> || std::is_same_v<float, T>, "The type must be int or float");
-
 		union
 		{
 			struct { T x, y; };
@@ -103,42 +102,42 @@ namespace GE::DataType::Internal
 		void Move(const TVector2<T>& offset);
 	};
 
-	template<typename T> bool operator==(const TRect<T>& lhs, const TRect<T>& rhs);
-	template<typename T> bool operator!=(const TRect<T>& lhs, const TRect<T>& rhs);
-	template<typename T> std::ostream& operator<<(std::ostream& os, const TRect<T>& rect);
+	template<RectBaseType T> bool operator==(const TRect<T>& lhs, const TRect<T>& rhs);
+	template<RectBaseType T> bool operator!=(const TRect<T>& lhs, const TRect<T>& rhs);
+	template<RectBaseType T> std::ostream& operator<<(std::ostream& os, const TRect<T>& rect);
 
 #pragma endregion
 
 #pragma region 関数定義
 
-	template<typename T>
+	template<RectBaseType T>
 	TRect<T>::TRect() : TRect(T(), T(), T(), T())
 	{
 	}
 
-	template<typename T>
+	template<RectBaseType T>
 	TRect<T>::TRect(T x, T y, T width, T height) : x(x), y(y), width(width), height(height)
 	{
 	}
 
-	template<typename T>
+	template<RectBaseType T>
 	TRect<T>::TRect(const TVector2<T>& pos, const TVector2<T>& size) : pos(pos), size(size)
 	{
 	}
 
-	template<typename T>
+	template<RectBaseType T>
 	TRect<T> TRect<T>::FromCenter(T width, T height)
 	{
 		return TRect(-(width / 2), -(height / 2), width, height);
 	}
 
-	template<typename T>
+	template<RectBaseType T>
 	TRect<T> TRect<T>::FromCenter(const TVector2<T>& size)
 	{
 		return FromCenter(size.x, size.y);
 	}
 
-	template<typename T>
+	template<RectBaseType T>
 	TRect<T> TRect<T>::FromDiagonal(T x, T y, T oppositeX, T oppositeY)
 	{
 		T deltaX = oppositeX - x;
@@ -151,25 +150,25 @@ namespace GE::DataType::Internal
 		}
 	}
 
-	template<typename T>
+	template<RectBaseType T>
 	TRect<T> TRect<T>::FromDiagonal(const TVector2<T>& point, const TVector2<T>& oppositePoint)
 	{
 		return FromDiagonal(point.x, point.y, oppositePoint.x, oppositePoint.y);
 	}
 
-	template<typename T>
+	template<RectBaseType T>
 	T TRect<T>::Area() const
 	{
 		return width * height;
 	}
 
-	template<typename T>
+	template<RectBaseType T>
 	TVector2<T> TRect<T>::Center() const
 	{
 		return pos + size / T(2);
 	}
 
-	template<typename T>
+	template<RectBaseType T>
 	bool TRect<T>::IsEmpty() const
 	{
 		if constexpr (std::is_same_v<int, T>) {
@@ -179,7 +178,7 @@ namespace GE::DataType::Internal
 		}
 	}
 
-	template<typename T>
+	template<RectBaseType T>
 	T TRect<T>::OppositeX() const
 	{
 		if constexpr (std::is_same_v<int, T>) {
@@ -189,7 +188,7 @@ namespace GE::DataType::Internal
 		}
 	}
 
-	template<typename T>
+	template<RectBaseType T>
 	T TRect<T>::OppositeY() const
 	{
 		if constexpr (std::is_same_v<int, T>) {
@@ -199,39 +198,39 @@ namespace GE::DataType::Internal
 		}
 	}
 
-	template<typename T>
+	template<RectBaseType T>
 	bool TRect<T>::IsFlipedX() const
 	{
 		return width < 0;
 	}
 
-	template<typename T>
+	template<RectBaseType T>
 	bool TRect<T>::IsFlipedY() const
 	{
 		return height < 0;
 	}
 
-	template<typename T>
+	template<RectBaseType T>
 	bool TRect<T>::IsFliped() const
 	{
 		return IsFlipedX() || IsFlipedY();
 	}
 
-	template<typename T>
+	template<RectBaseType T>
 	void TRect<T>::FlipX()
 	{
 		x = OppositeX();
 		width = -width;
 	}
 
-	template<typename T>
+	template<RectBaseType T>
 	void TRect<T>::FlipY()
 	{
 		y = OppositeY();
 		height = -height;
 	}
 
-	template<typename T>
+	template<RectBaseType T>
 	void TRect<T>::UnFlip()
 	{
 		if (IsFlipedX()) {
@@ -243,7 +242,7 @@ namespace GE::DataType::Internal
 		}
 	}
 
-	template<typename T>
+	template<RectBaseType T>
 	bool TRect<T>::Contain(const TVector2<T>& point) const
 	{
 		if (point.x < x || point.y < y) {
@@ -257,7 +256,7 @@ namespace GE::DataType::Internal
 		return true;
 	}
 
-	template<typename T>
+	template<RectBaseType T>
 	bool TRect<T>::ContainWithSafeCheck(const TVector2<T>& point) const
 	{
 		if (IsEmpty()) {
@@ -269,13 +268,13 @@ namespace GE::DataType::Internal
 		return copy.Contain(point);
 	}
 
-	template<typename T>
+	template<RectBaseType T>
 	bool TRect<T>::Overlap(const TRect<T>& other) const
 	{
 		return Overlap(*this, other);
 	}
 
-	template<typename T>
+	template<RectBaseType T>
 	bool TRect<T>::Overlap(const TRect<T>& first, const TRect<T>& second)
 	{
 		TVector2<T> firstOpposite(first.OppositeX(), first.OppositeY());
@@ -288,13 +287,13 @@ namespace GE::DataType::Internal
 		return true;
 	}
 
-	template<typename T>
+	template<RectBaseType T>
 	bool TRect<T>::OverlapWithSafeCheck(const TRect& other) const
 	{
 		return OverlapWithSafeCheck(*this, other);
 	}
 
-	template<typename T>
+	template<RectBaseType T>
 	bool TRect<T>::OverlapWithSafeCheck(const TRect& first, const TRect& second)
 	{
 		if (first.IsEmpty() || second.IsEmpty()) {
@@ -308,27 +307,27 @@ namespace GE::DataType::Internal
 		return Overlap(firstCopy, secondCopy);
 	}
 
-	template<typename T>
+	template<RectBaseType T>
 	void TRect<T>::Move(const TVector2<T>& offset)
 	{
 		x += offset.x;
 		y += offset.y;
 	}
 
-	template<typename T>
+	template<RectBaseType T>
 	bool operator==(const TRect<T>& lhs, const TRect<T>& rhs)
 	{
 		return	lhs.pos == rhs.pos &&
 				lhs.size == rhs.size;
 	}
 
-	template<typename T>
+	template<RectBaseType T>
 	bool operator!=(const TRect<T>& lhs, const TRect<T>& rhs)
 	{
 		return !(lhs == rhs);
 	}
 
-	template<typename T>
+	template<RectBaseType T>
 	std::ostream& operator<<(std::ostream& os, const TRect<T>& rect)
 	{
 		return os << "{ pos : " << rect.pos << " , size : " << rect.size << " }";

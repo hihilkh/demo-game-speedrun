@@ -4,19 +4,18 @@
 #include <type_traits>
 #include <cmath>
 #include "Vector2.h"
+#include "GE/Utils/GEConcept.h"
 
 namespace GE::DataType::Internal
 {
 #pragma region 宣言
 
 	// 暗黙的な変換のための前方宣言
-	template<typename T> struct TVector2;
+	template<VectorBaseType T> struct TVector2;
 
-	template<typename T>
+	template<VectorBaseType T>
 	struct TVector3
 	{
-		static_assert(std::is_same_v<int, T> || std::is_same_v<float, T>, "The type must be int or float");
-
 		T x, y, z;
 
 		TVector3();
@@ -42,16 +41,16 @@ namespace GE::DataType::Internal
 
 		static TVector3<float> Lerp(const TVector3& a, const TVector3& b, float t);
 
-		TVector3& Normalize();
+		TVector3& Normalize() requires std::is_same_v<float, T>;
 
 		// TODO : Rotate関数
 		
 		// 暗黙的な変換
 
-		operator TVector2<float>() const;
-		operator TVector2<int>() const;
-		operator TVector3<float>() const;
-		operator TVector3<int>() const;
+		operator TVector2<float>() const requires (!std::is_same_v<float, T>);
+		operator TVector2<int>() const requires (!std::is_same_v<int, T>);
+		operator TVector3<float>() const requires (!std::is_same_v<float, T>);
+		operator TVector3<int>() const requires (!std::is_same_v<int, T>);
 
 		// 定数
 
@@ -65,14 +64,14 @@ namespace GE::DataType::Internal
 		static const TVector3 backward;
 	};
 
-	template<typename T> TVector3<T> operator+(const TVector3<T>& lhs, const TVector3<T>& rhs);
-	template<typename T> TVector3<T> operator-(const TVector3<T>& lhs, const TVector3<T>& rhs);
-	template<typename T> TVector3<T> operator*(const TVector3<T>& vector, T multiple);
-	template<typename T> TVector3<T> operator*(T multiple, const TVector3<T>& vector);
-	template<typename T> TVector3<T> operator/(const TVector3<T>& vector, T divisor);
-	template<typename T> bool operator==(const TVector3<T>& lhs, const TVector3<T>& rhs);
-	template<typename T> bool operator!=(const TVector3<T>& lhs, const TVector3<T>& rhs);
-	template<typename T> std::ostream& operator<<(std::ostream& os, const TVector3<T>& vector);
+	template<VectorBaseType T> TVector3<T> operator+(const TVector3<T>& lhs, const TVector3<T>& rhs);
+	template<VectorBaseType T> TVector3<T> operator-(const TVector3<T>& lhs, const TVector3<T>& rhs);
+	template<VectorBaseType T> TVector3<T> operator*(const TVector3<T>& vector, T multiple);
+	template<VectorBaseType T> TVector3<T> operator*(T multiple, const TVector3<T>& vector);
+	template<VectorBaseType T> TVector3<T> operator/(const TVector3<T>& vector, T divisor);
+	template<VectorBaseType T> bool operator==(const TVector3<T>& lhs, const TVector3<T>& rhs);
+	template<VectorBaseType T> bool operator!=(const TVector3<T>& lhs, const TVector3<T>& rhs);
+	template<VectorBaseType T> std::ostream& operator<<(std::ostream& os, const TVector3<T>& vector);
 
 #pragma endregion
 
@@ -108,17 +107,17 @@ namespace GE::DataType::Internal
 
 #pragma region 関数定義
 
-	template<typename T>
+	template<VectorBaseType T>
 	TVector3<T>::TVector3() : TVector3(T(), T(), T())
 	{
 	}
 
-	template<typename T>
+	template<VectorBaseType T>
 	TVector3<T>::TVector3(T x, T y, T z) : x(x), y(y), z(z)
 	{
 	}
 
-	template<typename T>
+	template<VectorBaseType T>
 	TVector3<T>& TVector3<T>::operator+=(const TVector3<T>& other)
 	{
 		x += other.x;
@@ -127,7 +126,7 @@ namespace GE::DataType::Internal
 		return *this;
 	}
 
-	template<typename T>
+	template<VectorBaseType T>
 	TVector3<T>& TVector3<T>::operator-=(const TVector3<T>& other)
 	{
 		x -= other.x;
@@ -136,13 +135,13 @@ namespace GE::DataType::Internal
 		return *this;
 	}
 
-	template<typename T>
+	template<VectorBaseType T>
 	TVector3<T>& TVector3<T>::operator*=(T multiple)
 	{
 		return Scale(multiple, multiple, multiple);
 	}
 
-	template<typename T>
+	template<VectorBaseType T>
 	TVector3<T>& TVector3<T>::operator/=(T divisor)
 	{
 		if constexpr (std::is_same_v<int, T>) {
@@ -157,13 +156,13 @@ namespace GE::DataType::Internal
 		return *this;
 	}
 
-	template<typename T>
+	template<VectorBaseType T>
 	TVector3<T> TVector3<T>::operator-() const
 	{
 		return TVector3<T>(-x, -y, -z);
 	}
 
-	template<typename T>
+	template<VectorBaseType T>
 	TVector3<T>& TVector3<T>::Scale(T multipleX, T multipleY, T multipleZ)
 	{
 		x *= multipleX;
@@ -172,13 +171,13 @@ namespace GE::DataType::Internal
 		return *this;
 	}
 
-	template<typename T>
+	template<VectorBaseType T>
 	TVector3<T>& TVector3<T>::Scale(const TVector3<T>& other)
 	{
 		return Scale(other.x, other.y, other.z);
 	}
 
-	template<typename T>
+	template<VectorBaseType T>
 	TVector3<T> TVector3<T>::Scale(const TVector3<T>& lhs, const TVector3<T>& rhs)
 	{
 		auto result = lhs;
@@ -187,7 +186,7 @@ namespace GE::DataType::Internal
 	}
 
 
-	template<typename T>
+	template<VectorBaseType T>
 	T TVector3<T>::Dot(const TVector3<T>& lhs, const TVector3<T>& rhs)
 	{
 		return	lhs.x * rhs.x +
@@ -195,7 +194,7 @@ namespace GE::DataType::Internal
 				lhs.z * rhs.z;
 	}
 
-	template<typename T>
+	template<VectorBaseType T>
 	TVector3<T> TVector3<T>::Cross(const TVector3<T>& lhs, const TVector3<T>& rhs)
 	{
 		return TVector3<T>(
@@ -205,25 +204,25 @@ namespace GE::DataType::Internal
 		);
 	}
 
-	template<typename T>
+	template<VectorBaseType T>
 	float TVector3<T>::Magnitude() const
 	{
 		return sqrt(SqrMagnitude());
 	}
 
-	template<typename T>
+	template<VectorBaseType T>
 	T TVector3<T>::SqrMagnitude() const
 	{
 		return Dot(*this, *this);
 	}
 
-	template<typename T>
+	template<VectorBaseType T>
 	float TVector3<T>::Distance(const TVector3& lhs, const TVector3& rhs)
 	{
 		return (lhs - rhs).Magnitude();
 	}
 
-	template<typename T>
+	template<VectorBaseType T>
 	TVector3<float> TVector3<T>::Lerp(const TVector3<T>& a, const TVector3<T>& b, float t)
 	{
 		return TVector3<float>(
@@ -233,14 +232,9 @@ namespace GE::DataType::Internal
 		);
 	}
 
-	template<typename T>
-	TVector3<T>& TVector3<T>::Normalize()
+	template<VectorBaseType T>
+	TVector3<T>& TVector3<T>::Normalize() requires std::is_same_v<float, T>
 	{
-		// TODO : 
-		// 今TVector3<int>でもNormalize()関数を持っている(使う場合はコンパイルエラーが生じる)
-		// もっと良い方法を考えましょう
-		static_assert(std::is_same_v<float, T>, "Only Vector with float values is allowed to use this function");
-
 		if (*this != TVector3::zero) {
 			*this /= Magnitude();
 		}
@@ -248,31 +242,31 @@ namespace GE::DataType::Internal
 		return *this;
 	}
 
-	template<typename T>
-	TVector3<T>::operator TVector2<float>() const
+	template<VectorBaseType T>
+	TVector3<T>::operator TVector2<float>() const requires (!std::is_same_v<float, T>)
 	{
 		return TVector2<float>((float)x, (float)y);
 	}
 
-	template<typename T>
-	TVector3<T>::operator TVector2<int>() const
+	template<VectorBaseType T>
+	TVector3<T>::operator TVector2<int>() const requires (!std::is_same_v<int, T>)
 	{
 		return TVector2<int>((int)x, (int)y);
 	}
 
-	template<typename T>
-	TVector3<T>::operator TVector3<float>() const
+	template<VectorBaseType T>
+	TVector3<T>::operator TVector3<float>() const requires (!std::is_same_v<float, T>)
 	{
 		return TVector3<float>((float)x, (float)y, (float)z);
 	}
 
-	template<typename T>
-	TVector3<T>::operator TVector3<int>() const
+	template<VectorBaseType T>
+	TVector3<T>::operator TVector3<int>() const requires (!std::is_same_v<int, T>)
 	{
 		return TVector3<int>((int)x, (int)y, (int)z);
 	}
 
-	template<typename T>
+	template<VectorBaseType T>
 	TVector3<T> operator+(const TVector3<T>& lhs, const TVector3<T>& rhs)
 	{
 		auto result = lhs;
@@ -280,7 +274,7 @@ namespace GE::DataType::Internal
 		return result;
 	}
 
-	template<typename T>
+	template<VectorBaseType T>
 	TVector3<T> operator-(const TVector3<T>& lhs, const TVector3<T>& rhs)
 	{
 		auto result = lhs;
@@ -288,7 +282,7 @@ namespace GE::DataType::Internal
 		return result;
 	}
 
-	template<typename T>
+	template<VectorBaseType T>
 	TVector3<T> operator*(const TVector3<T>& vector, T multiple)
 	{
 		auto result = vector;
@@ -296,13 +290,13 @@ namespace GE::DataType::Internal
 		return result;
 	}
 
-	template<typename T>
+	template<VectorBaseType T>
 	TVector3<T> operator*(T multiple, const TVector3<T>& vector)
 	{
 		return vector * multiple;
 	}
 
-	template<typename T>
+	template<VectorBaseType T>
 	TVector3<T> operator/(const TVector3<T>& vector, T divisor)
 	{
 		auto result = vector;
@@ -310,7 +304,7 @@ namespace GE::DataType::Internal
 		return result;
 	}
 
-	template<typename T>
+	template<VectorBaseType T>
 	bool operator==(const TVector3<T>& lhs, const TVector3<T>& rhs)
 	{
 		return	lhs.x == rhs.x &&
@@ -318,13 +312,13 @@ namespace GE::DataType::Internal
 				lhs.z == rhs.z;
 	}
 
-	template<typename T>
+	template<VectorBaseType T>
 	bool operator!=(const TVector3<T>& lhs, const TVector3<T>& rhs)
 	{
 		return !(lhs == rhs);
 	}
 
-	template<typename T>
+	template<VectorBaseType T>
 	std::ostream& operator<<(std::ostream& os, const TVector3<T>& vector)
 	{
 		return os << "(" << vector.x << ", " << vector.y << ", " << vector.z << ")";

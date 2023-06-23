@@ -858,6 +858,9 @@
     <ClInclude Include="src\Utils\FollowPos.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\GE\Utils\GEConcept.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Event\Event.tpp">

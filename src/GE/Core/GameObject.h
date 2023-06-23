@@ -8,6 +8,7 @@
 #include <string>
 #include "Internal/Destroyable.h"
 #include "PrefabDeclaration.h"
+#include "GE/Utils/GEConcept.h"
 
 namespace GE
 {
@@ -67,20 +68,20 @@ namespace GE
 		const Transform2D& GetTransform() const { return *transform; }
 		Transform2D& GetTransform() { return *transform; }
 
-		template<typename T, typename... Args> T& AddComponent(Args&&... args);
-		template<typename T> T* GetComponent() const;
-		template<typename T> T* GetComponentInChildren() const;
-		template<typename T> T* GetComponentInParent() const;
-		template<typename T> std::vector<T*> GetComponents() const;
-		template<typename T> std::vector<T*> GetComponentsInChildren() const;
-		template<typename T> std::vector<T*> GetComponentsInParent() const;
+		template<ComponentType T, typename... Args> T& AddComponent(Args&&... args);
+		template<ComponentType T> T* GetComponent() const;
+		template<ComponentType T> T* GetComponentInChildren() const;
+		template<ComponentType T> T* GetComponentInParent() const;
+		template<ComponentType T> std::vector<T*> GetComponents() const;
+		template<ComponentType T> std::vector<T*> GetComponentsInChildren() const;
+		template<ComponentType T> std::vector<T*> GetComponentsInParent() const;
 
 		// TODO : RemoveComponent()
 
 	private:
-		template<typename T> void GetComponents(std::vector<T*>& outContainer) const;
-		template<typename T> void GetComponentsInChildren(std::vector<T*>& outContainer) const;
-		template<typename T> void GetComponentsInParent(std::vector<T*>& outContainer) const;
+		template<ComponentType T> void GetComponents(std::vector<T*>& outContainer) const;
+		template<ComponentType T> void GetComponentsInChildren(std::vector<T*>& outContainer) const;
+		template<ComponentType T> void GetComponentsInParent(std::vector<T*>& outContainer) const;
 
 	private:
 		std::string name;
@@ -153,22 +154,18 @@ namespace GE
 
 #pragma region 関数テンプレート定義
 
-	template<typename T, typename... Args>
+	template<ComponentType T, typename... Args>
 	T& GameObject::AddComponent(Args&&... args)
 	{
-		static_assert(std::is_base_of_v<Component, T>, "The type must be a component");
-
 		Component& component = components.Add<T>(isAwoken, *this, std::forward<Args>(args)...);
 		T& componentInT = static_cast<T&>(component);
 
 		return componentInT;
 	}
 
-	template<typename T>
+	template<ComponentType T>
 	T* GameObject::GetComponent() const
 	{
-		static_assert(std::is_base_of_v<Component, T>, "The type must be a component");
-
 		for (auto it = components.SimpleBegin(), itEnd = components.SimpleEnd(); it != itEnd; ++it) {
 			T* castValue = dynamic_cast<T*>((*it).get());
 			if (castValue) {
@@ -179,7 +176,7 @@ namespace GE
 		return nullptr;
 	}
 
-	template<typename T>
+	template<ComponentType T>
 	T* GameObject::GetComponentInChildren() const
 	{
 		T* result = GetComponent<T>();
@@ -197,7 +194,7 @@ namespace GE
 		return nullptr;
 	}
 
-	template<typename T>
+	template<ComponentType T>
 	T* GameObject::GetComponentInParent() const
 	{
 		T* result = GetComponent<T>();
@@ -212,7 +209,7 @@ namespace GE
 		}
 	}
 
-	template<typename T>
+	template<ComponentType T>
 	std::vector<T*> GameObject::GetComponents() const
 	{
 		std::vector<T*> result;
@@ -220,7 +217,7 @@ namespace GE
 		return result;
 	}
 
-	template<typename T>
+	template<ComponentType T>
 	std::vector<T*> GameObject::GetComponentsInChildren() const
 	{
 		std::vector<T*> result;
@@ -228,7 +225,7 @@ namespace GE
 		return result;
 	}
 
-	template<typename T>
+	template<ComponentType T>
 	std::vector<T*> GameObject::GetComponentsInParent() const
 	{
 		std::vector<T*> result;
@@ -236,11 +233,9 @@ namespace GE
 		return result;
 	}
 
-	template<typename T>
+	template<ComponentType T>
 	void GameObject::GetComponents(std::vector<T*>& outContainer) const
 	{
-		static_assert(std::is_base_of_v<Component, T>, "The type must be a component");
-
 		for (auto it = components.SimpleBegin(), itEnd = components.SimpleEnd(); it != itEnd; ++it) {
 			T* castValue = dynamic_cast<T*>((*it).get());
 			if (castValue) {
@@ -249,7 +244,7 @@ namespace GE
 		}
 	}
 
-	template<typename T>
+	template<ComponentType T>
 	void GameObject::GetComponentsInChildren(std::vector<T*>& outContainer) const
 	{
 		GetComponents(outContainer);
@@ -259,7 +254,7 @@ namespace GE
 		}
 	}
 
-	template<typename T>
+	template<ComponentType T>
 	void GameObject::GetComponentsInParent(std::vector<T*>& outContainer) const
 	{
 		GetComponents(outContainer);

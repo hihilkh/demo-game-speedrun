@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#include "GEConcept.h"
+
 #pragma region 前方宣言
 
 namespace GE
@@ -13,12 +15,12 @@ namespace GE
 
 	namespace DataType::Internal
 	{
-		template<typename T>
+		template<VectorBaseType T>
 		struct TVector2;
-		template<typename T>
+		template<VectorBaseType T>
 		struct TVector3;
 
-		template<typename T>
+		template<RectBaseType T>
 		struct TRect;
 	}
 

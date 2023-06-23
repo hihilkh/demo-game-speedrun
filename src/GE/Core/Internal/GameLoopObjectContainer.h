@@ -5,19 +5,13 @@
 #include <cstdint>
 #include <utility>
 #include "GE/Debug/Log.h"
+#include "GE/Utils/GEConcept.h"
 
-namespace GE
-{
-	class GameObject;
-	class Component;
-}
 namespace GE::Internal
 {
-	template<typename T>
+	template<GameLoopObject T>
 	class GameLoopObjectContainer
 	{
-		static_assert(std::is_same_v<GameObject, T> || std::is_same_v<Component, T>, "The type must be GameObject or Component");
-
 	public:
 		template<typename Derived = T, typename... Args>
 		T& Add(bool isAwakeImmediate, Args&&... args);
@@ -140,7 +134,7 @@ namespace GE::Internal
 
 #pragma region テンプレート定義
 
-	template<typename T>
+	template<GameLoopObject T>
 		template<typename Derived, typename... Args>
 	T& GameLoopObjectContainer<T>::Add(bool isAwakeImmediate, Args&&... args)
 	{
@@ -151,7 +145,7 @@ namespace GE::Internal
 		return element;
 	}
 
-	template<typename T>
+	template<GameLoopObject T>
 	void GameLoopObjectContainer<T>::Remove(const T& object)
 	{
 		std::vector<std::unique_ptr<T>>* lists[] = {
@@ -174,7 +168,7 @@ namespace GE::Internal
 		DEBUG_LOG_WARNING("GameLoopObjectContainer::Remove失敗：objectが見つけられない。");
 	}
 
-	template<typename T>
+	template<GameLoopObject T>
 	void GameLoopObjectContainer<T>::OnAwake()
 	{
 		for (auto it = SimpleBegin_Unstarted(), itEnd = SimpleEnd_Unstarted(); it != itEnd; ++it) {
@@ -182,7 +176,7 @@ namespace GE::Internal
 		}
 	}
 
-	template<typename T>
+	template<GameLoopObject T>
 	bool GameLoopObjectContainer<T>::OnStartUnstarted()
 	{
 		bool hasUnstarted = false;
@@ -211,7 +205,7 @@ namespace GE::Internal
 		return hasUnstarted;
 	}
 
-	template<typename T>
+	template<GameLoopObject T>
 	void GameLoopObjectContainer<T>::OnUpdate()
 	{
 		for (auto it = SimpleBegin_Started(), itEnd = SimpleEnd_Started(); it != itEnd; ++it) {
@@ -219,7 +213,7 @@ namespace GE::Internal
 		}
 	}
 
-	template<typename T>
+	template<GameLoopObject T>
 	void GameLoopObjectContainer<T>::OnLateUpdate()
 	{
 		for (auto it = SimpleBegin_Started(), itEnd = SimpleEnd_Started(); it != itEnd; ++it) {
@@ -227,7 +221,7 @@ namespace GE::Internal
 		}
 	}
 
-	template<typename T>
+	template<GameLoopObject T>
 	void GameLoopObjectContainer<T>::OnEndOfFrame()
 	{
 		for (auto it = SimpleBegin_Started(), itEnd = SimpleEnd_Started(); it != itEnd; ++it) {
@@ -235,7 +229,7 @@ namespace GE::Internal
 		}
 	}
 
-	template<typename T>
+	template<GameLoopObject T>
 	void GameLoopObjectContainer<T>::OnPreDestroy()
 	{
 		for (auto it = SimpleBegin(), itEnd = SimpleEnd(); it != itEnd; ++it) {
@@ -249,7 +243,7 @@ namespace GE::Internal
 
 	/*
 
-	template<typename T>
+	template<GameLoopObject T>
 	void GameLoopObjectContainer<T>::Transfer(const T& object, GameLoopObjectContainer& from, GameLoopObjectContainer& to)
 	{
 		if (&from == &to) {
