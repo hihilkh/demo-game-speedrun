@@ -43,7 +43,6 @@ namespace GE::DataType::Internal
 		static TVector3<float> Lerp(const TVector3& a, const TVector3& b, float t);
 
 		TVector3& Normalize();
-		bool IsNormalized() const;
 
 		// TODO : Rotate関数
 		
@@ -242,14 +241,11 @@ namespace GE::DataType::Internal
 		// もっと良い方法を考えましょう
 		static_assert(std::is_same_v<float, T>, "Only Vector with float values is allowed to use this function");
 
-		*this /= Magnitude();
-		return *this;
-	}
+		if (*this != TVector3::zero) {
+			*this /= Magnitude();
+		}
 
-	template<typename T>
-	bool TVector3<T>::IsNormalized() const
-	{
-		return SqrMagnitude() == 1;
+		return *this;
 	}
 
 	template<typename T>
