@@ -25,7 +25,6 @@ namespace GE::Internal
 
 	protected:
 		GameObject* GetOwnedGameObject(const std::string& name) const;
-		static void TransferOwnership(const GameObject& gameObject, GameObjectOwner& from, GameObjectOwner& to);
 
 	private:
 
@@ -34,6 +33,13 @@ namespace GE::Internal
 		GameObject& CreateAndOwnGameObject(const std::string& name, Scene& scene, bool isAwakeImmediate);
 		void RemoveOwnedGameObject(GameObject& gameObject);
 
+#pragma endregion
+
+#pragma region deprecated
+	/*
+	protected:
+		static void TransferOwnership(const GameObject& gameObject, GameObjectOwner& from, GameObjectOwner& to);
+	*/
 #pragma endregion
 	};
 }

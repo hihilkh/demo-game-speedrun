@@ -22,7 +22,6 @@ namespace GE::Internal
 		template<typename Derived = T, typename... Args>
 		T& Add(bool isAwakeImmediate, Args&&... args);
 		void Remove(const T& object);
-		static void Transfer(const T& object, GameLoopObjectContainer& from, GameLoopObjectContainer& to);
 
 #pragma region ゲームループ
 		void OnAwake();
@@ -127,6 +126,14 @@ namespace GE::Internal
 
 #pragma endregion
 
+#pragma region deprecated
+
+	/*
+	public:
+		static void Transfer(const T& object, GameLoopObjectContainer& from, GameLoopObjectContainer& to);
+	*/
+
+#pragma endregion
 	};
 
 
@@ -165,36 +172,6 @@ namespace GE::Internal
 		}
 
 		DEBUG_LOG_WARNING("GameLoopObjectContainer::Remove失敗：objectが見つけられない。");
-	}
-
-	template<typename T>
-	void GameLoopObjectContainer<T>::Transfer(const T& object, GameLoopObjectContainer& from, GameLoopObjectContainer& to)
-	{
-		if (&from == &to) {
-			return;
-		}
-
-		std::pair<	std::vector<std::unique_ptr<T>>*,
-					std::vector<std::unique_ptr<T>>*>
-			pairLists[] = {
-			{ &from.objects_Started, &to.objects_Started },
-			{ &from.objects_Unstarted, &to.objects_Unstarted },
-		};
-
-		for (auto&& [from, to] : pairLists) {
-			auto target = std::find_if(
-				from->begin(),
-				from->end(),
-				[&object](const auto& contained) { return *contained == object; });
-
-			if (target != from->end()) {
-				to->emplace_back(std::move(*target));
-				from->erase(target);
-				return;
-			}
-		}
-
-		DEBUG_LOG_WARNING("GameLoopObjectContainer::Transfer失敗：fromからobjectが見つけられない。");
 	}
 
 	template<typename T>
@@ -265,6 +242,44 @@ namespace GE::Internal
 			(*it)->OnPreDestroy();
 		}
 	}
+
+#pragma endregion
+
+#pragma region deprecated
+
+	/*
+
+	template<typename T>
+	void GameLoopObjectContainer<T>::Transfer(const T& object, GameLoopObjectContainer& from, GameLoopObjectContainer& to)
+	{
+		if (&from == &to) {
+			return;
+		}
+
+		std::pair<	std::vector<std::unique_ptr<T>>*,
+					std::vector<std::unique_ptr<T>>*>
+			pairLists[] = {
+			{ &from.objects_Started, &to.objects_Started },
+			{ &from.objects_Unstarted, &to.objects_Unstarted },
+		};
+
+		for (auto&& [from, to] : pairLists) {
+			auto target = std::find_if(
+				from->begin(),
+				from->end(),
+				[&object](const auto& contained) { return *contained == object; });
+
+			if (target != from->end()) {
+				to->emplace_back(std::move(*target));
+				from->erase(target);
+				return;
+			}
+		}
+
+		DEBUG_LOG_WARNING("GameLoopObjectContainer::Transfer失敗：fromからobjectが見つけられない。");
+	}
+
+	*/
 
 #pragma endregion
 }

@@ -28,13 +28,19 @@ namespace GE::Internal
 		return ownedGameObjects.Add(isAwakeImmediate, name, scene, parent);
 	}
 
+	void GameObjectOwner::RemoveOwnedGameObject(GameObject& gameObject)
+	{
+		ownedGameObjects.Remove(gameObject);
+	}
+
+#pragma region deprecated
+	/*
+
 	void GameObjectOwner::TransferOwnership(const GameObject& gameObject, GameObjectOwner& from, GameObjectOwner& to)
 	{
 		GameLoopObjectContainer<GameObject>::Transfer(gameObject, from.ownedGameObjects, to.ownedGameObjects);
 	}
 
-	void GameObjectOwner::RemoveOwnedGameObject(GameObject& gameObject)
-	{
-		ownedGameObjects.Remove(gameObject);
-	}
+	*/
+#pragma endregion
 }

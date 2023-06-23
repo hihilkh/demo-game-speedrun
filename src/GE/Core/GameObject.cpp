@@ -56,43 +56,6 @@ namespace GE
 		return CreateAndOwnGameObject(childName, belongingScene, isAwoken);
 	}
 
-	bool GameObject::SetParent(GameObject* newParent, bool keepWorldTransform)
-	{
-		if (newParent == parent) {
-			return true;
-		}
-
-		if (newParent) {
-			if (newParent->belongingScene != belongingScene) {
-				DEBUG_LOG_ERROR("GameObject：" << name << "は" << newParent->name << "と違うシーンにいる。SetParentできない。");
-				return false;
-			}
-
-			if (newParent->IsChildOf(*this, true)) {
-				DEBUG_LOG_ERROR("GameObject：" << name << "はもともと" << newParent->name << "のparent(再帰的な意味)である。SetParentできない。");
-				return false;
-			}
-		}
-
-		GameObjectOwner* originalOwner = parent ? static_cast<GameObjectOwner*>(parent) : static_cast<GameObjectOwner*>(&belongingScene);
-		GameObjectOwner* newOwner = newParent ? static_cast<GameObjectOwner*>(newParent) : static_cast<GameObjectOwner*>(&belongingScene);
-		GameObjectOwner::TransferOwnership(*this, *originalOwner, *newOwner);
-
-		Transform2DData temp;
-		if (keepWorldTransform) {
-			temp = GetTransform().GetWorldTransformData();
-		}
-
-		parent = newParent ? newParent : nullptr;
-
-		if (keepWorldTransform) {
-			GetTransform().SetWorldPos(temp.pos);
-			GetTransform().SetWorldRot(temp.rot);
-		}
-
-		return true;
-	}
-
 	bool GameObject::IsChildOf(const GameObject& other, bool recursive) const
 	{
 		if (!parent) {
@@ -205,4 +168,47 @@ namespace GE
 	{
 		return !(lhs == rhs);
 	}
+
+#pragma region deprecated
+	/*
+		bool GameObject::SetParent(GameObject* newParent, bool keepWorldTransform)
+	{
+		if (newParent == parent) {
+			return true;
+		}
+
+		if (newParent) {
+			if (newParent->belongingScene != belongingScene) {
+				DEBUG_LOG_ERROR("GameObject：" << name << "は" << newParent->name << "と違うシーンにいる。SetParentできない。");
+				return false;
+			}
+
+			if (newParent->IsChildOf(*this, true)) {
+				DEBUG_LOG_ERROR("GameObject：" << name << "はもともと" << newParent->name << "のparent(再帰的な意味)である。SetParentできない。");
+				return false;
+			}
+		}
+
+		GameObjectOwner* originalOwner = parent ? static_cast<GameObjectOwner*>(parent) : static_cast<GameObjectOwner*>(&belongingScene);
+		GameObjectOwner* newOwner = newParent ? static_cast<GameObjectOwner*>(newParent) : static_cast<GameObjectOwner*>(&belongingScene);
+		GameObjectOwner::TransferOwnership(*this, *originalOwner, *newOwner);
+
+		Transform2DData temp;
+		if (keepWorldTransform) {
+			temp = GetTransform().GetWorldTransformData();
+		}
+
+		parent = newParent ? newParent : nullptr;
+
+		if (keepWorldTransform) {
+			GetTransform().SetWorldPos(temp.pos);
+			GetTransform().SetWorldRot(temp.rot);
+		}
+
+		return true;
+	}
+	*/
+
+#pragma endregion
+
 }

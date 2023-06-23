@@ -48,7 +48,7 @@ namespace GE
 
 #pragma region ゲームループ
 		// TODO : 
-		// 現在SceneまたはPrefabの生成段階の中、このゲームループの概念を違反することもできる。
+		// 現在SceneまたはPrefabの生成段階の中、このゲームループの概念を違反することもある。
 		// 例１：
 		// - あるComponentはInit()関数がある。
 		// - そして、Prefabを生成している時(までPrefab全体が生成しなかった)、このComponentのInit()を呼び出す。
@@ -58,6 +58,7 @@ namespace GE
 		// - この時、GameObjectはAwake()が呼び出されない(Prefabはまだ全体が生成していない)。
 		// - そして、GameObject::SetParent()によってこのGameObjectを他のすでにAwake()したGameObjectのchildになる。
 		// - この場合、このGameObjectと従っているComponentsはAwake()が呼び出されない。
+		// - (追記：今、GameObject::SetParent()はdeprecatedになった)
 
 		/// <summary>
 		/// <para>生成した後の最初の処理。有効無効にかかわらず、下記の場合に一回だけ呼び出される</para>

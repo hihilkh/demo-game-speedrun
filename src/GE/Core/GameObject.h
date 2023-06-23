@@ -61,7 +61,6 @@ namespace GE
 		GameObject& AddChild(const std::string& childName);
 
 		GameObject* Parent() const { return parent; }	// 自分がconstになってもparentを変更されることができます
-		bool SetParent(GameObject* newParent, bool keepWorldTransform = false);
 		bool IsChildOf(const GameObject& other, bool recursive) const;
 		GameObject* GetChild(const std::string& name) const;
 
@@ -133,6 +132,19 @@ namespace GE
 #pragma endregion
 
 		void RemoveComponentImmediate(const Component& component);
+
+#pragma region deprecated
+
+	/*
+	public:
+		// 今の仕組みは、Parent(Owner)を変更したら、バグが生じる。
+		// 例えば、std::vectorのアクセス違反である。
+		// もっと厄介な問題は、ゲームループのルール違反だ。
+		// 例えば、1フレームでUpdate()が2回または0回呼び出されるようになる。
+		bool SetParent(GameObject* newParent, bool keepWorldTransform = false);
+	*/
+
+#pragma endregion
 
 	};
 

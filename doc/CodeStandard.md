@@ -80,11 +80,12 @@ namespace MyNamespace
 	* 簡単なコンストラクター定義/関数定義(主に`.cpp`ファイルを作成したくない場合)
 * 関数オーバライド時、`override`キーワードを付ける
 	* デストラクタを除く
-* コンストラクターの使い方：
+* 初期化の書き方：
 	* `T name;`
 	* `T name(arg1, arg2);`
-		* 文字列を除く：
+		* 文字列を除く(原因は習慣)：
 			* `std::string name = "a";`
+			* コピー初期化についてのパフォーマンス問題はコンパイラーの`コピー省略`(`Copy Elision`)に任せる
 		* また、組み込み型変数の初期化は下記になる：
 			* `bool name = true;`
 			* `int name = 1;`
@@ -92,9 +93,9 @@ namespace MyNamespace
 			* `char name = 'a';`
 	* コピーコンストラクター：`T instance2 = instance1;`
 	* `T* name = new T(arg1, arg2);`
-* 一般的に`一様初期化`を使わない。でも、場合によって、`auto`を使うことも許す。例えば、
-	* `std::vector<int> v{1, 2, 3, 4, 5};`
-	* `構造体`：`Vector2 a; a = { 1.0f, 2.0f };`とか、`player.Move({1.0f, 2.0f});`とか
+	* 一般的に`一様初期化`(`Uniform Initialization`)を使わない。でも、場合によって、`auto`を使うことも許す。例えば、
+		* `std::vector<int> v{1, 2, 3, 4, 5};`
+		* `構造体`：`Vector2 a; a = {1.0f, 2.0f};`とか、`player.Move({1.0f, 2.0f});`とか
 
 ## enum
 
@@ -113,6 +114,7 @@ namespace MyNamespace
 * 一般的にスマートポインタを使う。でも、Rawポインタを使うことも許す。
 * 特に、下記の場合にRawポインタを使う：
 	* パフォーマンスが大事になる時
+		* `GameObject`と`Component`は`unique_ptr`を使って格納されているので、`GameObject`と`Component`をたいていRawポインタまたは参照型で参照する。(ダングリングポインタを防ぐように、`EndOfFrame()`でチェックできる)
 	* 局部的な範囲でコードを見やすくなりたい時
 
 ## inline
