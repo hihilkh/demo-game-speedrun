@@ -223,7 +223,7 @@
     <ClCompile Include="src\GE\GEHeader.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GE\Debug\ColliderVisual.cpp">
+    <ClCompile Include="src\GE\Debug\Physics\ColliderVisual.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GE\Debug\Log.cpp">
@@ -374,6 +374,18 @@
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Utils\FollowPos.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Physics\Collider.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Physics\CollisionSystem.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Debug\Physics\RectColliderVisual.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Physics\RectCollider.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -642,7 +654,7 @@
     <ClInclude Include="src\GE\DataType\Vector3.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GE\Debug\ColliderVisual.h">
+    <ClInclude Include="src\GE\Debug\Physics\ColliderVisual.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GE\Debug\DebugConfig.h">
@@ -859,6 +871,21 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GE\Utils\GEConcept.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Physics\Collider.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Physics\CollisionSystem.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Debug\Physics\RectColliderVisual.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Physics\RectCollider.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Debug\Physics\ColliderVisualConfig.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

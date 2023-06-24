@@ -15,7 +15,8 @@ namespace GE
 		parent(parent),
 		transform(std::make_unique<Transform2D>(*this)),
 		isActive(true),
-		isAwoken(false)
+		isAwoken(false),
+		isStatic(false)
 	{
 	}
 

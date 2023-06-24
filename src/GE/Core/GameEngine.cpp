@@ -11,6 +11,7 @@
 #include <cassert>
 #include <algorithm>
 #include "GE/Profiling/Profiler.h"
+#include "GE/Physics/CollisionSystem.h"
 
 namespace GE
 {
@@ -134,6 +135,7 @@ namespace GE
 
 		StartPhase(loadedScenes);
 		UpdatePhase(loadedScenes);
+		PhysicsPhase();
 		RenderPhase(loadedScenes);
 		EndOfFramePhase(loadedScenes);
 		DestroyPhase();
@@ -159,6 +161,11 @@ namespace GE
 		for (auto scene : scenes) {
 			scene->OnLateUpdate();
 		}
+	}
+
+	void GameEngine::PhysicsPhase()
+	{
+		Physics::CollisionSystem::OnStartCollision();
 	}
 
 	void GameEngine::RenderPhase(const std::vector<Scene*>& scenes)

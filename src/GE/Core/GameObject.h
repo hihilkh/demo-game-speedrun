@@ -96,6 +96,9 @@ namespace GE
 		bool isActive;
 		bool isAwoken;
 
+		// TODO : staticによってのロジックの実装
+		bool isStatic;
+
 	private:
 
 #pragma region ゲームループ

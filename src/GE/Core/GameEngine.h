@@ -57,6 +57,7 @@ namespace GE
 
 		static void StartPhase(const std::vector<Scene*>& scenes);
 		static void UpdatePhase(const std::vector<Scene*>& scenes);
+		static void PhysicsPhase();
 		static void RenderPhase(const std::vector<Scene*>& scenes);
 		static void EndOfFramePhase(const std::vector<Scene*>& scenes);
 		static void DestroyPhase();

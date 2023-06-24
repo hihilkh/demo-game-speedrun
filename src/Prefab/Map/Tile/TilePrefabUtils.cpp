@@ -2,6 +2,7 @@
 #include "TilePrefabUtils.h"
 #include "GE/Render/Image.h"
 #include "Common/RenderPriority.h"
+#include "GE/Physics/RectCollider.h"
 
 namespace Prefab::Map::Tile
 {
@@ -13,10 +14,15 @@ namespace Prefab::Map::Tile
 		bool isColliderTrigger)
 	{
 		baseGameObject.SetName(name);
+		baseGameObject.SetIsStatic(true);
 
 		auto& image = baseGameObject.AddComponent<GE::Render::Image>("./data/Image/MapTile.png", imgSrcRect);
 		image.SetRenderPriority(RenderPriority::mapBack);
 
-		// TODO : Collider
+		if (hasCollider) {
+			baseGameObject.AddComponent<GE::Physics::RectCollider>(
+				isColliderTrigger, 
+				Rect::FromCenter((float)imgSrcRect.width, (float)imgSrcRect.height));
+		}
 	}
 }
