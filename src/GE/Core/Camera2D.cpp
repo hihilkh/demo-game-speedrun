@@ -54,7 +54,7 @@ namespace GE
 
 	void Camera2D::OnRender(const std::vector<const Render::Renderer*>& sortedRenderers) const
 	{
-		if (!GetEnable()) {
+		if (!GetIsEnable()) {
 			return;
 		}
 
@@ -68,7 +68,7 @@ namespace GE
 				continue;
 			}
 
-			if (!renderer->GetEnable()) {
+			if (!renderer->GetIsEnable()) {
 				continue;
 			}
 

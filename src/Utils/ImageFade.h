@@ -31,7 +31,7 @@ namespace Utils
 	public:
 		ImageFade(GameObject& gameObject, float fadeTime, bool isInitialFadedIn);
 
-		void SetEnable(bool isEnable) override;
+		void SetIsEnable(bool isEnable) override;
 
 		void SetFadeTime(float fadeTime) { totalFadeTime = fadeTime; }
 		bool GetIsFading() const;

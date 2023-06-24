@@ -19,7 +19,7 @@ namespace GE::Render
 	private:
 		static void Init(const RenderSystemInitParams& params, const GEConfig& config);
 
-		static void StartRender();
-		static void FinishRender();
+		static void OnStartRender();
+		static void OnFinishRender();
 	};
 }

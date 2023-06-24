@@ -52,6 +52,6 @@ namespace Player
 	void PlayerController::Deactivate()
 	{
 		DEBUG_LOG_WARNING("PlayerModelがnullptrになる。PlayerControllerを無効になる。");
-		SetEnable(false);
+		SetIsEnable(false);
 	}
 }

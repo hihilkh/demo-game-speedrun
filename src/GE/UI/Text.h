@@ -23,7 +23,7 @@ namespace GE::UI
 			std::shared_ptr<GE::Font::Font> font,
 			const Vector2Int& labelSize);
 
-		void SetEnable(bool isEnable) override;
+		void SetIsEnable(bool isEnable) override;
 
 #pragma region ゲッター/セッター
 

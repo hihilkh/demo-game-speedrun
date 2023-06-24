@@ -25,7 +25,7 @@ namespace GE::Render
 
 	void Renderer::OnRender(const Transform2DData& viewportData) const
 	{
-		if (!GetEnable()) {
+		if (!GetIsEnable()) {
 			return;
 		}
 

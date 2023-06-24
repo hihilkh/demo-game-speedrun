@@ -33,7 +33,7 @@ namespace UI
 	void MenuItem::SetSelecting(bool isSelecting)
 	{
 		this->isSelecting = isSelecting;
-		arrowImage.SetEnable(isSelecting);
+		arrowImage.SetIsEnable(isSelecting);
 	}
 
 	void MenuItem::Click() const

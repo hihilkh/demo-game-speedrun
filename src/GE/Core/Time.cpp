@@ -20,10 +20,10 @@ namespace GE
 
 		// deltaTimeを0にならないように、1フレームを過ごしたとみなし
 		clockTime = std::chrono::steady_clock::now() - std::chrono::milliseconds(1000 / targetFps);
-		Update();
+		OnUpdate();
 	}
 
-	void Time::Update()
+	void Time::OnUpdate()
 	{
 		auto now = std::chrono::steady_clock::now();
 		auto microseconds = std::chrono::duration_cast<std::chrono::microseconds>(now - clockTime);

@@ -35,8 +35,8 @@ namespace GE
 		explicit Component(GameObject& gameObject);
 		virtual ~Component() = default;
 
-		bool GetEnable() const { return isEnable; }
-		virtual void SetEnable(bool isEnable) { this->isEnable = isEnable; }
+		bool GetIsEnable() const { return isEnable; }
+		virtual void SetIsEnable(bool isEnable) { this->isEnable = isEnable; }
 
 		const Transform2D& GetTransform() const;
 		Transform2D& GetTransform();

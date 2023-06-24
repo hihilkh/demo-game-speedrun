@@ -36,8 +36,11 @@ namespace GE
 		const std::string& GetName() const { return name; }
 		void SetName(const std::string& newName) { name = newName; }
 
-		bool GetActive() const { return isActive; }
-		void SetActive(bool isActive) { this->isActive = isActive; }
+		bool GetIsActive() const { return isActive; }
+		void SetIsActive(bool isActive) { this->isActive = isActive; }
+
+		bool GetIsStatic() const { return isStatic; }
+		void SetIsStatic(bool isStatic) { this->isStatic = isStatic; }
 
 		Scene& GetBelongingScene() const { return belongingScene; }
 

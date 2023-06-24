@@ -149,7 +149,7 @@ namespace GE
 
 	void GameEngine::UpdatePhase(const std::vector<Scene*>& scenes)
 	{
-		Time::Update();
+		Time::OnUpdate();
 		Input::InputSystem::OnUpdate();
 
 		for (auto scene : scenes) {
@@ -163,9 +163,9 @@ namespace GE
 
 	void GameEngine::RenderPhase(const std::vector<Scene*>& scenes)
 	{
-		Render::RenderSystem::StartRender();
+		Render::RenderSystem::OnStartRender();
 		Scene::OnRender(scenes);
-		Render::RenderSystem::FinishRender();
+		Render::RenderSystem::OnFinishRender();
 	}
 
 	void GameEngine::EndOfFramePhase(const std::vector<Scene*>& scenes)

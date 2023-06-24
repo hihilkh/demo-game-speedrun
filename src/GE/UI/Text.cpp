@@ -21,18 +21,18 @@ namespace GE::UI
 	void Text::Awake()
 	{
 		Renderer::Awake();
-		SetEnable(true);
+		SetIsEnable(true);
 	}
 
 	void Text::SetFont(std::shared_ptr<GE::Font::Font> font)
 	{
 		this->font = font;
-		SetEnable(GetEnable());
+		SetIsEnable(GetIsEnable());
 	}
 
-	void Text::SetEnable(bool isEnable)
+	void Text::SetIsEnable(bool isEnable)
 	{
-		Renderer::SetEnable(isEnable && CheckCanEnable());
+		Renderer::SetIsEnable(isEnable && CheckCanEnable());
 	}
 
 	bool Text::CheckCanEnable() const

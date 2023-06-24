@@ -50,7 +50,7 @@ namespace GE::Render
 			config.screenHeight);
 	}
 
-	void RenderSystem::StartRender()
+	void RenderSystem::OnStartRender()
 	{
 		Color bgColor = GE::GetGEConfig().bgColor;
 		dg->Begin(ML::Color(bgColor.a, bgColor.r, bgColor.g, bgColor.b));
@@ -61,7 +61,7 @@ namespace GE::Render
 		dg->Begin2D();
 	}
 
-	void RenderSystem::FinishRender()
+	void RenderSystem::OnFinishRender()
 	{
 		dg->End2D();
 		dg->End();

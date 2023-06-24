@@ -17,17 +17,17 @@ namespace Utils
 
 	void ImageFade::Awake()
 	{
-		SetEnable(true);
+		SetIsEnable(true);
 
-		if (GetEnable()) {
+		if (GetIsEnable()) {
 			UpdateByState();
 		}
 	}
 
-	void ImageFade::SetEnable(bool isEnable)
+	void ImageFade::SetIsEnable(bool isEnable)
 	{
 		if (!isEnable) {
-			Component::SetEnable(isEnable);
+			Component::SetIsEnable(isEnable);
 			return;
 		}
 
@@ -36,7 +36,7 @@ namespace Utils
 		}
 		
 		if (image) {
-			Component::SetEnable(isEnable);
+			Component::SetIsEnable(isEnable);
 		} else {
 			DEBUG_LOG_WARNING("imageが見つけられない。ImageFadeが有効になることができない。");
 		}
@@ -59,9 +59,9 @@ namespace Utils
 	
 	void ImageFade::Fade(bool isFadeIn, std::function<void()> onFinished)
 	{
-		SetEnable(true);
+		SetIsEnable(true);
 
-		if (!GetEnable()) {
+		if (!GetIsEnable()) {
 			return;
 		}
 
@@ -98,7 +98,7 @@ namespace Utils
 
 	void ImageFade::FinishedFading()
 	{
-		SetEnable(false);
+		SetIsEnable(false);
 		if (onFinished) {
 			onFinished();
 			onFinished = nullptr;

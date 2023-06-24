@@ -23,6 +23,6 @@ namespace GE
 	private:
 		Time() = delete;
 		static void Init(int targetFps);
-		static void Update();
+		static void OnUpdate();
 	};
 }
