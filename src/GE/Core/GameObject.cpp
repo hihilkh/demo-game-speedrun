@@ -22,6 +22,17 @@ namespace GE
 
 	GameObject::~GameObject() = default;
 
+	void GameObject::SetIsStatic(bool isStatic, bool isRecursive)
+	{
+		this->isStatic = isStatic;
+
+		if (isRecursive) {
+			for (auto it = ownedGameObjects.SimpleBegin(), itEnd = ownedGameObjects.SimpleEnd(); it != itEnd; ++it) {
+				(*it)->SetIsStatic(isStatic, isRecursive);
+			}
+		}
+	}
+
 	GameObject& GameObject::Create(const std::string& name)
 	{
 		return Create(SceneManagement::SceneManager::GetActiveScene(), name);

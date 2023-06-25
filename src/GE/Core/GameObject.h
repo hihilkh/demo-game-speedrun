@@ -40,7 +40,7 @@ namespace GE
 		void SetIsActive(bool isActive) { this->isActive = isActive; }
 
 		bool GetIsStatic() const { return isStatic; }
-		void SetIsStatic(bool isStatic) { this->isStatic = isStatic; }
+		void SetIsStatic(bool isStatic, bool isRecursive);
 
 		Scene& GetBelongingScene() const { return belongingScene; }
 

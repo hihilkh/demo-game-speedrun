@@ -14,7 +14,6 @@ namespace Prefab::Map::Tile
 		bool isColliderTrigger)
 	{
 		baseGameObject.SetName(name);
-		baseGameObject.SetIsStatic(true);
 
 		auto& image = baseGameObject.AddComponent<GE::Render::Image>("./data/Image/MapTile.png", imgSrcRect);
 		image.SetRenderPriority(RenderPriority::mapBack);
@@ -24,5 +23,7 @@ namespace Prefab::Map::Tile
 				isColliderTrigger, 
 				Rect::FromCenter((float)imgSrcRect.width, (float)imgSrcRect.height));
 		}
+
+		baseGameObject.SetIsStatic(true, true);
 	}
 }
