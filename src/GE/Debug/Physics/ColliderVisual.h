@@ -18,6 +18,6 @@ namespace GE::Debug::Physics
 
 #else
 
-#define ADD_COLLIDER_VISUAL(draw)
+#define ADD_COLLIDER_VISUAL(collider)
 
 #endif
