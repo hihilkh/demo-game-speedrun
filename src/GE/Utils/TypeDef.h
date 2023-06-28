@@ -27,6 +27,10 @@ namespace GE
 	namespace Render::RenderLayer
 	{
 	}
+
+	namespace Physics::CollisionLayer
+	{
+	}
 }
 
 #pragma endregion
@@ -45,7 +49,8 @@ using Vector2Int		= GE::DataType::Internal::TVector2<int>;
 using Vector3			= GE::DataType::Internal::TVector3<float>;
 using Vector3Int		= GE::DataType::Internal::TVector3<int>;
 
-namespace RenderLayer	= GE::Render::RenderLayer;
+namespace RenderLayer		= GE::Render::RenderLayer;
+namespace CollisionLayer	= GE::Physics::CollisionLayer;
 
 // 備考：
 // 本質的に TRect<float> と TRect<int> は大きな違いがある。

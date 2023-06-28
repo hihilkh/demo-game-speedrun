@@ -14,6 +14,7 @@ namespace GE::DataType::Internal
 	{
 		union
 		{
+			// 普通の場合、posは左下になる
 			struct { T x, y; };
 			TVector2<T> pos;
 		};
@@ -99,7 +100,7 @@ namespace GE::DataType::Internal
 		bool OverlapWithSafeCheck(const TRect& other) const;
 		static bool OverlapWithSafeCheck(const TRect& first, const TRect& second);
 
-		void Move(const TVector2<T>& offset);
+		TRect& Move(const TVector2<T>& offset);
 	};
 
 	template<RectBaseType T> bool operator==(const TRect<T>& lhs, const TRect<T>& rhs);
@@ -308,10 +309,11 @@ namespace GE::DataType::Internal
 	}
 
 	template<RectBaseType T>
-	void TRect<T>::Move(const TVector2<T>& offset)
+	TRect<T>& TRect<T>::Move(const TVector2<T>& offset)
 	{
 		x += offset.x;
 		y += offset.y;
+		return *this;
 	}
 
 	template<RectBaseType T>

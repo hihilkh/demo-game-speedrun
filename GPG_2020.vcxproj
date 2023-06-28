@@ -373,6 +373,7 @@
     <ClCompile Include="src\Chara\Player\BasicPlayerAction.cpp" />
     <ClCompile Include="src\Chara\Player\PlayerAnimator.cpp" />
     <ClCompile Include="src\Chara\Player\RunPlayerAction.cpp" />
+    <ClCompile Include="src\Common\CollisionInfo.cpp" />
     <ClCompile Include="src\Common\Direction.cpp" />
     <ClCompile Include="src\Common\Font.cpp" />
     <ClCompile Include="src\EndingScene\EndingSceneDirector.cpp" />
@@ -392,6 +393,48 @@
       </PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="src\GE\Physics\Collider.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GE\Physics\CollisionDetection\SimpleImpl\CollisionAdjustmentInfo.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GE\Physics\CollisionDetection\SimpleImpl\RectRectDetection.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GE\Physics\CollisionLayerMatrix.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeaderFile>
@@ -986,6 +1029,14 @@
     <ClInclude Include="src\GE\Debug\Physics\ColliderVisualConfig.h" />
     <ClInclude Include="src\GE\Debug\Physics\RectColliderVisual.h" />
     <ClInclude Include="src\GE\Physics\Collider.h" />
+    <ClInclude Include="src\GE\Physics\CollisionDetection\CollidedType.h" />
+    <ClInclude Include="src\GE\Physics\CollisionDetection\ColliderTypeDef.h" />
+    <ClInclude Include="src\GE\Physics\CollisionDetection\Detector.h" />
+    <ClInclude Include="src\GE\Physics\CollisionDetection\SimpleImpl\CollisionAdjustmentInfo.h" />
+    <ClInclude Include="src\GE\Physics\CollisionDetection\SimpleImpl\Detection.h" />
+    <ClInclude Include="src\GE\Physics\CollisionDetection\RectDetector.h" />
+    <ClInclude Include="src\GE\Physics\CollisionLayer.h" />
+    <ClInclude Include="src\GE\Physics\CollisionLayerMatrix.h" />
     <ClInclude Include="src\GE\Physics\CollisionSystem.h" />
     <ClInclude Include="src\GE\Physics\RectCollider.h" />
     <ClInclude Include="src\GE\Utils\GEConcept.h" />
@@ -1000,6 +1051,7 @@
     <ClInclude Include="src\Map\Tile\TransportBeltTile.h" />
     <ClInclude Include="src\Map\Tile\UnbreakableWallTile.h" />
     <ClInclude Include="src\Map\Tile\WeakWallTile.h" />
+    <ClInclude Include="src\Common\CollisionInfo.h" />
     <ClInclude Include="src\Prefab\Character\Player\PlayerPrefab.h" />
     <ClInclude Include="src\Prefab\Map\Tile\FloorTilePrefab.h" />
     <ClInclude Include="src\Prefab\Map\Tile\TilePrefabUtils.h" />

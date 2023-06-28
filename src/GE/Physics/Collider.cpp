@@ -2,6 +2,8 @@
 #include "GE/Core/GameObject.h"
 #include "CollisionSystem.h"
 #include "GE/Debug/Physics/ColliderVisual.h"
+#include "CollisionDetection/Detector.h"
+#include "GE/Core/Transform2D.h"
 
 namespace GE::Physics
 {
@@ -9,7 +11,8 @@ namespace GE::Physics
 		Component(gameObject),
 		onCollided(),
 		onTriggered(),
-		isTrigger(isTrigger)
+		isTrigger(isTrigger),
+		layer(CollisionLayer::general)
 	{
 	}
 
@@ -23,5 +26,15 @@ namespace GE::Physics
 	void Collider::PreDestroy()
 	{
 		CollisionSystem::RemoveCollider(*this);
+	}
+
+	CollisionDetection::CollidedType Collider::CheckCollision(const Collider& other) const
+	{
+		return other.AcceptCollisionChecking(GetSelfDetector());
+	}
+
+	void Collider::RecordCollisionAdjustment(Collider& other)
+	{
+		return other.AcceptCollisionAdjustmentRecord(GetSelfDetector());
 	}
 }

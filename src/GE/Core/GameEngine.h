@@ -18,6 +18,11 @@ namespace GE
 		struct SceneConfig;
 	}
 
+	namespace Physics
+	{
+		class CollisionLayerMatrix;
+	}
+
 	namespace Internal
 	{
 		class Destroyable;
@@ -31,6 +36,7 @@ namespace GE
 		static void SetBGColor(const Color& color) { GameEngine::config.bgColor = color; }
 
 		static void SetSceneConfig(SceneManagement::SceneConfig&& config);
+		static void SetCollisionLayerMatrix(Physics::CollisionLayerMatrix&& matrix);
 
 		static int Start(const MainProgramInitParams& params);
 

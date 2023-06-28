@@ -4,6 +4,8 @@
 #include "GE/Core/GameEngine.h"
 #include "GE/MainProgram/MainProgramInitParams.h"
 #include "Scene/SceneMapping.h"
+#include "Common/CollisionInfo.h"
+#include "GE/Physics/CollisionLayerMatrix.h"
 
 int WINAPI WinMain(
 	_In_ HINSTANCE      hInstance,
@@ -13,6 +15,7 @@ int WINAPI WinMain(
 )
 {
 	GE::GameEngine::SetSceneConfig(Scene::CreateSceneConfig());
+	GE::GameEngine::SetCollisionLayerMatrix(CollisionInfo::CreateCollisionLayerMatrix());
 	int exitFlag = GE::GameEngine::Start({ hInstance, nCmdShow });
 	return exitFlag;
 }

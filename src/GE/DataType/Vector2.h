@@ -46,6 +46,15 @@ namespace GE::DataType::Internal
 
 		TVector2& Rotate(float degree) requires std::is_same_v<float, T>;
 
+		/// <summary>
+		/// x軸(1, 0)からのなす角。
+		/// </summary>
+		/// <returns>
+		/// <para>(-180, 180]</para>
+		/// <para>特殊状況(例えば、zero vector)：0</para>
+		/// </returns>
+		float AngleFromXAxis() const;
+
 		// 暗黙的な変換
 
 		operator TVector2<float>() const requires (!std::is_same_v<float, T>);
@@ -232,6 +241,22 @@ namespace GE::DataType::Internal
 		y = tempX * sinValue + y * cosValue;
 
 		return *this;
+	}
+
+	template<VectorBaseType T>
+	float TVector2<T>::AngleFromXAxis() const
+	{
+		float magnitude = this->Magnitude();
+		if (magnitude == 0) {
+			return 0;
+		}
+
+		float cosAngle = (float)Dot(*this, TVector2::right) / magnitude;
+		float angle = Math::ToAngle(std::acos(cosAngle));
+		if (this->y < 0) {
+			angle = -angle;
+		}
+		return angle;
 	}
 
 	template<VectorBaseType T>

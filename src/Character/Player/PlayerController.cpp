@@ -36,7 +36,6 @@ namespace Player
 		if (GE::Input::GetKeyOn(GE::Input::Key::right)) {
 			moveDirection.x += 1;
 		}
-		moveDirection.Normalize();
 
 		model->Move(moveDirection, walkSpeed);
 	}

@@ -3,6 +3,7 @@
 #include "GE/Render/Image.h"
 #include "Common/RenderPriority.h"
 #include "GE/Physics/RectCollider.h"
+#include "Common/CollisionInfo.h"
 
 namespace Prefab::Map::Tile
 {
@@ -19,9 +20,10 @@ namespace Prefab::Map::Tile
 		image.SetRenderPriority(RenderPriority::mapBack);
 
 		if (hasCollider) {
-			baseGameObject.AddComponent<GE::Physics::RectCollider>(
-				isColliderTrigger, 
+			auto& collider = baseGameObject.AddComponent<GE::Physics::RectCollider>(
+				isColliderTrigger,
 				Rect::FromCenter((float)imgSrcRect.width, (float)imgSrcRect.height));
+			collider.SetCollisionLayer(CollisionInfo::mapLayer);
 		}
 
 		baseGameObject.SetIsStatic(true, true);

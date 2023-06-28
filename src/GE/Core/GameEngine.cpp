@@ -26,6 +26,11 @@ namespace GE
 		SceneManagement::SceneManager::SetConfig(std::move(config));
 	}
 
+	void GameEngine::SetCollisionLayerMatrix(Physics::CollisionLayerMatrix&& matrix)
+	{
+		Physics::CollisionSystem::SetCollisionLayerMatrix(std::move(matrix));
+	}
+
 	// 参考：https://learn.microsoft.com/en-us/cpp/windows/walkthrough-creating-windows-desktop-applications-cpp?view=msvc-170
 	int GameEngine::Start(const MainProgramInitParams& params)
 	{
