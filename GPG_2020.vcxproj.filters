@@ -373,9 +373,6 @@
     <ClCompile Include="src\Prefab\Character\Player\PlayerPrefab.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Utils\FollowPos.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\GE\Physics\Collider.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
@@ -877,9 +874,6 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Character\Player\PlayerConfig.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Utils\FollowPos.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GE\Utils\GEConcept.h">

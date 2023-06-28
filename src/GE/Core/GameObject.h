@@ -124,13 +124,13 @@ namespace GE
 #pragma region Prefabに呼び出される関数
 
 		template<typename PrefabT>
-		friend PrefabReturnType<PrefabT> Instantiate(PrefabT prefab);
+		friend PrefabReturnType<PrefabT> Instantiate(PrefabT prefab, GameObject* parent);
 
 		template<typename PrefabT>
 		friend PrefabReturnType<PrefabT> Instantiate(PrefabT prefab, Scene& scene);
 
 		template<typename PrefabT>
-		friend PrefabReturnType<PrefabT> InstantiatePersistent(PrefabT prefab);
+		friend PrefabReturnType<PrefabT> InstantiatePersistent(PrefabT prefab, GameObject* parent);
 
 		static GameObject& CreateWithDelayAwake(const std::string& name = "GameObject");
 		static GameObject& CreateWithDelayAwake(Scene& scene, const std::string& name = "GameObject");

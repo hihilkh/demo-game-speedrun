@@ -15,8 +15,11 @@ namespace GE
 	using PrefabReturnType = decltype(std::declval<PrefabT>()(std::declval<GameObject&>()));
 
 	template<typename PrefabT>
-	PrefabReturnType<PrefabT> Instantiate(PrefabT prefab);
+	PrefabReturnType<PrefabT> Instantiate(PrefabT prefab, GameObject* parent = nullptr);
 
 	template<typename PrefabT>
 	PrefabReturnType<PrefabT> Instantiate(PrefabT prefab, Scene& scene);
+
+	template<typename PrefabT>
+	PrefabReturnType<PrefabT> InstantiatePersistent(PrefabT prefab, GameObject* parent = nullptr);
 }

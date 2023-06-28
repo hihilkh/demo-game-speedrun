@@ -1,6 +1,8 @@
 ﻿#include "GE/GEHeader.h"
 #include "PlayerPrefab.h"
 
+#include "Prefab/Camera/MainCameraPrefab.h"
+
 #include "GE/Render/Image.h"
 #include "Common/RenderPriority.h"
 
@@ -16,6 +18,9 @@ namespace Prefab::Player
 	::Player::PlayerModel& PlayerPrefab::operator()(GameObject& baseGameObject) const
 	{
 		baseGameObject.SetName("Player");
+
+		// ゲームカメラ
+		GE::Instantiate(Prefab::Camera::MainCameraPrefab(), &baseGameObject);
 
 		GameObject& imageBase = baseGameObject.AddChild("ImageBase");
 		imageBase.GetTransform().pos.y = ::Player::playerHeight / 2;

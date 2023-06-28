@@ -12,8 +12,5 @@ namespace Player
 
 	public:
 		void Move(const Vector2& direction, float speed);
-
-	protected:
-		void Start() override;
 	};
 }

@@ -8,11 +8,15 @@ namespace GE
 #pragma region 関数テンプレート定義
 
 	template<typename PrefabT>
-	PrefabReturnType<PrefabT> Instantiate(PrefabT prefab)
+	PrefabReturnType<PrefabT> Instantiate(PrefabT prefab, GameObject* parent)
 	{
-		GameObject& baseGameObject = GameObject::CreateWithDelayAwake();
-		PrefabReturnType<PrefabT> returnValue = prefab(baseGameObject);
-		baseGameObject.AwakeIfSceneLoaded();
+		GameObject* baseGameObject = parent;
+		if (baseGameObject == nullptr) {
+			baseGameObject = &GameObject::CreateWithDelayAwake();
+		}
+
+		PrefabReturnType<PrefabT> returnValue = prefab(*baseGameObject);
+		baseGameObject->AwakeIfSceneLoaded();
 
 		return returnValue;
 	}
@@ -31,11 +35,15 @@ namespace GE
 	/// PrefabをPersistent Sceneの中で生成する。つまり、sceneを遷移する際にも破棄されない。
 	/// </summary>
 	template<typename PrefabT>
-	PrefabReturnType<PrefabT> InstantiatePersistent(PrefabT prefab)
+	PrefabReturnType<PrefabT> InstantiatePersistent(PrefabT prefab, GameObject* parent)
 	{
-		GameObject& baseGameObject = GameObject::CreatePersistentWithDelayAwake();
-		PrefabReturnType<PrefabT> returnValue = prefab(baseGameObject);
-		baseGameObject.AwakeIfSceneLoaded();
+		GameObject* baseGameObject = parent;
+		if (baseGameObject == nullptr) {
+			baseGameObject = &GameObject::CreatePersistentWithDelayAwake();
+		}
+
+		PrefabReturnType<PrefabT> returnValue = prefab(*baseGameObject);
+		baseGameObject->AwakeIfSceneLoaded();
 
 		return returnValue;
 	}
