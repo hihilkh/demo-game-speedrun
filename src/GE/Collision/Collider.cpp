@@ -7,11 +7,12 @@
 
 namespace GE::Collision
 {
-	Collider::Collider(GameObject& gameObject, bool isTrigger) :
+	Collider::Collider(GameObject& gameObject, bool isTrigger, bool isApplyCollisionAdjustment) :
 		Component(gameObject),
 		onCollided(),
 		onTriggered(),
 		isTrigger(isTrigger),
+		isApplyCollisionAdjustment(isApplyCollisionAdjustment),
 		layer(CollisionLayer::general)
 	{
 	}

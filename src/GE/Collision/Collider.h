@@ -26,11 +26,14 @@ namespace GE::Collision
 		Event<const Collider&> onTriggered;
 
 	public:
-		Collider(GameObject& gameObject, bool isTrigger);
+		Collider(GameObject& gameObject, bool isTrigger, bool isApplyCollisionAdjustment);
 		virtual ~Collider() = default;
 
 		bool GetIsTrigger() const { return isTrigger; }
 		void SetIsTrigger(bool isTrigger) { this->isTrigger = isTrigger; }
+
+		bool GetIsApplyCollisionAdjustment() const { return isApplyCollisionAdjustment; }
+		void SetIsApplyCollisionAdjustment(bool isApply) { isApplyCollisionAdjustment = isApply; }
 
 		CollisionLayer::Bitmask GetCollisionLayer() const { return layer; }
 		void SetCollisionLayer(CollisionLayer::Bitmask layer) { this->layer = layer; }
@@ -54,6 +57,7 @@ namespace GE::Collision
 
 	private:
 		bool isTrigger;
+		bool isApplyCollisionAdjustment;
 		CollisionLayer::Bitmask layer;
 	};
 }

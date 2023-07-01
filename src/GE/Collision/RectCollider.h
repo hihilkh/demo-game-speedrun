@@ -10,7 +10,7 @@ namespace GE::Collision
 	class RectCollider : public Collider
 	{
 	public:
-		RectCollider(GameObject& gameObject, bool isTrigger, const Rect& rect);
+		RectCollider(GameObject& gameObject, bool isTrigger, bool isApplyCollisionAdjustment, const Rect& rect);
 
 		const Rect& GetRect() const { return rect; }
 		void SetRect(const Rect& rect) { this->rect = rect; }

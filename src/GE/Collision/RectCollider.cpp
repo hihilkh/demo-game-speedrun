@@ -4,8 +4,8 @@
 
 namespace GE::Collision
 {
-	RectCollider::RectCollider(GameObject& gameObject, bool isTrigger, const Rect& rect) :
-		Collider(gameObject, isTrigger),
+	RectCollider::RectCollider(GameObject& gameObject, bool isTrigger, bool isApplyCollisionAdjustment, const Rect& rect) :
+		Collider(gameObject, isTrigger, isApplyCollisionAdjustment),
 		rect(rect),
 		detector(*this)
 	{

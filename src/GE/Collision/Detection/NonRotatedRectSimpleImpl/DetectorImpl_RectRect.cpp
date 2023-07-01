@@ -3,7 +3,6 @@
 #include "GE/DataType/Vector2.h"
 #include "GE/Core/Transform2D.h"
 #include "GE/Debug/Log.h"
-#include "GE/Core/GameObject.h"
 #include "../DetectorFactory.h"
 
 namespace GE::Collision::Detection::NonRotatedRectSimpleImpl
@@ -52,7 +51,7 @@ namespace GE::Collision::Detection::NonRotatedRectSimpleImpl
 		{
 			// この実装は回転を無視する
 
-			if (lhs.gameObject.GetIsStatic() && rhs.gameObject.GetIsStatic()) {
+			if (!lhs.GetIsApplyCollisionAdjustment() && !rhs.GetIsApplyCollisionAdjustment()) {
 				return;
 			}
 
@@ -61,12 +60,12 @@ namespace GE::Collision::Detection::NonRotatedRectSimpleImpl
 			AdjustDir rhsAdjustDirX = vectorFromTwoCenter.x > 0 ? AdjustDir::Right : AdjustDir::Left;
 			AdjustDir rhsAdjustDirY = vectorFromTwoCenter.y > 0 ? AdjustDir::Up : AdjustDir::Down;
 
-			if (lhs.gameObject.GetIsStatic()) {
+			if (!lhs.GetIsApplyCollisionAdjustment()) {
 				float deltaPosX = GetDeltaPos(rhsRect, lhsRect, rhsAdjustDirX);
 				float deltaPosY = GetDeltaPos(rhsRect, lhsRect, rhsAdjustDirY);
 
 				rhsDetector.RecordCollision(CollisionRecord({ deltaPosX , deltaPosY }));
-			} else if (rhs.gameObject.GetIsStatic()) {
+			} else if (!rhs.GetIsApplyCollisionAdjustment()) {
 				float deltaPosX = GetDeltaPos(lhsRect, rhsRect, OppositeDir(rhsAdjustDirX));
 				float deltaPosY = GetDeltaPos(lhsRect, rhsRect, OppositeDir(rhsAdjustDirY));
 
@@ -105,7 +104,9 @@ namespace GE::Collision::Detection::NonRotatedRectSimpleImpl
 			rhsTransformData.rot);
 
 		if (collidedType == CollidedType::Overlap) {
-			CalculateAndRecordCollision(lhs, rhs, lhsRect, rhsRect, lhsDetector, rhsDetector);
+			if (!lhs.GetIsTrigger() && !rhs.GetIsTrigger()) {
+				CalculateAndRecordCollision(lhs, rhs, lhsRect, rhsRect, lhsDetector, rhsDetector);
+			}
 		}
 
 		return collidedType;

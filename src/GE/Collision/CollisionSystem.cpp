@@ -2,7 +2,6 @@
 #include <unordered_map>
 #include <set>
 #include "Collider.h"
-#include "GE/Core/GameObject.h"
 
 namespace GE::Collision
 {
@@ -64,10 +63,10 @@ namespace GE::Collision
 						target->onTriggered.Invoke(*collider);
 					} else {
 						if (collidedType == Detection::CollidedType::Overlap) {
-							if (!collider->gameObject.GetIsStatic()) {
+							if (collider->GetIsApplyCollisionAdjustment()) {
 								colliderToAdjustPos.insert(collider);
 							}
-							if (!target->gameObject.GetIsStatic()) {
+							if (target->GetIsApplyCollisionAdjustment()) {
 								colliderToAdjustPos.insert(target);
 							}
 						}
