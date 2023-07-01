@@ -11,7 +11,6 @@ namespace Player
 	void PlayerModel::Move(const Vector2& direction, float speed)
 	{
 		// TODO : 仮処理
-		GetTransform().pos.x += direction.x * speed;
-		GetTransform().pos.y += direction.y * speed;
+		GetTransform().SetPos(GetTransform().GetPos() + Vector2(direction.x * speed, direction.y * speed));
 	}
 }

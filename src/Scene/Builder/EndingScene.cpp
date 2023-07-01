@@ -19,7 +19,7 @@ namespace Scene
 
 		// congratsText
 		GameObject& congratsObj = GameObject::Create(*scene, "Congrats");
-		congratsObj.GetTransform().pos.y = 150.0f;
+		congratsObj.GetTransform().SetPosY(150.0f);
 		auto& congratsText = congratsObj.AddComponent<GE::UI::Text>(
 			largeFont,
 			Vector2Int(config.screenWidth, 100));
@@ -27,7 +27,7 @@ namespace Scene
 
 		// resultText
 		GameObject& resultObj = GameObject::Create(*scene, "Result");
-		resultObj.GetTransform().pos.y = 50.0f;
+		resultObj.GetTransform().SetPosY(50.0f);
 		auto& resultText = resultObj.AddComponent<GE::UI::Text>(
 			largeFont,
 			Vector2Int(config.screenWidth, 100));
@@ -40,7 +40,7 @@ namespace Scene
 		float menuItemSpacing = -80.0f;
 		for (int i = 0; i < menuItems.capacity(); ++i) {
 			UI::MenuItem& menuItem = GE::Instantiate(Prefab::UI::MenuItemPrefab(), *scene);
-			menuItem.GetTransform().pos.y = currentMenuItemPosY;
+			menuItem.GetTransform().SetPosY(currentMenuItemPosY);
 			currentMenuItemPosY += menuItemSpacing;
 			menuItems.push_back(&menuItem);
 		}

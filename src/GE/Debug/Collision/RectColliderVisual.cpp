@@ -50,7 +50,7 @@ namespace GE::Debug::Collision
 			image.SetColor(collider.GetIsTrigger() ? triggerColor : colliderColor);
 
 			const Rect& rect = collider.GetRect();
-			GetTransform().pos = rect.Center();
+			GetTransform().SetPos(rect.Center());
 			image.SetImageSize(rect.size);
 		}
 

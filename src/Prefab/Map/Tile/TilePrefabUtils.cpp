@@ -22,10 +22,9 @@ namespace Prefab::Map::Tile
 		if (hasCollider) {
 			auto& collider = baseGameObject.AddComponent<GE::Collision::RectCollider>(
 				isColliderTrigger,
+				false,
 				Rect::FromCenter((float)imgSrcRect.width, (float)imgSrcRect.height));
 			collider.SetCollisionLayer(CollisionInfo::mapLayer);
 		}
-
-		baseGameObject.SetIsStatic(true, true);
 	}
 }

@@ -23,7 +23,7 @@ namespace Prefab::Player
 		GE::Instantiate(Prefab::Camera::MainCameraPrefab(), &baseGameObject);
 
 		GameObject& imageBase = baseGameObject.AddChild("ImageBase");
-		imageBase.GetTransform().pos.y = ::Player::playerHeight / 2;
+		imageBase.GetTransform().SetPosY(::Player::playerHeight / 2);
 
 		// playerImage
 		GameObject& playerImageObject = imageBase.AddChild("PlayerImage");
@@ -33,7 +33,7 @@ namespace Prefab::Player
 
 		// shadowImage
 		GameObject& shadowImageObject = imageBase.AddChild("ShadowImage");
-		shadowImageObject.GetTransform().pos.y = -::Player::playerHeight / 2;
+		shadowImageObject.GetTransform().SetPosY(-::Player::playerHeight / 2);
 		RectPixel playerShadowSrcRect(0, 0, ::Player::shadowWidth, ::Player::shadowHeight);
 		auto& shadowImage = shadowImageObject.AddComponent<GE::Render::Image>("./data/Image/Shadow.png", playerShadowSrcRect);
 		shadowImage.SetRenderPriority(RenderPriority::player - 1);
@@ -41,6 +41,7 @@ namespace Prefab::Player
 		// Collider
 		auto& collider = baseGameObject.AddComponent<GE::Collision::RectCollider>(
 			false,
+			true,
 			Rect::FromCenter((float)::Player::shadowWidth, (float)::Player::shadowHeight));
 		collider.SetCollisionLayer(CollisionInfo::playerLayer);
 

@@ -12,7 +12,9 @@ namespace Map
 
 	void Tile::SetPos(const Vector2Int& pos)
 	{
-		GetTransform().pos.x = (float)(tileWidth * pos.x);
-		GetTransform().pos.y = (float)(tileHeight * pos.y);
+		GetTransform().SetPos(
+			(float)(tileWidth * pos.x), 
+			(float)(tileHeight * pos.y)
+		);
 	}
 }

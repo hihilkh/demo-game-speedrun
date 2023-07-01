@@ -1,5 +1,6 @@
 ﻿#include "Transform2D.h"
 #include "GameObject.h"
+#include "GE/Debug/Log.h"
 
 namespace GE
 {
@@ -9,26 +10,7 @@ namespace GE
 	{
 	}
 
-	void Transform2D::SetWorldPos(const Vector2& worldPos)
-	{
-		if (gameObject.Parent()) {
-			auto parentWorldTransform = gameObject.Parent()->GetTransform().GetWorldTransformData();
-			pos = worldPos;
-			pos -= parentWorldTransform.pos;
-			pos.Rotate(-parentWorldTransform.rot);
-		} else {
-			pos = worldPos;
-		}
-	}
-
-	void Transform2D::SetWorldRot(float worldRot)
-	{
-		if (gameObject.Parent()) {
-			rot = worldRot - gameObject.Parent()->GetTransform().GetWorldRot();
-		} else {
-			rot = worldRot;
-		}
-	}
+#pragma region ゲッター
 
 	Vector2 Transform2D::GetWorldPos() const
 	{
@@ -74,4 +56,93 @@ namespace GE
 			return Transform2DData(pos, rot);
 		}
 	}
+
+#pragma endregion
+
+#pragma region セッター
+
+	bool Transform2D::CanChangePos() const
+	{
+		bool canChangePos = !gameObject.GetIsStatic();
+
+#ifdef _DEBUG
+		if (!canChangePos) {
+			DEBUG_LOG_WARNING("GameObjectはStaticになる。位置の変更ができない。");
+		}
+#endif
+
+		return canChangePos;
+	}
+
+	void Transform2D::SetPos(float x, float y)
+	{
+		SetPos({x, y});
+	}
+
+	void Transform2D::SetPos(const Vector2& pos)
+	{
+		if (!CanChangePos()) {
+			return;
+		}
+
+		this->pos = pos;
+	}
+
+	void Transform2D::SetPosX(float x)
+	{
+		if (!CanChangePos()) {
+			return;
+		}
+
+		pos.x = x;
+	}
+
+	void Transform2D::SetPosY(float y)
+	{
+		if (!CanChangePos()) {
+			return;
+		}
+
+		pos.y = y;
+	}
+
+	void Transform2D::SetRot(float rot)
+	{
+		if (!CanChangePos()) {
+			return;
+		}
+
+		this->rot = rot;
+	}
+
+	void Transform2D::SetWorldPos(const Vector2& worldPos)
+	{
+		if (!CanChangePos()) {
+			return;
+		}
+
+		if (gameObject.Parent()) {
+			auto parentWorldTransform = gameObject.Parent()->GetTransform().GetWorldTransformData();
+			pos = worldPos;
+			pos -= parentWorldTransform.pos;
+			pos.Rotate(-parentWorldTransform.rot);
+		} else {
+			pos = worldPos;
+		}
+	}
+
+	void Transform2D::SetWorldRot(float worldRot)
+	{
+		if (!CanChangePos()) {
+			return;
+		}
+
+		if (gameObject.Parent()) {
+			rot = worldRot - gameObject.Parent()->GetTransform().GetWorldRot();
+		} else {
+			rot = worldRot;
+		}
+	}
+
+#pragma endregion
 }

@@ -21,7 +21,7 @@ namespace Prefab::UI
 		arrowImage.SetColor(Color::green);
 		
 		// textの左側 (ちょっと隙間が入っている (arrowImageのsizeの半分))
-		arrowObj.GetTransform().pos.x = -(text.GetLabelSize().x / 2.0f + arrowImage.GetImageSize().x);
+		arrowObj.GetTransform().SetPosX(-(text.GetLabelSize().x / 2.0f + arrowImage.GetImageSize().x));
 
 		return baseGameObject.AddComponent<::UI::MenuItem>(text, arrowImage);
 	}

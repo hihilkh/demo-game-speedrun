@@ -15,7 +15,7 @@ namespace Scene
 
 		// タイトルロゴ
 		GameObject& logoObj = GameObject::Create(*scene, "Logo");
-		logoObj.GetTransform().pos.y = 100.0f;
+		logoObj.GetTransform().SetPosY(100.0f);
 
 		auto& logoImage = logoObj.AddComponent<GE::Render::Image>("./data/Image/Title.png");
 		logoImage.SetRenderLayer(RenderLayer::ui);
@@ -27,7 +27,7 @@ namespace Scene
 		float menuItemSpacing = -80.0f;
 		for (int i = 0; i < menuItems.capacity(); ++i) {
 			UI::MenuItem& menuItem = GE::Instantiate(Prefab::UI::MenuItemPrefab(), *scene);
-			menuItem.GetTransform().pos.y = currentMenuItemPosY;
+			menuItem.GetTransform().SetPosY(currentMenuItemPosY);
 			currentMenuItemPosY += menuItemSpacing;
 			menuItems.push_back(&menuItem);
 		}

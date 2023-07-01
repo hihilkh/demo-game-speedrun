@@ -54,6 +54,7 @@ namespace Map
 		Tile* tile = InstantiateTile(type, direction);
 		if (tile) {
 			tile->SetPos(pos);
+			tile->gameObject.SetIsStatic(true, true);
 		}
 	}
 
