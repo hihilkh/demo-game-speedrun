@@ -1,9 +1,9 @@
 ﻿#pragma once
 
 #include "GE/Utils/TypeDef.h"
-#include "GE/Physics/CollisionLayer.h"
+#include "GE/Collision/CollisionLayer.h"
 
-namespace GE::Physics
+namespace GE::Collision
 {
 	class CollisionLayerMatrix;
 }
@@ -14,5 +14,5 @@ namespace CollisionInfo
 	inline const CollisionLayer::Bitmask mapObjectLayer = 1 << 2;
 	inline const CollisionLayer::Bitmask playerLayer	= 1 << 3;
 
-	GE::Physics::CollisionLayerMatrix CreateCollisionLayerMatrix();
+	GE::Collision::CollisionLayerMatrix CreateCollisionLayerMatrix();
 }

@@ -5,16 +5,16 @@
 #include "GE/Debug/Log.h"
 
 #include "GE/Core/GameObject.h"
-#include "GE/Physics/Collider.h"
+#include "GE/Collision/Collider.h"
 
-#include "GE/Physics/RectCollider.h"
+#include "GE/Collision/RectCollider.h"
 #include "RectColliderVisual.h"
 
-namespace GE::Debug::Physics
+namespace GE::Debug::Collision
 {
-	void AddColliderVisual(const GE::Physics::Collider& collider)
+	void AddColliderVisual(const GE::Collision::Collider& collider)
 	{
-		auto rectCollider = dynamic_cast<const GE::Physics::RectCollider*>(&collider);
+		auto rectCollider = dynamic_cast<const GE::Collision::RectCollider*>(&collider);
 		if (rectCollider) {
 			AddRectColliderVisual(*rectCollider);
 			return;

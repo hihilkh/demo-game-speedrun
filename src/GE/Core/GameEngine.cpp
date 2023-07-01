@@ -11,7 +11,7 @@
 #include <cassert>
 #include <algorithm>
 #include "GE/Profiling/Profiler.h"
-#include "GE/Physics/CollisionSystem.h"
+#include "GE/Collision/CollisionSystem.h"
 
 namespace GE
 {
@@ -26,9 +26,9 @@ namespace GE
 		SceneManagement::SceneManager::SetConfig(std::move(config));
 	}
 
-	void GameEngine::SetCollisionLayerMatrix(Physics::CollisionLayerMatrix&& matrix)
+	void GameEngine::SetCollisionLayerMatrix(Collision::CollisionLayerMatrix&& matrix)
 	{
-		Physics::CollisionSystem::SetCollisionLayerMatrix(std::move(matrix));
+		Collision::CollisionSystem::SetCollisionLayerMatrix(std::move(matrix));
 	}
 
 	// 参考：https://learn.microsoft.com/en-us/cpp/windows/walkthrough-creating-windows-desktop-applications-cpp?view=msvc-170
@@ -140,7 +140,7 @@ namespace GE
 
 		StartPhase(loadedScenes);
 		UpdatePhase(loadedScenes);
-		PhysicsPhase();
+		CollisionPhase();
 		RenderPhase(loadedScenes);
 		EndOfFramePhase(loadedScenes);
 		DestroyPhase();
@@ -168,9 +168,9 @@ namespace GE
 		}
 	}
 
-	void GameEngine::PhysicsPhase()
+	void GameEngine::CollisionPhase()
 	{
-		Physics::CollisionSystem::OnStartCollision();
+		Collision::CollisionSystem::OnStartCollision();
 	}
 
 	void GameEngine::RenderPhase(const std::vector<Scene*>& scenes)

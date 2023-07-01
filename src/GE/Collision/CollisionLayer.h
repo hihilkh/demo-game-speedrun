@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-namespace GE::Physics::CollisionLayer
+namespace GE::Collision::CollisionLayer
 {
 	using Bitmask = std::uint32_t;
 

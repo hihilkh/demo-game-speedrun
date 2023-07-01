@@ -1,6 +1,6 @@
 ﻿#include "CollisionLayerMatrix.h"
 
-namespace GE::Physics
+namespace GE::Collision
 {
 	void CollisionLayerMatrix::AddCollisionRule(CollisionLayer::Bitmask layer, CollisionLayer::Bitmask targets)
 	{

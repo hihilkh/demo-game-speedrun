@@ -18,7 +18,7 @@ namespace GE
 		struct SceneConfig;
 	}
 
-	namespace Physics
+	namespace Collision
 	{
 		class CollisionLayerMatrix;
 	}
@@ -36,7 +36,7 @@ namespace GE
 		static void SetBGColor(const Color& color) { GameEngine::config.bgColor = color; }
 
 		static void SetSceneConfig(SceneManagement::SceneConfig&& config);
-		static void SetCollisionLayerMatrix(Physics::CollisionLayerMatrix&& matrix);
+		static void SetCollisionLayerMatrix(Collision::CollisionLayerMatrix&& matrix);
 
 		static int Start(const MainProgramInitParams& params);
 
@@ -63,7 +63,7 @@ namespace GE
 
 		static void StartPhase(const std::vector<Scene*>& scenes);
 		static void UpdatePhase(const std::vector<Scene*>& scenes);
-		static void PhysicsPhase();
+		static void CollisionPhase();
 		static void RenderPhase(const std::vector<Scene*>& scenes);
 		static void EndOfFramePhase(const std::vector<Scene*>& scenes);
 		static void DestroyPhase();

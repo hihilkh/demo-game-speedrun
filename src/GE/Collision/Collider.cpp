@@ -1,11 +1,11 @@
 ﻿#include "Collider.h"
 #include "GE/Core/GameObject.h"
 #include "CollisionSystem.h"
-#include "GE/Debug/Physics/ColliderVisual.h"
-#include "CollisionDetection/Detector.h"
+#include "GE/Debug/Collision/ColliderVisual.h"
+#include "Detection/Detector.h"
 #include "GE/Core/Transform2D.h"
 
-namespace GE::Physics
+namespace GE::Collision
 {
 	Collider::Collider(GameObject& gameObject, bool isTrigger) :
 		Component(gameObject),
@@ -28,13 +28,8 @@ namespace GE::Physics
 		CollisionSystem::RemoveCollider(*this);
 	}
 
-	CollisionDetection::CollidedType Collider::CheckCollision(const Collider& other) const
+	Detection::CollidedType Collider::CheckCollision(Collider& other)
 	{
 		return other.AcceptCollisionChecking(GetSelfDetector());
-	}
-
-	void Collider::RecordCollisionAdjustment(Collider& other)
-	{
-		return other.AcceptCollisionAdjustmentRecord(GetSelfDetector());
 	}
 }

@@ -16,6 +16,8 @@ namespace GE::DataType::Internal
 	template<VectorBaseType T>
 	struct TVector3
 	{
+		static constexpr std::size_t vectorSize = 3;
+
 		T x, y, z;
 
 		TVector3();
@@ -27,6 +29,9 @@ namespace GE::DataType::Internal
 		TVector3& operator/=(T divisor);
 
 		TVector3 operator-() const;
+
+		T operator[](std::size_t i) const;
+		T& operator[](std::size_t i);
 
 		TVector3& Scale(T multipleX, T multipleY, T multipleZ);
 		TVector3& Scale(const TVector3& other);
@@ -160,6 +165,20 @@ namespace GE::DataType::Internal
 	TVector3<T> TVector3<T>::operator-() const
 	{
 		return TVector3<T>(-x, -y, -z);
+	}
+
+	template<VectorBaseType T>
+	T TVector3<T>::operator[](std::size_t i) const
+	{
+		assert(i < TVector3::vectorSize && "Vector3 : IndexOutOfBounds");
+		return *(&x + i);
+	}
+
+	template<VectorBaseType T>
+	T& TVector3<T>::operator[](std::size_t i)
+	{
+		assert(i < TVector3::vectorSize && "Vector3 : IndexOutOfBounds");
+		return *(&x + i);
 	}
 
 	template<VectorBaseType T>

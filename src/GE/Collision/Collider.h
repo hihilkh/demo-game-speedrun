@@ -3,14 +3,14 @@
 #include "GE/Core/Component.h"
 #include "GE/Core/Event.h"
 #include "CollisionLayer.h"
-#include "CollisionDetection/CollidedType.h"
+#include "Detection/CollidedType.h"
 #include "GE/Utils/TypeDef.h"
 #include "GE/DataType/Vector2.h"
 #include <vector>
 
-namespace GE::Physics
+namespace GE::Collision
 {
-	namespace CollisionDetection
+	namespace Detection
 	{
 		class Detector;
 	}
@@ -39,18 +39,15 @@ namespace GE::Physics
 		void Start() override;
 		void PreDestroy() override;
 
-#pragma region CollisionDetection
+#pragma region Detection
 	private:
-		virtual CollisionDetection::CollidedType AcceptCollisionChecking(const CollisionDetection::Detector& detector) const = 0;
-		virtual void AcceptCollisionAdjustmentRecord(CollisionDetection::Detector& detector) = 0;
-		
-		virtual CollisionDetection::Detector& GetSelfDetector() = 0;
-		virtual const CollisionDetection::Detector& GetSelfDetector() const = 0;
+		virtual Detection::CollidedType AcceptCollisionChecking(Detection::Detector& fromDetector) = 0;
+
+		virtual Detection::Detector& GetSelfDetector() = 0;
+		virtual const Detection::Detector& GetSelfDetector() const = 0;
 
 		// CollisionSystemに呼び出される関数
-		CollisionDetection::CollidedType CheckCollision(const Collider& other) const;
-		void RecordCollisionAdjustment(Collider& other);
-
+		Detection::CollidedType CheckCollision(Collider& other);
 		virtual void AdjustCollidedPos() = 0;
 
 #pragma endregion

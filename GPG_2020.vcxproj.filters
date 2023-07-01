@@ -223,7 +223,7 @@
     <ClCompile Include="src\GE\GEHeader.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GE\Debug\Physics\ColliderVisual.cpp">
+    <ClCompile Include="src\GE\Debug\Collision\ColliderVisual.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GE\Debug\Log.cpp">
@@ -373,28 +373,37 @@
     <ClCompile Include="src\Prefab\Character\Player\PlayerPrefab.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GE\Physics\Collider.cpp">
+    <ClCompile Include="src\GE\Collision\Collider.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GE\Physics\CollisionSystem.cpp">
+    <ClCompile Include="src\GE\Collision\CollisionSystem.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GE\Debug\Physics\RectColliderVisual.cpp">
+    <ClCompile Include="src\GE\Debug\Collision\RectColliderVisual.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GE\Physics\RectCollider.cpp">
+    <ClCompile Include="src\GE\Collision\RectCollider.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GE\Physics\CollisionLayerMatrix.cpp">
+    <ClCompile Include="src\GE\Collision\CollisionLayerMatrix.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Common\CollisionInfo.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GE\Physics\CollisionDetection\SimpleImpl\RectRectDetection.cpp">
+    <ClCompile Include="src\GE\Collision\Detection\NonRotatedRectSimpleImpl\DetectorImpl_RectRect.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GE\Physics\CollisionDetection\SimpleImpl\CollisionAdjustmentInfo.cpp">
+    <ClCompile Include="src\GE\Collision\Detection\NonRotatedRectSimpleImpl\CollisionRecordHandler.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Collision\Detection\RectDetector.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Collision\Detection\NonRotatedRectSimpleImpl\DetectorImpl.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Collision\Detection\DetectorFactory.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -663,7 +672,7 @@
     <ClInclude Include="src\GE\DataType\Vector3.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GE\Debug\Physics\ColliderVisual.h">
+    <ClInclude Include="src\GE\Debug\Collision\ColliderVisual.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GE\Debug\DebugConfig.h">
@@ -879,46 +888,58 @@
     <ClInclude Include="src\GE\Utils\GEConcept.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GE\Physics\Collider.h">
+    <ClInclude Include="src\GE\Collision\Collider.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GE\Physics\CollisionSystem.h">
+    <ClInclude Include="src\GE\Collision\CollisionSystem.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GE\Debug\Physics\RectColliderVisual.h">
+    <ClInclude Include="src\GE\Debug\Collision\RectColliderVisual.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GE\Physics\RectCollider.h">
+    <ClInclude Include="src\GE\Collision\RectCollider.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GE\Debug\Physics\ColliderVisualConfig.h">
+    <ClInclude Include="src\GE\Debug\Collision\ColliderVisualConfig.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GE\Physics\CollisionLayer.h">
+    <ClInclude Include="src\GE\Collision\CollisionLayer.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GE\Physics\CollisionLayerMatrix.h">
+    <ClInclude Include="src\GE\Collision\CollisionLayerMatrix.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Common\CollisionInfo.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GE\Physics\CollisionDetection\Detector.h">
+    <ClInclude Include="src\GE\Collision\Detection\Detector.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GE\Physics\CollisionDetection\ColliderTypeDef.h">
+    <ClInclude Include="src\GE\Collision\ColliderTypeDef.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GE\Physics\CollisionDetection\RectDetector.h">
+    <ClInclude Include="src\GE\Collision\Detection\RectDetector.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GE\Physics\CollisionDetection\SimpleImpl\Detection.h">
+    <ClInclude Include="src\GE\Collision\Detection\CollidedType.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GE\Physics\CollisionDetection\CollidedType.h">
+    <ClInclude Include="src\GE\Collision\Detection\NonRotatedRectSimpleImpl\CollisionRecordHandler.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GE\Physics\CollisionDetection\SimpleImpl\CollisionAdjustmentInfo.h">
+    <ClInclude Include="src\GE\Collision\Detection\DetectorImpl.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Collision\Detection\NonRotatedRectSimpleImpl\DetectorImpl.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Collision\Detection\DetectorFactory.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Collision\Detection\NonRotatedRectSimpleImpl\CollisionRecordImpl.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Collision\Detection\DetectorTypeDef.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

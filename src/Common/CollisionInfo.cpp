@@ -1,12 +1,12 @@
 ﻿#include "GE/GEHeader.h"
 #include "CollisionInfo.h"
-#include "GE/Physics/CollisionLayerMatrix.h"
+#include "GE/Collision/CollisionLayerMatrix.h"
 
 namespace CollisionInfo
 {
-	GE::Physics::CollisionLayerMatrix CreateCollisionLayerMatrix()
+	GE::Collision::CollisionLayerMatrix CreateCollisionLayerMatrix()
 	{
-		GE::Physics::CollisionLayerMatrix matrix;
+		GE::Collision::CollisionLayerMatrix matrix;
 
 		matrix.AddCollisionRule(playerLayer, mapLayer | mapObjectLayer);
 

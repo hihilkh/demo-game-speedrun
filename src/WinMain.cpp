@@ -5,7 +5,7 @@
 #include "GE/MainProgram/MainProgramInitParams.h"
 #include "Scene/SceneMapping.h"
 #include "Common/CollisionInfo.h"
-#include "GE/Physics/CollisionLayerMatrix.h"
+#include "GE/Collision/CollisionLayerMatrix.h"
 
 int WINAPI WinMain(
 	_In_ HINSTANCE      hInstance,

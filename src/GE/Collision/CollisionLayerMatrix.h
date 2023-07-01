@@ -3,7 +3,7 @@
 #include <unordered_map>
 #include "CollisionLayer.h"
 
-namespace GE::Physics
+namespace GE::Collision
 {
 	class CollisionLayerMatrix
 	{

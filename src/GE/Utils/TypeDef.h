@@ -28,7 +28,7 @@ namespace GE
 	{
 	}
 
-	namespace Physics::CollisionLayer
+	namespace Collision::CollisionLayer
 	{
 	}
 }
@@ -50,7 +50,7 @@ using Vector3			= GE::DataType::Internal::TVector3<float>;
 using Vector3Int		= GE::DataType::Internal::TVector3<int>;
 
 namespace RenderLayer		= GE::Render::RenderLayer;
-namespace CollisionLayer	= GE::Physics::CollisionLayer;
+namespace CollisionLayer	= GE::Collision::CollisionLayer;
 
 // 備考：
 // 本質的に TRect<float> と TRect<int> は大きな違いがある。

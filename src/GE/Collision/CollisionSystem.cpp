@@ -4,7 +4,7 @@
 #include "Collider.h"
 #include "GE/Core/GameObject.h"
 
-namespace GE::Physics
+namespace GE::Collision
 {
 	CollisionLayerMatrix CollisionSystem::collisionLayerMatrix;
 	std::vector<Collider*> CollisionSystem::colliders;
@@ -53,8 +53,8 @@ namespace GE::Physics
 						continue;
 					}
 
-					CollisionDetection::CollidedType collidedType = collider->CheckCollision(*target);
-					if (collidedType == CollisionDetection::CollidedType::None) {
+					Detection::CollidedType collidedType = collider->CheckCollision(*target);
+					if (collidedType == Detection::CollidedType::None) {
 						continue;
 					}
 
@@ -63,9 +63,7 @@ namespace GE::Physics
 					} else if (target->GetIsTrigger()) {
 						target->onTriggered.Invoke(*collider);
 					} else {
-						if (collidedType == CollisionDetection::CollidedType::Overlap) {
-							collider->RecordCollisionAdjustment(*target);
-							
+						if (collidedType == Detection::CollidedType::Overlap) {
 							if (!collider->gameObject.GetIsStatic()) {
 								colliderToAdjustPos.insert(collider);
 							}

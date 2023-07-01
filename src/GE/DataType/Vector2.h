@@ -3,6 +3,7 @@
 #include <iostream>
 #include <type_traits>
 #include <cmath>
+#include <cassert>
 #include "Vector3.h"
 #include "GE/Utils/Math.h"
 #include "GE/Utils/GEConcept.h"
@@ -18,6 +19,8 @@ namespace GE::DataType::Internal
 	template<VectorBaseType T>
 	struct TVector2
 	{
+		static constexpr std::size_t vectorSize = 2;
+
 		T x, y;
 
 		TVector2();
@@ -29,6 +32,9 @@ namespace GE::DataType::Internal
 		TVector2& operator/=(T divisor);
 
 		TVector2 operator-() const;
+
+		T operator[](std::size_t i) const;
+		T& operator[](std::size_t i);
 
 		TVector2& Scale(T multipleX, T multipleY);
 		TVector2& Scale(const TVector2& other);
@@ -161,6 +167,20 @@ namespace GE::DataType::Internal
 	TVector2<T> TVector2<T>::operator-() const
 	{
 		return TVector2<T>(-x, -y);
+	}
+
+	template<VectorBaseType T>
+	T TVector2<T>::operator[](std::size_t i) const
+	{
+		assert(i < TVector2::vectorSize && "Vector2 : IndexOutOfBounds");
+		return *(&x + i);
+	}
+
+	template<VectorBaseType T>
+	T& TVector2<T>::operator[](std::size_t i)
+	{
+		assert(i < TVector2::vectorSize && "Vector2 : IndexOutOfBounds");
+		return *(&x + i);
 	}
 
 	template<VectorBaseType T>

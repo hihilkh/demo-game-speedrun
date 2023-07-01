@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-namespace GE::Physics
+namespace GE::Collision
 {
 	class RectCollider;
 }

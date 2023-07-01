@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-namespace GE::Physics::CollisionDetection
+namespace GE::Collision::Detection
 {
 	enum class CollidedType : std::uint8_t
 	{

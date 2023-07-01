@@ -2,7 +2,7 @@
 
 #if DEBUG_IS_ENABLED(DEBUG_COLLIDER_VISUAL)
 
-#include "GE/Physics/RectCollider.h"
+#include "GE/Collision/RectCollider.h"
 #include "GE/Core/GameObject.h"
 #include "GE/Core/Transform2D.h"
 #include "GE/Render/Image.h"
@@ -10,7 +10,7 @@
 
 #include "GE/Core/Component.h"
 
-namespace GE::Debug::Physics
+namespace GE::Debug::Collision
 {
 	namespace
 	{
@@ -20,11 +20,11 @@ namespace GE::Debug::Physics
 		class Control : public Component
 		{
 		protected:
-			const GE::Physics::RectCollider& collider;
+			const GE::Collision::RectCollider& collider;
 			GE::Render::Image& image;
 
 		public:
-			Control(GameObject& gameObject, const GE::Physics::RectCollider& collider, GE::Render::Image& image);
+			Control(GameObject& gameObject, const GE::Collision::RectCollider& collider, GE::Render::Image& image);
 			virtual ~Control() = default;
 
 		protected:
@@ -33,7 +33,7 @@ namespace GE::Debug::Physics
 
 #pragma region 関数定義
 
-		Control::Control(GameObject& gameObject, const GE::Physics::RectCollider& collider, GE::Render::Image& image) :
+		Control::Control(GameObject& gameObject, const GE::Collision::RectCollider& collider, GE::Render::Image& image) :
 			Component(gameObject),
 			collider(collider),
 			image(image)
@@ -57,7 +57,7 @@ namespace GE::Debug::Physics
 #pragma endregion
 	}
 
-	void AddRectColliderVisual(const GE::Physics::RectCollider& collider)
+	void AddRectColliderVisual(const GE::Collision::RectCollider& collider)
 	{
 		GameObject& gameObject = collider.gameObject;
 

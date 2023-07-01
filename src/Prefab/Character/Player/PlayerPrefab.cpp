@@ -10,7 +10,7 @@
 #include "Character/Player/PlayerController.h"
 #include "Character/Player/PlayerRenderInfo.h"
 
-#include "GE/Physics/RectCollider.h"
+#include "GE/Collision/RectCollider.h"
 #include "Common/CollisionInfo.h"
 
 namespace Prefab::Player
@@ -39,7 +39,7 @@ namespace Prefab::Player
 		shadowImage.SetRenderPriority(RenderPriority::player - 1);
 
 		// Collider
-		auto& collider = baseGameObject.AddComponent<GE::Physics::RectCollider>(
+		auto& collider = baseGameObject.AddComponent<GE::Collision::RectCollider>(
 			false,
 			Rect::FromCenter((float)::Player::shadowWidth, (float)::Player::shadowHeight));
 		collider.SetCollisionLayer(CollisionInfo::playerLayer);

@@ -8,7 +8,7 @@ namespace GE
 	class GameEngine;
 }
 
-namespace GE::Physics
+namespace GE::Collision
 {
 	class Collider;
 
