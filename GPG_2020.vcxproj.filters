@@ -148,7 +148,7 @@
     <ClCompile Include="src\ParticleSystem\ParticleConfig.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Common\Font.cpp">
+    <ClCompile Include="src\Font\Font.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\SceneTransition\Task_SceneTransition.cpp">
@@ -304,7 +304,7 @@
     <ClCompile Include="src\PrepareScene\PrepareSceneDirector.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Utils\ImageFade.cpp">
+    <ClCompile Include="src\Rendering\ImageFade.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Scene\SceneTransition.cpp">
@@ -388,7 +388,7 @@
     <ClCompile Include="src\GE\Collision\CollisionLayerMatrix.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Common\CollisionInfo.cpp">
+    <ClCompile Include="src\Collision\CollisionInfo.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GE\Collision\Detection\NonRotatedRectSimpleImpl\DetectorImpl_RectRect.cpp">
@@ -552,7 +552,7 @@
     <ClInclude Include="src\ParticleSystem\ParticleConfig.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Common\Font.h">
+    <ClInclude Include="src\Font\Font.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\SceneTransition\Task_SceneTransition.h">
@@ -798,7 +798,7 @@
     <ClInclude Include="src\PrepareScene\PrepareSceneDirector.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Utils\ImageFade.h">
+    <ClInclude Include="src\Rendering\ImageFade.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Scene\SceneTransition.h">
@@ -816,7 +816,7 @@
     <ClInclude Include="src\GameScene\GameSceneDirector.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Common\RenderPriority.h">
+    <ClInclude Include="src\Rendering\RenderPriority.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Map\MapManager.h">
@@ -909,7 +909,7 @@
     <ClInclude Include="src\GE\Collision\CollisionLayerMatrix.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Common\CollisionInfo.h">
+    <ClInclude Include="src\Collision\CollisionInfo.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GE\Collision\Detection\Detector.h">

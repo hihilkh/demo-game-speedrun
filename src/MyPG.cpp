@@ -1,5 +1,5 @@
 ﻿#include "MyPG.h"
-#include "Common/Font.h"
+#include "Font/Font.h"
 //#include "Title/Task_Title.h"
 
 namespace MyPG

@@ -11,7 +11,7 @@
 #include "Chara/Player/Task_Player.h"
 #include "Task/TaskConstant.h"
 #include "Utils/DelayTrigger.h"
-#include "Common/Font.h"
+#include "Font/Font.h"
 #include "SceneTransition/Task_SceneTransition.h"
 
 namespace Game

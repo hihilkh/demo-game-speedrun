@@ -3,7 +3,7 @@
 #include "GE/Render/Image.h"
 #include "GE/Core/GEConfig.h"
 
-namespace Utils
+namespace ImageUtils
 {
 
 	ImageFade::ImageFade(GameObject& gameObject, float fadeTime, bool isInitialFadedIn) :

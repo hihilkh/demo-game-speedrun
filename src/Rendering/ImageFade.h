@@ -9,7 +9,7 @@ namespace GE::Render
 	class Image;
 }
 
-namespace Utils
+namespace ImageUtils
 {
 	/// <summary>
 	/// <para>用語：</para>

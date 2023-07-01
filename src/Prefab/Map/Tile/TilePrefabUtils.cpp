@@ -1,9 +1,9 @@
 ﻿#include "GE/GEHeader.h"
 #include "TilePrefabUtils.h"
 #include "GE/Render/Image.h"
-#include "Common/RenderPriority.h"
+#include "Rendering/RenderPriority.h"
 #include "GE/Collision/RectCollider.h"
-#include "Common/CollisionInfo.h"
+#include "Collision/CollisionInfo.h"
 
 namespace Prefab::Map::Tile
 {

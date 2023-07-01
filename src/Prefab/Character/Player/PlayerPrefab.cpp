@@ -4,14 +4,14 @@
 #include "Prefab/Camera/MainCameraPrefab.h"
 
 #include "GE/Render/Image.h"
-#include "Common/RenderPriority.h"
+#include "Rendering/RenderPriority.h"
 
 #include "Character/Player/PlayerModel.h"
 #include "Character/Player/PlayerController.h"
 #include "Character/Player/PlayerRenderInfo.h"
 
 #include "GE/Collision/RectCollider.h"
-#include "Common/CollisionInfo.h"
+#include "Collision/CollisionInfo.h"
 
 namespace Prefab::Player
 {

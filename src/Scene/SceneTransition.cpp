@@ -1,9 +1,9 @@
 ﻿#include "GE/GEHeader.h"
 #include "SceneTransition.h"
-#include "Utils/ImageFade.h"
+#include "Rendering/ImageFade.h"
 #include "GE/Render/Image.h"
 #include "GE/Core/GEConfig.h"
-#include "Common/RenderPriority.h"
+#include "Rendering/RenderPriority.h"
 
 namespace Scene
 {
@@ -11,9 +11,9 @@ namespace Scene
 	{
 		const std::string overlayImagePath = "./data/Image/White.png";
 		const float defaultFadeTime = 0.5f;
-		Utils::ImageFade* fadeInstance;
+		ImageUtils::ImageFade* fadeInstance;
 
-		Utils::ImageFade& GetFadeInstance()
+		ImageUtils::ImageFade& GetFadeInstance()
 		{
 			if (fadeInstance) {
 				return *fadeInstance;
@@ -30,7 +30,7 @@ namespace Scene
 			image.SetColor(Color::black);
 
 			// SceneTransition
-			fadeInstance = &(obj.AddComponent<Utils::ImageFade>(defaultFadeTime, true));
+			fadeInstance = &(obj.AddComponent<ImageUtils::ImageFade>(defaultFadeTime, true));
 			return *fadeInstance;
 		}
 	}
@@ -42,7 +42,7 @@ namespace Scene
 
 	bool FadeOutAndChangeScene(const std::string& sceneName, float fadeOutTime)
 	{
-		Utils::ImageFade& instance = GetFadeInstance();
+		ImageUtils::ImageFade& instance = GetFadeInstance();
 		if (instance.GetIsFading()) {
 			DEBUG_LOG_WARNING("SceneTransitionまだ行っている。今ChangeSceneできない。");
 			return false;
@@ -63,7 +63,7 @@ namespace Scene
 
 	bool FadeIn(float fadeInTime, std::function<void()> onFinished)
 	{
-		Utils::ImageFade& instance = GetFadeInstance();
+		ImageUtils::ImageFade& instance = GetFadeInstance();
 		if (instance.GetIsFading()) {
 			DEBUG_LOG_WARNING("SceneTransitionまだ行っている。今FadeInできない。");
 			return false;

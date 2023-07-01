@@ -4,7 +4,7 @@
 #include "GE/Core/GameEngine.h"
 #include "GE/MainProgram/MainProgramInitParams.h"
 #include "Scene/SceneMapping.h"
-#include "Common/CollisionInfo.h"
+#include "Collision/CollisionInfo.h"
 #include "GE/Collision/CollisionLayerMatrix.h"
 
 int WINAPI WinMain(

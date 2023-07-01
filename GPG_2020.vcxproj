@@ -373,9 +373,9 @@
     <ClCompile Include="src\Chara\Player\BasicPlayerAction.cpp" />
     <ClCompile Include="src\Chara\Player\PlayerAnimator.cpp" />
     <ClCompile Include="src\Chara\Player\RunPlayerAction.cpp" />
-    <ClCompile Include="src\Common\CollisionInfo.cpp" />
+    <ClCompile Include="src\Collision\CollisionInfo.cpp" />
     <ClCompile Include="src\Common\Direction.cpp" />
-    <ClCompile Include="src\Common\Font.cpp" />
+    <ClCompile Include="src\Font\Font.cpp" />
     <ClCompile Include="src\EndingScene\EndingSceneDirector.cpp" />
     <ClCompile Include="src\GameScene\GameSceneDirector.cpp" />
     <ClCompile Include="src\GE\Collision\Detection\DetectorFactory.cpp">
@@ -536,7 +536,7 @@
     <ClCompile Include="src\Scene\Builder\EndingScene.cpp" />
     <ClCompile Include="src\Scene\Builder\GameScene.cpp" />
     <ClCompile Include="src\Scene\SceneTransition.cpp" />
-    <ClCompile Include="src\Utils\ImageFade.cpp" />
+    <ClCompile Include="src\Rendering\ImageFade.cpp" />
     <ClCompile Include="src\Common\Transform.cpp" />
     <ClCompile Include="src\GE\Core\Camera2D.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
@@ -1062,8 +1062,8 @@
     <ClInclude Include="src\Chara\Player\RunPlayerAction.h" />
     <ClInclude Include="src\Camera\CameraManagement.h" />
     <ClInclude Include="src\Common\Direction.h" />
-    <ClInclude Include="src\Common\Font.h" />
-    <ClInclude Include="src\Common\RenderPriority.h" />
+    <ClInclude Include="src\Font\Font.h" />
+    <ClInclude Include="src\Rendering\RenderPriority.h" />
     <ClInclude Include="src\EndingScene\EndingSceneDirector.h" />
     <ClInclude Include="src\GameScene\GameSceneDirector.h" />
     <ClInclude Include="src\GE\Collision\Detection\DetectorFactory.h" />
@@ -1096,7 +1096,7 @@
     <ClInclude Include="src\Map\Tile\TransportBeltTile.h" />
     <ClInclude Include="src\Map\Tile\UnbreakableWallTile.h" />
     <ClInclude Include="src\Map\Tile\WeakWallTile.h" />
-    <ClInclude Include="src\Common\CollisionInfo.h" />
+    <ClInclude Include="src\Collision\CollisionInfo.h" />
     <ClInclude Include="src\Prefab\Character\Player\PlayerPrefab.h" />
     <ClInclude Include="src\Prefab\Map\Tile\FloorTilePrefab.h" />
     <ClInclude Include="src\Prefab\Map\Tile\TilePrefabUtils.h" />
@@ -1106,7 +1106,7 @@
     <ClInclude Include="src\Scene\Builder\EndingScene.h" />
     <ClInclude Include="src\Scene\Builder\GameScene.h" />
     <ClInclude Include="src\Scene\SceneTransition.h" />
-    <ClInclude Include="src\Utils\ImageFade.h" />
+    <ClInclude Include="src\Rendering\ImageFade.h" />
     <ClInclude Include="src\GE\Core\Coroutine.h" />
     <ClInclude Include="src\GE\Core\PrefabDeclaration.h" />
     <ClInclude Include="src\GE\Utils\EnumUtils.h" />
