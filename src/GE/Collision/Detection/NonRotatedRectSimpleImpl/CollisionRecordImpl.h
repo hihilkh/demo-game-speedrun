@@ -9,6 +9,6 @@ namespace GE::Collision::Detection::NonRotatedRectSimpleImpl
 	{
 		Vector2 posOffset;
 
-		CollisionRecordImpl(const Vector2& posOffset) : posOffset(posOffset) {}
+		explicit CollisionRecordImpl(const Vector2& posOffset) : posOffset(posOffset) {}
 	};
 }

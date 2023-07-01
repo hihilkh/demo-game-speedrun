@@ -32,11 +32,8 @@ namespace GE
 
 		void SetWorldPos(const Vector2& worldPos);
 		void SetWorldRot(float worldRot);
+		
 	public:
-		// Transform2DDataのメンバーをpublicになる
-		//using Transform2DData::pos;
-		//using Transform2DData::rot;
-
 		// GameObjectが無効になる前に、必ず持っているTransform2Dを破棄するので、GameObjectの参照を持つ
 		GameObject& gameObject;
 

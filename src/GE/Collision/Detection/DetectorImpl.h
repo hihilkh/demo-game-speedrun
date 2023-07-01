@@ -14,7 +14,7 @@ namespace GE::Collision::Detection
 	public:
 		virtual ~DetectorImpl() = default;
 
-		virtual void RecordCollision(const CollisionRecord& record) = 0;
+		virtual void RecordCollision(CollisionRecord&& record) = 0;
 		virtual Vector2 GetCollisionAdjustmentPosOffset() = 0;
 
 		// Rect <-> Rect

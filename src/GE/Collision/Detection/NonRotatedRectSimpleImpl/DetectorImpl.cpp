@@ -8,9 +8,9 @@ namespace GE::Collision::Detection::NonRotatedRectSimpleImpl
 	{
 	}
 
-	void NonRotatedRectSimpleDetectorImpl::RecordCollision(const CollisionRecord& record)
+	void NonRotatedRectSimpleDetectorImpl::RecordCollision(CollisionRecord&& record)
 	{
-		collisionRecordHandler.AddRecord(record);
+		collisionRecordHandler.AddRecord(std::move(record));
 	}
 
 	Vector2 NonRotatedRectSimpleDetectorImpl::GetCollisionAdjustmentPosOffset()

@@ -10,7 +10,7 @@ namespace GE::Collision::Detection::NonRotatedRectSimpleImpl
 	public:
 		NonRotatedRectSimpleDetectorImpl();
 
-		void RecordCollision(const CollisionRecord& record) override;
+		void RecordCollision(CollisionRecord&& record) override;
 		Vector2 GetCollisionAdjustmentPosOffset() override;
 
 		// Rect <-> Rect

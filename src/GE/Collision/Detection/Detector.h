@@ -17,7 +17,7 @@ namespace GE::Collision::Detection
 		// Visitorパターン
 		virtual CollidedType CheckCollision(const RectCollider& other, RectDetector& otherDetector) { return CollidedType::None; }
 
-		virtual void RecordCollision(const CollisionRecord& record) = 0;
+		virtual void RecordCollision(CollisionRecord&& record) = 0;
 		virtual Vector2 GetCollisionAdjustmentPosOffset() = 0;
 	};
 }

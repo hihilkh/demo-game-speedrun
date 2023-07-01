@@ -10,7 +10,7 @@ namespace GE::Collision::Detection::NonRotatedRectSimpleImpl
 	class CollisionRecordHandler
 	{
 	public:
-		void AddRecord(const CollisionRecordImpl& record);
+		void AddRecord(CollisionRecordImpl&& record);
 		Vector2 CalculateAdjustmentAndClearRecords();
 
 	private:

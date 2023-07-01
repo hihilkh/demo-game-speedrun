@@ -1,13 +1,12 @@
 ﻿#include "CollisionRecordHandler.h"
 #include <algorithm>
 #include "CollisionRecordImpl.h"
-#include "GE/DataType/Vector2.h"
 
 namespace GE::Collision::Detection::NonRotatedRectSimpleImpl
 {
-	void CollisionRecordHandler::AddRecord(const CollisionRecordImpl& record)
+	void CollisionRecordHandler::AddRecord(CollisionRecordImpl&& record)
 	{
-		records.emplace_back(record.posOffset);
+		records.emplace_back(std::move(record));
 	}
 
 	Vector2 CollisionRecordHandler::CalculateAdjustmentAndClearRecords()

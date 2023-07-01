@@ -15,7 +15,7 @@ namespace GE::Collision::Detection
 
 		CollidedType CheckCollision(const RectCollider& other, RectDetector& otherDetector) override;
 
-		void RecordCollision(const CollisionRecord& record) override;
+		void RecordCollision(CollisionRecord&& record) override;
 		Vector2 GetCollisionAdjustmentPosOffset() override;
 
 	private:

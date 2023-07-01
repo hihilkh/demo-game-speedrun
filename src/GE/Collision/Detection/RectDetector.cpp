@@ -17,9 +17,9 @@ namespace GE::Collision::Detection
 		return pImpl->CheckAndRecordCollision(collider, other, *this, otherDetector);
 	}
 
-	void RectDetector::RecordCollision(const CollisionRecord& record)
+	void RectDetector::RecordCollision(CollisionRecord&& record)
 	{
-		pImpl->RecordCollision(record);
+		pImpl->RecordCollision(std::move(record));
 	}
 
 	Vector2 RectDetector::GetCollisionAdjustmentPosOffset()
