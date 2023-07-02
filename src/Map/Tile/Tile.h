@@ -13,7 +13,7 @@ namespace Map
 		virtual ~Tile() = default;
 
 		TileType GetType() const { return type; }
-		void SetPos(const Vector2Int& pos);
+		void SetPos(const Vector2Int& grid);
 
 	private:
 		const TileType type;

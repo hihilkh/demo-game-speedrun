@@ -1,6 +1,6 @@
 ﻿#include "GE/GEHeader.h"
 #include "Tile.h"
-#include "TileRenderInfo.h"
+#include "Map/MapSizeInfo.h"
 
 namespace Map
 {
@@ -10,11 +10,8 @@ namespace Map
 	{
 	}
 
-	void Tile::SetPos(const Vector2Int& pos)
+	void Tile::SetPos(const Vector2Int& grid)
 	{
-		GetTransform().SetPos(
-			(float)(tileWidth * pos.x), 
-			(float)(tileHeight * pos.y)
-		);
+		GetTransform().SetPos(ConvertPosFromGrid(grid));
 	}
 }
