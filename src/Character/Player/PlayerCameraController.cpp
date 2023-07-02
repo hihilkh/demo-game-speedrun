@@ -19,7 +19,7 @@ namespace Player
 	{
 	}
 
-	void PlayerCameraController::PerformZoom(const GameObject& target, std::function<void()> onFinished) const
+	void PlayerCameraController::PerformZoom(const Vector2& targetWorldPos, std::function<void()> onFinished) const
 	{
 		auto positionMovement = camera.gameObject.GetComponent<TransformUtils::PositionMovement>();
 		if (positionMovement == nullptr) {
@@ -28,7 +28,7 @@ namespace Player
 
 		positionMovement->StartMoving(
 			camera.GetTransform().GetWorldPos(),
-			target.GetTransform().GetWorldPos(),
+			targetWorldPos,
 			false,
 			performZoomMovePeriod,
 			performZoomEasingType,

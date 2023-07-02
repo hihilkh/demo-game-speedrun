@@ -13,12 +13,11 @@ namespace TransformUtils
 		switch (moveState) {
 			case MoveState::None:
 				SetIsEnable(false);
-				return;
-			case MoveState::Waiting:
-				return;
+				break;
+			case MoveState::Moving:
+				UpdateMove();
+				break;
 		}
-
-		UpdateMove();
 	}
 
 	void PositionMovement::UpdateMove()
