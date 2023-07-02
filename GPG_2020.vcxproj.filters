@@ -133,9 +133,6 @@
     <ClCompile Include="src\Game\GameEvent.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Map\MapObject\Task_Goal.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Animation\Animator.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
@@ -547,9 +544,6 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\GameEvent.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Map\MapObject\Task_Goal.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Animation\Animator.h">

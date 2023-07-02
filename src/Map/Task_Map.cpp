@@ -7,7 +7,6 @@
 #include "Game/GameStatus.h"
 #include "Chara/CharaBase.h"
 #include "MapChip/MapChipBase.h"
-#include "MapObject/Task_Goal.h"
 
 // TODO : delete
 namespace Map
@@ -113,15 +112,5 @@ namespace Map
 		}
 	}
 
-	ML::Point Object::GetGoalPos() const
-	{
-		auto goal = ge->GetTask<Goal::Object>(TaskConstant::TaskGroupName_MapObject, TaskConstant::TaskName_Goal);
-		if (goal) {
-			return goal->GetPos();
-		}
-
-		DEBUG_LOG_WARNING("終点が探せない");
-		ML::Vec2(0.0f, 0.0f);
-	}
 #pragma endregion
 }

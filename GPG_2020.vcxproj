@@ -975,7 +975,6 @@
     <ClCompile Include="src\Game\GameStatus.cpp" />
     <ClCompile Include="src\Chara\Player\PlayerActionBase.cpp" />
     <ClCompile Include="src\Map\MapChip\MapChipBase.cpp" />
-    <ClCompile Include="src\Map\MapObject\Task_Goal.cpp" />
     <ClCompile Include="src\Map\Task_Map.cpp" />
     <ClCompile Include="src\MyPG.cpp" />
     <ClCompile Include="src\Chara\CharaBase.cpp" />
@@ -1194,7 +1193,6 @@
     <ClInclude Include="src\Map\MapChip\MapChipBase.h" />
     <ClInclude Include="src\Map\MapChip\MapChipType.h" />
     <ClInclude Include="src\Map\MapObject\MapObjectType.h" />
-    <ClInclude Include="src\Map\MapObject\Task_Goal.h" />
     <ClInclude Include="src\Map\Task_Map.h" />
     <ClInclude Include="src\MyPG.h" />
     <ClInclude Include="src\Chara\CharaBase.h" />

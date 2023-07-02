@@ -24,37 +24,37 @@ namespace Game
 		timer(),
 		remainingCountdown(-1)
 	{
-		GameStatus::CurrentGameState = GameState::Initialize;
-		GameStatus::FrameCount = 0;
+		//GameStatus::CurrentGameState = GameState::Initialize;
+		//GameStatus::FrameCount = 0;
 
-		render2D_Priority[1] = 0.1f;
+		//render2D_Priority[1] = 0.1f;
 
 		// タスクの生成
 		// 生成の順番も重要だ。UpDate()の順番につながるから。
-		Player::Object::SP player = Player::Object::Create(true);
-		Camera::Object::SP camera = Camera::Object::Create(true);
-		camera->SetTarget(player->transform);
-		Map::Object::SP map = Map::Object::Create(true);
+		//Player::Object::SP player = Player::Object::Create(true);
+		//Camera::Object::SP camera = Camera::Object::Create(true);
+		//camera->SetTarget(player->transform);
+		//Map::Object::SP map = Map::Object::Create(true);
 
 		gameEnded.AddListener(this, &Object::GameEndedEventHandler);
-		mainTaskLoaded.Invoke();
+		//mainTaskLoaded.Invoke();
 
 		auto countdown = [this]() {
 			this->StartCountdown(3);
 		};
 
-		auto performZoom = [this, player, camera, map, countdown]() {
-			const ML::Vec2& playerPos = player->transform->pos;
-			camera->PerformZoom(ML::Point(playerPos.x, playerPos.y), map->GetGoalPos(), countdown);
-		};
+		//auto performZoom = [this, player, camera, map, countdown]() {
+		//	const ML::Vec2& playerPos = player->transform->pos;
+		//	camera->PerformZoom(ML::Point(playerPos.x, playerPos.y), map->GetGoalPos(), countdown);
+		//};
 
-		if (HasPerformedZoom) {
-			SceneTransition::Fade(false, countdown);
-		}
-		else {
-			HasPerformedZoom = true;
-			SceneTransition::Fade(false, performZoom);
-		}
+		//if (HasPerformedZoom) {
+		//	SceneTransition::Fade(false, countdown);
+		//}
+		//else {
+		//	HasPerformedZoom = true;
+		//	SceneTransition::Fade(false, performZoom);
+		//}
 	}
 
 	Object::~Object()
