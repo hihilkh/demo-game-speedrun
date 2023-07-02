@@ -406,6 +406,12 @@
     <ClCompile Include="src\GE\Collision\Detection\DetectorFactory.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Transform\PositionMovement.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Character\Player\PlayerCameraController.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GameEngine_Ver3_83.h">
@@ -940,6 +946,12 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GE\Collision\Detection\DetectorTypeDef.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Transform\PositionMovement.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Character\Player\PlayerCameraController.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

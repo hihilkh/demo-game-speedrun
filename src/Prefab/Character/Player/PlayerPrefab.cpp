@@ -9,6 +9,7 @@
 #include "Character/Player/PlayerModel.h"
 #include "Character/Player/PlayerController.h"
 #include "Character/Player/PlayerRenderInfo.h"
+#include "Character/Player/PlayerCameraController.h"
 
 #include "GE/Collision/RectCollider.h"
 #include "Collision/CollisionInfo.h"
@@ -20,7 +21,8 @@ namespace Prefab::Player
 		baseGameObject.SetName("Player");
 
 		// ゲームカメラ
-		GE::Instantiate(Prefab::Camera::MainCameraPrefab(), &baseGameObject);
+		auto& camera = GE::Instantiate(Prefab::Camera::MainCameraPrefab(), &baseGameObject);
+		camera.gameObject.AddComponent<::Player::PlayerCameraController>(camera);
 
 		GameObject& imageBase = baseGameObject.AddChild("ImageBase");
 		imageBase.GetTransform().SetPosY(::Player::playerHeight / 2);

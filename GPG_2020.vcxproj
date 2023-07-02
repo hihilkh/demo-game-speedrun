@@ -157,6 +157,7 @@
     <ClCompile Include="src\Animation\AnimationClip.cpp" />
     <ClCompile Include="src\Animation\Animator.cpp" />
     <ClCompile Include="src\Camera\CameraManagement.cpp" />
+    <ClCompile Include="src\Character\Player\PlayerCameraController.cpp" />
     <ClCompile Include="src\Character\Player\PlayerController.cpp" />
     <ClCompile Include="src\Character\Player\PlayerModel.cpp" />
     <ClCompile Include="src\Chara\Player\AttackPlayerAction.cpp" />
@@ -985,6 +986,7 @@
     <ClCompile Include="src\Scene\Builder\TitleScene.cpp" />
     <ClCompile Include="src\SceneTransition\Task_SceneTransition.cpp" />
     <ClCompile Include="src\TitleScene\TitleSceneDirector.cpp" />
+    <ClCompile Include="src\Transform\PositionMovement.cpp" />
     <ClCompile Include="src\UI\MenuItem.cpp" />
     <ClCompile Include="src\Utils\Timer.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
@@ -1036,6 +1038,7 @@
     <ClInclude Include="src\Animation\AnimationClip.h" />
     <ClInclude Include="src\Animation\AnimationKey.h" />
     <ClInclude Include="src\Animation\Animator.h" />
+    <ClInclude Include="src\Character\Player\PlayerCameraController.h" />
     <ClInclude Include="src\Character\Player\PlayerConfig.h" />
     <ClInclude Include="src\Character\Player\PlayerController.h" />
     <ClInclude Include="src\Character\Player\PlayerModel.h" />
@@ -1206,6 +1209,7 @@
     <ClInclude Include="src\TitleScene\TitleSceneDirector.h" />
     <ClInclude Include="lib\XI2018_Ver1_0.h" />
     <ClInclude Include="src\GE\Utils\Math.h" />
+    <ClInclude Include="src\Transform\PositionMovement.h" />
     <ClInclude Include="src\UI\MenuItem.h" />
     <ClInclude Include="src\Utils\Timer.h" />
     <ClInclude Include="src\Utils\DelayTrigger.h" />
