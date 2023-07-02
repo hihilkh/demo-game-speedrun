@@ -523,12 +523,16 @@
     <ClCompile Include="src\Map\MapGenerator.cpp" />
     <ClCompile Include="src\Map\MapId.cpp" />
     <ClCompile Include="src\Map\MapManager.cpp" />
+    <ClCompile Include="src\Map\MapObject\GoalObject.cpp" />
+    <ClCompile Include="src\Map\MapObject\MapObject.cpp" />
+    <ClCompile Include="src\Map\MapSizeInfo.cpp" />
     <ClCompile Include="src\Map\Tile\FloorTile.cpp" />
     <ClCompile Include="src\Map\Tile\Tile.cpp" />
     <ClCompile Include="src\Map\Tile\TransportBeltTile.cpp" />
     <ClCompile Include="src\Map\Tile\UnbreakableWallTile.cpp" />
     <ClCompile Include="src\Map\Tile\WeakWallTile.cpp" />
     <ClCompile Include="src\Prefab\Character\Player\PlayerPrefab.cpp" />
+    <ClCompile Include="src\Prefab\Map\MapObject\GoalObjectPrefab.cpp" />
     <ClCompile Include="src\Prefab\Map\Tile\FloorTilePrefab.cpp" />
     <ClCompile Include="src\Prefab\Map\Tile\TilePrefabUtils.cpp" />
     <ClCompile Include="src\Prefab\Map\Tile\TransportBeltTilePrefab.cpp" />
@@ -1066,6 +1070,11 @@
     <ClInclude Include="src\Camera\CameraManagement.h" />
     <ClInclude Include="src\Common\Direction.h" />
     <ClInclude Include="src\Font\Font.h" />
+    <ClInclude Include="src\Map\MapCoreInfo.h" />
+    <ClInclude Include="src\Map\MapObject\GoalObject.h" />
+    <ClInclude Include="src\Map\MapObject\MapObject.h" />
+    <ClInclude Include="src\Map\MapSizeInfo.h" />
+    <ClInclude Include="src\Prefab\Map\MapObject\GoalObjectPrefab.h" />
     <ClInclude Include="src\Rendering\RenderPriority.h" />
     <ClInclude Include="src\EndingScene\EndingSceneDirector.h" />
     <ClInclude Include="src\GameScene\GameSceneDirector.h" />
@@ -1094,7 +1103,6 @@
     <ClInclude Include="src\Map\MapManager.h" />
     <ClInclude Include="src\Map\Tile\FloorTile.h" />
     <ClInclude Include="src\Map\Tile\Tile.h" />
-    <ClInclude Include="src\Map\Tile\TileRenderInfo.h" />
     <ClInclude Include="src\Map\Tile\TileType.h" />
     <ClInclude Include="src\Map\Tile\TransportBeltTile.h" />
     <ClInclude Include="src\Map\Tile\UnbreakableWallTile.h" />

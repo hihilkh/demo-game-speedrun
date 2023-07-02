@@ -412,6 +412,18 @@
     <ClCompile Include="src\Character\Player\PlayerCameraController.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Map\MapSizeInfo.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Map\MapObject\MapObject.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Map\MapObject\GoalObject.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Prefab\Map\MapObject\GoalObjectPrefab.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GameEngine_Ver3_83.h">
@@ -855,9 +867,6 @@
     <ClInclude Include="src\GE\Core\Internal\GameLoopObjectContainer.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Map\Tile\TileRenderInfo.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Map\Tile\UnbreakableWallTile.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
@@ -952,6 +961,21 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Character\Player\PlayerCameraController.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Map\MapCoreInfo.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Map\MapObject\MapObject.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Map\MapSizeInfo.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Map\MapObject\GoalObject.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Prefab\Map\MapObject\GoalObjectPrefab.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,8 +1,11 @@
 ﻿#include "GE/GEHeader.h"
 #include "MapFactory.h"
 #include "GE/Utils/EnumUtils.h"
+#include "MapCoreInfo.h"
+#include "MapSizeInfo.h"
 
 #include "Tile/Tile.h"
+#include "MapObject/MapObject.h"
 
 #include "Tile/FloorTile.h" 
 #include "Prefab/Map/Tile/FloorTilePrefab.h"
@@ -15,6 +18,9 @@
 
 #include "Tile/WeakWallTile.h" 
 #include "Prefab/Map/Tile/WeakWallTilePrefab.h"
+
+#include "MapObject/GoalObject.h" 
+#include "Prefab/Map/MapObject/GoalObjectPrefab.h"
 
 
 // TODO : マップデータの仕組みを改善
@@ -33,7 +39,7 @@ namespace Map
 	{
 	}
 
-	void MapFactory::Create(const Vector2Int& pos, int rawInfo) const
+	void MapFactory::Create(const Vector2Int& grid, int rawInfo, MapCoreInfo& mapCoreInfo) const
 	{
 		int typeId = rawInfo;
 		Direction direction = Direction::Down;
@@ -44,7 +50,13 @@ namespace Map
 			int directionInt = rawInfo;
 			if (rawInfo >= mapObjectDivisor) {
 				directionInt %= mapObjectDivisor;
-				GenerateMapObject(pos, rawInfo / mapObjectDivisor);
+
+				MapObjectType type = static_cast<MapObjectType>(rawInfo / mapObjectDivisor);
+				MapObject* mapObject = InstantiateMapObject(type);
+				if (mapObject) {
+					mapObject->SetPos(grid);
+				}
+				InsertMapCoreInfo(mapCoreInfo, grid, type);
 			}
 			directionInt = directionInt / directionDivisor - 1;
 			direction = static_cast<Direction>(directionInt);
@@ -53,7 +65,7 @@ namespace Map
 		TileType type = static_cast<TileType>(typeId);
 		Tile* tile = InstantiateTile(type, direction);
 		if (tile) {
-			tile->SetPos(pos);
+			tile->SetPos(grid);
 			tile->gameObject.SetIsStatic(true, true);
 		}
 	}
@@ -75,32 +87,28 @@ namespace Map
 		}
 	}
 
-	MapObjectBase* MapFactory::GenerateMapObject(const Vector2Int& pos, int mapObjectId) const
+	MapObject* MapFactory::InstantiateMapObject(MapObjectType type)
 	{
-		// TODO
-		return nullptr;
+		switch (type) {
+			case Map::MapObjectType::Player:
+				return nullptr;
+			case Map::MapObjectType::Goal:
+				return &GE::Instantiate(Prefab::Map::GoalObjectPrefab());
+			default:
+				DEBUG_LOG_WARNING("InstantiateMapObject : まだ MapObject : " << GE::Enum::ToString(type) << " の実装はない");
+				return nullptr;
+		}
 	}
 
-	// TODO
-	/*
-		void GenerateMapObject(int mapObjectId, const ML::Box2D& hitBase)
-		{
-			MapObjectType type = static_cast<MapObjectType>(mapObjectId);
-
-			switch (type) {
-				case MapObjectType::Player:
-					Game::GameStatus::PlayerInitialPos = ML::Vec2((float)hitBase.x, (float)hitBase.y);
-					break;
-				case MapObjectType::Goal: {
-					// TODO : Initを使わない方法を考える
-					Goal::Object::SP goal = Goal::Object::Create(true);
-					goal->Init(hitBase.x, hitBase.y);
-					break;
-				}
-				default:
-					DEBUG_LOG_WARNING("まだ MapObject の id:" << mapObjectId << " の実装はない");
-					break;
-			}
+	void MapFactory::InsertMapCoreInfo(MapCoreInfo& mapCoreInfo, const Vector2Int& grid, MapObjectType type)
+	{
+		switch (type) {
+			case Map::MapObjectType::Player:
+				mapCoreInfo.playerStartPos = ConvertPosFromGrid(grid);
+				return;
+			case Map::MapObjectType::Goal:
+				mapCoreInfo.goalPos = ConvertPosFromGrid(grid);
+				return;
 		}
-	*/
+	}
 }

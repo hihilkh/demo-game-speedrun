@@ -2,6 +2,7 @@
 #include "MapGenerator.h"
 #include <fstream>
 #include "MapFactory.h"
+#include "MapCoreInfo.h"
 
 namespace Map
 {
@@ -10,7 +11,7 @@ namespace Map
 		const std::string mapBaseName = "MapBase";
 	}
 
-	void MapGenerator::GenerateMap(const MapId& mapId, std::function<void()> onSuccess, std::function<void()> onFailure) const
+	void MapGenerator::GenerateMap(const MapId& mapId, std::function<void(MapCoreInfo)> onSuccess, std::function<void()> onFailure) const
 	{
 		std::ifstream fin(mapId.GetFilePath());
 		if (!fin) {
@@ -28,6 +29,7 @@ namespace Map
 		}
 
 		MapFactory factory(*mapBase);
+		MapCoreInfo info;
 
 		int sizeX, sizeY;
 		int leftIndex, topIndex;
@@ -37,12 +39,12 @@ namespace Map
 		for (int y = 0; y < sizeY; ++y) {
 			for (int x = 0; x < sizeX; ++x) {
 				fin >> rawInfo;
-				factory.Create({ leftIndex + x, topIndex  - y }, rawInfo);
+				factory.Create({ leftIndex + x, topIndex  - y }, rawInfo, info);
 			}
 		}
 
 		if (onSuccess) {
-			onSuccess();
+			onSuccess(info);
 		}
 	}
 }

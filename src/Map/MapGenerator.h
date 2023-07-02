@@ -7,12 +7,14 @@
 
 namespace Map
 {
+	struct MapCoreInfo;
+
 	class MapGenerator
 	{
 	public:
 		void GenerateMap(
 			const MapId& mapId, 
-			std::function<void()> onSuccess = nullptr,
+			std::function<void(MapCoreInfo)> onSuccess = nullptr,
 			std::function<void()> onFailure = nullptr) const;
 	};
 }

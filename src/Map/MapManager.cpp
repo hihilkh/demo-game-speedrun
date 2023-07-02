@@ -4,21 +4,32 @@
 
 namespace Map
 {
-	GE::Event<> MapManager::onMapLoaded;
+	namespace
+	{
+		const MapId mapId = "Map1";
+	}
+
+	GE::Event<const MapManager&> MapManager::onMapLoaded;
 
 	MapManager::MapManager(GameObject& gameObject) :
-		Component(gameObject)
+		Component(gameObject),
+		mapCoreInfo()
 	{
 	}
 
 	void MapManager::Start()
 	{
-		LoadMap("Map1", [] { onMapLoaded.Invoke(); });
+		LoadMap(mapId);
 	}
 
-	void MapManager::LoadMap(const MapId& mapId, std::function<void()> onFinished) const
+	void MapManager::LoadMap(const MapId& mapId)
 	{
+		auto onLoadFinished = [this](MapCoreInfo info) {
+			this->mapCoreInfo = info;
+			onMapLoaded.Invoke(*this);
+		};
+
 		MapGenerator generator;
-		generator.GenerateMap(mapId, onFinished);
+		generator.GenerateMap(mapId, onLoadFinished);
 	}
 }
