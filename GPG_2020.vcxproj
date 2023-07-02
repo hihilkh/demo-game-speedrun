@@ -1070,6 +1070,7 @@
     <ClInclude Include="src\Camera\CameraManagement.h" />
     <ClInclude Include="src\Common\Direction.h" />
     <ClInclude Include="src\Font\Font.h" />
+    <ClInclude Include="src\GameScene\GameState.h" />
     <ClInclude Include="src\Map\MapCoreInfo.h" />
     <ClInclude Include="src\Map\MapObject\GoalObject.h" />
     <ClInclude Include="src\Map\MapObject\MapObject.h" />

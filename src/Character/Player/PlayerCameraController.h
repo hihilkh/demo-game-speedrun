@@ -12,7 +12,7 @@ namespace Player
 	public:
 		PlayerCameraController(GameObject& gameObject, GE::Camera2D& camera);
 
-		void PerformZoom(const Vector2& targetWorldPos, std::function<void()> onFinished = nullptr) const;
+		void PerformZoom(const Vector2& targetWorldPos, std::function<void()> onFinished = nullptr);
 
 	private:
 		GE::Camera2D& camera;

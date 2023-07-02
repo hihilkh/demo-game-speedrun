@@ -19,7 +19,8 @@ namespace Player
 	{
 	}
 
-	void PlayerCameraController::PerformZoom(const Vector2& targetWorldPos, std::function<void()> onFinished) const
+	// TODO : 今もしPerformZoomをしているとき、Playerが移動すれば、表示は変になる
+	void PlayerCameraController::PerformZoom(const Vector2& targetWorldPos, std::function<void()> onFinished)
 	{
 		auto positionMovement = camera.gameObject.GetComponent<TransformUtils::PositionMovement>();
 		if (positionMovement == nullptr) {
