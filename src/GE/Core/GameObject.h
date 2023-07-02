@@ -62,7 +62,7 @@ namespace GE
 		/// <summary>
 		/// 新しいGameObjectを生成し、childになる
 		/// </summary>
-		GameObject& AddChild(const std::string& childName);
+		GameObject& AddChild(const std::string& childName = "GameObject");
 
 		GameObject* Parent() const { return parent; }	// 自分がconstになってもparentを変更されることができます
 		bool IsChildOf(const GameObject& other, bool recursive) const;
@@ -135,6 +135,8 @@ namespace GE
 		static GameObject& CreateWithDelayAwake(const std::string& name = "GameObject");
 		static GameObject& CreateWithDelayAwake(Scene& scene, const std::string& name = "GameObject");
 		static GameObject& CreatePersistentWithDelayAwake(const std::string& name = "GameObject");
+
+		GameObject& AddChildWithDelayAwake(const std::string& childName = "GameObject");
 
 #pragma endregion
 

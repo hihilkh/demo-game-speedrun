@@ -120,7 +120,7 @@ namespace GE::Collision::Detection::NonRotatedRectSimpleImpl
 	{
 		// この実装はlhsRotとrhsRotを無視する
 
-#if _DEBUG
+#ifdef _DEBUG
 		if (lhsRot != 0 || rhsRot != 0) {
 			DEBUG_LOG_ERROR("この実装は回転したRectのCollisionを支援しない。回転したRectも回転していなかったRectとみなす。");
 		}

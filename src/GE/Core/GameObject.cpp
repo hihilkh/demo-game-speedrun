@@ -68,6 +68,11 @@ namespace GE
 		return CreateAndOwnGameObject(childName, belongingScene, isAwoken);
 	}
 
+	GameObject& GameObject::AddChildWithDelayAwake(const std::string& childName)
+	{
+		return CreateAndOwnGameObject(childName, belongingScene, false);
+	}
+	
 	bool GameObject::IsChildOf(const GameObject& other, bool recursive) const
 	{
 		if (!parent) {

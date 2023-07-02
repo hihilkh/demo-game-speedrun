@@ -84,17 +84,14 @@ namespace GE
 		}
 
 		std::shared_ptr<Coroutine> sharedCoroutine = coroutine.lock();
-		for (auto it = coroutines.begin(); it != coroutines.end(); ++it) {
-			if (*it == sharedCoroutine) {
-				coroutines.erase(it);
-				return;
-			}
-		}
+		sharedCoroutine->isMarkedDelete = true;
 	}
 
 	void Component::StopAllCoroutines()
 	{
-		coroutines.clear();
+		for (auto& coroutine : coroutines) {
+			coroutine->isMarkedDelete = true;
+		}
 	}
 
 	void Component::UpdateCoroutines()

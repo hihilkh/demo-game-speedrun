@@ -11,7 +11,7 @@ namespace GE::Profiling
 	{
 		const std::string rootFolder = "./profiling/";
 		const char* timeStrFormat = "%Y%m%d_%H%M%S";
-#if _DEBUG
+#ifdef _DEBUG
 		const std::string subFolderSuffix = "_Debug/";
 #else
 		const std::string subFolderSuffix = "_Release/";

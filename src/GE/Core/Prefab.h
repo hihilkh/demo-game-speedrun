@@ -10,9 +10,11 @@ namespace GE
 	template<typename PrefabT>
 	PrefabReturnType<PrefabT> Instantiate(PrefabT prefab, GameObject* parent)
 	{
-		GameObject* baseGameObject = parent;
-		if (baseGameObject == nullptr) {
+		GameObject* baseGameObject = nullptr;
+		if (parent == nullptr) {
 			baseGameObject = &GameObject::CreateWithDelayAwake();
+		} else {
+			baseGameObject = &parent->AddChildWithDelayAwake();
 		}
 
 		PrefabReturnType<PrefabT> returnValue = prefab(*baseGameObject);
@@ -37,9 +39,11 @@ namespace GE
 	template<typename PrefabT>
 	PrefabReturnType<PrefabT> InstantiatePersistent(PrefabT prefab, GameObject* parent)
 	{
-		GameObject* baseGameObject = parent;
-		if (baseGameObject == nullptr) {
+		GameObject* baseGameObject = nullptr;
+		if (parent == nullptr) {
 			baseGameObject = &GameObject::CreatePersistentWithDelayAwake();
+		} else {
+			baseGameObject = &parent->AddChildWithDelayAwake();
 		}
 
 		PrefabReturnType<PrefabT> returnValue = prefab(*baseGameObject);
