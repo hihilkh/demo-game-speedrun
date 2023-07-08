@@ -21,6 +21,6 @@ namespace Game
 
 		// TODO : Task_Gameではなく、全般的なFrameCountを用意する
 		// TODO : オーバーフローが発生する可能をチェック
-		static unsigned long FrameCount;
+		//static unsigned long FrameCount;
 	};
 }
