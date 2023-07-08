@@ -421,6 +421,12 @@
     <ClCompile Include="src\Prefab\Map\MapObject\GoalObjectPrefab.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\UI\CountDownUI.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Prefab\UI\CountDownUIPrefab.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GameEngine_Ver3_83.h">
@@ -973,6 +979,12 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Prefab\Map\MapObject\GoalObjectPrefab.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UI\CountDownUI.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Prefab\UI\CountDownUIPrefab.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

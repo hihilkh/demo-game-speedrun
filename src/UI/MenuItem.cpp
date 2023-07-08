@@ -9,7 +9,8 @@ namespace UI
 		Component(gameObject),
 		text(text),
 		arrowImage(arrowImage),
-		isSelecting(false)
+		isSelecting(false),
+		onClicked(nullptr)
 	{
 	}
 

@@ -2,6 +2,7 @@
 
 #include "GE/Core/Component.h"
 #include "GE/Utils/TypeDef.h"
+#include "GE/Core/Event.h"
 #include "GameState.h"
 
 namespace Map

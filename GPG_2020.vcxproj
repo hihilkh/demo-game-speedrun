@@ -379,6 +379,8 @@
     <ClCompile Include="src\Font\Font.cpp" />
     <ClCompile Include="src\EndingScene\EndingSceneDirector.cpp" />
     <ClCompile Include="src\GameScene\GameSceneDirector.cpp" />
+    <ClCompile Include="src\Prefab\UI\CountDownUIPrefab.cpp" />
+    <ClCompile Include="src\UI\CountDownUI.cpp" />
     <ClCompile Include="src\GE\Collision\Detection\DetectorFactory.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -1069,6 +1071,8 @@
     <ClInclude Include="src\Camera\CameraManagement.h" />
     <ClInclude Include="src\Common\Direction.h" />
     <ClInclude Include="src\Font\Font.h" />
+    <ClInclude Include="src\Prefab\UI\CountDownUIPrefab.h" />
+    <ClInclude Include="src\UI\CountDownUI.h" />
     <ClInclude Include="src\GameScene\GameState.h" />
     <ClInclude Include="src\Map\MapCoreInfo.h" />
     <ClInclude Include="src\Map\MapObject\GoalObject.h" />

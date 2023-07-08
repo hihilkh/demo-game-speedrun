@@ -8,8 +8,17 @@
 #include "Camera/CameraManagement.h"
 #include "Character/Player/PlayerCameraController.h"
 
+#include "Prefab/UI/CountDownUIPrefab.h"
+#include "UI/CountDownUI.h"
+
 namespace GameScene
 {
+	namespace
+	{
+		const int countDownSecond = 3;
+		const std::string finishCountDownText = "スタート";
+	}
+
 	GE::Event<> Director::onGameStarted;
 	GE::Event<> Director::onGameEnded;
 
@@ -66,14 +75,17 @@ namespace GameScene
 
 	void Director::CountdownToStart()
 	{
-		// TODO
-		DEBUG_LOG("CountdownToStart");
-		StartGame();
+		auto& countDownUI = GE::Instantiate(Prefab::UI::CountDownUIPrefab());
+		countDownUI.StartCountDown(
+			countDownSecond, 
+			finishCountDownText, 
+			[this] { this->StartGame(); });
 	}
 
 	void Director::StartGame()
 	{
 		// TODO
+		DEBUG_LOG("START");
 		gameState = GameState::Started;
 	}
 }
