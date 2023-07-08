@@ -4,7 +4,7 @@
 #include "GameScene/GameSceneDirector.h"
 #include "Map/MapManager.h"
 #include "Prefab/Character/Player/PlayerPrefab.h"
-#include "Timing/Timer.h"
+#include "TimeUtils/Timer.h"
 #include "GameScene/GameTimerController.h"
 #include "GE/UI/Text.h"
 #include "Lang/LanguageManager.h"
@@ -25,7 +25,7 @@ namespace Scene
 		
 		// Timer
 		GameObject& timerObj = GameObject::Create(*scene, "Timer");
-		auto& timer = timerObj.AddComponent<Timing::Timer>();
+		auto& timer = timerObj.AddComponent<TimeUtils::Timer>();
 
 		auto timerFont = Lang::LanguageManager::GetFont(Lang::FontType::DefaultSmall);
 		const GE::GEConfig& geConfig = GE::GetGEConfig();

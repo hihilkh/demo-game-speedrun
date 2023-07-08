@@ -4,7 +4,7 @@
 #include "GE/Utils/TypeDef.h"
 #include <stdint.h>
 
-namespace Timing
+namespace TimeUtils
 {
 	class Timer : public Component
 	{

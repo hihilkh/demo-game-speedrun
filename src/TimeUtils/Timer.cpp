@@ -1,7 +1,7 @@
 ﻿#include "GE/GEHeader.h"
 #include "Timer.h"
 
-namespace Timing
+namespace TimeUtils
 {
 	Timer::Timer(GameObject& gameObject) :
 		Component(gameObject)

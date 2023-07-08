@@ -1,12 +1,12 @@
 ﻿#include "GE/GEHeader.h"
 #include "GameTimerController.h"
-#include "Timing/Timer.h"
+#include "TimeUtils/Timer.h"
 #include "GE/UI/Text.h"
 #include <format>
 
 namespace GameScene
 {
-	GameTimerController::GameTimerController(GameObject& gameObject, Timing::Timer& timer, GE::UI::Text& text) :
+	GameTimerController::GameTimerController(GameObject& gameObject, TimeUtils::Timer& timer, GE::UI::Text& text) :
 		Component(gameObject),
 		timer(timer),
 		text(text)

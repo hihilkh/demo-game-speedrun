@@ -388,7 +388,7 @@
     <ClCompile Include="src\GE\Collision\Detection\DetectorFactory.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Transform\PositionMovement.cpp">
+    <ClCompile Include="src\TransformUtils\PositionMovement.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Character\Player\PlayerCameraController.cpp">
@@ -412,7 +412,7 @@
     <ClCompile Include="src\Prefab\UI\CountDownUIPrefab.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Timing\Timer.cpp">
+    <ClCompile Include="src\TimeUtils\Timer.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GameScene\GameProgress.cpp">
@@ -939,7 +939,7 @@
     <ClInclude Include="src\GameScene\GameState.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Transform\PositionMovement.h">
+    <ClInclude Include="src\TransformUtils\PositionMovement.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Character\Player\PlayerCameraController.h">
@@ -966,7 +966,7 @@
     <ClInclude Include="src\Prefab\UI\CountDownUIPrefab.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Timing\Timer.h">
+    <ClInclude Include="src\TimeUtils\Timer.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GameScene\GameProgress.h">

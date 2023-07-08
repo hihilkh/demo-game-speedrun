@@ -8,7 +8,7 @@ namespace GE::UI
 	class Text;
 }
 
-namespace Timing
+namespace TimeUtils
 {
 	class Timer;
 }
@@ -19,7 +19,7 @@ namespace GameScene
 	class GameTimerController : public Component
 	{
 	public:
-		GameTimerController(GameObject& gameObject, Timing::Timer& timer, GE::UI::Text& text);
+		GameTimerController(GameObject& gameObject, TimeUtils::Timer& timer, GE::UI::Text& text);
 
 		void Update() override;
 
@@ -28,7 +28,7 @@ namespace GameScene
 		float GetCountedTime() const;
 
 	private:
-		Timing::Timer& timer;
+		TimeUtils::Timer& timer;
 		GE::UI::Text& text;
 	};
 }

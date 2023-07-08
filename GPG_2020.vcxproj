@@ -382,7 +382,7 @@
     <ClCompile Include="src\GameScene\GameSceneDirector.cpp" />
     <ClCompile Include="src\GameScene\GameTimerController.cpp" />
     <ClCompile Include="src\Prefab\UI\CountDownUIPrefab.cpp" />
-    <ClCompile Include="src\Timing\Timer.cpp" />
+    <ClCompile Include="src\TimeUtils\Timer.cpp" />
     <ClCompile Include="src\UI\CountDownUI.cpp" />
     <ClCompile Include="src\GE\Collision\Detection\DetectorFactory.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
@@ -991,7 +991,7 @@
     <ClCompile Include="src\Scene\SceneMapping.cpp" />
     <ClCompile Include="src\Scene\Builder\TitleScene.cpp" />
     <ClCompile Include="src\TitleScene\TitleSceneDirector.cpp" />
-    <ClCompile Include="src\Transform\PositionMovement.cpp" />
+    <ClCompile Include="src\TransformUtils\PositionMovement.cpp" />
     <ClCompile Include="src\UI\MenuItem.cpp" />
     <ClCompile Include="src\WinMain.cpp" />
     <ClCompile Include="lib\XI2018_Ver1_0.cpp">
@@ -1046,7 +1046,7 @@
     <ClInclude Include="src\GameScene\GameProgress.h" />
     <ClInclude Include="src\GameScene\GameTimerController.h" />
     <ClInclude Include="src\Prefab\UI\CountDownUIPrefab.h" />
-    <ClInclude Include="src\Timing\Timer.h" />
+    <ClInclude Include="src\TimeUtils\Timer.h" />
     <ClInclude Include="src\UI\CountDownUI.h" />
     <ClInclude Include="src\GameScene\GameState.h" />
     <ClInclude Include="src\Map\MapCoreInfo.h" />
@@ -1192,7 +1192,7 @@
     <ClInclude Include="src\TitleScene\TitleSceneDirector.h" />
     <ClInclude Include="lib\XI2018_Ver1_0.h" />
     <ClInclude Include="src\GE\Utils\Math.h" />
-    <ClInclude Include="src\Transform\PositionMovement.h" />
+    <ClInclude Include="src\TransformUtils\PositionMovement.h" />
     <ClInclude Include="src\UI\MenuItem.h" />
   </ItemGroup>
   <ItemGroup>
