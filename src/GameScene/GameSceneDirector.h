@@ -12,14 +12,16 @@ namespace Map
 
 namespace GameScene
 {
+	class GameTimerController;
+
 	class Director : public Component
 	{
 	public:
 		static GE::Event<> onGameStarted;
-		static GE::Event<> onGameEnded;
+		static GE::Event<> onGameCleared;
 
 	public:
-		explicit Director(GameObject& gameObject);
+		Director(GameObject& gameObject, GameTimerController& timerController);
 		static GameState GetGameState() { return gameState; }
 
 	protected:
@@ -28,6 +30,7 @@ namespace GameScene
 		void Update() override;
 
 	private:
+		GameTimerController& timerController;
 		static GameState gameState;
 		static bool hasPerformedGoalZooming;
 
@@ -36,5 +39,7 @@ namespace GameScene
 		void StartOpening(const Vector2& goalPos);
 		void CountdownToStart();
 		void StartGame();
+		void GameClear();
+		void GoToEndingScene() const;
 	};
 }

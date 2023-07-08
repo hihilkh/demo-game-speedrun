@@ -46,7 +46,6 @@ namespace UI
 
 	void CountDownUI::SetCountDownText(const std::string& countDownText)
 	{
-		// TODO : textに影をつける
 		text.SetText(countDownText);
 	}
 

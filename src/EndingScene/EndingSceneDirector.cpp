@@ -7,7 +7,7 @@
 #include "Scene/Builder/GameScene.h"
 #include "GE/UI/Text.h"
 #include <format>
-#include "Game/GameStatus.h"
+#include "GameScene/GameProgress.h"
 
 namespace EndingScene
 {
@@ -46,7 +46,9 @@ namespace EndingScene
 		}
 
 		congratsText.SetText("おめでとうございます！");
-		std::string resultStr = std::format("クリア時間：{0:.3f}s", Game::GameStatus::ClearGameTimeMillisecond / 1000.0f);
+
+		auto& gameProgress = GameScene::GameProgress::GetCurrentGameProgress();
+		std::string resultStr = std::format("クリア時間：{0:.3f}s", gameProgress.GetGameClearTime());
 		resultText.SetText(resultStr);
 
 		Scene::FadeIn([this] { this->isInteractable = true; });

@@ -13,6 +13,7 @@ namespace Prefab::UI
 
 		auto& geConfig = GE::GetGEConfig();
 
+		// TODO : textに影をつける
 		GameObject& textObj = baseGameObject.AddChild("Text");
 		GE::UI::Text& text = textObj.AddComponent<GE::UI::Text>(Lang::LanguageManager::GetFont(Lang::FontType::DefaultLarge), Vector2Int(geConfig.screenWidth, geConfig.screenHeight));
 		text.SetColor(Color::black);

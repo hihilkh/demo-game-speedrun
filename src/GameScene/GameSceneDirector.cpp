@@ -7,6 +7,9 @@
 #include "Map/MapManager.h"
 #include "Camera/CameraManagement.h"
 #include "Character/Player/PlayerCameraController.h"
+#include "GameTimerController.h"
+
+#include "GameProgress.h"
 
 #include "Prefab/UI/CountDownUIPrefab.h"
 #include "UI/CountDownUI.h"
@@ -20,19 +23,21 @@ namespace GameScene
 	}
 
 	GE::Event<> Director::onGameStarted;
-	GE::Event<> Director::onGameEnded;
+	GE::Event<> Director::onGameCleared;
 
 	GameState Director::gameState = GameState::NotInGame;
 	bool Director::hasPerformedGoalZooming = false;
 
-	Director::Director(GameObject& gameObject) :
-		Component(gameObject)
+	Director::Director(GameObject& gameObject, GameTimerController& timerController) :
+		Component(gameObject),
+		timerController(timerController)
 	{
 	}
 
 	void Director::Awake()
 	{
 		gameState = GameState::Preparing;
+		GameProgress::CreateNewGameProgress();
 		Map::MapManager::onMapLoaded.AddListener(&Director::SceneReadyHandler, *this);
 	}
 
@@ -44,9 +49,11 @@ namespace GameScene
 
 	void Director::Update()
 	{
+#ifdef _DEBUG
 		if (GE::Input::GetKeyDown(GE::Input::Key::x)) {
-			Scene::FadeOutAndChangeScene(Scene::endingSceneName);
+			GoToEndingScene();
 		}
+#endif
 	}
 
 	void Director::SceneReadyHandler(const Map::MapManager& mapManager)
@@ -84,8 +91,22 @@ namespace GameScene
 
 	void Director::StartGame()
 	{
-		// TODO
-		DEBUG_LOG("START");
 		gameState = GameState::Started;
+		timerController.StartTimer();
+		onGameStarted.Invoke();
+	}
+
+	void Director::GameClear()
+	{
+		gameState = GameState::Ended;
+		timerController.PauseTimer();
+		GameProgress::GetCurrentGameProgress().SetGameClearTime(timerController.GetCountedTime());
+		onGameCleared.Invoke();
+		GoToEndingScene();
+	}
+
+	void Director::GoToEndingScene() const
+	{
+		Scene::FadeOutAndChangeScene(Scene::endingSceneName);
 	}
 }
