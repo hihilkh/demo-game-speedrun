@@ -984,7 +984,6 @@
     <ClCompile Include="src\MyPG.cpp" />
     <ClCompile Include="src\Chara\CharaBase.cpp" />
     <ClCompile Include="src\Chara\Player\Task_Player.cpp" />
-    <ClCompile Include="src\Game\Task_Game.cpp" />
     <ClCompile Include="src\Game\Task_GameCamera.cpp" />
     <ClCompile Include="src\ParticleSystem\Particle.cpp" />
     <ClCompile Include="src\ParticleSystem\ParticleConfig.cpp" />
@@ -992,24 +991,9 @@
     <ClCompile Include="src\Scene\Builder\PrepareScene.cpp" />
     <ClCompile Include="src\Scene\SceneMapping.cpp" />
     <ClCompile Include="src\Scene\Builder\TitleScene.cpp" />
-    <ClCompile Include="src\SceneTransition\Task_SceneTransition.cpp" />
     <ClCompile Include="src\TitleScene\TitleSceneDirector.cpp" />
     <ClCompile Include="src\Transform\PositionMovement.cpp" />
     <ClCompile Include="src\UI\MenuItem.cpp" />
-    <ClCompile Include="src\Utils\Timer.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </PrecompiledHeaderFile>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      </PrecompiledHeaderFile>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      </PrecompiledHeaderFile>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-      </PrecompiledHeaderFile>
-    </ClCompile>
     <ClCompile Include="src\WinMain.cpp" />
     <ClCompile Include="lib\XI2018_Ver1_0.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
@@ -1200,21 +1184,18 @@
     <ClInclude Include="src\Scene\Builder\PrepareScene.h" />
     <ClInclude Include="src\Scene\SceneMapping.h" />
     <ClInclude Include="src\Scene\Builder\TitleScene.h" />
-    <ClInclude Include="src\SceneTransition\Task_SceneTransition.h" />
     <ClInclude Include="src\Task\ResourceConstant.h" />
     <ClInclude Include="src\GE\Debug\Log.h" />
     <ClInclude Include="src\Task\ObjectBase.tpp" />
     <ClInclude Include="src\Task\ResourceBase.tpp" />
     <ClInclude Include="src\Task\TaskConstant.h" />
     <ClInclude Include="src\Chara\Player\Task_Player.h" />
-    <ClInclude Include="src\Game\Task_Game.h" />
     <ClInclude Include="src\Game\Task_GameCamera.h" />
     <ClInclude Include="src\TitleScene\TitleSceneDirector.h" />
     <ClInclude Include="lib\XI2018_Ver1_0.h" />
     <ClInclude Include="src\GE\Utils\Math.h" />
     <ClInclude Include="src\Transform\PositionMovement.h" />
     <ClInclude Include="src\UI\MenuItem.h" />
-    <ClInclude Include="src\Utils\Timer.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Event\Event.tpp" />
