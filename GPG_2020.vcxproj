@@ -976,7 +976,6 @@
       </PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="src\GE\Profiling\ProfilerSectionMemory.cpp" />
-    <ClCompile Include="src\Game\GameEvent.cpp" />
     <ClCompile Include="src\Game\GameStatus.cpp" />
     <ClCompile Include="src\Chara\Player\PlayerActionBase.cpp" />
     <ClCompile Include="src\Map\MapChip\MapChipBase.cpp" />
@@ -1166,7 +1165,6 @@
     <ClInclude Include="src\GE\Profiling\ProfilerSectionFps.h" />
     <ClInclude Include="src\GE\Debug\Measurement\ScopeTiming.h" />
     <ClInclude Include="src\GE\Profiling\ProfilerSectionMemory.h" />
-    <ClInclude Include="src\Game\GameEvent.h" />
     <ClInclude Include="src\Game\GameStatus.h" />
     <ClInclude Include="src\Chara\Player\PlayerActionBase.h" />
     <ClInclude Include="src\Chara\Player\PlayerMode.h" />

@@ -10,7 +10,7 @@
 #include "PlayerConstant.h"
 #include "PlayerAnimator.h"
 #include "Task/TaskConstant.h"
-#include "Game/GameEvent.h"
+//#include "Game/GameEvent.h"
 
 namespace Player
 {
@@ -43,7 +43,7 @@ namespace Player
 		// TODO : レンダリング順についてより良い方法
 		render2D_Priority[1] = 0.5f;
 
-		Game::mapLoaded.AddListener(this, &Object::MapLoadedEventHandler);
+		//Game::mapLoaded.AddListener(this, &Object::MapLoadedEventHandler);
 	}
 
 	void Object::PostCreate()
@@ -54,7 +54,7 @@ namespace Player
 
 	Object::~Object()
 	{
-		Game::mapLoaded.RemoveListeners(this);
+		//Game::mapLoaded.RemoveListeners(this);
 	}
 
 	void Object::UpDate()

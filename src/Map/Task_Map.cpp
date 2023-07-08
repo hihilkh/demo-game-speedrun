@@ -2,7 +2,7 @@
 #include "GE/Debug/Log.h"
 #include "GE/Utils/Math.h"
 #include "Task/TaskConstant.h"
-#include "Game/GameEvent.h"
+//#include "Game/GameEvent.h"
 #include "Game/Task_GameCamera.h"
 #include "Game/GameStatus.h"
 #include "Chara/CharaBase.h"
