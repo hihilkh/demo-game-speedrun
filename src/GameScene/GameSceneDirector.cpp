@@ -5,6 +5,7 @@
 #include "Scene/Builder/EndingScene.h"
 #include "Scene/SceneTransition.h"
 #include "Map/MapManager.h"
+#include "Map/MapObject/GoalObject.h"
 #include "Camera/CameraManagement.h"
 #include "Character/Player/PlayerCameraController.h"
 #include "GameTimerController.h"
@@ -39,11 +40,13 @@ namespace GameScene
 		gameState = GameState::Preparing;
 		GameProgress::CreateNewGameProgress();
 		Map::MapManager::onMapLoaded.AddListener(&Director::SceneReadyHandler, *this);
+		Map::GoalObject::onGoalReached.AddListener(&Director::GameClear, *this);
 	}
 
 	void Director::PreDestroy()
 	{
 		Map::MapManager::onMapLoaded.RemoveListener(&Director::SceneReadyHandler, *this);
+		Map::GoalObject::onGoalReached.RemoveListener(&Director::GameClear, *this);
 		gameState = GameState::NotInGame;
 	}
 

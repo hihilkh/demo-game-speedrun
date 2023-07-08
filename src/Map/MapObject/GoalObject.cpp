@@ -1,15 +1,39 @@
 ﻿#include "GE/GEHeader.h"
 #include "GoalObject.h"
+#include "GE/Collision/Collider.h"
 
 namespace Map
 {
-	GoalObject::GoalObject(GameObject& gameObject) :
-		MapObject(gameObject, Map::MapObjectType::Goal)
+	GE::Event<> GoalObject::onGoalReached;
+
+	GoalObject::GoalObject(GameObject& gameObject, GE::Collision::Collider& collider) :
+		MapObject(gameObject, Map::MapObjectType::Goal),
+		collider(collider),
+		isTriggered(false)
 	{
 	}
 
+	void GoalObject::Start()
+	{
+		collider.onTriggered.AddListener(&GoalObject::Trigger, *this);
+	}
+
+	void GoalObject::PreDestroy()
+	{
+		collider.onTriggered.RemoveListener(&GoalObject::Trigger, *this);
+	}
+
+	void GoalObject::Trigger(const GE::Collision::Collider& other)
+	{
+		if (isTriggered) {
+			return;
+		}
+
+		isTriggered = true;
+		onGoalReached.Invoke();
+	}
+
 	// TODO : Animation
-	// TODO : Trigger
 }
 
 /*
@@ -31,20 +55,6 @@ namespace Map
 		void Object::UpDate()
 	{
 		animator->UpDate();
-
-		if (isTriggered) {
-			return;
-		}
-
-		auto playerSP = player.lock();
-		if (!playerSP) {
-			return;
-		}
-
-		if (GetCurrentHitBox().Hit(playerSP->GetCurrentHitBox())) {
-			isTriggered = true;
-			Game::gameEnded.Invoke();
-		}
 	}
 
 	void Object::Render2D_AF()

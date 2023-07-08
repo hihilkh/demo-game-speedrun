@@ -33,6 +33,6 @@ namespace Prefab::Map
 			colliderRect);
 		collider.SetCollisionLayer(CollisionInfo::mapLayer);
 
-		return baseGameObject.AddComponent<::Map::GoalObject>();
+		return baseGameObject.AddComponent<::Map::GoalObject>(collider);
 	}
 }
