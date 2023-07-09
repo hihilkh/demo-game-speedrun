@@ -1,13 +1,14 @@
 ﻿#include "GE/GEHeader.h"
 #include "PlayerModel.h"
 #include "Map/MapManager.h"
-#include "PlayerConfig.h"
+#include "State/PlayerStateRequest.h"
 
 namespace Player
 {
 	PlayerModel::PlayerModel(GameObject& gameObject) :
 		Component(gameObject),
-		currentDir(TransformUtils::Direction::Down)
+		facingDir(TransformUtils::Direction::Down),
+		stateMachine(*this)
 	{
 	}
 
@@ -21,6 +22,11 @@ namespace Player
 		Map::MapManager::onMapLoaded.RemoveListener(&PlayerModel::SceneReadyHandler, *this);
 	}
 
+	void PlayerModel::LateUpdate()
+	{
+		stateMachine.Update();
+	}
+
 	void PlayerModel::SceneReadyHandler(const Map::MapManager& mapManager)
 	{
 		GetTransform().SetWorldPos(mapManager.GetPlayerStartPos());
@@ -28,9 +34,22 @@ namespace Player
 
 	void PlayerModel::Move(const Vector2& dirVector)
 	{
-		// TODO : 仮処理
-		currentDir = TransformUtils::GetNewDirection(currentDir, dirVector);
-		GetTransform().SetPos(GetTransform().GetPos() + dirVector * walkSpeed);
+		moveDirVector = dirVector;
+	}
+
+	void PlayerModel::UpdateFacingDirection()
+	{
+		facingDir = TransformUtils::GetNewDirection(facingDir, moveDirVector);
+	}
+
+	void PlayerModel::StartRunning()
+	{
+		stateMachine.AddStateRequest(PlayerStateRequest::StartRunning);
+	}
+
+	void PlayerModel::StopRunning()
+	{
+		stateMachine.AddStateRequest(PlayerStateRequest::StopRunning);
 	}
 
 	bool PlayerModel::CanControl() const

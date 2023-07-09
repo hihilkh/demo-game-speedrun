@@ -19,8 +19,16 @@ namespace Player
 			return;
 		}
 
-		// TODO : 走る
+		// 走る
+		if (GE::Input::GetKeyDown(GE::Input::Key::x)) {
+			model.StartRunning();
+			return;
+		} else if (GE::Input::GetKeyUp(GE::Input::Key::x)) {
+			model.StopRunning();
+			return;
+		}
 
+		// 歩く
 		Vector2 dirVector = Vector2::zero;
 
 		if (GE::Input::GetKeyOn(GE::Input::Key::left))	{ dirVector += Vector2::left; }

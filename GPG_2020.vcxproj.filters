@@ -427,6 +427,24 @@
     <ClCompile Include="src\Character\Player\TempPlayerAnimator.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Character\Player\State\PlayerStateMachine.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Character\Player\State\Handler\PlayerWalkStateHandler.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Character\Player\State\Handler\PlayerRunStateHandler.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Character\Player\State\Handler\PlayerPrepareToRunStateHandler.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Character\Player\State\Handler\PlayerStopRunningStateHandler.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Character\Player\State\Handler\PlayerFallbackStateHandler.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GameEngine_Ver3_83.h">
@@ -985,6 +1003,33 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Character\Player\TempPlayerAnimator.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Character\Player\State\Handler\PlayerStateHandler.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Character\Player\State\PlayerStateMachine.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Character\Player\State\Handler\PlayerWalkStateHandler.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Character\Player\State\Handler\PlayerRunStateHandler.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Character\Player\State\PlayerState.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Character\Player\State\PlayerStateRequest.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Character\Player\State\Handler\PlayerPrepareToRunStateHandler.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Character\Player\State\Handler\PlayerStopRunningStateHandler.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Character\Player\State\Handler\PlayerFallbackStateHandler.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

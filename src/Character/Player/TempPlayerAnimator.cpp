@@ -15,7 +15,7 @@ namespace Player
 
 	void TempPlayerAnimator::LateUpdate()
 	{
-		TransformUtils::Direction dir = model.GetDirection();
+		TransformUtils::Direction dir = model.GetFacingDirection();
 		int dirInt = static_cast<int>(dir);
 		RectPixel srcRect(dirInt * playerWidth, 0, playerWidth, playerHeight);
 		image.SetSrcRect(srcRect);

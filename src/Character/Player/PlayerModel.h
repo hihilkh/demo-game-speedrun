@@ -3,6 +3,8 @@
 #include "GE/Utils/TypeDef.h"
 #include "GE/Core/Component.h"
 #include "TransformUtils/Direction.h"
+#include "State/PlayerStateMachine.h"
+#include "GE/DataType/Vector2.h"
 
 namespace Map
 {
@@ -20,16 +22,24 @@ namespace Player
 
 		/// <param name="dirVector">長さは1とは限らない</param>
 		void Move(const Vector2& dirVector);
+		void StartRunning();
+		void StopRunning();
 		bool CanControl() const;
 
-		TransformUtils::Direction GetDirection() const { return currentDir; }
+		TransformUtils::Direction GetFacingDirection() const { return facingDir; }
+		void UpdateFacingDirection();
+
+		const Vector2& GetMoveDirVector() const { return moveDirVector; }
 
 	protected:
 		void Awake() override;
 		void PreDestroy() override;
+		void LateUpdate() override;
 
 	private:
-		TransformUtils::Direction currentDir;
+		TransformUtils::Direction facingDir;
+		PlayerStateMachine stateMachine;
+		Vector2 moveDirVector;
 
 	private:
 		void SceneReadyHandler(const Map::MapManager& mapManager);

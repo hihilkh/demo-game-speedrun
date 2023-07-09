@@ -82,7 +82,7 @@ namespace Map
 			case Map::TileType::WeakWall:
 				return &GE::Instantiate(Prefab::Map::WeakWallTilePrefab());
 			default:
-				DEBUG_LOG_WARNING("InstantiateTile : まだ TileType : " << GE::Enum::ToString(type) << " の実装はない");
+				DEBUG_LOG_WARNING("InstantiateTile : まだ TileType::" << GE::Enum::ToString(type) << " の実装はない");
 				return nullptr;
 		}
 	}
@@ -95,7 +95,7 @@ namespace Map
 			case Map::MapObjectType::Goal:
 				return &GE::Instantiate(Prefab::Map::GoalObjectPrefab());
 			default:
-				DEBUG_LOG_WARNING("InstantiateMapObject : まだ MapObject : " << GE::Enum::ToString(type) << " の実装はない");
+				DEBUG_LOG_WARNING("InstantiateMapObject : まだ MapObjectType::" << GE::Enum::ToString(type) << " の実装はない");
 				return nullptr;
 		}
 	}

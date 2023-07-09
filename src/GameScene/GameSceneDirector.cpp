@@ -53,7 +53,7 @@ namespace GameScene
 	void Director::Update()
 	{
 #ifdef _DEBUG
-		if (GE::Input::GetKeyDown(GE::Input::Key::x)) {
+		if (GE::Input::GetKeyDown(GE::Input::Key::z)) {
 			GoToEndingScene();
 		}
 #endif
