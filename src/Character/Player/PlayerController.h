@@ -10,16 +10,16 @@ namespace Player
 	class PlayerController : public Component
 	{
 	public:
-		explicit PlayerController(GameObject& gameObject);
+		PlayerController(GameObject& gameObject, PlayerModel& model);
 
 	protected:
-		void Awake() override;
 		void Update() override;
-		void EndOfFrame() override;
 
 	private:
-		void Deactivate();
+		PlayerModel& model;
+
 	private:
-		PlayerModel* model;
+		bool CanControl() const;
+
 	};
 }

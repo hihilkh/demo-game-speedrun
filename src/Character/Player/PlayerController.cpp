@@ -3,54 +3,37 @@
 #include "PlayerModel.h"
 #include "GE/Input/InputSystem.h"
 #include "PlayerConfig.h"
+#include "GameScene/GameSceneDirector.h"
 
 namespace Player
 {
-	PlayerController::PlayerController(GameObject& gameObject) :
+	PlayerController::PlayerController(GameObject& gameObject, PlayerModel& model) :
 		Component(gameObject),
-		model(nullptr)
+		model(model)
 	{
-	}
-
-	void PlayerController::Awake()
-	{
-		model = gameObject.GetComponent<PlayerModel>();
-		if (model == nullptr) {
-			Deactivate();
-		}
 	}
 
 	void PlayerController::Update()
 	{
-		// TODO : 仮処理
-		Vector2 moveDirection(0.0f, 0.0f);
-		if (GE::Input::GetKeyOn(GE::Input::Key::up)) {
-			moveDirection.y += 1;
-		}
-		if (GE::Input::GetKeyOn(GE::Input::Key::down)) {
-			moveDirection.y -= 1;
-		}
-		if (GE::Input::GetKeyOn(GE::Input::Key::left)) {
-			moveDirection.x -= 1;
-		}
-		if (GE::Input::GetKeyOn(GE::Input::Key::right)) {
-			moveDirection.x += 1;
+		if (!CanControl()) {
+			return;
 		}
 
-		model->Move(moveDirection, walkSpeed);
+		// TODO : 走る
+
+		Vector2 dirVector = Vector2::zero;
+
+		if (GE::Input::GetKeyOn(GE::Input::Key::left))	{ dirVector += Vector2::left; }
+		if (GE::Input::GetKeyOn(GE::Input::Key::right)) { dirVector += Vector2::right; }
+		if (GE::Input::GetKeyOn(GE::Input::Key::up))	{ dirVector += Vector2::up; }
+		if (GE::Input::GetKeyOn(GE::Input::Key::down))	{ dirVector += Vector2::down; }
+
+		model.Move(dirVector);
 	}
 
-	void PlayerController::EndOfFrame()
+	bool PlayerController::CanControl() const
 	{
-		if (!model->IsValid()) {
-			model = nullptr;
-			Deactivate();
-		}
-	}
-
-	void PlayerController::Deactivate()
-	{
-		DEBUG_LOG_WARNING("PlayerModelがnullptrになる。PlayerControllerを無効になる。");
-		SetIsEnable(false);
+		return	GameScene::Director::GetGameState() == GameScene::GameState::Started &&
+				model.CanControl();
 	}
 }

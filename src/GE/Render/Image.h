@@ -28,6 +28,9 @@ namespace GE::Render
 
 #pragma region ゲッター/セッター
 
+		const RectPixel& GetSrcRect() const { return srcRect; }
+		void SetSrcRect(const RectPixel& srcRect) { this->srcRect = srcRect; }
+
 		const Vector2& GetScale() const { return scale; }
 		void SetScale(const Vector2& scale) { this->scale = scale; }
 		void SetUniformScale(float scale) { this->scale.x = scale; this->scale.y = scale; }

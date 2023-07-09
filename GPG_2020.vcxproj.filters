@@ -124,7 +124,7 @@
     <ClCompile Include="src\Map\Task_Map.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Common\Direction.cpp">
+    <ClCompile Include="src\Common\DirectionOld.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Animation\Animator.cpp">
@@ -419,6 +419,12 @@
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GameScene\GameTimerController.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransformUtils\Direction.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Character\Player\TempPlayerAnimator.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -973,6 +979,12 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GameScene\GameTimerController.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TransformUtils\Direction.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Character\Player\TempPlayerAnimator.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

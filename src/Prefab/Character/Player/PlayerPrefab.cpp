@@ -10,6 +10,7 @@
 #include "Character/Player/PlayerController.h"
 #include "Character/Player/PlayerRenderInfo.h"
 #include "Character/Player/PlayerCameraController.h"
+#include "Character/Player/TempPlayerAnimator.h"
 
 #include "GE/Collision/RectCollider.h"
 #include "Collision/CollisionInfo.h"
@@ -48,7 +49,8 @@ namespace Prefab::Player
 		collider.SetCollisionLayer(CollisionInfo::playerLayer);
 
 		auto& model = baseGameObject.AddComponent<::Player::PlayerModel>();
-		auto& controller = baseGameObject.AddComponent<::Player::PlayerController>();
+		auto& controller = baseGameObject.AddComponent<::Player::PlayerController>(model);
+		auto& animator = baseGameObject.AddComponent<::Player::TempPlayerAnimator>(model, playerImage);
 
 		return model;
 	}

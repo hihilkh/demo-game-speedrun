@@ -1,11 +1,13 @@
 ﻿#include "GE/GEHeader.h"
 #include "PlayerModel.h"
 #include "Map/MapManager.h"
+#include "PlayerConfig.h"
 
 namespace Player
 {
 	PlayerModel::PlayerModel(GameObject& gameObject) :
-		Component(gameObject)
+		Component(gameObject),
+		currentDir(TransformUtils::Direction::Down)
 	{
 	}
 
@@ -24,9 +26,15 @@ namespace Player
 		GetTransform().SetWorldPos(mapManager.GetPlayerStartPos());
 	}
 
-	void PlayerModel::Move(const Vector2& direction, float speed)
+	void PlayerModel::Move(const Vector2& dirVector)
 	{
 		// TODO : 仮処理
-		GetTransform().SetPos(GetTransform().GetPos() + Vector2(direction.x * speed, direction.y * speed));
+		currentDir = TransformUtils::GetNewDirection(currentDir, dirVector);
+		GetTransform().SetPos(GetTransform().GetPos() + dirVector * walkSpeed);
+	}
+
+	bool PlayerModel::CanControl() const
+	{
+		return true;
 	}
 }
