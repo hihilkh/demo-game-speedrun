@@ -445,6 +445,9 @@
     <ClCompile Include="src\Character\Player\State\Handler\PlayerFallbackStateHandler.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Character\Player\PlayerCollisionHandler.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GameEngine_Ver3_83.h">
@@ -1030,6 +1033,9 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Character\Player\State\Handler\PlayerFallbackStateHandler.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Character\Player\PlayerCollisionHandler.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

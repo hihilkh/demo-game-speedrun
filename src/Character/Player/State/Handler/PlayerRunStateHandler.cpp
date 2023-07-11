@@ -15,8 +15,8 @@ namespace Player
 		using namespace TransformUtils;
 
 		Direction dir = model.GetFacingDirection();
-		Vector2 dirVector = GetDirectionalVector(dir);
-		Vector2 moveVector = runSpeed * Time::GetDeltaTime() * dirVector;
+		Vector2 moveVector = GetDirectionalVector(dir);
+		moveVector *= runSpeed * Time::GetDeltaTime();
 		Transform2D& transform = model.GetTransform();
 		transform.SetPos(transform.GetPos() + moveVector);
 	}

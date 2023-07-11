@@ -52,8 +52,18 @@ namespace Player
 		stateMachine.AddStateRequest(PlayerStateRequest::StopRunning);
 	}
 
+	void PlayerModel::Crash()
+	{
+		stateMachine.AddStateRequest(PlayerStateRequest::Fallback);
+	}
+
 	bool PlayerModel::CanControl() const
 	{
+		switch (stateMachine.GetState()) {
+			case PlayerState::Fallback:
+				return false;
+		}
+
 		return true;
 	}
 }

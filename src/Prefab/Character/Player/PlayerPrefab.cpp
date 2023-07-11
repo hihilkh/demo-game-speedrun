@@ -10,6 +10,7 @@
 #include "Character/Player/PlayerController.h"
 #include "Character/Player/PlayerRenderInfo.h"
 #include "Character/Player/PlayerCameraController.h"
+#include "Character/Player/PlayerCollisionHandler.h"
 #include "Character/Player/TempPlayerAnimator.h"
 
 #include "GE/Collision/RectCollider.h"
@@ -29,7 +30,7 @@ namespace Prefab::Player
 		imageBase.GetTransform().SetPosY(::Player::playerHeight / 2);
 
 		// playerImage
-		GameObject& playerImageObject = imageBase.AddChild("PlayerImage");
+		GameObject& playerImageObject = imageBase.AddChild(::Player::playerImageObjectName);
 		RectPixel playerImgSrcRect(0, 0, ::Player::playerWidth, ::Player::playerHeight);
 		auto& playerImage = playerImageObject.AddComponent<GE::Render::Image>("./data/Image/Chara.png", playerImgSrcRect);
 		playerImage.SetRenderPriority(RenderPriority::player);
@@ -51,6 +52,7 @@ namespace Prefab::Player
 		auto& model = baseGameObject.AddComponent<::Player::PlayerModel>();
 		auto& controller = baseGameObject.AddComponent<::Player::PlayerController>(model);
 		auto& animator = baseGameObject.AddComponent<::Player::TempPlayerAnimator>(model, playerImage);
+		auto& collisionHandler = baseGameObject.AddComponent<::Player::PlayerCollisionHandler>(model, collider);
 
 		return model;
 	}

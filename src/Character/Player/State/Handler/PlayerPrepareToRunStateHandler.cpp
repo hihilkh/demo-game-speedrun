@@ -9,6 +9,7 @@ namespace Player
 		startTime(0.0f)
 	{
 	}
+
 	void PlayerPrepareToRunStateHandler::OnEnter()
 	{
 		startTime = Time::GetTime();

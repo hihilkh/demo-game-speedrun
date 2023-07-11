@@ -158,6 +158,7 @@
     <ClCompile Include="src\Animation\Animator.cpp" />
     <ClCompile Include="src\Camera\CameraManagement.cpp" />
     <ClCompile Include="src\Character\Player\PlayerCameraController.cpp" />
+    <ClCompile Include="src\Character\Player\PlayerCollisionHandler.cpp" />
     <ClCompile Include="src\Character\Player\PlayerController.cpp" />
     <ClCompile Include="src\Character\Player\PlayerModel.cpp" />
     <ClCompile Include="src\Character\Player\State\Handler\PlayerFallbackStateHandler.cpp" />
@@ -1024,6 +1025,7 @@
     <ClInclude Include="src\Animation\AnimationKey.h" />
     <ClInclude Include="src\Animation\Animator.h" />
     <ClInclude Include="src\Character\Player\PlayerCameraController.h" />
+    <ClInclude Include="src\Character\Player\PlayerCollisionHandler.h" />
     <ClInclude Include="src\Character\Player\PlayerConfig.h" />
     <ClInclude Include="src\Character\Player\PlayerController.h" />
     <ClInclude Include="src\Character\Player\PlayerModel.h" />

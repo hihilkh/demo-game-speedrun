@@ -24,6 +24,7 @@ namespace Player
 		void Move(const Vector2& dirVector);
 		void StartRunning();
 		void StopRunning();
+		void Crash();
 		bool CanControl() const;
 
 		TransformUtils::Direction GetFacingDirection() const { return facingDir; }

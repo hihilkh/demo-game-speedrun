@@ -1,6 +1,13 @@
 ﻿#pragma once
 
 #include "PlayerStateHandler.h"
+#include "GE/Utils/TypeDef.h"
+#include "GE/DataType/Vector2.h"
+
+namespace GE
+{
+	class Transform2D;
+}
 
 namespace Player
 {
@@ -8,5 +15,16 @@ namespace Player
 	{
 	public:
 		explicit PlayerFallbackStateHandler(PlayerModel& model);
+
+		void OnEnter() override;
+		void OnUpdate() override;
+		void OnExit() override;
+		bool CheckHasDoneState() override;
+
+	private:
+		float startTime;
+		Transform2D* playerImageTransform;
+		Vector2 startPos;
+		Vector2 finalPos;
 	};
 }
