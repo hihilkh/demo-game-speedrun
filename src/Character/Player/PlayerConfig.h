@@ -12,4 +12,6 @@ namespace Player
 	inline const float fallbackMaxHeight = 32.0f;
 	inline const float fallbackSpeed = 360.0f;
 
+	inline const float crashSpeed = 840.0f;
+
 }

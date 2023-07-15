@@ -389,6 +389,20 @@
     <ClCompile Include="src\GameScene\GameProgress.cpp" />
     <ClCompile Include="src\GameScene\GameSceneDirector.cpp" />
     <ClCompile Include="src\GameScene\GameTimerController.cpp" />
+    <ClCompile Include="src\GE\Utils\HandyFunc\CollisionRelated.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeaderFile>
+    </ClCompile>
     <ClCompile Include="src\Prefab\UI\CountDownUIPrefab.cpp" />
     <ClCompile Include="src\TimeUtils\Timer.cpp" />
     <ClCompile Include="src\TransformUtils\Direction.cpp" />
@@ -1065,6 +1079,7 @@
     <ClInclude Include="src\Font\Font.h" />
     <ClInclude Include="src\GameScene\GameProgress.h" />
     <ClInclude Include="src\GameScene\GameTimerController.h" />
+    <ClInclude Include="src\GE\Utils\HandyFunc\CollisionRelated.h" />
     <ClInclude Include="src\Prefab\UI\CountDownUIPrefab.h" />
     <ClInclude Include="src\TimeUtils\Timer.h" />
     <ClInclude Include="src\TransformUtils\Direction.h" />

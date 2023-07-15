@@ -25,7 +25,9 @@ namespace GE::Collision
 		// Layerによっての分類
 		std::unordered_map<CollisionLayer::Bitmask, std::vector<Collider*>> map;
 		for (auto collider : colliders) {
-			map[collider->GetCollisionLayer()].push_back(collider);
+			if (collider->GetIsEnable()) {	// TODO : ComponentのisEnableだけではなく、gameObjectとか、gameObjectのparentとかによって無効になることもある
+				map[collider->GetCollisionLayer()].push_back(collider);
+			}
 		}
 
 		for (auto& pair : map) {

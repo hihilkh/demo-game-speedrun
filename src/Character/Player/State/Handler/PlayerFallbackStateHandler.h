@@ -18,13 +18,11 @@ namespace Player
 
 		void OnEnter() override;
 		void OnUpdate() override;
-		void OnExit() override;
 		bool CheckHasDoneState() override;
 
 	private:
-		float startTime;
+		float normalizedFallbackTime;
 		Transform2D* playerImageTransform;
-		Vector2 startPos;
-		Vector2 finalPos;
+		Vector2 fallbackVelocity;
 	};
 }

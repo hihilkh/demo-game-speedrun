@@ -9,65 +9,51 @@ namespace Player
 {
 	PlayerFallbackStateHandler::PlayerFallbackStateHandler(PlayerModel& model) :
 		PlayerStateHandler(model, PlayerState::Fallback),
-		startTime(0.0f),
+		normalizedFallbackTime(0.0f),
 		playerImageTransform(nullptr),
-		startPos(),
-		finalPos()
+		fallbackVelocity()
 	{
 	}
 
 	void PlayerFallbackStateHandler::OnEnter()
 	{
-		startTime = Time::GetTime();
+		normalizedFallbackTime = 0.0f;
 
 		auto playerImageObject = GE::FindGameObject(playerImageObjectName);
 		if (playerImageObject) {
 			playerImageTransform = &playerImageObject->GetTransform();
 		}
 
-		using namespace TransformUtils;
-		Direction facingDir = model.GetFacingDirection();
-		Vector2 moveVector = GetDirectionalVector(facingDir);
-		moveVector *= -fallbackSpeed * fallbackPeriod;
-		startPos = model.GetTransform().GetPos();
-		finalPos = startPos + moveVector;
+		TransformUtils::Direction facingDir = model.GetFacingDirection();
+		fallbackVelocity = GetDirectionalVector(facingDir);
+		fallbackVelocity *= -fallbackSpeed;
 	}
 
 	void PlayerFallbackStateHandler::OnUpdate()
 	{
-		float deltaTimeFromStart = Time::GetTime() - startTime;
-		float normalizedFallbackTime = deltaTimeFromStart / fallbackPeriod;
-		float playerImageHeight = 0.0f;
-		if (normalizedFallbackTime < 1) {
-			playerImageHeight = fallbackMaxHeight * std::sin(normalizedFallbackTime * (float)std::numbers::pi);
-		} else {
-			normalizedFallbackTime = 1;
-		}
+		float deltaNormalizedFallbackTime = Time::GetDeltaTime() / fallbackPeriod;
+
+		// normalizedFallbackTimeを1に超えないように
+		deltaNormalizedFallbackTime = std::min(deltaNormalizedFallbackTime, 1 - normalizedFallbackTime);
+		normalizedFallbackTime += deltaNormalizedFallbackTime;
 
 		// playerImageの高さ
 		// TODO : Animatorで制御するようになる
 		if (playerImageTransform == nullptr) {
 			DEBUG_LOG_WARNING("playerImageTransform == nullptr。FallbackのUpdateがうまくいかない。");
 		} else {
+			float playerImageHeight = fallbackMaxHeight * std::sin(normalizedFallbackTime * (float)std::numbers::pi);
 			playerImageTransform->SetPosY(playerImageHeight);
 		}
 
 		// playerの位置
-		Vector2 pos = Vector2::Lerp(startPos, finalPos, normalizedFallbackTime);
-		model.GetTransform().SetPos(pos);
-	}
-
-	void PlayerFallbackStateHandler::OnExit()
-	{
-		if (playerImageTransform != nullptr) {
-			playerImageTransform->SetPosY(0.0f);
-		}
-		model.GetTransform().SetPos(finalPos);
+		Vector2 newPos = model.GetTransform().GetPos() + fallbackVelocity * deltaNormalizedFallbackTime * fallbackPeriod;
+		model.GetTransform().SetPos(newPos);
 	}
 
 	bool PlayerFallbackStateHandler::CheckHasDoneState()
 	{
-		return Time::GetTime() - startTime >= fallbackPeriod;
+		return normalizedFallbackTime >= 1;
 	}
 }
 

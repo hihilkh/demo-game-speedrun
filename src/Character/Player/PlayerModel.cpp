@@ -2,13 +2,17 @@
 #include "PlayerModel.h"
 #include "Map/MapManager.h"
 #include "State/PlayerStateRequest.h"
+#include "Map/Tile/WeakWallTile.h"
+#include "GE/Collision/Collider.h"
 
 namespace Player
 {
 	PlayerModel::PlayerModel(GameObject& gameObject) :
 		Component(gameObject),
 		facingDir(TransformUtils::Direction::Down),
-		stateMachine(*this)
+		stateMachine(*this),
+		lastWorldPos(),
+		transportBeltOffset()
 	{
 	}
 
@@ -22,9 +26,17 @@ namespace Player
 		Map::MapManager::onMapLoaded.RemoveListener(&PlayerModel::SceneReadyHandler, *this);
 	}
 
+	void PlayerModel::Update()
+	{
+		lastWorldPos = GetTransform().GetWorldPos();
+	}
+
 	void PlayerModel::LateUpdate()
 	{
 		stateMachine.Update();
+		auto& transform = GetTransform();
+		transform.SetPos(transform.GetPos() + transportBeltOffset);
+		transportBeltOffset = Vector2::zero;
 	}
 
 	void PlayerModel::SceneReadyHandler(const Map::MapManager& mapManager)
@@ -52,9 +64,14 @@ namespace Player
 		stateMachine.AddStateRequest(PlayerStateRequest::StopRunning);
 	}
 
-	void PlayerModel::Crash()
+	void PlayerModel::Crash(const GE::Collision::Collider& other)
 	{
 		stateMachine.AddStateRequest(PlayerStateRequest::Fallback);
+
+		auto weakWallTile = other.gameObject.GetComponent<Map::WeakWallTile>();
+		if (weakWallTile) {
+			weakWallTile->Break();
+		}
 	}
 
 	bool PlayerModel::CanControl() const
@@ -65,5 +82,15 @@ namespace Player
 		}
 
 		return true;
+	}
+
+	void PlayerModel::AddTransportBeltOffset(const Vector2& offset)
+	{
+		switch (stateMachine.GetState()) {
+			case PlayerState::Fallback:
+				return;
+		}
+
+		transportBeltOffset += offset;
 	}
 }
