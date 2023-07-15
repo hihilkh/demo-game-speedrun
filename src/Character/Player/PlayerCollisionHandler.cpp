@@ -36,22 +36,28 @@ namespace Player
 
 	void PlayerCollisionHandler::HandleCollision(const GE::Collision::Collider& other)
 	{
-		if (CheckIsCrash(other)) {
-			model.Crash(other);
+		CollisionTypeWhileRunning collisionType = CheckCollisionTypeWhileRunning(other);
+		switch (collisionType) {
+			case CollisionTypeWhileRunning::Crash:
+				model.Crash(other);
+				break;
+			case CollisionTypeWhileRunning::Hit:
+				model.HitWall(other);
+				break;
 		}
 	}
 
 	// TODO : もっと良い方法を考える
-	bool PlayerCollisionHandler::CheckIsCrash(const GE::Collision::Collider& other)
+	PlayerCollisionHandler::CollisionTypeWhileRunning PlayerCollisionHandler::CheckCollisionTypeWhileRunning(const GE::Collision::Collider& other)
 	{
 		PlayerState state = model.GetPlayerState();
 		if (state != PlayerState::Run && 
 			state != PlayerState::StopRunning) {
-			return false;
+			return CollisionTypeWhileRunning::Ignore;
 		}
 
 		if (other.GetCollisionLayer() != CollisionInfo::mapLayer) {
-			return false;
+			return CollisionTypeWhileRunning::Ignore;
 		}
 
 		using namespace GE::Collision;
@@ -60,13 +66,10 @@ namespace Player
 		auto otherRectCollider = dynamic_cast<const RectCollider*>(&other);
 		if (otherRectCollider == nullptr) {
 			DEBUG_LOG_WARNING("なぜかmapLayerのColliderはRectColliderではない");
-			return false;
+			return CollisionTypeWhileRunning::Ignore;
 		}
 
 		CacheCollisionInfo();
-		if (!isOverCrashSpeed) {
-			return false;
-		}
 
 		// 向かっていないCollisionをCrashしないように
 		const Vector2& otherWorldPos = otherRectCollider->GetTransform().GetWorldPos();
@@ -76,9 +79,13 @@ namespace Player
 		Detection::CollidedType collidedType = CheckCollision(otherRect, facingDirMovementRect, 0.0f, 0.0f);
 		switch (collidedType) {
 			case Detection::CollidedType::Overlap:
-				return true;
+				if (isOverCrashSpeed) {
+					return CollisionTypeWhileRunning::Crash;
+				} else {
+					return CollisionTypeWhileRunning::Hit;
+				}
 			default:
-				return false;
+				return CollisionTypeWhileRunning::Ignore;
 		}
 	}
 

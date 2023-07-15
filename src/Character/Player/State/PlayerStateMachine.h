@@ -29,10 +29,10 @@ namespace Player
 		std::vector<PlayerStateRequest> stateRequests;
 
 	private:
-		void UpdateState();
-		void UpdateState_Walk();
-		void UpdateState_Run();
-		void UpdateState_Fallback();
+		void DetermineState();
+		void DetermineState_Walk();
+		void DetermineState_Run();
+		void DetermineState_Fallback();
 
 		void ChangeState(PlayerState state);
 		std::unique_ptr<PlayerStateHandler> CreateStateHandler(PlayerState state) const;

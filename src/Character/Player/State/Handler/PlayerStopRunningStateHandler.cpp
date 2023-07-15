@@ -18,7 +18,6 @@ namespace Player
 
 	void PlayerStopRunningStateHandler::OnUpdate()
 	{
-		// TODO : 壁と当たっる（fallbackではないとき）と、すぐStopRunning済みになる
 		if (currentSpeed <= 0.0f) {
 			return;
 		}

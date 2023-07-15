@@ -30,6 +30,7 @@ namespace Player
 		void StartRunning();
 		void StopRunning();
 		void Crash(const GE::Collision::Collider& other);
+		void HitWall(const GE::Collision::Collider& other);
 		bool CanControl() const;
 
 		TransformUtils::Direction GetFacingDirection() const { return facingDir; }

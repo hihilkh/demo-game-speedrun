@@ -33,36 +33,36 @@ namespace Player
 
 	void PlayerStateMachine::Update()
 	{
-		UpdateState();
+		DetermineState();
 		stateHandler->OnUpdate();
 	}
 
 #pragma region UpdateState
 
-	void PlayerStateMachine::UpdateState()
+	void PlayerStateMachine::DetermineState()
 	{
 		PlayerState currentState = GetState();
 		switch (currentState) {
 			case PlayerState::Walk:
-				UpdateState_Walk();
+				DetermineState_Walk();
 				break;
 			case PlayerState::PrepareToRun:
 			case PlayerState::Run:
 			case PlayerState::StopRunning:
-				UpdateState_Run();
+				DetermineState_Run();
 				break;
 			case PlayerState::Fallback:
-				UpdateState_Fallback();
+				DetermineState_Fallback();
 				break;
 			default:
-				DEBUG_LOG_WARNING("UpdateState : PlayerState::" << GE::Enum::ToString(currentState) << "についてはまだ実装していない。");
+				DEBUG_LOG_WARNING("DetermineState : PlayerState::" << GE::Enum::ToString(currentState) << "についてはまだ実装していない。");
 				break;
 		}
 
 		stateRequests.clear();
 	}
 
-	void PlayerStateMachine::UpdateState_Walk()
+	void PlayerStateMachine::DetermineState_Walk()
 	{
 		for (auto request : stateRequests) {
 			switch (request) {
@@ -73,7 +73,7 @@ namespace Player
 		}
 	}
 
-	void PlayerStateMachine::UpdateState_Run()
+	void PlayerStateMachine::DetermineState_Run()
 	{
 		PlayerState currentState = GetState();
 		PlayerState nextState = currentState;
@@ -82,9 +82,15 @@ namespace Player
 				case PlayerStateRequest::StopRunning:
 					nextState = currentState == PlayerState::Run ? PlayerState::StopRunning : PlayerState::Walk;
 					break;
-				case PlayerStateRequest::Fallback:
+				case PlayerStateRequest::CrashWithWall:
 					ChangeState(PlayerState::Fallback);
 					return;
+				case PlayerStateRequest::HitWall:
+					if (currentState == PlayerState::StopRunning) {
+						ChangeState(PlayerState::Walk);
+						return;
+					}
+					break;
 			}
 		}
 
@@ -107,7 +113,7 @@ namespace Player
 		}
 	}
 
-	void PlayerStateMachine::UpdateState_Fallback()
+	void PlayerStateMachine::DetermineState_Fallback()
 	{
 		if (stateHandler->CheckHasDoneState()) {
 			ChangeState(PlayerState::Walk);

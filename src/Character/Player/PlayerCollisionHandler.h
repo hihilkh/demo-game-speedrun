@@ -25,6 +25,14 @@ namespace Player
 		void PreDestroy() override;
 
 	private:
+
+		enum class CollisionTypeWhileRunning
+		{
+			Ignore,
+			Hit,
+			Crash,
+		};
+
 		PlayerModel& model;
 		GE::Collision::RectCollider& collider;
 
@@ -34,7 +42,7 @@ namespace Player
 
 	private:
 		void HandleCollision(const GE::Collision::Collider& other);
-		bool CheckIsCrash(const GE::Collision::Collider& other);
+		CollisionTypeWhileRunning CheckCollisionTypeWhileRunning(const GE::Collision::Collider& other);
 		void CacheCollisionInfo();
 	};
 }

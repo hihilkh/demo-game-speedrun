@@ -66,12 +66,17 @@ namespace Player
 
 	void PlayerModel::Crash(const GE::Collision::Collider& other)
 	{
-		stateMachine.AddStateRequest(PlayerStateRequest::Fallback);
+		stateMachine.AddStateRequest(PlayerStateRequest::CrashWithWall);
 
 		auto weakWallTile = other.gameObject.GetComponent<Map::WeakWallTile>();
 		if (weakWallTile) {
 			weakWallTile->Break();
 		}
+	}
+
+	void PlayerModel::HitWall(const GE::Collision::Collider& other)
+	{
+		stateMachine.AddStateRequest(PlayerStateRequest::HitWall);
 	}
 
 	bool PlayerModel::CanControl() const

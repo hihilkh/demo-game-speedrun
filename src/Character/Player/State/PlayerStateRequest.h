@@ -6,6 +6,7 @@ namespace Player
 	{
 		StartRunning,
 		StopRunning,
-		Fallback,
+		CrashWithWall,
+		HitWall,
 	};
 }
