@@ -3,11 +3,6 @@
 #include "GE/Utils/TypeDef.h"
 #include "GE/Core/Component.h"
 
-namespace GE::Render
-{
-	class Image;
-}
-
 namespace Player
 {
 	class PlayerModel;
@@ -15,7 +10,7 @@ namespace Player
 	class TempPlayerAnimator : public Component
 	{
 	public:
-		TempPlayerAnimator(GameObject& gameObject, PlayerModel& model, GE::Render::Image& image);
+		TempPlayerAnimator(GameObject& gameObject, PlayerModel& model, Image& image);
 
 	public:
 
@@ -24,6 +19,6 @@ namespace Player
 
 	private:
 		PlayerModel& model;
-		GE::Render::Image& image;
+		Image& image;
 	};
 }

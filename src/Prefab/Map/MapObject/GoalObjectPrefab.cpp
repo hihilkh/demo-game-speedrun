@@ -24,10 +24,10 @@ namespace Prefab::Map
 		auto& offsetBase = baseGameObject.AddChild("OffsetBase");
 		offsetBase.GetTransform().SetPosY(::Map::tileHeight / 4);
 
-		auto& image = offsetBase.AddComponent<GE::Render::Image>("./data/Image/Flag.png", imgSrcRect);
+		auto& image = offsetBase.AddComponent<Image>("./data/Image/Flag.png", imgSrcRect);
 		image.SetRenderPriority(RenderPriority::mapObject);
 
-		auto& collider = offsetBase.AddComponent<GE::Collision::RectCollider>(
+		auto& collider = offsetBase.AddComponent<RectCollider>(
 			true,
 			false,
 			colliderRect);

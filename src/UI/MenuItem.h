@@ -10,11 +10,6 @@ namespace GE
 	{
 		class Text;
 	}
-
-	namespace Render
-	{
-		class Image;
-	}
 }
 
 namespace UI
@@ -22,7 +17,7 @@ namespace UI
 	class MenuItem : public Component
 	{
 	public:
-		MenuItem(GameObject& gameObject, GE::UI::Text& text, GE::Render::Image& arrowImage);
+		MenuItem(GameObject& gameObject, GE::UI::Text& text, Image& arrowImage);
 
 	public:
 		void Init(const std::string& text, bool isSelecting, std::function<void()> onClicked);
@@ -32,7 +27,7 @@ namespace UI
 
 	private:
 		GE::UI::Text& text;
-		GE::Render::Image& arrowImage;
+		Image& arrowImage;
 
 		bool isSelecting;
 

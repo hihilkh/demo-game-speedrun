@@ -7,11 +7,6 @@
 #include "State/PlayerStateMachine.h"
 #include "GE/DataType/Vector2.h"
 
-namespace GE::Collision
-{
-	class Collider;
-}
-
 namespace Map
 {
 	class MapManager;
@@ -30,8 +25,8 @@ namespace Player
 		void Move(const Vector2& dirVector);
 		void StartRunning();
 		void StopRunning();
-		void Crash(const GE::Collision::Collider& other);
-		void HitWall(const GE::Collision::Collider& other);
+		void Crash(const Collider& other);
+		void HitWall(const Collider& other);
 		bool CanControl() const;
 
 		TransformUtils::Direction GetFacingDirection() const { return facingDir; }

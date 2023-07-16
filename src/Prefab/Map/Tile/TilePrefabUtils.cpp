@@ -16,11 +16,11 @@ namespace Prefab::Map::Tile
 	{
 		baseGameObject.SetName(name);
 
-		auto& image = baseGameObject.AddComponent<GE::Render::Image>("./data/Image/MapTile.png", imgSrcRect);
+		auto& image = baseGameObject.AddComponent<Image>("./data/Image/MapTile.png", imgSrcRect);
 		image.SetRenderPriority(RenderPriority::mapBack);
 
 		if (hasCollider) {
-			auto& collider = baseGameObject.AddComponent<GE::Collision::RectCollider>(
+			auto& collider = baseGameObject.AddComponent<RectCollider>(
 				isColliderTrigger,
 				false,
 				Rect::FromCenter((float)imgSrcRect.width, (float)imgSrcRect.height));

@@ -9,7 +9,7 @@
 
 namespace Player
 {
-	PlayerCollisionHandler::PlayerCollisionHandler(GameObject& gameObject, PlayerModel& model, GE::Collision::RectCollider& collider) :
+	PlayerCollisionHandler::PlayerCollisionHandler(GameObject& gameObject, PlayerModel& model, RectCollider& collider) :
 		Component(gameObject),
 		model(model),
 		collider(collider),
@@ -34,7 +34,7 @@ namespace Player
 		collider.onCollided.RemoveListener(&PlayerCollisionHandler::HandleCollision, *this);
 	}
 
-	void PlayerCollisionHandler::HandleCollision(const GE::Collision::Collider& other, GE::Collision::Detection::CollidedType collidedType)
+	void PlayerCollisionHandler::HandleCollision(const Collider& other, CollidedType collidedType)
 	{
 		CollisionTypeWhileRunning collisionType = CheckCollisionTypeWhileRunning(other);
 		switch (collisionType) {
@@ -48,7 +48,7 @@ namespace Player
 	}
 
 	// TODO : もっと良い方法を考える
-	PlayerCollisionHandler::CollisionTypeWhileRunning PlayerCollisionHandler::CheckCollisionTypeWhileRunning(const GE::Collision::Collider& other)
+	PlayerCollisionHandler::CollisionTypeWhileRunning PlayerCollisionHandler::CheckCollisionTypeWhileRunning(const Collider& other)
 	{
 		PlayerState state = model.GetPlayerState();
 		if (state != PlayerState::Run && 

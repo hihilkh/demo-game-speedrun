@@ -22,7 +22,7 @@ namespace Scene
 			GameObject& obj = GameObject::CreatePersistent("SceneTransition");
 
 			// OverlayImage
-			GE::Render::Image& image = obj.AddComponent<GE::Render::Image>(overlayImagePath);
+			auto& image = obj.AddComponent<Image>(overlayImagePath);
 			const GE::GEConfig& config = GE::GetGEConfig();
 			image.SetImageSize(Vector2((float)config.screenWidth, (float)config.screenHeight));
 			image.SetRenderLayer(RenderLayer::ui);

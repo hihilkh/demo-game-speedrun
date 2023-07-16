@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "GEConcept.h"
+#include <stdint.h>
 
 #pragma region 前方宣言
 
@@ -24,12 +25,28 @@ namespace GE
 		struct TRect;
 	}
 
-	namespace Render::RenderLayer
+	namespace Render
 	{
+		class Image;
+
+		namespace RenderLayer
+		{
+		}
 	}
 
-	namespace Collision::CollisionLayer
+	namespace Collision
 	{
+		class Collider;
+		class RectCollider;
+
+		namespace Detection
+		{
+			enum class CollidedType : std::uint8_t;
+		}
+
+		namespace CollisionLayer
+		{
+		}
 	}
 }
 
@@ -49,7 +66,12 @@ using Vector2Int		= GE::DataType::Internal::TVector2<int>;
 using Vector3			= GE::DataType::Internal::TVector3<float>;
 using Vector3Int		= GE::DataType::Internal::TVector3<int>;
 
-namespace RenderLayer		= GE::Render::RenderLayer;
+using Image				= GE::Render::Image;
+namespace RenderLayer	= GE::Render::RenderLayer;
+
+using Collider				= GE::Collision::Collider;
+using RectCollider			= GE::Collision::RectCollider;
+using CollidedType			= GE::Collision::Detection::CollidedType;
 namespace CollisionLayer	= GE::Collision::CollisionLayer;
 
 // 備考：

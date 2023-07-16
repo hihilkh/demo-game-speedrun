@@ -32,7 +32,7 @@ namespace ImageUtils
 		}
 
 		if (!image) {
-			image = gameObject.GetComponent<GE::Render::Image>();
+			image = gameObject.GetComponent<Image>();
 		}
 		
 		if (image) {

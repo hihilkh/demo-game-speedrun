@@ -4,23 +4,6 @@
 #include "TransformUtils/Direction.h"
 #include "GE/DataType/Rect.h"
 
-namespace GE
-{
-	namespace Collision
-	{
-		class Collider;
-		namespace Detection
-		{
-			enum class CollidedType : std::uint8_t;
-		}
-	}
-
-	namespace Render
-	{
-		class Image;
-	}
-}
-
 namespace Map
 {
 	class TransportBeltTile : public Tile
@@ -33,7 +16,7 @@ namespace Map
 		static const RectPixel rightImgSrcRect;
 
 	public:
-		explicit TransportBeltTile(GameObject& gameObject, GE::Collision::Collider& collider, GE::Render::Image& image);
+		explicit TransportBeltTile(GameObject& gameObject, Collider& collider, Image& image);
 
 		void SetDirection(TransformUtils::Direction direction);
 
@@ -42,12 +25,12 @@ namespace Map
 		void PreDestroy() override;
 
 	private:
-		GE::Collision::Collider& collider;
-		GE::Render::Image& image;
+		Collider& collider;
+		Image& image;
 
 		TransformUtils::Direction direction;
 
 	private:
-		void HandleTrigger(const GE::Collision::Collider& other, GE::Collision::Detection::CollidedType collidedType);
+		void HandleTrigger(const Collider& other, CollidedType collidedType);
 	};
 }

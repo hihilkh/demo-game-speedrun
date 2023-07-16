@@ -6,7 +6,7 @@ namespace Map
 {
 	GE::Event<> GoalObject::onGoalReached;
 
-	GoalObject::GoalObject(GameObject& gameObject, GE::Collision::Collider& collider) :
+	GoalObject::GoalObject(GameObject& gameObject, Collider& collider) :
 		MapObject(gameObject, Map::MapObjectType::Goal),
 		collider(collider),
 		isTriggered(false)
@@ -23,7 +23,7 @@ namespace Map
 		collider.onTriggered.RemoveListener(&GoalObject::Trigger, *this);
 	}
 
-	void GoalObject::Trigger(const GE::Collision::Collider& other, GE::Collision::Detection::CollidedType collidedType)
+	void GoalObject::Trigger(const Collider& other, CollidedType collidedType)
 	{
 		if (isTriggered) {
 			return;

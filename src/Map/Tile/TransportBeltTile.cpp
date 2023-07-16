@@ -12,7 +12,7 @@ namespace Map
 	const RectPixel TransportBeltTile::upImgSrcRect(tileWidth * 2, tileHeight * 3, tileWidth, tileHeight);
 	const RectPixel TransportBeltTile::rightImgSrcRect(0, tileHeight * 3, tileWidth, tileHeight);
 
-	TransportBeltTile::TransportBeltTile(GameObject& gameObject, GE::Collision::Collider& collider, GE::Render::Image& image) :
+	TransportBeltTile::TransportBeltTile(GameObject& gameObject, Collider& collider, Image& image) :
 		Tile(gameObject, Map::TileType::TransportBelt),
 		collider(collider),
 		image(image),
@@ -30,9 +30,9 @@ namespace Map
 		collider.onTriggered.RemoveListener(&TransportBeltTile::HandleTrigger, *this);
 	}
 
-	void TransportBeltTile::HandleTrigger(const GE::Collision::Collider& other, GE::Collision::Detection::CollidedType collidedType)
+	void TransportBeltTile::HandleTrigger(const Collider& other, CollidedType collidedType)
 	{
-		if (collidedType != GE::Collision::Detection::CollidedType::Overlap) {
+		if (collidedType != CollidedType::Overlap) {
 			return;
 		}
 

@@ -4,14 +4,11 @@
 
 #if DEBUG_IS_ENABLED(DEBUG_COLLIDER_VISUAL)
 
-namespace GE::Collision
-{
-	class Collider;
-}
+#include "GE/Utils/TypeDef.h"
 
 namespace GE::Debug::Collision
 {
-	void AddColliderVisual(const GE::Collision::Collider& collider);
+	void AddColliderVisual(const Collider& collider);
 }
 
 #define ADD_COLLIDER_VISUAL(collider) GE::Debug::Collision::AddColliderVisual(collider)

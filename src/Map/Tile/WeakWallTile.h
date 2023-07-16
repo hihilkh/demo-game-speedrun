@@ -3,19 +3,6 @@
 #include "Tile.h"
 #include "GE/DataType/Rect.h"
 
-namespace GE
-{
-	namespace Collision
-	{
-		class Collider;
-	}
-
-	namespace Render
-	{
-		class Image;
-	}
-}
-
 namespace Map
 {
 	class WeakWallTile : public Tile
@@ -26,12 +13,12 @@ namespace Map
 		static const RectPixel brokenImgSrcRect;
 
 	public:
-		explicit WeakWallTile(GameObject& gameObject, GE::Collision::Collider& collider, GE::Render::Image& image);
+		explicit WeakWallTile(GameObject& gameObject, Collider& collider, Image& image);
 		void Break();
 
 	private:
 		bool isBroken;
-		GE::Collision::Collider& collider;
-		GE::Render::Image& image;
+		Collider& collider;
+		Image& image;
 	};
 }

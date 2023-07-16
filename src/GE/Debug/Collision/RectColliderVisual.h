@@ -4,14 +4,11 @@
 
 #if DEBUG_IS_ENABLED(DEBUG_COLLIDER_VISUAL)
 
-namespace GE::Collision
-{
-	class RectCollider;
-}
+#include "GE/Utils/TypeDef.h"
 
 namespace GE::Debug::Collision
 {
-	void AddRectColliderVisual(const GE::Collision::RectCollider& collider);
+	void AddRectColliderVisual(const RectCollider& collider);
 }
 
 #endif

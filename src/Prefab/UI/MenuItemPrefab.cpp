@@ -16,7 +16,7 @@ namespace Prefab::UI
 		text.SetColor(Color::white);
 
 		GameObject& arrowObj = baseGameObject.AddChild("Arrow");
-		auto& arrowImage = arrowObj.AddComponent<GE::Render::Image>("./data/Image/Arrow.png");
+		auto& arrowImage = arrowObj.AddComponent<Image>("./data/Image/Arrow.png");
 		arrowImage.SetRenderLayer(RenderLayer::ui);
 		arrowImage.SetColor(Color::green);
 		

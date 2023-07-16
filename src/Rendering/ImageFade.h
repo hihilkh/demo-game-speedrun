@@ -4,11 +4,6 @@
 #include "GE/Utils/TypeDef.h"
 #include <functional>
 
-namespace GE::Render
-{
-	class Image;
-}
-
 namespace ImageUtils
 {
 	/// <summary>
@@ -50,7 +45,7 @@ namespace ImageUtils
 		float CalculateCurrentAlpha() const;
 
 	private:
-		GE::Render::Image* image;
+		Image* image;
 		State state;
 		float totalFadeTime;
 		float startFadingTime;

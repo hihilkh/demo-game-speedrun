@@ -17,7 +17,7 @@ namespace Scene
 		GameObject& logoObj = GameObject::Create(*scene, "Logo");
 		logoObj.GetTransform().SetPosY(100.0f);
 
-		auto& logoImage = logoObj.AddComponent<GE::Render::Image>("./data/Image/Title.png");
+		auto& logoImage = logoObj.AddComponent<Image>("./data/Image/Title.png");
 		logoImage.SetRenderLayer(RenderLayer::ui);
 
 		// MenuItems

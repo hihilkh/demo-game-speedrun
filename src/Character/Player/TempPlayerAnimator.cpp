@@ -6,7 +6,7 @@
 
 namespace Player
 {
-	TempPlayerAnimator::TempPlayerAnimator(GameObject& gameObject, PlayerModel& model, GE::Render::Image& image) :
+	TempPlayerAnimator::TempPlayerAnimator(GameObject& gameObject, PlayerModel& model, Image& image) :
 		Component(gameObject),
 		model(model),
 		image(image)

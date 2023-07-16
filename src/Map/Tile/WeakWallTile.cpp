@@ -9,7 +9,7 @@ namespace Map
 	const RectPixel WeakWallTile::normalImgSrcRect(tileWidth * 2, 0, tileWidth, tileHeight);
 	const RectPixel WeakWallTile::brokenImgSrcRect(0, 0, tileWidth, tileHeight);
 
-	WeakWallTile::WeakWallTile(GameObject& gameObject, GE::Collision::Collider& collider, GE::Render::Image& image) :
+	WeakWallTile::WeakWallTile(GameObject& gameObject, Collider& collider, Image& image) :
 		Tile(gameObject, Map::TileType::WeakWall),
 		isBroken(false),
 		collider(collider),

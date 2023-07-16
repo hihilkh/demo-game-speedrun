@@ -73,7 +73,7 @@ namespace Player
 		stateMachine.AddStateRequest(PlayerStateRequest::StopRunning);
 	}
 
-	void PlayerModel::Crash(const GE::Collision::Collider& other)
+	void PlayerModel::Crash(const Collider& other)
 	{
 		stateMachine.AddStateRequest(PlayerStateRequest::CrashWithWall);
 
@@ -83,7 +83,7 @@ namespace Player
 		}
 	}
 
-	void PlayerModel::HitWall(const GE::Collision::Collider& other)
+	void PlayerModel::HitWall(const Collider& other)
 	{
 		stateMachine.AddStateRequest(PlayerStateRequest::HitWall);
 	}

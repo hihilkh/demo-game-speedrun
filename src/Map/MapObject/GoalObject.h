@@ -3,15 +3,6 @@
 #include "MapObject.h"
 #include "GE/Core/Event.h"
 
-namespace GE::Collision
-{
-	class Collider;
-	namespace Detection
-	{
-		enum class CollidedType : std::uint8_t;
-	}
-}
-
 namespace Map
 {
 	class GoalObject : public MapObject
@@ -20,18 +11,18 @@ namespace Map
 		static GE::Event<> onGoalReached;
 
 	public:
-		GoalObject(GameObject& gameObject, GE::Collision::Collider& collider);
+		GoalObject(GameObject& gameObject, Collider& collider);
 
 	protected:
 		void Start() override;
 		void PreDestroy() override;
 
 	private:
-		GE::Collision::Collider& collider;
+		Collider& collider;
 
 		bool isTriggered;
 
 	private:
-		void Trigger(const GE::Collision::Collider& other, GE::Collision::Detection::CollidedType collidedType);
+		void Trigger(const Collider& other, CollidedType collidedType);
 	};
 }

@@ -24,8 +24,8 @@ namespace Prefab::Map
 			true				// isColliderTrigger
 		);
 
-		auto collider = baseGameObject.GetComponent<GE::Collision::Collider>();
-		auto image = baseGameObject.GetComponent<GE::Render::Image>();
+		auto collider = baseGameObject.GetComponent<Collider>();
+		auto image = baseGameObject.GetComponent<Image>();
 
 		return baseGameObject.AddComponent<::Map::TransportBeltTile>(*collider, *image);
 	}

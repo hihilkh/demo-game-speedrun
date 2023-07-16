@@ -19,13 +19,13 @@ namespace GE::Debug::Collision
 
 		class Control : public Component
 		{
-		protected:
-			const GE::Collision::RectCollider& collider;
-			GE::Render::Image& image;
-
 		public:
-			Control(GameObject& gameObject, const GE::Collision::RectCollider& collider, GE::Render::Image& image);
+			Control(GameObject& gameObject, const RectCollider& collider, Image& image);
 			virtual ~Control() = default;
+
+		protected:
+			const RectCollider& collider;
+			Image& image;
 
 		protected:
 			void Update() override;
@@ -33,7 +33,7 @@ namespace GE::Debug::Collision
 
 #pragma region 関数定義
 
-		Control::Control(GameObject& gameObject, const GE::Collision::RectCollider& collider, GE::Render::Image& image) :
+		Control::Control(GameObject& gameObject, const RectCollider& collider, Image& image) :
 			Component(gameObject),
 			collider(collider),
 			image(image)
@@ -57,12 +57,12 @@ namespace GE::Debug::Collision
 #pragma endregion
 	}
 
-	void AddRectColliderVisual(const GE::Collision::RectCollider& collider)
+	void AddRectColliderVisual(const RectCollider& collider)
 	{
 		GameObject& gameObject = collider.gameObject;
 
 		auto& child = gameObject.AddChild(gameObjectName);
-		auto& image = child.AddComponent<GE::Render::Image>(whiteImagePath);
+		auto& image = child.AddComponent<Image>(whiteImagePath);
 		image.SetRenderPriority(colliderVisualRenderPriority);
 
 		auto& control = child.AddComponent<Control>(collider, image);

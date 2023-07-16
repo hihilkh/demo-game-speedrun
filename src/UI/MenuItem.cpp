@@ -5,7 +5,7 @@
 
 namespace UI
 {
-	MenuItem::MenuItem(GameObject& gameObject, GE::UI::Text& text, GE::Render::Image& arrowImage) :
+	MenuItem::MenuItem(GameObject& gameObject, GE::UI::Text& text, Image& arrowImage) :
 		Component(gameObject),
 		text(text),
 		arrowImage(arrowImage),

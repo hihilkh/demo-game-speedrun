@@ -4,17 +4,6 @@
 #include "GE/Core/Component.h"
 #include "GE/DataType/Rect.h"
 
-namespace GE::Collision
-{
-	class Collider;
-	class RectCollider;
-
-	namespace Detection
-	{
-		enum class CollidedType : std::uint8_t;
-	}
-}
-
 namespace Player
 {
 	class PlayerModel;
@@ -22,7 +11,7 @@ namespace Player
 	class PlayerCollisionHandler : public Component
 	{
 	public:
-		PlayerCollisionHandler(GameObject& gameObject, PlayerModel& model, GE::Collision::RectCollider& collider);
+		PlayerCollisionHandler(GameObject& gameObject, PlayerModel& model, RectCollider& collider);
 
 	protected:
 		void Start() override;
@@ -39,15 +28,15 @@ namespace Player
 		};
 
 		PlayerModel& model;
-		GE::Collision::RectCollider& collider;
+		RectCollider& collider;
 
 		bool isCachedCollisionInfo;
 		bool isOverCrashSpeed;
 		Rect facingDirMovementRect;
 
 	private:
-		void HandleCollision(const GE::Collision::Collider& other, GE::Collision::Detection::CollidedType collidedType);
-		CollisionTypeWhileRunning CheckCollisionTypeWhileRunning(const GE::Collision::Collider& other);
+		void HandleCollision(const Collider& other, CollidedType collidedType);
+		CollisionTypeWhileRunning CheckCollisionTypeWhileRunning(const Collider& other);
 		void CacheCollisionInfo();
 	};
 }

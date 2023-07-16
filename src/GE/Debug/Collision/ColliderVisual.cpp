@@ -12,9 +12,9 @@
 
 namespace GE::Debug::Collision
 {
-	void AddColliderVisual(const GE::Collision::Collider& collider)
+	void AddColliderVisual(const Collider& collider)
 	{
-		auto rectCollider = dynamic_cast<const GE::Collision::RectCollider*>(&collider);
+		auto rectCollider = dynamic_cast<const RectCollider*>(&collider);
 		if (rectCollider) {
 			AddRectColliderVisual(*rectCollider);
 			return;
