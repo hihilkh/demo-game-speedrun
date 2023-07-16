@@ -132,17 +132,16 @@ namespace GE::Collision::Detection::NonRotatedRectSimpleImpl
 		Vector2 lhsOpposite(lhsRect.OppositeX(), lhsRect.OppositeY());
 		Vector2 rhsOpposite(rhsRect.OppositeX(), rhsRect.OppositeY());
 
-		if (lhsRect.x >= rhsOpposite.x || lhsRect.y >= rhsOpposite.y ||
-			rhsRect.x >= lhsOpposite.x || rhsRect.y >= lhsOpposite.y) {
-
-			if (lhsRect.x == rhsOpposite.x || lhsRect.y == rhsOpposite.y ||
-				rhsRect.x == lhsOpposite.x || rhsRect.y == lhsOpposite.y) {
-				return CollidedType::Touch;
-			} else {
-				return CollidedType::None;
-			}
+		if (lhsRect.x > rhsOpposite.x || lhsRect.y > rhsOpposite.y ||
+			rhsRect.x > lhsOpposite.x || rhsRect.y > lhsOpposite.y) {
+			return CollidedType::None;
 		}
 
-		return CollidedType::Overlap;
+		if (lhsRect.x == rhsOpposite.x || lhsRect.y == rhsOpposite.y ||
+			rhsRect.x == lhsOpposite.x || rhsRect.y == lhsOpposite.y) {
+			return CollidedType::Touch;
+		} else {
+			return CollidedType::Overlap;
+		}
 	}
 }
