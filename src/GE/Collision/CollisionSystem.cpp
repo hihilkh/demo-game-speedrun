@@ -60,9 +60,9 @@ namespace GE::Collision
 					}
 
 					if (collider->GetIsTrigger()) {
-						collider->onTriggered.Invoke(*target);
+						collider->onTriggered.Invoke(*target, collidedType);
 					} else if (target->GetIsTrigger()) {
-						target->onTriggered.Invoke(*collider);
+						target->onTriggered.Invoke(*collider, collidedType);
 					} else {
 						if (collidedType == Detection::CollidedType::Overlap) {
 							if (collider->GetIsApplyCollisionAdjustment()) {
@@ -73,8 +73,8 @@ namespace GE::Collision
 							}
 						}
 
-						collider->onCollided.Invoke(*target);
-						target->onCollided.Invoke(*collider);
+						collider->onCollided.Invoke(*target, collidedType);
+						target->onCollided.Invoke(*collider, collidedType);
 					}
 				}
 			}

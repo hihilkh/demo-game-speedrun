@@ -6,6 +6,10 @@
 namespace GE::Collision
 {
 	class Collider;
+	namespace Detection
+	{
+		enum class CollidedType : std::uint8_t;
+	}
 }
 
 namespace Map
@@ -28,6 +32,6 @@ namespace Map
 		bool isTriggered;
 
 	private:
-		void Trigger(const GE::Collision::Collider& other);
+		void Trigger(const GE::Collision::Collider& other, GE::Collision::Detection::CollidedType collidedType);
 	};
 }

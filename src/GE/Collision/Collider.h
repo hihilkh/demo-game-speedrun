@@ -22,8 +22,8 @@ namespace GE::Collision
 
 	public:
 		// TODO : OnCollisionEnter / OnCollisionStay / OnCollisionExit のように分ける
-		Event<const Collider&> onCollided;
-		Event<const Collider&> onTriggered;
+		Event<const Collider&, Detection::CollidedType> onCollided;
+		Event<const Collider&, Detection::CollidedType> onTriggered;
 
 	public:
 		Collider(GameObject& gameObject, bool isTrigger, bool isApplyCollisionAdjustment);

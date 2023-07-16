@@ -34,7 +34,7 @@ namespace Player
 		collider.onCollided.RemoveListener(&PlayerCollisionHandler::HandleCollision, *this);
 	}
 
-	void PlayerCollisionHandler::HandleCollision(const GE::Collision::Collider& other)
+	void PlayerCollisionHandler::HandleCollision(const GE::Collision::Collider& other, GE::Collision::Detection::CollidedType collidedType)
 	{
 		CollisionTypeWhileRunning collisionType = CheckCollisionTypeWhileRunning(other);
 		switch (collisionType) {

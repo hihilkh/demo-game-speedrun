@@ -8,6 +8,11 @@ namespace GE::Collision
 {
 	class Collider;
 	class RectCollider;
+
+	namespace Detection
+	{
+		enum class CollidedType : std::uint8_t;
+	}
 }
 
 namespace Player
@@ -41,7 +46,7 @@ namespace Player
 		Rect facingDirMovementRect;
 
 	private:
-		void HandleCollision(const GE::Collision::Collider& other);
+		void HandleCollision(const GE::Collision::Collider& other, GE::Collision::Detection::CollidedType collidedType);
 		CollisionTypeWhileRunning CheckCollisionTypeWhileRunning(const GE::Collision::Collider& other);
 		void CacheCollisionInfo();
 	};

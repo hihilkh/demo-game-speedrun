@@ -23,7 +23,7 @@ namespace Map
 		collider.onTriggered.RemoveListener(&GoalObject::Trigger, *this);
 	}
 
-	void GoalObject::Trigger(const GE::Collision::Collider& other)
+	void GoalObject::Trigger(const GE::Collision::Collider& other, GE::Collision::Detection::CollidedType collidedType)
 	{
 		if (isTriggered) {
 			return;
