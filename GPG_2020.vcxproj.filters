@@ -85,46 +85,10 @@
     <ClCompile Include="src\WinMain.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Task_GameCamera.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Chara\CharaBase.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Chara\Player\Task_Player.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\GameStatus.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Common\Transform.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Chara\Player\PlayerActionBase.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Chara\Player\BasicPlayerAction.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Chara\Player\AttackPlayerAction.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Chara\Player\PlayerAnimator.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Animation\AnimationClip.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Chara\Player\RunPlayerAction.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Map\MapChip\MapChipBase.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Map\Task_Map.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Common\DirectionOld.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Animation\Animator.cpp">
@@ -507,44 +471,11 @@
     <ClInclude Include="src\Task\TaskConstant.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Task_GameCamera.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Chara\CharaBase.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Chara\Player\Task_Player.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\GameStatus.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Common\Transform.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Chara\Player\PlayerActionBase.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Chara\Player\PlayerMode.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Chara\Player\BasicPlayerAction.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Chara\Player\AttackPlayerAction.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Chara\Player\PlayerState.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Task\ResourceBase.tpp">
       <Filter>MyPG\Template Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Task\ObjectBase.tpp">
       <Filter>MyPG\Template Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Chara\Player\PlayerConstant.h">
-      <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Chara\Player\PlayerAnimator.h">
       <Filter>MyPG\Header Files</Filter>
@@ -553,21 +484,6 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Animation\AnimationClip.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Common\Direction.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Chara\Player\RunPlayerAction.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Map\MapChip\MapChipBase.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Map\MapChip\MapChipType.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Map\Task_Map.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Animation\Animator.h">
@@ -1044,14 +960,6 @@
     <ClInclude Include="src\GE\Utils\HandyFunc\CollisionRelated.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\Event\Event.tpp">
-      <Filter>MyPG\Template Files</Filter>
-    </None>
-    <None Include="src\Event\MemberFunction.tpp">
-      <Filter>MyPG\Template Files</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="version.rc">

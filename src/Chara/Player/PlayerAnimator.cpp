@@ -1,4 +1,6 @@
-﻿#include "PlayerAnimator.h"
+﻿/* TODO
+
+#include "PlayerAnimator.h"
 #include "GE/Debug/Log.h"
 #include "Animation/AnimationClip.h"
 #include "Task_Player.h"
@@ -10,7 +12,7 @@ namespace Player
 	using namespace ResourceConstant;
 
 	// TODO : Animatorに合わせる
-	// TODO : 何故ここはAnimationClipをコーヒーするか？
+	// TODO : 何故ここはAnimationClipをコピーするか？
 	// TODO : コンストラクタの呼び出しを減少
 	// TODO : static又はインスタンス？
 	const unordered_map<PlayerState, AnimationClip> PlayerAnimator::AnimClipMap = {
@@ -153,3 +155,5 @@ namespace Player
 		outSrc.x += static_cast<int>(direction) * PlayerImageWidth;
 	}
 }
+
+*/

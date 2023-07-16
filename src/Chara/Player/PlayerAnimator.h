@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+/* TODO
+
 #include <myLib.h>
 #include "Event/Event.tpp"
 #include "Common/Direction.h"
@@ -52,3 +54,5 @@ namespace Player
 		void Render(const ML::Box2D& drawBase, const ML::Point& cameraOffset, int height);
 	};
 }
+
+*/

@@ -168,7 +168,6 @@
     <ClCompile Include="src\Character\Player\State\Handler\PlayerRunStateHandler.cpp" />
     <ClCompile Include="src\Character\Player\State\PlayerStateMachine.cpp" />
     <ClCompile Include="src\Character\Player\TempPlayerAnimator.cpp" />
-    <ClCompile Include="src\Chara\Player\AttackPlayerAction.cpp" />
     <ClCompile Include="lib\DG2014\DG2014_DGObject.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -379,11 +378,8 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="src\Chara\Player\BasicPlayerAction.cpp" />
     <ClCompile Include="src\Chara\Player\PlayerAnimator.cpp" />
-    <ClCompile Include="src\Chara\Player\RunPlayerAction.cpp" />
     <ClCompile Include="src\Collision\CollisionInfo.cpp" />
-    <ClCompile Include="src\Common\DirectionOld.cpp" />
     <ClCompile Include="src\Font\Font.cpp" />
     <ClCompile Include="src\EndingScene\EndingSceneDirector.cpp" />
     <ClCompile Include="src\GameScene\GameProgress.cpp" />
@@ -570,7 +566,6 @@
     <ClCompile Include="src\Scene\Builder\GameScene.cpp" />
     <ClCompile Include="src\Scene\SceneTransition.cpp" />
     <ClCompile Include="src\Rendering\ImageFade.cpp" />
-    <ClCompile Include="src\Common\Transform.cpp" />
     <ClCompile Include="src\GE\Core\Camera2D.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -999,14 +994,7 @@
       </PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="src\GE\Profiling\ProfilerSectionMemory.cpp" />
-    <ClCompile Include="src\Game\GameStatus.cpp" />
-    <ClCompile Include="src\Chara\Player\PlayerActionBase.cpp" />
-    <ClCompile Include="src\Map\MapChip\MapChipBase.cpp" />
-    <ClCompile Include="src\Map\Task_Map.cpp" />
     <ClCompile Include="src\MyPG.cpp" />
-    <ClCompile Include="src\Chara\CharaBase.cpp" />
-    <ClCompile Include="src\Chara\Player\Task_Player.cpp" />
-    <ClCompile Include="src\Game\Task_GameCamera.cpp" />
     <ClCompile Include="src\ParticleSystem\Particle.cpp" />
     <ClCompile Include="src\ParticleSystem\ParticleConfig.cpp" />
     <ClCompile Include="src\ParticleSystem\Task_BreakWallEffect.cpp" />
@@ -1054,7 +1042,6 @@
     <ClInclude Include="src\Character\Player\State\PlayerStateMachine.h" />
     <ClInclude Include="src\Character\Player\State\PlayerStateRequest.h" />
     <ClInclude Include="src\Character\Player\TempPlayerAnimator.h" />
-    <ClInclude Include="src\Chara\Player\AttackPlayerAction.h" />
     <ClInclude Include="lib\DG2014\DG2014_DGObject.h" />
     <ClInclude Include="lib\DG2014\DG2014_Effect.h" />
     <ClInclude Include="lib\DG2014\DG2014_Font.h" />
@@ -1069,13 +1056,8 @@
     <ClInclude Include="lib\Dm2008_Ver1_4.h" />
     <ClInclude Include="lib\GameEngine_Ver3_83.h" />
     <ClInclude Include="lib\myLib.h" />
-    <ClInclude Include="src\Chara\Player\BasicPlayerAction.h" />
     <ClInclude Include="src\Chara\Player\PlayerAnimator.h" />
-    <ClInclude Include="src\Chara\Player\PlayerConstant.h" />
-    <ClInclude Include="src\Chara\Player\PlayerState.h" />
-    <ClInclude Include="src\Chara\Player\RunPlayerAction.h" />
     <ClInclude Include="src\Camera\CameraManagement.h" />
-    <ClInclude Include="src\Common\Direction.h" />
     <ClInclude Include="src\Font\Font.h" />
     <ClInclude Include="src\GameScene\GameProgress.h" />
     <ClInclude Include="src\GameScene\GameTimerController.h" />
@@ -1144,7 +1126,6 @@
     <ClInclude Include="src\GE\Utils\Easing.h" />
     <ClInclude Include="src\Lang\FontType.h" />
     <ClInclude Include="src\Lang\LanguageManager.h" />
-    <ClInclude Include="src\Common\Transform.h" />
     <ClInclude Include="src\GE\Core\Camera2D.h" />
     <ClInclude Include="src\GE\Core\Component.h" />
     <ClInclude Include="src\GE\Core\GameEngine.h" />
@@ -1201,15 +1182,8 @@
     <ClInclude Include="src\GE\Profiling\ProfilerSectionFps.h" />
     <ClInclude Include="src\GE\Debug\Measurement\ScopeTiming.h" />
     <ClInclude Include="src\GE\Profiling\ProfilerSectionMemory.h" />
-    <ClInclude Include="src\Game\GameStatus.h" />
-    <ClInclude Include="src\Chara\Player\PlayerActionBase.h" />
-    <ClInclude Include="src\Chara\Player\PlayerMode.h" />
-    <ClInclude Include="src\Map\MapChip\MapChipBase.h" />
-    <ClInclude Include="src\Map\MapChip\MapChipType.h" />
     <ClInclude Include="src\Map\MapObject\MapObjectType.h" />
-    <ClInclude Include="src\Map\Task_Map.h" />
     <ClInclude Include="src\MyPG.h" />
-    <ClInclude Include="src\Chara\CharaBase.h" />
     <ClInclude Include="src\ParticleSystem\Particle.h" />
     <ClInclude Include="src\ParticleSystem\ParticleConfig.h" />
     <ClInclude Include="src\ParticleSystem\ParticleConstant.h" />
@@ -1223,17 +1197,11 @@
     <ClInclude Include="src\Task\ObjectBase.tpp" />
     <ClInclude Include="src\Task\ResourceBase.tpp" />
     <ClInclude Include="src\Task\TaskConstant.h" />
-    <ClInclude Include="src\Chara\Player\Task_Player.h" />
-    <ClInclude Include="src\Game\Task_GameCamera.h" />
     <ClInclude Include="src\TitleScene\TitleSceneDirector.h" />
     <ClInclude Include="lib\XI2018_Ver1_0.h" />
     <ClInclude Include="src\GE\Utils\Math.h" />
     <ClInclude Include="src\TransformUtils\PositionMovement.h" />
     <ClInclude Include="src\UI\MenuItem.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\Event\Event.tpp" />
-    <None Include="src\Event\MemberFunction.tpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="version.rc" />

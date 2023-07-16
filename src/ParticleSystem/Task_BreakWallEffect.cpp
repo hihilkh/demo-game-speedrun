@@ -1,6 +1,6 @@
 ﻿#include "Task_BreakWallEffect.h"
 #include "Task/TaskConstant.h"
-#include "Game/Task_GameCamera.h"
+//#include "Game/Task_GameCamera.h"
 
 namespace ParticleSystem::BreakWallEffect
 {
@@ -28,7 +28,7 @@ namespace ParticleSystem::BreakWallEffect
 	{
 		render2D_Priority[1] = 0.6f;
 
-		camera = ge->GetTask<Game::Camera::Object>(TaskConstant::TaskGroupName_Game, TaskConstant::TaskName_GameCamera);
+		//camera = ge->GetTask<Game::Camera::Object>(TaskConstant::TaskGroupName_Game, TaskConstant::TaskName_GameCamera);
 	}
 
 	void Object::PostCreate()
@@ -73,6 +73,7 @@ namespace ParticleSystem::BreakWallEffect
 			return;
 		}
 
+		/*
 		auto cameraSP = camera.lock();
 		if (!cameraSP) {
 			return;
@@ -83,6 +84,7 @@ namespace ParticleSystem::BreakWallEffect
 		for (Particle& particle : particles) {
 			particle.Render(cameraOffset, alpha);
 		}
+		*/
 	}
 
 	void Object::Play(const ML::Vec2& pos, int noOfParticle, int life)
