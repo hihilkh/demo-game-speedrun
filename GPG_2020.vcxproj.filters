@@ -415,6 +415,9 @@
     <ClCompile Include="src\GE\Utils\HandyFunc\CollisionRelated.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="lib\jsoncpp\jsoncpp.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GameEngine_Ver3_83.h">
@@ -958,6 +961,12 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GE\Utils\HandyFunc\CollisionRelated.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\jsoncpp\json\json.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\jsoncpp\json\json-forwards.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
