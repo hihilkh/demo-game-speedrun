@@ -14,6 +14,6 @@ namespace Player
 
 	inline const float crashSpeed = 840.0f;
 
-	inline const float transportBeltSpeed = 240.0f;
+	inline const float transportBeltSpeed = 480.0f;
 
 }
