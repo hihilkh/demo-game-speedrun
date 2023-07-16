@@ -42,7 +42,7 @@ namespace Map
 	void MapFactory::Create(const Vector2Int& grid, int rawInfo, MapCoreInfo& mapCoreInfo) const
 	{
 		int typeId = rawInfo;
-		Direction direction = Direction::Down;
+		TransformUtils::Direction direction = TransformUtils::Direction::Down;
 
 		if (rawInfo >= directionDivisor) {
 			typeId = rawInfo % directionDivisor;
@@ -59,7 +59,7 @@ namespace Map
 				InsertMapCoreInfo(mapCoreInfo, grid, type);
 			}
 			directionInt = directionInt / directionDivisor - 1;
-			direction = static_cast<Direction>(directionInt);
+			direction = static_cast<TransformUtils::Direction>(directionInt);
 		}
 
 		TileType type = static_cast<TileType>(typeId);
@@ -70,13 +70,16 @@ namespace Map
 		}
 	}
 
-	Tile* MapFactory::InstantiateTile(TileType type, Direction direction)
+	Tile* MapFactory::InstantiateTile(TileType type, TransformUtils::Direction direction)
 	{
 		switch (type) {
 			case Map::TileType::Floor:
 				return &GE::Instantiate(Prefab::Map::FloorTilePrefab());
-			case Map::TileType::TransportBelt:
-				return &GE::Instantiate(Prefab::Map::TransportBeltTilePrefab());
+			case Map::TileType::TransportBelt: {
+				auto& transportBelt = GE::Instantiate(Prefab::Map::TransportBeltTilePrefab());
+				transportBelt.SetDirection(direction);
+				return &transportBelt;
+			}
 			case Map::TileType::UnbreakableWall:
 				return &GE::Instantiate(Prefab::Map::UnbreakableWallTilePrefab());
 			case Map::TileType::WeakWall:

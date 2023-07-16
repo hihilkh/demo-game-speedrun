@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "GE/Utils/TypeDef.h"
-#include "Common/Direction.h"
+#include "TransformUtils/Direction.h"
 #include "Tile/TileType.h"
 #include "MapObject/MapObjectType.h"
 
@@ -24,7 +24,7 @@ namespace Map
 		GameObject& mapBase;
 
 	private:
-		static Tile* InstantiateTile(TileType type, Direction direction);
+		static Tile* InstantiateTile(TileType type, TransformUtils::Direction direction);
 		static MapObject* InstantiateMapObject(MapObjectType type);
 
 		static void InsertMapCoreInfo(MapCoreInfo& mapCoreInfo, const Vector2Int& grid, MapObjectType type);

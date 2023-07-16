@@ -1,26 +1,72 @@
 ﻿#include "GE/GEHeader.h"
 #include "TransportBeltTile.h"
+#include "GE/Collision/Collider.h"
+#include "Character/Player/PlayerModel.h"
+#include "Map/MapSizeInfo.h"
+#include "GE/Render/Image.h"
 
 namespace Map
 {
-	TransportBeltTile::TransportBeltTile(GameObject& gameObject) :
-		Tile(gameObject, Map::TileType::TransportBelt)
+	const RectPixel TransportBeltTile::downImgSrcRect(0, tileHeight, tileWidth, tileHeight);
+	const RectPixel TransportBeltTile::leftImgSrcRect(tileWidth * 2, tileHeight, tileWidth, tileHeight);
+	const RectPixel TransportBeltTile::upImgSrcRect(tileWidth * 2, tileHeight * 3, tileWidth, tileHeight);
+	const RectPixel TransportBeltTile::rightImgSrcRect(0, tileHeight * 3, tileWidth, tileHeight);
+
+	TransportBeltTile::TransportBeltTile(GameObject& gameObject, GE::Collision::Collider& collider, GE::Render::Image& image) :
+		Tile(gameObject, Map::TileType::TransportBelt),
+		collider(collider),
+		image(image),
+		direction()
 	{
+	}
+
+	void TransportBeltTile::Start()
+	{
+		collider.onTriggered.AddListener(&TransportBeltTile::HandleTrigger, *this);
+	}
+
+	void TransportBeltTile::PreDestroy()
+	{
+		collider.onTriggered.RemoveListener(&TransportBeltTile::HandleTrigger, *this);
+	}
+
+	void TransportBeltTile::HandleTrigger(const GE::Collision::Collider& other, GE::Collision::Detection::CollidedType collidedType)
+	{
+		if (collidedType != GE::Collision::Detection::CollidedType::Overlap) {
+			return;
+		}
+
+		auto playerModel = other.gameObject.GetComponent<Player::PlayerModel>();
+		if (playerModel) {
+			playerModel->ApplyTransportBeltDir(direction);
+		}
+	}
+
+	void TransportBeltTile::SetDirection(TransformUtils::Direction direction)
+	{
+		this->direction = direction;
+
+		// TODO : Animatorで制御する
+		RectPixel srcRect;
+		switch (direction) {
+			case TransformUtils::Direction::Down:
+				srcRect = downImgSrcRect;
+				break;
+			case TransformUtils::Direction::Left:
+				srcRect = leftImgSrcRect;
+				break;
+			case TransformUtils::Direction::Up:
+				srcRect = upImgSrcRect;
+				break;
+			case TransformUtils::Direction::Right:
+				srcRect = rightImgSrcRect;
+				break;
+		}
+		image.SetSrcRect(srcRect);
 	}
 
 	// TODO 
 	/*
-		namespace {
-		const float TransportBeltSpeed = 4.0f;
-	}
-
-	TransportBeltMapChip::TransportBeltMapChip(shared_ptr<Resource> res, const ML::Box2D& hitBase, Direction direction) :
-		MapChipBase::MapChipBase(MapChipType::TransportBelt, res, hitBase),
-		direction(direction),
-		speed(TransportBeltSpeed)
-	{
-
-	}
 
 
 	// TODO : AnimationClipと補間によって処理する？
@@ -40,14 +86,5 @@ namespace Map
 		return ML::Box2D(0, 64, 32, 32);
 	}
 
-	bool TransportBeltMapChip::GetIsWalkable() const
-	{
-		return true;
-	}
-
-	void TransportBeltMapChip::TriggerByChara(Chara::CharaBase& chara)
-	{
-		chara.SetAdditionalSpeedInfo(direction, speed);
-	}
 	*/
 }

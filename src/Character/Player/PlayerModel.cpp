@@ -1,9 +1,11 @@
 ﻿#include "GE/GEHeader.h"
 #include "PlayerModel.h"
+#include "PlayerConfig.h"
 #include "Map/MapManager.h"
 #include "State/PlayerStateRequest.h"
 #include "Map/Tile/WeakWallTile.h"
 #include "GE/Collision/Collider.h"
+#include "Map/Tile/TransportBeltTile.h"
 
 namespace Player
 {
@@ -11,8 +13,7 @@ namespace Player
 		Component(gameObject),
 		facingDir(TransformUtils::Direction::Down),
 		stateMachine(*this),
-		lastWorldPos(),
-		transportBeltOffset()
+		lastWorldPos()
 	{
 	}
 
@@ -35,8 +36,16 @@ namespace Player
 	{
 		stateMachine.Update();
 		auto& transform = GetTransform();
-		transform.SetPos(transform.GetPos() + transportBeltOffset);
-		transportBeltOffset = Vector2::zero;
+
+		Vector2 totalOffset = Vector2::zero;
+		for (auto dir : transportBeltAppliedDir) {
+			Vector2 offset = TransformUtils::GetDirectionalVector(dir);
+			offset *= transportBeltSpeed * Time::GetDeltaTime();
+			totalOffset += offset;
+		}
+
+		transform.SetPos(transform.GetPos() + totalOffset);
+		transportBeltAppliedDir.clear();
 	}
 
 	void PlayerModel::SceneReadyHandler(const Map::MapManager& mapManager)
@@ -89,13 +98,13 @@ namespace Player
 		return true;
 	}
 
-	void PlayerModel::AddTransportBeltOffset(const Vector2& offset)
+	void PlayerModel::ApplyTransportBeltDir(TransformUtils::Direction direction)
 	{
 		switch (stateMachine.GetState()) {
 			case PlayerState::Fallback:
 				return;
 		}
 
-		transportBeltOffset += offset;
+		transportBeltAppliedDir.insert(direction);
 	}
 }

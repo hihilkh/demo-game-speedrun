@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+#include <set> 
 #include "GE/Utils/TypeDef.h"
 #include "GE/Core/Component.h"
 #include "TransformUtils/Direction.h"
@@ -40,7 +41,7 @@ namespace Player
 		const Vector2& GetLastWorldPos() const { return lastWorldPos; }
 		PlayerState GetPlayerState() const { return stateMachine.GetState(); }
 
-		void AddTransportBeltOffset(const Vector2& offset);
+		void ApplyTransportBeltDir(TransformUtils::Direction direction);
 
 	protected:
 		void Awake() override;
@@ -54,7 +55,7 @@ namespace Player
 		Vector2 moveDirVector;
 		Vector2 lastWorldPos;
 		// TODO : もっと良い方法を考える
-		Vector2 transportBeltOffset;
+		std::set<TransformUtils::Direction> transportBeltAppliedDir;
 
 	private:
 		void SceneReadyHandler(const Map::MapManager& mapManager);

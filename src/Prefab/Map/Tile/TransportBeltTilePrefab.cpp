@@ -4,13 +4,14 @@
 #include "Map/Tile/TransportBeltTile.h"
 #include "GE/DataType/Rect.h"
 #include "Map/MapSizeInfo.h"
+#include "GE/Collision/Collider.h"
+#include "GE/Render/Image.h"
 
 namespace Prefab::Map
 {
 	namespace
 	{
 		const std::string objName = "TransportBeltTile";
-		const RectPixel imgSrcRect(0, ::Map::tileHeight, ::Map::tileWidth, ::Map::tileHeight);	// ダミー
 	}
 
 	::Map::TransportBeltTile& TransportBeltTilePrefab::operator()(GameObject& baseGameObject) const
@@ -18,11 +19,14 @@ namespace Prefab::Map
 		Tile::CreateCommon(
 			baseGameObject,
 			objName,
-			imgSrcRect,
+			::Map::TransportBeltTile::downImgSrcRect,
 			true,				// hasCollider
 			true				// isColliderTrigger
 		);
 
-		return baseGameObject.AddComponent<::Map::TransportBeltTile>();
+		auto collider = baseGameObject.GetComponent<GE::Collision::Collider>();
+		auto image = baseGameObject.GetComponent<GE::Render::Image>();
+
+		return baseGameObject.AddComponent<::Map::TransportBeltTile>(*collider, *image);
 	}
 }
