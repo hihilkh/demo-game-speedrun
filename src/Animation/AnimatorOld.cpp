@@ -1,5 +1,5 @@
-﻿#include "Animator.h"
-#include "Animation/AnimationClip.h"
+﻿#include "AnimatorOld.h"
+#include "Animation/AnimationClipOld.h"
 #include <DG2014/DG2014_Image.h>
 #include "GE/Debug/Log.h"
 

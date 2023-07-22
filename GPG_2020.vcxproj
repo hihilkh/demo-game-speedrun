@@ -168,8 +168,8 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="src\Animation\AnimationClip.cpp" />
-    <ClCompile Include="src\Animation\Animator.cpp" />
+    <ClCompile Include="src\Animation\AnimationClipOld.cpp" />
+    <ClCompile Include="src\Animation\AnimatorOld.cpp" />
     <ClCompile Include="src\Camera\CameraManagement.cpp" />
     <ClCompile Include="src\Character\Player\PlayerCameraController.cpp" />
     <ClCompile Include="src\Character\Player\PlayerCollisionHandler.cpp" />
@@ -181,7 +181,6 @@
     <ClCompile Include="src\Character\Player\State\Handler\PlayerWalkStateHandler.cpp" />
     <ClCompile Include="src\Character\Player\State\Handler\PlayerRunStateHandler.cpp" />
     <ClCompile Include="src\Character\Player\State\PlayerStateMachine.cpp" />
-    <ClCompile Include="src\Character\Player\TempPlayerAnimator.cpp" />
     <ClCompile Include="lib\DG2014\DG2014_DGObject.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -399,7 +398,63 @@
     <ClCompile Include="src\GameScene\GameProgress.cpp" />
     <ClCompile Include="src\GameScene\GameSceneDirector.cpp" />
     <ClCompile Include="src\GameScene\GameTimerController.cpp" />
+    <ClCompile Include="src\GE\Animation\AnimationClip.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GE\Animation\AnimationFactory.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GE\Animation\Animator.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeaderFile>
+    </ClCompile>
     <ClCompile Include="src\GE\Utils\HandyFunc\CollisionRelated.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GE\Utils\Json.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeaderFile>
@@ -1039,9 +1094,9 @@
     <ClInclude Include="lib\jsoncpp\json\json.h" />
     <ClInclude Include="lib\magic_enum.hpp" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="src\Animation\AnimationClip.h" />
-    <ClInclude Include="src\Animation\AnimationKey.h" />
-    <ClInclude Include="src\Animation\Animator.h" />
+    <ClInclude Include="src\Animation\AnimationClipOld.h" />
+    <ClInclude Include="src\Animation\AnimationKeyOld.h" />
+    <ClInclude Include="src\Animation\AnimatorOld.h" />
     <ClInclude Include="src\Character\Player\PlayerCameraController.h" />
     <ClInclude Include="src\Character\Player\PlayerCollisionHandler.h" />
     <ClInclude Include="src\Character\Player\PlayerConfig.h" />
@@ -1057,7 +1112,6 @@
     <ClInclude Include="src\Character\Player\State\PlayerState.h" />
     <ClInclude Include="src\Character\Player\State\PlayerStateMachine.h" />
     <ClInclude Include="src\Character\Player\State\PlayerStateRequest.h" />
-    <ClInclude Include="src\Character\Player\TempPlayerAnimator.h" />
     <ClInclude Include="lib\DG2014\DG2014_DGObject.h" />
     <ClInclude Include="lib\DG2014\DG2014_Effect.h" />
     <ClInclude Include="lib\DG2014\DG2014_Font.h" />
@@ -1077,7 +1131,12 @@
     <ClInclude Include="src\Font\Font.h" />
     <ClInclude Include="src\GameScene\GameProgress.h" />
     <ClInclude Include="src\GameScene\GameTimerController.h" />
+    <ClInclude Include="src\GE\Animation\AnimationClip.h" />
+    <ClInclude Include="src\GE\Animation\AnimationFactory.h" />
+    <ClInclude Include="src\GE\Animation\AnimationKey.h" />
+    <ClInclude Include="src\GE\Animation\Animator.h" />
     <ClInclude Include="src\GE\Utils\HandyFunc\CollisionRelated.h" />
+    <ClInclude Include="src\GE\Utils\Json.h" />
     <ClInclude Include="src\Prefab\UI\CountDownUIPrefab.h" />
     <ClInclude Include="src\TimeUtils\Timer.h" />
     <ClInclude Include="src\TransformUtils\Direction.h" />

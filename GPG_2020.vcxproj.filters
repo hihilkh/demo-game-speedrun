@@ -88,10 +88,10 @@
     <ClCompile Include="src\Chara\Player\PlayerAnimator.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Animation\AnimationClip.cpp">
+    <ClCompile Include="src\Animation\AnimationClipOld.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Animation\Animator.cpp">
+    <ClCompile Include="src\Animation\AnimatorOld.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\ParticleSystem\Task_BreakWallEffect.cpp">
@@ -388,9 +388,6 @@
     <ClCompile Include="src\TransformUtils\Direction.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Character\Player\TempPlayerAnimator.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Character\Player\State\PlayerStateMachine.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
@@ -416,6 +413,18 @@
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="lib\jsoncpp\jsoncpp.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Animation\Animator.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Animation\AnimationClip.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Utils\Json.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Animation\AnimationFactory.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -483,13 +492,13 @@
     <ClInclude Include="src\Chara\Player\PlayerAnimator.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Animation\AnimationKey.h">
+    <ClInclude Include="src\Animation\AnimationKeyOld.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Animation\AnimationClip.h">
+    <ClInclude Include="src\Animation\AnimationClipOld.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Animation\Animator.h">
+    <ClInclude Include="src\Animation\AnimatorOld.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Map\MapObject\MapObjectType.h">
@@ -927,9 +936,6 @@
     <ClInclude Include="src\TransformUtils\Direction.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Character\Player\TempPlayerAnimator.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Character\Player\State\Handler\PlayerStateHandler.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
@@ -967,6 +973,21 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="lib\jsoncpp\json\json-forwards.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Animation\AnimationKey.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Animation\AnimationClip.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Animation\Animator.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Utils\Json.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Animation\AnimationFactory.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

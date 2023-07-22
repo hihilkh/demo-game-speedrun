@@ -11,10 +11,11 @@
 #include "Character/Player/PlayerRenderInfo.h"
 #include "Character/Player/PlayerCameraController.h"
 #include "Character/Player/PlayerCollisionHandler.h"
-#include "Character/Player/TempPlayerAnimator.h"
 
 #include "GE/Collision/RectCollider.h"
 #include "Collision/CollisionInfo.h"
+
+#include "GE/Animation/Animator.h"
 
 namespace Prefab::Player
 {
@@ -42,6 +43,9 @@ namespace Prefab::Player
 		auto& shadowImage = shadowImageObject.AddComponent<Image>("./data/Image/Shadow.png", playerShadowSrcRect);
 		shadowImage.SetRenderPriority(RenderPriority::player - 1);
 
+		auto& animator = baseGameObject.AddComponent<Animator>("./data/Animation/Player.json");
+		animator.SetImage(&playerImage);
+
 		// Collider
 		auto& collider = baseGameObject.AddComponent<RectCollider>(
 			false,
@@ -51,7 +55,6 @@ namespace Prefab::Player
 
 		auto& model = baseGameObject.AddComponent<::Player::PlayerModel>();
 		auto& controller = baseGameObject.AddComponent<::Player::PlayerController>(model);
-		auto& animator = baseGameObject.AddComponent<::Player::TempPlayerAnimator>(model, playerImage);
 		auto& collisionHandler = baseGameObject.AddComponent<::Player::PlayerCollisionHandler>(model, collider);
 
 		return model;
