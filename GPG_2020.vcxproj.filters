@@ -415,10 +415,13 @@
     <ClCompile Include="src\GE\Utils\Json.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GE\Animation\AnimationFactory.cpp">
+    <ClCompile Include="src\GE\Animation\AnimationClipSetLoader.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Character\Player\PlayerAnimationDecision.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Animation\AnimationClipSet.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -969,13 +972,16 @@
     <ClInclude Include="src\GE\Utils\Json.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GE\Animation\AnimationFactory.h">
+    <ClInclude Include="src\GE\Animation\AnimationClipSetLoader.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GE\Animation\AnimationDecision.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Character\Player\PlayerAnimationDecision.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Animation\AnimationClipSet.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

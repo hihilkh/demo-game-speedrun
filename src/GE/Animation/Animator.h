@@ -5,11 +5,12 @@
 #include <memory>
 #include "GE/Utils/TypeDef.h"
 #include "GE/Core/Component.h"
-#include "AnimationClip.h"
 
 namespace GE::Animation
 {
 	class AnimationDecision;
+	class AnimationClipSet;
+	class AnimationClip;
 
 	class Animator : public Component
 	{
@@ -29,9 +30,9 @@ namespace GE::Animation
 
 		std::unique_ptr<AnimationDecision> decision;
 		Image* image;
-		std::vector<AnimationClip> clips;
+		std::shared_ptr<AnimationClipSet> clips;
 		float currentClipStartTime;
-		AnimationClip* currentClip;
+		const AnimationClip* currentClip;
 
 	private:
 		void UpdateCurrentClip();

@@ -4,8 +4,10 @@
 #include "GE/Core/Time.h"
 #include "GE/Utils/HandyFunc/GameEngineRelated.h"
 #include "GE/Core/GEConfig.h"
-#include "AnimationFactory.h"
+#include "AnimationClipSetLoader.h"
 #include "AnimationDecision.h"
+#include "AnimationClipSet.h"
+#include "AnimationClip.h"
 
 namespace GE::Animation
 {
@@ -13,7 +15,7 @@ namespace GE::Animation
 		Component(gameObject),
 		decision(std::move(decision)),
 		image(nullptr),
-		clips(AnimationFactory::GenerateClips(animationFile)),
+		clips(AnimationClipSetLoader::Load(animationFile)),
 		currentClipStartTime(0.0f),
 		currentClip(nullptr)
 	{
@@ -33,6 +35,8 @@ namespace GE::Animation
 
 		float totalDeltaTime = Time::GetTime() - currentClipStartTime;
 		int currentFrame = (int)(totalDeltaTime * referenceFps);
+
+		// TODO : Animatorではなく、AnimationClipまたは他のクラスで実際の振る舞いを制御する
 		if (image) {
 			image->SetSrcRect(currentClip->GetImgSrcRect(currentFrame));
 		}
@@ -66,16 +70,6 @@ namespace GE::Animation
 				return;
 			}
 		}
-
-		auto clip = std::find_if(
-			clips.begin(), clips.end(), 
-			[&clipName](AnimationClip& clip) {return clip.GetName() == clipName; }
-		);
-
-		if (clip == clips.end()) {
-			currentClip = nullptr;
-		} else {
-			currentClip = &*clip;
-		}
+		currentClip = clips->GetClip(clipName);
 	}
 }

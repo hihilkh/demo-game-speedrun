@@ -8,7 +8,7 @@ namespace GE::Animation
 {
 	class AnimationClip
 	{
-		friend class AnimationFactory;
+		friend class AnimationClipSetLoader;
 
 	public:
 		AnimationClip(const std::string& name, bool isLoop);
