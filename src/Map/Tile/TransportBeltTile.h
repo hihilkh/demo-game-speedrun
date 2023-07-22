@@ -2,23 +2,16 @@
 
 #include "Tile.h"
 #include "TransformUtils/Direction.h"
-#include "GE/DataType/Rect.h"
 
 namespace Map
 {
 	class TransportBeltTile : public Tile
 	{
 	public:
-		// TODO : Animatorで制御する
-		static const RectPixel downImgSrcRect;
-		static const RectPixel leftImgSrcRect;
-		static const RectPixel upImgSrcRect;
-		static const RectPixel rightImgSrcRect;
+		explicit TransportBeltTile(GameObject& gameObject, Collider& collider);
 
-	public:
-		explicit TransportBeltTile(GameObject& gameObject, Collider& collider, Image& image);
-
-		void SetDirection(TransformUtils::Direction direction);
+		TransformUtils::Direction GetDirection() const {return direction; }
+		void SetDirection(TransformUtils::Direction direction) { this->direction = direction; }
 
 	protected:
 		void Start() override;
@@ -26,7 +19,6 @@ namespace Map
 
 	private:
 		Collider& collider;
-		Image& image;
 
 		TransformUtils::Direction direction;
 

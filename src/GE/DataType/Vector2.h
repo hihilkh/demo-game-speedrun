@@ -234,8 +234,8 @@ namespace GE::DataType::Internal
 	TVector2<float> TVector2<T>::Lerp(const TVector2<T>& a, const TVector2<T>& b, float t)
 	{
 		return TVector2<float>(
-			std::lerp(a.x, b.x, t),
-			std::lerp(a.y, b.y, t)
+			(float)std::lerp(a.x, b.x, t),
+			(float)std::lerp(a.y, b.y, t)
 		);
 	}
 

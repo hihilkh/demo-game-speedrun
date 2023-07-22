@@ -421,6 +421,9 @@
     <ClCompile Include="src\Character\Player\PlayerAnimationDecision.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Map\Tile\TransportBeltAnimationDecision.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="src\GE\Animation\AnimationClipSet.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
@@ -979,6 +982,9 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Character\Player\PlayerAnimationDecision.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Map\Tile\TransportBeltAnimationDecision.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GE\Animation\AnimationClipSet.h">

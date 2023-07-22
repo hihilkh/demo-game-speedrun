@@ -1,4 +1,6 @@
 ﻿#include "AnimationClip.h"
+#include "GE/Debug/Log.h"
+#include "GE/Utils/EnumUtils.h"
 
 namespace GE::Animation
 {
@@ -35,10 +37,30 @@ namespace GE::Animation
 			}
 		}
 
-		for (auto pair = keysInFrame.begin(); pair != keysInFrame.end(); ++pair) {
-			int a = pair->first;
-			if (targetFrame <= pair->first) {
+		const std::pair<const int, GE::Animation::AnimationKey>* nextKeyPair = nullptr;
+		for (auto pair = keysInFrame.rbegin(); pair != keysInFrame.rend(); ++pair) {
+			if (targetFrame >= pair->first) {
+				switch (pair->second.animType) {
+					case AnimationKey::AnimationType::Constant:
+						return pair->second.imgSrcRect;
+					case AnimationKey::AnimationType::Linear:
+						if (!nextKeyPair) {
+							// 次のキーがない
+							return pair->second.imgSrcRect;
+						}
+
+						RectPixel from = pair->second.imgSrcRect;
+						RectPixel to = nextKeyPair->second.imgSrcRect;
+						float progress = (float)(targetFrame - pair->first) / (nextKeyPair->first - pair->first);
+						return RectPixel(
+							Vector2Int::Lerp(from.pos, to.pos, progress),
+							Vector2Int::Lerp(from.size, to.size, progress));
+				}
+
+				DEBUG_LOG_ERROR("AnimationKey::AnimationType::" << GE::Enum::ToString(pair->second.animType) << "まだ支援しない。AnimationKey::AnimationType::Constantとみなす。");
 				return pair->second.imgSrcRect;
+			} else {
+				nextKeyPair = &*pair;
 			}
 		}
 

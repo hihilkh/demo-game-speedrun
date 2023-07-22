@@ -480,6 +480,7 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeaderFile>
     </ClCompile>
+    <ClCompile Include="src\Map\Tile\TransportBeltAnimationDecision.cpp" />
     <ClCompile Include="src\Prefab\UI\CountDownUIPrefab.cpp" />
     <ClCompile Include="src\TimeUtils\Timer.cpp" />
     <ClCompile Include="src\TransformUtils\Direction.cpp" />
@@ -1148,6 +1149,7 @@
     <ClInclude Include="src\GE\Animation\AnimationDecision.h" />
     <ClInclude Include="src\GE\Utils\HandyFunc\CollisionRelated.h" />
     <ClInclude Include="src\GE\Utils\Json.h" />
+    <ClInclude Include="src\Map\Tile\TransportBeltAnimationDecision.h" />
     <ClInclude Include="src\Prefab\UI\CountDownUIPrefab.h" />
     <ClInclude Include="src\TimeUtils\Timer.h" />
     <ClInclude Include="src\TransformUtils\Direction.h" />

@@ -17,6 +17,7 @@ namespace GE::Animation
 		const std::string startFrameNode = "start_frame";
 
 		const std::string keyNode = "key";
+		const std::string animationTypeNode = "anim_type";
 		const std::string imgSrcRectNode = "img_src_rect";
 		const std::string posXNode = "x";
 		const std::string posYNode = "y";
@@ -39,7 +40,7 @@ namespace GE::Animation
 		AnimationKey GenerateKey(const GE::Json::Value& value)
 		{
 			AnimationKey animKey;
-
+			animKey.animType = static_cast<AnimationKey::AnimationType>(value[animationTypeNode].asInt());
 			animKey.imgSrcRect = GenerateRectPixel(value[imgSrcRectNode]);
 
 			return animKey;
