@@ -85,15 +85,6 @@
     <ClCompile Include="src\WinMain.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Chara\Player\PlayerAnimator.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Animation\AnimationClipOld.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Animation\AnimatorOld.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\ParticleSystem\Task_BreakWallEffect.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
@@ -427,6 +418,9 @@
     <ClCompile Include="src\GE\Animation\AnimationFactory.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Character\Player\PlayerAnimationDecision.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GameEngine_Ver3_83.h">
@@ -488,18 +482,6 @@
     </ClInclude>
     <ClInclude Include="src\Task\ObjectBase.tpp">
       <Filter>MyPG\Template Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Chara\Player\PlayerAnimator.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Animation\AnimationKeyOld.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Animation\AnimationClipOld.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Animation\AnimatorOld.h">
-      <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Map\MapObject\MapObjectType.h">
       <Filter>MyPG\Header Files</Filter>
@@ -988,6 +970,12 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GE\Animation\AnimationFactory.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Animation\AnimationDecision.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Character\Player\PlayerAnimationDecision.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
