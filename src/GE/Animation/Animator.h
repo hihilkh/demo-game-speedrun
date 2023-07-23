@@ -18,6 +18,7 @@ namespace GE::Animation
 		friend AnimationSystem;
 
 	public:
+		Animator(GameObject& gameObject, const std::string& animationFile);
 		Animator(GameObject& gameObject, const std::string& animationFile, std::unique_ptr<AnimationDecision> decision);
 		~Animator();	// AnimationDecisionが前方宣言できるために、デストラクタを宣言し、cppで定義する
 

@@ -13,6 +13,7 @@ namespace GE::Animation
 		AnimationClipSet(std::vector<AnimationClip>&& clips);
 
 		const AnimationClip* GetClip(const std::string& clipName) const;
+		const AnimationClip* GetFirstClip() const;
 
 	private:
 		const std::vector<AnimationClip> clips;

@@ -21,4 +21,13 @@ namespace GE::Animation
 			return &*clip;
 		}
 	}
+
+	const AnimationClip* AnimationClipSet::GetFirstClip() const
+	{
+		if (clips.begin() == clips.end()) {
+			return nullptr;
+		} else {
+			return &*clips.begin();
+		}
+	}
 }

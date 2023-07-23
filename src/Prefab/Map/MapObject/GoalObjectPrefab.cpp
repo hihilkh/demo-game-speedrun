@@ -7,6 +7,7 @@
 #include "GE/Collision/RectCollider.h"
 #include "Collision/CollisionInfo.h"
 #include "Map/MapSizeInfo.h"
+#include "GE/Animation/Animator.h"
 
 namespace Prefab::Map
 {
@@ -32,6 +33,9 @@ namespace Prefab::Map
 			false,
 			colliderRect);
 		collider.SetCollisionLayer(CollisionInfo::mapLayer);
+
+		auto& animator = baseGameObject.AddComponent<Animator>("./data/Animation/GoalObject.json");
+		animator.SetImage(&image);
 
 		return baseGameObject.AddComponent<::Map::GoalObject>(collider);
 	}

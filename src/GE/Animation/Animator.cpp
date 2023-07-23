@@ -12,6 +12,11 @@
 
 namespace GE::Animation
 {
+	Animator::Animator(GameObject& gameObject, const std::string& animationFile) :
+		Animator(gameObject, animationFile, nullptr)
+	{
+	}
+
 	Animator::Animator(GameObject& gameObject, const std::string& animationFile, std::unique_ptr<AnimationDecision> decision) :
 		Component(gameObject),
 		decision(std::move(decision)),
@@ -22,6 +27,10 @@ namespace GE::Animation
 	{
 		const GEConfig& config = GetGEConfig();
 		referenceFps = config.targetFps;
+
+		if (!decision) {
+			currentClip = clips->GetFirstClip();
+		}
 	}
 
 	Animator::~Animator() = default;
@@ -65,8 +74,10 @@ namespace GE::Animation
 
 	void Animator::UpdateCurrentClip()
 	{
-		std::string clipName = decision->DecideCurrentClip();
-		SetCurrentClip(clipName);
+		if (decision) {
+			std::string clipName = decision->DecideCurrentClip();
+			SetCurrentClip(clipName);
+		}
 	}
 
 	void Animator::SetCurrentClip(const std::string& clipName)
