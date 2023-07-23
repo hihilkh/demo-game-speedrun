@@ -12,6 +12,7 @@
 #include <algorithm>
 #include "GE/Profiling/Profiler.h"
 #include "GE/Collision/CollisionSystem.h"
+#include "GE/Animation/AnimationSystem.h"
 
 namespace GE
 {
@@ -83,16 +84,91 @@ namespace GE
 		}
 	}
 
+	bool GameEngine::CheckIsGoingToChangeScene()
+	{
+		return !sceneNameToLoad.empty();
+	}
+
+#pragma region ゲームループ
+
+	void GameEngine::RunGameLoop()
+	{
+		std::vector<Scene*> loadedScenes = SceneManagement::SceneManager::GetLoadedScenes();
+
+		TimeUpdatePhase();
+		InputUpdatePhase();
+		StartPhase(loadedScenes);
+		UpdatePhase(loadedScenes);
+		CollisionPhase();
+		AnimationUpdatePhase();
+		RenderPhase(loadedScenes);
+		EndOfFramePhase(loadedScenes);
+		DestroyPhase();
+		ChangeScenePhase();
+	}
+
+	void GameEngine::TimeUpdatePhase()
+	{
+		Time::OnUpdate();
+	}
+
+	void GameEngine::InputUpdatePhase()
+	{
+		Input::InputSystem::OnUpdate();
+	}
+
+	void GameEngine::StartPhase(const std::vector<Scene*>& scenes)
+	{
+		for (auto scene : scenes) {
+			scene->OnStartUnstarted();
+		}
+	}
+
+	void GameEngine::UpdatePhase(const std::vector<Scene*>& scenes)
+	{
+		for (auto scene : scenes) {
+			scene->OnUpdate();
+		}
+
+		for (auto scene : scenes) {
+			scene->OnLateUpdate();
+		}
+	}
+
+	void GameEngine::CollisionPhase()
+	{
+		Collision::CollisionSystem::OnStartCollision();
+	}
+
+	void GameEngine::AnimationUpdatePhase()
+	{
+		Animation::AnimationSystem::OnAnimationUpdate();
+	}
+
+	void GameEngine::RenderPhase(const std::vector<Scene*>& scenes)
+	{
+		Render::RenderSystem::OnStartRender();
+		Scene::OnRender(scenes);
+		Render::RenderSystem::OnFinishRender();
+	}
+
+	void GameEngine::EndOfFramePhase(const std::vector<Scene*>& scenes)
+	{
+		for (auto scene : scenes) {
+			scene->OnEndOfFrame();
+		}
+	}
+
 	void GameEngine::DestroyPhase()
 	{
 		if (CheckIsGoingToChangeScene()) {
 			// シーンの遷移とき、ActiveSceneの全てのDestroyableも破棄される
 			// そういうわけで、toBeDestroySet_ActiveSceneの処理をしなくてもいい
 			toBeDestroySet_ActiveScene.clear();
-		} 
+		}
 
 		std::vector<Internal::Destroyable*> finalDestroyObjects;
-		
+
 		std::set<Internal::Destroyable*>* toBeDestroySets[] = {
 			&toBeDestroySet_ActiveScene,
 			&toBeDestroySet_PersistentScene };
@@ -119,11 +195,6 @@ namespace GE
 		}
 	}
 
-	bool GameEngine::CheckIsGoingToChangeScene()
-	{
-		return !sceneNameToLoad.empty();
-	}
-
 	void GameEngine::ChangeScenePhase()
 	{
 		if (!CheckIsGoingToChangeScene()) {
@@ -134,57 +205,7 @@ namespace GE
 		sceneNameToLoad = "";
 	}
 
-	void GameEngine::RunGameLoop()
-	{
-		std::vector<Scene*> loadedScenes = SceneManagement::SceneManager::GetLoadedScenes();
+#pragma endregion
 
-		StartPhase(loadedScenes);
-		UpdatePhase(loadedScenes);
-		CollisionPhase();
-		RenderPhase(loadedScenes);
-		EndOfFramePhase(loadedScenes);
-		DestroyPhase();
-		ChangeScenePhase();
-	}
-
-	void GameEngine::StartPhase(const std::vector<Scene*>& scenes)
-	{
-		for (auto scene : scenes) {
-			scene->OnStartUnstarted();
-		}
-	}
-
-	void GameEngine::UpdatePhase(const std::vector<Scene*>& scenes)
-	{
-		Time::OnUpdate();
-		Input::InputSystem::OnUpdate();
-
-		for (auto scene : scenes) {
-			scene->OnUpdate();
-		}
-
-		for (auto scene : scenes) {
-			scene->OnLateUpdate();
-		}
-	}
-
-	void GameEngine::CollisionPhase()
-	{
-		Collision::CollisionSystem::OnStartCollision();
-	}
-
-	void GameEngine::RenderPhase(const std::vector<Scene*>& scenes)
-	{
-		Render::RenderSystem::OnStartRender();
-		Scene::OnRender(scenes);
-		Render::RenderSystem::OnFinishRender();
-	}
-
-	void GameEngine::EndOfFramePhase(const std::vector<Scene*>& scenes)
-	{
-		for (auto scene : scenes) {
-			scene->OnEndOfFrame();
-		}
-	}
 }
 

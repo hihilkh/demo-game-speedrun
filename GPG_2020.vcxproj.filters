@@ -427,6 +427,9 @@
     <ClCompile Include="src\GE\Animation\AnimationClipSet.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\GE\Animation\AnimationSystem.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GameEngine_Ver3_83.h">
@@ -988,6 +991,9 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GE\Animation\AnimationClipSet.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Animation\AnimationSystem.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -59,14 +59,20 @@ namespace GE
 
 		static bool CheckIsGoingToChangeScene();
 
+#pragma region ゲームループ
 		static void RunGameLoop();
 
+		static void TimeUpdatePhase();
+		static void InputUpdatePhase();
 		static void StartPhase(const std::vector<Scene*>& scenes);
 		static void UpdatePhase(const std::vector<Scene*>& scenes);
 		static void CollisionPhase();
+		static void AnimationUpdatePhase();
 		static void RenderPhase(const std::vector<Scene*>& scenes);
 		static void EndOfFramePhase(const std::vector<Scene*>& scenes);
 		static void DestroyPhase();
 		static void ChangeScenePhase();
+
+#pragma endregion
 	};
 }

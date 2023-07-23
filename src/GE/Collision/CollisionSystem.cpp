@@ -15,7 +15,9 @@ namespace GE::Collision
 
 	void CollisionSystem::RemoveCollider(Collider& collider)
 	{
-		colliders.erase(std::remove(colliders.begin(), colliders.end(), &collider), colliders.end());
+		colliders.erase(
+			std::remove(colliders.begin(), colliders.end(), &collider), 
+			colliders.end());
 	}
 
 	void CollisionSystem::OnStartCollision()

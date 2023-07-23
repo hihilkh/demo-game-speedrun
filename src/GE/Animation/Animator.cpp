@@ -1,4 +1,5 @@
 ﻿#include "Animator.h"
+#include "AnimationSystem.h"
 #include "GE/Render/Image.h"
 #include "GE/Core/GameObject.h"
 #include "GE/Core/Time.h"
@@ -25,7 +26,27 @@ namespace GE::Animation
 
 	Animator::~Animator() = default;
 
-	void Animator::LateUpdate()
+	void Animator::Start()
+	{
+		AnimationSystem::AddAnimator(*this);
+	}
+
+	void Animator::PreDestroy()
+	{
+		AnimationSystem::RemoveAnimator(*this);
+	}
+
+	void Animator::EndOfFrame()
+	{
+		if (image) {
+			if (!image->gameObject.IsValid()) {
+				// このimageはもうすぐ破棄される
+				image = nullptr;
+			}
+		}
+	}
+
+	void Animator::OnAnimationUpdate()
 	{
 		UpdateCurrentClip();
 
@@ -39,16 +60,6 @@ namespace GE::Animation
 		// TODO : Animatorではなく、AnimationClipまたは他のクラスで実際の振る舞いを制御する
 		if (image) {
 			image->SetSrcRect(currentClip->GetImgSrcRect(currentFrame));
-		}
-	}
-
-	void Animator::PreDestroy()
-	{
-		if (image) {
-			if (!image->gameObject.IsValid()) {
-				// このimageはもうすぐ破棄される
-				image = nullptr;
-			}
 		}
 	}
 

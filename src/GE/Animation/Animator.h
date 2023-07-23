@@ -8,12 +8,15 @@
 
 namespace GE::Animation
 {
+	class AnimationSystem;
 	class AnimationDecision;
 	class AnimationClipSet;
 	class AnimationClip;
 
 	class Animator : public Component
 	{
+		friend AnimationSystem;
+
 	public:
 		Animator(GameObject& gameObject, const std::string& animationFile, std::unique_ptr<AnimationDecision> decision);
 		~Animator();	// AnimationDecisionが前方宣言できるために、デストラクタを宣言し、cppで定義する
@@ -21,9 +24,9 @@ namespace GE::Animation
 		void SetImage(Image* image) { this->image = image; }
 
 	protected:
-		// TODO : GameEngineでAnimation Phaseを用意する
-		void LateUpdate() override;
+		void Start() override;
 		void PreDestroy() override;
+		void EndOfFrame() override;
 
 	private:
 		int referenceFps;
@@ -35,6 +38,9 @@ namespace GE::Animation
 		const AnimationClip* currentClip;
 
 	private:
+		// AnimationSystemに呼び出される関数
+		void OnAnimationUpdate();
+
 		void UpdateCurrentClip();
 		void SetCurrentClip(const std::string& clipName);
 	};
