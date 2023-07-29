@@ -13,12 +13,13 @@ namespace Map
 		static const RectPixel brokenImgSrcRect;
 
 	public:
-		explicit WeakWallTile(GameObject& gameObject, Collider& collider, Image& image);
+		explicit WeakWallTile(GameObject& gameObject, Collider& collider, Image& image, ParticleSystem& particleSystem);
 		void Break();
 
 	private:
 		bool isBroken;
 		Collider& collider;
 		Image& image;
+		ParticleSystem& particleSystem;
 	};
 }

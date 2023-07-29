@@ -16,6 +16,6 @@ namespace GE
 
 	void Destroy(GameObject& gameObject)
 	{
-		return GameEngine::Destroy(gameObject);
+		GameEngine::Destroy(gameObject);
 	}
 }

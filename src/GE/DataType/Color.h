@@ -28,6 +28,8 @@ namespace GE
 
 		Color& Clamp01();
 
+		static Color Lerp(const Color& a, const Color& b, float t);
+
 		static const Color black;
 		static const Color white;
 		static const Color red;

@@ -430,6 +430,36 @@
     <ClCompile Include="src\GE\Animation\AnimationSystem.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\GE\Particle\ParticleSystem.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Particle\Module\ImageModule.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Particle\Module\RectEmissionModule.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Particle\Module\EmissionModule.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Particle\Module\VelocityModule.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Particle\Module\Component\VelocityModuleComponent.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Particle\Module\Component\CoreModuleComponent.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Particle\Module\CoreModule.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Particle\Module\ColorOverLifetimeModule.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Particle\Module\Component\ColorOverLifetimeModuleComponent.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GameEngine_Ver3_83.h">
@@ -994,6 +1024,39 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GE\Animation\AnimationSystem.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Particle\ParticleSystem.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Particle\Module\Module.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Particle\Module\ImageModule.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Particle\Module\RectEmissionModule.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Particle\Module\EmissionModule.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Particle\Module\VelocityModule.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Particle\Module\Component\VelocityModuleComponent.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Particle\Module\Component\CoreModuleComponent.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Particle\Module\CoreModule.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Particle\Module\ColorOverLifetimeModule.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Particle\Module\Component\ColorOverLifetimeModuleComponent.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

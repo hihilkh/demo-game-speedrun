@@ -53,6 +53,11 @@ namespace GE
 	{
 		class Animator;
 	}
+
+	namespace Particle
+	{
+		class ParticleSystem;
+	}
 }
 
 #pragma endregion
@@ -80,6 +85,8 @@ using CollidedType			= GE::Collision::Detection::CollidedType;
 namespace CollisionLayer	= GE::Collision::CollisionLayer;
 
 using Animator				= GE::Animation::Animator;
+
+using ParticleSystem		= GE::Particle::ParticleSystem;
 
 // 備考：
 // 本質的に TRect<float> と TRect<int> は大きな違いがある。

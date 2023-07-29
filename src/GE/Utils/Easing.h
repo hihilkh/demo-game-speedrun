@@ -4,6 +4,7 @@ namespace GE::Easing
 {
 	enum class Type
 	{
+		Linear,
 		InOutSine,
 	};
 

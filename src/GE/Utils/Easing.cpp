@@ -7,6 +7,11 @@ namespace GE::Easing
 {
 	namespace
 	{
+		inline float EaseLinear(float t)
+		{
+			return t;
+		}
+
 		inline float EaseInOutSine(float t)
 		{
 			return -(std::cos((float)std::numbers::pi * t) - 1.0f) / 2.0f;
@@ -16,6 +21,7 @@ namespace GE::Easing
 	float Ease(float t, Type type)
 	{
 		switch (type) {
+			case Type::Linear:		return EaseLinear(t);
 			case Type::InOutSine:	return EaseInOutSine(t);
 		}
 
