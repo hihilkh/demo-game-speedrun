@@ -13,6 +13,8 @@
 #include "GE/Profiling/Profiler.h"
 #include "GE/Collision/CollisionSystem.h"
 #include "GE/Animation/AnimationSystem.h"
+#include <ctime>
+#include <cstdlib>
 
 namespace GE
 {
@@ -47,6 +49,7 @@ namespace GE
 
 	void GameEngine::Init(const MainProgramInitParams& params)
 	{
+		std::srand((unsigned)time(nullptr));
 		MainProgram::OtherInitParamsSet other = MainProgram::Prepare(params, config);
 		Render::RenderSystem::Init(other.renderSystemInitParams, config);
 		Time::Init(config.targetFps);
@@ -67,7 +70,7 @@ namespace GE
 
 		Internal::Destroyable& toDestroy = static_cast<Internal::Destroyable&>(gameObject);
 		// ActiveSceneにいるではない場合、直接に破棄する
-		if (std::any_of(
+		if (std::none_of(
 				loadedScenes.begin(), loadedScenes.end(), 
 				[&belongingScene](Scene* scene) { return scene == &belongingScene; }))
 		{
