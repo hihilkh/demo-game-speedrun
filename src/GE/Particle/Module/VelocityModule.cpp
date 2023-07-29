@@ -1,8 +1,7 @@
 ﻿#include "VelocityModule.h"
-#include "GE/Core/GameObject.h"
 #include "GE/Utils/Math.h"
-#include "GE/Core/Transform2D.h"
-#include "Component/VelocityModuleComponent.h"
+#include "UpdateFunc/VelocityUpdateFunc.h"
+#include "GE/Particle/Internal/ParticleComponent.h"
 
 namespace GE::Particle
 {
@@ -14,7 +13,7 @@ namespace GE::Particle
 	{
 	}
 
-	void VelocityModule::ApplyModule(GameObject& baseObject)
+	void VelocityModule::ApplyModule(Internal::ParticleComponent& particleComponent)
 	{
 		float randomEmitAngle = Math::GetRandom(emitAngleRange.x, emitAngleRange.y);
 		float randomEmitSpeed = Math::GetRandom(emitSpeedRange.x, emitSpeedRange.y);
@@ -22,7 +21,7 @@ namespace GE::Particle
 		Vector2 initialVelocity(randomEmitSpeed, 0.0f);
 		initialVelocity.Rotate(randomEmitAngle);
 
-		baseObject.AddComponent<Internal::VelocityModuleComponent>(*this, initialVelocity);
+		particleComponent.AddUpdateFunc(Internal::VelocityUpdateFunc(*this, initialVelocity));
 	}
 }
 

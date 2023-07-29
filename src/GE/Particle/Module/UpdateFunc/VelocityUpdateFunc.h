@@ -1,8 +1,12 @@
 ﻿#pragma once
 
-#include "GE/Core/Component.h"
 #include "GE/Utils/TypeDef.h"
 #include "GE/DataType/Vector2.h"
+
+namespace GE
+{
+	class GameObject;
+}
 
 namespace GE::Particle
 {
@@ -11,16 +15,12 @@ namespace GE::Particle
 
 namespace GE::Particle::Internal
 {
-	class VelocityModuleComponent : public Component
+	class VelocityUpdateFunc
 	{
 	public:
-		VelocityModuleComponent(
-			GameObject& gameObject, 
-			const VelocityModule& velocityModule,
-			const Vector2& initialVelocity);
+		VelocityUpdateFunc(const VelocityModule& velocityModule, const Vector2& initialVelocity);
 
-	protected:
-		void Update() override;
+		void operator()(GameObject& gameObject, float normalizedLifetime);
 
 	private:
 		const VelocityModule& velocityModule;

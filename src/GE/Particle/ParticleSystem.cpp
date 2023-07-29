@@ -2,6 +2,7 @@
 #include <string>
 #include "GE/Core/GameObject.h"
 #include "Module/Module.h"
+#include "Internal/ParticleComponent.h"
 
 namespace GE::Particle
 {
@@ -10,8 +11,9 @@ namespace GE::Particle
 		const std::string particleInstanceName = "Particle";
 	}
 
-	ParticleSystem::ParticleSystem(GameObject& gameObject) :
-		Component(gameObject)
+	ParticleSystem::ParticleSystem(GameObject& gameObject, CoreConfig& coreConfig) :
+		Component(gameObject),
+		coreConfig(coreConfig)
 	{
 	}
 
@@ -25,8 +27,11 @@ namespace GE::Particle
 	void ParticleSystem::CreateParticleInstance() const
 	{
 		GameObject& particle = gameObject.AddChild(particleInstanceName);
+
+		auto& particleComponent = particle.AddComponent<Internal::ParticleComponent>(coreConfig);
+
 		for (auto& particleModule : modules) {
-			particleModule->ApplyModule(particle);
+			particleModule->ApplyModule(particleComponent);
 		}
 	}
 }

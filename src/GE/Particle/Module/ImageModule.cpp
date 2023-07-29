@@ -2,6 +2,7 @@
 #include "GE/Debug/Log.h"
 #include "GE/Core/GameObject.h"
 #include "GE/Render/Image.h"
+#include "GE/Particle/Internal/ParticleComponent.h"
 
 namespace GE::Particle
 {
@@ -18,14 +19,14 @@ namespace GE::Particle
 		this->renderPriority = renderPriority;
 	}
 
-	void ImageModule::ApplyModule(GameObject& baseObject)
+	void ImageModule::ApplyModule(Internal::ParticleComponent& particleComponent)
 	{
 		if (filePath == "") {
 			DEBUG_LOG_WARNING("filePathは空になる。ParticleにImageが追加できない。");
 			return;
 		}
 
-		auto& image = baseObject.AddComponent<Render::Image>(filePath);
+		auto& image = particleComponent.gameObject.AddComponent<Render::Image>(filePath);
 		image.SetRenderPriority(renderPriority);
 	}
 }

@@ -11,9 +11,10 @@ namespace GE::Particle
 	public:
 		explicit ImageModule();
 
-		void ApplyModule(GameObject& baseObject) override;
-
 		void SetImage(const std::string& filePath, int16_t renderPriority);
+
+	protected:
+		void ApplyModule(Internal::ParticleComponent& particleComponent) override;
 
 	private:
 		std::string filePath;

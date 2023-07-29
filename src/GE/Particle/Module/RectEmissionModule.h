@@ -11,10 +11,11 @@ namespace GE::Particle
 	public:
 		explicit RectEmissionModule();
 
-		void ApplyModule(GameObject& baseObject) override;
-
 		void SetRect(float width, float height) { this->rect = Rect::FromCenter(width, height); }
 		void SetRect(const Rect& rect) { this->rect = rect; }
+
+	protected:
+		void ApplyModule(Internal::ParticleComponent& particleComponent) override;
 
 	private:
 		Rect rect;

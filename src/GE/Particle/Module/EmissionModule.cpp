@@ -2,6 +2,7 @@
 #include "GE/Core/GameObject.h"
 #include "GE/Utils/Math.h"
 #include "GE/Core/Transform2D.h"
+#include "GE/Particle/Internal/ParticleComponent.h"
 
 namespace GE::Particle
 {
@@ -11,10 +12,10 @@ namespace GE::Particle
 	{
 	}
 
-	void EmissionModule::ApplyModule(GameObject& baseObject)
+	void EmissionModule::ApplyModule(Internal::ParticleComponent& particleComponent)
 	{
 		float randomRot = Math::GetRandom(rotRange.x, rotRange.y);
-		baseObject.GetTransform().SetRot(randomRot);
+		particleComponent.gameObject.GetTransform().SetRot(randomRot);
 	}
 }
 

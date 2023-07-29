@@ -1,4 +1,4 @@
-﻿#include "VelocityModuleComponent.h"
+﻿#include "VelocityUpdateFunc.h"
 #include "../VelocityModule.h"
 #include "GE/Core/GameObject.h"
 #include "GE/Core/Transform2D.h"
@@ -6,14 +6,13 @@
 
 namespace GE::Particle::Internal
 {
-	VelocityModuleComponent::VelocityModuleComponent(GameObject& gameObject, const VelocityModule& velocityModule, const Vector2& initialVelocity) :
-		Component(gameObject),
+	VelocityUpdateFunc::VelocityUpdateFunc(const VelocityModule& velocityModule, const Vector2& initialVelocity) :
 		velocityModule(velocityModule),
 		currentVelocity(initialVelocity)
 	{
 	}
 
-	void VelocityModuleComponent::Update()
+	void VelocityUpdateFunc::operator()(GameObject& gameObject, float normalizedLifetime)
 	{
 		Transform2D& transform = gameObject.GetTransform();
 		transform.SetPos(transform.GetPos() + currentVelocity);

@@ -6,7 +6,6 @@
 #include "GE/Collision/Collider.h"
 #include "GE/Render/Image.h"
 #include "GE/Particle/ParticleSystem.h"
-#include "GE/Particle/Module/CoreModule.h"
 #include "GE/Particle/Module/ImageModule.h"
 #include "Rendering/RenderPriority.h"
 #include "GE/Particle/Module/RectEmissionModule.h"
@@ -34,10 +33,8 @@ namespace Prefab::Map
 		auto image = baseGameObject.GetComponent<Image>();
 
 		// ParticleSystem
-		auto& particleSystem = baseGameObject.AddComponent<ParticleSystem>();
-		
-		auto& coreModule = particleSystem.AddModule<GE::Particle::CoreModule>();
-		coreModule.SetLife(1.0f);
+		GE::Particle::CoreConfig coreConfig(1.0f);
+		auto& particleSystem = baseGameObject.AddComponent<ParticleSystem>(coreConfig);
 
 		auto& imageModule = particleSystem.AddModule<GE::Particle::ImageModule>();
 		imageModule.SetImage("./data/Image/WallFragment.png", RenderPriority::mapFront);

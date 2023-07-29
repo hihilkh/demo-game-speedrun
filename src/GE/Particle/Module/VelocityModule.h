@@ -11,8 +11,6 @@ namespace GE::Particle
 	public:
 		explicit VelocityModule();
 
-		void ApplyModule(GameObject& baseObject) override;
-
 		void SetEmitAngleRange(float fromDegree, float toDegree) { emitAngleRange = Vector2(fromDegree, toDegree); }
 		void SetEmitAngleRange(float constantDegree) { SetEmitAngleRange(constantDegree, constantDegree); }
 		
@@ -23,6 +21,9 @@ namespace GE::Particle
 		void SetAcceleration(const Vector2& acceleration) { this->acceleration = acceleration; }
 
 		const Vector2& GetAcceleration() const { return acceleration; }
+
+	protected:
+		void ApplyModule(Internal::ParticleComponent& particleComponent) override;
 
 	private:
 		Vector2 emitAngleRange;

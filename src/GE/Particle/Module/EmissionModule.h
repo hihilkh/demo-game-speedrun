@@ -11,10 +11,11 @@ namespace GE::Particle
 	public:
 		explicit EmissionModule();
 
-		void ApplyModule(GameObject& baseObject) override;
-
 		void SetRotationRange(float fromDegree, float toDegree) { this->rotRange = Vector2(fromDegree, toDegree);  }
 		void SetRotationRange(float constantDegree) { SetRotationRange(constantDegree, constantDegree); }
+
+	protected:
+		void ApplyModule(Internal::ParticleComponent& particleComponent) override;
 
 	private:
 		Vector2 rotRange;

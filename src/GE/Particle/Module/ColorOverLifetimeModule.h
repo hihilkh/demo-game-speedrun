@@ -11,10 +11,11 @@ namespace GE::Particle
 	public:
 		explicit ColorOverLifetimeModule();
 
-		void ApplyModule(GameObject& baseObject) override;
-
 		void SetColor(const Color& from, const Color& to, Easing::Type easingType);
 		Color GetColor(float normalizedLifetime) const;
+
+	protected:
+		void ApplyModule(Internal::ParticleComponent& particleComponent) override;
 
 	private:
 		Color from;

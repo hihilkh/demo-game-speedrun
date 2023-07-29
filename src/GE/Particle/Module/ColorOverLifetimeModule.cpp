@@ -1,6 +1,9 @@
 ﻿#include "ColorOverLifetimeModule.h"
 #include "GE/Core/GameObject.h"
-#include "Component/ColorOverLifetimeModuleComponent.h"
+#include "UpdateFunc/ColorOverLifetimeUpdateFunc.h"
+#include "GE/Particle/Internal/ParticleComponent.h"
+#include "GE/Render/Image.h"
+#include "GE/Debug/Log.h"
 
 namespace GE::Particle
 {
@@ -11,9 +14,15 @@ namespace GE::Particle
 	{
 	}
 
-	void ColorOverLifetimeModule::ApplyModule(GameObject& baseObject)
+	void ColorOverLifetimeModule::ApplyModule(Internal::ParticleComponent& particleComponent)
 	{
-		baseObject.AddComponent<Internal::ColorOverLifetimeModuleComponent>(*this);
+		auto image = particleComponent.gameObject.GetComponent<Render::Image>();
+		if (!image) {
+			DEBUG_LOG_ERROR("なぜかParticleのImageが見つけられない。");
+			return;
+		}
+
+		particleComponent.AddUpdateFunc(Internal::ColorOverLifetimeUpdateFunc(*this, *image));
 	}
 
 	void ColorOverLifetimeModule::SetColor(const Color& from, const Color& to, Easing::Type easingType)

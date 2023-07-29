@@ -4,6 +4,7 @@
 #include <memory>
 #include <vector>
 #include "GE/Utils/GEConcept.h"
+#include "CoreConfig.h"
 
 namespace GE::Particle
 {
@@ -12,7 +13,7 @@ namespace GE::Particle
 	class ParticleSystem : public Component
 	{
 	public:
-		explicit ParticleSystem(GameObject& gameObject);
+		ParticleSystem(GameObject& gameObject, CoreConfig& coreConfig);
 
 		template<ParticleModuleType T>
 		T& AddModule();
@@ -20,6 +21,7 @@ namespace GE::Particle
 		void Emit(int noOfParticle) const;
 
 	private:
+		CoreConfig coreConfig;
 		std::vector<std::unique_ptr<Module>> modules;
 
 	private:

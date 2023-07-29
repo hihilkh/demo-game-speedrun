@@ -1,17 +1,21 @@
 ﻿#pragma once
 
-namespace GE
-{
-	class GameObject;
-}
-
 namespace GE::Particle
 {
+	namespace Internal
+	{
+		class ParticleComponent;
+	}
+
 	class Module
 	{
+		friend class ParticleSystem;
+
 	public:
 		explicit Module() = default;
 		virtual ~Module() = default;
-		virtual void ApplyModule(GameObject& baseObject) = 0;
+
+	protected:
+		virtual void ApplyModule(Internal::ParticleComponent& particleComponent) = 0;
 	};
 }

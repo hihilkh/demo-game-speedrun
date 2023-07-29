@@ -445,19 +445,19 @@
     <ClCompile Include="src\GE\Particle\Module\VelocityModule.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GE\Particle\Module\Component\VelocityModuleComponent.cpp">
+    <ClCompile Include="src\GE\Particle\Module\UpdateFunc\VelocityUpdateFunc.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GE\Particle\Module\Component\CoreModuleComponent.cpp">
+    <ClCompile Include="src\GE\Particle\Internal\ParticleComponent.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GE\Particle\Module\CoreModule.cpp">
+    <ClCompile Include="src\GE\Particle\CoreConfig.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GE\Particle\Module\ColorOverLifetimeModule.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GE\Particle\Module\Component\ColorOverLifetimeModuleComponent.cpp">
+    <ClCompile Include="src\GE\Particle\Module\UpdateFunc\ColorOverLifetimeUpdateFunc.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1044,19 +1044,19 @@
     <ClInclude Include="src\GE\Particle\Module\VelocityModule.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GE\Particle\Module\Component\VelocityModuleComponent.h">
+    <ClInclude Include="src\GE\Particle\Module\UpdateFunc\VelocityUpdateFunc.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GE\Particle\Module\Component\CoreModuleComponent.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GE\Particle\Module\CoreModule.h">
+    <ClInclude Include="src\GE\Particle\Internal\ParticleComponent.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GE\Particle\Module\ColorOverLifetimeModule.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GE\Particle\Module\Component\ColorOverLifetimeModuleComponent.h">
+    <ClInclude Include="src\GE\Particle\Module\UpdateFunc\ColorOverLifetimeUpdateFunc.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Particle\CoreConfig.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

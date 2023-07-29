@@ -2,6 +2,7 @@
 #include "GE/Core/GameObject.h"
 #include "GE/Utils/Math.h"
 #include "GE/Core/Transform2D.h"
+#include "GE/Particle/Internal/ParticleComponent.h"
 
 namespace GE::Particle
 {
@@ -11,14 +12,14 @@ namespace GE::Particle
 	{
 	}
 
-	void RectEmissionModule::ApplyModule(GameObject& baseObject)
+	void RectEmissionModule::ApplyModule(Internal::ParticleComponent& particleComponent)
 	{
-		EmissionModule::ApplyModule(baseObject);
+		EmissionModule::ApplyModule(particleComponent);
 
 		float randomX = Math::GetRandom(rect.x, rect.OppositeX());
 		float randomY = Math::GetRandom(rect.y, rect.OppositeY());
 
-		baseObject.GetTransform().SetPos(randomX, randomY);
+		particleComponent.gameObject.GetTransform().SetPos(randomX, randomY);
 	}
 }
 
