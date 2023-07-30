@@ -480,7 +480,7 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="src\GE\Particle\Module\UpdateFunc\ColorOverLifetimeUpdateFunc.cpp">
+    <ClCompile Include="src\GE\Particle\Module\JsonHelper.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeaderFile>
@@ -494,7 +494,21 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="src\GE\Particle\CoreConfig.cpp">
+    <ClCompile Include="src\GE\Particle\Module\ModuleSet.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GE\Particle\Module\UpdateFunc\ColorOverLifetimeUpdateFunc.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeaderFile>
@@ -566,6 +580,20 @@
     </ClCompile>
     <ClCompile Include="src\GE\Particle\Module\VelocityModule.cpp" />
     <ClCompile Include="src\GE\Particle\ParticleSystem.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="src\GE\Particle\ParticleSystemLoader.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeaderFile>
@@ -1277,6 +1305,8 @@
     <ClInclude Include="src\GE\Animation\AnimationDecision.h" />
     <ClInclude Include="src\GE\Particle\CoreConfig.h" />
     <ClInclude Include="src\GE\Particle\Module\ColorOverLifetimeModule.h" />
+    <ClInclude Include="src\GE\Particle\Module\JsonHelper.h" />
+    <ClInclude Include="src\GE\Particle\Module\ModuleSet.h" />
     <ClInclude Include="src\GE\Particle\Module\UpdateFunc\ColorOverLifetimeUpdateFunc.h" />
     <ClInclude Include="src\GE\Particle\Internal\ParticleComponent.h" />
     <ClInclude Include="src\GE\Particle\Module\UpdateFunc\VelocityUpdateFunc.h" />
@@ -1285,6 +1315,7 @@
     <ClInclude Include="src\GE\Particle\Module\Module.h" />
     <ClInclude Include="src\GE\Particle\Module\VelocityModule.h" />
     <ClInclude Include="src\GE\Particle\ParticleSystem.h" />
+    <ClInclude Include="src\GE\Particle\ParticleSystemLoader.h" />
     <ClInclude Include="src\GE\Utils\HandyFunc\CollisionRelated.h" />
     <ClInclude Include="src\GE\Utils\Json.h" />
     <ClInclude Include="src\Map\Tile\TransportBeltAnimationDecision.h" />

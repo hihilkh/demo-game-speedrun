@@ -2,18 +2,26 @@
 #include "GE/Utils/Math.h"
 #include "UpdateFunc/VelocityUpdateFunc.h"
 #include "GE/Particle/Internal/ParticleComponent.h"
+#include <string>
 
 namespace GE::Particle
 {
-	VelocityModule::VelocityModule() :
+	namespace
+	{
+		const std::string emitAngleNode = "emit_angle";
+		const std::string emitSpeedNode = "emit_speed";
+		const std::string accelerationNode = "acceleration";
+	}
+
+	VelocityModule::VelocityModule(const GE::Json::Value& json) :
 		Module(),
-		emitAngleRange(),
-		emitSpeedRange(),
-		acceleration()
+		emitAngleRange(JsonHelper::ConvertToRange(json[emitAngleNode])),
+		emitSpeedRange(JsonHelper::ConvertToRange(json[emitSpeedNode])),
+		acceleration(JsonHelper::ConvertToVector2(json[accelerationNode]))
 	{
 	}
 
-	void VelocityModule::ApplyModule(Internal::ParticleComponent& particleComponent)
+	void VelocityModule::ApplyModule(Internal::ParticleComponent& particleComponent) const
 	{
 		float randomEmitAngle = Math::GetRandom(emitAngleRange.x, emitAngleRange.y);
 		float randomEmitSpeed = Math::GetRandom(emitSpeedRange.x, emitSpeedRange.y);

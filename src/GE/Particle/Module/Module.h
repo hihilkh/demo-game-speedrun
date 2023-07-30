@@ -9,13 +9,12 @@ namespace GE::Particle
 
 	class Module
 	{
-		friend class ParticleSystem;
+		friend class ModuleSet;
 
 	public:
-		explicit Module() = default;
 		virtual ~Module() = default;
 
 	protected:
-		virtual void ApplyModule(Internal::ParticleComponent& particleComponent) = 0;
+		virtual void ApplyModule(Internal::ParticleComponent& particleComponent) const = 0;
 	};
 }

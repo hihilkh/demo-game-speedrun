@@ -3,19 +3,17 @@
 #include "Module.h"
 #include "GE/Utils/TypeDef.h"
 #include "GE/DataType/Vector2.h"
+#include "JsonHelper.h"
 
 namespace GE::Particle
 {
 	class EmissionModule : public Module
 	{
 	public:
-		explicit EmissionModule();
-
-		void SetRotationRange(float fromDegree, float toDegree) { this->rotRange = Vector2(fromDegree, toDegree);  }
-		void SetRotationRange(float constantDegree) { SetRotationRange(constantDegree, constantDegree); }
+		explicit EmissionModule(const GE::Json::Value& json);
 
 	protected:
-		void ApplyModule(Internal::ParticleComponent& particleComponent) override;
+		void ApplyModule(Internal::ParticleComponent& particleComponent) const override;
 
 	private:
 		Vector2 rotRange;

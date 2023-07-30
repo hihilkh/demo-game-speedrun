@@ -93,8 +93,9 @@ namespace MyNamespace
 			* `char name = 'a';`
 	* コピーコンストラクター：`T instance2 = instance1;`
 	* `T* name = new T(arg1, arg2);`
-	* 一般的に`一様初期化`(`Uniform Initialization`)を使わない。でも、場合によって、`auto`を使うことも許す。例えば、
+	* 一般的に`一様初期化`(`Uniform Initialization`)を使わない。でも、場合によって、`一様初期化`を使うことも許す。例えば、
 		* `std::vector<int> v{1, 2, 3, 4, 5};`
+		* 戻り値は`std::tuple`である場合
 		* `構造体`：`Vector2 a; a = {1.0f, 2.0f};`とか、`player.Move({1.0f, 2.0f});`とか
 
 ## enum

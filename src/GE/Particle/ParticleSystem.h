@@ -2,40 +2,25 @@
 
 #include "GE/Core/Component.h"
 #include <memory>
-#include <vector>
-#include "GE/Utils/GEConcept.h"
-#include "CoreConfig.h"
+#include <string>
 
 namespace GE::Particle
 {
-	class Module;
+	struct CoreConfig;
+	class ModuleSet;
 
 	class ParticleSystem : public Component
 	{
 	public:
-		ParticleSystem(GameObject& gameObject, CoreConfig& coreConfig);
-
-		template<ParticleModuleType T>
-		T& AddModule();
+		ParticleSystem(GameObject& gameObject, const std::string& particleSystemFile);
 
 		void Play() const;
 
 	private:
-		CoreConfig coreConfig;
-		std::vector<std::unique_ptr<Module>> modules;
+		std::shared_ptr<CoreConfig> coreConfig;
+		std::shared_ptr<ModuleSet> moduleSet;
 
 	private:
 		void CreateParticleInstance() const;
 	};
-
-#pragma region テンプレート定義
-
-	template<ParticleModuleType T>
-	T& ParticleSystem::AddModule()
-	{
-		Module& particleModule = *(modules.emplace_back(std::make_unique<T>()));
-		return static_cast<T&>(particleModule);
-	}
-
-#pragma endregion
 }

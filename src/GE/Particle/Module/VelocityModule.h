@@ -3,27 +3,19 @@
 #include "Module.h"
 #include "GE/Utils/TypeDef.h"
 #include "GE/DataType/Vector2.h"
+#include "JsonHelper.h"
 
 namespace GE::Particle
 {
 	class VelocityModule : public Module
 	{
 	public:
-		explicit VelocityModule();
-
-		void SetEmitAngleRange(float fromDegree, float toDegree) { emitAngleRange = Vector2(fromDegree, toDegree); }
-		void SetEmitAngleRange(float constantDegree) { SetEmitAngleRange(constantDegree, constantDegree); }
-		
-		void SetEmitSpeedRange(float from, float to) { emitSpeedRange = Vector2(from, to); }
-		void SetEmitSpeedRange(float constantSpeed) { SetEmitSpeedRange(constantSpeed, constantSpeed); }
-		
-		void SetAcceleration(float accelerationX, float accelerationY) { acceleration = Vector2(accelerationX, accelerationY); }
-		void SetAcceleration(const Vector2& acceleration) { this->acceleration = acceleration; }
+		explicit VelocityModule(const GE::Json::Value& json);
 
 		const Vector2& GetAcceleration() const { return acceleration; }
 
 	protected:
-		void ApplyModule(Internal::ParticleComponent& particleComponent) override;
+		void ApplyModule(Internal::ParticleComponent& particleComponent) const override;
 
 	private:
 		Vector2 emitAngleRange;

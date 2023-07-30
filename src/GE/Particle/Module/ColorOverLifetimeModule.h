@@ -3,19 +3,19 @@
 #include "Module.h"
 #include "GE/DataType/Color.h"
 #include "GE/Utils/Easing.h"
+#include "JsonHelper.h"
 
 namespace GE::Particle
 {
 	class ColorOverLifetimeModule : public Module
 	{
 	public:
-		explicit ColorOverLifetimeModule();
+		explicit ColorOverLifetimeModule(const GE::Json::Value& json);
 
-		void SetColor(const Color& from, const Color& to, Easing::Type easingType);
 		Color GetColor(float normalizedLifetime) const;
 
 	protected:
-		void ApplyModule(Internal::ParticleComponent& particleComponent) override;
+		void ApplyModule(Internal::ParticleComponent& particleComponent) const override;
 
 	private:
 		Color from;

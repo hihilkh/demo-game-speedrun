@@ -6,13 +6,13 @@
 
 namespace GE::Particle
 {
-	RectEmissionModule::RectEmissionModule() :
-		EmissionModule(),
-		rect()
+	RectEmissionModule::RectEmissionModule(const GE::Json::Value& json) :
+		EmissionModule(json),
+		rect(JsonHelper::ConvertToRect(json))
 	{
 	}
 
-	void RectEmissionModule::ApplyModule(Internal::ParticleComponent& particleComponent)
+	void RectEmissionModule::ApplyModule(Internal::ParticleComponent& particleComponent) const
 	{
 		EmissionModule::ApplyModule(particleComponent);
 

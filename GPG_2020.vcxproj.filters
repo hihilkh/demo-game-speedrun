@@ -448,13 +448,19 @@
     <ClCompile Include="src\GE\Particle\Internal\ParticleComponent.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GE\Particle\CoreConfig.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\GE\Particle\Module\ColorOverLifetimeModule.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GE\Particle\Module\UpdateFunc\ColorOverLifetimeUpdateFunc.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Particle\ParticleSystemLoader.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Particle\Module\ModuleSet.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\Particle\Module\JsonHelper.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1051,6 +1057,15 @@
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GE\Particle\CoreConfig.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Particle\ParticleSystemLoader.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Particle\Module\ModuleSet.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GE\Particle\Module\JsonHelper.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -4,17 +4,25 @@
 #include "GE/Particle/Internal/ParticleComponent.h"
 #include "GE/Render/Image.h"
 #include "GE/Debug/Log.h"
+#include <string>
 
 namespace GE::Particle
 {
-	ColorOverLifetimeModule::ColorOverLifetimeModule() :
-		from(),
-		to(),
-		easingType(static_cast<Easing::Type>(0))
+	namespace
+	{
+		const std::string fromNode = "from";
+		const std::string toNode = "to";
+		const std::string easingTypeNode = "easing_type";
+	}
+
+	ColorOverLifetimeModule::ColorOverLifetimeModule(const GE::Json::Value& json) :
+		from(JsonHelper::ConvertToColor(json[fromNode])),
+		to(JsonHelper::ConvertToColor(json[toNode])),
+		easingType(static_cast<Easing::Type>(json[easingTypeNode].asInt()))
 	{
 	}
 
-	void ColorOverLifetimeModule::ApplyModule(Internal::ParticleComponent& particleComponent)
+	void ColorOverLifetimeModule::ApplyModule(Internal::ParticleComponent& particleComponent) const
 	{
 		auto image = particleComponent.gameObject.GetComponent<Render::Image>();
 		if (!image) {
@@ -23,13 +31,6 @@ namespace GE::Particle
 		}
 
 		particleComponent.AddUpdateFunc(Internal::ColorOverLifetimeUpdateFunc(*this, *image));
-	}
-
-	void ColorOverLifetimeModule::SetColor(const Color& from, const Color& to, Easing::Type easingType)
-	{
-		this->from = from;
-		this->to = to;
-		this->easingType = easingType;
 	}
 
 	Color ColorOverLifetimeModule::GetColor(float normalizedLifetime) const
