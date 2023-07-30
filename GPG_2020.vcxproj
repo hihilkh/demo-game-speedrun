@@ -1231,10 +1231,6 @@
       </PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="src\GE\Profiling\ProfilerSectionMemory.cpp" />
-    <ClCompile Include="src\MyPG.cpp" />
-    <ClCompile Include="src\ParticleSystem\Particle.cpp" />
-    <ClCompile Include="src\ParticleSystem\ParticleConfig.cpp" />
-    <ClCompile Include="src\ParticleSystem\Task_BreakWallEffect.cpp" />
     <ClCompile Include="src\Scene\Builder\PrepareScene.cpp" />
     <ClCompile Include="src\Scene\SceneMapping.cpp" />
     <ClCompile Include="src\Scene\Builder\TitleScene.cpp" />
@@ -1440,20 +1436,11 @@
     <ClInclude Include="src\GE\Debug\Measurement\ScopeTiming.h" />
     <ClInclude Include="src\GE\Profiling\ProfilerSectionMemory.h" />
     <ClInclude Include="src\Map\MapObject\MapObjectType.h" />
-    <ClInclude Include="src\MyPG.h" />
-    <ClInclude Include="src\ParticleSystem\Particle.h" />
-    <ClInclude Include="src\ParticleSystem\ParticleConfig.h" />
-    <ClInclude Include="src\ParticleSystem\ParticleConstant.h" />
-    <ClInclude Include="src\ParticleSystem\Task_BreakWallEffect.h" />
     <ClInclude Include="src\GE\Profiling\ProfilingConfig.h" />
     <ClInclude Include="src\Scene\Builder\PrepareScene.h" />
     <ClInclude Include="src\Scene\SceneMapping.h" />
     <ClInclude Include="src\Scene\Builder\TitleScene.h" />
-    <ClInclude Include="src\Task\ResourceConstant.h" />
     <ClInclude Include="src\GE\Debug\Log.h" />
-    <ClInclude Include="src\Task\ObjectBase.tpp" />
-    <ClInclude Include="src\Task\ResourceBase.tpp" />
-    <ClInclude Include="src\Task\TaskConstant.h" />
     <ClInclude Include="src\TitleScene\TitleSceneDirector.h" />
     <ClInclude Include="lib\XI2018_Ver1_0.h" />
     <ClInclude Include="src\GE\Utils\Math.h" />

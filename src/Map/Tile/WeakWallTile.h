@@ -8,7 +8,6 @@ namespace Map
 	class WeakWallTile : public Tile
 	{
 	public:
-		// TODO : Animatorで制御する
 		static const RectPixel normalImgSrcRect;
 		static const RectPixel brokenImgSrcRect;
 

@@ -79,19 +79,7 @@
     <ClCompile Include="lib\myLib.cpp">
       <Filter>Lib</Filter>
     </ClCompile>
-    <ClCompile Include="src\MyPG.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\WinMain.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ParticleSystem\Task_BreakWallEffect.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ParticleSystem\Particle.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ParticleSystem\ParticleConfig.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Font\Font.cpp">
@@ -510,34 +498,7 @@
     <ClInclude Include="lib\myLib.h">
       <Filter>Lib</Filter>
     </ClInclude>
-    <ClInclude Include="src\MyPG.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Task\ResourceConstant.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Task\TaskConstant.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Task\ResourceBase.tpp">
-      <Filter>MyPG\Template Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Task\ObjectBase.tpp">
-      <Filter>MyPG\Template Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Map\MapObject\MapObjectType.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ParticleSystem\Task_BreakWallEffect.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ParticleSystem\Particle.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ParticleSystem\ParticleConstant.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ParticleSystem\ParticleConfig.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Font\Font.h">
