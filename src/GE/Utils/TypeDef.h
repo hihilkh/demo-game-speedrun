@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "GEConcept.h"
-#include <stdint.h>
+#include <cstdint>
 
 #pragma region 前方宣言
 

@@ -2,7 +2,6 @@
 
 #include "GE/Core/Component.h"
 #include "GE/Utils/TypeDef.h"
-#include <stdint.h>
 
 namespace TimeUtils
 {

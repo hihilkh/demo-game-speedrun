@@ -6,7 +6,7 @@ namespace GE::Render
 	Event<const Renderer&> Renderer::onStarted;
 	Event<const Renderer&> Renderer::onDestroying;
 
-	Renderer::Renderer(GameObject& gameObject, int16_t renderPriority, RenderLayer::Bitmask renderLayer) :
+	Renderer::Renderer(GameObject& gameObject, std::int16_t renderPriority, RenderLayer::Bitmask renderLayer) :
 		Component(gameObject),
 		renderPriority(renderPriority),
 		renderLayer(renderLayer)

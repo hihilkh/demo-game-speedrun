@@ -22,11 +22,11 @@ namespace GE::Render
 		static Event<const Renderer&> onDestroying;
 
 	public:
-		Renderer(GameObject& gameObject, int16_t renderPriority, RenderLayer::Bitmask renderLayer);
+		Renderer(GameObject& gameObject, std::int16_t renderPriority, RenderLayer::Bitmask renderLayer);
 		virtual ~Renderer() = default;
 
-		int16_t GetRenderPriority() const { return renderPriority; }
-		void SetRenderPriority(int16_t renderPriority) { this->renderPriority = renderPriority; }
+		std::int16_t GetRenderPriority() const { return renderPriority; }
+		void SetRenderPriority(std::int16_t renderPriority) { this->renderPriority = renderPriority; }
 
 		RenderLayer::Bitmask GetRenderLayer() const { return renderLayer; }
 		void SetRenderLayer(RenderLayer::Bitmask renderLayer) { this->renderLayer = renderLayer; }
@@ -41,7 +41,7 @@ namespace GE::Render
 		/// <summary>
 		/// 大きければ大きいほど画面の上に描画する。負数も許す。
 		/// </summary>
-		int16_t renderPriority;
+		std::int16_t renderPriority;
 		RenderLayer::Bitmask renderLayer;
 
 	private:

@@ -32,8 +32,8 @@ namespace GE
 		Camera2D(GameObject& gameObject);
 		~Camera2D() = default;
 
-		int16_t GetPriority() const { return priority; }
-		void SetPriority(int16_t priority) { this->priority = priority; }
+		std::int16_t GetPriority() const { return priority; }
+		void SetPriority(std::int16_t priority) { this->priority = priority; }
 
 		Render::RenderLayer::Bitmask GetCullingMask() const { return cullingMask; }
 		void SetCullingMask(Render::RenderLayer::Bitmask cullingMask) { this->cullingMask = cullingMask; }
@@ -47,7 +47,7 @@ namespace GE
 		/// <para>大きければ大きいほど画面の上に描画する。負数も許す。</para>
 		/// GE::Renderer::RendererのrenderPriorityと違う。
 		/// </summary>
-		int16_t priority;
+		std::int16_t priority;
 		Render::RenderLayer::Bitmask cullingMask;
 
 	private:

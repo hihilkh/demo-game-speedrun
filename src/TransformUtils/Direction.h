@@ -1,6 +1,5 @@
 ﻿#pragma once
 
-#include <stdint.h>
 #include "GE/Utils/TypeDef.h"
 
 namespace TransformUtils
