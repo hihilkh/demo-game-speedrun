@@ -564,20 +564,6 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="src\GE\Particle\Module\ImageModule.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </PrecompiledHeaderFile>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      </PrecompiledHeaderFile>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      </PrecompiledHeaderFile>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-      </PrecompiledHeaderFile>
-    </ClCompile>
     <ClCompile Include="src\GE\Particle\Module\VelocityModule.cpp" />
     <ClCompile Include="src\GE\Particle\ParticleSystem.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
@@ -1297,7 +1283,6 @@
     <ClInclude Include="src\GE\Particle\Module\EmissionModule.h" />
     <ClInclude Include="src\GE\Particle\Module\RectEmissionModule.h" />
     <ClInclude Include="src\GE\Particle\Module\Module.h" />
-    <ClInclude Include="src\GE\Particle\Module\ImageModule.h" />
     <ClInclude Include="src\GE\Particle\Module\VelocityModule.h" />
     <ClInclude Include="src\GE\Particle\ParticleSystem.h" />
     <ClInclude Include="src\GE\Utils\HandyFunc\CollisionRelated.h" />

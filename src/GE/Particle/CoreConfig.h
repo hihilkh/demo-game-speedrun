@@ -1,15 +1,17 @@
 ﻿#pragma once
 
+#include <string>
+#include <cstdint>
+
 namespace GE::Particle
 {
-	class CoreConfig
+	struct CoreConfig
 	{
-	public:
-		explicit CoreConfig(float life);
-
-		float GetLife() const { return life; }
-
-	private:
+		std::string imgFilePath;
+		std::int16_t renderPriority;
+		int noOfParticle;
 		float life;
+
+		CoreConfig(const std::string& imgFilePath, std::int16_t renderPriority, int noOfParticle, float life);
 	};
 }

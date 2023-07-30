@@ -9,7 +9,7 @@ namespace GE
 
 namespace GE::Particle
 {
-	class CoreConfig;
+	struct CoreConfig;
 }
 
 namespace GE::Particle::Internal

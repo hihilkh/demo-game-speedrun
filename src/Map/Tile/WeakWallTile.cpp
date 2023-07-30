@@ -29,6 +29,6 @@ namespace Map
 		collider.SetIsEnable(false);
 		image.SetSrcRect(brokenImgSrcRect);
 
-		particleSystem.Emit(20);
+		particleSystem.Play();
 	}
 }

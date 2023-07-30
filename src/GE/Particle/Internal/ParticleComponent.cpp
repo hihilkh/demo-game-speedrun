@@ -17,10 +17,10 @@ namespace GE::Particle::Internal
 	void ParticleComponent::Update()
 	{
 		float normalizedLifetime = 0;
-		if (coreConfig.GetLife() <= 0) {
+		if (coreConfig.life <= 0) {
 			normalizedLifetime = 1;
 		} else {
-			normalizedLifetime = Time::GetTime() - startTime / coreConfig.GetLife();
+			normalizedLifetime = Time::GetTime() - startTime / coreConfig.life;
 			Math::Clamp01(normalizedLifetime);
 		}
 

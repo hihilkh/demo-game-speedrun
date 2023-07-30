@@ -18,7 +18,7 @@ namespace GE::Particle
 		template<ParticleModuleType T>
 		T& AddModule();
 
-		void Emit(int noOfParticle) const;
+		void Play() const;
 
 	private:
 		CoreConfig coreConfig;
