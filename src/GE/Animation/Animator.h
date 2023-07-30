@@ -34,7 +34,7 @@ namespace GE::Animation
 
 		std::unique_ptr<AnimationDecision> decision;
 		Image* image;
-		std::shared_ptr<AnimationClipSet> clips;
+		const std::shared_ptr<AnimationClipSet> clips;
 		float currentClipStartTime;
 		const AnimationClip* currentClip;
 

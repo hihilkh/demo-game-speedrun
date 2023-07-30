@@ -27,21 +27,21 @@ namespace GE::Animation
 
 	namespace
 	{
-		RectPixel GenerateRectPixel(const GE::Json::Value& value)
+		RectPixel ConvertToRectPixel(const GE::Json::Value& json)
 		{
 			return RectPixel(
-				value[posXNode].asInt(),
-				value[posYNode].asInt(),
-				value[wideNode].asInt(),
-				value[heightNode].asInt()
+				json[posXNode].asInt(),
+				json[posYNode].asInt(),
+				json[wideNode].asInt(),
+				json[heightNode].asInt()
 			);
 		}
 
-		AnimationKey GenerateKey(const GE::Json::Value& value)
+		AnimationKey ConvertToAnimationKey(const GE::Json::Value& json)
 		{
 			AnimationKey animKey;
-			animKey.animType = static_cast<AnimationKey::AnimationType>(value[animationTypeNode].asInt());
-			animKey.imgSrcRect = GenerateRectPixel(value[imgSrcRectNode]);
+			animKey.animType = static_cast<AnimationKey::AnimationType>(json[animationTypeNode].asInt());
+			animKey.imgSrcRect = ConvertToRectPixel(json[imgSrcRectNode]);
 
 			return animKey;
 		}
@@ -57,28 +57,28 @@ namespace GE::Animation
 			}
 		}
 
-		std::vector<AnimationClip> allClips;
+		std::vector<AnimationClip> clips;
 
-		auto value = GE::Json::LoadJson(animationFile);
-		const auto& clips = value[clipsNode];
+		auto json = GE::Json::LoadJson(animationFile);
+		const auto& clipsJson = json[clipsNode];
 
-		allClips.reserve(clips.size());
+		clips.reserve(clipsJson.size());
 
-		for (const auto& clip : clips) {
-			std::string name = clip[nameNode].asString();
-			bool isLoop = clip[loopNode].asBool();
+		for (const auto& clipJson : clipsJson) {
+			std::string name = clipJson[nameNode].asString();
+			bool isLoop = clipJson[loopNode].asBool();
 			AnimationClip animClip(name, isLoop);
 
-			const auto& frames = clip[framesNode];
-			for (const auto& frame : frames) {
-				animClip.keysInFrame.emplace(frame[startFrameNode].asInt(), GenerateKey(frame[keyNode]));
+			const auto& framesJson = clipJson[framesNode];
+			for (const auto& frameJson : framesJson) {
+				animClip.keysInFrame.emplace(frameJson[startFrameNode].asInt(), ConvertToAnimationKey(frameJson[keyNode]));
 			}
 
 			animClip.PostConstruct();
-			allClips.emplace_back(std::move(animClip));
+			clips.emplace_back(std::move(animClip));
 		}
 		
-		auto clipSet = std::make_shared<AnimationClipSet>(std::move(allClips));
+		auto clipSet = std::make_shared<AnimationClipSet>(std::move(clips));
 		loadedClipSets[animationFile] = clipSet;
 
 		return clipSet;
