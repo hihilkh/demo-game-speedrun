@@ -28,7 +28,7 @@ namespace GE::Animation
 		const GEConfig& config = GetGEConfig();
 		referenceFps = config.targetFps;
 
-		if (!decision) {
+		if (!this->decision) {
 			currentClip = clips->GetFirstClip();
 		}
 	}
