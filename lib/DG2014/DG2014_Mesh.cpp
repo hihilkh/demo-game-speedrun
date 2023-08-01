@@ -1,5 +1,5 @@
-#include "DG2014_Ver3_6.h"
-#include "../myLib.h"
+ï»¿#include "DG2014_Ver3_6.h"
+#include "myLib.h"
 
 #pragma warning(disable:4316)
 //#include "atlstr.h"
@@ -14,16 +14,16 @@ namespace DG
 	{
 	}
 	//-----------------------------------------------------------------------
-	//ˆÓ}“I‚É”jŠü‚·‚é
+	//æ„å›³çš„ã«ç ´æ£„ã™ã‚‹
 	void Mesh::Destroy(Mesh::SP& sp_)
 	{
 		sp_ = nullptr;
 	}
 	//-------------------------------------------------------------------
-	//	ƒƒbƒVƒ…‚ð¶¬‚·‚é
+	//	ãƒ¡ãƒƒã‚·ãƒ¥ã‚’ç”Ÿæˆã™ã‚‹
 	bool Mesh::Initialize(	Material&				mc_,
-							VB_Container::SP&		vbc_,//ƒo[ƒeƒbƒNƒXƒoƒbƒtƒ@ƒRƒ“ƒeƒi
-							Texture::SP&			tex_)//ƒeƒNƒXƒ`ƒƒ			
+							VB_Container::SP&		vbc_,//ãƒãƒ¼ãƒ†ãƒƒã‚¯ã‚¹ãƒãƒƒãƒ•ã‚¡ã‚³ãƒ³ãƒ†ãƒŠ
+							Texture::SP&			tex_)//ãƒ†ã‚¯ã‚¹ãƒãƒ£			
 	{
 		this->normalEnable  =  false;
 		this->uvEnable  =  false;
@@ -36,31 +36,31 @@ namespace DG
 		w.mcNumber  =  0;
 		meshGroups.push_back(w);
 		vbc  =  vbc_;
-		//BBEBS¶¬
+		//BBãƒ»BSç”Ÿæˆ
 		this->InitializeBB_BS( );
 		return  true;
 	}
 	//-------------------------------------------------------------------
-	//SOBƒtƒ@ƒCƒ‹‚©‚çƒƒbƒVƒ…‚ð¶¬‚·‚é
+	//SOBãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ãƒ¡ãƒƒã‚·ãƒ¥ã‚’ç”Ÿæˆã™ã‚‹
 	Mesh::SP  Mesh::Create_FromSOBFile(	const string&			fpath_)
 	{
-		//ŽÀÛ‚Ì“Ç‚Ýž‚Ý‚Í•Êƒtƒ@ƒCƒ‹‚ÅŽÀ‘•
+		//å®Ÿéš›ã®èª­ã¿è¾¼ã¿ã¯åˆ¥ãƒ•ã‚¡ã‚¤ãƒ«ã§å®Ÿè£…
 		Mesh::SP  rtv  =  Mesh::Create_FromSOBFileSub(fpath_);
 		if(rtv){
-			//BBEBS¶¬
+			//BBãƒ»BSç”Ÿæˆ
 			rtv->InitializeBB_BS( );
 		}
 		return rtv;
 	}
 	//-------------------------------------------------------------------
-	//‚a‚a‚Æ‚a‚r‚ð¶¬‚·‚é
+	//ï¼¢ï¼¢ã¨ï¼¢ï¼³ã‚’ç”Ÿæˆã™ã‚‹
 	void  Mesh::InitializeBB_BS( )
 	{
-		//ƒoƒEƒ“ƒfƒBƒ“ƒOƒ{ƒbƒNƒXEƒXƒtƒBƒA‚ð¶¬‚·‚é
+		//ãƒã‚¦ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ãƒœãƒƒã‚¯ã‚¹ãƒ»ã‚¹ãƒ•ã‚£ã‚¢ã‚’ç”Ÿæˆã™ã‚‹
 		auto  vb = this->vbc->GetVB(0);
 		ML::Vec3  *p = (ML::Vec3*)vb->memory;
 		//BB
-		//Å¬EÅ‘å“_‚ÌŒŸo
+		//æœ€å°ãƒ»æœ€å¤§ç‚¹ã®æ¤œå‡º
 		ML::Vec3  minP(p[0]), maxP(p[0]);
 		for (UINT n = 1; n < vb->num; n++){
 			minP.x = min(minP.x, p[n].x);
@@ -74,8 +74,8 @@ namespace DG
 		this->bb.Center =  (minP + maxP) / 2;
 		this->bb.Extents = (maxP - minP) / 2;
 		//BS
-		//‚à‚Á‚Æ‚à‰“‚¢“_‚ð’T‚·
-		ML::Vec3  cen = (minP + maxP) / 2;	//‹…‚Ì’†SiBB‚Æ“¯‚¶‚Æ‚·‚éj
+		//ã‚‚ã£ã¨ã‚‚é ã„ç‚¹ã‚’æŽ¢ã™
+		ML::Vec3  cen = (minP + maxP) / 2;	//çƒã®ä¸­å¿ƒï¼ˆBBã¨åŒã˜ã¨ã™ã‚‹ï¼‰
 		float  len = 0;
 		for (UINT n = 1; n < vb->num; n++){
 			ML::Vec3  v = p[n] - cen;
@@ -84,7 +84,7 @@ namespace DG
 		}
 	}
 	//-------------------------------------------------------------------
-	//ƒ}ƒeƒŠƒAƒ‹‚ð‹­§“I‚É‘‚«Š·‚¦‚éiŽg—p‚Í”ñ„§j
+	//ãƒžãƒ†ãƒªã‚¢ãƒ«ã‚’å¼·åˆ¶çš„ã«æ›¸ãæ›ãˆã‚‹ï¼ˆä½¿ç”¨ã¯éžæŽ¨å¥¨ï¼‰
 	void  Mesh::UpDateMaterial(
 		const ML::Color&  dif_,
 		const ML::Color&  spe_,
@@ -100,10 +100,10 @@ namespace DG
 	}
 
 	//-------------------------------------------------------------------
-	//ƒvƒƒOƒ‰ƒ€ã‚ÅƒƒbƒVƒ…‚ðì‚éi•’Ê‚ÍŽg‚í‚È‚¢j
+	//ãƒ—ãƒ­ã‚°ãƒ©ãƒ ä¸Šã§ãƒ¡ãƒƒã‚·ãƒ¥ã‚’ä½œã‚‹ï¼ˆæ™®é€šã¯ä½¿ã‚ãªã„ï¼‰
 	Mesh::SP  Mesh::Create(	Material&				mc_,
-							VB_Container::SP&		vbc_,//ƒo[ƒeƒbƒNƒXƒoƒbƒtƒ@ƒRƒ“ƒeƒi
-							Texture::SP&			tex_)//ƒeƒNƒXƒ`ƒƒ	
+							VB_Container::SP&		vbc_,//ãƒãƒ¼ãƒ†ãƒƒã‚¯ã‚¹ãƒãƒƒãƒ•ã‚¡ã‚³ãƒ³ãƒ†ãƒŠ
+							Texture::SP&			tex_)//ãƒ†ã‚¯ã‚¹ãƒãƒ£	
 	{
 		if( Mesh::SP  sp  =  Mesh::SP( new  Mesh( ) ) )
 		{
@@ -114,14 +114,14 @@ namespace DG
 		return nullptr;
 	}
 	//-------------------------------------------------------------------
-	//	ƒƒbƒVƒ…‚ð•\Ž¦‚·‚é
+	//	ãƒ¡ãƒƒã‚·ãƒ¥ã‚’è¡¨ç¤ºã™ã‚‹
 	void Mesh::Draw( )
 	{
 		auto  dgi = DG::DGObject::GetInst( );	if(dgi == 0){	return;}
 
-		//ƒeƒNƒjƒbƒN‘I‘ðH
+		//ãƒ†ã‚¯ãƒ‹ãƒƒã‚¯é¸æŠžï¼Ÿ
 		dgi->ETechnique().GetPassByName(this->tecName.c_str())->Apply(0);
-		//’¸“_ƒCƒ“ƒvƒbƒgƒŒƒCƒAƒEƒg‚ðƒZƒbƒg
+		//é ‚ç‚¹ã‚¤ãƒ³ãƒ—ãƒƒãƒˆãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆã‚’ã‚»ãƒƒãƒˆ
 		this->inputLayout->IASet( );
 
 
@@ -129,21 +129,21 @@ namespace DG
 				it != meshGroups.end( );	it++){
 			auto&  mt = mateConts[it->mcNumber];
 			if(mt.tex){
-				//ƒeƒNƒXƒ`ƒƒ‚Ì“o˜^
+				//ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®ç™»éŒ²
 				mt.tex->PSSet(0);
 			}else{
-			//	//ƒeƒNƒXƒ`ƒƒ‚ðŽg—p‚µ‚È‚¢
+			//	//ãƒ†ã‚¯ã‚¹ãƒãƒ£ã‚’ä½¿ç”¨ã—ãªã„
 				Texture::Empty_PSSet(0);
 			}
-			//ƒƒbƒVƒ…’è”î•ñ‚ðXV
+			//ãƒ¡ãƒƒã‚·ãƒ¥å®šæ•°æƒ…å ±ã‚’æ›´æ–°
 			dgi->EffectState( ).param.mateDiffuse   =  mt.diffuse;
 			dgi->EffectState( ).param.mateSpeculer  =  mt.speculer;
 			dgi->EffectState( ).param.mateAmbient   =  mt.ambient;
 			dgi->EffectState( ).param.mateEmissive  =  mt.emissive;
 
-			//ƒvƒŠƒ~ƒeƒBƒuEƒgƒ|ƒƒW[‚Æƒo[ƒeƒbƒNƒXƒoƒbƒtƒ@[‚ðƒZƒbƒg
+			//ãƒ—ãƒªãƒŸãƒ†ã‚£ãƒ–ãƒ»ãƒˆãƒãƒ­ã‚¸ãƒ¼ã¨ãƒãƒ¼ãƒ†ãƒƒã‚¯ã‚¹ãƒãƒƒãƒ•ã‚¡ãƒ¼ã‚’ã‚»ãƒƒãƒˆ
 			vbc->IASet(0);
-			//ƒvƒŠƒ~ƒeƒBƒu‚ðƒŒƒ“ƒ_ƒŠƒ“ƒO
+			//ãƒ—ãƒªãƒŸãƒ†ã‚£ãƒ–ã‚’ãƒ¬ãƒ³ãƒ€ãƒªãƒ³ã‚°
 			//D3D10_TECHNIQUE_DESC  dc;
 			//dgi->ETechnique( ).GetDesc( &dc );
 			//for( UINT p = 0; p < dc.Passes; ++p )
@@ -161,25 +161,25 @@ namespace DG
 		}
 	}
 	//-------------------------------------------------------------------
-	//	ƒƒbƒVƒ…‚ÆƒŒƒC‚ÌÚG”»’è‚ðs‚¤iƒŒƒC‚ÍƒƒbƒVƒ…‚Ìƒ[ƒJƒ‹À•WŒnj
+	//	ãƒ¡ãƒƒã‚·ãƒ¥ã¨ãƒ¬ã‚¤ã®æŽ¥è§¦åˆ¤å®šã‚’è¡Œã†ï¼ˆãƒ¬ã‚¤ã¯ãƒ¡ãƒƒã‚·ãƒ¥ã®ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ç³»ï¼‰
 	bool  Mesh::Hit_Ray(const  ML::Vec3&  pos_,  const  ML::Vec3&  dir_,  float&  dist_,  bool  qmode_)
 	{
 		bool  rtv = false;
-		//ƒo[ƒeƒbƒNƒXƒRƒ“ƒeƒi‚©‚ç’¸“_À•W‚Ìƒoƒbƒtƒ@‚ð“¾‚é
+		//ãƒãƒ¼ãƒ†ãƒƒã‚¯ã‚¹ã‚³ãƒ³ãƒ†ãƒŠã‹ã‚‰é ‚ç‚¹åº§æ¨™ã®ãƒãƒƒãƒ•ã‚¡ã‚’å¾—ã‚‹
 		VertexBuffer::SP  vbPos = this->vbc->GetVB(0);
 
-		//ƒƒbƒVƒ…‚Í“à•”‚Å•ªŠ„‚³‚ê‚Ä‚¢‚é‰Â”\«‚ª‚ ‚é‚Ì‚Åƒ‹[ƒv‚Åˆ—
+		//ãƒ¡ãƒƒã‚·ãƒ¥ã¯å†…éƒ¨ã§åˆ†å‰²ã•ã‚Œã¦ã„ã‚‹å¯èƒ½æ€§ãŒã‚ã‚‹ã®ã§ãƒ«ãƒ¼ãƒ—ã§å‡¦ç†
 		for (auto  it = meshGroups.begin();
 			it != meshGroups.end();	it++){
 
 			if (it->index){
-				//ƒCƒ“ƒfƒbƒNƒX‚ ‚èi•¡”‰ñ‚Ì‰Â”\«‚ ‚èj
+				//ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚ã‚Šï¼ˆè¤‡æ•°å›žã®å¯èƒ½æ€§ã‚ã‚Šï¼‰
 				rtv = ML::Collsion::HitRayTriangle(pos_, dir_, qmode_, vbPos, 0,
 					it->index, dist_);
 				if (rtv  &&  qmode_){ break; }
 			}
 			else{
-				//ƒCƒ“ƒfƒbƒNƒX‚È‚µi‚½‚Ô‚ñ‚P‰ñj
+				//ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãªã—ï¼ˆãŸã¶ã‚“ï¼‘å›žï¼‰
 				rtv = ML::Collsion::HitRayTriangle(pos_, dir_, qmode_, vbPos, 0, dist_);
 				if (rtv  &&  qmode_){ break; }
 			}
@@ -187,7 +187,7 @@ namespace DG
 		return  rtv;
 	}
 	//-------------------------------------------------------------------
-	//	ƒoƒEƒ“ƒfƒBƒ“ƒOƒ{ƒbƒNƒX‚ÆƒŒƒC‚ÌÚG”»’è‚ðs‚¤iƒŒƒC‚ÍƒƒbƒVƒ…‚Ìƒ[ƒJƒ‹À•WŒnj
+	//	ãƒã‚¦ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ãƒœãƒƒã‚¯ã‚¹ã¨ãƒ¬ã‚¤ã®æŽ¥è§¦åˆ¤å®šã‚’è¡Œã†ï¼ˆãƒ¬ã‚¤ã¯ãƒ¡ãƒƒã‚·ãƒ¥ã®ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ç³»ï¼‰
 	bool  Mesh::Hit_RayBB(const  ML::Vec3&  pos_, const  ML::Vec3&  dir_, float&  dist_)
 	{
 		if (ML::Collsion::HitRayBB(pos_, dir_, this->bb, dist_)){

@@ -348,35 +348,7 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="lib\Dm2008_Ver1_4.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </PrecompiledHeaderFile>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      </PrecompiledHeaderFile>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      </PrecompiledHeaderFile>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-      </PrecompiledHeaderFile>
-    </ClCompile>
-    <ClCompile Include="lib\GameEngine_Ver3_83.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </PrecompiledHeaderFile>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      </PrecompiledHeaderFile>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      </PrecompiledHeaderFile>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-      </PrecompiledHeaderFile>
-    </ClCompile>
-    <ClCompile Include="lib\myLib.cpp">
+    <ClCompile Include="lib\DG2014\myLib.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeaderFile>
@@ -391,7 +363,6 @@
       </PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="src\Collision\CollisionInfo.cpp" />
-    <ClCompile Include="src\Font\Font.cpp" />
     <ClCompile Include="src\EndingScene\EndingSceneDirector.cpp" />
     <ClCompile Include="src\GameScene\GameProgress.cpp" />
     <ClCompile Include="src\GameScene\GameSceneDirector.cpp" />
@@ -1238,20 +1209,6 @@
     <ClCompile Include="src\TransformUtils\PositionMovement.cpp" />
     <ClCompile Include="src\UI\MenuItem.cpp" />
     <ClCompile Include="src\WinMain.cpp" />
-    <ClCompile Include="lib\XI2018_Ver1_0.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </PrecompiledHeaderFile>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      </PrecompiledHeaderFile>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      </PrecompiledHeaderFile>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-      </PrecompiledHeaderFile>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\jsoncpp\json\json-forwards.h" />
@@ -1285,11 +1242,8 @@
     <ClInclude Include="lib\DG2014\DG2014_Ver3_6.h" />
     <ClInclude Include="lib\DG2014\DG2014_VertexBuffer.h" />
     <ClInclude Include="lib\DG2014\DG2014_VertexContainer.h" />
-    <ClInclude Include="lib\Dm2008_Ver1_4.h" />
-    <ClInclude Include="lib\GameEngine_Ver3_83.h" />
-    <ClInclude Include="lib\myLib.h" />
+    <ClInclude Include="lib\DG2014\myLib.h" />
     <ClInclude Include="src\Camera\CameraManagement.h" />
-    <ClInclude Include="src\Font\Font.h" />
     <ClInclude Include="src\GameScene\GameProgress.h" />
     <ClInclude Include="src\GameScene\GameTimerController.h" />
     <ClInclude Include="src\GE\Animation\AnimationClip.h" />
@@ -1442,7 +1396,6 @@
     <ClInclude Include="src\Scene\Builder\TitleScene.h" />
     <ClInclude Include="src\GE\Debug\Log.h" />
     <ClInclude Include="src\TitleScene\TitleSceneDirector.h" />
-    <ClInclude Include="lib\XI2018_Ver1_0.h" />
     <ClInclude Include="src\GE\Utils\Math.h" />
     <ClInclude Include="src\TransformUtils\PositionMovement.h" />
     <ClInclude Include="src\UI\MenuItem.h" />

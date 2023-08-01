@@ -1,4 +1,4 @@
-#pragma warning(disable:4996)
+ï»¿#pragma warning(disable:4996)
 #pragma once
 #pragma warning( disable : 4005 )
 #include <d3d10.h>
@@ -10,7 +10,7 @@
 #pragma comment(lib,"d3dCompiler.lib")
 #pragma warning( default : 4005 )
 
-#include "../myLib.h"
+#include "myLib.h"
 #include <string>
 
 #include "DG2014_Effect.h"
@@ -24,17 +24,17 @@ namespace DG
 	{	
 	//-----------------------------------------------------------------------
 	private:
-		ID3D10Device*					d3dDevice;			//ƒfƒoƒCƒXƒIƒuƒWƒFƒNƒg
-		IDXGISwapChain*					swapChain;			//ƒXƒƒbƒvƒ`ƒFƒCƒ“
-		ID3D10RenderTargetView*			renderTargetView;	//ƒŒƒ“ƒ_[ƒ^[ƒQƒbƒgƒrƒ…[
+		ID3D10Device*					d3dDevice;			//ãƒ‡ãƒã‚¤ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+		IDXGISwapChain*					swapChain;			//ã‚¹ãƒ¯ãƒƒãƒ—ãƒã‚§ã‚¤ãƒ³
+		ID3D10RenderTargetView*			renderTargetView;	//ãƒ¬ãƒ³ãƒ€ãƒ¼ã‚¿ãƒ¼ã‚²ãƒƒãƒˆãƒ“ãƒ¥ãƒ¼
 		ID3D10Effect*					effect;				//
 		ID3D10EffectTechnique*			effectTechnique;	//
 		ID3D10Texture2D*				depthBuffer;
-		ID3D10DepthStencilView*			depthView;			//[“xƒXƒeƒ“ƒVƒ‹ƒrƒ…[
+		ID3D10DepthStencilView*			depthView;			//æ·±åº¦ã‚¹ãƒ†ãƒ³ã‚·ãƒ«ãƒ“ãƒ¥ãƒ¼
 
-		ID3DX10Sprite*					sprite;				//2D•`‰æƒXƒvƒ‰ƒCƒg
+		ID3DX10Sprite*					sprite;				//2Dæç”»ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆ
 //		vector<D3DX10_SPRITE>			spriteBuffer;		
-		//Šeíƒpƒ‰ƒ[ƒ^
+		//å„ç¨®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
 		EffectState*					effectState;
 
 		DWORD							screenWidth;
@@ -42,7 +42,7 @@ namespace DG
 	//-----------------------------------------------------------------------
 	private:
 		using WP = weak_ptr<DGObject>;
-		static DGObject::WP				winst;//‚P‚Â‚µ‚©‘¶İ‚Å‚«‚È‚¢ƒCƒ“ƒXƒ^ƒ“ƒX‚ÌƒEƒB[ƒNƒ|ƒCƒ“ƒ^
+		static DGObject::WP				winst;//ï¼‘ã¤ã—ã‹å­˜åœ¨ã§ããªã„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ã‚¦ã‚£ãƒ¼ã‚¯ãƒã‚¤ãƒ³ã‚¿
 	//-----------------------------------------------------------------------
 	private:
 		DGObject( );
@@ -57,40 +57,40 @@ namespace DG
 		~DGObject( );
 	//-----------------------------------------------------------------------
 	public:
-		//	DGƒ‰ƒCƒuƒ‰ƒŠ‚ğ¶¬‚·‚é
+		//	DGãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ç”Ÿæˆã™ã‚‹
 		static DGObject::SP Create(HWND  hw_,  int  w_,  int  h_,  DWORD  ms_,  bool  sm_,  int  w2D_,  int  h2D_);
-		//ƒAƒNƒZƒX
+		//ã‚¢ã‚¯ã‚»ã‚¹
 		static DGObject::SP GetInst( );
-		ID3D10Device&				Device( );		//ƒfƒoƒCƒXƒIƒuƒWƒFƒNƒg
-		IDXGISwapChain&				SChain( );		//ƒXƒƒbƒvƒ`ƒFƒCƒ“
-		ID3D10RenderTargetView&		RTView( );		//ƒŒƒ“ƒ_[ƒ^[ƒQƒbƒgƒrƒ…[
+		ID3D10Device&				Device( );		//ãƒ‡ãƒã‚¤ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+		IDXGISwapChain&				SChain( );		//ã‚¹ãƒ¯ãƒƒãƒ—ãƒã‚§ã‚¤ãƒ³
+		ID3D10RenderTargetView&		RTView( );		//ãƒ¬ãƒ³ãƒ€ãƒ¼ã‚¿ãƒ¼ã‚²ãƒƒãƒˆãƒ“ãƒ¥ãƒ¼
 		ID3D10EffectTechnique&		ETechnique( );
 		ID3D10Effect&				Effect( );
 	//-----------------------------------------------------------------------
 	public:
-	//	‰æ–Ê•`‰æiŠJnj
-		BOOL  Begin(const  ML::Color&  c_ = ML::Color(1,0,0,0));	//	“h‚è‚Â‚Ô‚µF
-	//	3D•`‰æ‚Ì‹–‰Â‚ğ“¾‚é
+	//	ç”»é¢æç”»ï¼ˆé–‹å§‹ï¼‰
+		BOOL  Begin(const  ML::Color&  c_ = ML::Color(1,0,0,0));	//	å¡—ã‚Šã¤ã¶ã—è‰²
+	//	3Dæç”»ã®è¨±å¯ã‚’å¾—ã‚‹
 		void Begin3D( );
-	//	3D•`‰æ‚ğI—¹‚·‚é
+	//	3Dæç”»ã‚’çµ‚äº†ã™ã‚‹
 		void End3D( );
-	//	2D•`‰æ‚Ì‹–‰Â‚ğ“¾‚é
+	//	2Dæç”»ã®è¨±å¯ã‚’å¾—ã‚‹
 		void Begin2D( );
-	//	2D•`‰æA“o˜^Ï‚İ‚Ì‰æ‘œ‚ğ‘‚«‚Ş
+	//	2Dæç”»ã€ç™»éŒ²æ¸ˆã¿ã®ç”»åƒã‚’æ›¸ãè¾¼ã‚€
 		void Flush2D( );
-	//	2D•`‰æ‚Ì‚ğI—¹‚·‚é
+	//	2Dæç”»ã®ã‚’çµ‚äº†ã™ã‚‹
 		void End2D( );
-	//	‰æ–Ê•`‰æiI—¹j
+	//	ç”»é¢æç”»ï¼ˆçµ‚äº†ï¼‰
 		void  End( );
-	//	ƒfƒoƒCƒX
+	//	ãƒ‡ãƒã‚¤ã‚¹
 	//-----------------------------------------------------------------------
 	public:
-	//ƒpƒ‰ƒ[ƒ^‚ÌXVó‘Ô‚ğ’²‚×‚Ä“K‹X’è”ƒoƒbƒtƒ@‚É“o˜^‚µ’¼‚·
+	//ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®æ›´æ–°çŠ¶æ…‹ã‚’èª¿ã¹ã¦é©å®œå®šæ•°ãƒãƒƒãƒ•ã‚¡ã«ç™»éŒ²ã—ç›´ã™
 		DWORD  ScreenWidth( );
 		DWORD  ScreenHeight( );
 		//-----------------------------------------------------------------------
 	public:
-		//2D•`‰æƒf[ƒ^‚ğƒoƒbƒtƒ@‚Ö“o˜^
+		//2Dæç”»ãƒ‡ãƒ¼ã‚¿ã‚’ãƒãƒƒãƒ•ã‚¡ã¸ç™»éŒ²
 		void  PushBack_D3DX10_SPRITE(D3DX10_SPRITE  &s_);
 	};
 

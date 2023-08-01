@@ -1,4 +1,4 @@
-#pragma warning(disable:4996)
+ï»¿#pragma warning(disable:4996)
 #pragma once
 #pragma warning( disable : 4005 )
 #include <d3dx10.h>
@@ -9,13 +9,13 @@
 #pragma comment(lib,"d3dCompiler.lib")
 #pragma warning( default : 4005 )
 
-#include "../myLib.h"
+#include "myLib.h"
 #include <string>
 
 namespace DG
 {
 	//-----------------------------------------------------------------------
-	//ƒeƒNƒXƒ`ƒƒ•â•ƒNƒ‰ƒX
+	//ãƒ†ã‚¯ã‚¹ãƒãƒ£è£œåŠ©ã‚¯ãƒ©ã‚¹
 	class Texture
 	{
 	//-----------------------------------------------------------------------
@@ -30,24 +30,24 @@ namespace DG
 		bool  Initialize(const  string&  fpath_);
 	//-----------------------------------------------------------------------
 	public:
-		ID3D10ShaderResourceView*	tex_srv;//ƒeƒNƒXƒ`ƒƒ[ƒŠƒ\[ƒXƒrƒ…[
+		ID3D10ShaderResourceView*	tex_srv;//ãƒ†ã‚¯ã‚¹ãƒãƒ£ãƒ¼ãƒªã‚½ãƒ¼ã‚¹ãƒ“ãƒ¥ãƒ¼
 		D3D10_TEXTURE2D_DESC		desc;
 	//-----------------------------------------------------------------------
 	public:
 		~Texture( );
 	//-----------------------------------------------------------------------
 	public:
-		//¶¬‚·‚é
+		//ç”Ÿæˆã™ã‚‹
 		static SP Create(const string&  fpath_);
-		//d•¡‚·‚é‰æ‘œ‚ğ•Ê“r“Ç‚İ‚Ş
+		//é‡è¤‡ã™ã‚‹ç”»åƒã‚’åˆ¥é€”èª­ã¿è¾¼ã‚€
 		static SP CreateRep(const string&  fpath_);
-		//ˆÓ}“I‚É”jŠü‚·‚é
+		//æ„å›³çš„ã«ç ´æ£„ã™ã‚‹
 		static void Destroy(SP& sp_);
 	//-----------------------------------------------------------------------
 	public:
-		//ƒsƒNƒZƒ‹ƒVƒF[ƒ_‚É“o˜^‚·‚é
+		//ãƒ”ã‚¯ã‚»ãƒ«ã‚·ã‚§ãƒ¼ãƒ€ã«ç™»éŒ²ã™ã‚‹
 		void  PSSet(UINT  slotNum);
-		//ƒsƒNƒZƒ‹ƒVƒF[ƒ_‚Å—˜—p‚·‚éƒeƒNƒXƒ`ƒƒ‚ğ–³Œø‰»‚³‚¹‚é
+		//ãƒ”ã‚¯ã‚»ãƒ«ã‚·ã‚§ãƒ¼ãƒ€ã§åˆ©ç”¨ã™ã‚‹ãƒ†ã‚¯ã‚¹ãƒãƒ£ã‚’ç„¡åŠ¹åŒ–ã•ã›ã‚‹
 		static  void  Empty_PSSet(UINT  slotNum_);	
 	//-----------------------------------------------------------------------
 	public:

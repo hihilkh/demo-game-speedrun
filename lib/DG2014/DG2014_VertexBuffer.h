@@ -1,4 +1,4 @@
-#pragma warning(disable:4996)
+ï»¿#pragma warning(disable:4996)
 #pragma once
 #pragma warning( disable : 4005 )
 #include <d3dx10.h>
@@ -10,21 +10,21 @@
 #pragma warning( default : 4005 )
 
 
-#include "../myLib.h"
+#include "myLib.h"
 #include <string>
 
 namespace DG
 {
 	//-----------------------------------------------------------------------
-	//ƒo[ƒeƒbƒNƒXƒoƒbƒtƒ@•â•ƒNƒ‰ƒX
+	//ãƒãƒ¼ãƒ†ãƒƒã‚¯ã‚¹ãƒãƒƒãƒ•ã‚¡è£œåŠ©ã‚¯ãƒ©ã‚¹
 	class VertexBuffer
 	{
 	//-----------------------------------------------------------------------
 	public:
 		ID3D10Buffer*	buf;
-		UINT			stride;	//ƒf[ƒ^1Œ•ª‚Ìƒf[ƒ^”
-		UINT			num;	//ƒf[ƒ^Œ”
-		void*			memory;	//ƒAƒNƒZƒX—p
+		UINT			stride;	//ãƒ‡ãƒ¼ã‚¿1ä»¶åˆ†ã®ãƒ‡ãƒ¼ã‚¿æ•°
+		UINT			num;	//ãƒ‡ãƒ¼ã‚¿ä»¶æ•°
+		void*			memory;	//ã‚¢ã‚¯ã‚»ã‚¹ç”¨
 	//-----------------------------------------------------------------------
 	public:
 		using SP = shared_ptr<VertexBuffer>;

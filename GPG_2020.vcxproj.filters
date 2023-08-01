@@ -31,15 +31,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="lib\GameEngine_Ver3_83.cpp">
-      <Filter>GameEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\Dm2008_Ver1_4.cpp">
-      <Filter>Lib</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\XI2018_Ver1_0.cpp">
-      <Filter>Lib</Filter>
-    </ClCompile>
     <ClCompile Include="lib\DG2014\DG2014_DGObject.cpp">
       <Filter>Lib\DG2014</Filter>
     </ClCompile>
@@ -76,13 +67,10 @@
     <ClCompile Include="lib\DG2014\DG2014_VertexContainer.cpp">
       <Filter>Lib\DG2014</Filter>
     </ClCompile>
-    <ClCompile Include="lib\myLib.cpp">
+    <ClCompile Include="lib\DG2014\myLib.cpp">
       <Filter>Lib</Filter>
     </ClCompile>
     <ClCompile Include="src\WinMain.cpp">
-      <Filter>MyPG\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Font\Font.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GE\Profiling\Profiler.cpp">
@@ -453,15 +441,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="lib\GameEngine_Ver3_83.h">
-      <Filter>GameEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="lib\Dm2008_Ver1_4.h">
-      <Filter>Lib</Filter>
-    </ClInclude>
-    <ClInclude Include="lib\XI2018_Ver1_0.h">
-      <Filter>Lib</Filter>
-    </ClInclude>
     <ClInclude Include="lib\DG2014\DG2014_DGObject.h">
       <Filter>Lib\DG2014</Filter>
     </ClInclude>
@@ -495,13 +474,10 @@
     <ClInclude Include="lib\DG2014\DG2014_VertexContainer.h">
       <Filter>Lib\DG2014</Filter>
     </ClInclude>
-    <ClInclude Include="lib\myLib.h">
+    <ClInclude Include="lib\DG2014\myLib.h">
       <Filter>Lib</Filter>
     </ClInclude>
     <ClInclude Include="src\Map\MapObject\MapObjectType.h">
-      <Filter>MyPG\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Font\Font.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">

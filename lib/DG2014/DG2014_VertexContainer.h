@@ -1,4 +1,4 @@
-#pragma warning(disable:4996)
+ï»¿#pragma warning(disable:4996)
 #pragma once
 #pragma warning( disable : 4005 )
 #include <d3dx10.h>
@@ -10,7 +10,7 @@
 #pragma warning( default : 4005 )
 
 
-#include "../myLib.h"
+#include "myLib.h"
 #include <string>
 
 #include "DG2014_VertexBuffer.h"
@@ -18,7 +18,7 @@
 namespace DG
 {
 	//-----------------------------------------------------------------------
-	//ƒo[ƒeƒbƒNƒXƒoƒbƒtƒ@“Š‡ƒNƒ‰ƒX
+	//ãƒãƒ¼ãƒ†ãƒƒã‚¯ã‚¹ãƒãƒƒãƒ•ã‚¡çµ±æ‹¬ã‚¯ãƒ©ã‚¹
 	class VB_Container
 	{
 	//-----------------------------------------------------------------------
@@ -38,9 +38,9 @@ namespace DG
 		static SP  Create(D3D10_PRIMITIVE_TOPOLOGY  pt_);
 	//-----------------------------------------------------------------------
 	public:
-		bool PushBack(BYTE da_[], UINT str_, UINT n_);	//	ƒo[ƒeƒbƒNƒXî•ñ‚ğ“o˜^‚·‚éi“à•”“I‚Éƒoƒbƒtƒ@¶¬j
-		bool  IASet(UINT  ofs_);	//ofs_‚Íƒoƒbƒtƒ@–ˆ‚Éstride”{
-		UINT  Num( );				//’¸“_”‚ğ•Ô‚·iÅ‰‚Ìƒoƒbƒtƒ@‚Ìƒf[ƒ^”j
-		VertexBuffer::SP  GetVB(UINT  n_);//	w’è”Ô†‚Ìƒo[ƒeƒbƒNƒXƒoƒbƒtƒ@‚ğ•Ô‚·
+		bool PushBack(BYTE da_[], UINT str_, UINT n_);	//	ãƒãƒ¼ãƒ†ãƒƒã‚¯ã‚¹æƒ…å ±ã‚’ç™»éŒ²ã™ã‚‹ï¼ˆå†…éƒ¨çš„ã«ãƒãƒƒãƒ•ã‚¡ç”Ÿæˆï¼‰
+		bool  IASet(UINT  ofs_);	//ofs_ã¯ãƒãƒƒãƒ•ã‚¡æ¯ã«strideå€
+		UINT  Num( );				//é ‚ç‚¹æ•°ã‚’è¿”ã™ï¼ˆæœ€åˆã®ãƒãƒƒãƒ•ã‚¡ã®ãƒ‡ãƒ¼ã‚¿æ•°ï¼‰
+		VertexBuffer::SP  GetVB(UINT  n_);//	æŒ‡å®šç•ªå·ã®ãƒãƒ¼ãƒ†ãƒƒã‚¯ã‚¹ãƒãƒƒãƒ•ã‚¡ã‚’è¿”ã™
 	};
 }
