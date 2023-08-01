@@ -22,6 +22,15 @@ namespace GE::Font
 				const Color& color,
 				UI::TextVerticalAlignment verticalAlignment,
 				UI::TextHorizontalAlignment horizontalAlignment) const = 0;
+
+			virtual void ShowTextWithOutline(
+				const std::string& text,
+				const RectPixel& rect,
+				const Color& color,
+				UI::TextVerticalAlignment verticalAlignment,
+				UI::TextHorizontalAlignment horizontalAlignment,
+				const Color& outlineColor,
+				const Vector2Int& outlineSize) const = 0;
 		};
 
 	public:
@@ -30,8 +39,21 @@ namespace GE::Font
 			const RectPixel& rect,
 			const Color& color,
 			UI::TextVerticalAlignment verticalAlignment,
-			UI::TextHorizontalAlignment horizontalAlignment) const { 
+			UI::TextHorizontalAlignment horizontalAlignment) const
+		{ 
 			pImpl->ShowText(text, rect, color, verticalAlignment, horizontalAlignment);
+		}
+
+		void ShowTextWithOutline(
+			const std::string& text,
+			const RectPixel& rect,
+			const Color& color,
+			UI::TextVerticalAlignment verticalAlignment,
+			UI::TextHorizontalAlignment horizontalAlignment,
+			const Color& outlineColor,
+			const Vector2Int& outlineSize) const
+		{
+			pImpl->ShowTextWithOutline(text, rect, color, verticalAlignment, horizontalAlignment, outlineColor, outlineSize);
 		}
 
 	private:

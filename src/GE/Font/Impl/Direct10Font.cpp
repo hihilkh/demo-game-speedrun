@@ -67,8 +67,13 @@ namespace GE::Font
             }
         }
 
+        void RenderText(const char* text, RECT* rect, const D3DXCOLOR& color, UINT format) const
+        {
+            directXFont->DrawText(nullptr, text, -1, rect, format, color);
+        }
+
         void ShowText(
-            const std::string & text,
+            const std::string& text,
             const RectPixel& rect, 
             const Color& color,
             UI::TextVerticalAlignment verticalAlignment,
@@ -76,14 +81,47 @@ namespace GE::Font
         {
             GE::Render::TempEnd2DRender();
 
+            const char* textCStr = text.c_str();
             RECT rectangle = ConvertRect(rect);
-            directXFont->DrawText(
-                nullptr, 
-                text.c_str(), 
-                -1, 
-                &rectangle,
-                ConvertAlignment(verticalAlignment, horizontalAlignment),
-                ConvertColor(color));
+            D3DXCOLOR d3dxColor = ConvertColor(color);
+            UINT format = ConvertAlignment(verticalAlignment, horizontalAlignment);
+            RenderText(textCStr, &rectangle, d3dxColor, format);
+
+            GE::Render::Resume2DRender();
+        }
+
+        void ShowTextWithOutline(
+            const std::string& text,
+            const RectPixel& rect,
+            const Color& color,
+            UI::TextVerticalAlignment verticalAlignment,
+            UI::TextHorizontalAlignment horizontalAlignment,
+            const Color& outlineColor,
+            const Vector2Int& outlineSize) const override
+        {
+            GE::Render::TempEnd2DRender();
+
+            const char* textCStr = text.c_str();
+            RECT rectangle = ConvertRect(rect);
+            D3DXCOLOR d3dxColor = ConvertColor(color);
+            UINT format = ConvertAlignment(verticalAlignment, horizontalAlignment);
+
+            // Outline
+            D3DXCOLOR d3dxOutlineColor = ConvertColor(outlineColor);
+            RECT outlineRectangle = rectangle;
+            outlineRectangle.right -= outlineSize.x;
+            RenderText(textCStr, &outlineRectangle, d3dxOutlineColor, format);
+            outlineRectangle.right += outlineSize.x + outlineSize.x;
+            RenderText(textCStr, &outlineRectangle, d3dxOutlineColor, format);
+            outlineRectangle.right = rectangle.right;
+
+            outlineRectangle.top -= outlineSize.y;
+            RenderText(textCStr, &outlineRectangle, d3dxOutlineColor, format);
+            outlineRectangle.top += outlineSize.y + outlineSize.y;
+            RenderText(textCStr, &outlineRectangle, d3dxOutlineColor, format);
+
+            // 本番のテキスト
+            RenderText(textCStr, &rectangle, d3dxColor, format);
 
             GE::Render::Resume2DRender();
         }

@@ -29,13 +29,15 @@ namespace Scene
 
 		auto timerFont = Lang::LanguageManager::GetFont(Lang::FontType::DefaultSmall);
 		const GE::GEConfig& geConfig = GE::GetGEConfig();
-		// TODO : timerTextに影をつける
+
 		auto& timerText = timerObj.AddComponent<GE::UI::Text>(
 			timerFont,
 			Vector2Int(geConfig.screenWidth, geConfig.screenHeight));
 		timerText.SetColor(Color::black);
 		timerText.SetVerticalAlignment(GE::UI::TextVerticalAlignment::Top);
 		timerText.SetHorizontalAlignment(GE::UI::TextHorizontalAlignment::Right);
+		timerText.SetOutlineColor(Color::white);
+		timerText.SetOutlineSize({ 1, 1 });
 
 		auto& timerController = timerObj.AddComponent<::GameScene::GameTimerController>(timer, timerText);
 

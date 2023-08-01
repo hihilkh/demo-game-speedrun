@@ -45,6 +45,12 @@ namespace GE::UI
 		TextHorizontalAlignment GetHorizontalAlignment() const { return horizontalAlignment; }
 		void SetHorizontalAlignment(TextHorizontalAlignment alignment) { horizontalAlignment = alignment; }
 
+		const Color& GetOutlineColor() const { return outlineColor; }
+		void SetOutlineColor(const Color& outlineColor) { this->outlineColor = outlineColor; }
+
+		const Vector2Int& GetOutlineSize() const { return outlineSize; }
+		void SetOutlineSize(const Vector2Int& outlineSize) { this->outlineSize = outlineSize; }
+
 #pragma endregion
 
 	protected:
@@ -59,6 +65,9 @@ namespace GE::UI
 
 		TextVerticalAlignment verticalAlignment;
 		TextHorizontalAlignment horizontalAlignment;
+
+		Color outlineColor;
+		Vector2Int outlineSize;
 
 	private:
 		bool CheckCanEnable() const;

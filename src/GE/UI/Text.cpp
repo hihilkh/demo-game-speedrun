@@ -14,7 +14,9 @@ namespace GE::UI
 		labelSize(labelSize),
 		color(Color::black),
 		verticalAlignment(TextVerticalAlignment::Middle),
-		horizontalAlignment(TextHorizontalAlignment::Center)
+		horizontalAlignment(TextHorizontalAlignment::Center),
+		outlineColor(Color::white),
+		outlineSize(Vector2Int::zero)
 	{
 	}
 
@@ -49,6 +51,11 @@ namespace GE::UI
 	{
 		RectPixel drawRect = RectPixel::FromCenter(labelSize);
 		drawRect.Move(viewportData.pos);
-		font->ShowText(text, drawRect, color, verticalAlignment, horizontalAlignment);
+		if (outlineSize == Vector2Int::zero) {
+			font->ShowText(text, drawRect, color, verticalAlignment, horizontalAlignment);
+		} else {
+			font->ShowTextWithOutline(text, drawRect, color, verticalAlignment, horizontalAlignment, outlineColor, outlineSize);
+		}
+
 	}
 }
