@@ -1,4 +1,5 @@
-﻿#include "VelocityModule.h"
+﻿#include "GE/GEHeader.h"
+#include "VelocityModule.h"
 #include "GE/Utils/Math.h"
 #include "UpdateFunc/VelocityUpdateFunc.h"
 #include "GE/Particle/Internal/ParticleComponent.h"
