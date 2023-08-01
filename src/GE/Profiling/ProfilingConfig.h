@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#define PROFILER_ENABLED			0
+#define PROFILER_ENABLED			1
 
 #if PROFILER_ENABLED
 
@@ -12,8 +12,8 @@ namespace GE::Profiling
 	inline const bool isEnableSectionCpu		= true;
 
 	// Loggers
-	inline const bool isEnableLoggerConsole		= true;
-	inline const bool isEnableLoggerCsv			= false;
+	inline const bool isEnableLoggerConsole		= false;
+	inline const bool isEnableLoggerCsv			= true;
 
 	// その他
 	inline const unsigned int sampleSize = 60;
