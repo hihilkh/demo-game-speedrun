@@ -15,7 +15,7 @@ namespace GE::Particle::Internal
 	void VelocityUpdateFunc::operator()(GameObject& gameObject, float normalizedLifetime)
 	{
 		Transform2D& transform = gameObject.GetTransform();
-		transform.SetPos(transform.GetPos() + currentVelocity);
+		transform.SetPos(transform.GetPos() + currentVelocity * Time::GetDeltaTime());
 
 		currentVelocity += velocityModule.GetAcceleration() * Time::GetDeltaTime();
 	}
