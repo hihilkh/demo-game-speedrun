@@ -1,4 +1,4 @@
-#pragma warning(disable:4996)
+ï»¿#pragma warning(disable:4996)
 #pragma once
 #pragma warning( disable : 4005 )
 #include <d3dx10.h>
@@ -9,7 +9,7 @@
 #pragma comment(lib,"d3dCompiler.lib")
 #pragma warning( default : 4005 )
 
-#include "../myLib.h"
+#include "myLib.h"
 #include <string>
 
 namespace DG
@@ -18,19 +18,19 @@ namespace DG
 	struct  Light{
 		BOOL		enable;
 		enum class Kind : UINT{Directional,  Point,  Spot, Unnon = 0xFFFFFFFF};
-		Kind		kind;		//0ƒfƒBƒŒƒNƒVƒ‡ƒiƒ‹@1ƒ|ƒCƒ“ƒg	2ƒXƒ|ƒbƒg
-		ML::Vec3	direction;	//ƒ‰ƒCƒgÆË•ûŒüiƒfƒBƒŒƒNƒVƒ‡ƒiƒ‹EƒXƒ|ƒbƒgj
-		ML::Color	color;		//ƒ‰ƒCƒg‚ÌFŒ“‹­‚³
-		ML::Vec3	pos;		//ƒ‰ƒCƒg‚ÌˆÊ’ui’Ç‰ÁIj
-		float		attenuation;//Œ¸Š—¦i’Ç‰ÁIj
-		float		range;		//—LŒø‹——£i’Ç‰ÁIj
+		Kind		kind;		//0ãƒ‡ã‚£ãƒ¬ã‚¯ã‚·ãƒ§ãƒŠãƒ«ã€€1ãƒã‚¤ãƒ³ãƒˆ	2ã‚¹ãƒãƒƒãƒˆ
+		ML::Vec3	direction;	//ãƒ©ã‚¤ãƒˆç…§å°„æ–¹å‘ï¼ˆãƒ‡ã‚£ãƒ¬ã‚¯ã‚·ãƒ§ãƒŠãƒ«ãƒ»ã‚¹ãƒãƒƒãƒˆï¼‰
+		ML::Color	color;		//ãƒ©ã‚¤ãƒˆã®è‰²å…¼å¼·ã•
+		ML::Vec3	pos;		//ãƒ©ã‚¤ãƒˆã®ä½ç½®ï¼ˆè¿½åŠ ï¼ï¼‰
+		float		attenuation;//æ¸›è¡°ç‡ï¼ˆè¿½åŠ ï¼ï¼‰
+		float		range;		//æœ‰åŠ¹è·é›¢ï¼ˆè¿½åŠ ï¼ï¼‰
 		bool  operator==(const  Light&  obj){
 			return	   (enable	  == obj.enable &&
 						kind	  == obj.kind &&
 						direction == obj.direction &&
-						pos       == obj.pos &&				//i’Ç‰ÁIj
-						attenuation  == obj.attenuation &&	//i’Ç‰ÁIj
-						range  == obj.range &&				//i’Ç‰ÁIj
+						pos       == obj.pos &&				//ï¼ˆè¿½åŠ ï¼ï¼‰
+						attenuation  == obj.attenuation &&	//ï¼ˆè¿½åŠ ï¼ï¼‰
+						range  == obj.range &&				//ï¼ˆè¿½åŠ ï¼ï¼‰
 						color	  == obj.color);
 		}
 		bool  operator!=(const  Light&  obj){
@@ -42,82 +42,82 @@ namespace DG
 	{
 	public:
 		EffectParam( );
-		//s—ñ
+		//è¡Œåˆ—
 		ML::Mat4x4	matWorld;
 		ML::Mat4x4	matView;
 		ML::Mat4x4	matProjection;
-		ML::Vec3	eyePos;		//‹“_À•W(ƒ‰ƒCƒeƒBƒ“ƒO‚È‚Ç‚Åg—pj
-		//ƒ}ƒeƒŠƒAƒ‹
-		ML::Color	mateDiffuse;	//ƒ}ƒeƒŠƒAƒ‹î•ñ:ƒfƒtƒ…[ƒY
-		ML::Color	mateSpeculer;	//ƒ}ƒeƒŠƒAƒ‹î•ñ:ƒXƒyƒLƒ…ƒ‰
-		ML::Color	mateAmbient;	//ƒ}ƒeƒŠƒAƒ‹î•ñ:ƒAƒ“ƒrƒGƒ“ƒg
-		ML::Color	mateEmissive;	//ƒ}ƒeƒŠƒAƒ‹î•ñ:ƒGƒ~ƒbƒVƒu
-		ML::Color	objectColor;	//ƒ‚ƒfƒ‹‚ÌF‚ğ‹­§“I‚É•Ï‰»‚³‚¹‚é
-		//ƒtƒHƒO
-		bool		fogEnable;	//ƒtƒHƒO‚Ì—LŒøE–³Œø
-		bool		fogMode;	//’ÊíƒtƒHƒOor“§‰ß
-		float		fogNear;	//ƒtƒHƒOŠJn’n“_
-		float		fogFore;	//ƒtƒHƒOÅ‘å‰»’n“_
-		ML::Color	fogColor;	//ƒtƒHƒO‚ÌF
-		//ƒ‰ƒCƒg
-		bool		lightsEnable;	//ƒ‰ƒCƒg‚Ì—LŒø–³ŒøiŒ³ğj
-		ML::Color	lightAmbient;	//ŠÂ‹«Œõ
+		ML::Vec3	eyePos;		//è¦–ç‚¹åº§æ¨™(ãƒ©ã‚¤ãƒ†ã‚£ãƒ³ã‚°ãªã©ã§ä½¿ç”¨ï¼‰
+		//ãƒãƒ†ãƒªã‚¢ãƒ«
+		ML::Color	mateDiffuse;	//ãƒãƒ†ãƒªã‚¢ãƒ«æƒ…å ±:ãƒ‡ãƒ•ãƒ¥ãƒ¼ã‚º
+		ML::Color	mateSpeculer;	//ãƒãƒ†ãƒªã‚¢ãƒ«æƒ…å ±:ã‚¹ãƒšã‚­ãƒ¥ãƒ©
+		ML::Color	mateAmbient;	//ãƒãƒ†ãƒªã‚¢ãƒ«æƒ…å ±:ã‚¢ãƒ³ãƒ“ã‚¨ãƒ³ãƒˆ
+		ML::Color	mateEmissive;	//ãƒãƒ†ãƒªã‚¢ãƒ«æƒ…å ±:ã‚¨ãƒŸãƒƒã‚·ãƒ–
+		ML::Color	objectColor;	//ãƒ¢ãƒ‡ãƒ«ã®è‰²ã‚’å¼·åˆ¶çš„ã«å¤‰åŒ–ã•ã›ã‚‹
+		//ãƒ•ã‚©ã‚°
+		bool		fogEnable;	//ãƒ•ã‚©ã‚°ã®æœ‰åŠ¹ãƒ»ç„¡åŠ¹
+		bool		fogMode;	//é€šå¸¸ãƒ•ã‚©ã‚°oré€é
+		float		fogNear;	//ãƒ•ã‚©ã‚°é–‹å§‹åœ°ç‚¹
+		float		fogFore;	//ãƒ•ã‚©ã‚°æœ€å¤§åŒ–åœ°ç‚¹
+		ML::Color	fogColor;	//ãƒ•ã‚©ã‚°ã®è‰²
+		//ãƒ©ã‚¤ãƒˆ
+		bool		lightsEnable;	//ãƒ©ã‚¤ãƒˆã®æœ‰åŠ¹ç„¡åŠ¹ï¼ˆå…ƒæ “ï¼‰
+		ML::Color	lightAmbient;	//ç’°å¢ƒå…‰
 		Light		light[4];
-		//”÷–­‚Èó‘Ô
-		ML::Color	bgColor;		//”wŒiF
-		//ƒRƒ“ƒXƒ^ƒ“ƒgƒoƒbƒtƒ@ˆÈŠO		
-		ID3D10BlendState*			bs_Active;		//‰ğ•ú•s—v
-		ID3D10RasterizerState*		rs_Active;		//‰ğ•ú•s—v
-		ID3D10DepthStencilState*	dss_Active;		//‰ğ•ú•s—v
+		//å¾®å¦™ãªçŠ¶æ…‹
+		ML::Color	bgColor;		//èƒŒæ™¯è‰²
+		//ã‚³ãƒ³ã‚¹ã‚¿ãƒ³ãƒˆãƒãƒƒãƒ•ã‚¡ä»¥å¤–		
+		ID3D10BlendState*			bs_Active;		//è§£æ”¾ä¸è¦
+		ID3D10RasterizerState*		rs_Active;		//è§£æ”¾ä¸è¦
+		ID3D10DepthStencilState*	dss_Active;		//è§£æ”¾ä¸è¦
 	};
 	class EffectState
 	{
-		ID3D10BlendState*	bs_Std;		//ƒAƒ‹ƒtƒ@‚È‚µ’Êí•`‰æ
-		ID3D10BlendState*	bs_Alpha;	//ƒAƒ‹ƒtƒ@‚ ‚è
-		ID3D10BlendState*	bs_Add;		//‰ÁZ‡¬
-		ID3D10BlendState*	bs_Dec;		//Œ¸Z‡¬
+		ID3D10BlendState*	bs_Std;		//ã‚¢ãƒ«ãƒ•ã‚¡ãªã—é€šå¸¸æç”»
+		ID3D10BlendState*	bs_Alpha;	//ã‚¢ãƒ«ãƒ•ã‚¡ã‚ã‚Š
+		ID3D10BlendState*	bs_Add;		//åŠ ç®—åˆæˆ
+		ID3D10BlendState*	bs_Dec;		//æ¸›ç®—åˆæˆ
 
-		ID3D10RasterizerState*  rs_Def3D;		//ƒ‰ƒXƒ^ƒ‰ƒCƒU@‚R‚cƒfƒtƒHƒ‹ƒg
-		ID3D10RasterizerState*  rs_Def2D;		//ƒ‰ƒXƒ^ƒ‰ƒCƒU@‚Q‚cƒfƒtƒHƒ‹ƒg
+		ID3D10RasterizerState*  rs_Def3D;		//ãƒ©ã‚¹ã‚¿ãƒ©ã‚¤ã‚¶ã€€ï¼“ï¼¤ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ
+		ID3D10RasterizerState*  rs_Def2D;		//ãƒ©ã‚¹ã‚¿ãƒ©ã‚¤ã‚¶ã€€ï¼’ï¼¤ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ
 
-		ID3D10DepthStencilState*  dss_Def3D;			//[“xEƒXƒeƒ“ƒVƒ‹@‚R‚cƒfƒtƒHƒ‹ƒg
-		ID3D10DepthStencilState*  dss_Def3D_Dis;		//[“xEƒXƒeƒ“ƒVƒ‹@‚R‚cƒfƒtƒHƒ‹ƒgi[“x–³Œøj
-		ID3D10DepthStencilState*  dss_Def3D_WriteDis;	//[“xEƒXƒeƒ“ƒVƒ‹@‚R‚cƒfƒtƒHƒ‹ƒgi[“x‘‚«‚İ–³Œøj
-		ID3D10DepthStencilState*  dss_Def2D;			//[“xEƒXƒeƒ“ƒVƒ‹@‚Q‚cƒfƒtƒHƒ‹ƒg
+		ID3D10DepthStencilState*  dss_Def3D;			//æ·±åº¦ãƒ»ã‚¹ãƒ†ãƒ³ã‚·ãƒ«ã€€ï¼“ï¼¤ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ
+		ID3D10DepthStencilState*  dss_Def3D_Dis;		//æ·±åº¦ãƒ»ã‚¹ãƒ†ãƒ³ã‚·ãƒ«ã€€ï¼“ï¼¤ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆï¼ˆæ·±åº¦ç„¡åŠ¹ï¼‰
+		ID3D10DepthStencilState*  dss_Def3D_WriteDis;	//æ·±åº¦ãƒ»ã‚¹ãƒ†ãƒ³ã‚·ãƒ«ã€€ï¼“ï¼¤ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆï¼ˆæ·±åº¦æ›¸ãè¾¼ã¿ç„¡åŠ¹ï¼‰
+		ID3D10DepthStencilState*  dss_Def2D;			//æ·±åº¦ãƒ»ã‚¹ãƒ†ãƒ³ã‚·ãƒ«ã€€ï¼’ï¼¤ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ
 
 		EffectParam		prevParam;
 	public:
 		D3D10_VIEWPORT  viewPort;
 		EffectParam		param;
-//		void  Set(EffectParam&  p_);	//ƒpƒ‰ƒ[ƒ^‚ğ‘S‚ÄÄİ’è‚·‚é
+//		void  Set(EffectParam&  p_);	//ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’å…¨ã¦å†è¨­å®šã™ã‚‹
 		EffectState( );
 		~EffectState( );
 		//Light
 
 
-		//ƒrƒ…[ƒ|[ƒg
-		void  ViewPort(const  D3D10_VIEWPORT&  vp_);//ƒrƒ…[ƒ|[ƒgXV
-		//ƒuƒŒƒ“ƒhƒXƒe[ƒg
+		//ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆ
+		void  ViewPort(const  D3D10_VIEWPORT&  vp_);//ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆæ›´æ–°
+		//ãƒ–ãƒ¬ãƒ³ãƒ‰ã‚¹ãƒ†ãƒ¼ãƒˆ
 		void  BS_Set(ID3D10BlendState*  bs_);
 		ID3D10BlendState*  BS_Get( );
-		void  BS_Std( );		//ƒAƒ‹ƒtƒ@ƒuƒŒƒ“ƒh–³Œø
-		void  BS_Alpha( );		//ƒAƒ‹ƒtƒ@ƒuƒŒƒ“ƒh—LŒø
-		void  BS_AlphaAdd( );	//ƒAƒ‹ƒtƒ@ƒuƒŒƒ“ƒh‰ÁZ‡¬
-		void  BS_AlphaDec( );	//ƒAƒ‹ƒtƒ@ƒuƒŒƒ“ƒhŒ¸Z‡¬
-		//ƒ‰ƒXƒ^ƒ‰ƒCƒU
+		void  BS_Std( );		//ã‚¢ãƒ«ãƒ•ã‚¡ãƒ–ãƒ¬ãƒ³ãƒ‰ç„¡åŠ¹
+		void  BS_Alpha( );		//ã‚¢ãƒ«ãƒ•ã‚¡ãƒ–ãƒ¬ãƒ³ãƒ‰æœ‰åŠ¹
+		void  BS_AlphaAdd( );	//ã‚¢ãƒ«ãƒ•ã‚¡ãƒ–ãƒ¬ãƒ³ãƒ‰åŠ ç®—åˆæˆ
+		void  BS_AlphaDec( );	//ã‚¢ãƒ«ãƒ•ã‚¡ãƒ–ãƒ¬ãƒ³ãƒ‰æ¸›ç®—åˆæˆ
+		//ãƒ©ã‚¹ã‚¿ãƒ©ã‚¤ã‚¶
 		void  RS_Set(ID3D10RasterizerState*  rs_);
 		ID3D10RasterizerState*  RS_Get( );
-		void  RS_Def3D( );	//ƒ‰ƒXƒ^ƒ‰ƒCƒU‚R‚cƒfƒtƒHƒ‹ƒg
-		void  RS_Def2D( );	//ƒ‰ƒXƒ^ƒ‰ƒCƒU‚Q‚cƒfƒtƒHƒ‹ƒg
-		//[“xEƒXƒeƒ“ƒVƒ‹
+		void  RS_Def3D( );	//ãƒ©ã‚¹ã‚¿ãƒ©ã‚¤ã‚¶ï¼“ï¼¤ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ
+		void  RS_Def2D( );	//ãƒ©ã‚¹ã‚¿ãƒ©ã‚¤ã‚¶ï¼’ï¼¤ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ
+		//æ·±åº¦ãƒ»ã‚¹ãƒ†ãƒ³ã‚·ãƒ«
 		void  DSS_Set(ID3D10DepthStencilState*  dss_);
 		ID3D10DepthStencilState*  DSS_Get( );
-		void  DSS_Def3D( );	//[“xEƒXƒeƒ“ƒVƒ‹@‚R‚cƒfƒtƒHƒ‹ƒg
-		void  DSS_Def3D_Dis( );	//[“xEƒXƒeƒ“ƒVƒ‹@‚R‚cƒfƒtƒHƒ‹ƒg([“x–³Œøj
-		void  DSS_Def3D_WriteDis( );	//[“xEƒXƒeƒ“ƒVƒ‹@‚R‚cƒfƒtƒHƒ‹ƒg([“x‘‚«‚İ–³Œøj
-		void  DSS_Def2D( );	//[“xEƒXƒeƒ“ƒVƒ‹@‚Q‚cƒfƒtƒHƒ‹ƒg
+		void  DSS_Def3D( );	//æ·±åº¦ãƒ»ã‚¹ãƒ†ãƒ³ã‚·ãƒ«ã€€ï¼“ï¼¤ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ
+		void  DSS_Def3D_Dis( );	//æ·±åº¦ãƒ»ã‚¹ãƒ†ãƒ³ã‚·ãƒ«ã€€ï¼“ï¼¤ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ(æ·±åº¦ç„¡åŠ¹ï¼‰
+		void  DSS_Def3D_WriteDis( );	//æ·±åº¦ãƒ»ã‚¹ãƒ†ãƒ³ã‚·ãƒ«ã€€ï¼“ï¼¤ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ(æ·±åº¦æ›¸ãè¾¼ã¿ç„¡åŠ¹ï¼‰
+		void  DSS_Def2D( );	//æ·±åº¦ãƒ»ã‚¹ãƒ†ãƒ³ã‚·ãƒ«ã€€ï¼’ï¼¤ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ
 
-		//ƒŒƒ“ƒ_ƒŠƒ“ƒO‚·‚é‘O‚ÉŒÄ‚Ño‚·param‚ÉŠÜ‚Ü‚ê‚éİ’è‚ğƒŒƒ“ƒ_ƒŠƒ“ƒO‚É”½‰f‚³‚¹‚é
+		//ãƒ¬ãƒ³ãƒ€ãƒªãƒ³ã‚°ã™ã‚‹å‰ã«å‘¼ã³å‡ºã™paramã«å«ã¾ã‚Œã‚‹è¨­å®šã‚’ãƒ¬ãƒ³ãƒ€ãƒªãƒ³ã‚°ã«åæ˜ ã•ã›ã‚‹
 		void  Update_Params( );
 	private:
 		void  Update_Fog( );

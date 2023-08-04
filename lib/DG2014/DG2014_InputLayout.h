@@ -1,4 +1,4 @@
-#pragma warning(disable:4996)
+ï»¿#pragma warning(disable:4996)
 #pragma once
 #pragma warning( disable : 4005 )
 #include <d3dx10.h>
@@ -9,20 +9,20 @@
 #pragma comment(lib,"d3dCompiler.lib")
 #pragma warning( default : 4005 )
 
-#include "../myLib.h"
+#include "myLib.h"
 #include <string>
 
 namespace DG
 {
 	//-----------------------------------------------------------------------
-	//“ü—ÍƒŒƒCƒAƒEƒg•â•ƒNƒ‰ƒX
+	//å…¥åŠ›ãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆè£œåŠ©ã‚¯ãƒ©ã‚¹
 	class InputLayout
 	{
 		//-----------------------------------------------------------------------
 	public:
-		ID3D10InputLayout * layout;//“ü—ÍƒŒƒCƒAƒEƒg
+		ID3D10InputLayout * layout;//å…¥åŠ›ãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆ
 		string					tecName;
-		//		DWORD					tecNum;//‘ÎÛƒeƒNƒjƒbƒN”Ô†
+		//		DWORD					tecNum;//å¯¾è±¡ãƒ†ã‚¯ãƒ‹ãƒƒã‚¯ç•ªå·
 		//-----------------------------------------------------------------------
 	public:
 		using SP = shared_ptr<InputLayout>;
