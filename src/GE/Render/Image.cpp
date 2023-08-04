@@ -4,6 +4,9 @@
 #include "GE/Core/Transform2D.h"
 #include "GE/Core/Camera2D.h"
 #include "RenderLayer.h"
+#include "GE/Utils/HandyFunc/GameEngineRelated.h"
+#include "GE/Core/GEConfig.h"
+#include "GE/Utils/HandyFunc/CollisionRelated.h"
 
 namespace GE::Render
 {
@@ -37,11 +40,18 @@ namespace GE::Render
 
 	void Image::Render(const Transform2DData& viewportData) const
 	{
-		// TODO : 画面外かないかをチェックする
-
 		Vector2 imageSize = GetImageSize();
 		RectPixel drawRect = RectPixel::FromCenter(imageSize);
 		drawRect.Move(viewportData.pos);
+
+		// カリング
+		const GEConfig& config = GetGEConfig();
+		Rect screenRect(0.0f, 0.0f, (float)config.screenWidth, (float)config.screenHeight);
+		Collision::Detection::CollidedType collidedType = Collision::CheckCollision(screenRect, drawRect, 0.0f, viewportData.rot);
+		if (collidedType != Collision::Detection::CollidedType::Overlap) {
+			return;
+		}
+
 		texture->Rotate(viewportData.rot, imageSize / 2.0f);
 		texture->Draw(drawRect, srcRect, color);
 	}

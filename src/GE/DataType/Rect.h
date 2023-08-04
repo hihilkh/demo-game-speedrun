@@ -101,6 +101,14 @@ namespace GE::DataType::Internal
 		static bool OverlapWithSafeCheck(const TRect& first, const TRect& second);
 
 		TRect& Move(const TVector2<T>& offset);
+
+		/// <summary>
+		/// MinOuterRect：回転したinnerRectを格納できる最小なRect(回転なし)
+		/// </summary>
+		static TRect GetMinOuterRect(const TRect& innerRect, float rotateDegreeFromCenter);
+
+		// 暗黙的な変換
+		operator TRect<float>() const requires (!std::is_same_v<float, T>);
 	};
 
 	template<RectBaseType T> bool operator==(const TRect<T>& lhs, const TRect<T>& rhs);
@@ -314,6 +322,43 @@ namespace GE::DataType::Internal
 		x += offset.x;
 		y += offset.y;
 		return *this;
+	}
+
+	template<RectBaseType T>
+	TRect<T> TRect<T>::GetMinOuterRect(const TRect& innerRect, float rotateDegreeFromCenter)
+	{
+		if (rotateDegreeFromCenter == 0.0f) {
+			return innerRect;
+		}
+
+		float radian = Math::ToRadian(rotateDegreeFromCenter);
+		float sinValue = std::sin(radian);
+		float cosValue = std::cos(radian);
+
+		float width = std::abs(innerRect.width * cosValue) + std::abs(innerRect.height * sinValue);
+		float height = std::abs(innerRect.width * sinValue) + std::abs(innerRect.height * cosValue);
+
+		if constexpr (std::is_same_v<int, T>) {
+			float centerXFloat = innerRect.x + innerRect.width / 2.0f;
+			float centerYFloat = innerRect.y + innerRect.height / 2.0f;
+
+			int resultX = (int)std::floorf(-width / 2.0f + centerXFloat);
+			int resultY = (int)std::floorf(-height / 2.0f + centerYFloat);
+			int resultOppositeX = (int)std::ceilf(width / 2.0f + centerXFloat);
+			int resultOppositeY = (int)std::ceilf(height / 2.0f + centerYFloat);
+
+			return FromDiagonal(resultX, resultY, resultOppositeX, resultOppositeY);
+		}
+
+		TRect result = FromCenter(width, height);
+		result.Move(innerRect.Center());
+		return result;
+	}
+
+	template<RectBaseType T>
+	TRect<T>::operator TRect<float>() const requires (!std::is_same_v<float, T>)
+	{
+		return TRect<float>((float)x, (float)y, (float)width, (float)height);
 	}
 
 	template<RectBaseType T>
