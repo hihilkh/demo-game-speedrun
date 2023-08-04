@@ -118,23 +118,25 @@ namespace GE::Collision::Detection::NonRotatedRectSimpleImpl
 		float lhsRot,
 		float rhsRot) const
 	{
-		// 備考：
-		// lhsRotまたはrhsRotは0ではない場合、MinOuterRectを使って当たり判定を行う
+		// 備考：lhsRotとrhsRotを無視する
 
-		const Rect lhsMinOuterRect = Rect::GetMinOuterRect(lhsRect, lhsRot);
-		const Rect rhsMinOuterRect = Rect::GetMinOuterRect(rhsRect, rhsRot);
+#ifdef _DEBUG
+		if (lhsRot != 0 || rhsRot != 0) {
+			DEBUG_LOG_WARNING("この実装は回転したRectのCollisionを支援しない。回転したRectも回転していなかったRectとみなす。");
+		}
+#endif
 
 		// TouchかOverlapかを検出したいために、Rect::Overlap関数を使わない
-		Vector2 lhsOpposite(lhsMinOuterRect.OppositeX(), lhsMinOuterRect.OppositeY());
-		Vector2 rhsOpposite(rhsMinOuterRect.OppositeX(), rhsMinOuterRect.OppositeY());
+		Vector2 lhsOpposite(lhsRect.OppositeX(), lhsRect.OppositeY());
+		Vector2 rhsOpposite(rhsRect.OppositeX(), rhsRect.OppositeY());
 
-		if (lhsMinOuterRect.x > rhsOpposite.x || lhsMinOuterRect.y > rhsOpposite.y ||
-			rhsMinOuterRect.x > lhsOpposite.x || rhsMinOuterRect.y > lhsOpposite.y) {
+		if (lhsRect.x > rhsOpposite.x || lhsRect.y > rhsOpposite.y ||
+			rhsRect.x > lhsOpposite.x || rhsRect.y > lhsOpposite.y) {
 			return CollidedType::None;
 		}
 
-		if (lhsMinOuterRect.x == rhsOpposite.x || lhsMinOuterRect.y == rhsOpposite.y ||
-			rhsMinOuterRect.x == lhsOpposite.x || rhsMinOuterRect.y == lhsOpposite.y) {
+		if (lhsRect.x == rhsOpposite.x || lhsRect.y == rhsOpposite.y ||
+			rhsRect.x == lhsOpposite.x || rhsRect.y == lhsOpposite.y) {
 			return CollidedType::Touch;
 		} else {
 			return CollidedType::Overlap;
