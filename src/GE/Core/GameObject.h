@@ -39,9 +39,6 @@ namespace GE
 		bool GetIsActive() const { return isActive; }
 		void SetIsActive(bool isActive) { this->isActive = isActive; }
 
-		bool GetIsStatic() const { return isStatic; }
-		void SetIsStatic(bool isStatic, bool isRecursive);
-
 		Scene& GetBelongingScene() const { return belongingScene; }
 
 		/// <summary>
@@ -95,9 +92,6 @@ namespace GE
 
 		bool isActive;
 		bool isAwoken;
-
-		// TODO : staticによってのロジックの実装
-		bool isStatic;
 
 	private:
 

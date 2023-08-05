@@ -15,23 +15,11 @@ namespace GE
 		parent(parent),
 		transform(std::make_unique<Transform2D>(*this)),
 		isActive(true),
-		isAwoken(false),
-		isStatic(false)
+		isAwoken(false)
 	{
 	}
 
 	GameObject::~GameObject() = default;
-
-	void GameObject::SetIsStatic(bool isStatic, bool isRecursive)
-	{
-		this->isStatic = isStatic;
-
-		if (isRecursive) {
-			for (auto it = ownedGameObjects.SimpleBegin(), itEnd = ownedGameObjects.SimpleEnd(); it != itEnd; ++it) {
-				(*it)->SetIsStatic(isStatic, isRecursive);
-			}
-		}
-	}
 
 	GameObject& GameObject::Create(const std::string& name)
 	{

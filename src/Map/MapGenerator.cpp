@@ -25,7 +25,6 @@ namespace Map
 		GameObject* mapBase = GE::FindGameObject(mapBaseName);
 		if (!mapBase) {
 			mapBase = &GameObject::Create(mapBaseName);
-			mapBase->SetIsStatic(true, false);
 		}
 
 		MapFactory factory(*mapBase);

@@ -5,7 +5,6 @@
 
 namespace GE
 {
-	// TODO : 効率のために、WorldTransformをキャッシュするかどうかを考える
 	class Transform2D : private Transform2DData
 	{
 	public:
@@ -40,7 +39,5 @@ namespace GE
 	private:
 		Vector2 GetWorldPos(const Transform2DData& parentWorldTransformData) const;
 		float GetWorldRot(float parentWorldRot) const;
-
-		bool CanChangePos() const;
 	};
 }
