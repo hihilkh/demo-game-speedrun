@@ -66,7 +66,6 @@ namespace Map
 		Tile* tile = InstantiateTile(type, direction);
 		if (tile) {
 			tile->SetPos(grid);
-			tile->gameObject.SetIsStatic(true, true);
 		}
 	}
 

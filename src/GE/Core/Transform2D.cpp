@@ -61,66 +61,34 @@ namespace GE
 
 #pragma region セッター
 
-	bool Transform2D::CanChangePos() const
-	{
-		bool canChangePos = !gameObject.GetIsStatic();
-
-#ifdef _DEBUG
-		if (!canChangePos) {
-			DEBUG_LOG_WARNING("GameObjectはStaticになる。位置の変更ができない。");
-		}
-#endif
-
-		return canChangePos;
-	}
-
 	void Transform2D::SetPos(float x, float y)
 	{
-		SetPos({x, y});
+		pos.x = x;
+		pos.y = y;
 	}
 
 	void Transform2D::SetPos(const Vector2& pos)
 	{
-		if (!CanChangePos()) {
-			return;
-		}
-
 		this->pos = pos;
 	}
 
 	void Transform2D::SetPosX(float x)
 	{
-		if (!CanChangePos()) {
-			return;
-		}
-
 		pos.x = x;
 	}
 
 	void Transform2D::SetPosY(float y)
 	{
-		if (!CanChangePos()) {
-			return;
-		}
-
 		pos.y = y;
 	}
 
 	void Transform2D::SetRot(float rot)
 	{
-		if (!CanChangePos()) {
-			return;
-		}
-
 		this->rot = rot;
 	}
 
 	void Transform2D::SetWorldPos(const Vector2& worldPos)
 	{
-		if (!CanChangePos()) {
-			return;
-		}
-
 		if (gameObject.Parent()) {
 			auto parentWorldTransform = gameObject.Parent()->GetTransform().GetWorldTransformData();
 			pos = worldPos;
@@ -133,10 +101,6 @@ namespace GE
 
 	void Transform2D::SetWorldRot(float worldRot)
 	{
-		if (!CanChangePos()) {
-			return;
-		}
-
 		if (gameObject.Parent()) {
 			rot = worldRot - gameObject.Parent()->GetTransform().GetWorldRot();
 		} else {

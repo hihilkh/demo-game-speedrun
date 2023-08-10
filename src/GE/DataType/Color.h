@@ -40,4 +40,14 @@ namespace GE
 		static const Color cyan;
 		static const Color magenta;
 	};
+
+	// 備考：グローバル定数まで使えるように、headerファイルで定義する
+	inline const Color Color::black		(0.0f, 0.0f, 0.0f);
+	inline const Color Color::white		(1.0f, 1.0f, 1.0f);
+	inline const Color Color::red		(1.0f, 0.0f, 0.0f);
+	inline const Color Color::green		(0.0f, 1.0f, 0.0f);
+	inline const Color Color::blue		(0.0f, 0.0f, 1.0f);
+	inline const Color Color::yellow	(1.0f, 1.0f, 0.0f);
+	inline const Color Color::cyan		(0.0f, 1.0f, 1.0f);
+	inline const Color Color::magenta	(1.0f, 0.0f, 1.0f);
 }
