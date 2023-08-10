@@ -78,7 +78,7 @@
 
 ## 不足
 
-* [ログした問題点と改良点](../../../labels/game%20engine)
+* [ログした問題点と改良点](https://github.com/hihilkh/demo-game-speedrun/labels/game%20engine)
 * サウンドシステムがありません
 * スレッドセーフではないです
 * メンバ関数をゲームエンジン内部だけ使えるために、`private`宣言 + `friend`クラスという形はたくさんしました。とうとうゲームエンジン内部のコードは混乱になりました。`public`宣言を使った方がいいかもしれません。
