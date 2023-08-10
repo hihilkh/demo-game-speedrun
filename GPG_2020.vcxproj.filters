@@ -439,6 +439,15 @@
     <ClCompile Include="src\GE\Particle\Module\JsonHelper.cpp">
       <Filter>MyPG\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\GE\DataType\Vector2.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\DataType\Vector3.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GE\DataType\Rect.cpp">
+      <Filter>MyPG\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\DG2014\DG2014_DGObject.h">

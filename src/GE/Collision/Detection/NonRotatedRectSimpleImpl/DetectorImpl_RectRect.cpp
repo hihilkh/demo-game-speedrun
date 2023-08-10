@@ -118,13 +118,11 @@ namespace GE::Collision::Detection::NonRotatedRectSimpleImpl
 		float lhsRot,
 		float rhsRot) const
 	{
-		// TODO : 
-		// 今lhsRotとrhsRotを無視する。下記のように変えたい。
-		// 回転がある場合、このRectを格納できる回転なしRectとみなす。
+		// 備考：lhsRotとrhsRotを無視する
 
 #ifdef _DEBUG
 		if (lhsRot != 0 || rhsRot != 0) {
-			DEBUG_LOG_ERROR("この実装は回転したRectのCollisionを支援しない。回転したRectも回転していなかったRectとみなす。");
+			DEBUG_LOG_WARNING("この実装は回転したRectのCollisionを支援しない。回転したRectも回転していなかったRectとみなす。");
 		}
 #endif
 
