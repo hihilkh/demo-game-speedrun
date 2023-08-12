@@ -51,8 +51,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,0,0,0
- PRODUCTVERSION 1,0,0,0
+ FILEVERSION 1,1,0,0
+ PRODUCTVERSION 1,1,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -68,13 +68,13 @@ BEGIN
         BLOCK "041104b0"
         BEGIN
             VALUE "CompanyName", "リンケーコー"
-            VALUE "FileDescription", "進級制作"
-            VALUE "FileVersion", "1.0.0.0"
-            VALUE "InternalName", "GPG_2020.exe"
+            VALUE "FileDescription", "就職活動のデモ作品"
+            VALUE "FileVersion", "1.1.0.0"
+            VALUE "InternalName", "Speedrun.exe"
             VALUE "LegalCopyright", "Copyright (C) 2023"
-            VALUE "OriginalFilename", "GPG_2020.exe"
+            VALUE "OriginalFilename", "Speedrun.exe"
             VALUE "ProductName", "スピードラン"
-            VALUE "ProductVersion", "1.0.0.0"
+            VALUE "ProductVersion", "1.1.0.0"
         END
     END
     BLOCK "VarFileInfo"

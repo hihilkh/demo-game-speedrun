@@ -14,6 +14,9 @@ int WINAPI WinMain(
 	_In_ int            nCmdShow
 )
 {
+	GE::GEConfig geConfig;
+	geConfig.windowTitle = "スピードラン";
+	GE::GameEngine::SetConfig(geConfig);
 	GE::GameEngine::SetSceneConfig(Scene::CreateSceneConfig());
 	GE::GameEngine::SetCollisionLayerMatrix(CollisionInfo::CreateCollisionLayerMatrix());
 	int exitFlag = GE::GameEngine::Start({ hInstance, nCmdShow });
