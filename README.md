@@ -8,6 +8,7 @@
 
 https://github.com/hihilkh/demo-game-speedrun/assets/35343910/409cc33f-c4d2-4509-9568-51cb1408d62a
 
+* タイトル：Speedrun
 * 実行ファイルを[ダウンロード](https://github.com/hihilkh/demo-game-speedrun/releases/latest)
 * 実行環境：Windows 64bit
 
