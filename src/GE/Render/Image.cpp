@@ -47,8 +47,8 @@ namespace GE::Render
 		// カリング
 		const GEConfig& config = GetGEConfig();
 		Rect screenRect(0.0f, 0.0f, (float)config.screenWidth, (float)config.screenHeight);
-		Rect drawMinOuterRect = Rect::GetMinOuterRect(drawRect, viewportData.rot);
-		Collision::Detection::CollidedType collidedType = Collision::CheckCollision(screenRect, drawMinOuterRect, 0.0f, 0.0f);
+		Rect drawAABB = Rect::GetAABB(drawRect, viewportData.rot);
+		Collision::Detection::CollidedType collidedType = Collision::CheckCollision(screenRect, drawAABB, 0.0f, 0.0f);
 		if (collidedType != Collision::Detection::CollidedType::Overlap) {
 			return;
 		}
