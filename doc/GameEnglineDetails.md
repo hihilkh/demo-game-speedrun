@@ -18,7 +18,7 @@
 * `Camera2D`：`Image`を映って、ゲーム画面で正しく描画する`Component`である。([ソースコード](../src/GE/Core/Camera2D.h))
 * `Prefab`：複数の`GameObject`と`Component`を揃って、一つの物とみなして生成できるプリセットである。([ソースコード](../src/GE/Core/Prefab.h)、参考：[こちら](../src/Prefab))
 * `GameObject`の親子関係：`GameObject`を他の`GameObject`の`Child`になることができます。([ソースコード](../src/GE/Core/GameObject.h))
-* `GESafePtr`：`GameObject`と`Component`の破棄に関連するダングリングポインタを防ぐために、スマートポインタを使います。([ソースコード](../src/GE/Memory/GESafePtr.h)、参考：[こちら](../src/GE/Animation/Animator.cpp))
+* `GESafePtr`：`GameObject`と`Component`の破棄に関連するダングリングポインタを防ぐために、スマートポインタを使います。([ソースコード](../src/GE/Memory/GESafePtr.h)、例：[Animator::image](../src/GE/Animation/Animator.h))
 * インプットシステム：プレイヤーの入力を取得するシステムである。今、キーボードの入力だけ支援します。([ソースコード](../src/GE/Input))
 * `Collider`：当たり判定機能を持っている`Component`である。([ソースコード](../src/GE/Collision/Collider.h))
 * 当たり判定システム：`Collider`同士の当たり判定を行うシステムである。([ソースコード](../src/GE/Collision))
