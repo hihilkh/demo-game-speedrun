@@ -105,7 +105,6 @@ namespace GE
 		CollisionPhase();
 		AnimationUpdatePhase();
 		RenderPhase(loadedScenes);
-		EndOfFramePhase(loadedScenes);
 		DestroyPhase();
 		ChangeScenePhase();
 	}
@@ -153,13 +152,6 @@ namespace GE
 		Render::RenderSystem::OnStartRender();
 		Scene::OnRender(scenes);
 		Render::RenderSystem::OnFinishRender();
-	}
-
-	void GameEngine::EndOfFramePhase(const std::vector<Scene*>& scenes)
-	{
-		for (auto scene : scenes) {
-			scene->OnEndOfFrame();
-		}
 	}
 
 	void GameEngine::DestroyPhase()

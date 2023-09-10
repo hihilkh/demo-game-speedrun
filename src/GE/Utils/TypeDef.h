@@ -14,6 +14,12 @@ namespace GE
 	struct Color;
 	class Time;
 
+	namespace Memory
+	{
+		template<typename T>
+		class GESafePtr;
+	}
+
 	namespace DataType::Internal
 	{
 		template<VectorBaseType T>
@@ -70,6 +76,9 @@ using Transform2D		= GE::Transform2D;
 using Camera2D			= GE::Camera2D;
 using Color				= GE::Color;
 using Time				= GE::Time;
+
+template <typename T>
+using GESafePtr			= GE::Memory::GESafePtr<T>;
 
 using Vector2			= GE::DataType::Internal::TVector2<float>;
 using Vector2Int		= GE::DataType::Internal::TVector2<int>;

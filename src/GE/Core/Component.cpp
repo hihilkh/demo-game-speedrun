@@ -40,15 +40,6 @@ namespace GE
 		LateUpdate();
 	}
 
-	void Component::OnEndOfFrame()
-	{
-		if (!isEnable || !IsValid()) {
-			return;
-		}
-
-		EndOfFrame();
-	}
-
 	void Component::OnDestroy()
 	{
 		gameObject.RemoveComponentImmediate(*this);

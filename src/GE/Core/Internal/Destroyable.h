@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#include "GE/Core/Event.h"
+
 namespace GE
 {
 	class GameEngine;
@@ -10,6 +12,9 @@ namespace GE::Internal
 	class Destroyable
 	{
 		friend class GE::GameEngine;
+
+	public:
+		Event<> onDestroying;
 
 	public:
 		enum class State : char
@@ -28,6 +33,7 @@ namespace GE::Internal
 		{ 
 			destroyState = State::Destroying;
 			PreDestroy();
+			onDestroying.Invoke();
 		}
 
 		/// <summary>

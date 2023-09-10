@@ -38,6 +38,8 @@
 #include "Core/Coroutine.h"
 #include "Yield/headers.h"
 
+#include "GE/Memory/GESafePtr.h"
+
 #include "Render/RenderLayer.h"
 
 #include "Utils/HandyFunc/GameEngineRelated.h"

@@ -69,7 +69,6 @@ namespace GE
 		static void CollisionPhase();
 		static void AnimationUpdatePhase();
 		static void RenderPhase(const std::vector<Scene*>& scenes);
-		static void EndOfFramePhase(const std::vector<Scene*>& scenes);
 		static void DestroyPhase();
 		static void ChangeScenePhase();
 

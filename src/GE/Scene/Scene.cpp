@@ -31,22 +31,22 @@ namespace GE
 		state(State::Initialized),
 		name(name)
 	{
-		Camera2D::onStarted.AddListener(&Scene::RegisterCamera, *this);
-		Camera2D::onDestroying.AddListener(&Scene::UnregisterCamera, *this);
+		Camera2D::onCameraStarted.AddListener(&Scene::RegisterCamera, *this);
+		Camera2D::onCameraDestroying.AddListener(&Scene::UnregisterCamera, *this);
 
-		Render::Renderer::onStarted.AddListener(&Scene::RegisterRenderer, *this);
-		Render::Renderer::onDestroying.AddListener(&Scene::UnregisterRenderer, *this);
+		Render::Renderer::onRendererStarted.AddListener(&Scene::RegisterRenderer, *this);
+		Render::Renderer::onRendererDestroying.AddListener(&Scene::UnregisterRenderer, *this);
 	}
 
 	Scene::~Scene()
 	{
 		state = State::Destroying;
 
-		Camera2D::onStarted.RemoveListener(&Scene::RegisterCamera, *this);
-		Camera2D::onDestroying.RemoveListener(&Scene::UnregisterCamera, *this);
+		Camera2D::onCameraStarted.RemoveListener(&Scene::RegisterCamera, *this);
+		Camera2D::onCameraDestroying.RemoveListener(&Scene::UnregisterCamera, *this);
 
-		Render::Renderer::onStarted.RemoveListener(&Scene::RegisterRenderer, *this);
-		Render::Renderer::onDestroying.RemoveListener(&Scene::UnregisterRenderer, *this);
+		Render::Renderer::onRendererStarted.RemoveListener(&Scene::RegisterRenderer, *this);
+		Render::Renderer::onRendererDestroying.RemoveListener(&Scene::UnregisterRenderer, *this);
 
 		ownedGameObjects.OnPreDestroy();
 	}
@@ -78,11 +78,6 @@ namespace GE
 	void Scene::OnLateUpdate()
 	{
 		ownedGameObjects.OnLateUpdate();
-	}
-
-	void Scene::OnEndOfFrame()
-	{
-		ownedGameObjects.OnEndOfFrame();
 	}
 
 	void Scene::OnRender(const std::vector<Scene*>& scenes)

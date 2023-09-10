@@ -1014,6 +1014,9 @@
     <ClInclude Include="src\GE\Particle\Module\JsonHelper.h">
       <Filter>MyPG\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\GE\Memory\GESafePtr.h">
+      <Filter>MyPG\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="version.rc">

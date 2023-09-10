@@ -3,8 +3,8 @@
 
 namespace GE::Render
 {
-	Event<const Renderer&> Renderer::onStarted;
-	Event<const Renderer&> Renderer::onDestroying;
+	Event<const Renderer&> Renderer::onRendererStarted;
+	Event<const Renderer&> Renderer::onRendererDestroying;
 
 	Renderer::Renderer(GameObject& gameObject, std::int16_t renderPriority, RenderLayer::Bitmask renderLayer) :
 		Component(gameObject),
@@ -15,12 +15,12 @@ namespace GE::Render
 
 	void Renderer::Start()
 	{
-		onStarted.Invoke(*this);
+		onRendererStarted.Invoke(*this);
 	}
 
 	void Renderer::PreDestroy()
 	{
-		onDestroying.Invoke(*this);
+		onRendererDestroying.Invoke(*this);
 	}
 
 	void Renderer::OnRender(const Transform2DData& viewportData) const
