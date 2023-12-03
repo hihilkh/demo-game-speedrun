@@ -25,8 +25,8 @@ namespace GE
 		friend class Scene;
 
 	public:
-		static Event<const Camera2D&> onStarted;
-		static Event<const Camera2D&> onDestroying;
+		static Event<const Camera2D&> onCameraStarted;
+		static Event<const Camera2D&> onCameraDestroying;
 
 	public:
 		Camera2D(GameObject& gameObject);

@@ -101,10 +101,7 @@ namespace GE::DataType::Internal
 
 		TRect& Move(const TVector2<T>& offset);
 
-		/// <summary>
-		/// MinOuterRect：回転したinnerRectを格納できる最小なRect(回転なし)
-		/// </summary>
-		static TRect GetMinOuterRect(const TRect& innerRect, float rotateDegreeFromCenter);
+		static TRect GetAABB(const TRect& rect, float rotateDegreeFromCenter);
 
 		// 暗黙的な変換
 		operator TRect<float>() const requires (!std::is_same_v<float, T>);

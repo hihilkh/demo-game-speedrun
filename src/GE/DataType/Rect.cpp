@@ -211,22 +211,22 @@ namespace GE::DataType::Internal
 	}
 
 	template<RectBaseType T>
-	TRect<T> TRect<T>::GetMinOuterRect(const TRect& innerRect, float rotateDegreeFromCenter)
+	TRect<T> TRect<T>::GetAABB(const TRect& rect, float rotateDegreeFromCenter)
 	{
 		if (rotateDegreeFromCenter == 0.0f) {
-			return innerRect;
+			return rect;
 		}
 
 		float radian = Math::ToRadian(rotateDegreeFromCenter);
 		float sinValue = std::sin(radian);
 		float cosValue = std::cos(radian);
 
-		float width = std::abs(innerRect.width * cosValue) + std::abs(innerRect.height * sinValue);
-		float height = std::abs(innerRect.width * sinValue) + std::abs(innerRect.height * cosValue);
+		float width = std::abs(rect.width * cosValue) + std::abs(rect.height * sinValue);
+		float height = std::abs(rect.width * sinValue) + std::abs(rect.height * cosValue);
 
 		if constexpr (std::is_same_v<int, T>) {
-			float centerXFloat = innerRect.x + innerRect.width / 2.0f;
-			float centerYFloat = innerRect.y + innerRect.height / 2.0f;
+			float centerXFloat = rect.x + rect.width / 2.0f;
+			float centerYFloat = rect.y + rect.height / 2.0f;
 
 			int resultX = (int)std::floorf(-width / 2.0f + centerXFloat);
 			int resultY = (int)std::floorf(-height / 2.0f + centerYFloat);
@@ -236,7 +236,7 @@ namespace GE::DataType::Internal
 			return FromDiagonal(resultX, resultY, resultOppositeX, resultOppositeY);
 		} else {
 			TRect result = FromCenter(width, height);
-			result.Move(innerRect.Center());
+			result.Move(rect.Center());
 			return result;
 		}
 	}

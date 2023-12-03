@@ -1386,6 +1386,7 @@
     <ClInclude Include="src\GE\Animation\AnimationSystem.h" />
     <ClInclude Include="src\GE\Animation\Animator.h" />
     <ClInclude Include="src\GE\Animation\AnimationDecision.h" />
+    <ClInclude Include="src\GE\Memory\GESafePtr.h" />
     <ClInclude Include="src\GE\Particle\CoreConfig.h" />
     <ClInclude Include="src\GE\Particle\Module\ColorOverLifetimeModule.h" />
     <ClInclude Include="src\GE\Particle\Module\JsonHelper.h" />

@@ -22,7 +22,6 @@ namespace GE::Internal
 		bool OnStartUnstarted();
 		void OnUpdate();
 		void OnLateUpdate();
-		void OnEndOfFrame();
 		void OnPreDestroy();
 #pragma endregion
 
@@ -218,14 +217,6 @@ namespace GE::Internal
 	{
 		for (auto it = SimpleBegin_Started(), itEnd = SimpleEnd_Started(); it != itEnd; ++it) {
 			(*it)->OnLateUpdate();
-		}
-	}
-
-	template<GameLoopObject T>
-	void GameLoopObjectContainer<T>::OnEndOfFrame()
-	{
-		for (auto it = SimpleBegin_Started(), itEnd = SimpleEnd_Started(); it != itEnd; ++it) {
-			(*it)->OnEndOfFrame();
 		}
 	}
 

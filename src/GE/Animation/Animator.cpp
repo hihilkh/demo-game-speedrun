@@ -20,7 +20,7 @@ namespace GE::Animation
 	Animator::Animator(GameObject& gameObject, const std::string& animationFile, std::unique_ptr<AnimationDecision> decision) :
 		Component(gameObject),
 		decision(std::move(decision)),
-		image(nullptr),
+		image(),
 		clips(AnimationClipSetLoader::Load(animationFile)),
 		currentClipStartTime(0.0f),
 		currentClip(nullptr)
@@ -35,6 +35,11 @@ namespace GE::Animation
 
 	Animator::~Animator() = default;
 
+	void Animator::SetImage(Image* image)
+	{
+		this->image.Reset(image);
+	}
+
 	void Animator::Start()
 	{
 		AnimationSystem::AddAnimator(*this);
@@ -43,16 +48,6 @@ namespace GE::Animation
 	void Animator::PreDestroy()
 	{
 		AnimationSystem::RemoveAnimator(*this);
-	}
-
-	void Animator::EndOfFrame()
-	{
-		if (image) {
-			if (!image->gameObject.IsValid()) {
-				// このimageはもうすぐ破棄される
-				image = nullptr;
-			}
-		}
 	}
 
 	void Animator::OnAnimationUpdate()

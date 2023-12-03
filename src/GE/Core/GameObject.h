@@ -104,7 +104,6 @@ namespace GE
 		bool OnStartUnstarted();
 		void OnUpdate();
 		void OnLateUpdate();
-		void OnEndOfFrame();
 
 #pragma endregion
 

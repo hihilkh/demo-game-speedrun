@@ -133,16 +133,6 @@ namespace GE
 		ownedGameObjects.OnLateUpdate();
 	}
 
-	void GameObject::OnEndOfFrame()
-	{
-		if (!isActive || !IsValid()) {
-			return;
-		}
-
-		components.OnEndOfFrame();
-		ownedGameObjects.OnEndOfFrame();
-	}
-
 	void GameObject::OnPreDestroy()
 	{
 		Destroyable::OnPreDestroy();

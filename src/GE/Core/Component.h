@@ -84,10 +84,6 @@ namespace GE
 		/// </summary>
 		virtual void LateUpdate() {}
 		/// <summary>
-		/// ほぼフレームの最後の段階(Destroy段階の直前)。ダングリングポインタの防止ための処理とか。有効にする時のみ
-		/// </summary>
-		virtual void EndOfFrame() {}
-		/// <summary>
 		/// 破棄直前の処理
 		/// </summary>
 		virtual void PreDestroy() override {}
@@ -106,7 +102,6 @@ namespace GE
 		void OnStart();
 		void OnUpdate();
 		void OnLateUpdate();
-		void OnEndOfFrame();
 
 #pragma endregion
 

@@ -62,7 +62,6 @@ namespace GE
 		void OnStartUnstarted();
 		void OnUpdate();
 		void OnLateUpdate();
-		void OnEndOfFrame();
 
 		static void OnRender(const std::vector<Scene*>& scenes);
 

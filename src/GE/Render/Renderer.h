@@ -18,8 +18,8 @@ namespace GE::Render
 		friend Camera2D;
 
 	public:
-		static Event<const Renderer&> onStarted;
-		static Event<const Renderer&> onDestroying;
+		static Event<const Renderer&> onRendererStarted;
+		static Event<const Renderer&> onRendererDestroying;
 
 	public:
 		Renderer(GameObject& gameObject, std::int16_t renderPriority, RenderLayer::Bitmask renderLayer);

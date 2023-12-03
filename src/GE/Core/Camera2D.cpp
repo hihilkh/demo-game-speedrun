@@ -14,8 +14,8 @@ namespace GE
 		float viewportOffsetY;
 	};
 
-	Event<const Camera2D&> Camera2D::onStarted;
-	Event<const Camera2D&> Camera2D::onDestroying;
+	Event<const Camera2D&> Camera2D::onCameraStarted;
+	Event<const Camera2D&> Camera2D::onCameraDestroying;
 
 	Camera2D::Camera2D(GameObject& gameObject) :
 		Component(gameObject),
@@ -26,12 +26,12 @@ namespace GE
 
 	void Camera2D::Start()
 	{
-		onStarted.Invoke(*this);
+		onCameraStarted.Invoke(*this);
 	}
 
 	void Camera2D::PreDestroy()
 	{
-		onDestroying.Invoke(*this);
+		onCameraDestroying.Invoke(*this);
 	}
 
 	Transform2DData Camera2D::ConvertToViewport(const Transform2D& target, const PreRenderData& preRenderData) const
