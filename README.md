@@ -4,6 +4,8 @@
 
 これはもともと学校の一年後期の進級制作のプロジェクトです。私は以前、主にUnityとC#を使っていました。この進級制作を作るにつれ、私のC++での開発はC#よりうまくいかないと感じました。また、学校の提供したライブラリはあまり使いやすくないと思いました。そういうわけで、自分でゼロから簡単なゲームライブラリを作って、C++技術を磨くという考えが浮かびました。
 
+自作ゲームライブラリの詳細は[こちら](./doc/GameLibraryDetails.md)へ。
+
 # ゲームについて
 
 ## デモ動画
@@ -34,7 +36,7 @@ https://github.com/hihilkh/demo-game-speedrun/assets/35343910/409cc33f-c4d2-4509
 * 言語：C++20
 * IDE：Visual Studio 2022
 * グラフィックス API：DirectX 12
-* ゲームライブラリ：[詳細はこちら](./doc/GameLibraryDetails.md)
+* 自作ゲームライブラリ：[詳細はこちら](./doc/GameLibraryDetails.md)
 * プラグインについて：[詳細はこちら](./doc/PluginDependency.md)
 * コードスタンダード：[詳細はこちら](./doc/CodeStandard.md)
 * 外部素材：[詳細はこちら](./doc/ExternalResources.md)

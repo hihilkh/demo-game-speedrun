@@ -7,6 +7,7 @@
 * 言語：`C++`
 * ソースコード：[こちら](../src/GE)
 * 命名空間：`GE`(名前を長すぎないように、一部の名前をエイリアス付けました(参考：[こちら](../src/GE/Utils/TypeDef.h)))
+* スレッドセーフではないです
 
 ## 仕組み
 
@@ -28,7 +29,7 @@
 
 ### ゲームループ
 
-ゲームを進行している時、毎フレームで下記のようなゲームループを行います。([ソースコード](../src/GE/Core/GameEngine.cpp))
+ゲームを進行している時、毎フレームで下記のようなゲームループを行います。([GameEngine::RunGameLoop](../src/GE/Core/GameEngine.cpp))
 
 * `TimeUpdatePhase`：ゲーム内の時間を更新します。
 * `InputUpdatePhase`：キャッシュしたプレイヤーの入力を整理してから、`InputSystem`を更新します。
@@ -39,6 +40,16 @@
 * `RenderPhase`：ゲーム画面で描画します(`Renderer`たちの`Render()`関数を呼び出します)。
 * `DestroyPhase`：破棄を要請された`GameObject`と`Component`を破棄します。破棄する直前、`PreDestroy()`関数を呼び出します。
 * `ChangeScenePhase`：`Scene`の遷移を要請した場合、`Scene`を遷移します。
+
+### `Component`のゲームループ関数
+
+`Component`は以下のゲームループ関数を作りました([ソースコード](../src/GE/Core/Component.h))。基本的にUnityのような振る舞いをします。しかし、若干な細かい違いがあります。
+
+* `Awake()`：生成した後の最初の処理です。`GameObject`と`Component`自身が有効無効にかかわらず(Unityと違う)、一回だけ呼び出されます。
+* `Start()`：`StartPhase`に、`GameObject`と`Component`自身が有効無効にかかわらず(Unityと違う)、一回だけ呼び出されます。そういうわけで、`UpdatePhase`に生成する`Component`は次のフレームに`Start()`が呼び出されます。
+* `Update()`：`Start()`をした`Component`の毎フレームの処理です。有効にする時だけ呼び出されます。
+* `LateUpdate()`：すべての`Component`の`Update()`が呼び出された直後の処理です(簡単化にしたいために、Unityと違って、`Update()`と`LateUpdate()`の中に、他の処理がありません)。有効にする時だけ呼び出されます。
+* `PreDestroy()`：Unityの`OnDestroy()`のよう、破棄直前の処理です。名前を合わせるために(プレフィックス`On`を使わない)、Unityと違い名前にします。
 
 ## 開発していた時に使った技術
 
@@ -80,7 +91,6 @@
 
 * [ログした問題点と改良点](https://github.com/hihilkh/demo-game-speedrun/labels/game%20engine)
 * サウンドシステムがありません
-* スレッドセーフではないです
 * メンバ関数をゲームライブラリ内部だけ使えるために、`private`宣言 + `friend`クラスという形はたくさんしました。とうとうゲームライブラリ内部のコードは混乱になりました。`public`宣言を使った方がいいかもしれません。
 * Unity Editorのようなツールがないので、`Scene`と`Prefab`の構成は自分でC++コードで構築しなければなりません。不便の他に、構築している時、不正な操作(特にゲームループに対して)を防ぐことができません。
 * `GameObject`と`Component`の有効性(`GameObject::isActive`、`Component::isEnable`)の機能の実装は不十分だと思います。
