@@ -6,6 +6,8 @@
 
 自作ゲームライブラリの詳細は[こちら](./doc/GameLibraryDetails.md)へ。
 
+ソースコードのご案内は[こちら](./doc/SourceCodeGuide.md)へ。
+
 # ゲームについて
 
 ## デモ動画
@@ -36,17 +38,11 @@ https://github.com/hihilkh/demo-game-speedrun/assets/35343910/409cc33f-c4d2-4509
 * 言語：C++20
 * IDE：Visual Studio 2022
 * グラフィックス API：DirectX 12
+* ソースコードのご案内：[詳細はこちら](./doc/SourceCodeGuide.md)
 * 自作ゲームライブラリ：[詳細はこちら](./doc/GameLibraryDetails.md)
-* プラグインについて：[詳細はこちら](./doc/PluginDependency.md)
+* 使ったプラグイン：[詳細はこちら](./doc/PluginDependency.md)
 * コードスタンダード：[詳細はこちら](./doc/CodeStandard.md)
 * 外部素材：[詳細はこちら](./doc/ExternalResources.md)
-
-## ブランチ
-
-* `master`：主なブランチ
-* `feature/speedrun`：学校の一年後期の進級制作の開発のブランチ。このブランチで、学校が提供したライブラリを使っています。
-* `feature/reconstruct`と`feature/ge_enhancement_<日付け>`：`feature/speedrun`をもとに、学校のライブラリから自作のゲームライブラリに置き換えたり、コードを最適化したり、色々なことを改造します。
-* `profiling`ディレクトリのブランチ：改造前後のパフォーマンスをプロファイリングしてから、比較と分析します。
 
 # アピールポイント
 

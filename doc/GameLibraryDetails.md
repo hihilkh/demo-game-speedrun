@@ -11,21 +11,24 @@
 
 ## 仕組み
 
-* `GameObject`：ゲームの構成の基本単位である。([ソースコード](../src/GE/Core/GameObject.h))
-* `Component`：`GameObject`に付けて、機能を追加する部品である。([ソースコード](../src/GE/Core/Component.h))
-* `Scene`：`GameObject`を格納して管理するものである。`Scene`の遷移する際、古い`Scene`の`GameObject`を全て破棄します。([ソースコード](../src/GE/Scene)、参考：[こちら](../src/Scene))
-* `Transform2D`：`GameObject`の位置と回転を表示する`Component`である。`GameObject`は必ず一つの`Transform2D`を持っています。([ソースコード](../src/GE/Core/Transform2D.h))
-* `Image`：2D画像を描画する`Component`である。([ソースコード](../src/GE/Render/Image.h))
-* `Camera2D`：`Image`を映って、ゲーム画面で正しく描画する`Component`である。([ソースコード](../src/GE/Core/Camera2D.h))
-* `Prefab`：複数の`GameObject`と`Component`を揃って、一つの物とみなして生成できるプリセットである。([ソースコード](../src/GE/Core/Prefab.h)、参考：[こちら](../src/Prefab))
+* `GameObject`：ゲームの構成の基本単位です。([ソースコード](../src/GE/Core/GameObject.h))
+* `Component`：`GameObject`に付けて、機能を追加する部品です。([ソースコード](../src/GE/Core/Component.h))
+* `Scene`：`GameObject`を格納して管理するものです。`Scene`の遷移する際、古い`Scene`の`GameObject`を全て破棄します。([ソースコード](../src/GE/Scene)、[使用例](../src/Scene))
+* `Transform2D`：`GameObject`の位置と回転を表示するクラスです。簡単化のために(今せん断写像を描画することが実装されていません)、スケールを支援しません。`GameObject`は必ず一つの`Transform2D`を持っています。Unityと違い、`Transform2D`は`Component`ではありません。([ソースコード](../src/GE/Core/Transform2D.h))
+* `Image`：2D画像を描画する`Component`です。([ソースコード](../src/GE/Render/Image.h))
+* `Camera2D`：`Image`を映って、ゲーム画面で正しく描画する`Component`です。([ソースコード](../src/GE/Core/Camera2D.h))
+* `Prefab`：複数の`GameObject`と`Component`を揃って、一つの物とみなして生成できるプリセットです。([ソースコード](../src/GE/Core/Prefab.h)、[使用例](../src/Prefab))
 * `GameObject`の親子関係：`GameObject`を他の`GameObject`の`Child`になることができます。([ソースコード](../src/GE/Core/GameObject.h))
-* `GESafePtr`：`GameObject`と`Component`の破棄に関連するダングリングポインタを防ぐために、スマートポインタを使います。([ソースコード](../src/GE/Memory/GESafePtr.h)、例：[Animator::image](../src/GE/Animation/Animator.h))
-* インプットシステム：プレイヤーの入力を取得するシステムである。今、キーボードの入力だけ支援します。([ソースコード](../src/GE/Input))
-* `Collider`：当たり判定機能を持っている`Component`である。([ソースコード](../src/GE/Collision/Collider.h))
-* 当たり判定システム：`Collider`同士の当たり判定を行うシステムである。([ソースコード](../src/GE/Collision))
-* アニメーションシステム：`Image`の描画を時間に沿って変化させるシステムである。([ソースコード](../src/GE/Animation)、参考：[こちら](../src/Prefab/Character/Player/PlayerPrefab.cpp))
-* パーティクルシステム：色々なパーティクルモージュルによってパーティクルを表現するシステムである。([ソースコード](../src/GE/Particle)、参考：[こちら](../src/Prefab/Map/Tile/WeakWallTilePrefab.cpp))
+* `GESafePtr`：`GameObject`と`Component`の破棄に関連するダングリングポインタを防ぐために、スマートポインタを使います。([ソースコード](../src/GE/Memory/GESafePtr.h)、使用例：[Animator::image](../src/GE/Animation/Animator.h))
+* インプットシステム：プレイヤーの入力を取得するシステムです。今、キーボードの入力だけ支援します。([ソースコード](../src/GE/Input))
+* `Collider`：当たり判定機能を持っている`Component`です。([ソースコード](../src/GE/Collision/Collider.h))
+* 衝突システム：`Collider`同士の衝突検出と衝突応答を行うシステムです。([ソースコード](../src/GE/Collision))
+* アニメーションシステム：`Image`の描画を時間に沿って変化させるシステムです。([ソースコード](../src/GE/Animation)、[使用例](../src/Prefab/Character/Player/PlayerPrefab.cpp))
+* パーティクルシステム：色々なパーティクルモージュルによってパーティクルを表現するシステムです。([ソースコード](../src/GE/Particle)、[使用例](../src/Prefab/Map/Tile/WeakWallTilePrefab.cpp))
 
+### 備考
+
+* モジュールに分けて詳しい説明は[こちら](./GameLibraryModule)へ。
 
 ### ゲームループ
 
