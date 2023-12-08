@@ -18,15 +18,15 @@
 
 ```json
 {
-	"clips": [					// AnimationClipの配列
+	"clips": [	// AnimationClipの配列
 		{
-			"name": "idle",		// AnimationClipの名前。IDのような役割です
-			"loop": true,		// ループをするかどうか
-			"frames": [			// フレームと対応するAnimationKeyの配列
+			"name": "idle",	// AnimationClipの名前。IDのような役割です
+			"loop": true,	// ループをするかどうか
+			"frames": [	// フレームと対応するAnimationKeyの配列
 				{
-					"start_frame": 0,		// 開始のフレーム
-					"key": {				// AnimationKeyの詳細
-						"anim_type": 0,		// 次のAnimationKeyとの補間。0：補間しない、1：線形補間
+					"start_frame": 0,	// 開始のフレーム
+					"key": {	// AnimationKeyの詳細
+						"anim_type": 0,	// 次のAnimationKeyとの補間。0：補間しない、1：線形補間
 						"img_src_rect": {	// 画像のRect詳細
 							"x": 0,
 							"y": 0,

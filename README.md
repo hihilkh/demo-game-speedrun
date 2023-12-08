@@ -40,8 +40,8 @@ https://github.com/hihilkh/demo-game-speedrun/assets/35343910/409cc33f-c4d2-4509
 * グラフィックス API：DirectX 12
 * ソースコードのご案内：[詳細はこちら](./doc/SourceCodeGuide.md)
 * 自作ゲームライブラリ：[詳細はこちら](./doc/GameLibraryDetails.md)
-* 使ったプラグイン：[詳細はこちら](./doc/PluginDependency.md)
 * コードスタンダード：[詳細はこちら](./doc/CodeStandard.md)
+* 使ったプラグイン：[詳細はこちら](./doc/PluginDependency.md)
 * 外部素材：[詳細はこちら](./doc/ExternalResources.md)
 
 # アピールポイント
