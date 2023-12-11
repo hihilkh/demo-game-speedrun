@@ -14,14 +14,15 @@
 * `Detection`
 	* `Detector`：`Collider`コンポーネントの中身を複雑にならないように、Visitorパターンの`CheckCollision()`関数を`Collider`から分かれるクラスです。抽象クラスです。
 	* `RectDetector`：`RectCollider`が持っている`Detector`の実装です。
-	* `DetectorImpl`：衝突システムの実装を`Detector`から分かれるために用意したPimplイディオムです。
+	* `DetectorImpl`：衝突検出と衝突応答の実装を`Detector`から分かれるために用意したPimplイディオムです。
+	* `DetectorFactory`：`DetectorImpl`の実装を指定する仕組みです。
 	* `CollisionRecord`：衝突が起こるとき、後の衝突応答の計算にとっては必須の記録です。衝突システムの実装によって違います。
-	* `NonRotatedRectSimpleImpl`：現在の衝突システムの実装です。
+	* `NonRotatedRectSimpleImpl`：現在の衝突検出と衝突応答の実装です。
 
 
 ## 衝突検出のVisitorパターンの説明
 
-* `Collider`の種類の組み合わせによって、衝突検出のやり方が違います。例えば、四角形同士の衝突検出と円形同士の衝突検出と違います。
+* 違う`Collider`の種類によって、衝突検出の実装も違います。例えば、四角形同士の衝突検出と円形同士の衝突検出と違います。
 * `Collider`の種類の組み合わせごとに衝突検出の関数を分けるように、Visitorパターンを使います。
 * 下記の図でVisitorパターンの流れに載っています。ただし、見やすくなるために、下記の図は簡略化して、実際のコードと違いがあります。また、現在`RectCollider`しか支援していません。図の中の`CircleCollider`と`CircleDetecter`は存在しないです。
 <br /><img src="./ReadmeImage/Collision_Visitor.png" alt="image" width="80%" height="auto"><br />
@@ -32,7 +33,8 @@
 	3. `CircleDetector`を追加し、`Detector`の`CheckCollision()`関数たちをオーバーライドします。
 	4. `RectDetector`も円形との`CheckCollision()`関数をオーバーライドします。
 	5. `CircleCollider`を追加し、`CircleDetector`を紐付けます。
-* 上の例の通り、`CollisionSystem`とか`RectCollider`とか実装したクラスを変更しないままで済みます。追加しなければならないコードを`Detector`によってちゃんと分けます。
+* 上の例の通り、衝突検出の関数を分けるためのswitch文の必要がありません。
+* `CollisionSystem`とか`RectCollider`とか実装したクラスも変更しないままで済みます。追加しなければならないコードを`Detector`によってちゃんと分けます。
 
 ## `NonRotatedRectSimpleImpl`実装の説明
 
@@ -45,23 +47,24 @@
 * コライダーが重なっている場合、コライダーたちのセンターによって調整方向を決定し、調整量(`CollisionRecord`)を計算します。
 	* 一つのコライダーだけ移動できる：移動できるコライダーの`CollisionRecordHandler`に調整量を記録します。
 	* 二つのコライダーも移動できる：調整量を半分に割って、コライダーたちの`CollisionRecordHandler`に記録します。
-
-### 衝突応答
-
-* [ソースコード](../../src/GE/Collision/Detection/NonRotatedRectSimpleImpl/CollisionRecordHandler.cpp)
-* 下記の図によって、衝突応答のロジックを説明します。
+* 下記の図を例にして説明します。
 <br /><img src="./ReadmeImage/Collision_Impl.png" alt="image" width="40%" height="auto"><br />
 * `A`と`B`は移動できないコライダー、`C`は移動できるコライダーとします。
 * 説明を分かりやすくなるために、"右x単位<u>または</u>上y単位"という意味を`(x, y)`と表記します。"右x単位<u>かつ</u>上y単位"という意味を`[x, y]`と表記します。
 * `C`と`A`が重なっているので、調整量"右4単位または上5単位"`(4, 5)`を記録します(緑の矢印)。
 * `C`と`B`が重なっているので、調整量"右11単位または下3単位"`(11, -3)`を記録します(青い矢印)。
-* つまり、衝突検出段階後、`C`の`CollisionRecordHandler`の中に、二つの調整量を持っています(`(4, 5)`, `(11, -3)`)。
+* つまり、衝突検出段階後、`C`の`CollisionRecordHandler`の中に、二つの調整量を持っています(`(4, 5)`、`(11, -3)`)。
+
+### 衝突応答
+
+* [ソースコード](../../src/GE/Collision/Detection/NonRotatedRectSimpleImpl/CollisionRecordHandler.cpp)
+* 上記の例を続けて説明します。
 * 衝突応答段階を行うとき、まず可能な調整方法のリストを作ります。
 	* 最初のリストの中に、`[0, 0]`だけ入ります。それから、記録した調整量をループして、リストの中のすべての調整方法を比べたら、より正確な調整方法を得ます。
 	* 1回目：`(4, 5)`とリスト(`[0, 0]`)を比べます：
 		* x成分：調整方法は`[0, 0]`から`[4, 0]`になります。
 		* y成分：調整方法は`[0, 0]`から`[0, 5]`になります。
-	* 2回目：`(11, -3)`とリスト(`[4, 0]`, `[0, 5]`)を比べます：
+	* 2回目：`(11, -3)`とリスト(`[4, 0]`、`[0, 5]`)を比べます：
 		* x成分：調整方法は
 			* `[4, 0]`から`[11, 0]`になります。
 			* `[0, 5]`から`[11, 5]`になります。
