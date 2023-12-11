@@ -16,17 +16,17 @@
 ├ imageSrc/				// 自分で作った画像の編集できるファイル
 ├ lib/					// サードパーティーのプラグイン
 ├ src/					// 自分で作ったコード
-	├ GE/				// 自作ゲームライブラリ
-	├ WinMain.cpp		// プログラムのエントリーポイント
-	└ ...
-├ GPG_2020.sln			// VisualStudioのソリューション
+    ├ GE/				// 自作ゲームライブラリ
+    ├ WinMain.cpp			// プログラムのエントリーポイント
+    └ ...
+├ GPG_2020.sln				// VisualStudioのソリューション
 └ ...
 ```
 
 ### 備考
 
-* `lib`フォルダの中のプラグインの詳細は[こちら](../doc/PluginDependency.md)へ。
 * `src/GE`フォルダの詳細は[こちら](../doc/GameLibraryDetails.md)へ。
+* `lib`フォルダの中のプラグインの詳細は[こちら](../doc/PluginDependency.md)へ。
 
 ## `src`フォルダをもっと説明
 
@@ -40,3 +40,9 @@
 	* `Tile`：マップを構成するタイル
 * `Prefab`フォルダ：Prefabを構築するコードです。Unityの`Prefab`またはUnrealの`Blueprint`のような役割です。
 * `Scene/Builder`フォルダ：シーンを構築するコードです。Unityの`Scene`またはUnrealの`Level`のような役割です。
+
+## その他
+
+* [コードスタンダード](./CodeStandard.md)
+* [使ったプラグイン](./PluginDependency.md)
+* [外部素材](./ExternalResources.md)

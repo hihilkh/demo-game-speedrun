@@ -19,27 +19,27 @@
 
 ```json
 {
-	"core": {
-		"img": "./data/Image/WallFragment.png",	// パーティクルの画像のソース
-		"render_priority": 200,	// パーティクルの画像の描画優先度
-		"no_of_particle": 20,	// ParticleSystemを再生する時、パーティクルの生成数
-		"life": 1.0	// パーティクルの生存期間
-	},
-	"modules": [	// Moduleの配列
-		{
-			"name": "rectEmission",	// Moduleの名前。IDのような役割です
-			"detail": {	// Moduleの詳細。Moduleによって違います
-				"rot": {
-					"from": 0.0,
-					"to": 360.0
-				},
-				"x": -16.0,
-				"y": -16.0,
-				"w": 32.0,
-				"h": 32.0
-			}
-		}
-	]
+    "core": {
+        "img": "./data/Image/WallFragment.png",	// パーティクルの画像のソース
+        "render_priority": 200,			// パーティクルの画像の描画優先度
+        "no_of_particle": 20,			// ParticleSystemを再生する時、パーティクルの生成数
+        "life": 1.0				// パーティクルの生存期間
+    },
+    "modules": [				// Moduleの配列
+        {
+            "name": "rectEmission",		// Moduleの名前。IDのような役割です
+            "detail": {				// Moduleの詳細。Moduleによって違います
+                "rot": {
+                    "from": 0.0,
+                    "to": 360.0
+                },
+                "x": -16.0,
+                "y": -16.0,
+                "w": 32.0,
+                "h": 32.0
+            }
+        }
+    ]
 }
 ```
 
