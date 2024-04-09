@@ -1,50 +1,61 @@
-# 初めに
+[![en](https://img.shields.io/badge/lang-en-red.svg)](./README.md)
+[![jp](https://img.shields.io/badge/lang-jp-green.svg)](./README.jp.md)
 
-このリポジトリは就職活動のために作った簡単な2Dゲームのデモ作品です。言語はC++です。ゲームだけではなく、簡単な2Dゲームライブラリも自分で作りました。
+---
 
-これはもともと学校の一年後期の進級制作のプロジェクトです。私は以前、主にUnityとC#を使っていました。この進級制作を作るにつれ、私のC++での開発はC#よりうまくいかないと感じました。また、学校の提供したライブラリはあまり使いやすくないと思いました。そういうわけで、自分でゼロから簡単なゲームライブラリを作って、C++技術を磨くという考えが浮かびました。
+**Remark** :
 
-自作ゲームライブラリの詳細は[こちら](./doc/GameLibraryDetails.md)へ。
+This project is done when I was studying in Japan. Some contents are written in Japanese, e.g., comments in the codes, git commit messages, GitHub's issues, etc.
 
-ソースコードのご案内は[こちら](./doc/SourceCodeGuide.md)へ。
+---
 
-# デモ動画
+# To Begin With
+
+It is a simple 2D game project made with C++. The game itselt is quite simple, but I also made a simple 2D game library.
+
+This project is originally an assignment when I was studying in Japan. Before going to Japan to study, I mainly used Unity and C# in my previous company. When I was doing this assignment, I felt that developing with C++ was not as smooth as that with with C#. Also, the game library provided by school was not that easy to use. So I wanted to make my own game library from scratch to practice my c++ skill.
+
+For more details of the source code, please refer to [here](./doc/SourceCodeGuide.md).
+
+For more details of the game library I made, please refer to [here](./doc/GameLibraryDetails.md).
+
+# Demo Video
 
 https://github.com/hihilkh/demo-game-speedrun/assets/35343910/409cc33f-c4d2-4509-9568-51cb1408d62a
 
-# 紹介
+# Introduction
 
-* タイトル：Speedrun
-* 概要：キャラクターをコントロールし、地形を活用したり、壁を破壊したりして、できるだけ早く終点まで走り切りましょう。
+* Title : Speedrun
+* Gameplay : Control the character, make use of the terrain, break the walls that block your way and reach the goal as fast as you can.
 
-### 開発について
+# About the Development
 
-* 開発期間
-	* 2022/12 ~ 2023/02：学校が提供したライブラリを使ってゲームを作りました
-	* 2023/04 ~ 2023/08：自分のゲームライブラリを作って学校のライブラリから置き換えました
-* 言語：C++20
-* IDE：Visual Studio 2022
-* グラフィックス API：DirectX 12
-* ソースコードのご案内：[こちら](./doc/SourceCodeGuide.md)
-* 自作ゲームライブラリ：[こちら](./doc/GameLibraryDetails.md)
+* Development Period :
+	* 2022/12 ~ 2023/02 : Develop the game with the game library from school
+	* 2023/04 ~ 2023/08 : Write my own game library to replace school’s library
+* Language : C++20
+* IDE : Visual Studio 2022
+* Graphic API : DirectX 12
+* More About Source Code : [here](./doc/SourceCodeGuide.md)
+* More About My Game Library : [here](./doc/GameLibraryDetails.md)
 
-### 実行について
+# About the Release
 
-* 実行環境：Windows 64bit
-* 実行ファイルを[ダウンロード](https://github.com/hihilkh/demo-game-speedrun/releases/latest)
+* [Download Executable File](https://github.com/hihilkh/demo-game-speedrun/releases/latest)
+* Platform : Windows 64bit
 
-### 操作方法
+# Game Control
 
-* キーボードで操作します。
+* Please use keyboard for the control.
 
-| キー         | ゲームシーン   | UI          |
+| Key         | Game Scene   | UI          |
 | ----------- | ----------- | ----------- |
-| 十字キー     | 移動 　　     | メニューの選択 |
-| X       　　| 長押し：走る   | 確定 　　　　　|
+| Arrow Keys     | Character movement 　　     | Menu selection |
+| X       　　| Hold : Running   | Confirm button 　　　　　|
 
-# アピールポイント
+# What I Have Learned
 
-* このゲームはシンプルすぎて、ゲームライブラリも粗末で、バグも残っていた(特に当たり判定について)けれども、サードパーティーのゲームライブラリとプラグインをあまり使わず、自分の力でゲームを作るのに誇ります。
-* ゲームライブラリを作る時、メモリ管理、C++のよく使う技術とシンタックス、ベストプラクティスなどを色々な知識を勉強していて、以前よりC++に馴染んでくると思います。([開発していた時に使った技術](./doc/GameLibraryDetails.md#%E9%96%8B%E7%99%BA%E3%81%97%E3%81%A6%E3%81%84%E3%81%9F%E6%99%82%E3%81%AB%E4%BD%BF%E3%81%A3%E3%81%9F%E6%8A%80%E8%A1%93))
-* このプロジェクトでいくつかのデザインパターンを実際に使っていて、これらのパターンの原理と使い方がもっと理解できました。([開発していた時に使った技術](./doc/GameLibraryDetails.md#%E9%96%8B%E7%99%BA%E3%81%97%E3%81%A6%E3%81%84%E3%81%9F%E6%99%82%E3%81%AB%E4%BD%BF%E3%81%A3%E3%81%9F%E6%8A%80%E8%A1%93))
-* 学校のライブラリから自分のゲームライブラリに置き換えるので、パフォーマンスが維持できるように、プロファイリングや、ゲームライブラリの最適化などを工夫しました。変更しやすくなるように、どうすればより柔軟なコードが書けるのかもよく考えました。
+* The game itself is too simple and the game library is also quite rough and bugs remains (especially about the collision detection). But I think it is a great achievement to make a game library by my own and without much help from third-party plugins.
+* When I was making the game library, I studied quite a lot about memory management, the efficiency of the codes, template, relation between linker and compiler, etc. I also learned some common techniques, syntax and best practices of C++. I became more familiar with C++ development. ([Used Techniques](./doc/GameLibraryDetails.md#used-techniques))
+* I have tried to use some design patterns in this project and had more understanding about the principle of those patterns. ([Used Techniques](./doc/GameLibraryDetails.md#used-techniques))
+* As I was replacing the school’s library with mine, I have done some profiling and optimization to the game library to ensure the game performance was kept. I have also tried to write more flexible codes so that it is easier for further changes.

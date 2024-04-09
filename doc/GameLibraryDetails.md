@@ -1,107 +1,110 @@
-# ゲームライブラリについて
+[![en](https://img.shields.io/badge/lang-en-red.svg)](./GameLibraryDetails.md)
+[![jp](https://img.shields.io/badge/lang-jp-green.svg)](./GameLibraryDetails.jp.md)
 
-## 基本資料
+# More About Game Library
 
-* このゲームライブラリは粗末な2Dゲームライブラリです
-* 主にUnityの仕組みを参考にしてから作りました
-* 言語：`C++`
-* ソースコード：[こちら](../src/GE)
-* 命名空間：`GE`(名前を長すぎないように、一部の名前をエイリアス付けました(参考：[こちら](../src/GE/Utils/TypeDef.h)))
-* スレッドセーフではないです
+## Basic Information
 
-## 仕組み
+* A simple and rough 2D game library.
+* Mainly refer to Unity's structure.
+* Language : `C++`
+* Source Code : [here](../src/GE)
+* Namespace : `GE` (To order to keep the names short, some names are given alias (Reference : [here](../src/GE/Utils/TypeDef.h)))
 
-* `GameObject`：ゲームの構成の基本単位です。([ソースコード](../src/GE/Core/GameObject.h))
-* `Component`：`GameObject`に付けて、機能を追加する部品です。([ソースコード](../src/GE/Core/Component.h))
-* `Scene`：`GameObject`を格納して管理するものです。`Scene`の遷移する際、古い`Scene`の`GameObject`を全て破棄します。([ソースコード](../src/GE/Scene)、[使用例](../src/Scene))
-* `Transform2D`：`GameObject`の位置と回転を表示するクラスです。簡単化のために(今せん断写像を描画することが実装されていません)、スケールを支援しません。`GameObject`は必ず一つの`Transform2D`を持っています。Unityと違い、`Transform2D`は`Component`ではありません。([ソースコード](../src/GE/Core/Transform2D.h))
-* `Image`：2D画像を描画する`Component`です。([ソースコード](../src/GE/Render/Image.h))
-* `Camera2D`：`Image`を映って、ゲーム画面で正しく描画する`Component`です。([ソースコード](../src/GE/Core/Camera2D.h))
-* `Prefab`：複数の`GameObject`と`Component`を揃って、一つの物とみなして生成できるプリセットです。([ソースコード](../src/GE/Core/Prefab.h)、[使用例](../src/Prefab))
-* `GameObject`の親子関係：`GameObject`を他の`GameObject`の`Child`になることができます。([ソースコード](../src/GE/Core/GameObject.h))
-* `GESafePtr`：`GameObject`と`Component`の破棄に関連するダングリングポインタを防ぐために、スマートポインタを使います。([ソースコード](../src/GE/Memory/GESafePtr.h)、使用例：[Animator::image](../src/GE/Animation/Animator.h))
-* インプットシステム：プレイヤーの入力を取得するシステムです。今、キーボードの入力だけ支援します。([ソースコード](../src/GE/Input))
-* `Collider`：当たり判定機能を持っている`Component`です。([ソースコード](../src/GE/Collision/Collider.h))
-* 衝突システム：`Collider`同士の衝突検出と衝突応答を行うシステムです。([ソースコード](../src/GE/Collision))
-* アニメーションシステム：`Image`の描画を時間に沿って変化させるシステムです。([ソースコード](../src/GE/Animation)、[使用例](../src/Prefab/Character/Player/PlayerPrefab.cpp))
-* パーティクルシステム：色々なパーティクルモージュルによってパーティクルを表現するシステムです。([ソースコード](../src/GE/Particle)、[使用例](../src/Prefab/Map/Tile/WeakWallTilePrefab.cpp))
+## Structures
 
-### もっと詳しい説明
+* `GameObject` : The basic objects that compose the game. ([Source Code](../src/GE/Core/GameObject.h))
+* `Component` : Add to a `GameObject` to add features to it. ([Source Code](../src/GE/Core/Component.h))
+* `Scene` : The object that keeps and manages `GameObjects`. When moving from one `Scene` to another `Scene`, all the `GameObjects` of the old `Scene` would be destroyed (disposed). ([Source Code](../src/GE/Scene), [Example](../src/Scene))
+* `Transform2D` : The class that represents the position and rotation of a `GameObject`. It does not contain scale for simplicity sake (To prevent shear mapping). A `GameObject` must have one and only one `Transform2D`. `Transform2D` is not a `Component`, which is different from Unity. ([Source Code](../src/GE/Core/Transform2D.h))
+* `Image` : The `Component` that render a 2D image. ([Source Code](../src/GE/Render/Image.h))
+* `Camera2D` : The `Component` that is responsible to render all the `Images` correctly to the game screen. ([Source Code](../src/GE/Core/Camera2D.h))
+* `Prefab` : A preset that groups multiple `GameObjects` and `Components` and can be instantiated as if it is a single object. ([Source Code](../src/GE/Core/Prefab.h), [Example](../src/Prefab))
+* Hierarchy of `GameObject` : A `GameObject` can be assigned as another `GameObject`'s `Child`. ([Source Code](../src/GE/Core/GameObject.h))
+* `GESafePtr` : You can use `GESafePtr` to prevent the use of 
+dangling pointer of `GameObject` or `Component` after they are destroyed. ([Source Code](../src/GE/Memory/GESafePtr.h), Example : [Animator::image](../src/GE/Animation/Animator.h))
+* Input System : The system to get user inputs. Currently only keyboard input is supported. ([Source Code](../src/GE/Input))
+* `Collider` : The `Component` that can check for collision. ([Source Code](../src/GE/Collision/Collider.h))
+* Collision System : The system that is responsible for collision detection and collision response between different `Colliders`. ([Source Code](../src/GE/Collision))
+* Animation System : The system to change the rendering of an `Image` along time. ([Source Code](../src/GE/Animation), [Example](../src/Prefab/Character/Player/PlayerPrefab.cpp))
+* Particle System : The system to simulate and render particles based on different particle module. ([Source Code](../src/GE/Particle), [Example](../src/Prefab/Map/Tile/WeakWallTilePrefab.cpp))
 
-* [衝突システム](./GameLibraryModule/Collision.md)
-* [アニメーションシステム](./GameLibraryModule/Animation.md)
-* [パーティクルシステム](./GameLibraryModule/Particle.md)
-* [共通のモジュール](./GameLibraryModule/Common.md)
+### More Details By Module
 
-### ゲームループ
+* [Collision System](./GameLibraryModule/Collision.md)
+* [Animation System](./GameLibraryModule/Animation.md)
+* [Particle System](./GameLibraryModule/Particle.md)
+* [Common Modules](./GameLibraryModule/Common.md)
 
-ゲームを進行している時、毎フレームで下記のようなゲームループを行います。([GameEngine::RunGameLoop](../src/GE/Core/GameEngine.cpp))
+## Game Loop
 
-* `TimeUpdatePhase`：ゲーム内の時間を更新します。
-* `InputUpdatePhase`：キャッシュしたプレイヤーの入力を整理してから、`InputSystem`を更新します。
-* `StartPhase`：新しい生成した`Component`たちの`Start()`関数を呼び出します。
-* `UpdatePhase`：`Component`たちの`Update()`関数を呼び出します。その後、`Component`たちの`LateUpdate()`関数を呼び出します。
-* `CollisionPhase`：当たり判定を行ってから、該当する`Collider`の位置調整をし、`onCollided`と`onTriggered`の`GE::Event`をトリガーします。
-* `AnimationUpdatePhase`：後ろの`RenderPhase`のために、アニメーションの詳細を更新します。
-* `RenderPhase`：ゲーム画面で描画します(`Renderer`たちの`Render()`関数を呼び出します)。
-* `DestroyPhase`：破棄を要請された`GameObject`と`Component`を破棄します。破棄する直前、`PreDestroy()`関数を呼び出します。
-* `ChangeScenePhase`：`Scene`の遷移を要請した場合、`Scene`を遷移します。
+Below game loop will be called on each frame. ([GameEngine::RunGameLoop](../src/GE/Core/GameEngine.cpp))
 
-### `Component`のゲームループ関数
+* `TimeUpdatePhase` : Update the game time.
+* `InputUpdatePhase` : Update `InputSystem` with the cached user input.
+* `StartPhase` : Call the `Start()` methods of the newly instantiated `Components`.
+* `UpdatePhase` : Call the `Update()` methods of all `Components`. After that, call the `LateUpdate()` methods of all `Components`.
+* `CollisionPhase` : Do the collision checking and adjust the position of the `Colliders` if necessary. The `onCollided` and `onTriggered` `GE::Event` of corresponding `Colliders` will also be triggered in this phase.
+* `AnimationUpdatePhase` : For the sake of latter `RenderPhase`, update the details about animations.
+* `RenderPhase` : Render the graphic into the game screen (Call the `Render()` methods of `Renderers`).
+* `DestroyPhase` : Destroy (Dispose) the `GameObjects` and `Components` that are requested to be destroy. Right before destroying, `PreDestroy()` method will be called.
+* `ChangeScenePhase` : If it is requested to change the `Scene`, the `Scene` will be changed in this phase.
 
-`Component`は以下のゲームループ関数を作りました([ソースコード](../src/GE/Core/Component.h))。基本的にUnityのような振る舞いをします。しかし、若干な細かい違いがあります。
+### The Game Loop methods of `Component`
 
-* `Awake()`：生成した後の最初の処理です。`GameObject`と`Component`自身が有効無効にかかわらず(Unityと違う)、一回だけ呼び出されます。
-* `Start()`：`StartPhase`に、`GameObject`と`Component`自身が有効無効にかかわらず(Unityと違う)、一回だけ呼び出されます。そういうわけで、`UpdatePhase`に生成する`Component`は次のフレームに`Start()`が呼び出されます。
-* `Update()`：`Start()`をした`Component`の毎フレームの処理です。有効にする時だけ呼び出されます。
-* `LateUpdate()`：すべての`Component`の`Update()`が呼び出された直後の処理です(簡単化にしたいために、Unityと違って、`Update()`と`LateUpdate()`の中に、他の処理がありません)。有効にする時だけ呼び出されます。
-* `PreDestroy()`：Unityの`OnDestroy()`のよう、破棄直前の処理です。名前を合わせるために(プレフィックス`On`を使わない)、Unityと違い名前にします。
+Each `Component` has below methods for the game loop ([Source Code](../src/GE/Core/Component.h)). The behaviour is similar to those of Unity, but may have some difference.
 
-## 開発していた時に使った技術
+* `Awake()` : The first game loop method to be called after instantiation. No matter the `GameObject` or `Component` is active (enable) or inactive (disable) (which is different from Unity), it will be called once and only once.
+* `Start()` : In `StartPhase`, no matter the `GameObject` or `Component` is active (enable) or inactive (disable) (which is different from Unity), it will be called once and only once. For this reason, the `Components` instantiated in `UpdatePhase` will be called `Start()` methods in next frame.
+* `Update()` : It is called on each frame. It will be called only if the `Start()` method of a `Component` has been called and the `Component` is enabled.
+* `LateUpdate()` : The next handling after the `Update()` methods is called for all `Components` (For the sake of simplicity, there is no other handling between `Update()` and `LateUpdate()`, which is different from Unity). It will be called only if the `Component` is enabled.
+* `PreDestroy()` : The handling right before being destroyed, just like the `OnDestroy()` method in Unity. To align the naming (Do not use prefix `On`), a name that is different from Unity's is used.
 
-このゲームライブラリを作る原因は、C++技術を磨きたかったということです。そういうわけで、開発する時に、なるべく外部のプラグインを使わず、自分のコードでライブラリの機能を実装したいと思いました。
+## Used Techniques
 
-下記は、このゲームライブラリを開発していた時に使った技術です。
+I made this game library because I want to practice my C++ skills. For this reason, I tried to write it from scratch and use third-party plugins as least as possible when development.
 
-* STLコンテナ
-* STLアルゴリズム
-* スマートポインタ
-* 右辺値参照
-* テンプレート(例：[Vector2](../src/GE/DataType/Vector2.h))
-	* 明示的インスタンス化(例：[Vector2](../src/GE/DataType/Vector2.cpp))
-	* type_traitsとconcepts(例：[GEConcept](../src/GE/Utils/GEConcept.h))
-	* 完全転送(Perfect Forwarding)(例：[GameObject::AddComponent](../src/GE/Core/GameObject.h))
-* Pimplイディオム(例：[Collision::Detection::RectDetector](../src/GE/Collision/Detection/RectDetector.h))
-* 関数について
-	* ラムダ式
-	* 関数オブジェクト(例：[Particle::Internal::VelocityUpdateFunc](../src/GE/Particle/Module/UpdateFunc/VelocityUpdateFunc.h))
-	* Observerパターン(例：[Event](../src/GE/Core/Event.h))
-* Adapterパターン(例：[EnumUtils](../src/GE/Utils/EnumUtils.h))
-* Visitorパターン(例：[Collision::Detection::Detector::CheckCollision](../src/GE/Collision/Detection/Detector.h))
-* マクロ(例：[Debug::Logging](../src/GE/Debug/Log.h))
-* プリプロセッサ(例：[RenderSystemの実装](../src/GE/Render/Impl/DG2014RenderSystem.cpp))
-* Precompiled Header(例：[GEHeader](../src/GE/GEHeader.h))
+Below are the techniques I have used during development.
 
-ちょっと本題から離れるけれども、下記は、ゲームライブラリではなく、本編のゲームを開発していた時に使った技術です。
+* STL Container
+* STL Algorithm
+* Smart Pointer
+* Rvalue Reference
+* Template (Example : [Vector2](../src/GE/DataType/Vector2.h))
+	* Explicit instantiation (Example : [Vector2](../src/GE/DataType/Vector2.cpp))
+	* type_traits and concepts (Example : [GEConcept](../src/GE/Utils/GEConcept.h))
+	* Perfect Forwarding (Example : [GameObject::AddComponent](../src/GE/Core/GameObject.h))
+* Pimpl Idiom (Example : [Collision::Detection::RectDetector](../src/GE/Collision/Detection/RectDetector.h))
+* About Function
+	* Lambda Function
+	* Function Object (Example : [Particle::Internal::VelocityUpdateFunc](../src/GE/Particle/Module/UpdateFunc/VelocityUpdateFunc.h))
+	* Observer Pattern (Example : [Event](../src/GE/Core/Event.h))
+* Adapter Pattern (Example : [EnumUtils](../src/GE/Utils/EnumUtils.h))
+* Visitor Pattern (Example : [Collision::Detection::Detector::CheckCollision](../src/GE/Collision/Detection/Detector.h))
+* Macro (Example : [Debug::Logging](../src/GE/Debug/Log.h))
+* Preprocessor (Example : [Implementation of RenderSystem](../src/GE/Render/Impl/DG2014RenderSystem.cpp))
+* Precompiled Header (Example : [GEHeader](../src/GE/GEHeader.h))
 
-* Factoryパターン(例：[MapFactory](../src/Map/MapFactory.h))
-* Stateパターン(例：[PlayerStateMachine](../src/Character/Player/State/PlayerStateMachine.h))
+Below are the techniques I have used within the game, but not the game library.
 
-### プラグイン
+* Factory Pattern(Example : [MapFactory](../src/Map/MapFactory.h))
+* State Pattern(Example : [PlayerStateMachine](../src/Character/Player/State/PlayerStateMachine.h))
 
-なるべく外部のプラグインを使わないつもりだったものの、とうとういくつかのプラグインを使いました。
+### Plugins
 
-[ここ](./PluginDependency.md)は使っているプラグインの一覧です。
+Although I have said that I want to use third-party plugins as least as possible, I still use a few of them.
 
-## 不足
+The used plugins are listed [here](./PluginDependency.md).
 
-* [ログした問題点と改良点](https://github.com/hihilkh/demo-game-speedrun/labels/game%20engine)
-* サウンドシステムがありません
-* メンバ関数をゲームライブラリ内部だけ使えるために、`private`宣言 + `friend`クラスという形はたくさんしました。とうとうゲームライブラリ内部のコードは混乱になりました。`public`宣言を使った方がいいかもしれません。
-* Unity Editorのようなツールがないので、`Scene`と`Prefab`の構成は自分でC++コードで構築しなければなりません。不便の他に、構築している時、不正な操作(特にゲームループに対して)を防ぐことができません。
-* `GameObject`と`Component`の有効性(`GameObject::isActive`、`Component::isEnable`)の機能の実装は不十分だと思います。
-* 当たり判定システムは粗末すぎます。色々なバグがあります。
-* 当たり判定システムは回転なし`RectCollider`同士の当たり判定だけ支援しています。
-* アニメーションシステムは`Image`の描画だけ制御できます。汎用性が低いです。
-* パーティクルシステムの細かい実装は`Component`を使います。これは良くないと思います(パフォーマンスの問題もあるし、外部はGetComponent()でパーティクルシステムに影響を与えることもできます)。
-* 単体テストと統合テストを用意しなかったので、時々本編のゲームの開発している時、ゲームライブラリのバグを発見して、修正しなければならないこともあります。(特にC++テンプレートに関するコードとGameObjectの親子関係のような複雑の仕組みなど)
+## Insufficiency
+
+* [Oustanding Issues and Enhancements](https://github.com/hihilkh/demo-game-speedrun/labels/game%20engine) (Japanese only)
+* There is no audio system.
+* In order to make some member functions only be used within the game library, I have used quite a lot of `private` methods together with `friend` classes. It seems to make the codes even more messy and maybe it will be better to just use `public` method.
+* I have not made an editor like Unity Editor. So, for the constructions of `Scene` and `Prefab`, they are done by raw C++ codes. Besides inconvenience, there may be some incorrect handling (especially related to the game loop) during the constructions.
+* The features related to `GameObject::isActive` and `Component::isEnable` are not sufficient.
+* The collision system is too rough. There are many bugs.
+* The collision system only support collisions between non-rotated `RectColliders`.
+* The animation system only manipulate the rendering of `Image`. It is far not ready for generic usage.
+* The detail implementation of particle system is using `Component`. I think it is not a good design. There would be performance issues, and everyone can use `GetComponent()` method to get and change them.
+* I have not written any unit tests or integration tests, so sometimes bugs are not discovered during developing the game library, but until developing the game (especially C++ template related codes and some complicated structures such as the hierarchy of `GameObject`).

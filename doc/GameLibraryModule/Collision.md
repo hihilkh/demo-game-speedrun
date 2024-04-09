@@ -1,82 +1,90 @@
-# 衝突システムについて
+[![en](https://img.shields.io/badge/lang-en-red.svg)](./Collision.md)
+[![jp](https://img.shields.io/badge/lang-jp-green.svg)](./Collision.jp.md)
 
-* 衝突検出と衝突応答を行うシステムです。
-* 機能はすごく限ります。回転していない四角形コライダー同士の衝突しか適用できません。
-* Unityの`RigidBody`のような機能がありません。つまり、速度や重量などがなくて、今のフレームにコライダーたちの現状だけ衝突処理を行います。
+# About Collision System
 
-## 仕組み
+* The system that is responsible for collision detection and collision response.
+* The features are very limited. It only supports collisions between non-rotated rectangle colliders.
+* It does not contains any features like `RigidBody` in Unity. That is, there is no concept about speed or weight. The behaviour onlys depend on the situation of current frame.
 
-* `CollisionSystem`：シーンの中のすべての`Collider`コンポーネントの参照(厳密に言うと生ポインタ)を記録し、毎フレームに`OnStartCollision()`関数を行い、衝突検出を行なってから衝突応答を行います。
-* `Collider`：Unityの`Collider`と似ています。抽象クラスです。`onCollided`と`onTriggered`二つのイベントを持っています。
-* `RectCollider`：現在支援している唯一の`Collider`の実装です。
-* `CollisionLayer`：Unityの`Layer`と似ています。`std::uint32_t`のエイリアスです。
-* `CollisionLayerMatrix`：どんな`CollisionLayer`の組み合わせに衝突処理を行うかの設定です。
+## Structures
+
+* `CollisionSystem` : Record all references (to be precise, raw pointers) of all `Collider` components of the scene, and call `OnStartCollision()` method on each frame to do the collision detection and handle the collision response.
+* `Collider` : An abstract class that is similar to the `Collider`in Unity. It contains `onCollided` and `onTriggered` events.
+* `RectCollider` : The only supported `Collider` implementation now.
+* `CollisionLayer` : Similar to the `Layer` in Unity. It is just an alias of `std::uint32_t`.
+* `CollisionLayerMatrix` : The setting of which `CollisionLayer` can collide with which `CollisionLayer`.
 * `Detection`
-	* `Detector`：`Collider`コンポーネントの中身を複雑にならないように、Visitorパターンの`CheckCollision()`関数を`Collider`から分かれるクラスです。抽象クラスです。
-	* `RectDetector`：`RectCollider`が持っている`Detector`の実装です。
-	* `DetectorImpl`：衝突検出と衝突応答の実装を`Detector`から分かれるために用意したPimplイディオムです。
-	* `DetectorFactory`：`DetectorImpl`の実装を指定する仕組みです。
-	* `CollisionRecord`：衝突が起こるとき、後の衝突応答の計算にとっては必須の記録です。衝突システムの実装によって違います。
-	* `NonRotatedRectSimpleImpl`：現在の衝突検出と衝突応答の実装です。
+	* `Detector` : To order to keep the `Collider` component simple, separate `CheckCollision()` method from `Collider` by visitor pattern and put it into `Detector` class. It is an abstract class.
+	* `RectDetector` : The `Detector` implementation inside `RectCollider`.
+	* `DetectorImpl` : The Pimpl idiom that is to separate the implementation of collision detection and collision response from `Detector`.
+	* `DetectorFactory` : To assign the `DetectorImpl` implementation.
+	* `CollisionRecord` : For the calculation of collision response, a `CollisionRecord` is needed to be recorded while a colision occurs. The structure of `CollisionRecord` depends on the implementation of the collision system.
+	* `NonRotatedRectSimpleImpl` : Current implementation of collision system.
 
 
-## 衝突検出のVisitorパターンの説明
+## Explanation of the Visitor Pattern of Collision Detection
 
-* 違う`Collider`の種類によって、衝突検出の実装も違います。例えば、四角形同士の衝突検出と円形同士の衝突検出と違います。
-* `Collider`の種類の組み合わせごとに衝突検出の関数を分けるように、Visitorパターンを使います。
-* 下記の図でVisitorパターンの流れに載っています。ただし、見やすくなるために、下記の図は簡略化して、実際のコードと違いがあります。また、現在`RectCollider`しか支援していません。図の中の`CircleCollider`と`CircleDetecter`は存在しないです。
-<br /><img src="./ReadmeImage/Collision_Visitor.png" alt="image" width="80%" height="auto"><br />
-* ちょっと複雑と見えるかもしれないが、この仕組みに沿って、拡張しやすくなります。
-* 例えば、`CircleCollider`を追加したい場合、以下の手順に従うとできます。
-	1. 衝突システムの実装(例えば、`NonRotatedRectSimpleImpl`)に、円形同士の衝突検出関数と円形と四角形の衝突検出関数を追加します。
-	2. `Detector`の中に円形との`CheckCollision()`virtual関数をオーバーロードします。
-	3. `CircleDetector`を追加し、`Detector`の`CheckCollision()`関数たちをオーバーライドします。
-	4. `RectDetector`も円形との`CheckCollision()`関数をオーバーライドします。
-	5. `CircleCollider`を追加し、`CircleDetector`を紐付けます。
-* 上の例の通り、衝突検出の関数を分けるためのswitch文の必要がありません。
-* `CollisionSystem`とか`RectCollider`とか実装したクラスも変更しないままで済みます。追加しなければならないコードを`Detector`によってちゃんと分けます。
+* For different type of `Collider`, the logic of collision detection would be different. For example, the collision detection of 2 rectangles and the collision detection of 2 circles are different.
+* Visitor pattern is used to manage all the collision detections due to the combination of different type of `Collider`.
+* Below figure shows the flow of the visitor pattern. However, to make it easier to read, the flow in the figure is simplified and is not exactly the same as the actual codes. Also, currently only `RectCollider` is supported. The `CircleCollider` and `CircleDetecter` from the figure is not existing.
+<br /><br /><img src="./ReadmeImage/Collision_Visitor.png" alt="image" width="80%" height="auto"><br />
+* This structure may look a bit complicated, but with this structure, we can easily expand the collision system.
+* For example, when you want to add `CircleCollider` into the collision system, you can follow below steps.
+	1. Within the implementation of the collision system (e.g., `NonRotatedRectSimpleImpl`), add the methods of collision detection for 2 `CircleColliders` and for 1 `CircleCollider` and 1 `RectCollider`.
+	2. Add overload methods about `CircleColliders` to the `CheckCollision()` virtual methods of `Detector`.
+	3. Add `CircleDetector` class and override the `CheckCollision()` methods of `Detector`.
+	4. Also, inside `RectDetector`, override the `CheckCollision()` method with `CircleColliders`.
+	5. Add `CircleCollider` class and set `CircleDetector` as its detector.
+* As you can see in above example, there is no need to use condition (e.g., `switch`) to decide which collision detection method to be used.
+* Also, there is no need to modify most of the implemented classes, such as `CollisionSystem` and `RectCollider`. All the codes needed to be changed are separated and placed into `Detector` related classes.
 
-## `NonRotatedRectSimpleImpl`実装の説明
+## Explanation of the implementation of `NonRotatedRectSimpleImpl`
 
-### 衝突検出
+### Collision Detection
 
-* [ソースコード](../../src/GE/Collision/Detection/NonRotatedRectSimpleImpl/DetectorImpl_RectRect.cpp)
-* 回転を無視します。
-* 四角形コライダー同士の衝突しか支援しません。
-* つまり、AABB(axis-aligned bounding box)の当たり判定を行います。
-* コライダーが重なっている場合、コライダーたちのセンターによって調整方向を決定し、調整量(`CollisionRecord`)を計算します。
-	* 一つのコライダーだけ移動できる：移動できるコライダーの`CollisionRecordHandler`に調整量を記録します。
-	* 二つのコライダーも移動できる：調整量を半分に割って、コライダーたちの`CollisionRecordHandler`に記録します。
-* 下記の図を例にして説明します。
+* [Source Code](../../src/GE/Collision/Detection/NonRotatedRectSimpleImpl/DetectorImpl_RectRect.cpp)
+* Ignore rotation.
+* Only support collision of 2 rectangle colliders.
+* That is, check the collision of AABB(axis-aligned bounding box).
+* If 2 colliders overlap, decide the adjustment based on the centers of the colliders, and calculate the adjustment value (`CollisionRecord`).
+	* If only 1 collider can move : Record the adjustment value into the `CollisionRecordHandler` of the movable collider.
+	* If both of the colliders can move : Half the adjustment value and record it into the `CollisionRecordHandler` of both colliders.
+* Use below figure for explanation.
 <br /><img src="./ReadmeImage/Collision_Impl.png" alt="image" width="40%" height="auto"><br />
-* `A`と`B`は移動できないコライダー、`C`は移動できるコライダーとします。
-* 説明を分かりやすくなるために、"右x単位<u>または</u>上y単位"という意味を`(x, y)`と表記します。"右x単位<u>かつ</u>上y単位"という意味を`[x, y]`と表記します。
-* `C`と`A`が重なっているので、調整量"右4単位または上5単位"`(4, 5)`を記録します(緑の矢印)。
-* `C`と`B`が重なっているので、調整量"右11単位または下3単位"`(11, -3)`を記録します(青い矢印)。
-* つまり、衝突検出段階後、`C`の`CollisionRecordHandler`の中に、二つの調整量を持っています(`(4, 5)`、`(11, -3)`)。
+* `A` and `B` are non-movable colliders. `C` is movable collider.
+* To make it easier to understand,
+	* use `(x, y)` to represent "x units rightward <u>or</u> y units upward"
+	* use `[x, y]` to represent "x units rightward <u>and</u> y units upward"
+* Because `C` and `A` overlap, record the adjustment value "4 units rightward or 5 units upward"`(4, 5)` (The green arrow).
+* Because `C` and `B` overlap, record the adjustment value "11 units rightward or 3 units downward"`(11, -3)` (The blue arrow).
+* That is, after the collision detection, there are 2 adjustment values (`(4, 5)`、`(11, -3)`) inside `CollisionRecordHandler` of `C`.
 
-### 衝突応答
+### Collision Response
 
-* [ソースコード](../../src/GE/Collision/Detection/NonRotatedRectSimpleImpl/CollisionRecordHandler.cpp)
-* 上記の例を続けて説明します。
-* 衝突応答段階を行うとき、まず可能な調整方法のリストを作ります。
-	* 最初のリストの中に、`[0, 0]`だけ入ります。それから、記録した調整量をループして、リストの中のすべての調整方法を比べたら、より正確な調整方法を得ます。
-	* 1回目：`(4, 5)`とリスト(`[0, 0]`)を比べます：
-		* x成分：調整方法は`[0, 0]`から`[4, 0]`になります。
-		* y成分：調整方法は`[0, 0]`から`[0, 5]`になります。
-	* 2回目：`(11, -3)`とリスト(`[4, 0]`、`[0, 5]`)を比べます：
-		* x成分：調整方法は
-			* `[4, 0]`から`[11, 0]`になります。
-			* `[0, 5]`から`[11, 5]`になります。
-		* y成分：調整方法は
-			* `[4, 0]`から`[4, -3]`になります。
-			* `[0, 5]`のy成分は正数、`(11, -3)`のy成分は負数なので、この調整方法は矛盾があり、破棄します。
-	* 最終のリストの中に、`[11, 0]`、`[11, 5]`、`[4, -3]`三つの可能な調整方法があります。
-* 一番短い移動距離(平方距離)の調整方法を選んで、実際の衝突応答をします。上の例は`[4, -3]`、つまり"右4単位かつ下3単位"に調整します。
+* [Source Code](../../src/GE/Collision/Detection/NonRotatedRectSimpleImpl/CollisionRecordHandler.cpp)
+* Use above example to continue the explanation.
+* First, calculate and list out all of the possible adjustment methods.
+	* At the beginning, the list of adjustment methods only contains `[0, 0]`.
+	* Then, loop through all of the adjustment values to compare with the list and obtain more accurate adjustment methods.
+	* First adjustment value : Compare `(4, 5)` with the list (`[0, 0]`) :
+		* x-axis : Get an adjustment method from `[0, 0]` to `[4, 0]`.
+		* y-axis : Get an adjustment method from `[0, 0]` to `[0, 5]`.
+		* That is, the list changed from (`[0, 0]`) to (`[4, 0]`、`[0, 5]`).
+	* Second adjustment value : Compare `(11, -3)` with the list (`[4, 0]`、`[0, 5]`) :
+		* x-axis : Get adjustment methods
+			* from `[4, 0]` to `[11, 0]`
+			* from `[0, 5]` to `[11, 5]`
+		* y-axis : Get adjustment methods
+			* from `[4, 0]` to `[4, -3]`
+			* the y-axis value of `[0, 5]` is positive and that of `(11, -3)` is negative. Because there is contradiction in this adjustment method, give up this method.
+	* So at the end, the list contains 3 possible adjustment methods (`[11, 0]`、`[11, 5]`、`[4, -3]`).
+* Choose the adjustment method with the shortest movement distance (square distance) and do the collision response.
+	* In above case, choose `[4, -3]`. That is, adjust by "4 units rightward and 3 units downward".
 
-## 参照
+## References
 
-* [ソースコード](../../src/GE/Collision)
-* [`Collider`の使用例](../../src/Prefab/Map/MapObject/GoalObjectPrefab.cpp)
-* [`Collider`の`onTriggered`の使用例](../../src/Map/MapObject/GoalObject.cpp)
-* [`CollisionLayerMatrix`の使用例](../../src/Collision/CollisionInfo.h)
+* [Source Code](../../src/GE/Collision)
+* [Example of `Collider`](../../src/Prefab/Map/MapObject/GoalObjectPrefab.cpp)
+* [Example of `onTriggered` of `Collider`](../../src/Map/MapObject/GoalObject.cpp)
+* [Example of `CollisionLayerMatrix`](../../src/Collision/CollisionInfo.h)

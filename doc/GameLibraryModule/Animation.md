@@ -1,33 +1,36 @@
-# アニメーションシステムについて
+[![en](https://img.shields.io/badge/lang-en-red.svg)](./Animation.md)
+[![jp](https://img.shields.io/badge/lang-jp-green.svg)](./Animation.jp.md)
 
-* ゲームのアニメーションを表現するシステムです。
-* 機能はすごく限ります。画像を変えることだけ支援します。
+# About Animation System
 
-## 仕組み
+* To control animation of a `GameObject`.
+* The features are very limited. It only supports changing the images.
 
-* `AnimationSystem`：シーンの中のすべての`Animator`コンポーネントの参照(厳密に言うと生ポインタ)を記録し、毎フレームに`OnAnimationUpdate()`関数を行い、`Animator`を更新します。
-* `Animator`：アニメーションを制御するコンポーネントです。Unityの`Animator`と似ています。ただし、他のコンポーネントから`Animator`の再生アニメーションを変えることができません。`AnimationDecision`しか`Animator`を制御できません。このポイントから言うと、Unrealの`Animation Blueprint`ともっと似ていると思います。
-* `AnimationDecision`：どの`AnimationClip`を再生することを決める抽象クラスです。使いたい時、継承クラスを作ることが必要です。Unrealの`Animation Blueprint`の`Event Graph`と`Anim Graph`の組み合わせと似ています。
-* `AnimationClip`：`AnimationKey`の資料を格納し、一つのアニメーションに構成するクラスです。Unityの`AnimationClip`と似ています。
-* `AnimationKey`：アニメーションのキーフレームです。
-* `AnimationClipSet`：一つの`GameObject`のすべての`AnimationClip`を集めるクラスです。
-* `AnimationFile`：`AnimationClipSet`の資料を格納するJsonファイルです。
-* `AnimationClipSetLoader`：`AnimationFile`を読み込んでからデシリアライズして`AnimationClipSet`を生成するクラスです。読み込んだ`AnimationFile`をキャッシュして管理することもします。
+## Structures
 
-## `AnimationFile`の仕組みの例
+* `AnimationSystem` : Record all references (to be precise, raw pointers) of all `Animator` components of the scene, and call `OnAnimationUpdate()` method on each frame to update the `Animator` components.
+* `Animator` : The component that controls animation, like the `Animator` in Unity. However, the behaviour of a `Animator` cannot be changed by other component (e.g., changing the animation to play). The behaviour of a `Animator` can be controlled by `AnimationDecision` only. From this point of view, it is more closer to the `Animation Blueprint` in Unreal.
+* `AnimationDecision` : An abstract class that decide which `AnimationClip` to play. It is necessary to write a derived class when using. It is similar to a combination of `Event Graph` and `Anim Graph` of `Animation Blueprint` in Unreal.
+* `AnimationClip` : A class that store `AnimationKey` data. Each `AnimationClip` can be viewed as one animation. It is similar to the `AnimationClip` in Unity.
+* `AnimationKey` : A keyframe of an animation.
+* `AnimationClipSet` : A class that store all the `AnimationClip` of a `GameObject`.
+* `AnimationFile` : A JSON file that stores all the data of a `AnimationClipSet`.
+* `AnimationClipSetLoader` : A loader to load a `AnimationFile` and deserialize to a `AnimationClipSet` instance. It also caches and manages the loaded `AnimationFile`.
+
+## Example of a `AnimationFile`
 
 ```json
 {
-    "clips": [					// AnimationClipの配列
+    "clips": [					// Array of AnimationClips
         {
-            "name": "idle",			// AnimationClipの名前。IDのような役割です
-            "loop": true,			// ループをするかどうか
-            "frames": [				// フレームと対応するAnimationKeyの配列
+            "name": "idle",			// The name of the AnimationClip. Work as an ID
+            "loop": true,			// Is it a loop animation?
+            "frames": [				// The AnimationKeys corresponding to number of frame
                 {
-                    "start_frame": 0,		// 開始のフレーム
-                    "key": {			// AnimationKeyの詳細
-                        "anim_type": 0,		// 次のAnimationKeyとの補間。0：補間しない、1：線形補間
-                        "img_src_rect": {	// 画像のRect詳細
+                    "start_frame": 0,		// The starting number of frame
+                    "key": {			// The details of the AnimationKey
+                        "anim_type": 0,		// The interpolation type to next AnimationKey. 0 : No interpolation, 1 : Linear
+                        "img_src_rect": {	// The details of image's Rect
                             "x": 0,
                             "y": 0,
                             "w": 64,
@@ -41,9 +44,9 @@
 }
 ```
 
-## 参照
+## References
 
-* [ソースコード](../../src/GE/Animation)
-* [`Animator`の使用例](../../src/Prefab/Character/Player/PlayerPrefab.cpp)
-* [`AnimationDecision`の使用例](../../src/Character/Player/PlayerAnimationDecision.cpp)
-* [`AnimationFile`の例](../../data/Animation)
+* [Source Code](../../src/GE/Animation)
+* [Example of `Animator`](../../src/Prefab/Character/Player/PlayerPrefab.cpp)
+* [Example of `AnimationDecision`](../../src/Character/Player/PlayerAnimationDecision.cpp)
+* [Example of `AnimationFile`](../../data/Animation)
